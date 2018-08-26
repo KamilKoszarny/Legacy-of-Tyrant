@@ -1,10 +1,10 @@
 package main;
 
-import controller.PaneController;
+import controller.BattlePaneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sun.misc.Unsafe;
 
@@ -22,11 +22,11 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(this.getClass().getResource("/fxml/MainWindow.fxml"));
 
-        PaneController paneController = new PaneController();
-        fxmlLoader.setController(paneController);
+        BattlePaneController battlePaneController = new BattlePaneController();
+        fxmlLoader.setController(battlePaneController);
 
-        StackPane stackPane = fxmlLoader.load();
-        Scene scene = new Scene(stackPane);
+        Pane pane = fxmlLoader.load();
+        Scene scene = new Scene(pane);
         scene.getStylesheets().add("style.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("Random Adventures Helper");
