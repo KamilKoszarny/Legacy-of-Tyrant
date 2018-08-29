@@ -6,21 +6,27 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public enum Terrain {
-    GROUND(Color.rgb(135, 86, 1)),
-    GRASS(Color.rgb(0, 250, 0)),
-    BUSH(Color.rgb(0, 150, 0)),
-    TREES(Color.rgb(0, 50, 0));
+    GROUND(Color.rgb(135, 86, 1), 1),
+    GRASS(Color.rgb(0, 250, 0), 0.9),
+    BUSH(Color.rgb(0, 150, 0), 0.7),
+    TREES(Color.rgb(0, 50, 0), 0.5);
 
     Color color;
+    double moveFactor;
     double intensity;
     ArrayList<Point> focalPoints;
 
-    Terrain(Color color){
+    Terrain(Color color, double moveFactor){
         this.color = color;
+        this.moveFactor = moveFactor;
     }
 
     public Color getColor() {
         return color;
+    }
+
+    public double getMoveFactor() {
+        return moveFactor;
     }
 
     public double getIntensity() {
@@ -38,9 +44,4 @@ public enum Terrain {
     public void setFocalPoints(ArrayList<Point> focalPoints) {
         this.focalPoints = focalPoints;
     }
-
-    public Point getFocalPoint(int i) {
-        return focalPoints.get(i);
-    }
-
 }

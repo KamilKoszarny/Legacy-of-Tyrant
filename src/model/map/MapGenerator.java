@@ -48,8 +48,8 @@ public class MapGenerator {
 
     private static Terrain chooseTerrain(Point point){
 
-//        recalcTerrainIntensityBasedOnSector(point);
-//        recalcTerrainIntensityBasedOnSurrounding(point);
+        recalcTerrainIntensityBasedOnSector(point);
+        recalcTerrainIntensityBasedOnSurrounding(point);
         recalcTerrainIntensity();
 
         Random rand = new Random();

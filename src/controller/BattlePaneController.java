@@ -83,7 +83,7 @@ public class BattlePaneController {
                 if (character.isChosen()) {
                     mapDrawer.drawPointProximity(character.getPosition());
                     if(character.getMsLeft() > 0) {
-                        MoveCalculator.moveCharacter(character, clickPoint);
+                        MoveCalculator.moveCharacter(character, clickPoint, map);
                     }
                 }
             }
