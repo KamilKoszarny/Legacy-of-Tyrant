@@ -25,11 +25,11 @@ public class Character {
     public Character() {
     }
 
-    public Character(CharacterType type, String name, Color color, Point2D position) {
+    public Character(CharacterType type, String name, Color color) {
         this.type = type;
         this.name = name;
         this.color = color;
-        this.position =  new Point((int)(position.getX()/ Map.RESOLUTION_M),(int)(position.getY()/Map.RESOLUTION_M));
+        this.position =  new Point(10,10);
     }
 
     public CharacterType getType() {
@@ -118,5 +118,37 @@ public class Character {
 
     public void setSpeed(double speed){
         currentSA.speed = speed;
+    }
+
+    public double getDmgMin(){
+        return currentSA.dmgMin;
+    }
+
+    public void setDmgMin(double dmgMin){
+        currentSA.dmgMin = dmgMin;
+    }
+
+    public double getDmgMax(){
+        return currentSA.dmgMax;
+    }
+
+    public void setDmgMax(double dmgMax){
+        currentSA.dmgMax = dmgMax;
+    }
+
+    public String getHitPoints(){
+        return currentSA.hitPoints.toString();
+    }
+
+    public void setHitPoints(String hitPoints){
+        currentSA.hitPoints = Double.parseDouble(hitPoints);
+    }
+
+    public double getDoubleHitPoints(){
+        return currentSA.hitPoints;
+    }
+
+    public void setHitPoints(double hitPoints){
+        currentSA.hitPoints = hitPoints;
     }
 }

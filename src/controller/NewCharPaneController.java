@@ -1,8 +1,5 @@
 package controller;
 
-import com.sun.javafx.collections.ObservableListWrapper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,30 +7,40 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import model.character.Character;
 import model.character.CharacterType;
 
+import java.awt.*;
 import java.io.IOException;
-import java.util.Arrays;
+import java.lang.reflect.Field;
 
 public class NewCharPaneController {
 
 
     @FXML
     private ComboBox<CharacterType> typeComboBox;
-
-    @FXML
-    private TextField speedTextField;
-
     @FXML
     private TextField nameTextField;
-
+    @FXML
+    private ComboBox<Color> colorComboBox;
+    @FXML
+    private TextField speedTextField;
+    @FXML
+    private TextField dmgMinTextField;
+    @FXML
+    private TextField dmgMaxTextField;
+    @FXML
+    private TextField hitPointsTextField;
     @FXML
     private Button createCharacterButton;
+
+    FXMLLoader fxmlLoader;
+    Stage stage;
 
     Character newCharacter;
     BattlePaneController battlePaneController;
@@ -42,7 +49,7 @@ public class NewCharPaneController {
         this.battlePaneController = battlePaneController;
         Parent root;
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/NewCharacterWindow.fxml"));
             fxmlLoader.setController(this);
             /*
@@ -50,7 +57,7 @@ public class NewCharPaneController {
              * fxmlLoader.setController(NewWindowController);
              */
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            Stage stage = new Stage();
+            stage = new Stage();
             stage.setTitle("New Character");
             stage.setScene(scene);
             stage.show();
@@ -64,12 +71,40 @@ public class NewCharPaneController {
 
     @FXML
     void initialize(){
-        initTypeChoiceBox();
+        initTypeComboBox();
+        initColorComboBox();
         initCreateCharacterButton();
     }
 
-    private void initTypeChoiceBox(){
+    private void initTypeComboBox(){
         typeComboBox.getItems().setAll(CharacterType.values());
+    }
+
+    private void initColorComboBox(){
+        colorComboBox.getItems().setAll(
+                Color.BLACK, Color.GRAY, Color.BLUE, Color.YELLOW, Color.GREEN, Color.ORANGE, Color.RED, Color.BROWN,
+                Color.CYAN, Color.DARKBLUE, Color.PINK, Color.PURPLE, Color.VIOLET);
+        colorComboBox.setConverter(new StringConverter<Color>() {
+            @Override
+            public String toString(Color color) {
+                for (Field field: Color.class.getFields()) {
+                    if (field.getType() == Color.class){
+                        try {
+                            if (field.get(null) == color)
+                                return field.getName();
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                return "no color";
+            }
+
+            @Override
+            public Color fromString(String s) {
+                return null;
+            }
+        });
     }
 
     private void initCreateCharacterButton(){
@@ -80,10 +115,19 @@ public class NewCharPaneController {
             public void handle(ActionEvent actionEvent) {
                 newCharacter.setType(typeComboBox.getSelectionModel().getSelectedItem());
                 newCharacter.setName(nameTextField.getText());
+                newCharacter.setColor(colorComboBox.getValue());
                 newCharacter.setSpeed(Double.parseDouble(speedTextField.getText()));
+                newCharacter.setDmgMin(Double.parseDouble(dmgMinTextField.getText()));
+                newCharacter.setDmgMax(Double.parseDouble(dmgMaxTextField.getText()));
+                newCharacter.setHitPoints(Double.parseDouble(hitPointsTextField.getText()));
 
+                newCharacter.setChosen(true);
+                newCharacter.setPosition(new Point(45,45));
+
+                stage.close();
+                fxmlLoader.setController(battlePaneController);
+                battlePaneController.canvasNewCharMode();
                 battlePaneController.addCharacter(newCharacter);
-                battlePaneController.refreshCharactersTable();
             }
         });
     }

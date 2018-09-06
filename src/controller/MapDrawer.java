@@ -68,6 +68,7 @@ public class MapDrawer {
         int s = 20;
         for (int i = -s; i < s; i++){
             for (int j = -s; j < s; j++){
+                if(point.x + i >= 0 && point.y + j >= 0 && point.x + i < map.getWidth() && point.y + j < map.getHeight())
                 pointProximity.add(new Point(point.x + i, point.y + j));
             }
         }
