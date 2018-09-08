@@ -1,17 +1,15 @@
 package model.character;
 
 import javafx.scene.paint.Color;
-import model.map.Map;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class Character {
 
-
     CharacterType type;
+    CharacterClass charClass;
     String name;
     Color color;
     Point position;
@@ -41,6 +39,14 @@ public class Character {
 
     public void setType(CharacterType type) {
         this.type = type;
+    }
+
+    public CharacterClass getCharClass() {
+        return charClass;
+    }
+
+    public void setCharClass(CharacterClass charClass) {
+        this.charClass = charClass;
     }
 
     public String getName() {
@@ -122,6 +128,41 @@ public class Character {
     public void setCurrentSA(SecondaryAttributes currentSA) {
         this.currentSA = currentSA;
     }
+
+
+    public double getDoubleDurability(){
+        return currentPA.durability;
+    }
+
+    public void setDurability(double durability){
+        currentPA.durability = durability;
+    }
+
+    public String getDurability(){
+        return currentPA.durability.toString();
+    }
+
+    public void setDurability(String durability){
+        currentPA.durability = Double.parseDouble(durability);
+    }
+
+
+    public double getDoubleAgility(){
+        return currentPA.agility;
+    }
+
+    public void setAgility(double agility){
+        currentPA.agility = agility;
+    }
+
+    public String getAgility(){
+        return currentPA.agility.toString();
+    }
+
+    public void setAgility(String agility){
+        currentPA.agility = Double.parseDouble(agility);
+    }
+
 
 
     public double getDoubleSpeed(){
@@ -223,6 +264,108 @@ public class Character {
 
     public void setChanceToHit(String chanceToHit){
         currentSA.chanceToHit = Double.parseDouble(chanceToHit);
+    }
+
+
+    public double getDoubleChanceToBeHit(){
+        return currentSA.chanceToBeHit;
+    }
+
+    public void setChanceToBeHit(double chanceToBeHit){
+        currentSA.chanceToBeHit = chanceToBeHit;
+    }
+
+    public String getChanceToBeHit(){
+        return currentSA.chanceToBeHit.toString();
+    }
+
+    public void setChanceToBeHit(String chanceToBeHit){
+        currentSA.chanceToBeHit = Double.parseDouble(chanceToBeHit);
+    }
+
+
+    public double getDoubleAttackDuration(){
+        return currentSA.attackDuration;
+    }
+
+    public void setAttackDuration(double attackDuration){
+        currentSA.attackDuration = attackDuration;
+    }
+
+    public String getAttackDuration(){
+        return currentSA.attackDuration.toString();
+    }
+
+    public void setAttackDuration(String attackDuration){
+        currentSA.attackDuration = Double.parseDouble(attackDuration);
+    }
+
+
+    public double getDoubleHeadArmor(){
+        return currentSA.headArmor;
+    }
+
+    public void setHeadArmor(double headArmor){
+        currentSA.headArmor = headArmor;
+    }
+
+    public String getHeadArmor(){
+        return currentSA.headArmor.toString();
+    }
+
+    public void setHeadArmor(String headArmor){
+        currentSA.headArmor = Double.parseDouble(headArmor);
+    }
+
+
+    public double getDoubleBodyArmor(){
+        return currentSA.bodyArmor;
+    }
+
+    public void setBodyArmor(double bodyArmor){
+        currentSA.bodyArmor = bodyArmor;
+    }
+
+    public String getBodyArmor(){
+        return currentSA.bodyArmor.toString();
+    }
+
+    public void setBodyArmor(String bodyArmor){
+        currentSA.bodyArmor = Double.parseDouble(bodyArmor);
+    }
+
+
+    public double getDoubleArmsArmor(){
+        return currentSA.armsArmor;
+    }
+
+    public void setArmsArmor(double armsArmor){
+        currentSA.armsArmor = armsArmor;
+    }
+
+    public String getArmsArmor(){
+        return currentSA.armsArmor.toString();
+    }
+
+    public void setArmsArmor(String armsArmor){
+        currentSA.armsArmor = Double.parseDouble(armsArmor);
+    }
+
+
+    public double getDoubleLegsArmor(){
+        return currentSA.legsArmor;
+    }
+
+    public void setLegsArmor(double legsArmor){
+        currentSA.legsArmor = legsArmor;
+    }
+
+    public String getLegsArmor(){
+        return currentSA.legsArmor.toString();
+    }
+
+    public void setLegsArmor(String legsArmor){
+        currentSA.legsArmor = Double.parseDouble(legsArmor);
     }
 
 

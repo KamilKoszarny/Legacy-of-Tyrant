@@ -76,10 +76,10 @@ public class AttackPaneController {
         targetsTable.getColumns().add(nameColumn);
 
         for (Character target: targets) {
-            target.setChanceToHit(
-                    AttackCalculator.calcChaceToHit(attacker, target));
+            target.setChanceToBeHit(
+                    AttackCalculator.calcChanceToHit(attacker, target));
         }
-        Effects.createEditableDoubleColumn(targetsTable, "chanceToHit");
+        Effects.createEditableDoubleColumn(targetsTable, "chanceToBeHit");
 
         markTargetedCharacter();
     }

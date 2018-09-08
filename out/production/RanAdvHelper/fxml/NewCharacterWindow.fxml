@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,22 +8,30 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="14.0" layoutY="60.0" text="Name" />
-      <Label layoutX="14.0" layoutY="126.0" text="Speed" />
-      <TextField fx:id="nameTextField" layoutX="71.0" layoutY="56.0" />
-      <TextField fx:id="speedTextField" layoutX="72.0" layoutY="122.0" prefHeight="25.0" prefWidth="50.0" />
-      <Label layoutX="14.0" layoutY="27.0" text="Type" />
-      <ComboBox fx:id="typeComboBox" layoutX="71.0" layoutY="23.0" prefWidth="150.0" />
-      <Button fx:id="createCharacterButton" layoutX="475.0" layoutY="344.0" mnemonicParsing="false" text="Create Character" />
-      <ComboBox fx:id="colorComboBox" layoutX="72.0" layoutY="90.0" prefWidth="150.0" />
-      <Label layoutX="14.0" layoutY="94.0" text="Color" />
-      <Label layoutX="14.0" layoutY="158.0" text="Damage from" />
-      <TextField fx:id="dmgMinTextField" layoutX="97.0" layoutY="154.0" prefHeight="25.0" prefWidth="50.0" />
-      <Label layoutX="153.0" layoutY="158.0" text="to" />
-      <TextField fx:id="dmgMaxTextField" layoutX="171.0" layoutY="154.0" prefHeight="25.0" prefWidth="50.0" />
-      <Label layoutX="14.0" layoutY="192.0" text="Hit Points" />
-      <TextField fx:id="hitPointsTextField" layoutX="72.0" layoutY="188.0" prefHeight="25.0" prefWidth="50.0" />
-      <Label layoutX="14.0" layoutY="222.0" text="Range" />
-      <TextField fx:id="rangeTextField" layoutX="72.0" layoutY="218.0" prefHeight="25.0" prefWidth="50.0" />
+      <Label layoutX="14.0" layoutY="120.0" text="Name" />
+      <Label layoutX="14.0" layoutY="186.0" text="Speed" />
+      <TextField fx:id="nameTextField" layoutX="71.0" layoutY="116.0" />
+      <TextField fx:id="speedTextField" layoutX="72.0" layoutY="182.0" prefHeight="25.0" prefWidth="50.0" />
+      <Label layoutX="14.0" layoutY="87.0" text="Class" />
+      <ComboBox fx:id="classComboBox" layoutX="71.0" layoutY="83.0" prefWidth="150.0" />
+      <Button fx:id="createCharacterButton" layoutX="474.0" layoutY="335.0" mnemonicParsing="false" text="Create">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="colorComboBox" layoutX="72.0" layoutY="150.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="154.0" text="Color" />
+      <Label layoutX="14.0" layoutY="218.0" text="Damage from" />
+      <TextField fx:id="dmgMinTextField" layoutX="97.0" layoutY="214.0" prefHeight="25.0" prefWidth="50.0" />
+      <Label layoutX="153.0" layoutY="218.0" text="to" />
+      <TextField fx:id="dmgMaxTextField" layoutX="171.0" layoutY="214.0" prefHeight="25.0" prefWidth="50.0" />
+      <Label layoutX="14.0" layoutY="252.0" text="Hit Points" />
+      <TextField fx:id="hitPointsTextField" layoutX="72.0" layoutY="248.0" prefHeight="25.0" prefWidth="50.0" />
+      <Label layoutX="14.0" layoutY="282.0" text="Range" />
+      <TextField fx:id="rangeTextField" layoutX="72.0" layoutY="278.0" prefHeight="25.0" prefWidth="50.0" />
+      <ComboBox fx:id="typeComboBox" layoutX="71.0" layoutY="49.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="53.0" text="Type" />
+      <ComboBox fx:id="groupComboBox" layoutX="71.0" layoutY="14.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="18.0" text="Group" />
    </children>
 </AnchorPane>

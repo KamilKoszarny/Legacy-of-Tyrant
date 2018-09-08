@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -13,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import model.character.Character;
+import model.character.CharacterClass;
+import model.character.CharacterGroup;
 import model.character.CharacterType;
 
 import java.awt.*;
@@ -21,9 +22,12 @@ import java.lang.reflect.Field;
 
 public class NewCharPaneController {
 
-
+    @FXML
+    private ComboBox<CharacterGroup> groupComboBox;
     @FXML
     private ComboBox<CharacterType> typeComboBox;
+    @FXML
+    private ComboBox<CharacterClass> classComboBox;
     @FXML
     private TextField nameTextField;
     @FXML
@@ -69,14 +73,27 @@ public class NewCharPaneController {
 
     @FXML
     void initialize(){
-        initTypeComboBox();
+        initGroupAndTypeComboBoxes();
+        initClassComboBox();
         initColorComboBox();
         initCreateCharacterButton();
         initParamsTextFields();
     }
 
-    private void initTypeComboBox(){
-        typeComboBox.getItems().setAll(CharacterType.values());
+    private void initGroupAndTypeComboBoxes(){
+        groupComboBox.getItems().setAll(CharacterGroup.values());
+        groupComboBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                typeComboBox.getItems().setAll(
+                        groupComboBox.getSelectionModel().getSelectedItem().
+                        getBelongingTypes());
+            }
+        });
+    }
+
+    private void initClassComboBox(){
+        classComboBox.getItems().setAll(CharacterClass.values());
     }
 
     private void initColorComboBox(){
@@ -113,6 +130,7 @@ public class NewCharPaneController {
             @Override
             public void handle(ActionEvent actionEvent) {
                 newCharacter.setType(typeComboBox.getSelectionModel().getSelectedItem());
+                newCharacter.setCharClass(classComboBox.getSelectionModel().getSelectedItem());
                 newCharacter.setName(nameTextField.getText());
                 newCharacter.setColor(colorComboBox.getValue());
                 newCharacter.setSpeed(speedTextField.getText());

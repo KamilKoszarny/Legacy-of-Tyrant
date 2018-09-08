@@ -14,8 +14,8 @@ public class AttackCalculator {
         return false;
     }
 
-    public static double calcChaceToHit(Character charA, Character charB){
-        return 34.;
+    public static double calcChanceToHit(Character charA, Character charB){
+        return 50 + charA.getDoubleChanceToHit() - charB.getDoubleAgility();
     }
 
     public static void attackCharacter(Character charA, Character charB, int score){
@@ -24,14 +24,28 @@ public class AttackCalculator {
                 charA.getName() + " attacks " + charB.getName() + " for " + damage + " damage!", ButtonType.OK);
         alert.showAndWait();
         charB.setHitPoints(charB.getDoubleHitPoints() - damage);
+        charA.setMsLeft(charA.getMsLeft() - (int)(charA.getDoubleAttackDuration() * 1000));
     }
 
-    public static int calcDamage(Character charA, Character charB, int score){
-        if (score > charB.getDoubleChanceToHit())
+    private static int calcDamage(Character charA, Character charB, int score){
+        if (score > charB.getDoubleChanceToBeHit())
             return 0;
-        return (int)(charA.getDoubleDmgMin() +
+        int damage =  (int)(charA.getDoubleDmgMin() +
                 (charA.getDoubleDmgMax() - charA.getDoubleDmgMin()) *
-                (charB.getDoubleChanceToHit() - score) / 100);
+                (charB.getDoubleChanceToBeHit() - score) / 100);
+        int damageResisted = (int) (charB.getDoubleDurability() / 10);
+        if (score%10 < 2)
+            damageResisted += (int)charB.getDoubleHeadArmor();
+        else if (score%10 < 4)
+            damageResisted += (int)charB.getDoubleLegsArmor();
+        else if (score%10 < 6)
+            damageResisted += (int)charB.getDoubleArmsArmor();
+        else
+            damageResisted += (int)charB.getDoubleBodyArmor();
 
+        damage -= damageResisted;
+        if (damage < 0)
+            damage = 0;
+        return damage;
     }
 }

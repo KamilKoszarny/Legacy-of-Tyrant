@@ -14,6 +14,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.paint.Color;
 import model.*;
 import model.character.Character;
+import model.character.CharacterClass;
 import model.character.CharacterType;
 import model.map.Map;
 import model.map.MapGenerator;
@@ -64,17 +65,35 @@ public class BattlePaneController {
 
         characters = new ArrayList<>();
         Character czlehulec = new Character(CharacterType.HUMAN, "Człehulec", Color.GRAY);
+        czlehulec.setCharClass(CharacterClass.RASCAL);
         czlehulec.setSpeed(2.8);
-        czlehulec.setDmgMin(2.);
-        czlehulec.setDmgMax(6.);
+        czlehulec.setDmgMin(5.);
+        czlehulec.setDmgMax(11.);
         czlehulec.setHitPoints(6.);
         czlehulec.setRange(2.);
+        czlehulec.setChanceToHit(35);
+        czlehulec.setAttackDuration(1.8);
+        czlehulec.setHeadArmor(1);
+        czlehulec.setBodyArmor(0);
+        czlehulec.setArmsArmor(2);
+        czlehulec.setLegsArmor(1);
+        czlehulec.setAgility(40);
+        czlehulec.setDurability(15);
         Character slimako = new Character(CharacterType.DWARF, "Slimako", Color.BLACK);
+        slimako.setCharClass(CharacterClass.APEPT);
         slimako.setSpeed(1.2);
-        slimako.setDmgMin(3.);
-        slimako.setDmgMax(4.);
+        slimako.setDmgMin(2.);
+        slimako.setDmgMax(8.);
         slimako.setHitPoints(9.);
         slimako.setRange(1.);
+        slimako.setChanceToHit(25);
+        slimako.setAttackDuration(1.2);
+        slimako.setHeadArmor(2);
+        slimako.setBodyArmor(2);
+        slimako.setArmsArmor(0);
+        slimako.setLegsArmor(1);
+        slimako.setAgility(15);
+        slimako.setDurability(45);
         characters.add(czlehulec);
         characters.add(slimako);
     }
@@ -124,15 +143,27 @@ public class BattlePaneController {
         charactersTable.setEditable(true);
         TableColumn nameColumn = new TableColumn("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<Character, String>("name"));
+        TableColumn typeColumn = new TableColumn("Type");
+        typeColumn.setCellValueFactory(new PropertyValueFactory<Character, String>("type"));
+        TableColumn classColumn = new TableColumn("Class");
+        classColumn.setCellValueFactory(new PropertyValueFactory<Character, String>("charClass"));
         TableColumn msLeftColumn = new TableColumn("ms left");
         msLeftColumn.setCellValueFactory(new PropertyValueFactory<Character, Integer>("msLeft"));
-        charactersTable.getColumns().addAll(nameColumn, msLeftColumn);
+        charactersTable.getColumns().addAll(nameColumn, typeColumn, classColumn, msLeftColumn);
 
         Effects.createEditableDoubleColumn(charactersTable, "speed");
         Effects.createEditableDoubleColumn(charactersTable, "dmgMin");
         Effects.createEditableDoubleColumn(charactersTable, "dmgMax");
         Effects.createEditableDoubleColumn(charactersTable, "hitPoints");
         Effects.createEditableDoubleColumn(charactersTable, "range");
+        Effects.createEditableDoubleColumn(charactersTable, "chanceToHit");
+        Effects.createEditableDoubleColumn(charactersTable, "attackDuration");
+        Effects.createEditableDoubleColumn(charactersTable, "headArmor");
+        Effects.createEditableDoubleColumn(charactersTable, "bodyArmor");
+        Effects.createEditableDoubleColumn(charactersTable, "armsArmor");
+        Effects.createEditableDoubleColumn(charactersTable, "legsArmor");
+        Effects.createEditableDoubleColumn(charactersTable, "agility");
+        Effects.createEditableDoubleColumn(charactersTable, "durability");
 
         markChosenCharacter();
     }
@@ -143,16 +174,17 @@ public class BattlePaneController {
         attackButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                List<Character> charactersInRange = new ArrayList<>();
-                Character chosenCharacter = null;
-                for (Character character: characters)
-                    if (character.isChosen())
-                        chosenCharacter = character;
-                for (Character character: characters)
-                    if (!character.isChosen() && AttackCalculator.isInRange(chosenCharacter, character))
-                        charactersInRange.add(character);
-                new AttackPaneController(thisController, chosenCharacter, charactersInRange);
-
+                if (charactersTable.getSelectionModel().getSelectedItem().getMsLeft() >= 0) {
+                    List<Character> charactersInRange = new ArrayList<>();
+                    Character chosenCharacter = null;
+                    for (Character character : characters)
+                        if (character.isChosen())
+                            chosenCharacter = character;
+                    for (Character character : characters)
+                        if (!character.isChosen() && AttackCalculator.isInRange(chosenCharacter, character))
+                            charactersInRange.add(character);
+                    new AttackPaneController(thisController, chosenCharacter, charactersInRange);
+                }
             }
         });
     }
