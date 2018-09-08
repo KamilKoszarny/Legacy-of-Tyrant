@@ -22,5 +22,7 @@
       <TextField fx:id="dmgMaxTextField" layoutX="171.0" layoutY="154.0" prefHeight="25.0" prefWidth="50.0" />
       <Label layoutX="14.0" layoutY="192.0" text="Hit Points" />
       <TextField fx:id="hitPointsTextField" layoutX="72.0" layoutY="188.0" prefHeight="25.0" prefWidth="50.0" />
+      <Label layoutX="14.0" layoutY="222.0" text="Range" />
+      <TextField fx:id="rangeTextField" layoutX="72.0" layoutY="218.0" prefHeight="25.0" prefWidth="50.0" />
    </children>
 </AnchorPane>

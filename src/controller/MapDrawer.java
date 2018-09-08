@@ -36,11 +36,11 @@ public class MapDrawer {
                     character.getPosition().y - character.getType().getSize() / Map.RESOLUTION_M/2,
                     character.getType().getSize() / Map.RESOLUTION_M, character.getType().getSize() / Map.RESOLUTION_M);
 
-            if (character.isChosen()){
-                g.setStroke(Color.WHITE);
-                g.strokeOval(character.getPosition().x - character.getType().getSize() / Map.RESOLUTION_M,
-                        character.getPosition().y - character.getType().getSize() / Map.RESOLUTION_M,
-                        character.getType().getSize() / Map.RESOLUTION_M *2, character.getType().getSize() / Map.RESOLUTION_M *2);
+            if (character.isChosen() && character.getDoubleRange() < 5){
+                drawCharCircle(character, character.getColor(), character.getType().getSize() + character.getDoubleRange()*2);
+            }
+            if (character.isTargeted()){
+                drawCharCircle(character, Color.RED, character.getType().getSize());
             }
         }
     }
@@ -48,6 +48,18 @@ public class MapDrawer {
     public void listCharacters(List<Character> characters, TableView<Character> table){
         ObservableList<Character> obsCharacterList = FXCollections.observableArrayList(characters);
         table.setItems(obsCharacterList);
+    }
+
+    public void drawPointProximity(Point point){
+        Set<Point> pointProximity = new HashSet<>();
+        int s = 80;
+        for (int i = -s; i < s; i++){
+            for (int j = -s; j < s; j++){
+                if(point.x + i >= 0 && point.y + j >= 0 && point.x + i < map.getWidth() && point.y + j < map.getHeight())
+                pointProximity.add(new Point(point.x + i, point.y + j));
+            }
+        }
+        drawPartOfMap(pointProximity);
     }
 
     public void drawPartOfMap(Set<Point> points){
@@ -63,15 +75,12 @@ public class MapDrawer {
         }
     }
 
-    public void drawPointProximity(Point point){
-        Set<Point> pointProximity = new HashSet<>();
-        int s = 20;
-        for (int i = -s; i < s; i++){
-            for (int j = -s; j < s; j++){
-                if(point.x + i >= 0 && point.y + j >= 0 && point.x + i < map.getWidth() && point.y + j < map.getHeight())
-                pointProximity.add(new Point(point.x + i, point.y + j));
-            }
-        }
-        drawPartOfMap(pointProximity);
+    private void drawCharCircle(Character character, Color color, double diameter){
+        g.setStroke(color);
+        g.strokeOval(character.getPosition().x - diameter/2 / Map.RESOLUTION_M,
+                character.getPosition().y - diameter/2 / Map.RESOLUTION_M,
+                diameter / Map.RESOLUTION_M,
+                diameter / Map.RESOLUTION_M);
+
     }
 }

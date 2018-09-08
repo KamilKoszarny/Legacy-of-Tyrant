@@ -37,25 +37,23 @@ public class NewCharPaneController {
     @FXML
     private TextField hitPointsTextField;
     @FXML
+    private TextField rangeTextField;
+    @FXML
     private Button createCharacterButton;
 
     FXMLLoader fxmlLoader;
     Stage stage;
+    BattlePaneController battlePaneController;
 
     Character newCharacter;
-    BattlePaneController battlePaneController;
 
     public NewCharPaneController(BattlePaneController battlePaneController) {
         this.battlePaneController = battlePaneController;
-        Parent root;
         try {
             fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/fxml/NewCharacterWindow.fxml"));
             fxmlLoader.setController(this);
-            /*
-             * if "fx:controller" is not set in fxml
-             * fxmlLoader.setController(NewWindowController);
-             */
+
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             stage = new Stage();
             stage.setTitle("New Character");
@@ -74,6 +72,7 @@ public class NewCharPaneController {
         initTypeComboBox();
         initColorComboBox();
         initCreateCharacterButton();
+        initParamsTextFields();
     }
 
     private void initTypeComboBox(){
@@ -116,10 +115,11 @@ public class NewCharPaneController {
                 newCharacter.setType(typeComboBox.getSelectionModel().getSelectedItem());
                 newCharacter.setName(nameTextField.getText());
                 newCharacter.setColor(colorComboBox.getValue());
-                newCharacter.setSpeed(Double.parseDouble(speedTextField.getText()));
-                newCharacter.setDmgMin(Double.parseDouble(dmgMinTextField.getText()));
-                newCharacter.setDmgMax(Double.parseDouble(dmgMaxTextField.getText()));
-                newCharacter.setHitPoints(Double.parseDouble(hitPointsTextField.getText()));
+                newCharacter.setSpeed(speedTextField.getText());
+                newCharacter.setDmgMin(dmgMinTextField.getText());
+                newCharacter.setDmgMax(dmgMaxTextField.getText());
+                newCharacter.setHitPoints(hitPointsTextField.getText());
+                newCharacter.setRange(rangeTextField.getText());
 
                 newCharacter.setChosen(true);
                 newCharacter.setPosition(new Point(45,45));
@@ -130,5 +130,13 @@ public class NewCharPaneController {
                 battlePaneController.addCharacter(newCharacter);
             }
         });
+    }
+
+    private void initParamsTextFields(){
+        Effects.forceNumericTextField(speedTextField);
+        Effects.forceNumericTextField(dmgMinTextField);
+        Effects.forceNumericTextField(dmgMaxTextField);
+        Effects.forceNumericTextField(hitPointsTextField);
+        Effects.forceNumericTextField(rangeTextField);
     }
 }

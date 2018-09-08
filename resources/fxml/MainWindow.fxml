@@ -10,13 +10,18 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Canvas fx:id="mapCanvas" height="500.0" layoutX="14.0" layoutY="12.0" width="500.0" />
-      <TableView fx:id="charactersTable" layoutX="550.0" layoutY="20.0" prefHeight="300.0" prefWidth="400.0" />
+      <TableView fx:id="charactersTable" layoutX="550.0" layoutY="20.0" prefHeight="300.0" prefWidth="531.0" />
       <Button fx:id="newTurnButton" layoutX="972.0" layoutY="462.0" mnemonicParsing="false" text="New Turn">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="newCharacterButton" layoutX="550.0" layoutY="344.0" mnemonicParsing="false" text="New Character">
+      <Button fx:id="newCharacterButton" layoutX="928.0" layoutY="344.0" mnemonicParsing="false" text="New Character">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="attackButton" layoutX="550.0" layoutY="344.0" mnemonicParsing="false" text="Attack">
          <font>
             <Font size="20.0" />
          </font>
