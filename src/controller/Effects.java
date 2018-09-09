@@ -67,7 +67,8 @@ public class Effects {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
-                if (!newValue.matches("\\d*")) {
+                if (!newValue.matches("\\d+\\.\\d+") && !newValue.matches("\\d")
+                        && !newValue.matches("\\.") && !newValue.matches("\\d+\\.")) {
                     textField.setText(newValue.replaceAll("[^\\d]", ""));
                 }
             }

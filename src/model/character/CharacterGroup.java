@@ -6,6 +6,7 @@ import java.util.List;
 
 public enum CharacterGroup {
 
+    PREDEFINED(null),
     INTELLIGENT(new ArrayList<>(Arrays.asList(
             CharacterType.HUMAN, CharacterType.DWARF, CharacterType.ELF, CharacterType.HALFELF))),
     HUMANOIDS(null),

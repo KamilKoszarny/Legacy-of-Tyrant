@@ -10,7 +10,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.paint.Color;
 import model.*;
 import model.character.Character;
@@ -80,7 +79,7 @@ public class BattlePaneController {
         czlehulec.setAgility(40);
         czlehulec.setDurability(15);
         Character slimako = new Character(CharacterType.DWARF, "Slimako", Color.BLACK);
-        slimako.setCharClass(CharacterClass.APEPT);
+        slimako.setCharClass(CharacterClass.ADEPT);
         slimako.setSpeed(1.2);
         slimako.setDmgMin(2.);
         slimako.setDmgMax(8.);
