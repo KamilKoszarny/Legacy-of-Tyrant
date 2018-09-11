@@ -1,38 +1,49 @@
 package model.character;
 
 import javafx.scene.paint.Color;
+import model.weapon.Weapon;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Character {
 
-    CharacterType type;
-    CharacterClass charClass;
-    String name;
-    Color color;
-    Point position;
-    PrimaryAttributes basePA = new PrimaryAttributes();
-    PrimaryAttributes currentPA = new PrimaryAttributes();
-    SecondaryAttributes baseSA = new SecondaryAttributes();
-    SecondaryAttributes currentSA = new SecondaryAttributes();
+    private String name;
+    private Color color;
+    private CharacterType type;
+    private CharacterClass charClass;
+    private PrimaryAttributes basePA = new PrimaryAttributes();
+    private PrimaryAttributes currentPA = new PrimaryAttributes();
+    private SecondaryAttributes baseSA = new SecondaryAttributes();
+    private SecondaryAttributes currentSA = new SecondaryAttributes();
+    private Weapon[] weapons;
+    private int chosenWeapon = 0;
 
-    int msLeft;
+    private Point position;
+    private int msLeft = 0;
 
-    boolean chosen = false;
-    boolean targeted = false;
+    private boolean chosen = false;
+    private boolean targeted = false;
+    private boolean ready = false;
+    private boolean running = false;
+    private boolean sneaking = false;
+    private boolean wasDodging = false;
+    private boolean wasParrying = false;
+    private boolean wasBouncing = false;
 
     public Character() {
     }
 
-    public Character(CharacterType type, String name, Color color) {
-        this.type = type;
+    public Character(String name, Color color, CharacterType type, CharacterClass charClass) {
         this.name = name;
         this.color = color;
+        this.type = type;
+        this.charClass = charClass;
         this.position =  new Point(10,10);
     }
 
@@ -100,6 +111,55 @@ public class Character {
         this.targeted = targeted;
     }
 
+    public boolean isReady() {
+        return ready;
+    }
+
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public boolean isSneaking() {
+        return sneaking;
+    }
+
+    public void setSneaking(boolean sneaking) {
+        this.sneaking = sneaking;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public boolean isWasDodging() {
+        return wasDodging;
+    }
+
+    public void setWasDodging(boolean wasDodging) {
+        this.wasDodging = wasDodging;
+    }
+
+    public boolean isWasParrying() {
+        return wasParrying;
+    }
+
+    public void setWasParrying(boolean wasParrying) {
+        this.wasParrying = wasParrying;
+    }
+
+    public boolean isWasBouncing() {
+        return wasBouncing;
+    }
+
+    public void setWasBouncing(boolean wasBouncing) {
+        this.wasBouncing = wasBouncing;
+    }
+
+
     public PrimaryAttributes getBasePA() {
         return basePA;
     }
@@ -109,6 +169,20 @@ public class Character {
     }
 
     public PrimaryAttributes getCurrentPA() {
+        return currentPA;
+    }
+
+    public PrimaryAttributes setCurrentPA(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int charisma) {
+        currentPA.strength = (double)(double)strength;
+        currentPA.durability = (double)durability;
+        currentPA.stamina = (double)stamina;
+        currentPA.arm = (double)arm;
+        currentPA.eye = (double)eye;
+        currentPA.agility = (double)agility;
+        currentPA.knowledge = (double)knowledge;
+        currentPA.focus = (double)focus;
+        currentPA.charisma = (double)charisma;
+
         return currentPA;
     }
 
@@ -131,6 +205,27 @@ public class Character {
     public void setCurrentSA(SecondaryAttributes currentSA) {
         this.currentSA = currentSA;
     }
+
+    public Weapon[] getWeapons() {
+        return weapons;
+    }
+
+    public void setWeapons(Weapon[] weapons) {
+        this.weapons = weapons;
+    }
+
+    public Weapon getWeapon(){
+        return weapons[chosenWeapon];
+    }
+
+    public int getChosenWeapon() {
+        return chosenWeapon;
+    }
+
+    public void setChosenWeapon(int chosenWeapon) {
+        this.chosenWeapon = chosenWeapon;
+    }
+
 
     public double getDoubleStrength(){
         return currentPA.strength;
@@ -428,6 +523,26 @@ public class Character {
         currentSA.legsArmor = Double.parseDouble(legsArmor);
     }
 
+    public void setArmor(int head, int body, int arms, int legs){
+        setHeadArmor(head);
+        setBodyArmor(body);
+        setArmsArmor(arms);
+        setLegsArmor(legs);
+    }
+
+    public double getDoubleVigor(){
+        return currentSA.vigor;
+    }
+    public void setVigor(double vigor){
+        currentSA.vigor = vigor;
+    }
+    public String getVigor(){
+        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
+        return formatter.format(currentSA.vigor);
+    }
+    public void setVigor(String vigor){
+        currentSA.vigor = Double.parseDouble(vigor);
+    }
 
     public void setDoubleValue(String propertyName, String value){
         String methodName = "set" + java.lang.Character.toString(propertyName.charAt(0)).toUpperCase() + propertyName.substring(1, propertyName.length());

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="426.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="dodgeButton" layoutX="293.0" layoutY="76.0" mnemonicParsing="false" text="Dodge">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="takeButton" layoutX="304.0" layoutY="241.0" mnemonicParsing="false" text="Take">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="attackerLabel" layoutX="23.0" layoutY="14.0" text="Attacker: ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="scoreTextField" layoutX="99.0" layoutY="242.0" prefHeight="51.0" prefWidth="78.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+      <Label layoutX="23.0" layoutY="250.0" text="Score:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="defenderLabel" layoutX="21.0" layoutY="49.0" text="Defender:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="parryButton" layoutX="302.0" layoutY="130.0" mnemonicParsing="false" text="Parry">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="bounceButton" layoutX="290.0" layoutY="185.0" mnemonicParsing="false" text="Bounce">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label fx:id="dodgeLabel" layoutX="23.0" layoutY="85.0" text="Dodge chance: ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="parryLabel" layoutX="23.0" layoutY="139.0" text="Parry chance: ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="bounceLabel" layoutX="23.0" layoutY="194.0" text="Bounce chance: ">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

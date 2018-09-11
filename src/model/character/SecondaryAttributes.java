@@ -13,4 +13,5 @@ public class SecondaryAttributes {
     public Double bodyArmor;
     public Double armsArmor;
     public Double legsArmor;
+    public Double vigor = -999.;
 }

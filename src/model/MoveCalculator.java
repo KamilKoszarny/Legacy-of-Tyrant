@@ -16,6 +16,11 @@ public class MoveCalculator {
         double xFactor, yFactor, sum;
         double speed = character.getCurrentSA().speed / Map.RESOLUTION_M;
 
+        if(character.isRunning())
+            speed *= 2;
+        if(character.isSneaking())
+            speed /= 2;
+
         sum = Math.abs(destination.x - start.x) + Math.abs(destination.y - start.y);
         xFactor = (destination.x - start.x) / sum;
         yFactor = (destination.y - start.y) / sum;
@@ -34,15 +39,16 @@ public class MoveCalculator {
         stop.x = start.x + (int)((stop.x - start.x) * terrainFactor);
         stop.y = start.y + (int)((stop.y - start.y) * terrainFactor);
 
-//        System.out.println(xFactor + " " + yFactor);
-
         if (start.distance(stop) > start.distance(destination)) {
             character.setPosition(destination);
             character.setMsLeft(character.getMsLeft() - (int) (start.distance(destination) / speed * 1000));
-            System.out.println(character.getMsLeft());
+            if (character.isRunning())
+                character.setVigor(character.getDoubleVigor() - start.distance(destination) / speed * 2);
         } else {
             character.setPosition(stop);
             character.setMsLeft(0);
+            if (character.isRunning())
+                character.setVigor(character.getDoubleVigor() - start.distance(stop) / speed * 2);
         }
     }
 

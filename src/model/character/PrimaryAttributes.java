@@ -10,4 +10,5 @@ public class PrimaryAttributes {
     public Double knowledge;
     public Double focus;
     public Double charisma;
+
 }

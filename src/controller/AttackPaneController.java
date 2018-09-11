@@ -94,7 +94,9 @@ public class AttackPaneController {
             public void handle(ActionEvent actionEvent) {
                 if (!scoreTextField.getText().equals("")){
                     Character target = targetsTable.getSelectionModel().getSelectedItem();
-                    AttackCalculator.attackCharacter(attacker, target, Integer.parseInt(scoreTextField.getText()));
+                    double attackScore = Double.parseDouble(scoreTextField.getText());
+
+                    new DefencePaneController(battlePaneController, attacker, target, attackScore);
 
                     stage.close();
                     fxmlLoader.setController(battlePaneController);

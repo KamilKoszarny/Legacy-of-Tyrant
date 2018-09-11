@@ -7,10 +7,14 @@ import java.util.Set;
 
 public enum CharacterType {
 
-    HUMAN(0.8, 0, 0, 0, -5, 5, 0, 0, -10, 10),
-    DWARF(1.2, 10, 10, 0, -5, 0, -10, -5, 5, -5),
-    ELF(0.6, -5, -5, 5, 10, 0, 10, 0, -5, -10),
-    HALFELF(0.7, -5, -5, -5, 0, -5, 0, 5, 10, 5);
+    HUMAN(0.8, 0, 0, 0, -5, 5, 0, 0, -10, 10, 0, 0),
+    DWARF(1.2, 10, 10, 0, -5, 0, -10, -5, 5, -5, 0, 0),
+    ELF(0.6, -5, -5, 5, 10, 0, 10, 0, -5, -10, 0, 0),
+    HALFELF(0.7, -5, -5, -5, 0, -5, 0, 5, 10, 5, 0, 0),
+
+    BROWN_BEAR(2, 45, 40, 30, 25, 35, 30, 5, 5, 5, 2, 6),
+    BLACK_BEAR(2, 50, 45, 35, 30, 40, 35, 5, 5, 5, 3, 7);
+
 
     double size;
     Set<Point> relativePointsUnder;
@@ -24,9 +28,12 @@ public enum CharacterType {
     private double knowledge;
     private double focus;
     private double charisma;
+    private double dmgMin;
+    private double dmgMax;
 
 
-    CharacterType(double size, double strength, double durability, double stamina, double eye, double arm, double agility, double knowledge, double focus, double charisma) {
+    CharacterType(double size, double strength, double durability, double stamina, double eye, double arm, double agility, double knowledge, double focus, double charisma,
+            double dmgMin, double dmgMax) {
         this.size = size;
         relativePointsUnder = MoveCalculator.calcRelativePointsUnder(this);
 
@@ -39,6 +46,8 @@ public enum CharacterType {
         this.knowledge = knowledge;
         this.focus = focus;
         this.charisma = charisma;
+        this.dmgMin = dmgMin;
+        this.dmgMax = dmgMax;
     }
 
     public double getSize() {
@@ -84,5 +93,13 @@ public enum CharacterType {
 
     public double getCharisma() {
         return charisma;
+    }
+
+    public double getDmgMin() {
+        return dmgMin;
+    }
+
+    public double getDmgMax() {
+        return dmgMax;
     }
 }

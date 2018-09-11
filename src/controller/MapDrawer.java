@@ -36,8 +36,11 @@ public class MapDrawer {
                     character.getPosition().y - character.getType().getSize() / Map.RESOLUTION_M/2,
                     character.getType().getSize() / Map.RESOLUTION_M, character.getType().getSize() / Map.RESOLUTION_M);
 
-            if (character.isChosen() && character.getDoubleRange() < 5){
-                drawCharCircle(character, character.getColor(), character.getType().getSize() + character.getDoubleRange()*2);
+            if (character.isChosen()){
+                if(character.getDoubleRange() < 5)
+                    drawCharCircle(character, character.getColor(), character.getType().getSize() + character.getDoubleRange()*2);
+                else
+                    drawCharCircle(character, character.getColor(), character.getType().getSize() + 2);
             }
             if (character.isTargeted()){
                 drawCharCircle(character, Color.RED, character.getType().getSize());

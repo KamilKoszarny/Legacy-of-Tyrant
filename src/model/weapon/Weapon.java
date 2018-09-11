@@ -8,6 +8,7 @@ public enum Weapon {
     SABRE(              2, 5, .8, 1.1,      1, 10, 35, 8),
     CHOPPER(            3, 7, 1.2, 1,       1, -10, 15, 14),
     TWO_HAND_SWORD(     5, 11, 1.9, 2,      2, 0, 30, 18),
+    CLAYMORE(           5, 8, 1.3, 1.8,     2, 0, 55, 16),
     HALF_HAND_SWORD_1H( 4, 10, 2.2, 2.2,    1, 0, 30, 19),
     HALF_HAND_SWORD_2H( 5, 12, 1.7, 1.8,    2, 0, 30, 19),
 
@@ -36,7 +37,7 @@ public enum Weapon {
     TRIDENT(            7, 9, 1.4, 3,       2, 0, 25, 15),
     PIQUE(              9, 13, 1.9, 4,      2, 0, 15, 12),
     HARPOON(            5, 10, 1.3, 3,      2, 0, 20, 9),
-    SCYTHE(             2, 8, 2, 3,         2, 0, 10, 7),
+    SCYTHE(             2, 8, 2, 2.5,         2, 0, 10, 7),
 
     //throwing
     THROWING_KNIFE_THR( 2, 4, 1.1, 10,      1, 0, 0, 10),

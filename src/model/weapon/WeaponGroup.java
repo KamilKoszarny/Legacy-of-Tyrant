@@ -12,11 +12,11 @@ public enum WeaponGroup {
     MACES(new ArrayList<>(Arrays.asList(
             Weapon.CUDGEL, Weapon.HAMMER, Weapon.SPIKE_CLUB, Weapon.COMBAT_STICK))),
     SHORT(new ArrayList<>(Arrays.asList(
-            Weapon.KNIFE, Weapon.DAGGER, Weapon.CHOPPER, Weapon.KNUCKLE_DUSTER))),
+            Weapon.KNIFE, Weapon.DAGGER, Weapon.CHOPPER, Weapon.KNUCKLE_DUSTER, Weapon.THROWING_KNIFE_DIR, Weapon.THROWING_AXE_DIR))),
     LONG(new ArrayList<>(Arrays.asList(
-            Weapon.SPEAR, Weapon.TRIDENT, Weapon.PIQUE, Weapon.HARPOON, Weapon.SCYTHE))),
+            Weapon.SPEAR, Weapon.TRIDENT, Weapon.PIQUE, Weapon.HARPOON, Weapon.SCYTHE, Weapon.JAVELIN_DIR))),
     THROWING(new ArrayList<>(Arrays.asList(
-            Weapon.THROWING_KNIFE_THR, Weapon.THROWING_KNIFE_DIR, Weapon.THROWING_AXE_THR, Weapon.THROWING_AXE_DIR, Weapon.JAVELIN_THR, Weapon.JAVELIN_DIR))),
+            Weapon.THROWING_KNIFE_THR, Weapon.THROWING_AXE_THR, Weapon.JAVELIN_THR))),
     RANGE(new ArrayList<>(Arrays.asList(
             Weapon.SHORT_BOW, Weapon.HUNTER_BOW, Weapon.LONG_BOW, Weapon.LIGHT_CROSSBOW, Weapon.CROSSBOW))),
     MAGES(new ArrayList<>(Arrays.asList(

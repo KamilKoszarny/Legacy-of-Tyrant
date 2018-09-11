@@ -6,13 +6,13 @@ import java.util.List;
 
 public enum CharacterGroup {
 
-    PREDEFINED(null),
+    PREDEFINED(new ArrayList<>(Arrays.asList())),
     INTELLIGENT(new ArrayList<>(Arrays.asList(
             CharacterType.HUMAN, CharacterType.DWARF, CharacterType.ELF, CharacterType.HALFELF))),
-    HUMANOIDS(null),
-    ANIMALS(null),
-    UNDEADS(null),
-    DEMONS(null);
+    HUMANOIDS(new ArrayList<>(Arrays.asList())),
+    ANIMALS(new ArrayList<>(Arrays.asList(CharacterType.BROWN_BEAR, CharacterType.BLACK_BEAR))),
+    UNDEADS(new ArrayList<>(Arrays.asList())),
+    DEMONS(new ArrayList<>(Arrays.asList()));
 
     List<CharacterType> belongingTypes;
 

@@ -9,15 +9,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import model.ItemsCalculator;
 import model.StatsCalculator;
+import model.character.*;
 import model.character.Character;
-import model.character.CharacterClass;
-import model.character.CharacterGroup;
-import model.character.CharacterType;
+import model.weapon.Weapon;
 
 import java.awt.*;
 import java.io.IOException;
@@ -41,21 +40,11 @@ public class NewCharPaneController {
     private Button calcAttributesButton;
 
     @FXML
-    private TextField hitPointsTextField;
-    @FXML
-    private TextField dmgMinTextField;
-    @FXML
-    private TextField dmgMaxTextField;
-    @FXML
-    private TextField speedTextField;
-    @FXML
-    private TextField rangeTextField;
-    @FXML
-    private TextField chanceToHitTextField;
-    @FXML
-    private TextField attackDurationTextField;
+    private TextField hitPointsTextField, dmgMinTextField, dmgMaxTextField, speedTextField, rangeTextField, chanceToHitTextField, attackDurationTextField;
     @FXML
     private TextField headArmorTextField, bodyArmorTextField, armsArmorTextField, legsArmorTextField;
+    @FXML
+    private ChoiceBox<Weapon> weapon1ComboBox, weapon2ComboBox;
     @FXML
     private Button createCharacterButton;
 
@@ -91,6 +80,7 @@ public class NewCharPaneController {
         initClassComboBox();
         initColorComboBox();
         initCalcAttributesButton();
+        initWeaponComboBoxes();
         initCreateCharacterButton();
         initParamsTextFields();
     }
@@ -143,10 +133,11 @@ public class NewCharPaneController {
         calcAttributesButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                newCharacter.setType(typeComboBox.getSelectionModel().getSelectedItem());
-                newCharacter.setCharClass(classComboBox.getSelectionModel().getSelectedItem());
 
-                StatsCalculator.calcCharStats(newCharacter);
+                newCharacter = new Character(nameTextField.getText(), colorComboBox.getSelectionModel().getSelectedItem(),
+                        typeComboBox.getSelectionModel().getSelectedItem(), classComboBox.getSelectionModel().getSelectedItem());
+
+                StatsCalculator.calcCharPA(newCharacter);
 
                 strengthLabel.setText(newCharacter.getStrength());
                 durabilityLabel.setText(newCharacter.getDurability());
@@ -157,6 +148,9 @@ public class NewCharPaneController {
                 knowledgeLabel.setText(newCharacter.getKnowledge());
                 focusLabel.setText(newCharacter.getFocus());
                 charismaLabel.setText(newCharacter.getCharisma());
+
+                newCharacter.setWeapons(ItemsCalculator.shuffleWeapons(newCharacter));
+                StatsCalculator.calcCharSA(newCharacter, false);
 
                 hitPointsTextField.setText(newCharacter.getHitPoints());
                 dmgMinTextField.setText(newCharacter.getDmgMin());
@@ -169,12 +163,16 @@ public class NewCharPaneController {
                 bodyArmorTextField.setText(newCharacter.getBodyArmor());
                 armsArmorTextField.setText(newCharacter.getArmsArmor());
                 legsArmorTextField.setText(newCharacter.getLegsArmor());
+                weapon1ComboBox.getSelectionModel().select(newCharacter.getWeapons()[0]);
+                weapon2ComboBox.getSelectionModel().select(newCharacter.getWeapons()[1]);
             }
         });
     }
 
-
-
+    private void initWeaponComboBoxes(){
+        weapon1ComboBox.getItems().setAll(Weapon.values());
+        weapon2ComboBox.getItems().setAll(Weapon.values());
+    }
 
     private void initCreateCharacterButton(){
         Effects.addButtonShadow(createCharacterButton);

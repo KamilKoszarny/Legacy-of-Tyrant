@@ -15,7 +15,7 @@ public class AttackCalculator {
     }
 
     public static double calcChanceToHit(Character charA, Character charB){
-        return 50 + charA.getDoubleChanceToHit() - charB.getDoubleAgility();
+        return 50 + charA.getDoubleChanceToHit() - charB.getDoubleAgility() - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M;
     }
 
     public static void attackCharacter(Character charA, Character charB, int score){
@@ -25,6 +25,28 @@ public class AttackCalculator {
         alert.showAndWait();
         charB.setHitPoints(charB.getDoubleHitPoints() - damage);
         charA.setMsLeft(charA.getMsLeft() - (int)(charA.getDoubleAttackDuration() * 1000));
+        charA.setVigor(charA.getDoubleVigor() - (charA.getDoubleAttackDuration()));
+    }
+
+    public static Double calcDodgeChance(Character character){
+        double dodgeChance = character.getDoubleAgility();
+        if(character.isReady())
+            dodgeChance += 30;
+        return dodgeChance;
+    }
+
+    public static Double calcParryChance(Character character){
+        double parryChance = character.getWeapon().getParry();
+        if(character.isReady())
+            parryChance += 30;
+        return parryChance;
+    }
+
+    public static Double calcBounceChance(Character character){
+        double bounceChance = character.getDoubleAgility() + 10;
+        if(character.isReady())
+            bounceChance += 30;
+        return bounceChance;
     }
 
     private static int calcDamage(Character charA, Character charB, int score){

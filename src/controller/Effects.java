@@ -47,6 +47,7 @@ public class Effects {
 
     public static void createEditableDoubleColumn(TableView tableView, String propertyName){
         TableColumn column = new TableColumn(propertyName);
+        column.setPrefWidth(50);
         column.setCellValueFactory(new PropertyValueFactory<Character, String>(propertyName));
         column.setCellFactory(TextFieldTableCell.forTableColumn());
         column.setOnEditCommit(
@@ -68,7 +69,8 @@ public class Effects {
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
                 if (!newValue.matches("\\d+\\.\\d+") && !newValue.matches("\\d")
-                        && !newValue.matches("\\.") && !newValue.matches("\\d+\\.")) {
+                        && !newValue.matches("\\.") && !newValue.matches("\\d+\\.")
+                        && !newValue.matches("\\.\\d+")) {
                     textField.setText(newValue.replaceAll("[^\\d]", ""));
                 }
             }
