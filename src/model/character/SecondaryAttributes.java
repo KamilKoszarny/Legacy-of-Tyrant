@@ -1,6 +1,8 @@
 package model.character;
 
 public class SecondaryAttributes {
+    public Double msLeft = 0.;
+    public Double reflex = 0.;
     public Double speed;
     public Double dmgMin;
     public Double dmgMax;

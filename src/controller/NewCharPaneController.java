@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import model.ItemsCalculator;
 import model.StatsCalculator;
+import model.armor.*;
 import model.character.*;
 import model.character.Character;
 import model.weapon.Weapon;
@@ -46,6 +47,8 @@ public class NewCharPaneController {
     @FXML
     private ChoiceBox<Weapon> weapon1ComboBox, weapon2ComboBox;
     @FXML
+    private ChoiceBox<Armor> shieldComboBox, bodyComboBox, helmetComboBox, glovesComboBox, bootsComboBox, beltComboBox;
+    @FXML
     private Button createCharacterButton;
 
     FXMLLoader fxmlLoader;
@@ -61,7 +64,7 @@ public class NewCharPaneController {
             fxmlLoader.setLocation(getClass().getResource("/fxml/NewCharacterWindow.fxml"));
             fxmlLoader.setController(this);
 
-            Scene scene = new Scene(fxmlLoader.load(), 600, 430);
+            Scene scene = new Scene(fxmlLoader.load(), 600, 450);
             stage = new Stage();
             stage.setTitle("New Character");
             stage.setScene(scene);
@@ -81,6 +84,7 @@ public class NewCharPaneController {
         initColorComboBox();
         initCalcAttributesButton();
         initWeaponComboBoxes();
+        initArmorComboBoxes();
         initCreateCharacterButton();
         initParamsTextFields();
     }
@@ -150,6 +154,7 @@ public class NewCharPaneController {
                 charismaLabel.setText(newCharacter.getCharisma());
 
                 newCharacter.setWeapons(ItemsCalculator.shuffleWeapons(newCharacter));
+                newCharacter.setArmor(ItemsCalculator.shuffleArmor(newCharacter));
                 StatsCalculator.calcCharSA(newCharacter, false);
 
                 hitPointsTextField.setText(newCharacter.getHitPoints());
@@ -165,6 +170,12 @@ public class NewCharPaneController {
                 legsArmorTextField.setText(newCharacter.getLegsArmor());
                 weapon1ComboBox.getSelectionModel().select(newCharacter.getWeapons()[0]);
                 weapon2ComboBox.getSelectionModel().select(newCharacter.getWeapons()[1]);
+                shieldComboBox.getSelectionModel().select(newCharacter.getArmor()[0]);
+                bodyComboBox.getSelectionModel().select(newCharacter.getArmor()[1]);
+                helmetComboBox.getSelectionModel().select(newCharacter.getArmor()[2]);
+                glovesComboBox.getSelectionModel().select(newCharacter.getArmor()[3]);
+                bootsComboBox.getSelectionModel().select(newCharacter.getArmor()[4]);
+                beltComboBox.getSelectionModel().select(newCharacter.getArmor()[5]);
             }
         });
     }
@@ -172,6 +183,15 @@ public class NewCharPaneController {
     private void initWeaponComboBoxes(){
         weapon1ComboBox.getItems().setAll(Weapon.values());
         weapon2ComboBox.getItems().setAll(Weapon.values());
+    }
+
+    private void initArmorComboBoxes(){
+        shieldComboBox.getItems().setAll(Shield.values());
+        bodyComboBox.getItems().setAll(BodyArmor.values());
+        helmetComboBox.getItems().setAll(Helmet.values());
+        glovesComboBox.getItems().setAll(Gloves.values());
+        bootsComboBox.getItems().setAll(Boots.values());
+        beltComboBox.getItems().setAll(Belt.values());
     }
 
     private void initCreateCharacterButton(){

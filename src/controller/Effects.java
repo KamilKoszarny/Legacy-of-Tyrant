@@ -13,10 +13,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import model.character.Character;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Comparator;
 
 public class Effects {
 
@@ -59,6 +56,26 @@ public class Effects {
                     }
                 }
         );
+
+        column.setComparator(new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                if (s1 == null && s2 == null) return 0;
+                if (s1 == null) return -1;
+                if (s2 == null) return 1;
+
+                Double d1 =null;
+                try{ d1 =Double.parseDouble(s1); } catch(NumberFormatException ignored){}
+                Double d2 =null;
+                try{ d2 =Double.parseDouble(s2); } catch(NumberFormatException ignored){}
+
+                if(d1 ==null && d2 ==null) return s1.compareTo(s2);
+                if(d1 ==null) return -1;
+                if(d2 ==null) return 1;
+
+                return Double.compare(d1, d2);
+            }
+        });
 
         tableView.getColumns().add(column);
     }

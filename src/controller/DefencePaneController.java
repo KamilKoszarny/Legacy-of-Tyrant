@@ -87,7 +87,7 @@ public class DefencePaneController {
                 if (Double.parseDouble(scoreTextField.getText()) > dodgeChance)
                     AttackCalculator.attackCharacter(attacker, defender, attackScore.intValue());
 
-                defender.setMsLeft(defender.getMsLeft() - 500);
+                defender.setMsLeft(defender.getDoubleMsLeft() - 500);
                 defender.setVigor(defender.getDoubleVigor() - 1);
                 defender.setWasDodging(true);
 
@@ -110,7 +110,7 @@ public class DefencePaneController {
                 if (Double.parseDouble(scoreTextField.getText()) > parryChance)
                     AttackCalculator.attackCharacter(attacker, defender, attackScore.intValue());
 
-                defender.setMsLeft(defender.getMsLeft() - 200);
+                defender.setMsLeft(defender.getDoubleMsLeft() - 200);
                 defender.setVigor(defender.getDoubleVigor() - 1.5);
                 defender.setWasParrying(true);
 
@@ -137,7 +137,7 @@ public class DefencePaneController {
                 Random r = new Random();
                 Point stop = new Point(start.x + r.nextInt(3), start.y + r.nextInt(3));
                 defender.setPosition(stop);
-                defender.setMsLeft(defender.getMsLeft() - 600);
+                defender.setMsLeft(defender.getDoubleMsLeft() - 600);
                 defender.setVigor(defender.getDoubleVigor() - 1.2);
                 defender.setWasBouncing(true);
 

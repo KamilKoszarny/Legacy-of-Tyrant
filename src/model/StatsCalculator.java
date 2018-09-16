@@ -1,5 +1,6 @@
 package model;
 
+import model.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
 import model.character.CharacterGroup;
@@ -177,9 +178,17 @@ public class StatsCalculator {
         character.setRange(weapon.getRange());
         character.setAttackDuration(weapon.getAttackDuration());
 
-        character.setHeadArmor(1);
-        character.setBodyArmor(1);
-        character.setArmsArmor(1);
-        character.setLegsArmor(1);
+        Armor[] armor = character.getArmor();
+        Shield shield = (Shield) armor[0];
+        BodyArmor bodyArmor = (BodyArmor) armor[1];
+        Helmet helmet = (Helmet) armor[2];
+        Gloves gloves = (Gloves) armor[3];
+        Boots boots = (Boots) armor[4];
+        Belt belt = (Belt) armor[5];
+
+        character.setHeadArmor(bodyArmor.getHeadArmor() + helmet.getArmor());
+        character.setBodyArmor(bodyArmor.getBodyArmor() + belt.getArmor());
+        character.setArmsArmor(bodyArmor.getArmsArmor() + gloves.getArmor());
+        character.setLegsArmor(bodyArmor.getLegsArmor() + boots.getArmor());
     }
 }

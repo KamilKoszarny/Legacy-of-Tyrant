@@ -1,6 +1,7 @@
 package model.character;
 
 import javafx.scene.paint.Color;
+import model.armor.Armor;
 import model.weapon.Weapon;
 
 import java.awt.*;
@@ -22,6 +23,7 @@ public class Character {
     private SecondaryAttributes baseSA = new SecondaryAttributes();
     private SecondaryAttributes currentSA = new SecondaryAttributes();
     private Weapon[] weapons;
+    private Armor[] armor;
     private int chosenWeapon = 0;
 
     private Point position;
@@ -46,6 +48,7 @@ public class Character {
         this.charClass = charClass;
         this.position =  new Point(10,10);
     }
+
 
     public CharacterType getType() {
         return type;
@@ -85,14 +88,6 @@ public class Character {
 
     public void setPosition(Point position) {
         this.position = position;
-    }
-
-    public int getMsLeft() {
-        return msLeft;
-    }
-
-    public void setMsLeft(int msLeft) {
-        this.msLeft = msLeft;
     }
 
     public boolean isChosen() {
@@ -218,6 +213,14 @@ public class Character {
         return weapons[chosenWeapon];
     }
 
+    public Armor[] getArmor() {
+        return armor;
+    }
+
+    public void setArmor(Armor[] armor) {
+        this.armor = armor;
+    }
+
     public int getChosenWeapon() {
         return chosenWeapon;
     }
@@ -226,6 +229,34 @@ public class Character {
         this.chosenWeapon = chosenWeapon;
     }
 
+
+    public double getDoubleMsLeft(){
+        return currentSA.msLeft;
+    }
+    public void setMsLeft(double msLeft){
+        currentSA.msLeft = msLeft;
+    }
+    public String getMsLeft(){
+        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
+        return formatter.format(currentSA.msLeft);
+    }
+    public void setMsLeft(String msLeft){
+        currentSA.msLeft = Double.parseDouble(msLeft);
+    }
+
+    public double getDoubleReflex(){
+        return currentSA.reflex;
+    }
+    public void setReflex(double reflex){
+        currentSA.reflex = reflex;
+    }
+    public String getReflex(){
+        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
+        return formatter.format(currentSA.reflex);
+    }
+    public void setReflex(String reflex){
+        currentSA.reflex = Double.parseDouble(reflex);
+    }
 
     public double getDoubleStrength(){
         return currentPA.strength;

@@ -24,7 +24,7 @@ public class AttackCalculator {
                 charA.getName() + " attacks " + charB.getName() + " for " + damage + " damage!", ButtonType.OK);
         alert.showAndWait();
         charB.setHitPoints(charB.getDoubleHitPoints() - damage);
-        charA.setMsLeft(charA.getMsLeft() - (int)(charA.getDoubleAttackDuration() * 1000));
+        charA.setMsLeft(charA.getDoubleMsLeft() - (int)(charA.getDoubleAttackDuration() * 1000));
         charA.setVigor(charA.getDoubleVigor() - (charA.getDoubleAttackDuration()));
     }
 
@@ -54,10 +54,10 @@ public class AttackCalculator {
             return 0;
         int damage =  (int)(charA.getDoubleDmgMin() +
                 (charA.getDoubleDmgMax() - charA.getDoubleDmgMin()) *
-                (charB.getDoubleChanceToBeHit() - score) / 100);
+                (charB.getDoubleChanceToBeHit() - score) / charB.getDoubleChanceToBeHit());
         int damageResisted = (int) (charB.getDoubleDurability() / 10);
         if (score%10 < 2)
-            damageResisted += (int)charB.getDoubleHeadArmor();
+            damageResisted += (int)charB.getDoubleHeadArmor() - 1;
         else if (score%10 < 4)
             damageResisted += (int)charB.getDoubleLegsArmor();
         else if (score%10 < 6)

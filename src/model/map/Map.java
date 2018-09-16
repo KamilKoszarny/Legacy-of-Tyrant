@@ -10,6 +10,8 @@ public class Map {
     private int widthM;
     private int heightM;
     private java.util.Map<Point, MapPiece> points = new HashMap<>();
+    private boolean withRoad;
+    private boolean[] roadSides;
 
     public Map(int widthM, int heightM) {
         this.widthM = widthM;
@@ -31,5 +33,21 @@ public class Map {
 
     public int getWidth() {
         return (int)(widthM / RESOLUTION_M);
+    }
+
+    public boolean isWithRoad() {
+        return withRoad;
+    }
+
+    public void setWithRoad(boolean withRoad) {
+        this.withRoad = withRoad;
+    }
+
+    public boolean[] getRoadSides() {
+        return roadSides;
+    }
+
+    public void setRoadSides(boolean[] roadSides) {
+        this.roadSides = roadSides;
     }
 }

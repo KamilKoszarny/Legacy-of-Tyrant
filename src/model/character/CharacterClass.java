@@ -1,17 +1,21 @@
 package model.character;
 
+import model.ItemsCalculator;
+import model.armor.*;
 import model.weapon.Weapon;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public enum CharacterClass {
 
-    BULLY(25, 25, 25, 10, 10, 10, 10, 10, 10, createBullyWeaponsMap()),
-    RASCAL(10, 10, 10, 25, 25, 25, 10, 10, 10, createRascalWeaponsMap()),
-    ADEPT(10, 10, 10, 10, 10, 10, 25, 25, 25, createAdeptWeaponsMap()),
-    FANATIC(50, 40, 50, 20, 30, 30, 20, 35, 20, createFanaticWeaponsMap()),
-    WIZARD(20, 25, 25, 30, 20, 35, 50, 50, 40, createWizardWeaponsMap());
+    BULLY(25, 25, 25, 10, 10, 10, 10, 10, 10, createBullyWeaponsMap(), createBullyArmorMaps()),
+    RASCAL(10, 10, 10, 25, 25, 25, 10, 10, 10, createRascalWeaponsMap(), createRascalArmorMaps()),
+    ADEPT(10, 10, 10, 10, 10, 10, 25, 25, 25, createAdeptWeaponsMap(), createAdeptArmorMaps()),
+    FANATIC(50, 40, 50, 20, 30, 30, 20, 35, 20, createFanaticWeaponsMap(), createFanaticArmorMaps()),
+    WIZARD(20, 25, 25, 30, 20, 35, 50, 50, 40, createWizardWeaponsMap(), createWizardArmorMaps());
 
     private double strength;
     private double durability;
@@ -23,8 +27,10 @@ public enum CharacterClass {
     private double focus;
     private double charisma;
     private Map<Weapon, Double> weaponsMap;
+    private List<Map<Armor, Double>> armorMaps;
 
-    CharacterClass(double strength, double durability, double stamina, double eye, double arm, double agility, double knowledge, double focus, double charisma, Map<Weapon, Double> weaponsMap) {
+    CharacterClass(double strength, double durability, double stamina, double eye, double arm, double agility, double knowledge, double focus, double charisma,
+                   Map<Weapon, Double> weaponsMap, List<Map<Armor, Double>> armorMaps) {
         this.strength = strength;
         this.durability = durability;
         this.stamina = stamina;
@@ -35,6 +41,7 @@ public enum CharacterClass {
         this.focus = focus;
         this.charisma = charisma;
         this.weaponsMap = weaponsMap;
+        this.armorMaps = armorMaps;
     }
 
     private static Map<Weapon, Double> createBullyWeaponsMap(){
@@ -57,8 +64,42 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.SCYTHE, .3);
         weaponsMap.put(Weapon.LIGHT_CROSSBOW, .1);
 
-        recalcWeaponsMap(weaponsMap);
+        ItemsCalculator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
+    }
+
+    private static List<Map<Armor, Double>> createBullyArmorMaps(){
+        List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
+        for(int i = 0; i < 6; i++)
+            armorMaps.add(new HashMap<>());
+
+        armorMaps.get(0).put(Shield.NOTHING, 1.);
+        armorMaps.get(0).put(Shield.WOODEN_SHIELD, .3);
+        armorMaps.get(0).put(Shield.BUCKLER, .1);
+        armorMaps.get(1).put(BodyArmor.NOTHING, 1.);
+        armorMaps.get(1).put(BodyArmor.LEATHER_SHIRT, .7);
+        armorMaps.get(1).put(BodyArmor.GAMBISON, .5);
+        armorMaps.get(1).put(BodyArmor.LEATHER_ARMOR, .2);
+        armorMaps.get(1).put(BodyArmor.STUDDED_ARMOR, .05);
+        armorMaps.get(2).put(Helmet.NOTHING, 1.);
+        armorMaps.get(2).put(Helmet.LEATHER_HOOD, .5);
+        armorMaps.get(2).put(Helmet.CASQUE, .2);
+        armorMaps.get(2).put(Helmet.HELMET, .05);
+        armorMaps.get(3).put(Gloves.NOTHING, 1.);
+        armorMaps.get(3).put(Gloves.RAG_GLOVES, .3);
+        armorMaps.get(3).put(Gloves.LEATHER_GLOVES, .1);
+        armorMaps.get(4).put(Boots.NOTHING, 1.);
+        armorMaps.get(4).put(Boots.RAG_BOOTS, .3);
+        armorMaps.get(4).put(Boots.LEATHER_BOOTS, .1);
+        armorMaps.get(5).put(Belt.NOTHING, 1.);
+        armorMaps.get(5).put(Belt.SASH, .2);
+        armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
+
+        for (Map<Armor, Double> armorMap: armorMaps) {
+            ItemsCalculator.recalcArmorMap(armorMap);
+        }
+
+        return armorMaps;
     }
 
     private static Map<Weapon, Double> createRascalWeaponsMap(){
@@ -86,8 +127,42 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.HUNTER_BOW, .3);
         weaponsMap.put(Weapon.LIGHT_CROSSBOW, .3);
 
-        recalcWeaponsMap(weaponsMap);
+        ItemsCalculator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
+    }
+
+    private static List<Map<Armor, Double>> createRascalArmorMaps(){
+        List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
+        for(int i = 0; i < 6; i++)
+            armorMaps.add(new HashMap<Armor, Double>());
+
+        armorMaps.get(0).put(Shield.NOTHING, 1.);
+        armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);
+        armorMaps.get(0).put(Shield.BUCKLER, .2);
+        armorMaps.get(1).put(BodyArmor.NOTHING, 1.);
+        armorMaps.get(1).put(BodyArmor.LEATHER_SHIRT, 1.);
+        armorMaps.get(1).put(BodyArmor.GAMBISON, .8);
+        armorMaps.get(1).put(BodyArmor.LEATHER_ARMOR, .3);
+        armorMaps.get(1).put(BodyArmor.STUDDED_ARMOR, .1);
+        armorMaps.get(2).put(Helmet.NOTHING, 1.);
+        armorMaps.get(2).put(Helmet.LEATHER_HOOD, .7);
+        armorMaps.get(2).put(Helmet.CASQUE, .3);
+        armorMaps.get(2).put(Helmet.HELMET, .1);
+        armorMaps.get(3).put(Gloves.NOTHING, 1.);
+        armorMaps.get(3).put(Gloves.RAG_GLOVES, .4);
+        armorMaps.get(3).put(Gloves.LEATHER_GLOVES, .1);
+        armorMaps.get(4).put(Boots.NOTHING, 1.);
+        armorMaps.get(4).put(Boots.RAG_BOOTS, .4);
+        armorMaps.get(4).put(Boots.LEATHER_BOOTS, .1);
+        armorMaps.get(5).put(Belt.NOTHING, 1.);
+        armorMaps.get(5).put(Belt.SASH, .2);
+        armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
+
+        for (Map<Armor, Double> armorMap: armorMaps) {
+            ItemsCalculator.recalcArmorMap(armorMap);
+        }
+
+        return armorMaps;
     }
 
     private static Map<Weapon, Double> createAdeptWeaponsMap(){
@@ -108,8 +183,42 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.SPHERE, .8);
         weaponsMap.put(Weapon.STAFF, .8);
 
-        recalcWeaponsMap(weaponsMap);
+        ItemsCalculator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
+    }
+
+    private static List<Map<Armor, Double>> createAdeptArmorMaps(){
+        List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
+        for(int i = 0; i < 6; i++)
+            armorMaps.add(new HashMap<Armor, Double>());
+
+        armorMaps.get(0).put(Shield.NOTHING, 1.);
+        armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);
+        armorMaps.get(0).put(Shield.BUCKLER, .2);
+        armorMaps.get(1).put(BodyArmor.NOTHING, 1.);
+        armorMaps.get(1).put(BodyArmor.LEATHER_SHIRT, 1.);
+        armorMaps.get(1).put(BodyArmor.GAMBISON, .8);
+        armorMaps.get(1).put(BodyArmor.LEATHER_ARMOR, .3);
+        armorMaps.get(1).put(BodyArmor.STUDDED_ARMOR, .1);
+        armorMaps.get(2).put(Helmet.NOTHING, 1.);
+        armorMaps.get(2).put(Helmet.LEATHER_HOOD, .7);
+        armorMaps.get(2).put(Helmet.CASQUE, .3);
+        armorMaps.get(2).put(Helmet.HELMET, .1);
+        armorMaps.get(3).put(Gloves.NOTHING, 1.);
+        armorMaps.get(3).put(Gloves.RAG_GLOVES, .4);
+        armorMaps.get(3).put(Gloves.LEATHER_GLOVES, .1);
+        armorMaps.get(4).put(Boots.NOTHING, 1.);
+        armorMaps.get(4).put(Boots.RAG_BOOTS, .4);
+        armorMaps.get(4).put(Boots.LEATHER_BOOTS, .1);
+        armorMaps.get(5).put(Belt.NOTHING, 1.);
+        armorMaps.get(5).put(Belt.SASH, .2);
+        armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
+
+        for (Map<Armor, Double> armorMap: armorMaps) {
+            ItemsCalculator.recalcArmorMap(armorMap);
+        }
+
+        return armorMaps;
     }
 
     private static Map<Weapon, Double> createFanaticWeaponsMap(){
@@ -134,8 +243,42 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.THROWING_AXE_THR, .2);
         weaponsMap.put(Weapon.LIGHT_CROSSBOW, .4);
 
-        recalcWeaponsMap(weaponsMap);
+        ItemsCalculator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
+    }
+
+    private static List<Map<Armor, Double>> createFanaticArmorMaps(){
+        List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
+        for(int i = 0; i < 6; i++)
+            armorMaps.add(new HashMap<Armor, Double>());
+
+        armorMaps.get(0).put(Shield.NOTHING, 1.);
+        armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);
+        armorMaps.get(0).put(Shield.BUCKLER, .2);
+        armorMaps.get(1).put(BodyArmor.NOTHING, 1.);
+        armorMaps.get(1).put(BodyArmor.LEATHER_SHIRT, 1.);
+        armorMaps.get(1).put(BodyArmor.GAMBISON, .8);
+        armorMaps.get(1).put(BodyArmor.LEATHER_ARMOR, .3);
+        armorMaps.get(1).put(BodyArmor.STUDDED_ARMOR, .1);
+        armorMaps.get(2).put(Helmet.NOTHING, 1.);
+        armorMaps.get(2).put(Helmet.LEATHER_HOOD, .7);
+        armorMaps.get(2).put(Helmet.CASQUE, .3);
+        armorMaps.get(2).put(Helmet.HELMET, .1);
+        armorMaps.get(3).put(Gloves.NOTHING, 1.);
+        armorMaps.get(3).put(Gloves.RAG_GLOVES, .4);
+        armorMaps.get(3).put(Gloves.LEATHER_GLOVES, .1);
+        armorMaps.get(4).put(Boots.NOTHING, 1.);
+        armorMaps.get(4).put(Boots.RAG_BOOTS, .4);
+        armorMaps.get(4).put(Boots.LEATHER_BOOTS, .1);
+        armorMaps.get(5).put(Belt.NOTHING, 1.);
+        armorMaps.get(5).put(Belt.SASH, .2);
+        armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
+
+        for (Map<Armor, Double> armorMap: armorMaps) {
+            ItemsCalculator.recalcArmorMap(armorMap);
+        }
+
+        return armorMaps;
     }
 
     private static Map<Weapon, Double> createWizardWeaponsMap(){
@@ -158,22 +301,46 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.SPHERE, 2.);
         weaponsMap.put(Weapon.STAFF, 2.);
 
-        recalcWeaponsMap(weaponsMap);
+        ItemsCalculator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
     }
 
+    private static List<Map<Armor, Double>> createWizardArmorMaps(){
+        List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
+        for(int i = 0; i < 6; i++)
+            armorMaps.add(new HashMap<Armor, Double>());
 
-    public static Map<Weapon, Double> recalcWeaponsMap(Map<Weapon, Double> weaponsMap) {
-        double sum = 0;
-        for (Double probability: weaponsMap.values()) {
-            sum += probability;
-        }
-        for (Weapon weapon: weaponsMap.keySet()) {
-            weaponsMap.put(weapon, weaponsMap.get(weapon) / sum);
+        armorMaps.get(0).put(Shield.NOTHING, 1.);
+        armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);
+        armorMaps.get(0).put(Shield.BUCKLER, .2);
+        armorMaps.get(1).put(BodyArmor.NOTHING, 1.);
+        armorMaps.get(1).put(BodyArmor.LEATHER_SHIRT, 1.);
+        armorMaps.get(1).put(BodyArmor.GAMBISON, .8);
+        armorMaps.get(1).put(BodyArmor.LEATHER_ARMOR, .3);
+        armorMaps.get(1).put(BodyArmor.STUDDED_ARMOR, .1);
+        armorMaps.get(2).put(Helmet.NOTHING, 1.);
+        armorMaps.get(2).put(Helmet.LEATHER_HOOD, .7);
+        armorMaps.get(2).put(Helmet.CASQUE, .3);
+        armorMaps.get(2).put(Helmet.HELMET, .1);
+        armorMaps.get(3).put(Gloves.NOTHING, 1.);
+        armorMaps.get(3).put(Gloves.RAG_GLOVES, .4);
+        armorMaps.get(3).put(Gloves.LEATHER_GLOVES, .1);
+        armorMaps.get(4).put(Boots.NOTHING, 1.);
+        armorMaps.get(4).put(Boots.RAG_BOOTS, .4);
+        armorMaps.get(4).put(Boots.LEATHER_BOOTS, .1);
+        armorMaps.get(5).put(Belt.NOTHING, 1.);
+        armorMaps.get(5).put(Belt.SASH, .2);
+        armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
+
+        for (Map<Armor, Double> armorMap: armorMaps) {
+            ItemsCalculator.recalcArmorMap(armorMap);
         }
 
-        return weaponsMap;
+        return armorMaps;
     }
+
+
+
 
     public double getStrength() {
         return strength;
@@ -215,4 +382,7 @@ public enum CharacterClass {
         return weaponsMap;
     }
 
+    public List<Map<Armor, Double>> getArmorMaps() {
+        return armorMaps;
+    }
 }

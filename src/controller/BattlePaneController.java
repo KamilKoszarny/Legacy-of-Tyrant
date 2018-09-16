@@ -6,13 +6,12 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import model.*;
+import model.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
 import model.character.CharacterType;
@@ -34,7 +33,7 @@ public class BattlePaneController {
     @FXML
     private TableView<Character> charactersTable;
     @FXML
-    private Button attackButton, changeWeaponButton, getReadyButton, restButton, newCharacterButton, newTurnButton;
+    private Button attackButton, changeWeaponButton, getReadyButton, restButton, newCharacterButton, newTurnButton, new3TurnsButton, new10TurnsButton;
     @FXML
     private CheckBox runCheckBox, sneakingCheckBox;
 
@@ -57,6 +56,8 @@ public class BattlePaneController {
         initSneakingCheckBox();
         initNewCharacterButton();
         initNewTurnButton();
+        initNew3TurnsButton();
+        initNew10TurnsButton();
         drawAll();
     }
 
@@ -74,27 +75,27 @@ public class BattlePaneController {
         Character czlehulec = new Character("Człehulec", Color.GRAY, CharacterType.HUMAN, CharacterClass.RASCAL);
         czlehulec.setCurrentPA(13, 15, 15, 36, 40, 29, 15, 5, 25);
         czlehulec.setWeapons(new Weapon[]{Weapon.HUNTER_BOW, Weapon.TWO_HAND_SWORD});
+        czlehulec.setArmor(new Armor[]{Shield.NOTHING, BodyArmor.LEATHER_ARMOR, Helmet.NOTHING, Gloves.RAG_GLOVES, Boots.NOTHING, Belt.NOTHING});
         czlehulec.setEye(czlehulec.getDoubleEye() - 5);
         StatsCalculator.calcCharSA(czlehulec, false);
-        czlehulec.setArmor(0,2,1,0);
 
         Character slimako = new Character("Slimako", Color.BLACK, CharacterType.DWARF, CharacterClass.ADEPT);
         slimako.setCurrentPA(25, 25, 13, 10, 15, 13, 44, 36, 20);
         slimako.setWeapons(new Weapon[]{Weapon.BIG_ADZE, Weapon.SPEAR});
+        slimako.setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.CASQUE, Gloves.NOTHING, Boots.NOTHING, Belt.LEATHER_BELT});
         StatsCalculator.calcCharSA(slimako, false);
-        slimako.setArmor(2,1,0,0);
 
         Character skowronka = new Character("Skowronka", Color.RED, CharacterType.DWARF, CharacterClass.BULLY);
         skowronka.setCurrentPA(39, 35, 25, 10, 15, 5, 10, 20, 10);
         skowronka.setWeapons(new Weapon[]{Weapon.CHOPPER, Weapon.SPIKE_CLUB});
+        skowronka.setArmor(new Armor[]{Shield.NOTHING, BodyArmor.GAMBISON, Helmet.NOTHING, Gloves.NOTHING, Boots.NOTHING, Belt.NOTHING});
         StatsCalculator.calcCharSA(skowronka, false);
-        skowronka.setArmor(0,1,1,1);
 
         Character irith = new Character("Irith", Color.BLUE, CharacterType.ELF, CharacterClass.RASCAL);
         irith.setCurrentPA(11, 16, 24, 40, 31, 38, 15, 12, 13);
         irith.setWeapons(new Weapon[]{Weapon.SHORT_BOW, Weapon.DAGGER});
+        irith.setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.NOTHING, Gloves.NOTHING, Boots.NOTHING, Belt.NOTHING});
         StatsCalculator.calcCharSA(irith, false);
-        irith.setArmor(0,0,0,0);
 
         characters.addAll(new ArrayList<>(Arrays.asList(czlehulec, slimako, skowronka, irith)));
 
@@ -114,7 +115,7 @@ public class BattlePaneController {
             for (Character character: characters) {
                 if (character.isChosen()) {
                     mapDrawer.drawPointProximity(character.getPosition());
-                    if(character.getMsLeft() > 0) {
+                    if(character.getDoubleMsLeft() > 0) {
                         MoveCalculator.moveCharacter(character, clickPoint, map);
                     }
                 }
@@ -154,11 +155,10 @@ public class BattlePaneController {
         TableColumn weaponColumn = new TableColumn("Weapon");
         weaponColumn.setPrefWidth(60);
         weaponColumn.setCellValueFactory(new PropertyValueFactory<Character, String>("weapon"));
-        TableColumn msLeftColumn = new TableColumn("ms left");
-        msLeftColumn.setPrefWidth(40);
-        msLeftColumn.setCellValueFactory(new PropertyValueFactory<Character, Integer>("msLeft"));
-        charactersTable.getColumns().addAll(nameColumn, typeColumn, classColumn, weaponColumn, msLeftColumn);
+        charactersTable.getColumns().addAll(nameColumn, typeColumn, classColumn, weaponColumn);
 
+        Effects.createEditableDoubleColumn(charactersTable, "msLeft");
+        Effects.createEditableDoubleColumn(charactersTable, "reflex");
         Effects.createEditableDoubleColumn(charactersTable, "hitPoints");
         Effects.createEditableDoubleColumn(charactersTable, "vigor");
         Effects.createEditableDoubleColumn(charactersTable, "dmgMin");
@@ -182,6 +182,22 @@ public class BattlePaneController {
         Effects.createEditableDoubleColumn(charactersTable, "charisma");
 
         markChosenCharacter();
+        charactersTable.setRowFactory(tv -> new TableRow<Character>() {
+            @Override
+            public void updateItem(Character character, boolean empty) {
+                super.updateItem(character, empty) ;
+                if (character == null) {
+                    setStyle("");
+                } else {
+                    Color color = character.getColor();
+                    String cssColor = String.format("#%02x%02x%02x",
+                            (int) (255 * color.getRed()),
+                            (int) (255 * color.getGreen()),
+                            (int) (255 * color.getBlue()));
+                    setStyle("-fx-border-color: " + cssColor + "; -fx-border-width: 1.5;");
+                }
+            }
+        });
     }
 
     private void initAttackButton(){
@@ -190,7 +206,7 @@ public class BattlePaneController {
         attackButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (charactersTable.getSelectionModel().getSelectedItem().getMsLeft() >= 0) {
+                if (charactersTable.getSelectionModel().getSelectedItem().getDoubleMsLeft() >= 0) {
                     List<Character> charactersInRange = new ArrayList<>();
                     Character chosenCharacter = null;
                     for (Character character : characters)
@@ -216,8 +232,8 @@ public class BattlePaneController {
                 for (Character character : characters)
                     if (character.isChosen())
                         chosenCharacter = character;
-                if(chosenCharacter.getMsLeft() >= 0) {
-                    chosenCharacter.setMsLeft(chosenCharacter.getMsLeft() - 1000);
+                if(chosenCharacter.getDoubleMsLeft() >= 0) {
+                    chosenCharacter.setMsLeft(chosenCharacter.getDoubleMsLeft() - 1000);
                     chosenCharacter.setChosenWeapon((chosenCharacter.getChosenWeapon() + 1) % 2);
                     StatsCalculator.calcCharSA(chosenCharacter, true);
                     Effects.refreshTable(charactersTable);
@@ -237,8 +253,8 @@ public class BattlePaneController {
                 for (Character character : characters)
                     if (character.isChosen())
                         chosenCharacter = character;
-                if(chosenCharacter.getMsLeft() >= 0 && !chosenCharacter.isReady()) {
-                    chosenCharacter.setMsLeft(chosenCharacter.getMsLeft() - 500);
+                if(chosenCharacter.getDoubleMsLeft() >= 0 && !chosenCharacter.isReady()) {
+                    chosenCharacter.setMsLeft(chosenCharacter.getDoubleMsLeft() - 500);
                     chosenCharacter.setVigor(chosenCharacter.getDoubleVigor() + 3);
                     if(chosenCharacter.getDoubleVigor() >= 60)
                         chosenCharacter.setVigor(60);
@@ -259,8 +275,8 @@ public class BattlePaneController {
                 for (Character character : characters)
                     if (character.isChosen())
                         chosenCharacter = character;
-                if(chosenCharacter.getMsLeft() >= 0) {
-                    chosenCharacter.setMsLeft(chosenCharacter.getMsLeft() - 1000);
+                if(chosenCharacter.getDoubleMsLeft() >= 0) {
+                    chosenCharacter.setMsLeft(chosenCharacter.getDoubleMsLeft() - 1000);
                     chosenCharacter.setVigor(chosenCharacter.getDoubleVigor() + 10);
                     if(chosenCharacter.getDoubleVigor() >= 60)
                         chosenCharacter.setVigor(60);
@@ -319,21 +335,27 @@ public class BattlePaneController {
         newTurnButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                for (Character character: characters) {
-                    if (character.getDoubleVigor() > 20)
-                        character.setMsLeft(character.getMsLeft() + 1000);
-                    else if (character.getDoubleVigor() > 6)
-                        character.setMsLeft(character.getMsLeft() + 500);
-                    else
-                        character.setMsLeft(character.getMsLeft() + 300);
-                    if(character.getMsLeft() > 1000)
-                        character.setMsLeft(1000);
-                    character.setWasDodging(false);
-                    character.setWasParrying(false);
-                    character.setWasBouncing(false);
-                }
-                Effects.refreshTable(charactersTable);
-                canvasGameMode();
+                runTime(1000);
+            }
+        });
+    }
+
+    private void initNew3TurnsButton(){
+        Effects.addButtonShadow(new3TurnsButton);
+        new3TurnsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                runTime(3000);
+            }
+        });
+    }
+
+    private void initNew10TurnsButton(){
+        Effects.addButtonShadow(new10TurnsButton);
+        new10TurnsButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                runTime(10000);
             }
         });
     }
@@ -359,14 +381,37 @@ public class BattlePaneController {
             for (Character character: characters) {
                 if (character.isChosen()) {
                     lastChosen = character;
-                    character.setChosen(false);
+                    lastChosen.setChosen(false);
                 }
             }
-            obs.getValue().setChosen(true);
+            Character nowChosen = obs.getValue();
+            nowChosen.setChosen(true);
+            runCheckBox.setSelected(nowChosen.isRunning());
+            sneakingCheckBox.setSelected(nowChosen.isSneaking());
 
             mapDrawer.drawPointProximity(lastChosen.getPosition());
             mapDrawer.drawCharacters(characters);
         });
+    }
+
+    private void runTime(double miliSeconds){
+        for (Character character: characters) {
+            if (character.getDoubleVigor() > 20)
+                character.setMsLeft(character.getDoubleMsLeft() + miliSeconds);
+            else if (character.getDoubleVigor() > 6)
+                character.setMsLeft(character.getDoubleMsLeft() + miliSeconds /2);
+            else
+                character.setMsLeft(character.getDoubleMsLeft() + miliSeconds /3);
+            if(character.getDoubleMsLeft() > miliSeconds) {
+                character.setVigor(character.getDoubleVigor() + (character.getDoubleMsLeft() - miliSeconds) / 1000 * 2);
+                character.setMsLeft(miliSeconds);
+            }
+            character.setWasDodging(false);
+            character.setWasParrying(false);
+            character.setWasBouncing(false);
+        }
+        Effects.refreshTable(charactersTable);
+        canvasGameMode();
     }
 
 

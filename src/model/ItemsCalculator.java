@@ -1,12 +1,10 @@
 package model;
 
+import model.armor.*;
 import model.character.Character;
 import model.character.CharacterGroup;
-import model.map.Terrain;
 import model.weapon.Weapon;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -43,5 +41,57 @@ public class ItemsCalculator {
         }
 
         return weapons;
+    }
+
+    public static Armor[] shuffleArmor(Character character){
+        Armor[] armors = {Shield. NOTHING, BodyArmor.NOTHING, Helmet.NOTHING, Gloves.NOTHING, Boots.NOTHING, Belt.NOTHING};
+
+        if(CharacterGroup.INTELLIGENT.getBelongingTypes().contains(character.getType()) ||
+                CharacterGroup.HUMANOIDS.getBelongingTypes().contains(character.getType()) ) {
+            int i = 0;
+            for (Map<Armor, Double> armorMap: character.getCharClass().getArmorMaps()) {
+                Random r = new Random();
+                double n = r.nextDouble();
+                double ap = 0;
+
+                for (Armor armor : armorMap.keySet()) {
+                    ap += armorMap.get(armor);
+                    if (n < ap) {
+                        armors[i] = armor;
+                        n += 100;
+                    }
+                }
+                i++;
+            }
+        }
+
+        if(character.getWeapon().getHands() == 2)
+            armors[0] = Shield.NOTHING;
+
+        return armors;
+    }
+
+    public static Map<Weapon, Double> recalcWeaponsMap(Map<Weapon, Double> weaponsMap) {
+        double sum = 0;
+        for (Double probability: weaponsMap.values()) {
+            sum += probability;
+        }
+        for (Weapon weapon: weaponsMap.keySet()) {
+            weaponsMap.put(weapon, weaponsMap.get(weapon) / sum);
+        }
+
+        return weaponsMap;
+    }
+
+    public static Map<Armor, Double> recalcArmorMap(Map<Armor, Double> armorMap) {
+        double sum = 0;
+        for (Double probability: armorMap.values()) {
+            sum += probability;
+        }
+        for (Armor armor: armorMap.keySet()) {
+            armorMap.put(armor, armorMap.get(armor) / sum);
+        }
+
+        return armorMap;
     }
 }
