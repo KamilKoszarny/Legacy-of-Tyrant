@@ -2,54 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/armor/Armor.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/armor/Belt.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/armor/BodyArmor.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/armor/Boots.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/armor/Gloves.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/armor/Helmet.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/armor/Shield.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/BuildingGenerator.class" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/RoadGenerator.class" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$1.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$2.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$3.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$4.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$4.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$5.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$5.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$6.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$6.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$7.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$7.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$8.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$8.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$1.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$2.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$3.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$1.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$2.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$3.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$4.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$4.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/fxml/MainWindow.fxml" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/fxml/MainWindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/AttackCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/AttackCalculator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/MoveCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/MoveCalculator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/Character.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/Character.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/SecondaryAttributes.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/SecondaryAttributes.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/weapon/Weapon.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/weapon/Weapon.class" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/MainWindow.fxml" afterPath="$PROJECT_DIR$/resources/fxml/MainWindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/NewCharacterWindow.fxml" afterPath="$PROJECT_DIR$/resources/fxml/NewCharacterWindow.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/controller/BattlePaneController.java" afterPath="$PROJECT_DIR$/src/controller/BattlePaneController.java" />
-      <change beforePath="$PROJECT_DIR$/src/controller/DefencePaneController.java" afterPath="$PROJECT_DIR$/src/controller/DefencePaneController.java" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Effects.java" afterPath="$PROJECT_DIR$/src/controller/Effects.java" />
-      <change beforePath="$PROJECT_DIR$/src/controller/NewCharPaneController.java" afterPath="$PROJECT_DIR$/src/controller/NewCharPaneController.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/AttackCalculator.java" afterPath="$PROJECT_DIR$/src/model/AttackCalculator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/ItemsCalculator.java" afterPath="$PROJECT_DIR$/src/model/ItemsCalculator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/MoveCalculator.java" afterPath="$PROJECT_DIR$/src/model/MoveCalculator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/StatsCalculator.java" afterPath="$PROJECT_DIR$/src/model/StatsCalculator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/character/Character.java" afterPath="$PROJECT_DIR$/src/model/character/Character.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/character/CharacterClass.java" afterPath="$PROJECT_DIR$/src/model/character/CharacterClass.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/character/SecondaryAttributes.java" afterPath="$PROJECT_DIR$/src/model/character/SecondaryAttributes.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/Map.java" afterPath="$PROJECT_DIR$/src/model/map/Map.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Terrain.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Terrain.class" />
       <change beforePath="$PROJECT_DIR$/src/model/map/MapGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/weapon/Weapon.java" afterPath="$PROJECT_DIR$/src/model/weapon/Weapon.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/Terrain.java" afterPath="$PROJECT_DIR$/src/model/map/Terrain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,6 +19,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RanAdvHelper$App.coverage" NAME="App Coverage Results" MODIFIED="1537209650150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.*</FILTER>
+    </SUITE>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -71,28 +37,60 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapGenerator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MapGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="247" column="34" lean-forward="true" selection-start-line="247" selection-start-column="34" selection-end-line="247" selection-end-column="34" />
+            <state relative-caret-position="255">
+              <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
               <folding>
                 <element signature="method#recalcTerrainIntensity#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#connectPoints#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
-                <element signature="e#1655#1708#0" expanded="false" />
-                <element signature="method#generateRoad#0;class#MapGenerator#0" expanded="false" />
-                <element signature="method#shuffleSide#0;class#MapGenerator#0" expanded="false" />
-                <element signature="method#calcNextMidPoint#0;class#MapGenerator#0" expanded="false" />
-                <element signature="method#generateRoadByMidPoints#0;class#MapGenerator#0" expanded="false" />
+                <element signature="e#1685#1738#0" expanded="false" />
                 <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
-                <element signature="e#6518#6648#0" expanded="false" />
-                <element signature="method#pointsInRadius#0;class#MapGenerator#0" expanded="false" />
-                <element signature="method#pointIsOnMap#0;class#MapGenerator#0" expanded="false" />
-                <element signature="method#recalcSideProbabilities#0;class#MapGenerator#0" expanded="false" />
+                <element signature="e#3194#3324#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoadGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+              <folding>
+                <element signature="method#generateMiddleOfRoad#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="method#guideRoad#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="method#setRoadDir#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildingGenerator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/map/BuildingGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-99">
+              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Terrain.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/map/Terrain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,19 +139,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dmgMin</find>
-      <find>hitPoints</find>
-      <find>Range</find>
-      <find>mapdr</find>
-      <find>Chosen</find>
-      <find>ChanceToHit</find>
       <find>AttackDuration</find>
       <find>head</find>
       <find>speed</find>
@@ -178,14 +170,14 @@
       <find>color</find>
       <find>Double</find>
       <find>gloves</find>
+      <find>(1 +</find>
+      <find>* (.1 + r.nextDouble())</find>
+      <find>(.1 + 2*r.nextDouble())</find>
+      <find>* r.nextDouble()</find>
+      <find>* (1 +</find>
+      <find>isO</find>
     </findStrings>
     <replaceStrings>
-      <replace>private</replace>
-      <replace>strength</replace>
-      <replace>stamina</replace>
-      <replace>arm</replace>
-      <replace>eye</replace>
-      <replace>knowledge</replace>
       <replace>focus</replace>
       <replace>charisma</replace>
       <replace>durability</replace>
@@ -210,6 +202,12 @@
       <replace>s1</replace>
       <replace>double</replace>
       <replace>BOOTS</replace>
+      <replace>(.1 +</replace>
+      <replace>* (.1 + 2*r.nextDouble())</replace>
+      <replace>* (.1 + r.nextDouble())</replace>
+      <replace>(.1 + r.nextDouble())</replace>
+      <replace>* (1 + r.nextDouble())</replace>
+      <replace>* (.5 +</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -233,7 +231,6 @@
         <option value="$PROJECT_DIR$/src/model/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/Character.java" />
         <option value="$PROJECT_DIR$/src/controller/PaneController.java" />
-        <option value="$PROJECT_DIR$/src/model/map/Terrain.java" />
         <option value="$PROJECT_DIR$/src/main/App.java" />
         <option value="$PROJECT_DIR$/src/model/weapon/WeaponGroup.java" />
         <option value="$PROJECT_DIR$/src/model/character/PrimaryAttributes.java" />
@@ -262,7 +259,10 @@
         <option value="$PROJECT_DIR$/src/model/AttackCalculator.java" />
         <option value="$PROJECT_DIR$/src/controller/BattlePaneController.java" />
         <option value="$PROJECT_DIR$/src/model/map/Map.java" />
+        <option value="$PROJECT_DIR$/src/model/map/Terrain.java" />
+        <option value="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
+        <option value="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
       </list>
     </option>
   </component>
@@ -560,6 +560,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32753164" sideWeight="0.49487555" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -615,7 +616,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="57" />
+      <option name="time" value="59" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -624,42 +625,12 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/SkillItemsGenerator.java" />
-    <entry file="file://$PROJECT_DIR$/resources/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/geometry/Point2D.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/fxml/FXMLLoader.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/rt.jar!/java/awt/Point.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/canvas/GraphicsContext.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/beans/value/ChangeListener.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/com/sun/glass/ui/View.class" />
-    <entry file="file://$PROJECT_DIR$/src/model/map/Terrain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#518#519#0" expanded="false" />
-            <element signature="e#546#547#0" expanded="false" />
-            <element signature="e#583#584#0" expanded="false" />
-            <element signature="e#616#617#0" expanded="false" />
-            <element signature="e#652#653#0" expanded="false" />
-            <element signature="e#684#685#0" expanded="false" />
-            <element signature="e#734#735#0" expanded="false" />
-            <element signature="e#776#777#0" expanded="false" />
-            <element signature="e#824#825#0" expanded="false" />
-            <element signature="e#858#859#0" expanded="false" />
-            <element signature="e#922#923#0" expanded="false" />
-            <element signature="e#968#969#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/paint/Color.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/event/Event.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/Node.class" />
@@ -1023,26 +994,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/Terrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="247" column="34" lean-forward="true" selection-start-line="247" selection-start-column="34" selection-end-line="247" selection-end-column="34" />
+        <state relative-caret-position="255">
+          <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
           <folding>
             <element signature="method#recalcTerrainIntensity#0;class#MapGenerator#0" expanded="false" />
             <element signature="method#connectPoints#0;class#MapGenerator#0" expanded="false" />
             <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
-            <element signature="e#1655#1708#0" expanded="false" />
-            <element signature="method#generateRoad#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#shuffleSide#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#calcNextMidPoint#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#generateRoadByMidPoints#0;class#MapGenerator#0" expanded="false" />
+            <element signature="e#1685#1738#0" expanded="false" />
             <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
             <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
             <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
-            <element signature="e#6518#6648#0" expanded="false" />
-            <element signature="method#pointsInRadius#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#pointIsOnMap#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#recalcSideProbabilities#0;class#MapGenerator#0" expanded="false" />
+            <element signature="e#3194#3324#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+          <folding>
+            <element signature="method#generateMiddleOfRoad#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#guideRoad#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#setRoadDir#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/BuildingGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-99">
+          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

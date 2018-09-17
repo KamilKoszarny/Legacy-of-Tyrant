@@ -9,7 +9,8 @@ public enum Terrain {
     GROUND(Color.rgb(135, 86, 1), 1),
     GRASS(Color.rgb(0, 250, 0), 0.9),
     BUSH(Color.rgb(0, 150, 0), 0.7),
-    TREES(Color.rgb(0, 50, 0), 0.5);
+    TREES(Color.rgb(0, 50, 0), 0.5),
+    WALL(Color.DARKGRAY, 0);
 
     Color color;
     double moveFactor;

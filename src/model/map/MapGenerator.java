@@ -1,13 +1,12 @@
 package model.map;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
 
 public class MapGenerator {
 
-    private static Map map;
+    static Map map;
 
     public static Map generateMap(int widthM, int heightM){
         map = new Map(widthM, heightM);
@@ -26,7 +25,9 @@ public class MapGenerator {
         }
 
         if(map.isWithRoad())
-            generateRoad();
+            RoadGenerator.generateRoad();
+
+        BuildingGenerator.generateBuildings(5, 250);
 
         return map;
     }
@@ -72,97 +73,6 @@ public class MapGenerator {
         return null;
     }
 
-    private static void generateRoad(){
-
-        List<Point> roadMidPoints = generateMiddleOfRoad();
-        List<Point> roadPoints = generateRoadByMidPoints(roadMidPoints);
-
-        for (Point point: roadPoints) {
-            MapPiece mapPiece = map.getPoints().get(point);
-            mapPiece.setTerrain(Terrain.GROUND);
-        }
-    }
-
-    private static List<Point> generateMiddleOfRoad(){
-        //N, E, S, W
-        boolean[] sides = map.getRoadSides();
-        Random r = new Random();
-        List<Point> roadMidPoints = new ArrayList<>();
-        java.util.Map<Integer, Double> sideProbabilities = new HashMap<>();
-        Point currentPoint;
-
-        if(sides[0]){
-            currentPoint = new Point(r.nextInt(300) + 100, 0);
-            roadMidPoints.add(currentPoint);
-            if(sides[2]) {
-                setRoadS(sideProbabilities);
-
-                while (currentPoint.y < map.getHeight() - 1) {
-                    int side = shuffleSide(sideProbabilities);
-                    currentPoint = calcNextMidPoint(currentPoint, side);
-                    roadMidPoints.add(currentPoint);
-                }
-                if (sides[1]) {
-                    currentPoint = roadMidPoints.get((int)(roadMidPoints.size() * r.nextDouble()));
-                    setRoadE(sideProbabilities);
-                    while (currentPoint.x < map.getWidth() - 1) {
-                        int side = shuffleSide(sideProbabilities);
-                        currentPoint = calcNextMidPoint(currentPoint, side);
-                        roadMidPoints.add(currentPoint);
-                    }
-                }
-            } else if(sides[1]) {
-                setRoadSE(sideProbabilities);
-
-                while (currentPoint.x < map.getWidth() - 1) {
-                    int side = shuffleSide(sideProbabilities);
-                    currentPoint = calcNextMidPoint(currentPoint, side);
-                    roadMidPoints.add(currentPoint);
-                }
-            }
-        }
-        return roadMidPoints;
-    }
-
-    private static int shuffleSide(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        double result = r.nextDouble();
-
-        for (Integer side: sideProbabilities.keySet()){
-            if (result < sideProbabilities.get(side))
-                return side;
-        }
-        return 0;
-    }
-
-    private static Point calcNextMidPoint(Point currentPoint, int side){
-        if (side == 0)
-            currentPoint = new Point(currentPoint.x, currentPoint.y - 1);
-        else if (side == 1)
-            currentPoint = new Point(currentPoint.x + 1, currentPoint.y);
-        else if (side == 2)
-            currentPoint = new Point(currentPoint.x, currentPoint.y + 1);
-        else
-            currentPoint = new Point(currentPoint.x - 1, currentPoint.y);
-
-        return currentPoint;
-    }
-
-    private static List<Point> generateRoadByMidPoints(List<Point> midPoints){
-        List<Point> roadPoints = new ArrayList<>();
-        Random r = new Random();
-        int width;
-
-        for (Point midPoint: midPoints) {
-            if (midPoint.x % (r.nextInt(3)+2) == 0 && midPoint.y % (r.nextInt(3)+2) == 0 ) {
-                width = r.nextInt(15) + 10;
-                roadPoints.addAll(pointsInRadius(midPoint, width / 2));
-            }
-        }
-
-        return roadPoints;
-    }
-
     private static void recalcTerrainIntensityBasedOnSurrounding(Point point){
         Point surroundPoint;
         Terrain terrain;
@@ -199,123 +109,8 @@ public class MapGenerator {
         return nearPoint;
     }
 
-    private static List<Point> pointsInRadius(Point centerPoint, int radius){
-        List<Point> pointsInRadius = new ArrayList<>();
-        for(int i = -radius; i < radius; i++) {
-            for (int j = -radius; j < radius; j++) {
-                Point point = new Point(centerPoint.x + i, centerPoint.y + j);
-                if (pointIsOnMap(point) && point.distance(centerPoint) < radius)
-                    pointsInRadius.add(point);
-            }
-        }
-        return pointsInRadius;
+    static boolean isOnMap(Point p){
+        return p.x >= 0 && p.y >= 0 && p.x < map.getWidth() && p.y < map.getHeight();
     }
 
-    private static boolean pointIsOnMap(Point point){
-        if (point.x < 0)
-            return false;
-        if (point.y < 0)
-            return false;
-        if (point.x >= map.getWidth())
-            return false;
-        if (point.y >= map.getHeight())
-            return false;
-        return true;
-    }
-
-
-    private static void setRoadN(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .7 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .125 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .05 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .125 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void setRoadNE(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .4 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .4 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .1 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .1 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void setRoadNW(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .4 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .1 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .1 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .4 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void setRoadE(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .125 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .7 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .125 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .05 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void setRoadS(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .05 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .125 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .7 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .125 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void setRoadSE(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .1 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .4 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .4 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .1 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void setRoadSW(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .1 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .1 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .4 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .4 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void setRoadW(java.util.Map<Integer, Double> sideProbabilities){
-        Random r = new Random();
-        sideProbabilities.put(0, .125 * (1 + r.nextDouble()));
-        sideProbabilities.put(1, .05 * (1 + r.nextDouble()));
-        sideProbabilities.put(2, .125 * (1 + r.nextDouble()));
-        sideProbabilities.put(3, .7 * (1 + r.nextDouble()));
-        recalcSideProbabilities(sideProbabilities);
-    }
-
-    private static void recalcSideProbabilities(java.util.Map<Integer, Double> sideProbabilities){
-        double sumSideProbablity = 0;
-
-
-        for (Double sideProbablity: sideProbabilities.values()) {
-            sumSideProbablity += sideProbablity;
-        }
-
-        int i = 0;
-        for (Double sideProbablity: sideProbabilities.values()) {
-            sideProbabilities.put(i, sideProbablity / sumSideProbablity);
-            i++;
-        }
-
-        i = 0;
-        sumSideProbablity = 0;
-        for (Double sideProbablity: sideProbabilities.values()) {
-            sumSideProbablity += sideProbablity;
-            sideProbabilities.put(i, sumSideProbablity);
-            i++;
-        }
-    }
 }
