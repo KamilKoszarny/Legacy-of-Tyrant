@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/BuildingGenerator.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/RoadGenerator.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/map/Building.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/BuildingGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/BuildingGenerator.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Terrain.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Terrain.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/RoadGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/RoadGenerator.class" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
       <change beforePath="$PROJECT_DIR$/src/model/map/MapGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/Terrain.java" afterPath="$PROJECT_DIR$/src/model/map/Terrain.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/RoadGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,16 +40,16 @@
         <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
+              <caret line="28" column="53" lean-forward="false" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
               <folding>
                 <element signature="method#recalcTerrainIntensity#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#connectPoints#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
-                <element signature="e#1685#1738#0" expanded="false" />
+                <element signature="e#1670#1723#0" expanded="false" />
                 <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
                 <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
-                <element signature="e#3194#3324#0" expanded="false" />
+                <element signature="e#3179#3309#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -59,8 +58,8 @@
       <file leaf-file-name="RoadGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+            <state relative-caret-position="221">
+              <caret line="158" column="45" lean-forward="false" selection-start-line="158" selection-start-column="45" selection-end-line="158" selection-end-column="45" />
               <folding>
                 <element signature="method#generateMiddleOfRoad#0;class#RoadGenerator#0" expanded="false" />
                 <element signature="method#guideRoad#0;class#RoadGenerator#0" expanded="false" />
@@ -68,18 +67,50 @@
                 <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
                 <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
                 <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="e#6016#6017#0" expanded="true" />
+                <element signature="e#6068#6069#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildingGenerator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BuildingGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/map/BuildingGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-99">
-              <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+            <state relative-caret-position="-337">
+              <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Building.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/map/Building.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2540#2541#0" expanded="true" />
+                <element signature="e#2568#2569#0" expanded="true" />
+                <element signature="e#2597#2598#0" expanded="true" />
+                <element signature="e#2625#2626#0" expanded="true" />
+                <element signature="e#2653#2654#0" expanded="true" />
+                <element signature="e#2680#2681#0" expanded="true" />
+                <element signature="e#2708#2709#0" expanded="true" />
+                <element signature="e#2735#2736#0" expanded="true" />
+                <element signature="e#3130#3131#0" expanded="true" />
+                <element signature="e#3207#3208#0" expanded="true" />
+                <element signature="e#3252#3253#0" expanded="true" />
+                <element signature="e#3299#3300#0" expanded="true" />
+                <element signature="e#3336#3337#0" expanded="true" />
+                <element signature="e#3372#3373#0" expanded="true" />
+                <element signature="e#3412#3413#0" expanded="true" />
+                <element signature="e#3443#3444#0" expanded="true" />
+                <element signature="e#3485#3486#0" expanded="true" />
+                <element signature="e#3518#3519#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -261,8 +292,9 @@
         <option value="$PROJECT_DIR$/src/model/map/Map.java" />
         <option value="$PROJECT_DIR$/src/model/map/Terrain.java" />
         <option value="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
-        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
+        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
+        <option value="$PROJECT_DIR$/src/model/map/Building.java" />
       </list>
     </option>
   </component>
@@ -616,7 +648,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="59" />
+      <option name="time" value="60" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -625,7 +657,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/geometry/Point2D.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/fxml/FXMLLoader.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/rt.jar!/java/awt/Point.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/canvas/GraphicsContext.class" />
@@ -940,14 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapPiece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -994,6 +1017,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="158" column="45" lean-forward="false" selection-start-line="158" selection-start-column="45" selection-end-line="158" selection-end-column="45" />
+          <folding>
+            <element signature="method#generateMiddleOfRoad#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#guideRoad#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#setRoadDir#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="e#6016#6017#0" expanded="true" />
+            <element signature="e#6068#6069#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/MapPiece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="28" column="53" lean-forward="false" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
+          <folding>
+            <element signature="method#recalcTerrainIntensity#0;class#MapGenerator#0" expanded="false" />
+            <element signature="method#connectPoints#0;class#MapGenerator#0" expanded="false" />
+            <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
+            <element signature="e#1670#1723#0" expanded="false" />
+            <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
+            <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
+            <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
+            <element signature="e#3179#3309#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/Terrain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1002,44 +1067,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-          <folding>
-            <element signature="method#recalcTerrainIntensity#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#connectPoints#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
-            <element signature="e#1685#1738#0" expanded="false" />
-            <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
-            <element signature="e#3194#3324#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
-          <folding>
-            <element signature="method#generateMiddleOfRoad#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#guideRoad#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#setRoadDir#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/BuildingGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="9" column="26" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="-337">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2540#2541#0" expanded="true" />
+            <element signature="e#2568#2569#0" expanded="true" />
+            <element signature="e#2597#2598#0" expanded="true" />
+            <element signature="e#2625#2626#0" expanded="true" />
+            <element signature="e#2653#2654#0" expanded="true" />
+            <element signature="e#2680#2681#0" expanded="true" />
+            <element signature="e#2708#2709#0" expanded="true" />
+            <element signature="e#2735#2736#0" expanded="true" />
+            <element signature="e#3130#3131#0" expanded="true" />
+            <element signature="e#3207#3208#0" expanded="true" />
+            <element signature="e#3252#3253#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
+            <element signature="e#3336#3337#0" expanded="true" />
+            <element signature="e#3372#3373#0" expanded="true" />
+            <element signature="e#3412#3413#0" expanded="true" />
+            <element signature="e#3443#3444#0" expanded="true" />
+            <element signature="e#3485#3486#0" expanded="true" />
+            <element signature="e#3518#3519#0" expanded="true" />
           </folding>
         </state>
       </provider>

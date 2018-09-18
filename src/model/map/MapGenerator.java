@@ -2,7 +2,6 @@ package model.map;
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class MapGenerator {
 
@@ -27,7 +26,7 @@ public class MapGenerator {
         if(map.isWithRoad())
             RoadGenerator.generateRoad();
 
-        BuildingGenerator.generateBuildings(5, 250);
+        BuildingGenerator.generateAndDrawBuildings(10, 250);
 
         return map;
     }

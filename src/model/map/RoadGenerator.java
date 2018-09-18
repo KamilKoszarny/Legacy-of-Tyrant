@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Random;
 
 public class RoadGenerator {
+
+    static java.util.List<Point> roadMidPoints = generateMiddleOfRoad();
+    static java.util.List<Point> roadPoints = generateRoadByMidPoints(roadMidPoints);
+
     static void generateRoad(){
-
-        java.util.List<Point> roadMidPoints = generateMiddleOfRoad();
-        java.util.List<Point> roadPoints = generateRoadByMidPoints(roadMidPoints);
-
         for (Point point: roadPoints) {
             MapPiece mapPiece = MapGenerator.map.getPoints().get(point);
             mapPiece.setTerrain(Terrain.GROUND);
@@ -153,5 +153,9 @@ public class RoadGenerator {
             }
         }
         return pointsInRadius;
+    }
+
+    public static boolean isOnMidRoad(Point point){
+        return roadMidPoints.contains(point);
     }
 }
