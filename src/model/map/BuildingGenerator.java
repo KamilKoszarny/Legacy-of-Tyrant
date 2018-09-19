@@ -6,12 +6,17 @@ import java.util.List;
 
 public class BuildingGenerator {
 
-    static Map map = MapGenerator.map;
+    Map map;
     static int minSize = 20;
     static List<Building> buildings = new ArrayList<>();
     private static Building touchedBuilding;
 
-    static void generateAndDrawBuildings(int count, int max_size){
+
+    public BuildingGenerator(Map map) {
+        this.map = map;
+    }
+
+    void generateAndDrawBuildings(int count, int max_size){
         Random r = new Random();
         for (int i = 0; i < count; i++){
             Building building;
@@ -20,7 +25,7 @@ public class BuildingGenerator {
             int posX = r.nextInt(map.getWidth());
             int posY = r.nextInt(map.getHeight());
             int wallThickness = r.nextInt(5) + 1;
-            building = new Building(sizeX, sizeY, posX, posY, wallThickness);
+            building = new Building(sizeX, sizeY, posX, posY, wallThickness, map);
 
             if(buildingIsOnRoad(building))
                i--;
@@ -35,7 +40,7 @@ public class BuildingGenerator {
         }
     }
 
-    private static void drawBuilding(Building building){
+    private void drawBuilding(Building building){
         for (Point wallPoint: building.getWallPoints()) {
             map.getPoints().get(wallPoint).setTerrain(Terrain.WALL);
         }

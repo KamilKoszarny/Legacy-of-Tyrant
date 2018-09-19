@@ -3,7 +3,6 @@ package model;
 import model.character.Character;
 import model.character.CharacterType;
 import model.map.Map;
-import model.map.MapGenerator;
 
 import java.awt.*;
 import java.util.HashSet;
@@ -34,7 +33,7 @@ public class MoveCalculator {
         Set<Point> pointsUnderMove = new HashSet<>();
         for (double i = 0; i < start.distance(stop); i += character.getType().getSize() / Map.RESOLUTION_M){
             character.setPosition(new Point((int)(start.x + i*xFactor), (int)(start.y + i*yFactor)));
-            pointsUnderMove.addAll(calcPointsUnder(character));
+            pointsUnderMove.addAll(calcPointsUnder(character, map));
         }
 
         double terrainFactor = calcTerrainFactor(pointsUnderMove, map);
@@ -69,11 +68,11 @@ public class MoveCalculator {
         return relativePointsUnder;
     }
 
-    public static Set<Point> calcPointsUnder(Character character){
+    public static Set<Point> calcPointsUnder(Character character, Map map){
         Set<Point> pointsUnder = new HashSet<>();
         for (Point rp: character.getType().getRelativePointsUnder()) {
             Point point = new Point(character.getPosition().x + rp.x, character.getPosition().y + rp.y);
-            if (MapGenerator.isOnMapPix(point))
+            if (map.isOnMapPoints(point))
                 pointsUnder.add(point);
         }
         return pointsUnder;

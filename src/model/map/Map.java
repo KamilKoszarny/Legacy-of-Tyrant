@@ -7,9 +7,9 @@ public class Map {
 
     public static final double RESOLUTION_M = 0.2;
     public static final double M_PER_PIX = 0.1;
-    public static int mapXPoints;
-    public static int mapYPoints;
 
+    public int mapXPoints;
+    public int mapYPoints;
     private int widthM;
     private int heightM;
     private java.util.Map<Point, MapPiece> points = new HashMap<>();
@@ -54,5 +54,13 @@ public class Map {
 
     public void setRoadSides(boolean[] roadSides) {
         this.roadSides = roadSides;
+    }
+
+    boolean isOnMapM(Point p){
+        return p.x >= 0 && p.y >= 0 && p.x < widthM && p.y < heightM;
+    }
+
+    public boolean isOnMapPoints(Point p){
+        return p.x >= 0 && p.y >= 0 && p.x < mapXPoints && p.y < mapYPoints;
     }
 }

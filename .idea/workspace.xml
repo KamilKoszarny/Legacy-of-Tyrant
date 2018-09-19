@@ -2,14 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/map/HeightGenerator.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/map/Light.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/controller/BattlePaneController.java" afterPath="$PROJECT_DIR$/src/controller/BattlePaneController.java" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MapDrawer.java" afterPath="$PROJECT_DIR$/src/controller/MapDrawer.java" />
-      <change beforePath="$PROJECT_DIR$/src/controller/NewCharPaneController.java" afterPath="$PROJECT_DIR$/src/controller/NewCharPaneController.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/AttackPaneController$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/AttackPaneController$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/AttackPaneController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$10.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$11.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$5.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$6.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$7.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$8.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController$9.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/BattlePaneController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/DefencePaneController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects$5.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/Effects.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/MapDrawer.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/NewCharPaneController$1.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/NewCharPaneController$2.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/NewCharPaneController$3.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/NewCharPaneController$4.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/NewCharPaneController.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/MoveCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/MoveCalculator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Building.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Building.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/BuildingGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/BuildingGenerator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Map.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Map.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapPiece.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapPiece.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/RoadGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/RoadGenerator.class" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AttackPaneController.java" afterPath="$PROJECT_DIR$/src/controller/javaFX/AttackPaneController.java" />
+      <change beforePath="$PROJECT_DIR$/src/controller/BattlePaneController.java" afterPath="$PROJECT_DIR$/src/controller/javaFX/BattlePaneController.java" />
+      <change beforePath="$PROJECT_DIR$/src/controller/DefencePaneController.java" afterPath="$PROJECT_DIR$/src/controller/javaFX/DefencePaneController.java" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Effects.java" afterPath="$PROJECT_DIR$/src/controller/javaFX/Effects.java" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MapDrawer.java" afterPath="$PROJECT_DIR$/src/controller/javaFX/MapDrawer.java" />
+      <change beforePath="$PROJECT_DIR$/src/controller/NewCharPaneController.java" afterPath="$PROJECT_DIR$/src/controller/javaFX/NewCharPaneController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/App.java" afterPath="$PROJECT_DIR$/src/main/App.java" />
       <change beforePath="$PROJECT_DIR$/src/model/MoveCalculator.java" afterPath="$PROJECT_DIR$/src/model/MoveCalculator.java" />
       <change beforePath="$PROJECT_DIR$/src/model/map/Building.java" afterPath="$PROJECT_DIR$/src/model/map/Building.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
       <change beforePath="$PROJECT_DIR$/src/model/map/Map.java" afterPath="$PROJECT_DIR$/src/model/map/Map.java" />
       <change beforePath="$PROJECT_DIR$/src/model/map/MapGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/MapPiece.java" afterPath="$PROJECT_DIR$/src/model/map/MapPiece.java" />
       <change beforePath="$PROJECT_DIR$/src/model/map/RoadGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -27,45 +76,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CharacterType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/character/CharacterType.java">
+      <file leaf-file-name="IsoViewController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="37" column="50" lean-forward="false" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
+            <state relative-caret-position="397">
+              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
-                <element signature="e#1598#1599#0" expanded="true" />
-                <element signature="e#1640#1641#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#467#468#0" expanded="true" />
+                <element signature="e#492#493#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
+      <file leaf-file-name="MapGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="7" column="49" lean-forward="false" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NewCharPaneController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/NewCharPaneController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="217" column="57" lean-forward="true" selection-start-line="217" selection-start-column="57" selection-end-line="217" selection-end-column="57" />
+            <state relative-caret-position="125">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
-                <element signature="method#NewCharPaneController#0;class#NewCharPaneController#0" expanded="false" />
-                <element signature="method#initialize#0;class#NewCharPaneController#0" expanded="false" />
-                <element signature="method#initGroupAndTypeComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
-                <element signature="method#initColorComboBox#0;class#NewCharPaneController#0" expanded="false" />
-                <element signature="class#3709:4418" expanded="false" />
-                <element signature="method#toString#0;class#3709:4418" expanded="false" />
-                <element signature="method#initCalcAttributesButton#0;class#NewCharPaneController#0" expanded="false" />
-                <element signature="method#initWeaponComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
-                <element signature="method#initArmorComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
-                <element signature="method#initParamsTextFields#0;class#NewCharPaneController#0" expanded="false" />
+                <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
+                <element signature="e#1786#1839#0" expanded="false" />
+                <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
+                <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
+                <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
+                <element signature="e#3274#3404#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,85 +110,139 @@
       <file leaf-file-name="MoveCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/MoveCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="18" column="72" lean-forward="false" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+            <state relative-caret-position="244">
+              <caret line="74" column="41" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BattlePaneController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/BattlePaneController.java">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="429" column="37" lean-forward="false" selection-start-line="429" selection-start-column="37" selection-end-line="429" selection-end-column="37" />
+            <state relative-caret-position="150">
+              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
               <folding>
-                <element signature="method#initialize#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initCanvas#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="e#8044#8756#0" expanded="true" />
-                <element signature="e#8755#8756#0" expanded="true" />
-                <element signature="method#initAttackButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initChangeWeaponButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initGetReadyButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initRestButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initRunCheckBox#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initSneakingCheckBox#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initNewCharacterButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initNewTurnButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initNew3TurnsButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#initNew10TurnsButton#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#drawAll#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="method#addCharacter#0;class#BattlePaneController#0" expanded="false" />
-                <element signature="e#15573#16230#0" expanded="false" />
-                <element signature="e#17205#17206#0" expanded="true" />
-                <element signature="e#17237#17238#0" expanded="true" />
-                <element signature="e#17283#17284#0" expanded="true" />
-                <element signature="e#17316#17317#0" expanded="true" />
-                <element signature="e#17514#17515#0" expanded="true" />
-                <element signature="e#17552#17553#0" expanded="true" />
+                <element signature="method#main#0;class#App#0" expanded="false" />
+                <element signature="method#startBattleFX#0;class#App#0" expanded="false" />
+                <element signature="method#disableWarning#0;class#App#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
+      <file leaf-file-name="BuildingGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/map/BuildingGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="27" column="80" lean-forward="false" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
               <folding>
-                <element signature="method#Character#0;class#Character#0" expanded="false" />
-                <element signature="method#Character#1;class#Character#0" expanded="false" />
-                <element signature="e#1571#1572#0" expanded="true" />
-                <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
-                <element signature="method#getMsLeft#0;class#Character#0" expanded="false" />
-                <element signature="method#getReflex#0;class#Character#0" expanded="false" />
-                <element signature="method#getStrength#0;class#Character#0" expanded="false" />
-                <element signature="method#getDurability#0;class#Character#0" expanded="false" />
-                <element signature="method#getStamina#0;class#Character#0" expanded="false" />
-                <element signature="method#getArm#0;class#Character#0" expanded="false" />
-                <element signature="method#getEye#0;class#Character#0" expanded="false" />
-                <element signature="method#getAgility#0;class#Character#0" expanded="false" />
-                <element signature="method#getKnowledge#0;class#Character#0" expanded="false" />
-                <element signature="method#getFocus#0;class#Character#0" expanded="false" />
-                <element signature="method#getCharisma#0;class#Character#0" expanded="false" />
-                <element signature="method#getSpeed#0;class#Character#0" expanded="false" />
-                <element signature="method#getDmgMin#0;class#Character#0" expanded="false" />
-                <element signature="method#getDmgMax#0;class#Character#0" expanded="false" />
-                <element signature="method#getHitPoints#0;class#Character#0" expanded="false" />
-                <element signature="method#getRange#0;class#Character#0" expanded="false" />
-                <element signature="method#getChanceToHit#0;class#Character#0" expanded="false" />
-                <element signature="method#getChanceToBeHit#0;class#Character#0" expanded="false" />
-                <element signature="method#getAttackDuration#0;class#Character#0" expanded="false" />
-                <element signature="method#setAttackDuration#1;class#Character#0" expanded="false" />
-                <element signature="method#getHeadArmor#0;class#Character#0" expanded="false" />
-                <element signature="method#getBodyArmor#0;class#Character#0" expanded="false" />
-                <element signature="method#getArmsArmor#0;class#Character#0" expanded="false" />
-                <element signature="method#getLegsArmor#0;class#Character#0" expanded="false" />
-                <element signature="method#setArmor#1;class#Character#0" expanded="false" />
-                <element signature="method#getVigor#0;class#Character#0" expanded="false" />
-                <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
+                <element signature="e#301#302#0" expanded="true" />
+                <element signature="e#331#332#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapPieceDrawer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="40" column="5" lean-forward="false" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="62" column="32" lean-forward="true" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+              <folding>
+                <element signature="e#1460#1461#0" expanded="true" />
+                <element signature="e#1536#1537#0" expanded="true" />
+                <element signature="e#1580#1581#0" expanded="true" />
+                <element signature="e#1663#1664#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoadGenerator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="158" column="38" lean-forward="false" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
+              <folding>
+                <element signature="e#314#315#0" expanded="true" />
+                <element signature="e#344#345#0" expanded="true" />
+                <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
+                <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BattlePaneController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/javaFX/BattlePaneController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <folding>
+                <element signature="method#initCharacters#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="method#initCanvas#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="method#canvasGameMode#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="e#4197#4859#0" expanded="false" />
+                <element signature="method#canvasNewCharMode#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="e#4937#5441#0" expanded="false" />
+                <element signature="method#initCharactersTable#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="method#initAttackButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#8951:9878" expanded="false" />
+                <element signature="method#handle#0;class#8951:9878" expanded="false" />
+                <element signature="method#initChangeWeaponButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#10028:10755" expanded="false" />
+                <element signature="method#handle#0;class#10028:10755" expanded="false" />
+                <element signature="method#initGetReadyButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#10894:11734" expanded="false" />
+                <element signature="method#handle#0;class#10894:11734" expanded="false" />
+                <element signature="method#initRestButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#11860:12672" expanded="false" />
+                <element signature="method#handle#0;class#11860:12672" expanded="false" />
+                <element signature="method#initRunCheckBox#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#12754:13261" expanded="false" />
+                <element signature="method#handle#0;class#12754:13261" expanded="false" />
+                <element signature="method#initSneakingCheckBox#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#13353:13867" expanded="false" />
+                <element signature="method#handle#0;class#13353:13867" expanded="false" />
+                <element signature="method#initNewCharacterButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#14016:14180" expanded="false" />
+                <element signature="method#initNewTurnButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#14314:14484" expanded="false" />
+                <element signature="method#initNew3TurnsButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#14624:14794" expanded="false" />
+                <element signature="method#initNew10TurnsButton#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="class#14937:15108" expanded="false" />
+                <element signature="method#drawAll#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="method#addCharacter#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="method#markChosenCharacter#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="e#15655#16312#0" expanded="false" />
+                <element signature="method#nextTurnReset#0;class#BattlePaneController#0" expanded="false" />
+                <element signature="method#unchoseCharacters#0;class#BattlePaneController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Building.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/map/Building.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-113">
+              <caret line="47" column="55" lean-forward="false" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -245,9 +335,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/SkillItemsGenerator.java" />
-        <option value="$PROJECT_DIR$/resources/style.css" />
-        <option value="$PROJECT_DIR$/src/controller/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/MapPiece.java" />
         <option value="$PROJECT_DIR$/src/model/Map.java" />
         <option value="$PROJECT_DIR$/src/model/Terrain.java" />
@@ -255,7 +342,6 @@
         <option value="$PROJECT_DIR$/src/model/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/Character.java" />
         <option value="$PROJECT_DIR$/src/controller/PaneController.java" />
-        <option value="$PROJECT_DIR$/src/main/App.java" />
         <option value="$PROJECT_DIR$/src/model/weapon/WeaponGroup.java" />
         <option value="$PROJECT_DIR$/src/model/character/PrimaryAttributes.java" />
         <option value="$PROJECT_DIR$/src/controller/AttackPaneController.java" />
@@ -279,15 +365,27 @@
         <option value="$PROJECT_DIR$/src/model/StatsCalculator.java" />
         <option value="$PROJECT_DIR$/src/model/AttackCalculator.java" />
         <option value="$PROJECT_DIR$/src/model/map/Terrain.java" />
-        <option value="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
-        <option value="$PROJECT_DIR$/src/model/map/Building.java" />
-        <option value="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
         <option value="$PROJECT_DIR$/src/controller/MapDrawer.java" />
-        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/controller/BattlePaneController.java" />
         <option value="$PROJECT_DIR$/src/controller/NewCharPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controller/isoView/sss.java" />
+        <option value="$PROJECT_DIR$/src/controller/javaFX/NewCharPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controller/isoView/IsoMapPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controller/isoView/IsoVIewPaneController.java" />
+        <option value="$PROJECT_DIR$/src/controller/isoView/IsoViewPaneController.java" />
+        <option value="$PROJECT_DIR$/src/model/map/MapPiece.java" />
+        <option value="$PROJECT_DIR$/src/model/map/Light.java" />
+        <option value="$PROJECT_DIR$/src/model/map/HeightGenerator.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java" />
+        <option value="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
+        <option value="$PROJECT_DIR$/src/controller/javaFX/BattlePaneController.java" />
+        <option value="$PROJECT_DIR$/src/model/map/BuildingGenerator.java" />
+        <option value="$PROJECT_DIR$/src/model/map/Building.java" />
+        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/MoveCalculator.java" />
+        <option value="$PROJECT_DIR$/src/main/App.java" />
         <option value="$PROJECT_DIR$/src/model/map/Map.java" />
+        <option value="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
       </list>
     </option>
   </component>
@@ -370,6 +468,13 @@
               <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
               <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="isoView" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -405,6 +510,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="weapon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="viewIso" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -644,12 +755,24 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/model/MoveCalculator.java</url>
-          <line>15</line>
+          <line>14</line>
           <properties />
           <option name="timeStamp" value="65" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/map/RoadGenerator.java</url>
+          <line>38</line>
+          <properties />
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/map/RoadGenerator.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="72" />
+      <option name="time" value="75" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -658,10 +781,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/fxml/FXMLLoader.class" />
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/rt.jar!/java/awt/Point.class" />
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/canvas/GraphicsContext.class" />
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/beans/value/ChangeListener.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/com/sun/glass/ui/View.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/paint/Color.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/event/Event.class" />
@@ -694,53 +813,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/AttackPaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="100" column="20" lean-forward="true" selection-start-line="100" selection-start-column="20" selection-end-line="102" selection-end-column="84" />
-          <folding>
-            <element signature="method#AttackPaneController#0;class#AttackPaneController#0" expanded="false" />
-            <element signature="method#initTargetsTableView#0;class#AttackPaneController#0" expanded="false" />
-            <element signature="method#initCancelButton#0;class#AttackPaneController#0" expanded="false" />
-            <element signature="method#markTargetedCharacter#0;class#AttackPaneController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/character/CharacterGroup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="12" column="18" lean-forward="false" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="method#disableWarning#0;class#App#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/DefencePaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="89" column="59" lean-forward="false" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Effects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
-          <folding>
-            <element signature="method#addButtonShadow#0;class#Effects#0" expanded="false" />
-            <element signature="method#forceNumericTextField#0;class#Effects#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -884,149 +961,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapPiece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="57" column="61" lean-forward="false" selection-start-line="57" selection-start-column="61" selection-end-line="57" selection-end-column="61" />
-          <folding>
-            <element signature="method#guideRoad#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#setRoadDir#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
-            <element signature="e#6094#6095#0" expanded="true" />
-            <element signature="e#6146#6147#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/BuildingGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/Building.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="76" column="5" lean-forward="false" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2541#2542#0" expanded="true" />
-            <element signature="e#2569#2570#0" expanded="true" />
-            <element signature="e#2598#2599#0" expanded="true" />
-            <element signature="e#2626#2627#0" expanded="true" />
-            <element signature="e#2654#2655#0" expanded="true" />
-            <element signature="e#2681#2682#0" expanded="true" />
-            <element signature="e#2709#2710#0" expanded="true" />
-            <element signature="e#2736#2737#0" expanded="true" />
-            <element signature="e#2790#2791#0" expanded="true" />
-            <element signature="e#2867#2868#0" expanded="true" />
-            <element signature="e#2912#2913#0" expanded="true" />
-            <element signature="e#2959#2960#0" expanded="true" />
-            <element signature="e#2996#2997#0" expanded="true" />
-            <element signature="e#3032#3033#0" expanded="true" />
-            <element signature="e#3072#3073#0" expanded="true" />
-            <element signature="e#3103#3104#0" expanded="true" />
-            <element signature="e#3145#3146#0" expanded="true" />
-            <element signature="e#3178#3179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/Terrain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="114" column="11" lean-forward="false" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
-          <folding>
-            <element signature="method#recalcTerrainIntensity#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#connectPoints#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
-            <element signature="e#1670#1723#0" expanded="false" />
-            <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
-            <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
-            <element signature="e#3179#3309#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MapDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="85" column="90" lean-forward="false" selection-start-line="85" selection-start-column="90" selection-end-line="85" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/BattlePaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="429" column="37" lean-forward="false" selection-start-line="429" selection-start-column="37" selection-end-line="429" selection-end-column="37" />
-          <folding>
-            <element signature="method#initialize#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initCanvas#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="e#8044#8756#0" expanded="true" />
-            <element signature="e#8755#8756#0" expanded="true" />
-            <element signature="method#initAttackButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initChangeWeaponButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initGetReadyButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initRestButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initRunCheckBox#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initSneakingCheckBox#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initNewCharacterButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initNewTurnButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initNew3TurnsButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#initNew10TurnsButton#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#drawAll#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="method#addCharacter#0;class#BattlePaneController#0" expanded="false" />
-            <element signature="e#15573#16230#0" expanded="false" />
-            <element signature="e#17205#17206#0" expanded="true" />
-            <element signature="e#17237#17238#0" expanded="true" />
-            <element signature="e#17283#17284#0" expanded="true" />
-            <element signature="e#17316#17317#0" expanded="true" />
-            <element signature="e#17514#17515#0" expanded="true" />
-            <element signature="e#17552#17553#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/NewCharPaneController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="217" column="57" lean-forward="true" selection-start-line="217" selection-start-column="57" selection-end-line="217" selection-end-column="57" />
-          <folding>
-            <element signature="method#NewCharPaneController#0;class#NewCharPaneController#0" expanded="false" />
-            <element signature="method#initialize#0;class#NewCharPaneController#0" expanded="false" />
-            <element signature="method#initGroupAndTypeComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
-            <element signature="method#initColorComboBox#0;class#NewCharPaneController#0" expanded="false" />
-            <element signature="class#3709:4418" expanded="false" />
-            <element signature="method#toString#0;class#3709:4418" expanded="false" />
-            <element signature="method#initCalcAttributesButton#0;class#NewCharPaneController#0" expanded="false" />
-            <element signature="method#initWeaponComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
-            <element signature="method#initArmorComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
-            <element signature="method#initParamsTextFields#0;class#NewCharPaneController#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1037,7 +976,7 @@
           <folding>
             <element signature="method#Character#0;class#Character#0" expanded="false" />
             <element signature="method#Character#1;class#Character#0" expanded="false" />
-            <element signature="e#1571#1572#0" expanded="true" />
+            <element signature="e#1571#1572#0" expanded="false" />
             <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
             <element signature="method#getMsLeft#0;class#Character#0" expanded="false" />
             <element signature="method#getReflex#0;class#Character#0" expanded="false" />
@@ -1075,25 +1014,289 @@
         <state relative-caret-position="50">
           <caret line="37" column="50" lean-forward="false" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
           <folding>
-            <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1640#1641#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="false" />
+            <element signature="e#1640#1641#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/javaFX/DefencePaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/javaFX/MapDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/javaFX/NewCharPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <element signature="method#NewCharPaneController#0;class#NewCharPaneController#0" expanded="false" />
+            <element signature="method#initialize#0;class#NewCharPaneController#0" expanded="false" />
+            <element signature="method#initGroupAndTypeComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
+            <element signature="method#initColorComboBox#0;class#NewCharPaneController#0" expanded="false" />
+            <element signature="class#3716:4425" expanded="false" />
+            <element signature="method#toString#0;class#3716:4425" expanded="false" />
+            <element signature="method#initCalcAttributesButton#0;class#NewCharPaneController#0" expanded="false" />
+            <element signature="method#initWeaponComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
+            <element signature="method#initArmorComboBoxes#0;class#NewCharPaneController#0" expanded="false" />
+            <element signature="method#initParamsTextFields#0;class#NewCharPaneController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/javaFX/Effects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="method#addButtonShadow#0;class#Effects#0" expanded="false" />
+            <element signature="method#forceNumericTextField#0;class#Effects#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/javaFX/AttackPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="64" column="5" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="64" selection-end-column="5" />
+          <folding>
+            <element signature="method#AttackPaneController#0;class#AttackPaneController#0" expanded="false" />
+            <element signature="method#initTargetsTableView#0;class#AttackPaneController#0" expanded="false" />
+            <element signature="method#initCancelButton#0;class#AttackPaneController#0" expanded="false" />
+            <element signature="method#markTargetedCharacter#0;class#AttackPaneController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/MapPiece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-561">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="e#226#227#0" expanded="false" />
+            <element signature="e#256#257#0" expanded="false" />
+            <element signature="e#303#304#0" expanded="false" />
+            <element signature="e#341#342#0" expanded="false" />
+            <element signature="e#371#372#0" expanded="false" />
+            <element signature="e#400#401#0" expanded="false" />
+            <element signature="e#441#442#0" expanded="false" />
+            <element signature="e#477#478#0" expanded="false" />
+            <element signature="e#508#509#0" expanded="false" />
+            <element signature="e#538#539#0" expanded="false" />
+            <element signature="e#581#582#0" expanded="false" />
+            <element signature="e#619#620#0" expanded="false" />
+            <element signature="e#650#651#0" expanded="false" />
+            <element signature="e#680#681#0" expanded="false" />
+            <element signature="e#723#724#0" expanded="false" />
+            <element signature="e#761#762#0" expanded="false" />
+            <element signature="e#792#793#0" expanded="false" />
+            <element signature="e#822#823#0" expanded="false" />
+            <element signature="e#865#866#0" expanded="false" />
+            <element signature="e#903#904#0" expanded="false" />
+            <element signature="e#934#935#0" expanded="false" />
+            <element signature="e#964#965#0" expanded="false" />
+            <element signature="e#1007#1008#0" expanded="false" />
+            <element signature="e#1045#1046#0" expanded="false" />
+            <element signature="e#1074#1075#0" expanded="false" />
+            <element signature="e#1102#1103#0" expanded="false" />
+            <element signature="e#1141#1142#0" expanded="false" />
+            <element signature="e#1175#1176#0" expanded="false" />
+            <element signature="e#1206#1207#0" expanded="false" />
+            <element signature="e#1234#1235#0" expanded="false" />
+            <element signature="e#1275#1276#0" expanded="false" />
+            <element signature="e#1309#1310#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/Light.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding>
+            <element signature="e#209#210#0" expanded="false" />
+            <element signature="e#235#236#0" expanded="false" />
+            <element signature="e#270#271#0" expanded="false" />
+            <element signature="e#300#301#0" expanded="false" />
+            <element signature="e#333#334#0" expanded="false" />
+            <element signature="e#365#366#0" expanded="false" />
+            <element signature="e#412#413#0" expanded="false" />
+            <element signature="e#454#455#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/HeightGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#152#153#0" expanded="true" />
+            <element signature="e#182#183#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/BuildingGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="27" column="80" lean-forward="false" selection-start-line="27" selection-start-column="80" selection-end-line="27" selection-end-column="80" />
+          <folding>
+            <element signature="e#301#302#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-113">
+          <caret line="47" column="55" lean-forward="false" selection-start-line="47" selection-start-column="55" selection-end-line="47" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/MoveCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="72" lean-forward="false" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+        <state relative-caret-position="244">
+          <caret line="74" column="41" lean-forward="false" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <element signature="method#main#0;class#App#0" expanded="false" />
+            <element signature="method#startBattleFX#0;class#App#0" expanded="false" />
+            <element signature="method#disableWarning#0;class#App#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/javaFX/BattlePaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="method#initCharacters#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="method#initCanvas#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="method#canvasGameMode#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="e#4197#4859#0" expanded="false" />
+            <element signature="method#canvasNewCharMode#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="e#4937#5441#0" expanded="false" />
+            <element signature="method#initCharactersTable#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="method#initAttackButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#8951:9878" expanded="false" />
+            <element signature="method#handle#0;class#8951:9878" expanded="false" />
+            <element signature="method#initChangeWeaponButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#10028:10755" expanded="false" />
+            <element signature="method#handle#0;class#10028:10755" expanded="false" />
+            <element signature="method#initGetReadyButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#10894:11734" expanded="false" />
+            <element signature="method#handle#0;class#10894:11734" expanded="false" />
+            <element signature="method#initRestButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#11860:12672" expanded="false" />
+            <element signature="method#handle#0;class#11860:12672" expanded="false" />
+            <element signature="method#initRunCheckBox#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#12754:13261" expanded="false" />
+            <element signature="method#handle#0;class#12754:13261" expanded="false" />
+            <element signature="method#initSneakingCheckBox#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#13353:13867" expanded="false" />
+            <element signature="method#handle#0;class#13353:13867" expanded="false" />
+            <element signature="method#initNewCharacterButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#14016:14180" expanded="false" />
+            <element signature="method#initNewTurnButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#14314:14484" expanded="false" />
+            <element signature="method#initNew3TurnsButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#14624:14794" expanded="false" />
+            <element signature="method#initNew10TurnsButton#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="class#14937:15108" expanded="false" />
+            <element signature="method#drawAll#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="method#addCharacter#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="method#markChosenCharacter#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="e#15655#16312#0" expanded="false" />
+            <element signature="method#nextTurnReset#0;class#BattlePaneController#0" expanded="false" />
+            <element signature="method#unchoseCharacters#0;class#BattlePaneController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="40" column="5" lean-forward="false" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="7" column="49" lean-forward="false" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-          <folding />
+        <state relative-caret-position="465">
+          <caret line="62" column="32" lean-forward="true" selection-start-line="62" selection-start-column="32" selection-end-line="62" selection-end-column="32" />
+          <folding>
+            <element signature="e#1460#1461#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
+            <element signature="e#1580#1581#0" expanded="true" />
+            <element signature="e#1663#1664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="method#chooseTerrain#0;class#MapGenerator#0" expanded="false" />
+            <element signature="e#1786#1839#0" expanded="false" />
+            <element signature="method#recalcTerrainIntensityBasedOnSurrounding#0;class#MapGenerator#0" expanded="false" />
+            <element signature="method#recalcTerrainIntensityBasedOnSector#0;class#MapGenerator#0" expanded="false" />
+            <element signature="method#nearPoint#0;class#MapGenerator#0" expanded="false" />
+            <element signature="e#3274#3404#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/RoadGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="158" column="38" lean-forward="false" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
+          <folding>
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="true" />
+            <element signature="method#recalcSideProbabilities#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#shuffleSide#0;class#RoadGenerator#0" expanded="false" />
+            <element signature="method#calcNextMidPoint#0;class#RoadGenerator#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

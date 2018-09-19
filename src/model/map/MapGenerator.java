@@ -5,9 +5,12 @@ import java.util.*;
 
 public class MapGenerator {
 
-    static Map map;
+    Map map;
+    int widthM, heightM;
 
-    public static Map generateMap(int widthM, int heightM){
+    public Map generateMap(int widthM, int heightM){
+        this.widthM = widthM;
+        this.heightM = heightM;
         map = new Map(widthM, heightM);
         map.setWithRoad(true);
         map.setRoadSides(new boolean[]{true, true, true, false});
@@ -23,15 +26,17 @@ public class MapGenerator {
             mapPiece.setTerrain(chooseTerrain(point));
         }
 
-        if(map.isWithRoad())
-            RoadGenerator.generateRoad();
+        RoadGenerator roadGenerator = new RoadGenerator(map);
 
-        BuildingGenerator.generateAndDrawBuildings(10, 250);
+        if(map.isWithRoad())
+            roadGenerator.generateRoad();
+
+//        BuildingGenerator.generateAndDrawBuildings(6, 250);
 
         return map;
     }
 
-    private static void recalcTerrainIntensity(){
+    private void recalcTerrainIntensity(){
         double sumIntensity = 0;
         for (Terrain terrain: Terrain.values()) {
             sumIntensity += terrain.getIntensity();
@@ -42,7 +47,7 @@ public class MapGenerator {
         }
     }
 
-    private static void connectPoints(){
+    private void connectPoints(){
         Random r = new Random();
         for (Terrain t: Terrain.values()) {
             ArrayList<Point> terrainFocalPoints = new ArrayList<>();
@@ -54,7 +59,7 @@ public class MapGenerator {
         }
     }
 
-    private static Terrain chooseTerrain(Point point){
+    private Terrain chooseTerrain(Point point){
 
 //        recalcTerrainIntensityBasedOnSector(point);
 //        recalcTerrainIntensityBasedOnSurrounding(point);
@@ -72,7 +77,7 @@ public class MapGenerator {
         return null;
     }
 
-    private static void recalcTerrainIntensityBasedOnSurrounding(Point point){
+    private void recalcTerrainIntensityBasedOnSurrounding(Point point){
         Point surroundPoint;
         Terrain terrain;
 
@@ -88,7 +93,7 @@ public class MapGenerator {
             }
     }
 
-    private static void recalcTerrainIntensityBasedOnSector(Point point){
+    private void recalcTerrainIntensityBasedOnSector(Point point){
        for (Terrain t: Terrain.values()) {
            for (Point p: t.getFocalPoints()) {
                if (!point.equals(p))
@@ -97,7 +102,7 @@ public class MapGenerator {
        }
     }
 
-    private static Point nearPoint(Point p){
+    private Point nearPoint(Point p){
         Random r = new Random();
 //        Point nearPoint = new Point(p.x + (int)Math.pow(r.nextInt((int)Math.pow(map.getWidth(),4)), .25) * (r.nextInt(1)*2 - 1),
 //                p.y + (int)Math.pow(r.nextInt((int)Math.pow(map.getHeight(),4)), .25) * (r.nextInt(1)*2 - 1));
@@ -106,14 +111,6 @@ public class MapGenerator {
         System.out.println(nearPoint);
 //        return new Point(p.x + 100 * map.getWidth()/(r.nextInt(map.getWidth())*2 - map.getWidth()), p.y + 100 * map.getHeight()/(r.nextInt(map.getHeight())*2 - map.getHeight()));
         return nearPoint;
-    }
-
-    static boolean isOnMapM(Point p){
-        return p.x >= 0 && p.y >= 0 && p.x < map.getWidth() && p.y < map.getHeight();
-    }
-
-    public static boolean isOnMapPix(Point p){
-        return p.x >= 0 && p.y >= 0 && p.x < Map.mapXPoints && p.y < Map.mapYPoints;
     }
 
 }

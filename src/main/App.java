@@ -1,6 +1,7 @@
 package main;
 
-import controller.BattlePaneController;
+import controller.isoView.IsoViewController;
+import controller.javaFX.BattlePaneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +20,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        startBattleFX(primaryStage);
+//        startBattleIso(primaryStage);
+    }
+
+    private void startBattleFX(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(this.getClass().getResource("/fxml/MainWindow.fxml"));
 
@@ -31,7 +37,21 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Random Adventures Helper");
         primaryStage.show();
+    }
 
+    private void startBattleIso(Stage primaryStage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(this.getClass().getResource("/fxml/IsoView.fxml"));
+
+        IsoViewController isoViewController = new IsoViewController();
+        fxmlLoader.setController(isoViewController);
+
+        Pane pane = fxmlLoader.load();
+        Scene scene = new Scene(pane);
+        scene.getStylesheets().add("style.css");
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("BattleIsoView");
+        primaryStage.show();
     }
 
     //Hide warning “Illegal reflective access” in java 9
