@@ -215,6 +215,7 @@ public class NewCharPaneController {
                 newCharacter.setArmsArmor(armsArmorTextField.getText());
                 newCharacter.setLegsArmor(legsArmorTextField.getText());
 
+                battlePaneController.unchoseCharacters();
                 newCharacter.setChosen(true);
                 newCharacter.setPosition(new Point(45,45));
 

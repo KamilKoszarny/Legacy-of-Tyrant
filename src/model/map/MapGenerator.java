@@ -108,8 +108,12 @@ public class MapGenerator {
         return nearPoint;
     }
 
-    static boolean isOnMap(Point p){
+    static boolean isOnMapM(Point p){
         return p.x >= 0 && p.y >= 0 && p.x < map.getWidth() && p.y < map.getHeight();
+    }
+
+    public static boolean isOnMapPix(Point p){
+        return p.x >= 0 && p.y >= 0 && p.x < Map.mapXPoints && p.y < Map.mapYPoints;
     }
 
 }

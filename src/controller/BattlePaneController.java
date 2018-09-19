@@ -110,7 +110,8 @@ public class BattlePaneController {
 
     void canvasGameMode(){
         mapCanvas.setOnMousePressed((event -> {
-            Point clickPoint = new Point((int)event.getX(),  (int)event.getY());
+            Point clickPoint = new Point((int)(event.getX() / Map.RESOLUTION_M * Map.M_PER_PIX),
+                    (int)(event.getY() / Map.RESOLUTION_M * Map.M_PER_PIX));
 
             for (Character character: characters) {
                 if (character.isChosen()) {
@@ -128,7 +129,8 @@ public class BattlePaneController {
 
     void canvasNewCharMode(){
         mapCanvas.setOnMousePressed((event -> {
-            Point clickPoint = new Point((int)event.getX(),  (int)event.getY());
+            Point clickPoint = new Point((int)(event.getX() / Map.RESOLUTION_M * Map.M_PER_PIX),
+                    (int)(event.getY() / Map.RESOLUTION_M * Map.M_PER_PIX));
 
             for (Character character: characters) {
                 if (character.isChosen()) {
@@ -421,6 +423,12 @@ public class BattlePaneController {
 
     public List<Character> getCharacters() {
         return characters;
+    }
+
+    public void unchoseCharacters(){
+        for (Character character: characters) {
+            character.setChosen(false);
+        }
     }
 
     public TableView<Character> getCharactersTable() {

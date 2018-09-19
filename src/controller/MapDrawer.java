@@ -32,9 +32,9 @@ public class MapDrawer {
     public void drawCharacters(List<Character> characters){
         for (Character character: characters) {
             g.setFill(character.getColor());
-            g.fillOval(character.getPosition().x - character.getType().getSize() / Map.RESOLUTION_M/2,
-                    character.getPosition().y - character.getType().getSize() / Map.RESOLUTION_M/2,
-                    character.getType().getSize() / Map.RESOLUTION_M, character.getType().getSize() / Map.RESOLUTION_M);
+            g.fillOval(character.getPosition().x / Map.M_PER_PIX * Map.RESOLUTION_M - character.getType().getSize() / Map.M_PER_PIX / 2,
+                    character.getPosition().y / Map.M_PER_PIX * Map.RESOLUTION_M - character.getType().getSize() / Map.M_PER_PIX / 2,
+                    character.getType().getSize() / Map.M_PER_PIX, character.getType().getSize() / Map.M_PER_PIX);
 
             if (character.isChosen()){
                 if(character.getDoubleRange() < 5)
@@ -45,7 +45,9 @@ public class MapDrawer {
             if (character.isTargeted()){
                 drawCharCircle(character, Color.RED, character.getType().getSize());
             }
+            System.out.println(character.getPosition());
         }
+
     }
 
     public void listCharacters(List<Character> characters, TableView<Character> table){
@@ -69,21 +71,21 @@ public class MapDrawer {
         double x, y;
         Color color;
         for (Point point : points){
-            x = point.x;
-            y = point.y;
+            x = point.x * Map.RESOLUTION_M / Map.M_PER_PIX;
+            y = point.y * Map.RESOLUTION_M / Map.M_PER_PIX;
             color = map.getPoints().get(point).getTerrain().getColor();
 
             g.setFill(color);
-            g.fillRect(x, y,1, 1);
+            g.fillRect(x, y, Math.round(Map.RESOLUTION_M / Map.M_PER_PIX), Math.round(Map.RESOLUTION_M / Map.M_PER_PIX));
         }
     }
 
     private void drawCharCircle(Character character, Color color, double diameter){
         g.setStroke(color);
-        g.strokeOval(character.getPosition().x - diameter/2 / Map.RESOLUTION_M,
-                character.getPosition().y - diameter/2 / Map.RESOLUTION_M,
-                diameter / Map.RESOLUTION_M,
-                diameter / Map.RESOLUTION_M);
+        g.strokeOval(character.getPosition().x / Map.M_PER_PIX * Map.RESOLUTION_M - diameter/ 2 / Map.M_PER_PIX,
+                character.getPosition().y / Map.M_PER_PIX * Map.RESOLUTION_M - diameter / 2 / Map.M_PER_PIX,
+                diameter / Map.M_PER_PIX,
+                diameter / Map.M_PER_PIX);
 
     }
 }

@@ -22,7 +22,7 @@ public class Building {
         inPoints = new ArrayList<>();
         for (int x = posX; x < posX + sizeX; x++)
             for (int y = posY; y < posY + sizeY; y++)
-                if (MapGenerator.isOnMap(new Point(x, y)))
+                if (MapGenerator.isOnMapM(new Point(x, y)))
                     if (x < posX + wallThickness || x >= posX + sizeX - wallThickness ||
                             y < posY + wallThickness || y >= posY + sizeY - wallThickness)
                         wallPoints.add(new Point(x, y));
@@ -75,15 +75,6 @@ public class Building {
     public int getPosY() {
         return posY;
     }
-
-//    public List<Point> getCorners(){
-//        List<Point> corners = new ArrayList<>();
-//        corners.add(new Point(posX, posY));
-//        corners.add(new Point(posX + sizeX, posY));
-//        corners.add(new Point(posX + sizeX, posY + sizeY));
-//        corners.add(new Point(posX, posY + sizeY));
-//        return corners;
-//    }
 
     public boolean haveInsideWithWalls(Point point){
         return inPoints.contains(point) || wallPoints.contains(point);

@@ -5,7 +5,10 @@ import java.util.HashMap;
 
 public class Map {
 
-    public static final double RESOLUTION_M = 0.1;
+    public static final double RESOLUTION_M = 0.2;
+    public static final double M_PER_PIX = 0.1;
+    public static int mapXPoints;
+    public static int mapYPoints;
 
     private int widthM;
     private int heightM;
@@ -16,6 +19,8 @@ public class Map {
     public Map(int widthM, int heightM) {
         this.widthM = widthM;
         this.heightM = heightM;
+        mapXPoints = (int) ((double)widthM / Map.RESOLUTION_M);
+        mapYPoints = (int) ((double)heightM / Map.RESOLUTION_M);
 
         for (int i = 0; i < widthM / RESOLUTION_M; i += 1)
             for (int j = 0; j < heightM / RESOLUTION_M; j += 1){

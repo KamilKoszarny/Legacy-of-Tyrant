@@ -3,9 +3,11 @@ package model;
 import model.character.Character;
 import model.character.CharacterType;
 import model.map.Map;
+import model.map.MapGenerator;
 
 import java.awt.*;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class MoveCalculator {
@@ -30,7 +32,7 @@ public class MoveCalculator {
         stop.y = start.y + (int) (yFactor * speed * character.getDoubleMsLeft() / 1000);
 
         Set<Point> pointsUnderMove = new HashSet<>();
-        for (int i = 0; i < start.distance(stop); i += (int)(character.getType().getSize()/Map.RESOLUTION_M)){
+        for (double i = 0; i < start.distance(stop); i += character.getType().getSize() / Map.RESOLUTION_M){
             character.setPosition(new Point((int)(start.x + i*xFactor), (int)(start.y + i*yFactor)));
             pointsUnderMove.addAll(calcPointsUnder(character));
         }
@@ -53,13 +55,13 @@ public class MoveCalculator {
     }
 
     public static Set<Point> calcRelativePointsUnder(CharacterType characterType){
-        Set<Point> relativePointsUnder = new HashSet<>();
+        Set<Point> relativePointsUnder = new LinkedHashSet<>();
         Point zeroPoint = new Point(0,0);
         Point p;
-        int charRadiusPix = (int)(characterType.getSize() / 2 / Map.RESOLUTION_M);
-        for (int i = -charRadiusPix; i < charRadiusPix; i++) {
-            for (int j = -charRadiusPix; j < charRadiusPix; j++) {
-                p = new Point(i, j);
+        double charRadiusPix = characterType.getSize() / 2;
+        for (double i = -charRadiusPix; i < charRadiusPix; i += Map.RESOLUTION_M) {
+            for (double j = -charRadiusPix; j < charRadiusPix; j += Map.RESOLUTION_M) {
+                p = new Point((int)i, (int)j);
                 if (p.distance(zeroPoint) < charRadiusPix)
                     relativePointsUnder.add(p);
             }
@@ -70,7 +72,9 @@ public class MoveCalculator {
     public static Set<Point> calcPointsUnder(Character character){
         Set<Point> pointsUnder = new HashSet<>();
         for (Point rp: character.getType().getRelativePointsUnder()) {
-            pointsUnder.add(new Point(character.getPosition().x + rp.x, character.getPosition().y + rp.y));
+            Point point = new Point(character.getPosition().x + rp.x, character.getPosition().y + rp.y);
+            if (MapGenerator.isOnMapPix(point))
+                pointsUnder.add(point);
         }
         return pointsUnder;
     }

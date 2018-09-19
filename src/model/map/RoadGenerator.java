@@ -24,8 +24,8 @@ public class RoadGenerator {
         Random r = new Random();
         java.util.List<Point> roadMidPoints = new ArrayList<>();
 
-        if(sides[0] && !(sides[0] && sides[1] && sides[3])){
-            Point start = new Point(r.nextInt(300) + 100, 0);
+        if(sides[0] && !(sides[1] && sides[3])){
+            Point start = new Point(r.nextInt(Map.mapXPoints / 2) + Map.mapXPoints / 4, 0);
             if(sides[2]) {
                 guideRoad(roadMidPoints, start, 4);
                 Point midPoint = roadMidPoints.get((int)(roadMidPoints.size() * (r.nextDouble() * 0.5 + 0.25)));
@@ -41,7 +41,7 @@ public class RoadGenerator {
                 guideRoad(roadMidPoints, start, 5);
             }
         } else if (sides[1]){
-            Point start = new Point(MapGenerator.map.getWidth() - 1, r.nextInt(300) + 100);
+            Point start = new Point(MapGenerator.map.getWidth() - 1, r.nextInt(Map.mapYPoints / 2) + Map.mapYPoints / 4);
             if (sides[3]){
                 guideRoad(roadMidPoints, start, 6);
                 Point midPoint = roadMidPoints.get((int)(roadMidPoints.size() * (r.nextDouble() * 0.5 + 0.25)));
@@ -55,7 +55,7 @@ public class RoadGenerator {
                 guideRoad(roadMidPoints, start, 5);
             }
         } else if (sides[2] && sides[3])
-            guideRoad(roadMidPoints, new Point((r.nextInt(300) + 100), MapGenerator.map.getHeight() - 1), 7);
+            guideRoad(roadMidPoints, new Point(r.nextInt(Map.mapXPoints / 2) + Map.mapXPoints / 4, MapGenerator.map.getHeight() - 1), 7);
         return roadMidPoints;
     }
 
@@ -63,7 +63,7 @@ public class RoadGenerator {
         java.util.Map<Integer, Double> sideProbabilities = new HashMap<>();
         setRoadDir(sideProbabilities, direction);
         Point currentPoint = start;
-        while (MapGenerator.isOnMap(currentPoint)) {
+        while (MapGenerator.isOnMapM(currentPoint)) {
             roadMidPoints.add(currentPoint);
             int side = shuffleSide(sideProbabilities);
             currentPoint = calcNextMidPoint(currentPoint, side);
@@ -148,7 +148,7 @@ public class RoadGenerator {
         for(int i = -radius; i < radius; i++) {
             for (int j = -radius; j < radius; j++) {
                 Point point = new Point(centerPoint.x + i, centerPoint.y + j);
-                if (MapGenerator.isOnMap(point) && point.distance(centerPoint) < radius)
+                if (MapGenerator.isOnMapM(point) && point.distance(centerPoint) < radius)
                     pointsInRadius.add(point);
             }
         }
