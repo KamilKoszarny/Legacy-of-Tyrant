@@ -104,12 +104,7 @@ public class MapGenerator {
 
     private Point nearPoint(Point p){
         Random r = new Random();
-//        Point nearPoint = new Point(p.x + (int)Math.pow(r.nextInt((int)Math.pow(map.getWidth(),4)), .25) * (r.nextInt(1)*2 - 1),
-//                p.y + (int)Math.pow(r.nextInt((int)Math.pow(map.getHeight(),4)), .25) * (r.nextInt(1)*2 - 1));
-//
         Point nearPoint = new Point(p.x + (int)(10*map.getWidth()/((r.nextDouble()-0.5)*map.getWidth())), p.y + (int)(10*map.getHeight()/((r.nextDouble()-0.5)*map.getHeight())));
-        System.out.println(nearPoint);
-//        return new Point(p.x + 100 * map.getWidth()/(r.nextInt(map.getWidth())*2 - map.getWidth()), p.y + 100 * map.getHeight()/(r.nextInt(map.getHeight())*2 - map.getHeight()));
         return nearPoint;
     }
 

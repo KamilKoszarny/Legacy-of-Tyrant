@@ -7,6 +7,8 @@ public class Map {
 
     public static final double RESOLUTION_M = 0.2;
     public static final double M_PER_PIX = 0.1;
+    public final double MIN_HEIGHT = -20;
+    public final double MAX_HEIGHT = 80;
 
     public int mapXPoints;
     public int mapYPoints;

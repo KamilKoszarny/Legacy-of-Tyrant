@@ -37,10 +37,10 @@ public class BattlePaneController {
     @FXML
     private CheckBox runCheckBox, sneakingCheckBox;
 
-    BattlePaneController thisController = this;
-    MapDrawer mapDrawer;
-    Map map;
-    List<Character> characters = new ArrayList<>();
+    private BattlePaneController thisController = this;
+    private MapDrawer mapDrawer;
+    private Map map;
+    private List<Character> characters = new ArrayList<>();
 
     @FXML
     void initialize(){

@@ -7,8 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Battle;
+import model.map.Map;
 import sun.misc.Unsafe;
 
+import java.awt.*;
 import java.lang.reflect.Field;
 
 public class App extends Application {
@@ -20,8 +23,10 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        startBattleFX(primaryStage);
-//        startBattleIso(primaryStage);
+        Battle battle = new Battle();
+        Map map = battle.getMap();
+//        startBattleFX(primaryStage, map);
+        startBattleIso(primaryStage, map);
     }
 
     private void startBattleFX(Stage primaryStage) throws Exception {
@@ -39,19 +44,8 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    private void startBattleIso(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("/fxml/IsoView.fxml"));
-
-        IsoViewController isoViewController = new IsoViewController();
-        fxmlLoader.setController(isoViewController);
-
-        Pane pane = fxmlLoader.load();
-        Scene scene = new Scene(pane);
-        scene.getStylesheets().add("style.css");
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("BattleIsoView");
-        primaryStage.show();
+    private void startBattleIso(Stage primaryStage, Map map) throws Exception {
+        IsoViewController isoViewController = new IsoViewController(primaryStage, map);
     }
 
     //Hide warning “Illegal reflective access” in java 9

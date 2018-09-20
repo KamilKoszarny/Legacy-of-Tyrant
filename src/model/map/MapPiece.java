@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 
 public class MapPiece {
     Terrain terrain;
-    int height;
+    int height = 0;
     int heightN, heightE, heightS, heightW;
     int slope;
     Color color;
@@ -68,7 +68,7 @@ public class MapPiece {
     }
 
     public Color getColor() {
-        return color;
+        return terrain.getColor();
     }
 
     public void setColor(Color color) {
