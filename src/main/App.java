@@ -8,10 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Battle;
+import model.IsoBattleLoop;
 import model.map.Map;
 import sun.misc.Unsafe;
+import viewIso.IsoViewer;
 
-import java.awt.*;
 import java.lang.reflect.Field;
 
 public class App extends Application {
@@ -27,6 +28,7 @@ public class App extends Application {
         Map map = battle.getMap();
 //        startBattleFX(primaryStage, map);
         startBattleIso(primaryStage, map);
+
     }
 
     private void startBattleFX(Stage primaryStage) throws Exception {
@@ -45,7 +47,11 @@ public class App extends Application {
     }
 
     private void startBattleIso(Stage primaryStage, Map map) throws Exception {
-        IsoViewController isoViewController = new IsoViewController(primaryStage, map);
+        IsoBattleLoop isoBattleLoop = new IsoBattleLoop();
+        IsoViewController isoViewController = new IsoViewController(primaryStage, map, isoBattleLoop);
+        IsoViewer isoViewer = isoViewController.getIsoViewer();
+        isoBattleLoop.setIsoViewer(isoViewer);
+        isoBattleLoop.start();
     }
 
     //Hide warning “Illegal reflective access” in java 9

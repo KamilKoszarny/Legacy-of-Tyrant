@@ -7,12 +7,14 @@ import javafx.scene.paint.Color;
 import model.map.Map;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapDrawer {
 
     private static final Color BACKGROUND_COLOR = Color.BLACK;
 
-    private Point zeroScreenPosition = new Point(600, 0);
+    private Point zeroScreenPosition = new Point(600, -100);
     private Map map;
     private Canvas canvas;
     private MapPieceDrawer mPDrawer;
@@ -28,9 +30,18 @@ public class MapDrawer {
     }
 
     public void drawMap(){
-        for (Point point: map.getPoints().keySet()) {
+        for (Point point: visiblePoints()) {
             mPDrawer.drawMapPiece(point);
         }
+    }
+
+    private void moveMap(Point move){
+        changeZeroScreenPosition(move);
+        System.out.println("isoViewer.getMapDrawer().changeZeroScreenPosition(move);");
+        clearMapBounds();
+        System.out.println("isoViewer.getMapDrawer().clearMapBounds();");
+        drawMap();
+        System.out.println("isoViewer.getMapDrawer().drawMap();");
     }
 
     public void clearMapBounds(){
@@ -117,5 +128,34 @@ public class MapDrawer {
     Point screenPosition(Point point){
         return new Point(zeroScreenPosition.x + point.x * mapPieceScreenSizeX/2 - point.y * mapPieceScreenSizeX/2,
                 zeroScreenPosition.y + point.x * mapPieceScreenSizeY/2 + point.y * mapPieceScreenSizeY/2);
+    }
+
+    Point relativeScreenPosition(Point point){
+        return new Point(point.x * mapPieceScreenSizeX/2 - point.y * mapPieceScreenSizeX/2,
+                point.x * mapPieceScreenSizeY/2 + point.y * mapPieceScreenSizeY/2);
+    }
+
+    public boolean mapOnScreen(){
+        int bonus = IsoMapMoveController.MAP_MOVE_STEP * 10;
+        boolean mapOnScreen = zeroScreenPosition.x < - relativeScreenPosition(new Point(0, map.getHeight())).x + bonus &&
+                zeroScreenPosition.x > - relativeScreenPosition(new Point(map.getWidth(), 0)).x + canvas.getWidth() - bonus &&
+                zeroScreenPosition.y < - relativeScreenPosition(new Point(0, 0)).y + bonus &&
+                zeroScreenPosition.y > - relativeScreenPosition(new Point(map.getWidth(), map.getHeight())).y + canvas.getHeight() - bonus;
+        return mapOnScreen;
+    }
+
+    private List<Point> visiblePoints(){
+        List<Point> visiblePoints = new ArrayList<>();
+        for (Point point: map.getPoints().keySet()) {
+            if (isOnCanvas(screenPosition(point)))
+                visiblePoints.add(point);
+        }
+
+        return visiblePoints;
+    }
+
+    private boolean isOnCanvas(Point point){
+        return point.x >= 0 && point.x <= canvas.getWidth() + mapPieceScreenSizeX &&
+                point.y >= 0 + map.MIN_HEIGHT && point.y <= canvas.getHeight() + map.MAX_HEIGHT;
     }
 }

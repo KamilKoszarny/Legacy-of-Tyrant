@@ -15,7 +15,7 @@ public class MapPieceDrawer {
     private int mapPieceScreenSizeX;
     private int mapPieceScreenSizeY;
 
-    public MapPieceDrawer(Map map, GraphicsContext gc, MapDrawer md, int mapPieceScreenSizeX, int mapPieceScreenSizeY) {
+    MapPieceDrawer(Map map, GraphicsContext gc, MapDrawer md, int mapPieceScreenSizeX, int mapPieceScreenSizeY) {
         this.map = map;
         this.gc = gc;
         this.md = md;

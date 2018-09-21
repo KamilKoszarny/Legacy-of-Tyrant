@@ -2,34 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/Battle.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/viewIso/IsoViewer.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/viewIso/MapDrawer.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/controller/Helpers/MouseStationaryEvent.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/IsoMapMoveController.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/IsoMapMoveController.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/IsoViewController.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/IsoViewController.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$10.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$10.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$11.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$11.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$2.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$3.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$4.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$4.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$5.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$5.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$6.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$6.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$7.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$7.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$8.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$8.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$9.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController$9.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/javaFX/BattlePaneController.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/fxml/IsoView.fxml" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/fxml/IsoView.fxml" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapPiece.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapPiece.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapDrawer.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapPieceDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapPieceDrawer.class" />
       <change beforePath="$PROJECT_DIR$/resources/fxml/IsoView.fxml" afterPath="$PROJECT_DIR$/resources/fxml/IsoView.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java" afterPath="$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java" />
       <change beforePath="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" afterPath="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
-      <change beforePath="$PROJECT_DIR$/src/controller/javaFX/BattlePaneController.java" afterPath="$PROJECT_DIR$/src/controller/javaFX/BattlePaneController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/App.java" afterPath="$PROJECT_DIR$/src/main/App.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/Map.java" afterPath="$PROJECT_DIR$/src/model/map/Map.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/MapGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/MapPiece.java" afterPath="$PROJECT_DIR$/src/model/map/MapPiece.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/MapDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/MapDrawer.java" />
       <change beforePath="$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -47,42 +32,75 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/App.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+              <folding>
+                <element signature="method#startBattleFX#0;class#App#0" expanded="false" />
+                <element signature="method#disableWarning#0;class#App#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="IsoViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="28" column="96" lean-forward="false" selection-start-line="28" selection-start-column="96" selection-end-line="28" selection-end-column="96" />
+            <state relative-caret-position="120">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#openWindow#0;class#IsoViewController#0" expanded="false" />
+                <element signature="e#2286#2287#0" expanded="true" />
+                <element signature="e#2318#2319#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IsoMapMoveController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IsoMapMoveController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+            <state relative-caret-position="17">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#528#529#0" expanded="true" />
-                <element signature="e#559#560#0" expanded="true" />
+                <element signature="e#674#675#0" expanded="true" />
+                <element signature="e#705#706#0" expanded="true" />
+                <element signature="method#setBorderCanvasesPos#0;class#IsoMapMoveController#0" expanded="false" />
+                <marker date="1537510384331" expanded="true" signature="1269:3324" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/MapDrawer.java">
+      <file leaf-file-name="IsoBattleLoop.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="90" column="147" lean-forward="false" selection-start-line="90" selection-start-column="147" selection-end-line="90" selection-end-column="147" />
+            <state relative-caret-position="290">
+              <caret line="25" column="85" lean-forward="false" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5238#5239#0" expanded="true" />
-                <element signature="e#5298#5299#0" expanded="true" />
+                <element signature="e#827#828#0" expanded="true" />
+                <element signature="e#873#874#0" expanded="true" />
+                <element signature="e#1078#1079#0" expanded="true" />
+                <element signature="e#1116#1117#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/MapDrawer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="138" column="59" lean-forward="false" selection-start-line="138" selection-start-column="59" selection-end-line="138" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#clearMapBounds#0;class#MapDrawer#0" expanded="false" />
+                <element signature="e#5642#5643#0" expanded="true" />
+                <element signature="e#5702#5703#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,24 +109,12 @@
       <file leaf-file-name="IsoViewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#303#304#0" expanded="true" />
                 <element signature="e#335#336#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapPieceDrawer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
-              <folding>
-                <element signature="method#MapPieceDrawer#0;class#MapPieceDrawer#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -127,7 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>speed</find>
       <find>hit</find>
       <find>be</find>
       <find>0</find>
@@ -157,6 +162,7 @@
       <find>isO</find>
       <find>MAP_MOVE_BOUNDARY</find>
       <find>MAP_MOVE_STEP</find>
+      <find>BONUS</find>
     </findStrings>
     <replaceStrings>
       <replace>durability</replace>
@@ -187,8 +193,8 @@
       <replace>(.1 + r.nextDouble())</replace>
       <replace>* (1 + r.nextDouble())</replace>
       <replace>* (.5 +</replace>
-      <replace>MAP_MOVE_STEP</replace>
       <replace>MAP_MOVE_STEP * mapPieceScreenSize</replace>
+      <replace>MAP_MOVE_STEP</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -202,9 +208,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/MapGenerator.java" />
-        <option value="$PROJECT_DIR$/src/model/Character.java" />
-        <option value="$PROJECT_DIR$/src/controller/PaneController.java" />
         <option value="$PROJECT_DIR$/src/model/weapon/WeaponGroup.java" />
         <option value="$PROJECT_DIR$/src/model/character/PrimaryAttributes.java" />
         <option value="$PROJECT_DIR$/src/controller/AttackPaneController.java" />
@@ -243,16 +246,19 @@
         <option value="$PROJECT_DIR$/src/model/MoveCalculator.java" />
         <option value="$PROJECT_DIR$/src/model/map/RoadGenerator.java" />
         <option value="$PROJECT_DIR$/src/controller/javaFX/BattlePaneController.java" />
-        <option value="$PROJECT_DIR$/src/model/Battle.java" />
         <option value="$PROJECT_DIR$/src/model/map/MapPiece.java" />
-        <option value="$PROJECT_DIR$/src/main/App.java" />
         <option value="$PROJECT_DIR$/src/viewIso/IsoViewer.java" />
         <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
-        <option value="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java" />
         <option value="$PROJECT_DIR$/src/model/map/Map.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/MapDrawer.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java" />
+        <option value="$PROJECT_DIR$/src/controller/Helpers/ss.java" />
+        <option value="$PROJECT_DIR$/src/model/GameLoop.java" />
+        <option value="$PROJECT_DIR$/src/model/Battle.java" />
+        <option value="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
+        <option value="$PROJECT_DIR$/src/main/App.java" />
+        <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/MapDrawer.java" />
       </list>
     </option>
   </component>
@@ -562,19 +568,20 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753164" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32676518" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753164" sideWeight="0.50512445" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32753164" sideWeight="0.49487555" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32676518" sideWeight="0.49487555" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329429" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17130308" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17700455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -586,7 +593,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -634,7 +640,7 @@
           <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="78" />
+      <option name="time" value="79" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -643,10 +649,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/control/Button.class" />
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/control/MultipleSelectionModelBase.class" />
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/beans/property/ReadOnlyIntegerPropertyBase.class" />
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/beans/property/ReadOnlyIntegerWrapper.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/beans/property/IntegerPropertyBase.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/control/SelectionModel.class" />
     <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/scene/control/TableView.class" />
@@ -1048,20 +1050,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#153#154#0" expanded="true" />
-            <element signature="e#178#179#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
@@ -1075,15 +1063,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.java">
+    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/event/EventHandler.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="method#main#0;class#App#0" expanded="false" />
-            <element signature="method#startBattleFX#0;class#App#0" expanded="false" />
-            <element signature="method#disableWarning#0;class#App#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1095,43 +1079,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="28" column="96" lean-forward="false" selection-start-line="28" selection-start-column="96" selection-end-line="28" selection-end-column="96" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#openWindow#0;class#IsoViewController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/MapDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="90" column="147" lean-forward="false" selection-start-line="90" selection-start-column="147" selection-end-line="90" selection-end-column="147" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5238#5239#0" expanded="true" />
-            <element signature="e#5298#5299#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/MapPieceDrawer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+        <state relative-caret-position="0">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
           <folding>
             <element signature="method#MapPieceDrawer#0;class#MapPieceDrawer#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/rt.jar!/java/lang/Runnable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="9" lean-forward="false" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Helpers/MouseStationaryEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#876#877#0" expanded="false" />
+            <element signature="e#931#932#0" expanded="false" />
+            <element signature="e#978#979#0" expanded="false" />
+            <element signature="e#1012#1013#0" expanded="false" />
+            <element signature="e#2264#2265#0" expanded="false" />
+            <element signature="e#2304#2305#0" expanded="false" />
+            <element signature="e#2651#2652#0" expanded="false" />
+            <element signature="e#2718#2719#0" expanded="false" />
+            <element signature="e#3037#3038#0" expanded="false" />
+            <element signature="e#3097#3098#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#153#154#0" expanded="true" />
+            <element signature="e#178#179#0" expanded="true" />
+            <element signature="e#505#506#0" expanded="true" />
+            <element signature="e#531#532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#303#304#0" expanded="true" />
@@ -1140,14 +1143,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoViewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        <state relative-caret-position="120">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#2286#2287#0" expanded="true" />
+            <element signature="e#2318#2319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+          <folding>
+            <element signature="method#startBattleFX#0;class#App#0" expanded="false" />
+            <element signature="method#disableWarning#0;class#App#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#705#706#0" expanded="true" />
+            <element signature="method#setBorderCanvasesPos#0;class#IsoMapMoveController#0" expanded="false" />
+            <marker date="1537510384331" expanded="true" signature="1269:3324" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="25" column="85" lean-forward="false" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#827#828#0" expanded="true" />
+            <element signature="e#873#874#0" expanded="true" />
+            <element signature="e#1078#1079#0" expanded="true" />
+            <element signature="e#1116#1117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/MapDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="138" column="59" lean-forward="false" selection-start-line="138" selection-start-column="59" selection-end-line="138" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#clearMapBounds#0;class#MapDrawer#0" expanded="false" />
+            <element signature="e#5642#5643#0" expanded="true" />
+            <element signature="e#5702#5703#0" expanded="true" />
           </folding>
         </state>
       </provider>
