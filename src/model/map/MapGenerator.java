@@ -13,18 +13,21 @@ public class MapGenerator {
         this.heightM = heightM;
         map = new Map(widthM, heightM);
         map.setWithRoad(true);
-        map.setRoadSides(new boolean[]{true, true, true, false});
+        map.setRoadSides(new boolean[]{true, false, true, false});
 
         recalcTerrainIntensity();
 
         ArrayList<Point> points = new ArrayList<>(map.getPoints().keySet());
-        Collections.shuffle(points);
+//        Collections.shuffle(points);
         connectPoints();
 
         for (Point point : points) {
             MapPiece mapPiece = map.getPoints().get(point);
             mapPiece.setTerrain(chooseTerrain(point));
         }
+
+        HeightGenerator heightGenerator = new HeightGenerator(map);
+        heightGenerator.generateHeights(20);
 
         RoadGenerator roadGenerator = new RoadGenerator(map);
 

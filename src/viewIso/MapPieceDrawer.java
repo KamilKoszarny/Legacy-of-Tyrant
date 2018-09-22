@@ -31,10 +31,10 @@ public class MapPieceDrawer {
         xCoords[1] = md.screenPosition(point).x + mapPieceScreenSizeX/2;
         xCoords[2] = md.screenPosition(point).x;
         xCoords[3] = md.screenPosition(point).x - mapPieceScreenSizeX/2;
-        yCoords[0] = md.screenPosition(point).y - mapPieceScreenSizeY/2 + mapPiece.getHeightN();
-        yCoords[1] = md.screenPosition(point).y + mapPiece.getHeightE();
-        yCoords[2] = md.screenPosition(point).y + mapPieceScreenSizeY/2 + mapPiece.getHeightS();
-        yCoords[3] = md.screenPosition(point).y + mapPiece.getHeightW();
+        yCoords[0] = md.screenPosition(point).y - mapPieceScreenSizeY/2 - mapPiece.getHeightN();
+        yCoords[1] = md.screenPosition(point).y - mapPiece.getHeightE();
+        yCoords[2] = md.screenPosition(point).y + mapPieceScreenSizeY/2 - mapPiece.getHeightS();
+        yCoords[3] = md.screenPosition(point).y - mapPiece.getHeightW();
 
 
         Color color = mapPiece.getColor();

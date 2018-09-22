@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.IsoBattleLoop;
@@ -22,6 +24,8 @@ public class IsoViewController {
     @FXML
     private Canvas mapCanvas, topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
             topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas;
+    @FXML
+    private AnchorPane mainPane;
 
     private IsoViewer isoViewer;
     private IsoBattleLoop isoBattleLoop;
@@ -50,6 +54,9 @@ public class IsoViewController {
         primaryStage.setMaximized(true);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        mainPane.setPrefWidth(screenSize.width);
+        mainPane.setPrefWidth(screenSize.height);
         mapCanvas.setWidth(screenSize.width);
         mapCanvas.setHeight(screenSize.height - PANEL_HEIGHT);
 

@@ -45,7 +45,6 @@ public class MapDrawer {
             if (character.isTargeted()){
                 drawCharCircle(character, Color.RED, character.getType().getSize());
             }
-            System.out.println(character.getPosition());
         }
 
     }

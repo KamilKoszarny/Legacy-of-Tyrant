@@ -1,6 +1,8 @@
 package controller.isoView;
 
+import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.MouseEvent;
 import model.IsoBattleLoop;
 
 import java.awt.*;
@@ -36,7 +38,6 @@ public class IsoMapMoveController {
             });
         }
         mapCanvas.setOnMouseEntered(mouseEvent -> {
-            System.out.println("enter " + mapCanvas);
             isoBattleLoop.resetMapMove(new Point(0, 0));
             isoBattleLoop.setMapMoveFlag(false);
         });
@@ -80,7 +81,6 @@ public class IsoMapMoveController {
     }
 
     private Point moveByBorder(Canvas borderCanvas){
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Point move = new Point(0, 0);
         if (borderCanvases.get(0) == borderCanvas)
             move.y = MAP_MOVE_STEP;
@@ -105,7 +105,6 @@ public class IsoMapMoveController {
             move.y = MAP_MOVE_STEP;
         }
 
-        System.out.println(move);
         return move;
     }
 }

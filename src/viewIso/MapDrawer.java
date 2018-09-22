@@ -19,8 +19,8 @@ public class MapDrawer {
     private Canvas canvas;
     private MapPieceDrawer mPDrawer;
     private GraphicsContext gc;
-    private int mapPieceScreenSizeX  = 12;
-    private int mapPieceScreenSizeY = 8;
+    private int mapPieceScreenSizeX  = 24;
+    private int mapPieceScreenSizeY = 16;
 
     MapDrawer(Map map, Canvas canvas) {
         this.map = map;
@@ -37,11 +37,8 @@ public class MapDrawer {
 
     private void moveMap(Point move){
         changeZeroScreenPosition(move);
-        System.out.println("isoViewer.getMapDrawer().changeZeroScreenPosition(move);");
         clearMapBounds();
-        System.out.println("isoViewer.getMapDrawer().clearMapBounds();");
         drawMap();
-        System.out.println("isoViewer.getMapDrawer().drawMap();");
     }
 
     public void clearMapBounds(){
@@ -130,17 +127,17 @@ public class MapDrawer {
                 zeroScreenPosition.y + point.x * mapPieceScreenSizeY/2 + point.y * mapPieceScreenSizeY/2);
     }
 
-    Point relativeScreenPosition(Point point){
+    private Point relativeScreenPosition(Point point){
         return new Point(point.x * mapPieceScreenSizeX/2 - point.y * mapPieceScreenSizeX/2,
                 point.x * mapPieceScreenSizeY/2 + point.y * mapPieceScreenSizeY/2);
     }
 
     public boolean mapOnScreen(){
-        int bonus = IsoMapMoveController.MAP_MOVE_STEP * 10;
+        int bonus = IsoMapMoveController.MAP_MOVE_STEP * mapPieceScreenSizeY;
         boolean mapOnScreen = zeroScreenPosition.x < - relativeScreenPosition(new Point(0, map.getHeight())).x + bonus &&
                 zeroScreenPosition.x > - relativeScreenPosition(new Point(map.getWidth(), 0)).x + canvas.getWidth() - bonus &&
-                zeroScreenPosition.y < - relativeScreenPosition(new Point(0, 0)).y + bonus &&
-                zeroScreenPosition.y > - relativeScreenPosition(new Point(map.getWidth(), map.getHeight())).y + canvas.getHeight() - bonus;
+                zeroScreenPosition.y < - relativeScreenPosition(new Point(0, 0)).y + bonus + map.MAX_HEIGHT &&
+                zeroScreenPosition.y > - relativeScreenPosition(new Point(map.getWidth(), map.getHeight())).y + canvas.getHeight() - bonus + map.MIN_HEIGHT;
         return mapOnScreen;
     }
 
@@ -154,8 +151,8 @@ public class MapDrawer {
         return visiblePoints;
     }
 
-    private boolean isOnCanvas(Point point){
-        return point.x >= 0 && point.x <= canvas.getWidth() + mapPieceScreenSizeX &&
-                point.y >= 0 + map.MIN_HEIGHT && point.y <= canvas.getHeight() + map.MAX_HEIGHT;
+    private boolean isOnCanvas(Point screenPoint){
+        return screenPoint.x >= 0 && screenPoint.x <= canvas.getWidth() + mapPieceScreenSizeX &&
+                screenPoint.y >= 0 + map.MIN_HEIGHT * 10 && screenPoint.y <= canvas.getHeight() + map.MAX_HEIGHT * 10;
     }
 }

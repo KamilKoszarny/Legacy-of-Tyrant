@@ -13,11 +13,9 @@ public class IsoBattleLoop extends AnimationTimer{
     private IsoViewer isoViewer;
     private MapDrawer mapDrawer;
 
-
     @Override
     public void handle(long curNanoTime) {
         if (mapMoveFlag) {
-            System.out.println("Move: " + mapMove);
             mapDrawer.changeZeroScreenPosition(mapMove);
             if (mapDrawer.mapOnScreen()) {
                 mapDrawer.clearMapBounds();
