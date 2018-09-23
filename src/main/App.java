@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Battle;
 import model.IsoBattleLoop;
@@ -18,6 +19,10 @@ import java.lang.reflect.Field;
 public class App extends Application {
 
     public static void main(String[] args) {
+//        Color color = Color.RED;
+//        System.out.println(color);
+//        color = color.deriveColor(0, 1, 0.5, 1);
+//        System.out.println(color);
         disableWarning();
         launch(args);
     }

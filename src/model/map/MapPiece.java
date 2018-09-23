@@ -8,7 +8,7 @@ public class MapPiece {
     Terrain terrain;
     int height = 0;
     int heightN, heightE, heightS, heightW;
-    int slope;
+    int slopeDir, slopeSize;
     Color color;
 
     public Terrain getTerrain() {
@@ -59,16 +59,21 @@ public class MapPiece {
         this.heightW = heightW;
     }
 
-    public int getSlope() {
-        return slope;
+    public int getSlopeDir() {
+        return slopeDir;
     }
 
-    public void setSlope(int slope) {
-        this.slope = slope;
+    public int getSlopeSize() {
+        return slopeSize;
+    }
+
+    public void setSlope(int dir, int size) {
+        slopeDir = dir;
+        slopeSize = size;
     }
 
     public Color getColor() {
-        return terrain.getColor();
+        return color;
     }
 
     public void setColor(Color color) {

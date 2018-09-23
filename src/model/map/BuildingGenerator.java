@@ -27,7 +27,8 @@ public class BuildingGenerator {
             int wallThickness = r.nextInt(5) + 1;
             building = new Building(sizeX, sizeY, posX, posY, wallThickness, map);
 
-            if(buildingIsOnRoad(building))
+
+            if(map.isWithRoad() && buildingIsOnRoad(building))
                i--;
             else{
                 if(touchesAnotherBuilding(building)) {

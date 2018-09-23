@@ -15,9 +15,7 @@ import model.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
 import model.character.CharacterType;
-import model.map.Map;
-import model.map.MapGenerator;
-import model.map.Terrain;
+import model.map.*;
 import model.weapon.Weapon;
 
 import java.awt.*;
@@ -62,13 +60,8 @@ public class BattlePaneController {
     }
 
     private void initMap(){
-        Terrain.GROUND.setIntensity(30);
-        Terrain.GRASS.setIntensity(80);
-        Terrain.BUSH.setIntensity(40);
-        Terrain.TREES.setIntensity(20);
-
-        MapGenerator mapGenerator = new MapGenerator();
-        map = mapGenerator.generateMap(50, 50);
+        boolean[] roadSides = {true, false, true, true};
+        map = new Map(50, 50, MapType.GRASSLAND, MapHeightType.FLAT, roadSides);
     }
 
     private void initCharacters(){

@@ -13,26 +13,30 @@ public class Building {
     private int sizeX, sizeY, posX, posY, wallThickness;
     Map map;
 
-    public Building(int sizeX, int sizeY, int posX, int posY, int wallThickness, Map map) {
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
+    Building(int sizeX, int sizeY, int posX, int posY, int wallThickness, Map map) {
+        this.sizeX = (int) (sizeX * Map.RESOLUTION_M);
+        this.sizeY = (int) (sizeY * Map.RESOLUTION_M);
         this.posX = posX;
         this.posY = posY;
         this.wallThickness = wallThickness;
         this.map = map;
         wallPoints = new ArrayList<>();
         inPoints = new ArrayList<>();
-        for (int x = posX; x < posX + sizeX; x++)
-            for (int y = posY; y < posY + sizeY; y++)
-                if (map.isOnMapM(new Point(x, y)))
+        for (int x = posX; x < posX + sizeX; x++) {
+            for (int y = posY; y < posY + sizeY; y++) {
+                Point point = new Point(x, y);
+                if (map.isOnMapPoints(point)) {
                     if (x < posX + wallThickness || x >= posX + sizeX - wallThickness ||
                             y < posY + wallThickness || y >= posY + sizeY - wallThickness)
                         wallPoints.add(new Point(x, y));
                     else
                         inPoints.add(new Point(x, y));
+                }
+            }
+        }
     }
 
-    public Building(Building building1, Building building2){
+    Building(Building building1, Building building2){
         sizeX = Math.max(building1.getSizeX(), building2.getSizeX());
         sizeY = Math.max(building1.getSizeY(), building2.getSizeY());
         posX = Math.min(building1.getPosX(), building2.getPosX());
@@ -42,10 +46,10 @@ public class Building {
 
         if (building1.getWallThickness() < building2.getWallThickness())
             building1 = new Building(building1.getSizeX(), building1.getSizeY(),building1.getPosX(), building1.getPosY(),
-                    building2.getWallThickness(), map);
+                    building2.getWallThickness(), building1.getMap());
         else if (building1.getWallThickness() > building2.getWallThickness())
             building2 = new Building(building2.getSizeX(), building2.getSizeY(),building2.getPosX(), building2.getPosY(),
-                    building1.getWallThickness(), map);
+                    building1.getWallThickness(), building1.getMap());
 
         Set<Point> setInPoints = new LinkedHashSet<>();
         setInPoints.addAll(building1.inPoints);
@@ -96,5 +100,9 @@ public class Building {
 
     public List<Point> getWallPoints() {
         return wallPoints;
+    }
+
+    public Map getMap() {
+        return map;
     }
 }

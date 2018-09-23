@@ -1,8 +1,6 @@
 package model;
 
-import model.map.Map;
-import model.map.MapGenerator;
-import model.map.Terrain;
+import model.map.*;
 
 public class Battle {
 
@@ -13,13 +11,8 @@ public class Battle {
     }
 
     private void initMap(){
-        Terrain.GROUND.setIntensity(30);
-        Terrain.GRASS.setIntensity(80);
-        Terrain.BUSH.setIntensity(40);
-        Terrain.TREES.setIntensity(20);
-
-        MapGenerator mapGenerator = new MapGenerator();
-        map = mapGenerator.generateMap(50, 50);
+        boolean[] roadSides = {false, false, false, false};
+        map = new Map(50, 50, MapType.FOREST, MapHeightType.MOUTAINS, roadSides);
     }
 
     public Map getMap() {

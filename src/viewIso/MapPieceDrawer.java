@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.map.Map;
 import model.map.MapPiece;
+import model.map.Terrain;
 
 import java.awt.*;
 
