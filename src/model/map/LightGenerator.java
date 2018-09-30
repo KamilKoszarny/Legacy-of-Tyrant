@@ -28,10 +28,11 @@ public class LightGenerator {
         Color color = mapPiece.getTerrain().getColor();
         int slopeDir = mapPiece.getSlopeDir();
         int slopeSize = mapPiece.getSlopeSize();
-        int light = (5000 - (slopeDir - dir)%100 * Math.abs(slopeSize - height) / HeightGenerator.H_PEX_PIX) / 100 * amount;
-        if (slopeSize < 100)
-            light = 50;
-//        System.out.println(light);
+//        int light = (int) ((5000 - Math.pow((Math.abs(slopeDir - 50) - dir), 2) * Math.pow(Math.abs(slopeSize - height) / 1000, 2) / HeightGenerator.H_PEX_PIX) / 100 * amount);
+        int light = 50 * (100 - Math.abs(slopeDir - 50) * slopeSize / 1500) / 100;
+        if (light < -100)
+            light = -80;
+        System.out.println(light);
         color = color.deriveColor(0, 1, .5 + (double)light/100, 1);
         mapPiece.setColor(color);
     }

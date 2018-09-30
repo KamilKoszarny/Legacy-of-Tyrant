@@ -50,7 +50,7 @@ public class TerrainGenerator {
 
     private Terrain chooseTerrain(Point point){
 
-        return Terrain.TREES;
+        return Terrain.BUSH;
 //        recalcTerrainIntensityBasedOnSector(point);
 //        recalcTerrainIntensityBasedOnSurrounding(point);
 //        recalcTerrainIntensity();

@@ -19,16 +19,14 @@ public class HeightGenerator {
     public HeightGenerator(Map map) {
         this.map = map;
         heightType = map.getHeightType();
-        hilly = (int) (heightType.getHilly() * (r.nextDouble() + 0.5));
+        hilly = (int) (heightType.getHilly() * (r.nextDouble()*0.5 + 0.5));
         slope = (int) Math.min(heightType.getSlope() * (r.nextDouble() + 0.5), map.MAX_HEIGHT);
-//        System.out.println(slope);
         peaksCount = (int) (heightType.getPeaksCount() * (r.nextDouble() + 0.5));
         if (heightType == MapHeightType.PEAK)
             peaksCount = 1;
     }
 
-    public void generateHeights(){
-
+    public void generateHeights() {
         createSlope();
         createPeaks();
         creaseHeights();
@@ -39,7 +37,7 @@ public class HeightGenerator {
 
     private void createSlope(){
         MapPiece mapPiece;
-        int height = 0;
+        int height;
         int dir = r.nextInt(8);
 //        System.out.println(dir);
         for (Point point: map.getPoints().keySet()) {
@@ -78,6 +76,10 @@ public class HeightGenerator {
         createPeaksInSize(3);
         createPeaksInSize(4);
         createPeaksInSize(5);
+        createPeaksInSize(6);
+        createPeaksInSize(7);
+        createPeaksInSize(8);
+        createPeaksInSize(9);
     }
 
     private void createPeaksInSize(int sizeDivider){
@@ -125,7 +127,7 @@ public class HeightGenerator {
         for (Point point: map.getPoints().keySet()) {
             mapPiece = map.getPoints().get(point);
             height = mapPiece.getHeight();
-            mapPiece.setHeight((int) (height + (r.nextDouble() * 500 - 250)));
+            mapPiece.setHeight((int) (height + (r.nextDouble() * 1000 - 500)));
         }
     }
 
@@ -187,30 +189,28 @@ public class HeightGenerator {
             else if (pieceHeightN == pieceHeightW)
                 dir = 87;
             else {
-                dir += 25 * (pieceHeightE - pieceHeightW) / (pieceHeightN - Math.max(pieceHeightE, pieceHeightW));
-                dir %= 100;
+                dir += 12 * (pieceHeightE - pieceHeightW) / Math.max(pieceHeightN - pieceHeightE, pieceHeightN - pieceHeightW);
             }
         } else if (pieceHeightE == highestVertex) {
             dir = 25;
             if (pieceHeightE == pieceHeightS)
                 dir = 37;
             else {
-                dir += 25 * (pieceHeightS - pieceHeightN) / (pieceHeightE - Math.max(pieceHeightN, pieceHeightS));
-                dir %= 100;
+                dir += 12 * (pieceHeightS - pieceHeightN) / Math.max(pieceHeightE - pieceHeightN, pieceHeightE - pieceHeightS);
             }
         } else if (pieceHeightS == highestVertex) {
             if (pieceHeightS == pieceHeightW)
                 dir = 37;
             else {
                 dir = 50;
-                dir += 25 * (pieceHeightW - pieceHeightE) / (pieceHeightS - Math.max(pieceHeightE, pieceHeightW));
-                dir %= 100;
+                dir += 12 * (pieceHeightW - pieceHeightE) / Math.max(pieceHeightS - pieceHeightE, pieceHeightS - pieceHeightW);
             }
         }else {
             dir = 75;
-            dir += 25 * (pieceHeightN - pieceHeightS) / (pieceHeightW - Math.max(pieceHeightN, pieceHeightS));
-            dir %= 100;
+            dir += 12 * (pieceHeightN - pieceHeightS) / Math.max(pieceHeightW - pieceHeightN, pieceHeightW - pieceHeightS);
         }
+        if (dir < 0)
+            dir += 100;
 
 //
 //
@@ -237,7 +237,7 @@ public class HeightGenerator {
 //        int dir = (pieceHeightN * paramN + pieceHeightE * paramE + pieceHeightS * paramS + pieceHeightW * paramW) /
 //                (pieceHeightN + pieceHeightE + pieceHeightS + pieceHeightW);
 ////        System.out.println(dir);
-        int size = Math.abs(pieceHeightN - pieceHeightS) + Math.abs(pieceHeightE - pieceHeightW) / H_PEX_PIX;
+        int size = Math.abs(pieceHeightN - pieceHeightS) + Math.abs(pieceHeightE - pieceHeightW);
         if (size < 100)
             size = 0;
         piece.setSlope (dir, size);

@@ -19,6 +19,8 @@ import java.lang.reflect.Field;
 public class App extends Application {
 
     public static void main(String[] args) {
+//        System.out.println(-120%100);
+
 //        Color color = Color.RED;
 //        System.out.println(color);
 //        color = color.deriveColor(0, 1, 0.5, 1);
