@@ -50,21 +50,21 @@ public class TerrainGenerator {
 
     private Terrain chooseTerrain(Point point){
 
-//        return Terrain.TREES;
-        recalcTerrainIntensityBasedOnSector(point);
-        recalcTerrainIntensityBasedOnSurrounding(point);
-        recalcTerrainIntensity();
-
-        Random rand = new Random();
-        double n = rand.nextDouble();
-        double ti = 0;
-
-        for (Terrain terrain: Terrain.values()){
-            ti += terrain.getIntensity();
-            if (n < ti)
-                return terrain;
-        }
-        return null;
+        return Terrain.TREES;
+//        recalcTerrainIntensityBasedOnSector(point);
+//        recalcTerrainIntensityBasedOnSurrounding(point);
+//        recalcTerrainIntensity();
+//
+//        Random rand = new Random();
+//        double n = rand.nextDouble();
+//        double ti = 0;
+//
+//        for (Terrain terrain: Terrain.values()){
+//            ti += terrain.getIntensity();
+//            if (n < ti)
+//                return terrain;
+//        }
+//        return null;
     }
 
     private void recalcTerrainIntensityBasedOnSurrounding(Point point){

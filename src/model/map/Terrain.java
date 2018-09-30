@@ -19,8 +19,8 @@ public enum Terrain {
 
     Terrain(Color color, double moveFactor){
         this.color = color;
-        System.out.println(color);
-        System.out.println(color.deriveColor(0, 1, 1.5, 1));
+//        System.out.println(color);
+//        System.out.println(color.deriveColor(0, 1, 1.5, 1));
 
         this.moveFactor = moveFactor;
     }

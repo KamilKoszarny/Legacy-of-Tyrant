@@ -10,21 +10,20 @@ import java.util.List;
 
 
 public class IsoMapMoveController {
+    private static final int MAP_MOVE_BOUNDARY = 10;
+    public static final int MAP_MOVE_STEP = 5;
 
     private Canvas mapCanvas;
     private List<Canvas> borderCanvases;
     private IsoBattleLoop isoBattleLoop;
-    private static final int MAP_MOVE_BOUNDARY = 10;
-    public static final int MAP_MOVE_STEP = 5;
 
     IsoMapMoveController(Canvas mapCanvas, List<Canvas> borderCanvases, IsoBattleLoop isoBattleLoop) {
         this.mapCanvas = mapCanvas;
         this.borderCanvases = borderCanvases;
         this.isoBattleLoop = isoBattleLoop;
-        initialize();
     }
 
-    private void initialize(){
+    void initialize(){
         initMapMoving();
     }
 

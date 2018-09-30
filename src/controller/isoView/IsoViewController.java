@@ -37,7 +37,8 @@ public class IsoViewController {
         List<Canvas> borderCanvases = new ArrayList<>(Arrays.asList(topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
                 topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas));
         isoViewer = new IsoViewer(map, mapCanvas);
-        IsoMapMoveController isoMapMoveController = new IsoMapMoveController(mapCanvas, borderCanvases, isoBattleLoop);
+        new IsoMapMoveController(mapCanvas, borderCanvases, isoBattleLoop).initialize();
+        new IsoMapClickController(mapCanvas, isoBattleLoop).initialize();
     }
 
     private void openWindow(Stage primaryStage) throws IOException {
