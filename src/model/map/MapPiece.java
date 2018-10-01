@@ -12,6 +12,7 @@ public class MapPiece {
     private int heightN, heightE, heightS, heightW;
     private int slopeDir, slopeSize;
     private Color color;
+    private int light;
     private int[] relXCoords, relYCoords;
 
     public Terrain getTerrain() {
@@ -102,8 +103,12 @@ public class MapPiece {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
+    public int getLight() {
+        return light;
+    }
+
+    public void setLight(int light) {
+        this.light = light;
     }
 }
 

@@ -10,4 +10,6 @@ public class Peak {
     int height;
     int slope;
 //    int[][] slope = new int[SLOPE_DIRECTIONS][SLOPE_CHANGES];
+//    int[] slope = new int[SLOPE_CHANGES];
+//    int[] slopeChangeDist = new int[SLOPE_CHANGES];
 }

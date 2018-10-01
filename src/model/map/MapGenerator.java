@@ -18,7 +18,7 @@ public class MapGenerator {
         HeightGenerator heightGenerator = new HeightGenerator(map);
         heightGenerator.generateHeights();
         LightGenerator lightGenerator = new LightGenerator(map);
-        lightGenerator.generateLight(0, 50, 1);
+        lightGenerator.generateLight(50, 50, 1);
 /*
         if(map.isWithRoad()) {
             RoadGenerator roadGenerator = new RoadGenerator(map);

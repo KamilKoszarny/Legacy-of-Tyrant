@@ -5,7 +5,6 @@ import javafx.scene.paint.Color;
 import model.map.HeightGenerator;
 import model.map.Map;
 import model.map.MapPiece;
-import model.map.Terrain;
 
 import java.awt.*;
 
@@ -51,13 +50,15 @@ public class MapPieceDrawer {
         MapPiece mapPiece = map.getPoints().get(point);
         double[] xCoords = new double[6];
         double[] yCoords = new double[6];
-            for (int i = 0; i < 6; i++) {
-                xCoords[i] = md.getZeroScreenPosition().x + mapPiece.getRelXCoords()[i];
-                yCoords[i] = md.getZeroScreenPosition().y + mapPiece.getRelYCoords()[i];
-            }      Color color = mapPiece.getColor();
+        for (int i = 0; i < 6; i++) {
+            xCoords[i] = md.getZeroScreenPosition().x + mapPiece.getRelXCoords()[i];
+            yCoords[i] = md.getZeroScreenPosition().y + mapPiece.getRelYCoords()[i];
+        }
+        Color color = mapPiece.getTerrain().getColor();
+        color = color.deriveColor(0, 1, .5 + (double)mapPiece.getLight()/100, 1);
 
-            gc.setFill(color);
-            gc.fillPolygon(xCoords, yCoords, 6);
+        gc.setFill(color);
+        gc.fillPolygon(xCoords, yCoords, 6);
     }
 }
 

@@ -1,5 +1,7 @@
 package model.map;
 
+import helpers.OpenSimplexNoise;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +24,37 @@ public class HeightGenerator {
         hilly = (int) (heightType.getHilly() * (r.nextDouble()*0.5 + 0.5));
         slope = (int) Math.min(heightType.getSlope() * (r.nextDouble() + 0.5), map.MAX_HEIGHT);
         peaksCount = (int) (heightType.getPeaksCount() * (r.nextDouble() + 0.5));
-        if (heightType == MapHeightType.PEAK)
+//        if (heightType == MapHeightType.PEAK)
             peaksCount = 1;
     }
 
     public void generateHeights() {
-        createSlope();
-        createPeaks();
-        creaseHeights();
+//        createSlope();
+//        createPeaks();
+//        creaseHeights();
+        withOpenSimplexNoise(100);
+        withOpenSimplexNoise(20);
+//        creaseHeights();
         for (Point point: map.getPoints().keySet()) {
             shapeMapPiece(point);
+        }
+    }
+
+    private void withOpenSimplexNoise(double featureSize){
+        OpenSimplexNoise noise = new OpenSimplexNoise();
+
+        Point point;
+        MapPiece mapPiece;
+        int height;
+        for (int y = 0; y < map.mapYPoints; y++) {
+            for (int x = 0; x < map.mapXPoints; x++) {
+                point = new Point(x, y);
+                mapPiece = map.getPoints().get(point);
+                double value = noise.eval(x / featureSize, y / featureSize, 0.0);
+                height = (int) ((map.MIN_HEIGHT + (map.MAX_HEIGHT - map.MIN_HEIGHT) * (value / 2 + 0.5)) * H_PEX_PIX / (map.mapXPoints / featureSize));
+                mapPiece.setHeight(mapPiece.getHeight() + height);
+                System.out.println(value);
+            }
         }
     }
 
@@ -73,13 +96,13 @@ public class HeightGenerator {
     private void createPeaks(){
         createPeaksInSize(1);
         createPeaksInSize(2);
-        createPeaksInSize(3);
-        createPeaksInSize(4);
-        createPeaksInSize(5);
-        createPeaksInSize(6);
-        createPeaksInSize(7);
-        createPeaksInSize(8);
-        createPeaksInSize(9);
+//        createPeaksInSize(3);
+//        createPeaksInSize(4);
+//        createPeaksInSize(5);
+//        createPeaksInSize(6);
+//        createPeaksInSize(7);
+//        createPeaksInSize(8);
+//        createPeaksInSize(9);
     }
 
     private void createPeaksInSize(int sizeDivider){
@@ -89,8 +112,15 @@ public class HeightGenerator {
         for (int i = 0; i < peaksCount * sizeDivider; i++) {
             peak = new Peak();
             peak.position = new Point((int)(map.mapXPoints * r.nextDouble()), (int)(map.mapYPoints * r.nextDouble()));
-            peak.height = (int) (H_PEX_PIX * hilly * 10 * (r.nextDouble() * 0.5 + 0.5) - maxHeight) / sizeDivider;
-            peak.slope = (int) (peak.height / ((map.mapXPoints + map.mapYPoints)/2) * (r.nextDouble() * 2 + 1));
+            System.out.println(peak.position);
+            int j = 0;
+            do  {
+                peak.height = (int) (H_PEX_PIX * hilly * 10 * (r.nextDouble()*0.5 + 0.5)) / sizeDivider / peaksCount;
+                j++;
+            } while ((peak.height + map.getPoints().get(peak.position).getHeight() < map.MIN_HEIGHT * H_PEX_PIX ||
+                    peak.height  + map.getPoints().get(peak.position).getHeight() > map.MAX_HEIGHT * H_PEX_PIX) &&
+                    j < 500);
+            peak.slope = (int) (peak.height / ((map.mapXPoints + map.mapYPoints)/2) * (r.nextDouble() + 1));
 
             peaks.add(peak);
         }
