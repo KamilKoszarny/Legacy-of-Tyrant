@@ -20,10 +20,7 @@ public class RoadGenerator {
     void generateRoad(){
         roadMidPoints = generateMiddleOfRoad();
         roadPoints = generateRoadByMidPoints(roadMidPoints);
-        for (Point point: roadPoints) {
-            MapPiece mapPiece = map.getPoints().get(point);
-            mapPiece.setTerrain(Terrain.GROUND);
-        }
+        setRoadTerrain();
     }
 
     private java.util.List<Point> generateMiddleOfRoad(){
@@ -139,12 +136,17 @@ public class RoadGenerator {
         Random r = new Random();
         int width;
         int i = 0;
+        List<Point> closePoints;
+        int avgHeight;
 
         for (Point midPoint: midPoints) {
-            if (i%(int)((10 / Map.RESOLUTION_M * Map.M_PER_PIX)) == 0) {
-                width = r.nextInt((int)((15 / Map.RESOLUTION_M * Map.M_PER_PIX) + 10));
-                roadPoints.addAll(pointsInRadius(midPoint, width / 2));
-            }
+            width = r.nextInt((int)((15 / Map.RESOLUTION_M * Map.M_PER_PIX) + 10)) + 2;
+            closePoints = pointsInRadius(midPoint, width / 2);
+            roadPoints.addAll(closePoints);
+            width = (int)(15 / Map.RESOLUTION_M * Map.M_PER_PIX) + 5;
+            closePoints = pointsInRadius(midPoint, width / 2);
+            avgHeight = avgHeight(closePoints);
+            setHeights(avgHeight, closePoints);
             i++;
         }
 
@@ -165,5 +167,27 @@ public class RoadGenerator {
 
     public static boolean isOnMidRoad(Point point){
         return roadMidPoints.contains(point);
+    }
+
+    private int avgHeight(List<Point> points) {
+        int avgHeight, sumHeight = 0;
+        for (Point point: points) {
+            sumHeight += map.getPoints().get(point).getHeight();
+        }
+        avgHeight = sumHeight / points.size();
+        return avgHeight;
+    }
+
+    private void setHeights(int height, List<Point> points) {
+        for (Point point: points) {
+            map.getPoints().get(point).setHeight(height);
+        }
+    }
+
+    private void setRoadTerrain() {
+        for (Point point: roadPoints) {
+            MapPiece mapPiece = map.getPoints().get(point);
+            mapPiece.setTerrain(Terrain.GROUND);
+        }
     }
 }

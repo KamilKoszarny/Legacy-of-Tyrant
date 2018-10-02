@@ -11,8 +11,8 @@ public class Battle {
     }
 
     private void initMap(){
-        boolean[] roadSides = {false, false, false, false};
-        map = new Map(50, 50, MapType.FOREST, MapHeightType.MOUTAINS, roadSides);
+        boolean[] roadSides = {false, true, true, true};
+        map = new Map(50, 50, MapType.FOREST, MapHeightType.PEAK, roadSides);
     }
 
     public Map getMap() {

@@ -13,7 +13,7 @@ public class HeightGenerator {
 
     Map map;
     MapHeightType heightType;
-    private int hilly, slope, peaksCount;
+    private int hilly;
     private int maxHeight = 0;
     Random r = new Random();
 
@@ -22,22 +22,11 @@ public class HeightGenerator {
         this.map = map;
         heightType = map.getHeightType();
         hilly = (int) (heightType.getHilly() * (r.nextDouble()*0.5 + 0.5));
-        slope = (int) Math.min(heightType.getSlope() * (r.nextDouble() + 0.5), map.MAX_HEIGHT);
-        peaksCount = (int) (heightType.getPeaksCount() * (r.nextDouble() + 0.5));
-//        if (heightType == MapHeightType.PEAK)
-            peaksCount = 1;
     }
 
     public void generateHeights() {
-//        createSlope();
-//        createPeaks();
-//        creaseHeights();
         withOpenSimplexNoise(100);
         withOpenSimplexNoise(20);
-//        creaseHeights();
-        for (Point point: map.getPoints().keySet()) {
-            shapeMapPiece(point);
-        }
     }
 
     private void withOpenSimplexNoise(double featureSize){
@@ -50,118 +39,22 @@ public class HeightGenerator {
             for (int x = 0; x < map.mapXPoints; x++) {
                 point = new Point(x, y);
                 mapPiece = map.getPoints().get(point);
-                double value = noise.eval(x / featureSize, y / featureSize, 0.0);
-                height = (int) ((map.MIN_HEIGHT + (map.MAX_HEIGHT - map.MIN_HEIGHT) * (value / 2 + 0.5)) * H_PEX_PIX / (map.mapXPoints / featureSize));
+                double value = noise.eval(x / featureSize, y / featureSize);
+                height = (int) ((map.MIN_HEIGHT + (map.MAX_HEIGHT - map.MIN_HEIGHT) * (value / 2 + 0.5)) * H_PEX_PIX /
+                        (map.mapXPoints / featureSize) / (50. / hilly));
                 mapPiece.setHeight(mapPiece.getHeight() + height);
-                System.out.println(value);
+//                System.out.println(value);
             }
         }
     }
 
-    private void createSlope(){
-        MapPiece mapPiece;
-        int height;
-        int dir = r.nextInt(8);
-//        System.out.println(dir);
+    public void shapeMapPieces() {
         for (Point point: map.getPoints().keySet()) {
-            height = calcSlopeHeight(point, dir);
-            mapPiece = map.getPoints().get(point);
-            mapPiece.setHeight(calcSlopeHeight(point, dir));
-            if (maxHeight < height)
-                maxHeight = height;
+            shapeMapPiece(point);
         }
     }
 
-    private int calcSlopeHeight(Point point, int dir){
-        int height = 0;
-        if (dir == 0)
-            height = H_PEX_PIX * slope * ((map.mapXPoints - point.x) + (map.mapYPoints - point.y))/(map.mapXPoints + map.mapYPoints);
-        if (dir == 1)
-            height = H_PEX_PIX * slope * ((map.mapYPoints - point.y))/(map.mapYPoints);
-        if (dir == 2)
-            height = H_PEX_PIX * slope * ((point.x) + (map.mapYPoints - point.y))/(map.mapXPoints + map.mapYPoints);
-        if (dir == 3)
-            height = H_PEX_PIX * slope * ((point.x))/(map.mapXPoints);
-        if (dir == 4)
-            height = H_PEX_PIX * slope * ((point.x) + (point.y))/(map.mapXPoints + map.mapYPoints);
-        if (dir == 5)
-            height = H_PEX_PIX * slope * ((point.y))/(map.mapYPoints);
-        if (dir == 6)
-            height = H_PEX_PIX * slope * ((map.mapXPoints - point.x) + (point.y))/(map.mapXPoints + map.mapYPoints);
-        if (dir == 7)
-            height = H_PEX_PIX * slope * ((map.mapXPoints - point.x))/(map.mapXPoints);
-        return height;
-    }
-
-    private void createPeaks(){
-        createPeaksInSize(1);
-        createPeaksInSize(2);
-//        createPeaksInSize(3);
-//        createPeaksInSize(4);
-//        createPeaksInSize(5);
-//        createPeaksInSize(6);
-//        createPeaksInSize(7);
-//        createPeaksInSize(8);
-//        createPeaksInSize(9);
-    }
-
-    private void createPeaksInSize(int sizeDivider){
-        List<Peak> peaks = new ArrayList<>();
-        Peak peak;
-//        System.out.println(peaksCount);
-        for (int i = 0; i < peaksCount * sizeDivider; i++) {
-            peak = new Peak();
-            peak.position = new Point((int)(map.mapXPoints * r.nextDouble()), (int)(map.mapYPoints * r.nextDouble()));
-            System.out.println(peak.position);
-            int j = 0;
-            do  {
-                peak.height = (int) (H_PEX_PIX * hilly * 10 * (r.nextDouble()*0.5 + 0.5)) / sizeDivider / peaksCount;
-                j++;
-            } while ((peak.height + map.getPoints().get(peak.position).getHeight() < map.MIN_HEIGHT * H_PEX_PIX ||
-                    peak.height  + map.getPoints().get(peak.position).getHeight() > map.MAX_HEIGHT * H_PEX_PIX) &&
-                    j < 500);
-            peak.slope = (int) (peak.height / ((map.mapXPoints + map.mapYPoints)/2) * (r.nextDouble() + 1));
-
-            peaks.add(peak);
-        }
-
-        MapPiece mapPiece;
-        for (Point point: map.getPoints().keySet()) {
-            mapPiece = map.getPoints().get(point);
-            int height = -1000;
-            int newHeight;
-            for (Peak p: peaks) {
-                newHeight = calcPeakHeight(mapPiece, point, p);
-                if (newHeight > height)
-                    height = newHeight;
-            }
-            mapPiece.setHeight(height);
-        }
-    }
-
-    private int calcPeakHeight(MapPiece mapPiece, Point point, Peak peak){
-        int height = mapPiece.getHeight();
-        double dist = point.distance(peak.position);
-
-        height += peak.height - dist * peak.slope;
-        if (height < map.MIN_HEIGHT * H_PEX_PIX)
-            height = (int) map.MIN_HEIGHT * H_PEX_PIX;
-        if (height > map.MAX_HEIGHT * H_PEX_PIX)
-            height = (int) map.MAX_HEIGHT * H_PEX_PIX;
-        return height;
-    }
-
-    private void creaseHeights(){
-        MapPiece mapPiece;
-        int height;
-        for (Point point: map.getPoints().keySet()) {
-            mapPiece = map.getPoints().get(point);
-            height = mapPiece.getHeight();
-            mapPiece.setHeight((int) (height + (r.nextDouble() * 1000 - 500)));
-        }
-    }
-
-    private void shapeMapPiece(Point point){
+    public void shapeMapPiece(Point point){
 
         MapPiece mapPiece = map.getPoints().get(point);
         Point mapPointN, mapPointNE, mapPointE, mapPointSE, mapPointS, mapPointSW, mapPointW, mapPointNW;

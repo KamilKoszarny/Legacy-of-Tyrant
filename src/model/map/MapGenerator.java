@@ -17,9 +17,7 @@ public class MapGenerator {
         terrainGenerator.generateTerrain();
         HeightGenerator heightGenerator = new HeightGenerator(map);
         heightGenerator.generateHeights();
-        LightGenerator lightGenerator = new LightGenerator(map);
-        lightGenerator.generateLight(50, 50, 1);
-/*
+
         if(map.isWithRoad()) {
             RoadGenerator roadGenerator = new RoadGenerator(map);
             roadGenerator.generateRoad();
@@ -29,7 +27,11 @@ public class MapGenerator {
             BuildingGenerator buildingGenerator = new BuildingGenerator(map);
             buildingGenerator.generateAndDrawBuildings(map.getBuildingsCount(), map.getBuildingMaxSize());
         }
-*/
+
+        heightGenerator.shapeMapPieces();
+        LightGenerator lightGenerator = new LightGenerator(map);
+        lightGenerator.generateLight(50, 50, 1);
+
         return map;
     }
 

@@ -37,6 +37,7 @@ public class BuildingGenerator {
                 }
                 buildings.add(building);
                 drawBuilding(building);
+                shapeBuilding(building);
             }
         }
     }
@@ -47,6 +48,20 @@ public class BuildingGenerator {
         }
         for (Point inPoint: building.getInPoints()) {
             map.getPoints().get(inPoint).setTerrain(Terrain.GROUND);
+        }
+    }
+
+    private void shapeBuilding(Building building){
+        int avgHeight, sumHeight = 0;
+        List<Point> buildingPoints = new ArrayList<>();
+        buildingPoints.addAll(building.getInPoints());
+        buildingPoints.addAll(building.getWallPoints());
+        for (Point bPoint : buildingPoints) {
+            sumHeight += map.getPoints().get(bPoint).getHeight();
+        }
+        avgHeight = sumHeight / buildingPoints.size();
+        for (Point bPoint: buildingPoints) {
+            map.getPoints().get(bPoint).setHeight(avgHeight);
         }
     }
 
