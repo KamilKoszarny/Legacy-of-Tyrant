@@ -26,7 +26,9 @@ public class Character {
     private Armor[] armor;
     private int chosenWeapon = 0;
 
+    private CharState state = CharState.IDLE;
     private Point position;
+    private int direction;
     private int msLeft = 0;
 
     private boolean chosen = false;
@@ -41,12 +43,13 @@ public class Character {
     public Character() {
     }
 
-    public Character(String name, Color color, CharacterType type, CharacterClass charClass, Point position) {
+    public Character(String name, Color color, CharacterType type, CharacterClass charClass, Point position, int direction) {
         this.name = name;
         this.color = color;
         this.type = type;
         this.charClass = charClass;
         this.position =  position;
+        this.direction = direction;
     }
 
 
@@ -82,12 +85,29 @@ public class Character {
         this.color = color;
     }
 
+
+    public CharState getState() {
+        return state;
+    }
+
+    public void setState(CharState state) {
+        this.state = state;
+    }
+
     public Point getPosition() {
         return position;
     }
 
     public void setPosition(Point position) {
         this.position = position;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 
     public boolean isChosen() {

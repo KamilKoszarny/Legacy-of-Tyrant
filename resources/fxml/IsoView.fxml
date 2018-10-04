@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1930.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1930.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: black;">
          <children>
             <Canvas fx:id="mapCanvas" height="768.0" width="1366.0" />
          </children>
       </StackPane>
+      <HBox fx:id="panel" layoutX="53.0" layoutY="1716.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="minimapVBox" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="charBasicsVBox" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="charName" text="Label" />
+                  <Label fx:id="charType" text="Label" />
+                  <Label fx:id="charClass" text="Label" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
       <Canvas fx:id="topBorderCanvas" height="200.0" width="200.0" />
       <Canvas fx:id="rightBorderCanvas" height="200.0" width="200.0" />
       <Canvas fx:id="bottomBorderCanvas" height="200.0" width="200.0" />

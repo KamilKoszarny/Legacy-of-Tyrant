@@ -14,10 +14,8 @@ public class CharSprite {
         this.charSpriteSheet = charSpriteSheet;
     }
 
-    public Point getFramePos() {
-        int x = charPose.getStartFrame() + animationFrame;
-        int y = (dir + 6)%8;
-        return new Point(x, y);
+    public int getFramePos() {
+        return charPose.getStartFrame() + animationFrame;
     }
 
     public void nextFrame() {
@@ -44,5 +42,7 @@ public class CharSprite {
         this.charSpriteSheet = charSpriteSheet;
     }
 
-
+    public void setCharPose(CharPose charPose) {
+        this.charPose = charPose;
+    }
 }

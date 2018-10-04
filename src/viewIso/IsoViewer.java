@@ -40,4 +40,8 @@ public class IsoViewer {
     public MapDrawer getMapDrawer() {
         return mapDrawer;
     }
+
+    public CharsDrawer getCharsDrawer() {
+        return charsDrawer;
+    }
 }

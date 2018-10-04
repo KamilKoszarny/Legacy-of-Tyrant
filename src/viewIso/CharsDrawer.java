@@ -37,12 +37,9 @@ public class CharsDrawer {
         drawChars(characters);
     }
 
-    private void initCharSpriteMap() {
-        for (Character character: characters) {
-            CharSprite sprite = chooseSpriteSheet(character);
-            charSpriteSheetMap.put(character, sprite);
-        }
-    }
+//    public boolean isCharClicked() {
+//
+//    }
 
     public void drawAllChars() {
         drawChars(characters);
@@ -76,10 +73,12 @@ public class CharsDrawer {
         Point charScreenPos = mapDrawer.screenPositionWithHeight(character.getPosition());
         CharSprite charSprite = charSpriteSheetMap.get(character);
         Image spriteSheet = charSprite.getCharSpriteSheet();
-        Point framePos = charSprite.getFramePos();
+        charSprite.setCharPose(character.getState().getPose());
+        int framePosX = charSprite.getFramePos();
+        int framePosY = (character.getDirection() + 6) % 8;
 
         gc.drawImage(spriteSheet,
-                SPRITES_SPAN.width * framePos.x + SPRITE_OFFSET.width, SPRITES_SPAN.height * framePos.y + SPRITE_OFFSET.height,
+                SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width, SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height,
                 SPRITE_SIZE.width, SPRITE_SIZE.height,
                 charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
                 SPRITE_SIZE.width, SPRITE_SIZE.height);
@@ -90,6 +89,13 @@ public class CharsDrawer {
     private void clearCharProximity(Character character) {
         List<Point> charClosePoints = calcCharClosePoints(character);
         mapDrawer.drawMapPoints(charClosePoints);
+    }
+
+    private void initCharSpriteMap() {
+        for (Character character: characters) {
+            CharSprite sprite = chooseSpriteSheet(character);
+            charSpriteSheetMap.put(character, sprite);
+        }
     }
 
 
@@ -110,5 +116,4 @@ public class CharsDrawer {
         }
         return charClosePoints;
     }
-
 }

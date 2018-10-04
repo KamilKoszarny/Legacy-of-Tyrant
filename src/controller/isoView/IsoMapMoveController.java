@@ -3,6 +3,7 @@ package controller.isoView;
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import model.IsoBattleLoop;
 
 import java.awt.*;
@@ -10,16 +11,18 @@ import java.util.List;
 
 
 public class IsoMapMoveController {
-    private static final int MAP_MOVE_BOUNDARY = 10;
+    static final int MAP_MOVE_BOUNDARY = 10;
     public static final int MAP_MOVE_STEP = 5;
 
     private Canvas mapCanvas;
     private List<Canvas> borderCanvases;
+    private HBox panel;
     private IsoBattleLoop isoBattleLoop;
 
-    IsoMapMoveController(Canvas mapCanvas, List<Canvas> borderCanvases, IsoBattleLoop isoBattleLoop) {
+    IsoMapMoveController(Canvas mapCanvas, List<Canvas> borderCanvases, HBox panel, IsoBattleLoop isoBattleLoop) {
         this.mapCanvas = mapCanvas;
         this.borderCanvases = borderCanvases;
+        this.panel = panel;
         this.isoBattleLoop = isoBattleLoop;
     }
 
@@ -37,6 +40,10 @@ public class IsoMapMoveController {
             });
         }
         mapCanvas.setOnMouseEntered(mouseEvent -> {
+            isoBattleLoop.resetMapMove(new Point(0, 0));
+            isoBattleLoop.setMapMoveFlag(false);
+        });
+        panel.setOnMouseEntered(mouseEvent -> {
             isoBattleLoop.resetMapMove(new Point(0, 0));
             isoBattleLoop.setMapMoveFlag(false);
         });

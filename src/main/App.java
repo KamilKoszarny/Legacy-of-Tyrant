@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Battle;
 import model.IsoBattleLoop;
@@ -56,7 +55,7 @@ public class App extends Application {
         IsoBattleLoop isoBattleLoop = new IsoBattleLoop();
         IsoViewController isoViewController = new IsoViewController(primaryStage, isoBattleLoop, map, characters);
         IsoViewer isoViewer = isoViewController.getIsoViewer();
-        isoBattleLoop.setIsoViewer(isoViewer);
+        isoBattleLoop.setIsoViewerAndDrawers(isoViewer);
         isoBattleLoop.start();
     }
 

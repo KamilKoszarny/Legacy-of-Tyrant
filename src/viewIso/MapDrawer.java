@@ -145,6 +145,7 @@ public class MapDrawer {
         return null;
     }
 
+
     private Point screenPosition(Point point){
         return new Point(zeroScreenPosition.x + point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
                 zeroScreenPosition.y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
