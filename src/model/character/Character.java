@@ -41,12 +41,12 @@ public class Character {
     public Character() {
     }
 
-    public Character(String name, Color color, CharacterType type, CharacterClass charClass) {
+    public Character(String name, Color color, CharacterType type, CharacterClass charClass, Point position) {
         this.name = name;
         this.color = color;
         this.type = type;
         this.charClass = charClass;
-        this.position =  new Point(10,10);
+        this.position =  position;
     }
 
 

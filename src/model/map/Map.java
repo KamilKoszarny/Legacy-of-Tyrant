@@ -1,5 +1,8 @@
 package model.map;
 
+import model.map.heights.MapHeightType;
+import model.map.terrains.Terrain;
+
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Random;
@@ -7,7 +10,7 @@ import java.util.Random;
 public class Map {
 
     public static final double RESOLUTION_M = 0.2;
-    public static final double M_PER_PIX = 0.1;
+    public static final double M_PER_POINT = 0.1;
     public final double MIN_HEIGHT = -50;
     public final double MAX_HEIGHT = 500;
 

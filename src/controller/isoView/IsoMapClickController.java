@@ -4,9 +4,10 @@ import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import model.IsoBattleLoop;
-import model.map.MapPiece;
+import model.character.Character;
 
 import java.awt.*;
+import java.util.List;
 
 public class IsoMapClickController {
 
@@ -14,7 +15,7 @@ public class IsoMapClickController {
     private Canvas mapCanvas;
     private IsoBattleLoop isoBattleLoop;
 
-    IsoMapClickController(Canvas mapCanvas, IsoBattleLoop isoBattleLoop) {
+    IsoMapClickController(Canvas mapCanvas, IsoBattleLoop isoBattleLoop, List<Character> characters) {
         this.mapCanvas = mapCanvas;
         this.isoBattleLoop = isoBattleLoop;
     }

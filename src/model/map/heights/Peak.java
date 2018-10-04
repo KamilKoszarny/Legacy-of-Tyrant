@@ -1,4 +1,4 @@
-package model.map;
+package model.map.heights;
 
 import java.awt.*;
 

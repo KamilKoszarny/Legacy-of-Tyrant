@@ -30,12 +30,7 @@ public class IsoBattleLoop extends AnimationTimer{
 
     private void handleMapMoving(){
         if (mapMoveFlag) {
-            mapDrawer.changeZeroScreenPosition(mapMove);
-            if (mapDrawer.mapOnScreen()) {
-                mapDrawer.clearMapBounds();
-                mapDrawer.drawMap();
-            } else
-                mapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
+            isoViewer.moveMap(mapMove);
         }
     }
 

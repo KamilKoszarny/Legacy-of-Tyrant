@@ -2,7 +2,7 @@ package viewIso;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import model.map.HeightGenerator;
+import model.map.heights.HeightGenerator;
 import model.map.Map;
 import model.map.MapPiece;
 

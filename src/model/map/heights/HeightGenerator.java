@@ -1,10 +1,10 @@
-package model.map;
+package model.map.heights;
 
 import helpers.OpenSimplexNoise;
+import model.map.Map;
+import model.map.MapPiece;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class HeightGenerator {

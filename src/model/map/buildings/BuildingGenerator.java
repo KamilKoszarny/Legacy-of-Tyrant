@@ -1,4 +1,8 @@
-package model.map;
+package model.map.buildings;
+
+import model.map.Map;
+import model.map.roads.RoadGenerator;
+import model.map.terrains.Terrain;
 
 import java.awt.*;
 import java.util.*;
@@ -6,7 +10,7 @@ import java.util.List;
 
 public class BuildingGenerator {
 
-    Map map;
+    model.map.Map map;
     static int minSize = 20;
     static List<Building> buildings = new ArrayList<>();
     private static Building touchedBuilding;
@@ -16,7 +20,7 @@ public class BuildingGenerator {
         this.map = map;
     }
 
-    void generateAndDrawBuildings(int count, int max_size){
+    public void generateAndDrawBuildings(int count, int max_size){
         Random r = new Random();
         for (int i = 0; i < count; i++){
             Building building;

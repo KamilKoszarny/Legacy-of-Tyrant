@@ -1,4 +1,4 @@
-package model.map;
+package model.map.lights;
 
 public class Light {
 

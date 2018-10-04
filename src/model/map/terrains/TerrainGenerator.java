@@ -1,4 +1,7 @@
-package model.map;
+package model.map.terrains;
+
+import model.map.Map;
+import model.map.MapPiece;
 
 import java.awt.*;
 import java.util.ArrayList;

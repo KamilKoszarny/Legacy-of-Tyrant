@@ -10,21 +10,20 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Battle;
 import model.IsoBattleLoop;
+import model.character.Character;
 import model.map.Map;
 import sun.misc.Unsafe;
 import viewIso.IsoViewer;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class App extends Application {
 
     public static void main(String[] args) {
-//        System.out.println(-120%100);
-
-//        Color color = Color.RED;
-//        System.out.println(color);
-//        color = color.deriveColor(0, 1, 0.5, 1);
-//        System.out.println(color);
+//        System.out.println(App.class.getResource("/sprites/flare/demo/"));
+//
+//        System.out.println(App.class.getResource("/sprites/flare/demo/vesuvvio.png"));
         disableWarning();
         launch(args);
     }
@@ -33,9 +32,9 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Battle battle = new Battle();
         Map map = battle.getMap();
+        List<Character> characters = battle.getCharacters();
 //        startBattleFX(primaryStage, map);
-        startBattleIso(primaryStage, map);
-
+        startBattleIso(primaryStage, map, characters);
     }
 
     private void startBattleFX(Stage primaryStage) throws Exception {
@@ -53,9 +52,9 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    private void startBattleIso(Stage primaryStage, Map map) throws Exception {
+    private void startBattleIso(Stage primaryStage, Map map, List<Character> characters) throws Exception {
         IsoBattleLoop isoBattleLoop = new IsoBattleLoop();
-        IsoViewController isoViewController = new IsoViewController(primaryStage, map, isoBattleLoop);
+        IsoViewController isoViewController = new IsoViewController(primaryStage, isoBattleLoop, map, characters);
         IsoViewer isoViewer = isoViewController.getIsoViewer();
         isoBattleLoop.setIsoViewer(isoViewer);
         isoBattleLoop.start();

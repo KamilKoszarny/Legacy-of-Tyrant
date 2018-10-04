@@ -10,6 +10,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.IsoBattleLoop;
+import model.character.Character;
 import model.map.Map;
 import viewIso.IsoViewer;
 
@@ -31,14 +32,14 @@ public class IsoViewController {
     private IsoBattleLoop isoBattleLoop;
     private static final int PANEL_HEIGHT = 200;
 
-    public IsoViewController(Stage primaryStage, Map map, IsoBattleLoop isoBattleLoop) throws IOException {
+    public IsoViewController(Stage primaryStage, IsoBattleLoop isoBattleLoop, Map map, List<Character> characters) throws IOException {
         this.isoBattleLoop = isoBattleLoop;
         openWindow(primaryStage);
         List<Canvas> borderCanvases = new ArrayList<>(Arrays.asList(topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
                 topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas));
-        isoViewer = new IsoViewer(map, mapCanvas);
+        isoViewer = new IsoViewer(map, mapCanvas, characters);
         new IsoMapMoveController(mapCanvas, borderCanvases, isoBattleLoop).initialize();
-        new IsoMapClickController(mapCanvas, isoBattleLoop).initialize();
+        new IsoMapClickController(mapCanvas, isoBattleLoop, characters).initialize();
     }
 
     private void openWindow(Stage primaryStage) throws IOException {

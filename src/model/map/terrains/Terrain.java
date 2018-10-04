@@ -1,4 +1,4 @@
-package model.map;
+package model.map.terrains;
 
 import javafx.scene.paint.Color;
 

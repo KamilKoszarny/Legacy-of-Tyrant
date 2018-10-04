@@ -1,7 +1,10 @@
 package model.map;
 
-import java.awt.*;
-import java.util.*;
+import model.map.buildings.BuildingGenerator;
+import model.map.heights.HeightGenerator;
+import model.map.lights.LightGenerator;
+import model.map.roads.RoadGenerator;
+import model.map.terrains.TerrainGenerator;
 
 public class MapGenerator {
 

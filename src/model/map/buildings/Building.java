@@ -1,4 +1,6 @@
-package model.map;
+package model.map.buildings;
+
+import model.map.Map;
 
 import java.awt.*;
 import java.util.ArrayList;

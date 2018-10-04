@@ -3,6 +3,7 @@
 package model.map;
 
 import javafx.scene.paint.Color;
+import model.map.terrains.Terrain;
 
 import java.awt.*;
 

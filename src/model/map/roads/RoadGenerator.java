@@ -1,4 +1,8 @@
-package model.map;
+package model.map.roads;
+
+import model.map.Map;
+import model.map.MapPiece;
+import model.map.terrains.Terrain;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,7 +21,7 @@ public class RoadGenerator {
         this.map = map;
     }
 
-    void generateRoad(){
+    public void generateRoad(){
         roadMidPoints = generateMiddleOfRoad();
         roadPoints = generateRoadByMidPoints(roadMidPoints);
         setRoadTerrain();
@@ -140,10 +144,10 @@ public class RoadGenerator {
         int avgHeight;
 
         for (Point midPoint: midPoints) {
-            width = r.nextInt((int)((15 / Map.RESOLUTION_M * Map.M_PER_PIX) + 10)) + 2;
+            width = r.nextInt((int)((15 / Map.RESOLUTION_M * Map.M_PER_POINT) + 10)) + 2;
             closePoints = pointsInRadius(midPoint, width / 2);
             roadPoints.addAll(closePoints);
-            width = (int)(15 / Map.RESOLUTION_M * Map.M_PER_PIX) + 5;
+            width = (int)(15 / Map.RESOLUTION_M * Map.M_PER_POINT) + 5;
             closePoints = pointsInRadius(midPoint, width / 2);
             avgHeight = avgHeight(closePoints);
             setHeights(avgHeight, closePoints);

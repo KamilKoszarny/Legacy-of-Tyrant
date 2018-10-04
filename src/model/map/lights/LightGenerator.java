@@ -1,7 +1,9 @@
-package model.map;
+package model.map.lights;
 
 
-import javafx.scene.paint.Color;
+import model.map.Map;
+import model.map.MapPiece;
+import model.map.heights.HeightGenerator;
 
 import java.awt.*;
 

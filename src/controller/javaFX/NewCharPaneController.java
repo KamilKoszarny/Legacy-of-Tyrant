@@ -139,7 +139,8 @@ public class NewCharPaneController {
             public void handle(ActionEvent actionEvent) {
 
                 newCharacter = new Character(nameTextField.getText(), colorComboBox.getSelectionModel().getSelectedItem(),
-                        typeComboBox.getSelectionModel().getSelectedItem(), classComboBox.getSelectionModel().getSelectedItem());
+                        typeComboBox.getSelectionModel().getSelectedItem(), classComboBox.getSelectionModel().getSelectedItem(),
+                        new Point(20, 20));
 
                 StatsCalculator.calcCharPA(newCharacter);
 
