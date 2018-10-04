@@ -11,6 +11,7 @@ import java.util.List;
 public class IsoViewer {
     private MapDrawer mapDrawer;
     private CharsDrawer charsDrawer;
+    int timeStepCount = 0;
 
     public IsoViewer(Map map, Canvas canvas, List<Character> characters) {
         mapDrawer = new MapDrawer(map, canvas);
@@ -24,8 +25,16 @@ public class IsoViewer {
         if (mapDrawer.mapOnScreen()) {
             mapDrawer.clearMapBounds();
             mapDrawer.drawMap();
+            charsDrawer.drawVisibleChars();
         } else
             mapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
+    }
+
+    public void animate() {
+        if (timeStepCount%3 == 0)
+            charsDrawer.drawVisibleChars();
+
+        timeStepCount++;
     }
 
     public MapDrawer getMapDrawer() {

@@ -37,6 +37,12 @@ public class MapDrawer {
         }
     }
 
+    public void drawMapPoints(List<Point> points) {
+        for (Point point: points) {
+            mPDrawer.drawMapPiece(point);
+        }
+    }
+
     public boolean mapOnScreen(){
         int bonus = IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
         boolean mapOnScreen = zeroScreenPosition.x < - relativeScreenPosition(new Point(0, map.getHeight())).x + bonus &&
@@ -144,7 +150,7 @@ public class MapDrawer {
                 zeroScreenPosition.y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
     }
 
-    private Point screenPositionWithHeight(Point point){
+    Point screenPositionWithHeight(Point point){
         return new Point(zeroScreenPosition.x + point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
                 zeroScreenPosition.y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2 -
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX);

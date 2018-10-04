@@ -1,7 +1,6 @@
 package model;
 
 import javafx.animation.AnimationTimer;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import model.map.MapPiece;
@@ -13,6 +12,8 @@ import java.awt.*;
 
 public class IsoBattleLoop extends AnimationTimer{
 
+    public static final int FRAME_RATE = 100;
+
     private boolean mapMoveFlag = false;
     private Point mapMove = new Point(0, 0);
     private boolean mapClickFlag = false;
@@ -21,12 +22,24 @@ public class IsoBattleLoop extends AnimationTimer{
     private boolean alertOn = false;
     private IsoViewer isoViewer;
     private MapDrawer mapDrawer;
+    int lastMs, curMs;
 
     @Override
     public void handle(long curNanoTime) {
+        animate(curNanoTime);
+
         handleMapMoving();
         handleMapClick();
     }
+
+    private void animate(long curNanoTime) {
+        curMs = (int) (curNanoTime / 1000000);
+        if(msLeft(FRAME_RATE)){
+            isoViewer.animate();
+            lastMs = curMs;
+        }
+    }
+
 
     private void handleMapMoving(){
         if (mapMoveFlag) {
@@ -82,5 +95,9 @@ public class IsoBattleLoop extends AnimationTimer{
     public void setIsoViewer(IsoViewer isoViewer) {
         this.isoViewer = isoViewer;
         mapDrawer = isoViewer.getMapDrawer();
+    }
+
+    private boolean msLeft (int ms) {
+        return curMs - ms > lastMs;
     }
 }
