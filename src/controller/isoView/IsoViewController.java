@@ -4,15 +4,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.IsoBattleLoop;
 import model.character.Character;
 import model.map.Map;
 import viewIso.IsoViewer;
+import viewIso.PanelViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -28,26 +29,33 @@ public class IsoViewController {
     @FXML
     private AnchorPane mainPane;
     @FXML
-    private HBox panel;
+    private HBox panelHBox;
     @FXML
     private VBox charBasicsVBox;
     @FXML
-    private Label charName, charType, chatClass;
-    private List<Label> charLabels = Arrays.asList(charName, charType, chatClass);
+    private javafx.scene.control.Label name, type, charClass;
 
     private static final int PANEL_HEIGHT = 200;
 
     private IsoViewer isoViewer;
+    private PanelViewer panelViewer;
     private IsoBattleLoop isoBattleLoop;
 
     public IsoViewController(Stage primaryStage, IsoBattleLoop isoBattleLoop, Map map, List<Character> characters) throws IOException {
         this.isoBattleLoop = isoBattleLoop;
         openWindow(primaryStage);
+
         List<Canvas> borderCanvases = new ArrayList<>(Arrays.asList(topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
                 topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas));
+        List<Label> charLabels = Arrays.asList(name, type, charClass);
+        Panel panel = new Panel(charLabels);
+
         isoViewer = new IsoViewer(map, mapCanvas, characters);
-        new IsoMapMoveController(mapCanvas, borderCanvases, panel, isoBattleLoop).initialize();
-        new IsoMapClickController(mapCanvas, charLabels, isoBattleLoop, characters).initialize();
+        panelViewer = new PanelViewer(panel, characters);
+
+        new IsoMapMoveController(mapCanvas, borderCanvases, panelHBox, isoBattleLoop).initialize();
+        new IsoMapClickController(mapCanvas, isoBattleLoop, characters).initialize();
+        new PanelController(panel).initialize();
     }
 
     private void openWindow(Stage primaryStage) throws IOException {
@@ -70,11 +78,11 @@ public class IsoViewController {
         mapCanvas.setWidth(screenSize.width);
         mapCanvas.setHeight(screenSize.height - PANEL_HEIGHT);
 
-        panel.setLayoutX(0);
-        panel.setLayoutY(screenSize.height - PANEL_HEIGHT);
-        panel.setPrefWidth(screenSize.width);
-        panel.setPrefHeight(PANEL_HEIGHT);
-        panel.setBorder(new Border(new BorderStroke(Color.BROWN,
+        panelHBox.setLayoutX(0);
+        panelHBox.setLayoutY(screenSize.height - PANEL_HEIGHT);
+        panelHBox.setPrefWidth(screenSize.width);
+        panelHBox.setPrefHeight(PANEL_HEIGHT);
+        panelHBox.setBorder(new Border(new BorderStroke(Color.BROWN,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
 
         primaryStage.show();
@@ -89,7 +97,7 @@ public class IsoViewController {
         return isoViewer;
     }
 
-    public HBox getPanel() {
-        return panel;
+    public PanelViewer getPanelViewer() {
+        return panelViewer;
     }
 }

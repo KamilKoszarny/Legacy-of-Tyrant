@@ -16,8 +16,8 @@ import java.util.List;
 
 public class Battle {
 
-    Map map;
-    List<Character> characters;
+    private Map map;
+    private List<Character> characters;
 
     public Battle() {
         initMap();
@@ -66,5 +66,12 @@ public class Battle {
 
     public List<Character> getCharacters() {
         return characters;
+    }
+
+    public void chooseCharacter(Character clickedCharacter) {
+        for (Character character: characters) {
+            character.setChosen(false);
+        }
+        clickedCharacter.setChosen(true);
     }
 }

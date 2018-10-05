@@ -24,6 +24,7 @@ public class CharsDrawer {
     private GraphicsContext gc;
     MapDrawer mapDrawer;
     private List<Character> characters;
+    private Character clickedCharacter;
     private java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
 
     public CharsDrawer(Map map, Canvas canvas, MapDrawer mapDrawer, List<Character> characters) {
@@ -37,9 +38,18 @@ public class CharsDrawer {
         drawChars(characters);
     }
 
-//    public boolean isCharClicked() {
-//
-//    }
+    public boolean isCharClicked(Point clickPoint) {
+        for (Character character: characters) {
+            Point charScreenPos = mapDrawer.screenPositionWithHeight(character.getPosition());
+            Rectangle clickBox = new Rectangle(charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
+                    SPRITE_SIZE.width, SPRITE_SIZE.height);
+            if (clickBox.contains(clickPoint)){
+                clickedCharacter = character;
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void drawAllChars() {
         drawChars(characters);
@@ -115,5 +125,9 @@ public class CharsDrawer {
             }
         }
         return charClosePoints;
+    }
+
+    public Character getClickedCharacter() {
+        return clickedCharacter;
     }
 }

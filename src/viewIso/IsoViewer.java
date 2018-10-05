@@ -11,7 +11,7 @@ import java.util.List;
 public class IsoViewer {
     private MapDrawer mapDrawer;
     private CharsDrawer charsDrawer;
-    int timeStepCount = 0;
+    private int timeStepCount = 0;
 
     public IsoViewer(Map map, Canvas canvas, List<Character> characters) {
         mapDrawer = new MapDrawer(map, canvas);

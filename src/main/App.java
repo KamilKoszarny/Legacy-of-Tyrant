@@ -13,6 +13,7 @@ import model.character.Character;
 import model.map.Map;
 import sun.misc.Unsafe;
 import viewIso.IsoViewer;
+import viewIso.PanelViewer;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -33,7 +34,7 @@ public class App extends Application {
         Map map = battle.getMap();
         List<Character> characters = battle.getCharacters();
 //        startBattleFX(primaryStage, map);
-        startBattleIso(primaryStage, map, characters);
+        startBattleIso(battle, primaryStage, map, characters);
     }
 
     private void startBattleFX(Stage primaryStage) throws Exception {
@@ -51,11 +52,12 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    private void startBattleIso(Stage primaryStage, Map map, List<Character> characters) throws Exception {
-        IsoBattleLoop isoBattleLoop = new IsoBattleLoop();
+    private void startBattleIso(Battle battle, Stage primaryStage, Map map, List<Character> characters) throws Exception {
+        IsoBattleLoop isoBattleLoop = new IsoBattleLoop(battle);
         IsoViewController isoViewController = new IsoViewController(primaryStage, isoBattleLoop, map, characters);
         IsoViewer isoViewer = isoViewController.getIsoViewer();
-        isoBattleLoop.setIsoViewerAndDrawers(isoViewer);
+        PanelViewer panelViewer = isoViewController.getPanelViewer();
+        isoBattleLoop.setViewersAndDrawers(isoViewer, panelViewer);
         isoBattleLoop.start();
     }
 
