@@ -16,7 +16,6 @@ public class CharDescriptor {
     public CharDescriptor(List<Label> charBasicLabels, List<Character> characters) {
         this.charBasicLabels = charBasicLabels;
         this.characters = characters;
-        characters.get(0).setChosen(true);
     }
 
     void refresh() {

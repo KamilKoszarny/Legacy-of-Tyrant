@@ -2,6 +2,7 @@ package controller.isoView;
 
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import model.IsoBattleLoop;
 import model.character.Character;
@@ -21,15 +22,20 @@ public class IsoMapClickController {
     }
 
     void initialize(){
-        initInfoOnClick();
+        initCanvasClick();
     }
 
-    private void initInfoOnClick(){
+    private void initCanvasClick(){
         mapCanvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                isoBattleLoop.setCanvasClickPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
-                isoBattleLoop.setCanvasClickFlag(true);
+                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                    isoBattleLoop.setCanvasLClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+                    isoBattleLoop.setCanvasLClickFlag(true);
+                } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
+                    isoBattleLoop.setCanvasRClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+                    isoBattleLoop.setCanvasRClickFlag(true);
+                }
             }
         });
     }

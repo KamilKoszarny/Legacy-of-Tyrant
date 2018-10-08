@@ -5,6 +5,7 @@ import model.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
 import model.character.CharacterType;
+import model.character.movement.CharTurner;
 import model.map.*;
 import model.map.heights.MapHeightType;
 import model.weapon.Weapon;
@@ -18,6 +19,7 @@ public class Battle {
 
     private Map map;
     private List<Character> characters;
+    private Character chosenCharacter;
 
     public Battle() {
         initMap();
@@ -73,5 +75,14 @@ public class Battle {
             character.setChosen(false);
         }
         clickedCharacter.setChosen(true);
+        chosenCharacter = clickedCharacter;
+    }
+
+    public void turnCharacter(Point turnPoint) {
+        CharTurner.turnCharacter(chosenCharacter, turnPoint);
+    }
+
+    public Character getChosenCharacter() {
+        return chosenCharacter;
     }
 }

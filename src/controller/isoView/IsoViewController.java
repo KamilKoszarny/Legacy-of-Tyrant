@@ -55,6 +55,7 @@ public class IsoViewController {
 
         new IsoMapMoveController(mapCanvas, borderCanvases, panelHBox, isoBattleLoop).initialize();
         new IsoMapClickController(mapCanvas, isoBattleLoop, characters).initialize();
+        new IsoMapHoverController(mapCanvas, isoBattleLoop, characters).initialize();
         new PanelController(panel).initialize();
     }
 
@@ -90,7 +91,6 @@ public class IsoViewController {
 
     @FXML
     void initialize(){
-
     }
 
     public IsoViewer getIsoViewer() {

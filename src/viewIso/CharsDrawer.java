@@ -2,9 +2,14 @@ package viewIso;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import model.character.Character;
+import model.character.movement.CharTurner;
 import model.map.Map;
+import sun.font.FontFamily;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -25,7 +30,9 @@ public class CharsDrawer {
     MapDrawer mapDrawer;
     private List<Character> characters;
     private Character clickedCharacter;
+    private Character hoverCharacter;
     private java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
+    private java.util.Map<Character, Label> charLabelsMap = new HashMap<>();
 
     public CharsDrawer(Map map, Canvas canvas, MapDrawer mapDrawer, List<Character> characters) {
         this.map = map;
@@ -35,14 +42,13 @@ public class CharsDrawer {
         this.characters = characters;
 
         initCharSpriteMap();
+        initCharLabelsMap();
         drawChars(characters);
     }
 
     public boolean isCharClicked(Point clickPoint) {
         for (Character character: characters) {
-            Point charScreenPos = mapDrawer.screenPositionWithHeight(character.getPosition());
-            Rectangle clickBox = new Rectangle(charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
-                    SPRITE_SIZE.width, SPRITE_SIZE.height);
+            Rectangle clickBox = calcClickBox(character);
             if (clickBox.contains(clickPoint)){
                 clickedCharacter = character;
                 return true;
@@ -93,6 +99,8 @@ public class CharsDrawer {
                 charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
                 SPRITE_SIZE.width, SPRITE_SIZE.height);
 
+        drawLabel(character, charScreenPos);
+
         charSprite.nextFrame();
     }
 
@@ -101,10 +109,37 @@ public class CharsDrawer {
         mapDrawer.drawMapPoints(charClosePoints);
     }
 
+    private void drawLabel(Character character, Point charScreenPos) {
+        Label label = charLabelsMap.get(character);
+
+        if (character.isChosen())
+            label.setStyle("-fx-font-weight: bold");
+        else if(character == hoverCharacter)
+            label.setStyle("-fx-underline: true");
+        else
+            label.setStyle("-fx-font-weight: regular");
+
+        label.setTranslateX(charScreenPos.x - canvas.getWidth()/2);
+        label.setTranslateY(charScreenPos.y - SPRITE_SIZE.height * (.6) - canvas.getHeight()/2);
+    }
+
     private void initCharSpriteMap() {
         for (Character character: characters) {
             CharSprite sprite = chooseSpriteSheet(character);
             charSpriteSheetMap.put(character, sprite);
+        }
+    }
+
+    private void initCharLabelsMap() {
+        for (Character character: characters) {
+            Label label = new Label(character.getName().toUpperCase());
+            label.setFont(new Font("SansSerif", 20));
+            charLabelsMap.put(character, label);
+
+            Pane pane = (Pane) canvas.getParent();
+            pane.getChildren().add(label);
+
+            label.setVisible(true);
         }
     }
 
@@ -129,5 +164,19 @@ public class CharsDrawer {
 
     public Character getClickedCharacter() {
         return clickedCharacter;
+    }
+
+    public void checkHoverCharacter(Point hoverPoint){
+        hoverCharacter = null;
+        for (Character character: characters) {
+            if(calcClickBox(character).contains(hoverPoint))
+                hoverCharacter = character;
+        }
+    }
+
+    private Rectangle calcClickBox(Character character) {
+        Point charScreenPos = mapDrawer.screenPositionWithHeight(character.getPosition());
+        return new Rectangle(charScreenPos.x - SPRITE_BASE.width/2, charScreenPos.y - SPRITE_BASE.height*2/3,
+                SPRITE_SIZE.width/2, SPRITE_SIZE.height*2/3);
     }
 }

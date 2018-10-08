@@ -15,8 +15,8 @@ import java.util.List;
 public class MapDrawer {
 
     private static final Color BACKGROUND_COLOR = Color.BLACK;
-    private final int MAP_PIECE_SCREEN_SIZE_X = 24;
-    private final int MAP_PIECE_SCREEN_SIZE_Y = 16;
+    private static final int MAP_PIECE_SCREEN_SIZE_X = 24;
+    private static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
 
     private Point zeroScreenPosition = new Point(600, -100);
     private Map map;
@@ -129,6 +129,15 @@ public class MapDrawer {
         this.zeroScreenPosition.y += zSPChange.y * MAP_PIECE_SCREEN_SIZE_Y;
     }
 
+    public Point mapPointByClickPoint(Point clickPoint) {
+        MapPiece clickedMapPiece = mapPieceByClickPoint(clickPoint);
+        for (Point point: map.getPoints().keySet()) {
+            if (map.getPoints().get(point) == clickedMapPiece)
+                return point;
+        }
+        return null;
+    }
+
     public MapPiece mapPieceByClickPoint(Point clickPoint) {
         List<MapPiece> suspectedMapPieces = new ArrayList<>();
         for (Point point: map.getPoints().keySet()) {
@@ -183,5 +192,13 @@ public class MapDrawer {
 
     public Map getMap() {
         return map;
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
+    }
+
+    public MapPieceDrawer getmPDrawer() {
+        return mPDrawer;
     }
 }

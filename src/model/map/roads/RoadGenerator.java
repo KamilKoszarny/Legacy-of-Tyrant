@@ -27,6 +27,7 @@ public class RoadGenerator {
         setRoadTerrain();
     }
 
+
     private java.util.List<Point> generateMiddleOfRoad(){
         //N, E, S, W
         boolean[] sides = map.getRoadSides();
@@ -134,6 +135,7 @@ public class RoadGenerator {
 
         return currentPoint;
     }
+
 
     private java.util.List<Point> generateRoadByMidPoints(java.util.List<Point> midPoints){
         List<Point> roadPoints = new ArrayList<>();

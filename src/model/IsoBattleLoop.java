@@ -10,19 +10,24 @@ import java.awt.*;
 
 public class IsoBattleLoop extends AnimationTimer{
 
-    public static final int FRAME_RATE = 100;
+    public static final int FRAME_RATE = 50;
 
     private Battle battle;
     private boolean mapMoveFlag = false;
     private Point mapMove = new Point(0, 0);
-    private boolean canvasClickFlag = false;
-    private Point canvasClickPoint;
+    private boolean canvasLClickFlag = false;
+    private Point canvasLClickPoint;
+    private boolean canvasRClickFlag = false;
+    private Point canvasRClickPoint;
+    private boolean canvasHoverFlag = false;
+    private Point canvasHoverPoint = new Point(0, 0);
     private Alert alert;
     private boolean alertOn = false;
     private IsoViewer isoViewer;
     private PanelViewer panelViewer;
     private MapDrawer mapDrawer;
     private CharsDrawer charsDrawer;
+    private ClickMenusDrawer clickMenusDrawer;
     private int lastMs, curMs;
 
     public IsoBattleLoop(Battle battle) {
@@ -33,8 +38,14 @@ public class IsoBattleLoop extends AnimationTimer{
     public void handle(long curNanoTime) {
         animate(curNanoTime);
 
-        handleMapMoving();
-        handleCanvasClick();
+        if (mapMoveFlag)
+            handleMapMoving();
+        if (canvasLClickFlag)
+            handleCanvasLClick();
+        if (canvasRClickFlag)
+            handleCanvasRClick();
+        if (canvasHoverFlag)
+            handleCanvasHover();
     }
 
     private void animate(long curNanoTime) {
@@ -53,15 +64,30 @@ public class IsoBattleLoop extends AnimationTimer{
         }
     }
 
-    private void handleCanvasClick(){
-        if (canvasClickFlag) {
-            if (charsDrawer.isCharClicked(canvasClickPoint)) {
-                battle.chooseCharacter(charsDrawer.getClickedCharacter());
-                canvasClickFlag = false;
-            }
-            else
-                showMapPieceInfo();
+    private void handleCanvasLClick(){
+        if (charsDrawer.isCharClicked(canvasLClickPoint)) {
+            battle.chooseCharacter(charsDrawer.getClickedCharacter());
+            canvasLClickFlag = false;
         }
+        else {
+            Point clickedMapPoint = mapDrawer.mapPointByClickPoint(canvasLClickPoint);
+            if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
+                clickMenusDrawer.drawChar2PointMenu(canvasLClickPoint);
+                battle.turnCharacter(clickedMapPoint);
+            }
+            canvasLClickFlag = false;
+        }
+    }
+
+    private void handleCanvasRClick(){
+        MapPiece clickedMapPiece = mapDrawer.mapPieceByClickPoint(canvasRClickPoint);
+        if (clickedMapPiece != null)
+            showMapPieceInfo(clickedMapPiece);
+    }
+
+    private void handleCanvasHover() {
+        charsDrawer.checkHoverCharacter(canvasHoverPoint);
+        canvasHoverFlag = false;
     }
 
     public void setMapMoveFlag(boolean mapMoveFlag) {
@@ -78,12 +104,28 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
 
-    public void setCanvasClickFlag(boolean canvasClickFlag) {
-        this.canvasClickFlag = canvasClickFlag;
+    public void setCanvasLClickFlag(boolean canvasLClickFlag) {
+        this.canvasLClickFlag = canvasLClickFlag;
     }
 
-    public void setCanvasClickPoint(Point canvasClickPoint) {
-        this.canvasClickPoint = canvasClickPoint;
+    public void setCanvasLClickPoint(Point canvasLClickPoint) {
+        this.canvasLClickPoint = canvasLClickPoint;
+    }
+
+    public void setCanvasRClickFlag(boolean canvasRClickFlag) {
+        this.canvasRClickFlag = canvasRClickFlag;
+    }
+
+    public void setCanvasRClickPoint(Point canvasRClickPoint) {
+        this.canvasRClickPoint = canvasRClickPoint;
+    }
+
+    public void setCanvasHoverFlag(boolean canvasHoverFlag) {
+        this.canvasHoverFlag = canvasHoverFlag;
+    }
+
+    public void setCanvasHoverPoint(Point canvasHoverPoint) {
+        this.canvasHoverPoint = canvasHoverPoint;
     }
 
     public void setViewersAndDrawers(IsoViewer isoViewer, PanelViewer panelViewer) {
@@ -91,16 +133,16 @@ public class IsoBattleLoop extends AnimationTimer{
         this.panelViewer = panelViewer;
         mapDrawer = isoViewer.getMapDrawer();
         charsDrawer = isoViewer.getCharsDrawer();
+        clickMenusDrawer = isoViewer.getClickMenusDrawer();
     }
 
     private boolean msLeft (int ms) {
         return curMs - ms > lastMs;
     }
 
-    private void showMapPieceInfo() {
+    private void showMapPieceInfo(MapPiece clickedMapPiece) {
         if (!alertOn) {
             this.stop();
-            MapPiece clickedMapPiece = mapDrawer.mapPieceByClickPoint(canvasClickPoint);
             Point clickedPoint = new Point();
             for (Point point: mapDrawer.getMap().getPoints().keySet()) {
                 if (mapDrawer.getMap().getPoints().get(point) == clickedMapPiece)
@@ -111,7 +153,7 @@ public class IsoBattleLoop extends AnimationTimer{
             alertOn = true;
         } else if (alert.getResult() == ButtonType.OK) {
             System.out.println("OK");
-            canvasClickFlag = false;
+            canvasRClickFlag = false;
             alertOn = false;
             alert.setResult(null);
         }
