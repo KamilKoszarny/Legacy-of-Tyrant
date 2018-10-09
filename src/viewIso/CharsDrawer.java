@@ -145,10 +145,7 @@ public class CharsDrawer {
 
 
     private CharSprite chooseSpriteSheet(Character character) {
-        CharSprite charSprite = null;
-        charSprite = new CharSprite(new Image("/sprites/flare/demo/vesuvvio.png"));
-
-        return charSprite;
+        return new CharSprite(new Image("/sprites/flare/demo/vesuvvio.png"));
     }
 
     private List<Point> calcCharClosePoints (Character character) {
