@@ -1,5 +1,6 @@
 package model.character;
 
+import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import model.armor.Armor;
 import model.weapon.Weapon;
@@ -28,7 +29,11 @@ public class Character {
 
     private CharState state = CharState.IDLE;
     private Point position;
+    private Point2D precisePosition;
     private int direction;
+    private double moveDirection;
+    private double currentSpeed;
+    private Point destination;
     private int msLeft = 0;
 
     private boolean chosen = false;
@@ -49,6 +54,7 @@ public class Character {
         this.type = type;
         this.charClass = charClass;
         this.position =  position;
+        precisePosition = new Point2D(position.x, position.y);
         this.direction = direction;
     }
 
@@ -95,11 +101,16 @@ public class Character {
     }
 
     public Point getPosition() {
-        return position;
+        return new Point(Math.round(Math.round(precisePosition.getX())), Math.round(Math.round(precisePosition.getY())));
     }
 
     public void setPosition(Point position) {
         this.position = position;
+        precisePosition = new Point2D(position.x, position.y);
+    }
+
+    public Point2D getPrecisePosition() {
+        return precisePosition;
     }
 
     public int getDirection() {
@@ -108,6 +119,30 @@ public class Character {
 
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    public double getMoveDirection() {
+        return moveDirection;
+    }
+
+    public void setMoveDirection(double moveDirection) {
+        this.moveDirection = moveDirection;
+    }
+
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    public void setCurrentSpeed(double currentSpeed) {
+        this.currentSpeed = currentSpeed;
+    }
+
+    public Point getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Point destination) {
+        this.destination = destination;
     }
 
     public boolean isChosen() {

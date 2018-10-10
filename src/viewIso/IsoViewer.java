@@ -28,6 +28,7 @@ public class IsoViewer {
             mapDrawer.clearMapBounds();
             mapDrawer.drawMap();
             charsDrawer.drawVisibleChars();
+            clickMenusDrawer.moveMenus(mapMove);
         } else
             mapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
     }

@@ -3,7 +3,8 @@ package model.character;
 import viewIso.CharPose;
 
 public enum CharState {
-    IDLE(CharPose.IDLE);
+    IDLE(CharPose.IDLE),
+    RUN(CharPose.RUN);
 
     private CharPose pose;
 

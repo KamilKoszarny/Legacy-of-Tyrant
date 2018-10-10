@@ -1,7 +1,8 @@
 package viewIso;
 
 public enum CharPose {
-    IDLE(0, 4, true);
+    IDLE(0, 4, true),
+    RUN(4, 8, false);
 
     private int startFrame, framesCount;
     private boolean reversible;

@@ -15,8 +15,8 @@ import java.util.List;
 public class MapDrawer {
 
     private static final Color BACKGROUND_COLOR = Color.BLACK;
-    private static final int MAP_PIECE_SCREEN_SIZE_X = 24;
-    private static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
+    static final int MAP_PIECE_SCREEN_SIZE_X = 24;
+    static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
 
     private Point zeroScreenPosition = new Point(600, -100);
     private Map map;

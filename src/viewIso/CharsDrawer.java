@@ -119,8 +119,8 @@ public class CharsDrawer {
         else
             label.setStyle("-fx-font-weight: regular");
 
-        label.setTranslateX(charScreenPos.x - canvas.getWidth()/2);
-        label.setTranslateY(charScreenPos.y - SPRITE_SIZE.height * (.6) - canvas.getHeight()/2);
+        label.setTranslateX(charScreenPos.x - label.getWidth()/2);
+        label.setTranslateY(charScreenPos.y - SPRITE_SIZE.height * (.6));
     }
 
     private void initCharSpriteMap() {

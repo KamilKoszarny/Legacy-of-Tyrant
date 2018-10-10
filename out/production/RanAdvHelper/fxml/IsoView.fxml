@@ -10,11 +10,11 @@
 
 <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1930.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: black;">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
          <children>
             <Canvas fx:id="mapCanvas" height="768.0" width="1366.0" />
          </children>
-      </StackPane>
+      </AnchorPane>
       <HBox fx:id="panelHBox" layoutX="53.0" layoutY="1716.0" prefHeight="100.0" prefWidth="200.0">
          <children>
             <VBox fx:id="minimapVBox" prefHeight="200.0" prefWidth="100.0" />

@@ -9,6 +9,7 @@ import model.map.Map;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ClickMenusDrawer {
@@ -30,12 +31,34 @@ public class ClickMenusDrawer {
         initChar2PointMenu();
     }
 
-    public void initChar2PointMenu() {
-        char2PointMenu = new ArrayList<>();
-        char2PointMenu.add(new ClickMenuButton("Look", "look"));
-        char2PointMenu.add(new ClickMenuButton("Walk", "walk"));
-        char2PointMenu.add(new ClickMenuButton("Run", "run"));
-        char2PointMenu.add(new ClickMenuButton("Sneak", "sneak"));
+    public void drawChar2PointMenu(Point clickPoint) {
+        for (ClickMenuButton button: char2PointMenu) {
+            drawButton(button, clickPoint);
+        }
+    }
+
+    public void hideChar2PointMenu() {
+        for (ClickMenuButton button: char2PointMenu) {
+            hideButton(button);
+        }
+    }
+
+    public void moveMenus(Point mapMove) {
+        for (ClickMenuButton button: char2PointMenu) {
+            moveButton(button, mapMove);
+        }
+    }
+
+    public ClickMenuButton clickedButton () {
+        for (ClickMenuButton button: ClickMenuButton.values()) {
+            if (button.wasClicked())
+                return button;
+        }
+        return null;
+    }
+
+    private void initChar2PointMenu() {
+        char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
 
         ClickMenuButton.groupButtons(char2PointMenu);
         ClickMenuButton.shapeButtons(char2PointMenu);
@@ -49,24 +72,37 @@ public class ClickMenusDrawer {
         }
     }
 
-    public void drawChar2PointMenu(Point clickPoint) {
-        for (ClickMenuButton button: char2PointMenu) {
-            drawButton(button, clickPoint);
-        }
-    }
+
 
     private void drawButton(ClickMenuButton button, Point clickPoint) {
         Shape shape = button.getShape();
-        shape.setTranslateX(clickPoint.x - canvas.getWidth()/2 + ClickMenuButton.RADIUS_OUT/2);
-        shape.setTranslateY(clickPoint.y - canvas.getHeight()/2 + ClickMenuButton.RADIUS_OUT/2);
+        shape.setTranslateX(clickPoint.x);
+        shape.setTranslateY(clickPoint.y);
         shape.setVisible(true);
 
         Label label = button.getLabel();
-        label.setTranslateX(button.getLabelVertex().x + clickPoint.x - canvas.getWidth()/2);
-        label.setTranslateY(button.getLabelVertex().y + clickPoint.y - canvas.getHeight()/2);
+        label.setTranslateX(button.getLabelVertex().x + clickPoint.x);
+        label.setTranslateY(button.getLabelVertex().y + clickPoint.y);
         label.toFront();
 
-        System.out.println(label.getTranslateX());
         label.setVisible(true);
+    }
+
+    private void hideButton(ClickMenuButton button) {
+        Shape shape = button.getShape();
+        shape.setVisible(false);
+
+        Label label = button.getLabel();
+        label.setVisible(false);
+    }
+
+    private void moveButton(ClickMenuButton button, Point mapMove) {
+        Shape shape = button.getShape();
+        shape.setTranslateX(shape.getTranslateX() + mapMove.x * MapDrawer.MAP_PIECE_SCREEN_SIZE_X);
+        shape.setTranslateY(shape.getTranslateY() + mapMove.y * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y);
+
+        Label label = button.getLabel();
+        label.setTranslateX(label.getTranslateX() + mapMove.x * MapDrawer.MAP_PIECE_SCREEN_SIZE_X);
+        label.setTranslateY(label.getTranslateY() + mapMove.y * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y);
     }
 }

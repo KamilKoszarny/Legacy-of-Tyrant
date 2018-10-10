@@ -5,6 +5,7 @@ import model.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
 import model.character.CharacterType;
+import model.character.movement.CharMover;
 import model.character.movement.CharTurner;
 import model.map.*;
 import model.map.heights.MapHeightType;
@@ -80,6 +81,16 @@ public class Battle {
 
     public void turnCharacter(Point turnPoint) {
         CharTurner.turnCharacter(chosenCharacter, turnPoint);
+    }
+
+    public void startRunCharacter(Point runPoint) {
+        CharMover.startRunCharacter(chosenCharacter, runPoint);
+    }
+
+    public void updateCharactersMove(int ms) {
+        for (Character character: characters) {
+            CharMover.updateCharacterMove(character, ms);
+        }
     }
 
     public Character getChosenCharacter() {

@@ -3,6 +3,7 @@ package model;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import model.character.Character;
 import model.map.MapPiece;
 import viewIso.*;
 
@@ -21,6 +22,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private Point canvasRClickPoint;
     private boolean canvasHoverFlag = false;
     private Point canvasHoverPoint = new Point(0, 0);
+    Point clickedMapPoint;
     private Alert alert;
     private boolean alertOn = false;
     private IsoViewer isoViewer;
@@ -46,11 +48,15 @@ public class IsoBattleLoop extends AnimationTimer{
             handleCanvasRClick();
         if (canvasHoverFlag)
             handleCanvasHover();
+        ClickMenuButton clickedButton = clickMenusDrawer.clickedButton();
+        if (clickedButton != null)
+            handleButtonAction(clickedButton);
     }
 
     private void animate(long curNanoTime) {
         curMs = (int) (curNanoTime / 1000000);
         if(msLeft(FRAME_RATE)){
+            battle.updateCharactersMove(FRAME_RATE);
             isoViewer.animate();
             panelViewer.refresh();
             lastMs = curMs;
@@ -70,10 +76,9 @@ public class IsoBattleLoop extends AnimationTimer{
             canvasLClickFlag = false;
         }
         else {
-            Point clickedMapPoint = mapDrawer.mapPointByClickPoint(canvasLClickPoint);
+            clickedMapPoint = mapDrawer.mapPointByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
                 clickMenusDrawer.drawChar2PointMenu(canvasLClickPoint);
-                battle.turnCharacter(clickedMapPoint);
             }
             canvasLClickFlag = false;
         }
@@ -88,6 +93,16 @@ public class IsoBattleLoop extends AnimationTimer{
     private void handleCanvasHover() {
         charsDrawer.checkHoverCharacter(canvasHoverPoint);
         canvasHoverFlag = false;
+    }
+
+    private void handleButtonAction(ClickMenuButton button) {
+        if (button == ClickMenuButton.LOOK)
+            battle.turnCharacter(clickedMapPoint);
+        if (button == ClickMenuButton.RUN)
+            battle.startRunCharacter(clickedMapPoint);
+
+
+        clickMenusDrawer.hideChar2PointMenu();
     }
 
     public void setMapMoveFlag(boolean mapMoveFlag) {
@@ -152,7 +167,6 @@ public class IsoBattleLoop extends AnimationTimer{
             alert = new MapPieceInfo(clickedMapPiece, clickedPoint);
             alertOn = true;
         } else if (alert.getResult() == ButtonType.OK) {
-            System.out.println("OK");
             canvasRClickFlag = false;
             alertOn = false;
             alert.setResult(null);
