@@ -7,12 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import model.character.Character;
-import model.character.movement.CharTurner;
 import model.map.Map;
-import sun.font.FontFamily;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,11 +26,11 @@ public class CharsDrawer {
     private Map map;
     private Canvas canvas;
     private GraphicsContext gc;
-    MapDrawer mapDrawer;
+    private MapDrawer mapDrawer;
     private List<Character> characters;
     private Character clickedCharacter;
     private Character hoverCharacter;
-    private java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
+    private static java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
     private java.util.Map<Character, Label> charLabelsMap = new HashMap<>();
 
     public CharsDrawer(Map map, Canvas canvas, MapDrawer mapDrawer, List<Character> characters) {
@@ -75,18 +74,20 @@ public class CharsDrawer {
     public void drawChars(List<Character> characters) {
         List<Point> visiblePoints = mapDrawer.calcVisiblePoints();
         for (Character character: characters) {
+            clearCharProximity(character);
+        }
+
+        List<Character> charactersInDrawOrder = new ArrayList<>(characters);
+        charactersInDrawOrder.sort(Comparator.comparingInt(c -> c.getPosition().x + c.getPosition().y));
+        for (Character character: charactersInDrawOrder) {
             if (visiblePoints.contains(character.getPosition()))
                 drawChar(character);
         }
     }
 
 
-
     public void drawChar(Character character) {
-
-        clearCharProximity(character);
-
-        Point charScreenPos = mapDrawer.screenPositionWithHeight(character.getPosition());
+        Point charScreenPos = mapDrawer.screenPositionWithHeight(character.getPrecisePosition());
         CharSprite charSprite = charSpriteSheetMap.get(character);
         Image spriteSheet = charSprite.getCharSpriteSheet();
         charSprite.setCharPose(character.getState().getPose());
@@ -100,7 +101,10 @@ public class CharsDrawer {
                 SPRITE_SIZE.width, SPRITE_SIZE.height);
 
         drawLabel(character, charScreenPos);
+    }
 
+    public static void nextFrame(Character character) {
+        CharSprite charSprite = charSpriteSheetMap.get(character);
         charSprite.nextFrame();
     }
 
@@ -151,9 +155,12 @@ public class CharsDrawer {
     private List<Point> calcCharClosePoints (Character character) {
         Point charPos = character.getPosition();
         List<Point> charClosePoints = new ArrayList<>();
-        for (int x = -4; x < 5; x++) {
-            for (int y = -4; y < 5; y++) {
-                charClosePoints.add(new Point(charPos.x + x, charPos.y + y));
+        final int RADIUS = 6;
+        for (int x = -RADIUS; x <= RADIUS; x++) {
+            for (int y = -RADIUS; y <= RADIUS; y++) {
+                Point point = new Point(charPos.x + x, charPos.y + y);
+                if (mapDrawer.isOnMap(point))
+                    charClosePoints.add(point);
             }
         }
         return charClosePoints;

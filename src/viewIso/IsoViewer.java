@@ -33,11 +33,8 @@ public class IsoViewer {
             mapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
     }
 
-    public void animate() {
-        if (timeStepCount%5 == 0)
-            charsDrawer.drawVisibleChars();
-
-        timeStepCount++;
+    public void draw(int ms) {
+        charsDrawer.drawVisibleChars();
     }
 
     public MapDrawer getMapDrawer() {

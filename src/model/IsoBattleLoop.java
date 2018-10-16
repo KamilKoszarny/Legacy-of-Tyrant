@@ -3,7 +3,6 @@ package model;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import model.character.Character;
 import model.map.MapPiece;
 import viewIso.*;
 
@@ -22,7 +21,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private Point canvasRClickPoint;
     private boolean canvasHoverFlag = false;
     private Point canvasHoverPoint = new Point(0, 0);
-    Point clickedMapPoint;
+    private Point clickedMapPoint;
     private Alert alert;
     private boolean alertOn = false;
     private IsoViewer isoViewer;
@@ -56,10 +55,12 @@ public class IsoBattleLoop extends AnimationTimer{
     private void animate(long curNanoTime) {
         curMs = (int) (curNanoTime / 1000000);
         if(msLeft(FRAME_RATE)){
-            battle.updateCharactersMove(FRAME_RATE);
-            isoViewer.animate();
+            System.out.println(curMs);
+            battle.updateCharactersLook(FRAME_RATE);
+            isoViewer.draw(FRAME_RATE);
             panelViewer.refresh();
             lastMs = curMs;
+            battle.incrementTimer();
         }
     }
 

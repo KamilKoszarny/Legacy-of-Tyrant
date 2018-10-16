@@ -10,6 +10,7 @@ import model.character.movement.CharTurner;
 import model.map.*;
 import model.map.heights.MapHeightType;
 import model.weapon.Weapon;
+import viewIso.CharsDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Battle {
     private Map map;
     private List<Character> characters;
     private Character chosenCharacter;
+    private int timer = 0;
 
     public Battle() {
         initMap();
@@ -87,13 +89,21 @@ public class Battle {
         CharMover.startRunCharacter(chosenCharacter, runPoint);
     }
 
-    public void updateCharactersMove(int ms) {
+    public void updateCharactersLook(int ms) {
         for (Character character: characters) {
-            CharMover.updateCharacterMove(character, ms);
+            if (character.getDestination() != null)
+                CharMover.updateCharacterMove(character, ms);
+            else if (timer%3 == 0) {
+                CharsDrawer.nextFrame(character);
+            }
         }
     }
 
     public Character getChosenCharacter() {
         return chosenCharacter;
+    }
+
+    public void incrementTimer() {
+        timer++;
     }
 }

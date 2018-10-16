@@ -4,16 +4,16 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import model.armor.Armor;
 import model.weapon.Weapon;
+import viewIso.Sprite;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
 import java.util.Locale;
 
-public class Character {
+public class Character implements Sprite {
 
     private String name;
     private Color color;
@@ -28,10 +28,8 @@ public class Character {
     private int chosenWeapon = 0;
 
     private CharState state = CharState.IDLE;
-    private Point position;
     private Point2D precisePosition;
-    private int direction;
-    private double moveDirection;
+    private double direction;
     private double currentSpeed;
     private Point destination;
     private int msLeft = 0;
@@ -53,7 +51,6 @@ public class Character {
         this.color = color;
         this.type = type;
         this.charClass = charClass;
-        this.position =  position;
         precisePosition = new Point2D(position.x, position.y);
         this.direction = direction;
     }
@@ -105,8 +102,11 @@ public class Character {
     }
 
     public void setPosition(Point position) {
-        this.position = position;
         precisePosition = new Point2D(position.x, position.y);
+    }
+
+    public void setPosition(Point2D position) {
+        precisePosition = position;
     }
 
     public Point2D getPrecisePosition() {
@@ -114,19 +114,19 @@ public class Character {
     }
 
     public int getDirection() {
-        return direction;
+        return Math.round(Math.round(direction));
     }
 
     public void setDirection(int direction) {
         this.direction = direction;
     }
 
-    public double getMoveDirection() {
-        return moveDirection;
+    public double getPreciseDirection() {
+        return direction;
     }
 
-    public void setMoveDirection(double moveDirection) {
-        this.moveDirection = moveDirection;
+    public void setPreciseDirection(double direction) {
+        this.direction = direction;
     }
 
     public double getCurrentSpeed() {

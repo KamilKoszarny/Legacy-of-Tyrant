@@ -1,6 +1,7 @@
 package viewIso;
 
 import controller.isoView.IsoMapMoveController;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -15,8 +16,9 @@ import java.util.List;
 public class MapDrawer {
 
     private static final Color BACKGROUND_COLOR = Color.BLACK;
-    static final int MAP_PIECE_SCREEN_SIZE_X = 24;
-    static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
+    public static final int MAP_PIECE_SCREEN_SIZE_X = 24;
+    public static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
+    public static int PIX_PER_M;
 
     private Point zeroScreenPosition = new Point(600, -100);
     private Map map;
@@ -29,6 +31,7 @@ public class MapDrawer {
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
         mPDrawer = new MapPieceDrawer(map, gc, this, MAP_PIECE_SCREEN_SIZE_X, MAP_PIECE_SCREEN_SIZE_Y);
+        PIX_PER_M = (int) ((MAP_PIECE_SCREEN_SIZE_X + MAP_PIECE_SCREEN_SIZE_Y) / 2 / Map.M_PER_POINT);
     }
 
     public void drawMap(){
@@ -166,6 +169,13 @@ public class MapDrawer {
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX);
     }
 
+    Point screenPositionWithHeight(Point2D point2D){
+        Point point = new Point(Math.round(Math.round(point2D.getX())), Math.round(Math.round(point2D.getY())));
+        return new Point((int)(zeroScreenPosition.x + point2D.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point2D.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
+                (int)(zeroScreenPosition.y + point2D.getX() * MAP_PIECE_SCREEN_SIZE_Y /2 + point2D.getY() * MAP_PIECE_SCREEN_SIZE_Y /2 -
+                        map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
+    }
+
     Point relativeScreenPosition(Point point){
         return new Point(point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
                 point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
@@ -179,6 +189,10 @@ public class MapDrawer {
         }
 
         return visiblePoints;
+    }
+
+    boolean isOnMap(Point point) {
+        return point.x >= 0 && point.x <= map.mapXPoints && point.y >= 0 && point.y <= map.mapYPoints;
     }
 
     private boolean isOnCanvas(Point screenPoint){

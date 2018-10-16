@@ -8,7 +8,7 @@ public class CharSprite {
     private Image charSpriteSheet;
     private int dir = 0, animationFrame = 0;
     private CharPose charPose = CharPose.IDLE;
-    boolean reverse = false;
+    private boolean reverse = false;
 
     public CharSprite(Image charSpriteSheet) {
         this.charSpriteSheet = charSpriteSheet;
@@ -24,7 +24,8 @@ public class CharSprite {
                 reverse = true;
             if (animationFrame == 0)
                 reverse = false;
-        }
+        } else
+            reverse = false;
 
         if (reverse) {
             animationFrame --;
