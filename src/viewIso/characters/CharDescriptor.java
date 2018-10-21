@@ -1,4 +1,4 @@
-package viewIso;
+package viewIso.characters;
 
 import javafx.scene.control.Label;
 import model.character.Character;
@@ -18,7 +18,7 @@ public class CharDescriptor {
         this.characters = characters;
     }
 
-    void refresh() {
+    public void refresh() {
         if (calcChosenCharacters() == 1) {
             showBasicLabels(chosenCharacters.get(0));
         }

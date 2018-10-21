@@ -10,7 +10,7 @@ import model.character.movement.CharTurner;
 import model.map.*;
 import model.map.heights.MapHeightType;
 import model.weapon.Weapon;
-import viewIso.CharsDrawer;
+import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;

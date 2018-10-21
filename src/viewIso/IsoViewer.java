@@ -3,6 +3,8 @@ package viewIso;
 import javafx.scene.canvas.Canvas;
 import model.character.Character;
 import model.map.Map;
+import viewIso.characters.CharsDrawer;
+import viewIso.map.MapDrawer;
 
 import java.awt.*;
 import java.util.List;

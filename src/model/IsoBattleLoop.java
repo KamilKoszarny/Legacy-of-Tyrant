@@ -5,6 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import model.map.MapPiece;
 import viewIso.*;
+import viewIso.characters.CharsDrawer;
+import viewIso.map.MapDrawer;
 
 import java.awt.*;
 
@@ -55,7 +57,6 @@ public class IsoBattleLoop extends AnimationTimer{
     private void animate(long curNanoTime) {
         curMs = (int) (curNanoTime / 1000000);
         if(msLeft(FRAME_RATE)){
-            System.out.println(curMs);
             battle.updateCharactersLook(FRAME_RATE);
             isoViewer.draw(FRAME_RATE);
             panelViewer.refresh();

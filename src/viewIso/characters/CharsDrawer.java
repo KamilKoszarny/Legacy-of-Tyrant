@@ -1,4 +1,4 @@
-package viewIso;
+package viewIso.characters;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import model.character.Character;
 import model.map.Map;
+import viewIso.map.MapDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -72,7 +73,6 @@ public class CharsDrawer {
     }
 
     public void drawChars(List<Character> characters) {
-        List<Point> visiblePoints = mapDrawer.calcVisiblePoints();
         for (Character character: characters) {
             clearCharProximity(character);
         }
@@ -80,8 +80,7 @@ public class CharsDrawer {
         List<Character> charactersInDrawOrder = new ArrayList<>(characters);
         charactersInDrawOrder.sort(Comparator.comparingInt(c -> c.getPosition().x + c.getPosition().y));
         for (Character character: charactersInDrawOrder) {
-            if (visiblePoints.contains(character.getPosition()))
-                drawChar(character);
+            drawChar(character);
         }
     }
 
@@ -109,8 +108,9 @@ public class CharsDrawer {
     }
 
     private void clearCharProximity(Character character) {
-        List<Point> charClosePoints = calcCharClosePoints(character);
-        mapDrawer.drawMapPoints(charClosePoints);
+        mapDrawer.clearPointAround(character.getPosition(), SPRITE_SIZE.width, SPRITE_SIZE.height);
+//        List<Point> charClosePoints = calcCharClosePoints(character);
+//        mapDrawer.drawMapPoints(charClosePoints);
     }
 
     private void drawLabel(Character character, Point charScreenPos) {
@@ -125,6 +125,11 @@ public class CharsDrawer {
 
         label.setTranslateX(charScreenPos.x - label.getWidth()/2);
         label.setTranslateY(charScreenPos.y - SPRITE_SIZE.height * (.6));
+
+        if (label.getTranslateY() < canvas.getHeight() - label.getHeight()/2)
+            label.setVisible(true);
+        else
+            label.setVisible(false);
     }
 
     private void initCharSpriteMap() {
@@ -150,20 +155,6 @@ public class CharsDrawer {
 
     private CharSprite chooseSpriteSheet(Character character) {
         return new CharSprite(new Image("/sprites/flare/demo/vesuvvio.png"));
-    }
-
-    private List<Point> calcCharClosePoints (Character character) {
-        Point charPos = character.getPosition();
-        List<Point> charClosePoints = new ArrayList<>();
-        final int RADIUS = 6;
-        for (int x = -RADIUS; x <= RADIUS; x++) {
-            for (int y = -RADIUS; y <= RADIUS; y++) {
-                Point point = new Point(charPos.x + x, charPos.y + y);
-                if (mapDrawer.isOnMap(point))
-                    charClosePoints.add(point);
-            }
-        }
-        return charClosePoints;
     }
 
     public Character getClickedCharacter() {

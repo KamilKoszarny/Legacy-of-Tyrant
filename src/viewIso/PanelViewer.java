@@ -2,6 +2,7 @@ package viewIso;
 
 import controller.isoView.Panel;
 import model.character.Character;
+import viewIso.characters.CharDescriptor;
 
 import java.util.List;
 

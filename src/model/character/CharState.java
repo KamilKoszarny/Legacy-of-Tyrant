@@ -1,6 +1,6 @@
 package model.character;
 
-import viewIso.CharPose;
+import viewIso.characters.CharPose;
 
 public enum CharState {
     IDLE(CharPose.IDLE),

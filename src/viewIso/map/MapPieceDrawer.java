@@ -1,4 +1,4 @@
-package viewIso;
+package viewIso.map;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;

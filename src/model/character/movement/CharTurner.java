@@ -1,8 +1,6 @@
 package model.character.movement;
 
 import model.character.Character;
-import model.map.Map;
-import viewIso.MapDrawer;
 
 import java.awt.*;
 

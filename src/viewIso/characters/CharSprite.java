@@ -1,8 +1,6 @@
-package viewIso;
+package viewIso.characters;
 
 import javafx.scene.image.Image;
-
-import java.awt.*;
 
 public class CharSprite {
     private Image charSpriteSheet;

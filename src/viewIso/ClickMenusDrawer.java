@@ -6,9 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.map.Map;
+import viewIso.map.MapDrawer;
+import viewIso.map.MapPieceDrawer;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

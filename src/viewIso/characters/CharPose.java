@@ -1,4 +1,4 @@
-package viewIso;
+package viewIso.characters;
 
 public enum CharPose {
     IDLE(0, 4, true),

@@ -1,4 +1,4 @@
-package viewIso;
+package viewIso.map;
 
 import controller.isoView.IsoMapMoveController;
 import javafx.geometry.Point2D;
@@ -26,7 +26,7 @@ public class MapDrawer {
     private GraphicsContext gc;
     private MapPieceDrawer mPDrawer;
 
-    MapDrawer(Map map, Canvas canvas) {
+    public MapDrawer(Map map, Canvas canvas) {
         this.map = map;
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
@@ -35,9 +35,7 @@ public class MapDrawer {
     }
 
     public void drawMap(){
-        for (Point point: calcVisiblePoints()) {
-            mPDrawer.drawMapPiece(point);
-        }
+        drawMapPoints(calcVisiblePoints());
     }
 
     public void drawMapPoints(List<Point> points) {
@@ -46,12 +44,29 @@ public class MapDrawer {
         }
     }
 
+    public void clearPointAround(Point point, int width, int height) {
+        drawMapPoints(calcClosePoints(point, width, height));
+    }
+
+    private List<Point> calcClosePoints(Point basePoint, int width, int height) {
+        List<Point> closePoints = new ArrayList<>();
+        int radius = Math.max(width / MAP_PIECE_SCREEN_SIZE_X, height / MAP_PIECE_SCREEN_SIZE_Y) + 1;
+        for (int x = -radius; x <= radius; x++) {
+            for (int y = -radius; y <= radius; y++) {
+                Point point = new Point(basePoint.x + x, basePoint.y + y);
+                if (isOnMap(point))
+                    closePoints.add(point);
+            }
+        }
+        return closePoints;
+    }
+
     public boolean mapOnScreen(){
         int bonus = IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
         boolean mapOnScreen = zeroScreenPosition.x < - relativeScreenPosition(new Point(0, map.getHeight())).x + bonus &&
                 zeroScreenPosition.x > - relativeScreenPosition(new Point(map.getWidth(), 0)).x + canvas.getWidth() - bonus &&
-                zeroScreenPosition.y < - relativeScreenPosition(new Point(0, 0)).y + bonus + map.MAX_HEIGHT &&
-                zeroScreenPosition.y > - relativeScreenPosition(new Point(map.getWidth(), map.getHeight())).y + canvas.getHeight() - bonus + map.MIN_HEIGHT;
+                zeroScreenPosition.y < - relativeScreenPosition(new Point(0, 0)).y + bonus + map.getPoints().get(new Point(0, 0)).getHeight() / HeightGenerator.H_PEX_PIX &&
+                zeroScreenPosition.y > - relativeScreenPosition(new Point(map.getWidth(), map.getHeight())).y + canvas.getHeight() - bonus + map.getPoints().get(new Point(map.mapXPoints - 1, map.mapYPoints - 1)).getHeight() / HeightGenerator.H_PEX_PIX;
         return mapOnScreen;
     }
 
@@ -60,34 +75,35 @@ public class MapDrawer {
         double[] xCoords = new double[8];
         double[] yCoords = new double[8];
         Point point;
+        int moveStep = IsoMapMoveController.MAP_MOVE_STEP;
 
         point = new Point(0, 0);
         xCoords[0] = screenPosition(point).x;
-        yCoords[0] = screenPosition(point).y - MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        yCoords[0] = screenPosition(point).y - MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         point = new Point(map.mapXPoints, 0);
-        xCoords[1] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[1] = screenPosition(point).y - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[1] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[1] = screenPosition(point).y - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
-        xCoords[2] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[2] = screenPosition(point).y - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[2] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[2] = screenPosition(point).y - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         xCoords[3] = screenPosition(point).x;
-        yCoords[3] = screenPosition(point).y - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        yCoords[3] = screenPosition(point).y - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         point = new Point(0, 0);
         xCoords[4] = screenPosition(point).x;
-        yCoords[4] = screenPosition(point).y + MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        yCoords[4] = screenPosition(point).y + MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         point = new Point(0, map.mapYPoints);
         xCoords[5] = screenPosition(point).x;
-        yCoords[5] = screenPosition(point).y - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        yCoords[5] = screenPosition(point).y - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
-        xCoords[6] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[6] = screenPosition(point).y - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[6] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[6] = screenPosition(point).y - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
-        xCoords[7] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[7] = screenPosition(point).y - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[7] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[7] = screenPosition(point).y - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         gc.setFill(BACKGROUND_COLOR);
         gc.fillPolygon(xCoords, yCoords, 8);
@@ -96,32 +112,32 @@ public class MapDrawer {
 
         point = new Point(map.mapXPoints, map.mapYPoints);
         xCoords[0] = screenPosition(point).x;
-        yCoords[0] = screenPosition(point).y - MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        yCoords[0] = screenPosition(point).y - MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         point = new Point(map.mapXPoints, 0);
         xCoords[1] = screenPosition(point).x;
-        yCoords[1] = screenPosition(point).y - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        yCoords[1] = screenPosition(point).y - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
-        xCoords[2] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[2] = screenPosition(point).y - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[2] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[2] = screenPosition(point).y - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
-        xCoords[3] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[3] = screenPosition(point).y - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[3] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[3] = screenPosition(point).y - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         point = new Point(map.mapXPoints, map.mapYPoints);
         xCoords[4] = screenPosition(point).x;
-        yCoords[4] = screenPosition(point).y + MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y +
+        yCoords[4] = screenPosition(point).y + MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y +
                 50;
 
         point = new Point(0, map.mapYPoints);
-        xCoords[5] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[5] = screenPosition(point).y - map.MIN_HEIGHT + IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[5] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[5] = screenPosition(point).y - map.MIN_HEIGHT + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
-        xCoords[6] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[6] = screenPosition(point).y - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        xCoords[6] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
+        yCoords[6] = screenPosition(point).y - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         xCoords[7] = screenPosition(point).x;
-        yCoords[7] = screenPosition(point).y - map.MAX_HEIGHT - IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y;
+        yCoords[7] = screenPosition(point).y - map.MAX_HEIGHT - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
 
         gc.setFill(BACKGROUND_COLOR);
         gc.fillPolygon(xCoords, yCoords, 8);
@@ -131,6 +147,24 @@ public class MapDrawer {
         this.zeroScreenPosition.x += zSPChange.x * MAP_PIECE_SCREEN_SIZE_X;
         this.zeroScreenPosition.y += zSPChange.y * MAP_PIECE_SCREEN_SIZE_Y;
     }
+
+
+    Point getZeroScreenPosition() {
+        return zeroScreenPosition;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
+    }
+
+    public MapPieceDrawer getmPDrawer() {
+        return mPDrawer;
+    }
+
 
     public Point mapPointByClickPoint(Point clickPoint) {
         MapPiece clickedMapPiece = mapPieceByClickPoint(clickPoint);
@@ -163,13 +197,13 @@ public class MapDrawer {
                 zeroScreenPosition.y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
     }
 
-    Point screenPositionWithHeight(Point point){
+    public Point screenPositionWithHeight(Point point){
         return new Point(zeroScreenPosition.x + point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
                 zeroScreenPosition.y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2 -
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX);
     }
 
-    Point screenPositionWithHeight(Point2D point2D){
+    public Point screenPositionWithHeight(Point2D point2D){
         Point point = new Point(Math.round(Math.round(point2D.getX())), Math.round(Math.round(point2D.getY())));
         return new Point((int)(zeroScreenPosition.x + point2D.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point2D.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
                 (int)(zeroScreenPosition.y + point2D.getX() * MAP_PIECE_SCREEN_SIZE_Y /2 + point2D.getY() * MAP_PIECE_SCREEN_SIZE_Y /2 -
@@ -181,7 +215,7 @@ public class MapDrawer {
                 point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
     }
 
-    List<Point> calcVisiblePoints(){
+    public List<Point> calcVisiblePoints(){
         List<Point> visiblePoints = new ArrayList<>();
         for (Point point: map.getPoints().keySet()) {
             if (isOnCanvas(screenPosition(point)))
@@ -191,28 +225,12 @@ public class MapDrawer {
         return visiblePoints;
     }
 
-    boolean isOnMap(Point point) {
+    public boolean isOnMap(Point point) {
         return point.x >= 0 && point.x <= map.mapXPoints && point.y >= 0 && point.y <= map.mapYPoints;
     }
 
     private boolean isOnCanvas(Point screenPoint){
         return screenPoint.x >= 0 && screenPoint.x <= canvas.getWidth() + MAP_PIECE_SCREEN_SIZE_X &&
                 screenPoint.y >= 0 + map.MIN_HEIGHT * 10 && screenPoint.y <= canvas.getHeight() + map.MAX_HEIGHT * 10;
-    }
-
-    Point getZeroScreenPosition() {
-        return zeroScreenPosition;
-    }
-
-    public Map getMap() {
-        return map;
-    }
-
-    public Canvas getCanvas() {
-        return canvas;
-    }
-
-    public MapPieceDrawer getmPDrawer() {
-        return mPDrawer;
     }
 }

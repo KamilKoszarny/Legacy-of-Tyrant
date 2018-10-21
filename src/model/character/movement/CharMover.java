@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
-import viewIso.CharsDrawer;
+import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 
