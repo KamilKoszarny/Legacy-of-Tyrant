@@ -35,11 +35,15 @@ public class IsoBattleLoop extends AnimationTimer{
 
     public IsoBattleLoop(Battle battle) {
         this.battle = battle;
+        lastMs = (int) (System.nanoTime() / 1000000);
     }
 
     @Override
     public void handle(long curNanoTime) {
-        animate(curNanoTime);
+        if(nextFrame(curNanoTime)) {
+            animate();
+            battle.incrementTimer();
+        }
 
         if (mapMoveFlag)
             handleMapMoving();
@@ -54,15 +58,10 @@ public class IsoBattleLoop extends AnimationTimer{
             handleButtonAction(clickedButton);
     }
 
-    private void animate(long curNanoTime) {
-        curMs = (int) (curNanoTime / 1000000);
-        if(msLeft(FRAME_RATE)){
-            battle.updateCharactersLook(FRAME_RATE);
-            isoViewer.draw(FRAME_RATE);
-            panelViewer.refresh();
-            lastMs = curMs;
-            battle.incrementTimer();
-        }
+    private void animate() {
+        battle.updateCharactersLook(FRAME_RATE);
+        isoViewer.draw();
+        panelViewer.refresh();
     }
 
 
@@ -153,8 +152,13 @@ public class IsoBattleLoop extends AnimationTimer{
         clickMenusDrawer = isoViewer.getClickMenusDrawer();
     }
 
-    private boolean msLeft (int ms) {
-        return curMs - ms > lastMs;
+    private boolean nextFrame(long curNanoTime) {
+        curMs = (int) (curNanoTime / 1000000);
+        if (curMs - lastMs > FRAME_RATE){
+            lastMs = curMs;
+            return true;
+        }
+        return false;
     }
 
     private void showMapPieceInfo(MapPiece clickedMapPiece) {

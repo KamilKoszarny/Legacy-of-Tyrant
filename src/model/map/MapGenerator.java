@@ -8,14 +8,7 @@ import model.map.terrains.TerrainGenerator;
 
 public class MapGenerator {
 
-    Map map;
-    int widthM, heightM;
-
     public Map generateMap(Map map){
-        widthM = map.getWidthM();
-        heightM = map.getHeightM();
-        this.map = map;
-
         TerrainGenerator terrainGenerator = new TerrainGenerator(map);
         terrainGenerator.generateTerrain();
         HeightGenerator heightGenerator = new HeightGenerator(map);

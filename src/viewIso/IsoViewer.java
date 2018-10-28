@@ -35,7 +35,7 @@ public class IsoViewer {
             mapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
     }
 
-    public void draw(int ms) {
+    public void draw() {
         charsDrawer.drawVisibleChars();
     }
 

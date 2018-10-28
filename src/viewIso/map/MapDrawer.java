@@ -4,6 +4,9 @@ import controller.isoView.IsoMapMoveController;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.paint.Color;
 import model.map.heights.HeightGenerator;
 import model.map.Map;
@@ -44,8 +47,15 @@ public class MapDrawer {
         }
     }
 
-    public void clearPointAround(Point point, int width, int height) {
+    public void clearPointAround(Point point, int width, int height, int shiftX, int shiftY) {
+        Point screenPos = screenPositionWithHeight(point);
+        clearBox(new Point(screenPos.x - shiftX, screenPos.y - shiftY), width, height);
         drawMapPoints(calcClosePoints(point, width, height));
+    }
+
+    private void clearBox(Point point, int width, int height) {
+        gc.setFill(BACKGROUND_COLOR);
+        gc.fillRect(point.x, point.y, width, height);
     }
 
     private List<Point> calcClosePoints(Point basePoint, int width, int height) {

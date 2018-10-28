@@ -108,9 +108,7 @@ public class CharsDrawer {
     }
 
     private void clearCharProximity(Character character) {
-        mapDrawer.clearPointAround(character.getPosition(), SPRITE_SIZE.width, SPRITE_SIZE.height);
-//        List<Point> charClosePoints = calcCharClosePoints(character);
-//        mapDrawer.drawMapPoints(charClosePoints);
+        mapDrawer.clearPointAround(character.getPosition(), SPRITE_SIZE.width, SPRITE_SIZE.height, SPRITE_BASE.width, SPRITE_BASE.height);
     }
 
     private void drawLabel(Character character, Point charScreenPos) {
@@ -154,7 +152,7 @@ public class CharsDrawer {
 
 
     private CharSprite chooseSpriteSheet(Character character) {
-        return new CharSprite(new Image("/sprites/flare/demo/vesuvvio.png"));
+        return new CharSprite(new Image("/sprites/chars/flare/vesuvvio.png"));
     }
 
     public Character getClickedCharacter() {
