@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
-import viewIso.characters.CharsDrawer;
+import viewIso.characters.CharDrawer;
 
 import java.awt.*;
 
@@ -36,7 +36,7 @@ public class CharMover {
             character.setPosition(new Point2D(pos.getX() + changeX, pos.getY() + changeY));
             if (distToDestination%POINTS_TO_NEXT_FRAME <
                     GeomerticHelper.distTo0(changeX, changeY))
-                CharsDrawer.nextFrame(character);
+                CharDrawer.nextFrame(character);
         }
         else {
             character.setPosition(character.getDestination());

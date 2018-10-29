@@ -10,7 +10,7 @@ import model.character.movement.CharTurner;
 import model.map.*;
 import model.map.heights.MapHeightType;
 import model.weapon.Weapon;
-import viewIso.characters.CharsDrawer;
+import viewIso.characters.CharDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -94,7 +94,7 @@ public class Battle {
             if (character.getDestination() != null)
                 CharMover.updateCharacterMove(character, ms);
             else if (timer%3 == 0) {
-                CharsDrawer.nextFrame(character);
+                CharDrawer.nextFrame(character);
             }
         }
     }

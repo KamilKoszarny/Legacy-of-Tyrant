@@ -3,6 +3,7 @@
 package model.map;
 
 import javafx.scene.paint.Color;
+import model.map.mapObjects.MapObject;
 import model.map.terrains.Terrain;
 
 import java.awt.*;
@@ -15,6 +16,7 @@ public class MapPiece {
     private Color color;
     private int light;
     private int[] relXCoords, relYCoords;
+    private MapObject object = null;
 
     public Terrain getTerrain() {
         return terrain;
@@ -110,6 +112,14 @@ public class MapPiece {
 
     public void setLight(int light) {
         this.light = light;
+    }
+
+    public MapObject getObject() {
+        return object;
+    }
+
+    public void setObject(MapObject object) {
+        this.object = object;
     }
 }
 

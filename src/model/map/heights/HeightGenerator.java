@@ -40,7 +40,7 @@ public class HeightGenerator {
                 point = new Point(x, y);
                 mapPiece = map.getPoints().get(point);
                 double value = noise.eval(x / featureSize, y / featureSize);
-                height = (int) ((map.MIN_HEIGHT + (map.MAX_HEIGHT - map.MIN_HEIGHT) * (value / 2 + 0.5)) * H_PEX_PIX /
+                height = (int) ((map.MIN_HEIGHT_PIX + (map.MAX_HEIGHT_PIX - map.MIN_HEIGHT_PIX) * (value / 2 + 0.5)) * H_PEX_PIX /
                         (map.mapXPoints / featureSize) / (50. / hilly));
                 mapPiece.setHeight(mapPiece.getHeight() + height);
 //                System.out.println(value);

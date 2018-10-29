@@ -3,8 +3,10 @@ package viewIso;
 import javafx.scene.canvas.Canvas;
 import model.character.Character;
 import model.map.Map;
-import viewIso.characters.CharsDrawer;
+import viewIso.characters.CharDrawer;
+import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
+import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.List;
@@ -12,39 +14,43 @@ import java.util.List;
 
 public class IsoViewer {
     private MapDrawer mapDrawer;
-    private CharsDrawer charsDrawer;
+    private CharDrawer charDrawer;
+    private MapObjectDrawer mapObjectDrawer;
     private ClickMenusDrawer clickMenusDrawer;
+    private SpritesDrawer spritesDrawer;
     private int timeStepCount = 0;
 
     public IsoViewer(Map map, Canvas canvas, List<Character> characters) {
         mapDrawer = new MapDrawer(map, canvas);
-        charsDrawer = new CharsDrawer(map, canvas, mapDrawer, characters);
+        spritesDrawer = new SpritesDrawer(map, canvas, mapDrawer, characters);
         clickMenusDrawer = new ClickMenusDrawer(mapDrawer);
         mapDrawer.drawMap();
-        charsDrawer.drawAllChars();
+        spritesDrawer.drawVisibleSprites();
     }
 
     public void moveMap(Point mapMove) {
         mapDrawer.changeZeroScreenPosition(mapMove);
-        if (mapDrawer.mapOnScreen()) {
+        if (MapDrawCalculator.mapOnScreen()) {
             mapDrawer.clearMapBounds();
             mapDrawer.drawMap();
-            charsDrawer.drawVisibleChars();
+            spritesDrawer.drawVisibleSprites();
             clickMenusDrawer.moveMenus(mapMove);
-        } else
+        } else {
             mapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
+        }
     }
 
     public void draw() {
-        charsDrawer.drawVisibleChars();
+        mapDrawer.drawMap();
+        spritesDrawer.drawVisibleSprites();
     }
 
     public MapDrawer getMapDrawer() {
         return mapDrawer;
     }
 
-    public CharsDrawer getCharsDrawer() {
-        return charsDrawer;
+    public CharDrawer getCharDrawer() {
+        return spritesDrawer.getCharDrawer();
     }
 
     public ClickMenusDrawer getClickMenusDrawer() {

@@ -4,7 +4,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import model.armor.Armor;
 import model.weapon.Weapon;
-import viewIso.Sprite;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -13,7 +12,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-public class Character implements Sprite {
+public class Character {
 
     private String name;
     private Color color;

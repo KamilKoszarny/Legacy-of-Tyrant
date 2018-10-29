@@ -5,7 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import model.map.MapPiece;
 import viewIso.*;
-import viewIso.characters.CharsDrawer;
+import viewIso.characters.CharDrawer;
+import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 
 import java.awt.*;
@@ -29,7 +30,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private IsoViewer isoViewer;
     private PanelViewer panelViewer;
     private MapDrawer mapDrawer;
-    private CharsDrawer charsDrawer;
+    private CharDrawer charDrawer;
     private ClickMenusDrawer clickMenusDrawer;
     private int lastMs, curMs;
 
@@ -72,12 +73,12 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleCanvasLClick(){
-        if (charsDrawer.isCharClicked(canvasLClickPoint)) {
-            battle.chooseCharacter(charsDrawer.getClickedCharacter());
+        if (charDrawer.isCharClicked(canvasLClickPoint)) {
+            battle.chooseCharacter(charDrawer.getClickedCharacter());
             canvasLClickFlag = false;
         }
         else {
-            clickedMapPoint = mapDrawer.mapPointByClickPoint(canvasLClickPoint);
+            clickedMapPoint = MapDrawCalculator.mapPointByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
                 clickMenusDrawer.drawChar2PointMenu(canvasLClickPoint);
             }
@@ -86,13 +87,13 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleCanvasRClick(){
-        MapPiece clickedMapPiece = mapDrawer.mapPieceByClickPoint(canvasRClickPoint);
+        MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(canvasRClickPoint);
         if (clickedMapPiece != null)
             showMapPieceInfo(clickedMapPiece);
     }
 
     private void handleCanvasHover() {
-        charsDrawer.checkHoverCharacter(canvasHoverPoint);
+        charDrawer.checkHoverCharacter(canvasHoverPoint);
         canvasHoverFlag = false;
     }
 
@@ -148,7 +149,7 @@ public class IsoBattleLoop extends AnimationTimer{
         this.isoViewer = isoViewer;
         this.panelViewer = panelViewer;
         mapDrawer = isoViewer.getMapDrawer();
-        charsDrawer = isoViewer.getCharsDrawer();
+        charDrawer = isoViewer.getCharDrawer();
         clickMenusDrawer = isoViewer.getClickMenusDrawer();
     }
 
