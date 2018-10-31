@@ -1,6 +1,8 @@
 package viewIso.map;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 import model.map.Map;
 import model.map.heights.HeightGenerator;
@@ -10,13 +12,15 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 public class MapImageGenerator {
 
-    static MapImage mapPreImage;
-    static MapImage mapImage;
-    static Map map;
-    static MapPieceDrawer mapPieceDrawer;
+    private static MapImage mapPreImage;
+    private static MapImage mapImage;
+    private static Map map;
+    private static MapPieceDrawer mapPieceDrawer;
+    private static Random r = new Random();
 
     static void initialize(Map map, MapPieceDrawer mapPieceDrawer){
         MapImageGenerator.map = map;
@@ -24,13 +28,25 @@ public class MapImageGenerator {
         calcAndSetSizeAndShift();
     }
 
+    private static void calcAndSetSizeAndShift() {
+        int width = (Math.max(map.mapXPoints, map.mapYPoints) + 2* MapImage.EXTRA_X) * MapDrawer.MAP_PIECE_SCREEN_SIZE_X;
+        int height = (Math.max(map.mapXPoints, map.mapYPoints) + 2* MapImage.EXTRA_Y) * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y
+                + map.MAX_HEIGHT_PIX - map.MIN_HEIGHT_PIX ;
+        int shiftX = - width / 2 + MapImage.EXTRA_X;
+        int shiftY = - (map.MAX_HEIGHT_PIX /HeightGenerator.H_PEX_PIX + MapImage.EXTRA_Y) * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y;
+
+        mapPreImage = new MapImage(width, height, shiftX, shiftY);
+        mapImage = new MapImage(width, height, shiftX, shiftY);
+    }
+
+
     static MapImage generateMapPreImage() {
         drawMapOnPreImage();
 
         return mapPreImage;
     }
 
-    public static void drawMapOnPreImage() {
+    private static void drawMapOnPreImage() {
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(mapPreImage.getImage(), null);
         Graphics graphics = bufferedImage.getGraphics();
         graphics.setColor(java.awt.Color.BLACK);
@@ -49,40 +65,47 @@ public class MapImageGenerator {
         return mapPointsInDrawOrder;
     }
 
+
     static MapImage generateMapImage() {
-        mapImage = mapPreImage;
+//        mapImage = mapPreImage;
+
+        PixelReader pixelReader = mapPreImage.getImage().getPixelReader();
+        PixelWriter pixelWriter = mapImage.getImage().getPixelWriter();
+
+        Color color;
+        for (int y = 0; y < mapImage.getHeight(); y++) {
+            for (int x = 0; x < mapImage.getWidth(); x++) {
+                color = calcPixelColor(pixelReader, x, y);
+                pixelWriter.setColor(x, y, color);
+
+                if (x%1000 == 0 && y%1000 == 0)
+                    System.out.println(x + " " + y);
+            }
+        }
+        System.out.println("mapImage ready");
+//        calcAndSetColors();
 
         return mapImage;
     }
 
-    private static void calcAndSetSizeAndShift() {
-        int width = (Math.max(map.mapXPoints, map.mapYPoints) + 2* MapImage.EXTRA_X) * MapDrawer.MAP_PIECE_SCREEN_SIZE_X;
-        int height = (Math.max(map.mapXPoints, map.mapYPoints) + 2* MapImage.EXTRA_Y) * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y
-                + map.MAX_HEIGHT_PIX - map.MIN_HEIGHT_PIX ;
-        int shiftX = - width / 2 + MapImage.EXTRA_X;
-        int shiftY = - (map.MAX_HEIGHT_PIX /HeightGenerator.H_PEX_PIX + MapImage.EXTRA_Y) * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y;
+    private static Color calcPixelColor(PixelReader pixelReader, int x, int y) {
+        Color originColor = pixelReader.getColor(x, y);
+        if (originColor.equals(MapDrawer.BACKGROUND_COLOR))
+            return MapDrawer.BACKGROUND_COLOR;
 
-        mapPreImage = new MapImage(width, height, shiftX, shiftY);
-        mapImage = new MapImage(width, height, shiftX, shiftY);
-    }
+        int colorSearchRadius = (MapDrawer.MAP_PIECE_SCREEN_SIZE_X + MapDrawer.MAP_PIECE_SCREEN_SIZE_Y) / 3;
+        x = x + r.nextInt(colorSearchRadius) - colorSearchRadius/2;
+        y = y + r.nextInt(colorSearchRadius) - colorSearchRadius/2;
 
-    private static void applyEffect () {
-        mapImage = mapPreImage;
-    }
+        if (x < 0 || x >= mapImage.getWidth() || y < 0 || y >= mapImage.getHeight())
+            return MapDrawer.BACKGROUND_COLOR;
 
-    private static void calcAndSetColors() {
-        for(int x = 0; x < mapImage.getWidth(); x++) {
-            for(int y = 0; y < mapImage.getHeight(); y++) {
-                Color color = calcPixelColor(x, y);
-                mapImage.setPixelColor(x, y, color);
-            }
-        }
-    }
+        Color shuffleColor = pixelReader.getColor(x + r.nextInt(colorSearchRadius) - colorSearchRadius/2,
+                y + r.nextInt(colorSearchRadius) - colorSearchRadius/2);
 
-    private static Color calcPixelColor(int x, int y) {
-        System.out.println(x + " " + y);
-
-        return Color.RED;
+        if (shuffleColor.equals(MapDrawer.BACKGROUND_COLOR))
+            return originColor;
+        return shuffleColor;
     }
 
     private static Point posRelToMapZero(int pixelX, int pixelY) {

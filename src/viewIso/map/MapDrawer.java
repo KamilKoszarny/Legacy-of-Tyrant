@@ -3,7 +3,6 @@ package viewIso.map;
 import controller.isoView.IsoMapMoveController;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model.map.Map;
 
@@ -15,7 +14,7 @@ import static viewIso.map.MapDrawCalculator.screenPosition;
 
 public class MapDrawer {
 
-    private static final Color BACKGROUND_COLOR = Color.BLACK;
+    static final Color BACKGROUND_COLOR = Color.BLACK;
     public static final int MAP_PIECE_SCREEN_SIZE_X = 24;
     public static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
     public static int PIX_PER_M;
@@ -36,6 +35,7 @@ public class MapDrawer {
         MapDrawCalculator.setMapAndDrawer(map, this);
         MapImageGenerator.initialize(map, mPDrawer);
         mapImage = MapImageGenerator.generateMapPreImage();
+        mapImage = MapImageGenerator.generateMapImage();
     }
 
     public void drawMap() {
