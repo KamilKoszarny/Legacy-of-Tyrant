@@ -20,11 +20,12 @@ public class MapDrawer {
     public static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
     public static int PIX_PER_M;
 
-    private Point zeroScreenPosition = new Point(600, -100);
+    private Point zeroScreenPosition = new Point(600, -50);
     private Map map;
     private Canvas canvas;
     private GraphicsContext gc;
     private MapPieceDrawer mPDrawer;
+    private MapImage mapImage;
 
     public MapDrawer(Map map, Canvas canvas) {
         this.map = map;
@@ -33,11 +34,19 @@ public class MapDrawer {
         mPDrawer = new MapPieceDrawer(map, gc, this, MAP_PIECE_SCREEN_SIZE_X, MAP_PIECE_SCREEN_SIZE_Y);
         PIX_PER_M = (int) ((MAP_PIECE_SCREEN_SIZE_X + MAP_PIECE_SCREEN_SIZE_Y) / 2 / Map.M_PER_POINT);
         MapDrawCalculator.setMapAndDrawer(map, this);
+        MapImageGenerator.initialize(map, mPDrawer);
+        mapImage = MapImageGenerator.generateMapPreImage();
     }
 
-    public void drawMap(){
-        drawMapPoints(MapDrawCalculator.calcVisiblePoints());
+    public void drawMap() {
+        canvas.getGraphicsContext2D().drawImage(mapImage.getImage(),
+                -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
+                canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
     }
+
+//    public void drawMap(){
+//        drawMapPoints(MapDrawCalculator.calcVisiblePoints());
+//    }
 
     public void drawMapPoints(List<Point> points) {
         for (Point point: points) {

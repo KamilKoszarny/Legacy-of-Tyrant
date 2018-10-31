@@ -85,7 +85,7 @@ public class MapDrawCalculator {
     }
 
     private static List<Point> closePointsByPixPosition(Point pixPos) {
-        final int RADIUS = 10;
+        final int RADIUS = 25;
         List<Point> closePoints = new ArrayList<>();
 
         Point mapPoint = closePointByPixPosition(pixPos);
@@ -114,6 +114,8 @@ public class MapDrawCalculator {
     }
 
     public static Point screenPositionWithHeight(Point point){
+        if (!map.getPoints().keySet().contains(point))
+            return null;
         return new Point(mapDrawer.getZeroScreenPosition().x + point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
                 mapDrawer.getZeroScreenPosition().y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2 -
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX);
@@ -142,7 +144,7 @@ public class MapDrawCalculator {
     }
 
     public static boolean isOnMap(Point point) {
-        return point.x >= 0 && point.x <= map.mapXPoints && point.y >= 0 && point.y <= map.mapYPoints;
+        return point.x >= 0 && point.x < map.mapXPoints && point.y >= 0 && point.y < map.mapYPoints;
     }
 
     private static boolean isOnCanvas(Point screenPoint){

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class IsoMapMoveController {
     static final int MAP_MOVE_BOUNDARY = 10;
-    public static final int MAP_MOVE_STEP = 5;
+    public static final int MAP_MOVE_STEP = 3;
 
     private Canvas mapCanvas;
     private List<Canvas> borderCanvases;

@@ -11,8 +11,8 @@ public class Map {
 
     public static final double RESOLUTION_M = 0.2;
     public static final double M_PER_POINT = 0.25;
-    public final double MIN_HEIGHT_PIX = -50;
-    public final double MAX_HEIGHT_PIX = 500;
+    public final int MIN_HEIGHT_PIX = -50;
+    public final int MAX_HEIGHT_PIX = 500;
 
     public int mapXPoints;
     public int mapYPoints;

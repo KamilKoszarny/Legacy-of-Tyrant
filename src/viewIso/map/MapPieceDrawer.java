@@ -1,5 +1,6 @@
 package viewIso.map;
 
+import helpers.ColorHelper;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.map.heights.HeightGenerator;
@@ -44,6 +45,25 @@ public class MapPieceDrawer {
             mapPiece.setRelXCoords(relXCoords);
             mapPiece.setRelYCoords(relYCoords);
         }
+    }
+
+    public void drawMapPiece(Point point, Graphics graphics, MapImage mapImage){
+        MapPiece mapPiece = map.getPoints().get(point);
+        int[] xCoords = new int[6];
+        int[] yCoords = new int[6];
+        for (int i = 0; i < 6; i++) {
+            xCoords[i] = - mapImage.getxShift() + mapPiece.getRelXCoords()[i];
+            yCoords[i] = - mapImage.getyShift() + mapPiece.getRelYCoords()[i];
+        }
+        Color color = mapPiece.getTerrain().getColor();
+        color = color.deriveColor(0, 1, .5 + (double)mapPiece.getLight()/100, 1);
+
+        graphics.setColor(ColorHelper.fx2AwtColor(color));
+        graphics.fillPolygon(xCoords, yCoords, 6);
+//        gc.setFill(color);
+//        gc.fillPolygon(xCoords, yCoords, 6);
+
+
     }
 
     public void drawMapPiece(Point point){

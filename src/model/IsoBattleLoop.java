@@ -173,7 +173,7 @@ public class IsoBattleLoop extends AnimationTimer{
 
             alert = new MapPieceInfo(clickedMapPiece, clickedPoint);
             alertOn = true;
-        } else if (alert.getResult() == ButtonType.OK) {
+        } else {
             canvasRClickFlag = false;
             alertOn = false;
             alert.setResult(null);
