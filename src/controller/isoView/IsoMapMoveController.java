@@ -1,7 +1,10 @@
 package controller.isoView;
 
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import model.IsoBattleLoop;
@@ -11,7 +14,7 @@ import java.util.List;
 
 
 public class IsoMapMoveController {
-    static final int MAP_MOVE_BOUNDARY = 10;
+    private static final int MAP_MOVE_BOUNDARY = 10;
     public static final int MAP_MOVE_STEP = 3;
 
     private Canvas mapCanvas;

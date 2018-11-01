@@ -26,16 +26,13 @@ public class IsoMapClickController {
     }
 
     private void initCanvasClick(){
-        mapCanvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                    isoBattleLoop.setCanvasLClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-                    isoBattleLoop.setCanvasLClickFlag(true);
-                } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-                    isoBattleLoop.setCanvasRClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-                    isoBattleLoop.setCanvasRClickFlag(true);
-                }
+        mapCanvas.setOnMouseClicked(mouseEvent -> {
+            if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                isoBattleLoop.setCanvasLClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+                isoBattleLoop.setCanvasLClickFlag(true);
+            } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
+                isoBattleLoop.setCanvasRClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+                isoBattleLoop.setCanvasRClickFlag(true);
             }
         });
     }

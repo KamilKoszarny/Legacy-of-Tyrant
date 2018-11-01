@@ -18,14 +18,14 @@ public class IsoViewer {
     private MapObjectDrawer mapObjectDrawer;
     private ClickMenusDrawer clickMenusDrawer;
     private SpritesDrawer spritesDrawer;
-    private int timeStepCount = 0;
+    private boolean cutView = false;
 
     public IsoViewer(Map map, Canvas canvas, List<Character> characters) {
         mapDrawer = new MapDrawer(map, canvas);
         spritesDrawer = new SpritesDrawer(map, canvas, mapDrawer, characters);
         clickMenusDrawer = new ClickMenusDrawer(mapDrawer);
         mapDrawer.drawMap();
-        spritesDrawer.drawVisibleSprites();
+        spritesDrawer.drawVisibleSprites(cutView);
     }
 
     public void moveMap(Point mapMove) {
@@ -33,7 +33,7 @@ public class IsoViewer {
         if (MapDrawCalculator.mapOnScreen()) {
             mapDrawer.clearMapBounds();
             mapDrawer.drawMap();
-            spritesDrawer.drawVisibleSprites();
+            spritesDrawer.drawVisibleSprites(cutView);
             clickMenusDrawer.moveMenus(mapMove);
         } else {
             mapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
@@ -42,7 +42,7 @@ public class IsoViewer {
 
     public void draw() {
         mapDrawer.drawMap();
-        spritesDrawer.drawVisibleSprites();
+        spritesDrawer.drawVisibleSprites(cutView);
     }
 
     public MapDrawer getMapDrawer() {
@@ -55,5 +55,9 @@ public class IsoViewer {
 
     public ClickMenusDrawer getClickMenusDrawer() {
         return clickMenusDrawer;
+    }
+
+    public void switchCutView() {
+        cutView = !cutView;
     }
 }

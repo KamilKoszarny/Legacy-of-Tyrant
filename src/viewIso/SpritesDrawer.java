@@ -30,13 +30,13 @@ public class SpritesDrawer {
         mapObjectDrawer = new MapObjectDrawer(map, canvas);
     }
 
-    public void drawVisibleSprites() {
+    public void drawVisibleSprites(boolean cutView) {
         List<Point> visiblePoints = MapDrawCalculator.calcVisiblePoints();
         visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
         for (Point point: visiblePoints) {
             MapPiece mapPiece = map.getPoints().get(point);
             if (mapPiece.getObject() != null) {
-                mapObjectDrawer.drawObject(point);
+                mapObjectDrawer.drawObject(point, cutView);
             }
             for (Character character: characters) {
                 if (point.equals(character.getPosition())) {

@@ -10,6 +10,7 @@ import java.util.Random;
 public class HeightGenerator {
 
     public static final int H_PEX_PIX = 1000;
+    public static final int MAX_WALKABLE_SLOPE = 10000;
 
     Map map;
     MapHeightType heightType;
@@ -43,7 +44,6 @@ public class HeightGenerator {
                 height = (int) ((map.MIN_HEIGHT_PIX + (map.MAX_HEIGHT_PIX - map.MIN_HEIGHT_PIX) * (value / 2 + 0.5)) * H_PEX_PIX /
                         (map.mapXPoints / featureSize) / (50. / hilly));
                 mapPiece.setHeight(mapPiece.getHeight() + height);
-//                System.out.println(value);
             }
         }
     }

@@ -2,6 +2,8 @@ package viewIso.mapObjects;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.WritableImage;
 import model.character.Character;
 import model.map.Map;
 import model.map.MapPiece;
@@ -34,22 +36,20 @@ public class MapObjectDrawer {
         }
     }
 
-    public void drawVisibleObjects() {
-        List<Point> visiblePoints = MapDrawCalculator.calcVisiblePoints();
-        visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
-        for (Point point: visiblePoints) {
-            MapPiece mapPiece = map.getPoints().get(point);
-            if (mapPiece.getObject() != null) {
-                drawObject(point);
-            }
-        }
-    }
-
-    public void drawObject (Point point) {
+    public void drawObject (Point point, boolean cutView) {
         MapObjectSprite mapObjectSprite = mapObjectSpriteMap.get(point);
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
-        canvas.getGraphicsContext2D().drawImage(image,
+        if (cutView){
+            int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
+            int sourceHeight = (int)(image.getHeight() - mapObjectSprite.getOffset().y);
+            canvas.getGraphicsContext2D().drawImage(image,
+                    0, sourceY,
+                    (int) image.getWidth(), sourceHeight,
+                    screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
+                    (int) image.getWidth(), sourceHeight);
+        } else
+            canvas.getGraphicsContext2D().drawImage(image,
                 screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
     }
 

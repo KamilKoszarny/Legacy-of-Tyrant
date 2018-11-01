@@ -2,9 +2,6 @@ package model.map.mapObjects;
 
 public class MapObject{
 
-    public static final int SIZES = 3;
-    public static final int KINDS = 8;
-
     private MapObjectType type;
     private int size;
     private int look;

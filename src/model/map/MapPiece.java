@@ -3,6 +3,7 @@
 package model.map;
 
 import javafx.scene.paint.Color;
+import model.map.heights.HeightGenerator;
 import model.map.mapObjects.MapObject;
 import model.map.terrains.Terrain;
 
@@ -13,10 +14,10 @@ public class MapPiece {
     private int height = 0;
     private int heightN, heightE, heightS, heightW;
     private int slopeDir, slopeSize;
-    private Color color;
     private int light;
     private int[] relXCoords, relYCoords;
     private MapObject object = null;
+    private boolean walkable = true;
 
     public Terrain getTerrain() {
         return terrain;
@@ -100,10 +101,8 @@ public class MapPiece {
     public void setSlope(int dir, int size) {
         slopeDir = dir;
         slopeSize = size;
-    }
-
-    public Color getColor() {
-        return color;
+        if (slopeSize > HeightGenerator.MAX_WALKABLE_SLOPE)
+            walkable = false;
     }
 
     public int getLight() {
@@ -120,6 +119,14 @@ public class MapPiece {
 
     public void setObject(MapObject object) {
         this.object = object;
+    }
+
+    public boolean isWalkable() {
+        return walkable;
+    }
+
+    public void setWalkable(boolean walkable) {
+        this.walkable = walkable;
     }
 }
 

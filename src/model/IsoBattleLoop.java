@@ -1,5 +1,6 @@
 package model;
 
+import controller.isoView.IsoMapMoveController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -114,12 +115,43 @@ public class IsoBattleLoop extends AnimationTimer{
     public void changeMapMove(Point mapMoveChange) {
         mapMove.x = mapMove.x + mapMoveChange.x;
         mapMove.y = mapMove.y + mapMoveChange.y;
+        if (mapMove.x > IsoMapMoveController.MAP_MOVE_STEP)
+            mapMove.x = IsoMapMoveController.MAP_MOVE_STEP;
+        if (mapMove.y > IsoMapMoveController.MAP_MOVE_STEP)
+            mapMove.y = IsoMapMoveController.MAP_MOVE_STEP;
     }
 
     public void resetMapMove(Point mapMove) {
         this.mapMove = mapMove;
     }
 
+    private boolean nextFrame(long curNanoTime) {
+        curMs = (int) (curNanoTime / 1000000);
+        if (curMs - lastMs > FRAME_RATE){
+            lastMs = curMs;
+            return true;
+        }
+        return false;
+    }
+
+    private void showMapPieceInfo(MapPiece clickedMapPiece) {
+        if (!alertOn) {
+            this.stop();
+            Point clickedPoint = new Point();
+            for (Point point: mapDrawer.getMap().getPoints().keySet()) {
+                if (mapDrawer.getMap().getPoints().get(point) == clickedMapPiece)
+                    clickedPoint = point;
+            }
+
+            alert = new MapPieceInfo(clickedMapPiece, clickedPoint);
+            alertOn = true;
+        } else {
+            canvasRClickFlag = false;
+            alertOn = false;
+            alert.setResult(null);
+        }
+        this.start();
+    }
 
     public void setCanvasLClickFlag(boolean canvasLClickFlag) {
         this.canvasLClickFlag = canvasLClickFlag;
@@ -153,31 +185,5 @@ public class IsoBattleLoop extends AnimationTimer{
         clickMenusDrawer = isoViewer.getClickMenusDrawer();
     }
 
-    private boolean nextFrame(long curNanoTime) {
-        curMs = (int) (curNanoTime / 1000000);
-        if (curMs - lastMs > FRAME_RATE){
-            lastMs = curMs;
-            return true;
-        }
-        return false;
-    }
 
-    private void showMapPieceInfo(MapPiece clickedMapPiece) {
-        if (!alertOn) {
-            this.stop();
-            Point clickedPoint = new Point();
-            for (Point point: mapDrawer.getMap().getPoints().keySet()) {
-                if (mapDrawer.getMap().getPoints().get(point) == clickedMapPiece)
-                    clickedPoint = point;
-            }
-
-            alert = new MapPieceInfo(clickedMapPiece, clickedPoint);
-            alertOn = true;
-        } else {
-            canvasRClickFlag = false;
-            alertOn = false;
-            alert.setResult(null);
-        }
-        this.start();
-    }
 }

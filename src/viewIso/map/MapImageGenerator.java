@@ -21,6 +21,8 @@ public class MapImageGenerator {
     private static Map map;
     private static MapPieceDrawer mapPieceDrawer;
     private static Random r = new Random();
+    private static final double HSB_SHIFT = .3;
+    private static int COLOR_MIX_RADIUS = (MapDrawer.MAP_PIECE_SCREEN_SIZE_X + MapDrawer.MAP_PIECE_SCREEN_SIZE_Y) / 2;
 
     static void initialize(Map map, MapPieceDrawer mapPieceDrawer){
         MapImageGenerator.map = map;
@@ -77,9 +79,6 @@ public class MapImageGenerator {
             for (int x = 0; x < mapImage.getWidth(); x++) {
                 color = calcPixelColor(pixelReader, x, y);
                 pixelWriter.setColor(x, y, color);
-
-                if (x%1000 == 0 && y%1000 == 0)
-                    System.out.println(x + " " + y);
             }
         }
         System.out.println("mapImage ready");
@@ -93,15 +92,18 @@ public class MapImageGenerator {
         if (originColor.equals(MapDrawer.BACKGROUND_COLOR))
             return MapDrawer.BACKGROUND_COLOR;
 
-        int colorSearchRadius = (MapDrawer.MAP_PIECE_SCREEN_SIZE_X + MapDrawer.MAP_PIECE_SCREEN_SIZE_Y) / 3;
-        x = x + r.nextInt(colorSearchRadius) - colorSearchRadius/2;
-        y = y + r.nextInt(colorSearchRadius) - colorSearchRadius/2;
+        x = x + r.nextInt(COLOR_MIX_RADIUS) - COLOR_MIX_RADIUS /2;
+        y = y + r.nextInt(COLOR_MIX_RADIUS) - COLOR_MIX_RADIUS /2;
 
         if (x < 0 || x >= mapImage.getWidth() || y < 0 || y >= mapImage.getHeight())
             return MapDrawer.BACKGROUND_COLOR;
 
-        Color shuffleColor = pixelReader.getColor(x + r.nextInt(colorSearchRadius) - colorSearchRadius/2,
-                y + r.nextInt(colorSearchRadius) - colorSearchRadius/2);
+        Color shuffleColor = pixelReader.getColor(x + r.nextInt(COLOR_MIX_RADIUS) - COLOR_MIX_RADIUS /2,
+                y + r.nextInt(COLOR_MIX_RADIUS) - COLOR_MIX_RADIUS /2);
+
+        shuffleColor = Color.hsb((shuffleColor.getHue() * ((1 - HSB_SHIFT) + r.nextDouble()* HSB_SHIFT *2))%360,
+                Math.min(shuffleColor.getSaturation()* ((1 - HSB_SHIFT) + r.nextDouble()* HSB_SHIFT *2), 1),
+                Math.min(shuffleColor.getBrightness()* ((1 - HSB_SHIFT) + r.nextDouble()* HSB_SHIFT *2), 1));
 
         if (shuffleColor.equals(MapDrawer.BACKGROUND_COLOR))
             return originColor;
