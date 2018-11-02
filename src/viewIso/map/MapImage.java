@@ -1,6 +1,6 @@
 package viewIso.map;
 
-import helpers.ColorHelper;
+import helpers.my.ColorHelper;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 

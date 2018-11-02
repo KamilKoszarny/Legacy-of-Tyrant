@@ -26,6 +26,7 @@ public enum ClickMenuButton {
     private static final double SPACING = 0.5;
     private static final int ICON_XY = 16;
     private static final javafx.scene.paint.Color COLOR = Color.GOLD;
+    private static final javafx.scene.paint.Color COLOR_GRAYED = Color.GRAY;
 
     private String name;
     private Image icon;
@@ -35,6 +36,7 @@ public enum ClickMenuButton {
     private int number;
     private Polygon shape = new Polygon();
     private boolean clicked = false;
+    private boolean grayed = false;
 
     ClickMenuButton(String name, String iconName) {
         this.name = name;
@@ -57,6 +59,15 @@ public enum ClickMenuButton {
         }
     }
 
+    static void colorButtons(List<ClickMenuButton> clickMenuButtons) {
+        for (ClickMenuButton button: clickMenuButtons) {
+            if (button.grayed)
+                button.getShape().setFill(COLOR_GRAYED);
+            else
+                button.getShape().setFill(COLOR);
+        }
+    }
+
     private void initTooltip() {
         Tooltip tooltip = new Tooltip(name);
         Tooltip.install(shape, tooltip);
@@ -69,11 +80,9 @@ public enum ClickMenuButton {
     }
 
     private void initClickForNode(Node node) {
-        node.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
+        node.setOnMouseClicked(mouseEvent -> {
+            if (!grayed)
                 clicked = true;
-            }
         });
     }
 
@@ -88,8 +97,6 @@ public enum ClickMenuButton {
 
         Rotate rotate = new Rotate(-360 / menuButtonsCount * number + 180 / menuButtonsCount, 0, 0);
         shape.getTransforms().add(rotate);
-
-        shape.setFill(COLOR);
     }
 
     private void calcLabel() {
@@ -117,5 +124,9 @@ public enum ClickMenuButton {
         boolean wasClicked = clicked;
         clicked = false;
         return wasClicked;
+    }
+
+    public void setGrayed(boolean grayed) {
+        this.grayed = grayed;
     }
 }

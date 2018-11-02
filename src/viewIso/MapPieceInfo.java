@@ -15,20 +15,21 @@ public class MapPieceInfo extends Alert {
         setHeaderText("Map piece nr " + clickedMapPiece.hashCode() + " at " + point);
 
         StringBuilder contentSB = new StringBuilder();
-        contentSB.append("Terrain: " + clickedMapPiece.getTerrain() + "\n");
-        contentSB.append("Height: " + clickedMapPiece.getHeight() + "\n");
-        contentSB.append("HN: " + clickedMapPiece.getHeightN() + "\n");
-        contentSB.append("HE: " + clickedMapPiece.getHeightE() + "\n");
-        contentSB.append("HS: " + clickedMapPiece.getHeightS() + "\n");
-        contentSB.append("HW: " + clickedMapPiece.getHeightW() + "\n");
-        contentSB.append("Slope dir: " + clickedMapPiece.getSlopeDir() + "\n");
-        contentSB.append("Slope size: " + clickedMapPiece.getSlopeSize() + "\n");
+        contentSB.append("Terrain: ").append(clickedMapPiece.getTerrain()).append("\n");
+        contentSB.append("Walkable: ").append(clickedMapPiece.isWalkable()).append("\n");
+        contentSB.append("Height: ").append(clickedMapPiece.getHeight()).append("\n");
+        contentSB.append("HN: ").append(clickedMapPiece.getHeightN()).append("\n");
+        contentSB.append("HE: ").append(clickedMapPiece.getHeightE()).append("\n");
+        contentSB.append("HS: ").append(clickedMapPiece.getHeightS()).append("\n");
+        contentSB.append("HW: ").append(clickedMapPiece.getHeightW()).append("\n");
+        contentSB.append("Slope dir: ").append(clickedMapPiece.getSlopeDir()).append("\n");
+        contentSB.append("Slope size: ").append(clickedMapPiece.getSlopeSize()).append("\n");
 
         MapObject mapObject = clickedMapPiece.getObject();
         if (mapObject != null) {
-            contentSB.append("Object: " + mapObject.getType() + "\n");
-            contentSB.append("Object size: " + mapObject.getSize() + "\n");
-            contentSB.append("Object look: " + mapObject.getLook() + "\n");
+            contentSB.append("Object: ").append(mapObject.getType()).append("\n");
+            contentSB.append("Object size: ").append(mapObject.getSize()).append("\n");
+            contentSB.append("Object look: ").append(mapObject.getLook()).append("\n");
         }
 
         setContentText(contentSB.toString());

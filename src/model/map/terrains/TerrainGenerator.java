@@ -24,7 +24,10 @@ public class TerrainGenerator {
 
         for (Point point : points) {
             MapPiece mapPiece = map.getPoints().get(point);
-            mapPiece.setTerrain(chooseTerrain(point));
+            Terrain terrain = chooseTerrain(point);
+            mapPiece.setTerrain(terrain);
+            if (terrain.moveFactor == 0)
+                mapPiece.setWalkable(false);
         }
     }
 

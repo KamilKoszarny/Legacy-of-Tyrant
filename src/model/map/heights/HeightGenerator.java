@@ -1,6 +1,6 @@
 package model.map.heights;
 
-import helpers.OpenSimplexNoise;
+import helpers.downloaded.heigthGeneration.OpenSimplexNoise;
 import model.map.Map;
 import model.map.MapPiece;
 

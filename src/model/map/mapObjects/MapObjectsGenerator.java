@@ -37,11 +37,10 @@ public class MapObjectsGenerator {
 
         if (r.nextInt(type.getProbabilityDivider()) < 1) {
             size = checkAvailableSize(point, terrain);
-
             look = r.nextInt(type.getLooks());
             mapPiece.setObject(new MapObject(MapObjectType.TREE, size, look));
+            setNonWalkablePieces(point, size);
         }
-
     }
 
     private int checkAvailableSize(Point point, Terrain terrain) {
@@ -70,5 +69,17 @@ public class MapObjectsGenerator {
             }
         }
         return true;
+    }
+
+    private void setNonWalkablePieces(Point basePoint, int radius) {
+        Point point;
+        for (int y = -radius/2; y <= (radius - 1)/2; y++) {
+            for (int x = -radius/2; x <= (radius - 1)/2; x++) {
+                point = new Point(basePoint.x + x, basePoint.y + y);
+                if (map.getPoints().get(point) != null) {
+                    map.getPoints().get(point).setWalkable(false);
+                }
+            }
+        }
     }
 }

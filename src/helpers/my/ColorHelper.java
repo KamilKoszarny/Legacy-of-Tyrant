@@ -1,4 +1,4 @@
-package helpers;
+package helpers.my;
 
 import javafx.scene.paint.Color;
 

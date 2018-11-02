@@ -1,4 +1,4 @@
-package helpers;
+package helpers.downloaded.heigthGeneration;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

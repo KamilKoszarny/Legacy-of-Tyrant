@@ -1,4 +1,4 @@
-package helpers;
+package helpers.downloaded.heigthGeneration;
 /*
  * OpenSimplex Noise in Java.
  * by Kurt Spencer

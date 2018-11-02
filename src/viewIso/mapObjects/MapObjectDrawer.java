@@ -41,13 +41,15 @@ public class MapObjectDrawer {
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
         if (cutView){
+            int sourceX = (int) (image.getWidth() * .4);
             int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
+            int sourceWidth = (int) (image.getWidth() * .2);
             int sourceHeight = (int)(image.getHeight() - mapObjectSprite.getOffset().y);
             canvas.getGraphicsContext2D().drawImage(image,
-                    0, sourceY,
-                    (int) image.getWidth(), sourceHeight,
-                    screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
-                    (int) image.getWidth(), sourceHeight);
+                    sourceX, sourceY,
+                    sourceWidth, sourceHeight,
+                    screenPos.x - mapObjectSprite.getOffset().x + sourceX, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
+                    sourceWidth, sourceHeight);
         } else
             canvas.getGraphicsContext2D().drawImage(image,
                 screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);

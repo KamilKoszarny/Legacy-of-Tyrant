@@ -1,6 +1,6 @@
 package model.character.movement;
 
-import helpers.GeomerticHelper;
+import helpers.my.GeomerticHelper;
 import javafx.geometry.Point2D;
 import model.character.CharState;
 import model.character.Character;

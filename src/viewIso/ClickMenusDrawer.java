@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.map.Map;
+import model.map.MapPiece;
+import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 import viewIso.map.MapPieceDrawer;
 
@@ -20,7 +22,7 @@ public class ClickMenusDrawer {
     private GraphicsContext gc;
     private MapDrawer mapDrawer;
     private MapPieceDrawer mPDrawer;
-    List<ClickMenuButton> char2PointMenu;
+    List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
 
     ClickMenusDrawer(MapDrawer mapDrawer) {
         this.mapDrawer = mapDrawer;
@@ -33,6 +35,19 @@ public class ClickMenusDrawer {
     }
 
     public void drawChar2PointMenu(Point clickPoint) {
+        MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
+        if (!clickedMapPiece.isWalkable()) {
+            ClickMenuButton.WALK.setGrayed(true);
+            ClickMenuButton.RUN.setGrayed(true);
+            ClickMenuButton.SNEAK.setGrayed(true);
+            ClickMenuButton.colorButtons(char2PointMenu);
+        } else {
+            ClickMenuButton.WALK.setGrayed(false);
+            ClickMenuButton.RUN.setGrayed(false);
+            ClickMenuButton.SNEAK.setGrayed(false);
+            ClickMenuButton.colorButtons(char2PointMenu);
+        }
+
         for (ClickMenuButton button: char2PointMenu) {
             drawButton(button, clickPoint);
         }
@@ -59,10 +74,9 @@ public class ClickMenusDrawer {
     }
 
     private void initChar2PointMenu() {
-        char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
-
         ClickMenuButton.groupButtons(char2PointMenu);
         ClickMenuButton.shapeButtons(char2PointMenu);
+        ClickMenuButton.colorButtons(char2PointMenu);
         for (ClickMenuButton button: char2PointMenu) {
             Shape shape = button.getShape();
             shape.setVisible(false);

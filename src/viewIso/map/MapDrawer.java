@@ -35,7 +35,7 @@ public class MapDrawer {
         MapDrawCalculator.setMapAndDrawer(map, this);
         MapImageGenerator.initialize(map, mPDrawer);
         mapImage = MapImageGenerator.generateMapPreImage();
-        mapImage = MapImageGenerator.generateMapImage();
+//        mapImage = MapImageGenerator.generateMapImage();
     }
 
     public void drawMap() {

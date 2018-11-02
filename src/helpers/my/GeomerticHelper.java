@@ -1,4 +1,4 @@
-package helpers;
+package helpers.my;
 
 public class GeomerticHelper {
     public static double distTo0(double x, double y) {
