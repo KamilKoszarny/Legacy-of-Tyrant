@@ -1,17 +1,17 @@
 package helpers.downloaded.pathfinding.main;
 
-import algorithms.PathFindingAlgorithm;
-import algorithms.datatypes.SnapshotItem;
-import draw.DrawCanvas;
-import draw.GridLineSet;
-import draw.GridObjects;
-import draw.KeyToggler;
-import grid.GridAndGoals;
-import grid.GridGraph;
-import grid.StartGoalPoints;
-import main.utility.TimeCounter;
-import main.utility.Utility;
-import uiandio.CloseOnExitWindowListener;
+import helpers.downloaded.pathfinding.algorithms.PathFindingAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.draw.DrawCanvas;
+import helpers.downloaded.pathfinding.draw.GridLineSet;
+import helpers.downloaded.pathfinding.draw.GridObjects;
+import helpers.downloaded.pathfinding.draw.KeyToggler;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.StartGoalPoints;
+import helpers.downloaded.pathfinding.main.utility.TimeCounter;
+import helpers.downloaded.pathfinding.main.utility.Utility;
+import helpers.downloaded.pathfinding.uiandio.CloseOnExitWindowListener;
 
 import javax.swing.*;
 import java.awt.*;

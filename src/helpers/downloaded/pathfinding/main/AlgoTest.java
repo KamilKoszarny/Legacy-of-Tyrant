@@ -1,24 +1,24 @@
 package helpers.downloaded.pathfinding.main;
 
-import algorithms.*;
-import algorithms.anya16.Anya16;
-import algorithms.datatypes.Point;
-import algorithms.sg16.SG16Algorithm;
-import algorithms.sparsevgs.*;
-import algorithms.strictthetastar.RecursiveStrictThetaStar;
-import algorithms.strictthetastar.StrictThetaStar;
-import grid.GridGraph;
-import main.analysis.MazeAnalysis;
-import main.analysis.TwoPoint;
-import main.mazes.MazeAndTestCases;
-import main.mazes.StoredTestMazes;
-import main.testgen.*;
-import main.utility.TimeCounter;
-import main.utility.Utility;
-import uiandio.BenchmarkGraphImporter;
-import uiandio.BenchmarkGraphSets;
-import uiandio.FileIO;
-import uiandio.GraphImporter;
+import helpers.downloaded.pathfinding.algorithms.*;
+import helpers.downloaded.pathfinding.algorithms.anya16.Anya16;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.sg16.SG16Algorithm;
+import helpers.downloaded.pathfinding.algorithms.sparsevgs.*;
+import helpers.downloaded.pathfinding.algorithms.strictthetastar.RecursiveStrictThetaStar;
+import helpers.downloaded.pathfinding.algorithms.strictthetastar.StrictThetaStar;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalysis;
+import helpers.downloaded.pathfinding.main.analysis.TwoPoint;
+import helpers.downloaded.pathfinding.main.mazes.MazeAndTestCases;
+import helpers.downloaded.pathfinding.main.mazes.StoredTestMazes;
+import helpers.downloaded.pathfinding.main.testgen.*;
+import helpers.downloaded.pathfinding.main.utility.TimeCounter;
+import helpers.downloaded.pathfinding.main.utility.Utility;
+import helpers.downloaded.pathfinding.uiandio.BenchmarkGraphImporter;
+import helpers.downloaded.pathfinding.uiandio.BenchmarkGraphSets;
+import helpers.downloaded.pathfinding.uiandio.FileIO;
+import helpers.downloaded.pathfinding.uiandio.GraphImporter;
 
 import java.util.ArrayList;
 

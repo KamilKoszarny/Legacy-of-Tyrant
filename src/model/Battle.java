@@ -82,14 +82,14 @@ public class Battle {
     }
 
     public void turnCharacter(Point turnPoint) {
-        CharTurner.turnCharacter(chosenCharacter, turnPoint);
+        CharTurner.turnCharacter(chosenCharacter, turnPoint, true);
     }
 
     public void startRunCharacter(Point runPoint) {
-        CharMover.startRunCharacter(chosenCharacter, runPoint);
+        CharMover.startRunCharacter(chosenCharacter, runPoint, map);
     }
 
-    public void updateCharactersLook(int ms) {
+    public void updateCharacters(int ms) {
         for (Character character: characters) {
             if (character.getDestination() != null)
                 CharMover.updateCharacterMove(character, ms);

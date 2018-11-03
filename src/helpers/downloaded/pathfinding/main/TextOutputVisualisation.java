@@ -1,13 +1,13 @@
 package helpers.downloaded.pathfinding.main;
 
-import algorithms.datatypes.SnapshotItem;
-import draw.DrawCanvas;
-import draw.GridLineSet;
-import draw.GridObjects;
-import grid.GridAndGoals;
-import grid.GridGraph;
-import grid.StartGoalPoints;
-import uiandio.GraphImporter;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.draw.DrawCanvas;
+import helpers.downloaded.pathfinding.draw.GridLineSet;
+import helpers.downloaded.pathfinding.draw.GridObjects;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.StartGoalPoints;
+import helpers.downloaded.pathfinding.uiandio.GraphImporter;
 
 import java.awt.*;
 import java.util.ArrayList;

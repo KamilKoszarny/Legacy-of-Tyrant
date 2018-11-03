@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.main.testgen;
 
-import grid.GridGraph;
-import main.graphgeneration.DefaultGenerator;
-import main.graphgeneration.GraphInfo;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.graphgeneration.DefaultGenerator;
+import helpers.downloaded.pathfinding.main.graphgeneration.GraphInfo;
 
 public class StandardMazes extends TestDataLibrary {
 

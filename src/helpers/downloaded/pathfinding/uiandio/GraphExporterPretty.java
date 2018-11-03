@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.uiandio;
 
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 public class GraphExporterPretty extends GraphExporter {
 

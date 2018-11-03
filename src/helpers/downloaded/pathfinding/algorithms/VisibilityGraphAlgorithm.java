@@ -1,11 +1,11 @@
 package helpers.downloaded.pathfinding.algorithms;
 
-import algorithms.datatypes.Point;
-import algorithms.datatypes.SnapshotItem;
-import algorithms.priorityqueue.IndirectHeap;
-import algorithms.visibilitygraph.Edge;
-import algorithms.visibilitygraph.VisibilityGraph;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.IndirectHeap;
+import helpers.downloaded.pathfinding.algorithms.visibilitygraph.Edge;
+import helpers.downloaded.pathfinding.algorithms.visibilitygraph.VisibilityGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;
 import java.util.ArrayList;

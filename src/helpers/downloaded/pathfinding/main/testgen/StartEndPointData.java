@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.main.testgen;
 
-import algorithms.datatypes.Point;
-import main.analysis.TwoPoint;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.main.analysis.TwoPoint;
 
 public class StartEndPointData {
     public final Point start;

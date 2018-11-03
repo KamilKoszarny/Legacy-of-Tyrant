@@ -1,19 +1,19 @@
 package helpers.downloaded.pathfinding.draw;
 
-import algorithms.PathFindingAlgorithm;
-import algorithms.datatypes.Point;
-import algorithms.datatypes.SnapshotItem;
-import grid.GridGraph;
-import grid.StartGoalPoints;
-import main.AlgoFunction;
-import main.AnyAnglePathfinding;
-import main.analysis.MazeAnalysis;
-import main.analysis.ProblemAnalysis;
-import main.analysis.TwoPoint;
-import main.testgen.Stringifier;
-import main.testgen.TestDataGenerator;
-import main.utility.Utility;
-import uiandio.FileIO;
+import helpers.downloaded.pathfinding.algorithms.PathFindingAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.StartGoalPoints;
+import helpers.downloaded.pathfinding.main.AlgoFunction;
+import helpers.downloaded.pathfinding.main.AnyAnglePathfinding;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalysis;
+import helpers.downloaded.pathfinding.main.analysis.ProblemAnalysis;
+import helpers.downloaded.pathfinding.main.analysis.TwoPoint;
+import helpers.downloaded.pathfinding.main.testgen.Stringifier;
+import helpers.downloaded.pathfinding.main.testgen.TestDataGenerator;
+import helpers.downloaded.pathfinding.main.utility.Utility;
+import helpers.downloaded.pathfinding.uiandio.FileIO;
 
 import java.awt.*;
 import java.util.ArrayList;

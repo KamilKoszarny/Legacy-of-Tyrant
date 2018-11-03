@@ -3,7 +3,6 @@ package model;
 import controller.isoView.IsoMapMoveController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import model.map.MapPiece;
 import viewIso.*;
 import viewIso.characters.CharDrawer;
@@ -61,7 +60,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void animate() {
-        battle.updateCharactersLook(FRAME_RATE);
+        battle.updateCharacters(FRAME_RATE);
         isoViewer.draw();
         panelViewer.refresh();
     }
@@ -99,9 +98,9 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleButtonAction(ClickMenuButton button) {
-        if (button == ClickMenuButton.LOOK)
+        if (button == ClickMenuButton.LOOK) {
             battle.turnCharacter(clickedMapPoint);
-        if (button == ClickMenuButton.RUN)
+        } if (button == ClickMenuButton.RUN)
             battle.startRunCharacter(clickedMapPoint);
 
 

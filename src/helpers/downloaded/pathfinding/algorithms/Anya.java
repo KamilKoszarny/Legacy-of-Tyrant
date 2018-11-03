@@ -1,10 +1,10 @@
 package helpers.downloaded.pathfinding.algorithms;
 
-import algorithms.anya.Fraction;
-import algorithms.datatypes.Point;
-import algorithms.datatypes.SnapshotItem;
-import algorithms.priorityqueue.FastVariableSizeIndirectHeap;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.anya.Fraction;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.FastVariableSizeIndirectHeap;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.util.ArrayList;
 import java.util.Arrays;

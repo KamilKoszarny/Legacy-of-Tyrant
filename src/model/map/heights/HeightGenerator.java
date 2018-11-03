@@ -10,7 +10,7 @@ import java.util.Random;
 public class HeightGenerator {
 
     public static final int H_PEX_PIX = 1000;
-    public static final int MAX_WALKABLE_SLOPE = 10000;
+    public static final int MAX_WALKABLE_SLOPE = 20000;
 
     Map map;
     MapHeightType heightType;

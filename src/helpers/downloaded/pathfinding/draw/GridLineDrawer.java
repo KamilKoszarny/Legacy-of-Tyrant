@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.draw;
 
-import draw.GridLineSet.FractionLine;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.draw.GridLineSet.FractionLine;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;
 

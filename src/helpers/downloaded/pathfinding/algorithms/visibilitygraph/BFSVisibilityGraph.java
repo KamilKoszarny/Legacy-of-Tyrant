@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.algorithms.visibilitygraph;
 
-import algorithms.VisibilityGraphAlgorithm;
-import algorithms.datatypes.Point;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.VisibilityGraphAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.util.Iterator;
 import java.util.LinkedList;

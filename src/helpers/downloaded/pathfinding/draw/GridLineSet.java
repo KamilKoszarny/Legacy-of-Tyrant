@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.draw;
 
-import algorithms.anya.Fraction;
+import helpers.downloaded.pathfinding.algorithms.anya.Fraction;
 
 import java.awt.*;
 import java.util.ArrayList;

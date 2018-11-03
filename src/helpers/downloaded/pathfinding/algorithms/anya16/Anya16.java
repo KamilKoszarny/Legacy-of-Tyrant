@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.algorithms.anya16;
 
-import algorithms.PathFindingAlgorithm;
-import algorithms.datatypes.SnapshotItem;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.PathFindingAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;

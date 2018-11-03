@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.algorithms.sparsevgs;
 
-import algorithms.datatypes.Memory;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Memory;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.util.Arrays;
 

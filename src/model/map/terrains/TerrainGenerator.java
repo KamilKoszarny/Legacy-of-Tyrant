@@ -70,7 +70,7 @@ public class TerrainGenerator {
             if (n < ti)
                 return terrain;
         }
-        return null;
+        return Terrain.GRASS;
     }
 
     private void recalcTerrainIntensityBasedOnSurrounding(Point point){

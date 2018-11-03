@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.algorithms;
 
-import algorithms.datatypes.Memory;
-import algorithms.datatypes.SnapshotItem;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Memory;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;
 import java.util.ArrayList;

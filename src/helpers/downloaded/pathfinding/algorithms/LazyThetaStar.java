@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.algorithms;
 
-import algorithms.priorityqueue.ReusableIndirectHeap;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.ReusableIndirectHeap;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 public class LazyThetaStar extends BasicThetaStar {
 

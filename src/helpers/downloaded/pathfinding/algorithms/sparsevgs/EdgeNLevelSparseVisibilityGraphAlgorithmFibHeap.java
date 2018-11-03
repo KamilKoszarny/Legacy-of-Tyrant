@@ -1,12 +1,12 @@
 package helpers.downloaded.pathfinding.algorithms.sparsevgs;
 
-import algorithms.PathFindingAlgorithm;
-import algorithms.datatypes.Memory;
-import algorithms.datatypes.SnapshotItem;
-import algorithms.jgrapht.FibonacciHeap;
-import algorithms.jgrapht.FibonacciHeapNode;
-import grid.GridGraph;
-import main.AlgoFunction;
+import helpers.downloaded.pathfinding.algorithms.PathFindingAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Memory;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.jgrapht.FibonacciHeap;
+import helpers.downloaded.pathfinding.algorithms.jgrapht.FibonacciHeapNode;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.AlgoFunction;
 
 import java.awt.*;
 import java.util.ArrayList;

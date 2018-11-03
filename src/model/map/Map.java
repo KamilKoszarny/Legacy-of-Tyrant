@@ -1,5 +1,6 @@
 package model.map;
 
+import helpers.downloaded.pathfinding.grid.GridGraph;
 import model.map.heights.MapHeightType;
 import model.map.terrains.Terrain;
 
@@ -21,6 +22,7 @@ public class Map {
     private int widthM;
     private int heightM;
     private java.util.Map<Point, MapPiece> points = new HashMap<>();
+    private GridGraph gridGraph;
     private boolean withRoad;
     private boolean[] roadSides;
     private int buildingsCount, buildingMaxSize;
@@ -43,7 +45,7 @@ public class Map {
 
         mapXPoints = (int) ((double)widthM / Map.RESOLUTION_M);
         mapYPoints = (int) ((double)heightM / Map.RESOLUTION_M);
-
+        gridGraph = new GridGraph(mapXPoints * 4, mapYPoints * 4);
         for (int i = 0; i < widthM / RESOLUTION_M; i += 1)
             for (int j = 0; j < heightM / RESOLUTION_M; j += 1){
                 points.put(new Point(i, j), new MapPiece());
@@ -104,4 +106,14 @@ public class Map {
     public boolean isOnMapPoints(Point p){
         return p.x >= 0 && p.y >= 0 && p.x < mapXPoints && p.y < mapYPoints;
     }
+
+    public GridGraph getGridGraph() {
+        return gridGraph;
+    }
+
+    public void setGridGraph(GridGraph gridGraph) {
+        this.gridGraph = gridGraph;
+    }
+
+
 }

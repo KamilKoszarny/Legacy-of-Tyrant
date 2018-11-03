@@ -1,9 +1,9 @@
 package helpers.downloaded.pathfinding.main.graphgeneration;
 
-import algorithms.datatypes.Point;
-import grid.GridAndGoals;
-import grid.GridGraph;
-import main.analysis.MazeAnalysis;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalysis;
 
 import java.util.ArrayList;
 

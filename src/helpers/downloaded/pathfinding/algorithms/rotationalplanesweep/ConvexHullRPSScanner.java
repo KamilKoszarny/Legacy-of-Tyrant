@@ -1,10 +1,10 @@
 package helpers.downloaded.pathfinding.algorithms.rotationalplanesweep;
 
-import algorithms.datatypes.SnapshotItem;
-import algorithms.sg16.SG16VisibilityGraph;
-import draw.GridLineSet;
-import draw.GridPointSet;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.sg16.SG16VisibilityGraph;
+import helpers.downloaded.pathfinding.draw.GridLineSet;
+import helpers.downloaded.pathfinding.draw.GridPointSet;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;
 import java.util.ArrayList;

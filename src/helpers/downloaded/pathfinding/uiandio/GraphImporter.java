@@ -1,10 +1,10 @@
 package helpers.downloaded.pathfinding.uiandio;
 
-import grid.GridAndGoals;
-import grid.GridGraph;
-import main.AnyAnglePathfinding;
-import main.analysis.TwoPoint;
-import main.testgen.StartEndPointData;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.AnyAnglePathfinding;
+import helpers.downloaded.pathfinding.main.analysis.TwoPoint;
+import helpers.downloaded.pathfinding.main.testgen.StartEndPointData;
 
 import java.io.*;
 import java.util.ArrayList;

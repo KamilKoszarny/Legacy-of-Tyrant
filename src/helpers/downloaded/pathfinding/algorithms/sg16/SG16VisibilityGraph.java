@@ -1,9 +1,9 @@
 package helpers.downloaded.pathfinding.algorithms.sg16;
 
 
-import algorithms.datatypes.SnapshotItem;
-import algorithms.rotationalplanesweep.ConvexHullRPSScanner;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.rotationalplanesweep.ConvexHullRPSScanner;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;
 import java.util.ArrayList;

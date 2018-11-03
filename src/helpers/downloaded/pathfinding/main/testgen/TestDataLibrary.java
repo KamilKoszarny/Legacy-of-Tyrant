@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.main.testgen;
 
-import algorithms.datatypes.Point;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.util.Arrays;
 import java.util.LinkedList;

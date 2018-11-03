@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.algorithms.sparsevgs;
 
-import algorithms.datatypes.SnapshotItem;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;
 import java.util.ArrayList;

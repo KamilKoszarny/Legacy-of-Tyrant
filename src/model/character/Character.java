@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.List;
 import java.util.Locale;
 
 public class Character {
@@ -31,6 +32,8 @@ public class Character {
     private double direction;
     private double currentSpeed;
     private Point destination;
+    private List<Point2D> path;
+    private int pathSection;
     private int msLeft = 0;
 
     private boolean chosen = false;
@@ -142,6 +145,22 @@ public class Character {
 
     public void setDestination(Point destination) {
         this.destination = destination;
+    }
+
+    public List<Point2D> getPath() {
+        return path;
+    }
+
+    public void setPath(List<Point2D> path) {
+        this.path = path;
+    }
+
+    public int getPathSection() {
+        return pathSection;
+    }
+
+    public void setPathSection(int pathSection) {
+        this.pathSection = pathSection;
     }
 
     public boolean isChosen() {

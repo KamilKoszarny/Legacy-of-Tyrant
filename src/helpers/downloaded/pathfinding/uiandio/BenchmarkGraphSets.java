@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.uiandio;
 
-import main.mazes.MazeAndTestCases;
+import helpers.downloaded.pathfinding.main.mazes.MazeAndTestCases;
 
 public class BenchmarkGraphSets {
     public static String[] getSetNames() {

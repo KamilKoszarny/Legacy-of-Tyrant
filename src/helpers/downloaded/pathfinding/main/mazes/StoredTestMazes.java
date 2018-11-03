@@ -1,17 +1,17 @@
 package helpers.downloaded.pathfinding.main.mazes;
 
-import algorithms.datatypes.Point;
-import grid.GridGraph;
-import main.analysis.MazeAnalysis;
-import main.analysis.TwoPoint;
-import main.graphgeneration.AutomataGenerator;
-import main.graphgeneration.MazeMapGenerator;
-import main.graphgeneration.TiledMapGenerator;
-import main.graphgeneration.UpscaledMapGenerator;
-import main.testgen.StartEndPointData;
-import main.testgen.Stringifier;
-import main.utility.Utility;
-import uiandio.GraphImporter;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalysis;
+import helpers.downloaded.pathfinding.main.analysis.TwoPoint;
+import helpers.downloaded.pathfinding.main.graphgeneration.AutomataGenerator;
+import helpers.downloaded.pathfinding.main.graphgeneration.MazeMapGenerator;
+import helpers.downloaded.pathfinding.main.graphgeneration.TiledMapGenerator;
+import helpers.downloaded.pathfinding.main.graphgeneration.UpscaledMapGenerator;
+import helpers.downloaded.pathfinding.main.testgen.StartEndPointData;
+import helpers.downloaded.pathfinding.main.testgen.Stringifier;
+import helpers.downloaded.pathfinding.main.utility.Utility;
+import helpers.downloaded.pathfinding.uiandio.GraphImporter;
 
 import java.util.ArrayList;
 import java.util.HashSet;

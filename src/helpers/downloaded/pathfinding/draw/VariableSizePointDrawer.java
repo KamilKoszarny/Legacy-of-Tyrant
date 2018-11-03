@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.draw;
 
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 public class VariableSizePointDrawer extends GridPointDrawer {
 

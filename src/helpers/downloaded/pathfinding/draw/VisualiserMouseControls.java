@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.draw;
 
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

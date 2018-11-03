@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.algorithms.sg16;
 
-import algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
 
 import java.awt.*;
 import java.util.ArrayList;

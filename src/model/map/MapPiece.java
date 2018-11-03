@@ -2,7 +2,6 @@
 
 package model.map;
 
-import javafx.scene.paint.Color;
 import model.map.heights.HeightGenerator;
 import model.map.mapObjects.MapObject;
 import model.map.terrains.Terrain;

@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.algorithms.strictthetastar;
 
-import algorithms.BasicThetaStar;
-import algorithms.priorityqueue.ReusableIndirectHeap;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.BasicThetaStar;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.ReusableIndirectHeap;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 /**
  * An modification of Theta* that I am experimenting with. -Oh

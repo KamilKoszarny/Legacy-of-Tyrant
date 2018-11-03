@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.draw;
 
-import draw.EditorUI.PathComputeMode;
+import helpers.downloaded.pathfinding.draw.EditorUI.PathComputeMode;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

@@ -1,21 +1,21 @@
 package helpers.downloaded.pathfinding.main;
 
-import algorithms.*;
-import algorithms.anya16.Anya16;
-import algorithms.sg16.SG16Algorithm;
-import algorithms.sparsevgs.EdgeNLevelSparseVisibilityGraphAlgorithm;
-import algorithms.sparsevgs.SparseVisibilityGraphAlgorithm;
-import algorithms.sparsevgs.VisibilityGraphAlgorithmOptimised;
-import algorithms.strictthetastar.RecursiveStrictThetaStar;
-import algorithms.strictthetastar.StrictThetaStar;
-import algorithms.visibilitygraph.BFSVisibilityGraph;
-import grid.GridAndGoals;
-import grid.GridGraph;
-import main.graphgeneration.*;
-import main.mazes.StoredTestMazes;
-import main.testgen.TestDataGenerator;
-import uiandio.BenchmarkGraphImporter;
-import uiandio.GraphImporter;
+import helpers.downloaded.pathfinding.algorithms.*;
+import helpers.downloaded.pathfinding.algorithms.anya16.Anya16;
+import helpers.downloaded.pathfinding.algorithms.sg16.SG16Algorithm;
+import helpers.downloaded.pathfinding.algorithms.sparsevgs.EdgeNLevelSparseVisibilityGraphAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.sparsevgs.SparseVisibilityGraphAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.sparsevgs.VisibilityGraphAlgorithmOptimised;
+import helpers.downloaded.pathfinding.algorithms.strictthetastar.RecursiveStrictThetaStar;
+import helpers.downloaded.pathfinding.algorithms.strictthetastar.StrictThetaStar;
+import helpers.downloaded.pathfinding.algorithms.visibilitygraph.BFSVisibilityGraph;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.graphgeneration.*;
+import helpers.downloaded.pathfinding.main.mazes.StoredTestMazes;
+import helpers.downloaded.pathfinding.main.testgen.TestDataGenerator;
+import helpers.downloaded.pathfinding.uiandio.BenchmarkGraphImporter;
+import helpers.downloaded.pathfinding.uiandio.GraphImporter;
 
 /**
  * Instructions: Look for the main method.

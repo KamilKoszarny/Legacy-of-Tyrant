@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.main.mazes;
 
-import grid.GridAndGoals;
-import grid.GridGraph;
-import main.testgen.StartEndPointData;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.testgen.StartEndPointData;
 
 import java.util.ArrayList;
 

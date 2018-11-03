@@ -1,7 +1,6 @@
 package helpers.downloaded.pathfinding.draw;
 
 
-
 import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;

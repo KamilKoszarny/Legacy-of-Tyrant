@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.algorithms;
 
-import algorithms.priorityqueue.IndirectHeap;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.IndirectHeap;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.util.ArrayList;
 import java.util.List;

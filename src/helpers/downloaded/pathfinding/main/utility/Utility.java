@@ -1,18 +1,18 @@
 package helpers.downloaded.pathfinding.main.utility;
 
-import algorithms.Anya;
-import algorithms.PathFindingAlgorithm;
-import algorithms.anya16.Anya16;
-import algorithms.datatypes.Memory;
-import algorithms.datatypes.Point;
-import algorithms.datatypes.SnapshotItem;
-import algorithms.priorityqueue.ReusableIndirectHeap;
-import algorithms.sparsevgs.*;
-import algorithms.visibilitygraph.VisibilityGraph;
-import grid.GridGraph;
-import main.AlgoFunction;
-import main.analysis.MazeAnalysis;
-import main.testgen.StartEndPointData;
+import helpers.downloaded.pathfinding.algorithms.Anya;
+import helpers.downloaded.pathfinding.algorithms.PathFindingAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.anya16.Anya16;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Memory;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.ReusableIndirectHeap;
+import helpers.downloaded.pathfinding.algorithms.sparsevgs.*;
+import helpers.downloaded.pathfinding.algorithms.visibilitygraph.VisibilityGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.AlgoFunction;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalysis;
+import helpers.downloaded.pathfinding.main.testgen.StartEndPointData;
 
 import java.util.ArrayList;
 import java.util.Arrays;

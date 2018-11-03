@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.algorithms.anya16;
 
-import algorithms.jgrapht.FibonacciHeap;
-import algorithms.jgrapht.FibonacciHeapNode;
+import helpers.downloaded.pathfinding.algorithms.jgrapht.FibonacciHeap;
+import helpers.downloaded.pathfinding.algorithms.jgrapht.FibonacciHeapNode;
 
 import java.awt.geom.Point2D;
 import java.util.Hashtable;

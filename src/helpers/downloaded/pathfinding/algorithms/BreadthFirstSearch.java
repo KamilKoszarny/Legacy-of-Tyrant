@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.algorithms;
 
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.util.LinkedList;
 import java.util.Queue;

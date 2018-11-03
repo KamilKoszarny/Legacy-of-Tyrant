@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.grid;
 
-import algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
 
 /**
  * Represents the Grid of blocked/unblocked tiles.

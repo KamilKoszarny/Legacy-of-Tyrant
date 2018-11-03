@@ -1,9 +1,9 @@
 package helpers.downloaded.pathfinding.uiandio;
 
-import algorithms.datatypes.Point;
-import grid.GridGraph;
-import main.mazes.MazeAndTestCases;
-import main.testgen.StartEndPointData;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.mazes.MazeAndTestCases;
+import helpers.downloaded.pathfinding.main.testgen.StartEndPointData;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

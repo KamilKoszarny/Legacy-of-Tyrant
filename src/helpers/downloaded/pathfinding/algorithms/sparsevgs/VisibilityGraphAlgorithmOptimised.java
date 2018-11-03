@@ -1,10 +1,10 @@
 package helpers.downloaded.pathfinding.algorithms.sparsevgs;
 
-import algorithms.AStarStaticMemory;
-import algorithms.datatypes.SnapshotItem;
-import algorithms.priorityqueue.ReusableIndirectHeap;
-import grid.GridGraph;
-import main.utility.TimeCounter;
+import helpers.downloaded.pathfinding.algorithms.AStarStaticMemory;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.ReusableIndirectHeap;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.utility.TimeCounter;
 
 import java.awt.*;
 import java.util.ArrayList;

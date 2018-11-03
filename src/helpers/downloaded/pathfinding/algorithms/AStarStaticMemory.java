@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.algorithms;
 
-import algorithms.datatypes.Memory;
-import algorithms.priorityqueue.ReusableIndirectHeap;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Memory;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.ReusableIndirectHeap;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 
 public class AStarStaticMemory extends PathFindingAlgorithm {

@@ -1,16 +1,16 @@
 package helpers.downloaded.pathfinding.main;
 
-import algorithms.datatypes.Point;
-import draw.EditorUI;
-import draw.VisualiserKeyboardControls;
-import draw.VisualiserMouseControls;
-import grid.GridAndGoals;
-import grid.GridGraph;
-import grid.StartGoalPoints;
-import main.analysis.MazeAnalysis;
-import main.mazes.MazeAndTestCases;
-import uiandio.CloseOnExitWindowListener;
-import uiandio.GraphImporter;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.draw.EditorUI;
+import helpers.downloaded.pathfinding.draw.VisualiserKeyboardControls;
+import helpers.downloaded.pathfinding.draw.VisualiserMouseControls;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.StartGoalPoints;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalysis;
+import helpers.downloaded.pathfinding.main.mazes.MazeAndTestCases;
+import helpers.downloaded.pathfinding.uiandio.CloseOnExitWindowListener;
+import helpers.downloaded.pathfinding.uiandio.GraphImporter;
 
 import javax.swing.*;
 import java.util.ArrayList;

@@ -1,10 +1,10 @@
 package helpers.downloaded.pathfinding.main.analysis;
 
-import algorithms.VisibilityGraphAlgorithm;
-import algorithms.visibilitygraph.BFSVisibilityGraph;
-import algorithms.visibilitygraph.VisibilityGraph;
-import grid.GridGraph;
-import main.utility.Utility;
+import helpers.downloaded.pathfinding.algorithms.VisibilityGraphAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.visibilitygraph.BFSVisibilityGraph;
+import helpers.downloaded.pathfinding.algorithms.visibilitygraph.VisibilityGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.utility.Utility;
 
 public class ProblemAnalysis {
     

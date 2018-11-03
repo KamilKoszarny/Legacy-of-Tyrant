@@ -1,7 +1,7 @@
 package helpers.downloaded.pathfinding.grid;
 
-import algorithms.BreadthFirstSearch;
-import algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.BreadthFirstSearch;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
 
 import java.util.ArrayList;
 

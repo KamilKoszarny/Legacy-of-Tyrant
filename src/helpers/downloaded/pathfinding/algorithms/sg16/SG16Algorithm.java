@@ -1,11 +1,11 @@
 package helpers.downloaded.pathfinding.algorithms.sg16;
 
-import algorithms.PathFindingAlgorithm;
-import algorithms.datatypes.Memory;
-import algorithms.datatypes.SnapshotItem;
-import algorithms.priorityqueue.ReusableIndirectHeap;
-import algorithms.rotationalplanesweep.ConvexHullRPSScanner;
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.algorithms.PathFindingAlgorithm;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Memory;
+import helpers.downloaded.pathfinding.algorithms.datatypes.SnapshotItem;
+import helpers.downloaded.pathfinding.algorithms.priorityqueue.ReusableIndirectHeap;
+import helpers.downloaded.pathfinding.algorithms.rotationalplanesweep.ConvexHullRPSScanner;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.awt.*;
 import java.util.List;

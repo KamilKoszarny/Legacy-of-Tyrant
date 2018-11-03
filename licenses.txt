@@ -1,0 +1,2 @@
+https://github.com/Ohohcakester/Any-Angle-Pathfinding
+The implementation of Anya 2016, from here, and JGraphT, from here, are licensed under their respective licenses.

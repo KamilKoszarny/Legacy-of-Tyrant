@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.main.analysis;
 
-import algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
 
 public class TwoPoint {
     public final Point p1, p2;

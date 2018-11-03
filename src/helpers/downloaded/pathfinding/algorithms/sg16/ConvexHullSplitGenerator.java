@@ -1,6 +1,6 @@
 package helpers.downloaded.pathfinding.algorithms.sg16;
 
-import grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.GridGraph;
 
 import java.util.Arrays;
 

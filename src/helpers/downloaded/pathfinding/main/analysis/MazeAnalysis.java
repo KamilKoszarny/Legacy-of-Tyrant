@@ -1,10 +1,10 @@
 package helpers.downloaded.pathfinding.main.analysis;
 
-import algorithms.datatypes.Point;
-import grid.BlockedIslandSearch;
-import grid.GridGraph;
-import grid.ReachableNodes;
-import grid.ReachableNodesFast;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.grid.BlockedIslandSearch;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.ReachableNodes;
+import helpers.downloaded.pathfinding.grid.ReachableNodesFast;
 
 import java.util.ArrayList;
 import java.util.Collections;

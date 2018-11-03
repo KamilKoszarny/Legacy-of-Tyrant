@@ -1,19 +1,19 @@
 package helpers.downloaded.pathfinding.main.testgen;
 
-import algorithms.datatypes.Point;
-import grid.GridGraph;
-import main.AnyAnglePathfinding;
-import main.analysis.MazeAnalyser;
-import main.analysis.MazeAnalysis;
-import main.analysis.ProblemAnalysis;
-import main.analysis.TwoPoint;
-import main.graphgeneration.DefaultGenerator;
-import main.mazes.MazeAndTestCases;
-import main.mazes.StoredTestMazes;
-import uiandio.FileIO;
-import uiandio.GraphExporter;
-import uiandio.GraphExporterPretty;
-import uiandio.GraphImporter;
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.main.AnyAnglePathfinding;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalyser;
+import helpers.downloaded.pathfinding.main.analysis.MazeAnalysis;
+import helpers.downloaded.pathfinding.main.analysis.ProblemAnalysis;
+import helpers.downloaded.pathfinding.main.analysis.TwoPoint;
+import helpers.downloaded.pathfinding.main.graphgeneration.DefaultGenerator;
+import helpers.downloaded.pathfinding.main.mazes.MazeAndTestCases;
+import helpers.downloaded.pathfinding.main.mazes.StoredTestMazes;
+import helpers.downloaded.pathfinding.uiandio.FileIO;
+import helpers.downloaded.pathfinding.uiandio.GraphExporter;
+import helpers.downloaded.pathfinding.uiandio.GraphExporterPretty;
+import helpers.downloaded.pathfinding.uiandio.GraphImporter;
 
 import java.io.File;
 import java.util.ArrayList;

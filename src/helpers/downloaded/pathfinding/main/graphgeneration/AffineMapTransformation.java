@@ -1,8 +1,8 @@
 package helpers.downloaded.pathfinding.main.graphgeneration;
 
-import grid.GridAndGoals;
-import grid.GridGraph;
-import grid.StartGoalPoints;
+import helpers.downloaded.pathfinding.grid.GridAndGoals;
+import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.downloaded.pathfinding.grid.StartGoalPoints;
 
 public class AffineMapTransformation {
     

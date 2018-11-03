@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.map.Map;
+import model.map.terrains.TerrainGenerator;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -33,9 +34,15 @@ public class MapDrawer {
         mPDrawer = new MapPieceDrawer(map, gc, this, MAP_PIECE_SCREEN_SIZE_X, MAP_PIECE_SCREEN_SIZE_Y);
         PIX_PER_M = (int) ((MAP_PIECE_SCREEN_SIZE_X + MAP_PIECE_SCREEN_SIZE_Y) / 2 / Map.M_PER_POINT);
         MapDrawCalculator.setMapAndDrawer(map, this);
+
         MapImageGenerator.initialize(map, mPDrawer);
+        long time = System.nanoTime();
         mapImage = MapImageGenerator.generateMapPreImage();
-//        mapImage = MapImageGenerator.generateMapImage();
+        System.out.println("mapPreImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+        mapImage = MapImageGenerator.generateMapImage();
+        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
     }
 
     public void drawMap() {
