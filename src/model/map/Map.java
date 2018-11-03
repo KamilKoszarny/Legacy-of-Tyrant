@@ -23,23 +23,24 @@ public class Map {
     private int heightM;
     private java.util.Map<Point, MapPiece> points = new HashMap<>();
     private GridGraph gridGraph;
-    private boolean withRoad;
     private boolean[] roadSides;
+    private boolean[] waterSides;
+    private boolean[] riverSides;
     private int buildingsCount, buildingMaxSize;
 
-    public Map(int widthM, int heightM, MapType type, MapHeightType heightType, boolean[] roadSides) {
+    public Map(int widthM, int heightM, MapType type, MapHeightType heightType,
+               boolean[] roadSides, boolean[] riverSides, boolean[] waterSides) {
         this.widthM = widthM;
         this.heightM = heightM;
         this.type = type;
         this.heightType = heightType;
         Random r = new Random();
-        Terrain.GRASS.setIntensity(type.getGrass() * (r.nextInt(5) + 10));
-        Terrain.BUSH.setIntensity(type.getBush() * (r.nextInt(5) + 10));
-        Terrain.TREES.setIntensity(type.getTrees() * (r.nextInt(5) + 10));
-        Terrain.GROUND.setIntensity(type.getGround() * (r.nextInt(5) + 10));
+        for (Terrain terrain: Terrain.values()) {
+            terrain.setIntensity(type.getTerrainIntensity(terrain) * (r.nextInt(5) + 10));
+        }
         this.roadSides = roadSides;
-        if (roadSides[0] || roadSides[1] || roadSides[2] || roadSides[3])
-            withRoad = true;
+        this.riverSides = riverSides;
+        this.waterSides = waterSides;
         buildingsCount = (int) (type.getBuildings() * (r.nextDouble() + 0.5));
         buildingMaxSize = type.getBuildingMaxSize();
 
@@ -84,11 +85,27 @@ public class Map {
     }
 
     public boolean isWithRoad() {
-        return withRoad;
+        return roadSides[0] || roadSides[1] || roadSides[2] || roadSides[3];
     }
 
     public boolean[] getRoadSides() {
         return roadSides;
+    }
+
+    public boolean isWithRiver() {
+        return roadSides[0] || riverSides[1] || riverSides[2] || riverSides[3];
+    }
+
+    public boolean[] getRiverSides() {
+        return riverSides;
+    }
+
+    public boolean isWithWater() {
+        return waterSides[0] || waterSides[1] || waterSides[2] || waterSides[3];
+    }
+
+    public boolean[] getWaterSides() {
+        return waterSides;
     }
 
     public int getBuildingsCount() {

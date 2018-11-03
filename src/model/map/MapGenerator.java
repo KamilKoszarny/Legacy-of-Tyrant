@@ -7,6 +7,8 @@ import model.map.lights.LightGenerator;
 import model.map.mapObjects.MapObjectsGenerator;
 import model.map.roads.RoadGenerator;
 import model.map.terrains.TerrainGenerator;
+import model.map.water.RiverGenerator;
+import model.map.water.WaterGenerator;
 
 import java.awt.*;
 
@@ -23,6 +25,20 @@ public class MapGenerator {
         HeightGenerator heightGenerator = new HeightGenerator(map);
         heightGenerator.generateHeights();
         System.out.println("heightGen:" + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+
+        if(map.isWithRiver()) {
+            RiverGenerator roadGenerator = new RiverGenerator(map);
+            roadGenerator.generateRiver(25);
+        }
+        System.out.println("riverGen:" + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+
+        if(map.isWithWater()) {
+            WaterGenerator roadGenerator = new WaterGenerator(map);
+            roadGenerator.generateWater();
+        }
+        System.out.println("waterGen:" + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
 
         if(map.isWithRoad()) {

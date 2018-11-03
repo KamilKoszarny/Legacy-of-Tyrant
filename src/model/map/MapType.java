@@ -1,5 +1,7 @@
 package model.map;
 
+import model.map.terrains.Terrain;
+
 import java.util.List;
 import java.util.Random;
 
@@ -21,20 +23,14 @@ public enum MapType {
         this.buildingMaxSize = buildingMaxSize;
     }
 
-    public int getGrass() {
-        return grass;
-    }
-
-    public int getBush() {
-        return bush;
-    }
-
-    public int getTrees() {
-        return trees;
-    }
-
-    public int getGround() {
-        return ground;
+    public int getTerrainIntensity(Terrain terrain) {
+        switch (terrain){
+            case GROUND: return ground;
+            case GRASS: return grass;
+            case BUSH: return bush;
+            case TREES: return trees;
+        }
+        return 0;
     }
 
     public int getBuildings() {

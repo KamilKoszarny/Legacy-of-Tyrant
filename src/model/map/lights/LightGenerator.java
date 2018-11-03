@@ -4,6 +4,7 @@ package model.map.lights;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.heights.HeightGenerator;
+import model.map.terrains.Terrain;
 
 import java.awt.*;
 
@@ -27,6 +28,8 @@ public class LightGenerator {
     }
 
     private void lightMapPiece(MapPiece mapPiece){
+        if (mapPiece.getTerrain().equals(Terrain.WATER))
+            return;
         int slopeDir = mapPiece.getSlopeDir();
         int slopeSize = mapPiece.getSlopeSize();
 //        int light = (int) ((5000 - Math.pow((Math.abs(slopeDir - 50) - dir), 2) * Math.pow(Math.abs(slopeSize - height) / 1000, 2) / HeightGenerator.H_PEX_PIX) / 100 * amount);

@@ -10,6 +10,7 @@ public enum Terrain {
     GRASS(Color.rgb(0, 180, 0), 0.9),
     BUSH(Color.rgb(0, 120, 0), 0.8),
     TREES(Color.rgb(0, 60, 0), 0.8),
+    WATER(Color.rgb(37, 109, 123), 0.4),
     WALL(Color.DARKGRAY, 0);
 
     Color color;

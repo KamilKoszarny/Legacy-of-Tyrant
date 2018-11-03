@@ -30,8 +30,10 @@ public class Battle {
     }
 
     private void initMap(){
-        boolean[] roadSides = {false, true, true, true};
-        map = new Map(50, 50, MapType.FOREST, MapHeightType.PEAK, roadSides);
+        boolean[] roadSides = {true, false, true, true};
+        boolean[] riverSides = {false, true, false, true};
+        boolean[] waterSides = {false, true, false, false};
+        map = new Map(50, 50, MapType.FOREST, MapHeightType.PEAK, roadSides, riverSides, waterSides);
     }
 
     private void initCharacters(){

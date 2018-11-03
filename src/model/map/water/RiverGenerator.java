@@ -1,4 +1,4 @@
-package model.map.roads;
+package model.map.water;
 
 import model.map.Map;
 import model.map.MapPiece;
@@ -11,68 +11,71 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-public class RoadGenerator {
+public class RiverGenerator {
 
-    static java.util.List<Point> roadMidPoints;
-    static java.util.List<Point> roadPoints;
+    final int DEPTH = 2000;
+    int width = 25;
+
+    static List<Point> riverMidPoints;
+    static List<Point> riverPoints;
 
     Map map;
 
-    public RoadGenerator(Map map) {
+    public RiverGenerator(Map map) {
         this.map = map;
     }
 
-    public void generateRoad(){
-        roadMidPoints = generateMiddleOfRoad();
-        roadPoints = generateRoadByMidPoints(roadMidPoints);
-        setRoadTerrain();
+    public void generateRiver(int width){
+        riverMidPoints = generateMiddleOfRiver();
+        riverPoints = generateRiverByMidPoints(riverMidPoints);
+        setRiverTerrain();
     }
 
 
-    private java.util.List<Point> generateMiddleOfRoad(){
+    private List<Point> generateMiddleOfRiver(){
         //N, E, S, W
-        boolean[] sides = map.getRoadSides();
+        boolean[] sides = map.getRiverSides();
         Random r = new Random();
-        java.util.List<Point> roadMidPoints = new ArrayList<>();
+        List<Point> roadMidPoints = new ArrayList<>();
 
         if(sides[0] && !(sides[1] && sides[3])){
             Point start = new Point(r.nextInt(map.mapXPoints / 2) + map.mapXPoints / 4, 0);
             if(sides[2]) {
-                guideRoad(roadMidPoints, start, 4);
+                guideRiver(roadMidPoints, start, 4);
                 Point midPoint = roadMidPoints.get((int)(roadMidPoints.size() * (r.nextDouble() * 0.5 + 0.25)));
                 if (sides[1]) {
-                    guideRoad(roadMidPoints, midPoint, 2);
+                    guideRiver(roadMidPoints, midPoint, 2);
                 }
                 if (sides[3]) {
-                    guideRoad(roadMidPoints, midPoint, 6);
+                    guideRiver(roadMidPoints, midPoint, 6);
                 }
             } else if (sides[1] && !sides[3]){
-                guideRoad(roadMidPoints, start, 3);
+                guideRiver(roadMidPoints, start, 3);
             } else if (sides[3] && !sides[1]){
-                guideRoad(roadMidPoints, start, 5);
+                guideRiver(roadMidPoints, start, 5);
             }
         } else if (sides[1]){
             Point start = new Point(map.getWidth() - 1, r.nextInt(map.mapYPoints / 2) + map.mapYPoints / 4);
             if (sides[3]){
-                guideRoad(roadMidPoints, start, 6);
+                guideRiver(roadMidPoints, start, 6);
                 Point midPoint = roadMidPoints.get((int)(roadMidPoints.size() * (r.nextDouble() * 0.5 + 0.25)));
                 if (sides[0]) {
-                    guideRoad(roadMidPoints, midPoint, 8);
+                    guideRiver(roadMidPoints, midPoint, 8);
                 }
                 if (sides[2]) {
-                    guideRoad(roadMidPoints, midPoint, 4);
+                    guideRiver(roadMidPoints, midPoint, 4);
                 }
             } else if (sides[2]) {
-                guideRoad(roadMidPoints, start, 5);
+                guideRiver(roadMidPoints, start, 5);
             }
         } else if (sides[2] && sides[3])
-            guideRoad(roadMidPoints, new Point(r.nextInt(map.mapXPoints / 2) + map.mapXPoints / 4, map.getHeight() - 1), 7);
+            guideRiver(roadMidPoints, new Point(r.nextInt(map.mapXPoints / 2) + map.mapXPoints / 4, map.getHeight() - 1), 7);
         return roadMidPoints;
     }
 
-    private void guideRoad(java.util.List<Point> roadMidPoints, Point start, int direction) {
+    private void guideRiver(List<Point> roadMidPoints, Point start, int direction) {
         java.util.Map<Integer, Double> sideProbabilities = new HashMap<>();
-        setRoadDir(sideProbabilities, direction);
+        setRiverDir(sideProbabilities, direction);
         Point currentPoint = start;
         while (map.isOnMapPoints(currentPoint)) {
             roadMidPoints.add(currentPoint);
@@ -81,7 +84,7 @@ public class RoadGenerator {
         }
     }
 
-    private static void setRoadDir(java.util.Map<Integer, Double> sideProbabilities, int dir){
+    private static void setRiverDir(java.util.Map<Integer, Double> sideProbabilities, int dir){
         Random r = new Random();
         sideProbabilities.put(0, Math.pow(Math.abs(4 - dir), 2) * (.1 + r.nextDouble()));
         sideProbabilities.put(1, Math.pow(Math.abs(4 - Math.abs(2 - dir)), 2) * (.1 + r.nextDouble()));
@@ -138,7 +141,7 @@ public class RoadGenerator {
     }
 
 
-    private java.util.List<Point> generateRoadByMidPoints(java.util.List<Point> midPoints){
+    private List<Point> generateRiverByMidPoints(List<Point> midPoints){
         List<Point> roadPoints = new ArrayList<>();
         Random r = new Random();
         int width;
@@ -147,13 +150,12 @@ public class RoadGenerator {
         int avgHeight;
 
         for (Point midPoint: midPoints) {
-            final int BASE_WIDTH = 10;
-            width = r.nextInt((int)((BASE_WIDTH / Map.RESOLUTION_M * Map.M_PER_POINT))) + 3;
+            width = r.nextInt((int)((this.width / Map.RESOLUTION_M * Map.M_PER_POINT))) + 3;
             closePoints = MapDrawCalculator.pointsInRadius(midPoint, width / 2, map);
             roadPoints.addAll(closePoints);
-            width = (int)(BASE_WIDTH / Map.RESOLUTION_M * Map.M_PER_POINT);
+            width = (int)(this.width / Map.RESOLUTION_M * Map.M_PER_POINT);
             closePoints = MapDrawCalculator.pointsInRadius(midPoint, width / 2, map);
-            avgHeight = avgHeight(closePoints);
+            avgHeight = avgHeight(closePoints) - DEPTH;
             setHeights(avgHeight, closePoints);
             i++;
         }
@@ -161,8 +163,8 @@ public class RoadGenerator {
         return roadPoints;
     }
 
-    public static boolean isOnMidRoad(Point point){
-        return roadMidPoints.contains(point);
+    public static boolean isOnMidRiver(Point point){
+        return riverMidPoints.contains(point);
     }
 
     private int avgHeight(List<Point> points) {
@@ -180,11 +182,11 @@ public class RoadGenerator {
         }
     }
 
-    private void setRoadTerrain() {
-        for (Point point: roadPoints) {
+    private void setRiverTerrain() {
+        for (Point point: riverPoints) {
             MapPiece mapPiece = map.getPoints().get(point);
-            mapPiece.setTerrain(Terrain.GROUND);
-            mapPiece.setWalkable(true);
+            mapPiece.setTerrain(Terrain.WATER);
+            mapPiece.setWalkable(false);
         }
     }
 }
