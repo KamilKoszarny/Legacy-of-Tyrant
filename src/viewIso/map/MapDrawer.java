@@ -42,7 +42,7 @@ public class MapDrawer {
         time = System.nanoTime();
         mapImage = MapImageGenerator.generateMapImage();
         System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
+//        time = System.nanoTime();
     }
 
     public void drawMap() {

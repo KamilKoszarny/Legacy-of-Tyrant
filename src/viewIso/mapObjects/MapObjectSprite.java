@@ -8,7 +8,7 @@ import java.awt.*;
 public class MapObjectSprite {
 
     private Image image;
-    public static final double Y_BASE_RATIO = 5./6.;
+    public static final double Y_BASE_RATIO = .85;
     private Point offset = new Point();
 
     public MapObjectSprite(MapObject mapObject) {

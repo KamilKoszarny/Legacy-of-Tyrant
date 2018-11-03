@@ -3,8 +3,10 @@ package viewIso.characters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.character.Character;
 import model.map.Map;
@@ -142,6 +144,10 @@ public class CharDrawer {
         for (Character character: characters) {
             Label label = new Label(character.getName().toUpperCase());
             label.setFont(new Font("SansSerif", 20));
+            label.setTextFill(Color.GOLD);
+            label.setEffect(new DropShadow(.5f, 1.f, 1.f, Color.BLACK));
+            label.setCache(true);
+
             charLabelsMap.put(character, label);
 
             Pane pane = (Pane) canvas.getParent();

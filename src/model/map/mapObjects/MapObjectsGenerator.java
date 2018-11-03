@@ -25,7 +25,7 @@ public class MapObjectsGenerator {
         Terrain terrain;
         for (Point point: map.getPoints().keySet()) {
             terrain = map.getPoints().get(point).getTerrain();
-            if (terrain.equals(Terrain.TREES))
+            if (hasObjects(terrain))
                 calcAndSetMapObject(point, terrain);
         }
     }
@@ -38,21 +38,17 @@ public class MapObjectsGenerator {
         if (r.nextInt(type.getProbabilityDivider()) < 1) {
             size = checkAvailableSize(point, terrain);
             look = r.nextInt(type.getLooks());
-            mapPiece.setObject(new MapObject(MapObjectType.TREE, size, look));
+            mapPiece.setObject(new MapObject(type, size, look));
             setNonWalkablePieces(point, size);
         }
     }
 
     private int checkAvailableSize(Point point, Terrain terrain) {
-        int availableSize = 0;
         int sizes = MapObjectType.mapObjectTypeByTerrain(map.getPoints().get(point).getTerrain()).getSizes();
-        for (int size = sizes; size > 0 ; size--) {
-            if (isSurroundedBySameTerrain(point, size, terrain)) {
-                availableSize = size;
-                size = 0;
-            }
-        }
-        return availableSize;
+        for (int size = sizes; size > 0 ; size--)
+            if (isSurroundedBySameTerrain(point, size, terrain))
+                return size;
+        return 0;
     }
 
     private boolean isSurroundedBySameTerrain(Point basePoint, int radius, Terrain baseTerrain) {
@@ -81,5 +77,13 @@ public class MapObjectsGenerator {
                 }
             }
         }
+    }
+
+    private boolean hasObjects(Terrain terrain){
+        for (MapObjectType objectType: MapObjectType.values()) {
+            if (objectType.getTerrain().equals(terrain))
+                return true;
+        }
+        return false;
     }
 }

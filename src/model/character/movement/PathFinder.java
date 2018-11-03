@@ -10,10 +10,12 @@ import java.util.List;
 
 public class PathFinder {
 
-    static List<Point2D> calcPath(Point2D start, java.awt.Point end, Map map) {
+    static List<Point2D> calcPath(Point2D start, java.awt.Point end, Map map, boolean clean) {
         List<Point2D> mapPath = new ArrayList<>();
         int[] startGridPoint = gridPointByMapPoint(start);
         int[] endGridPoint = gridPointByMapPoint(end);
+        if (clean)
+            Utility.cleanUpPreallocatedMemory();
         int[][] gridPath = Utility.computeOptimalPathOnline(map.getGridGraph(),
                 startGridPoint[0], startGridPoint[1], endGridPoint[0], endGridPoint[1]);
         for (int i = 0; i < gridPath.length; i++) {
@@ -28,14 +30,14 @@ public class PathFinder {
         return new Point2D(x, y);
     }
 
-    private static int[] gridPointByMapPoint(Point2D mapPoint) {
+    static int[] gridPointByMapPoint(Point2D mapPoint) {
         int[] gridPoint = new int[2];
         gridPoint[0] = (int) (mapPoint.getX() * 4);
         gridPoint[1] = (int) (mapPoint.getY() * 4);
         return gridPoint;
     }
 
-    private static int[] gridPointByMapPoint(java.awt.Point mapPoint) {
+    static int[] gridPointByMapPoint(java.awt.Point mapPoint) {
         int[] gridPoint = new int[2];
         gridPoint[0] = (int) (mapPoint.x * 4);
         gridPoint[1] = (int) (mapPoint.y * 4);

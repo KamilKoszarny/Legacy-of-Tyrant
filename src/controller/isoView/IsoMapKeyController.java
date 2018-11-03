@@ -39,6 +39,8 @@ public class IsoMapKeyController {
                 isoBattleLoop.setMapMoveFlag(true);
             } else if (keyEvent.getCode().equals(KeyCode.SLASH))
                 isoViewer.switchCutView();
+            else if (keyEvent.getCode().equals(KeyCode.ESCAPE))
+                isoViewer.getClickMenusDrawer().hideChar2PointMenu();
         });
         scene.setOnKeyReleased(keyEvent -> {
             isoBattleLoop.resetMapMove(new Point(0, 0));

@@ -2,117 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/model/character/movement/PathFinder.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/RanAdvHelper.iml" afterPath="$PROJECT_DIR$/RanAdvHelper.iml" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/ColorHelper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/GeomerticHelper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/OpenSimplexNoise.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/OpenSimplexNoiseTest.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/IsoMapKeyController.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/IsoMapKeyController.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/Battle.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/Battle.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/movement/CharMover.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/movement/CharMover.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Map.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Map.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapPiece.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapPiece.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/heights/HeightGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/heights/HeightGenerator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImage.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImage.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapPieceDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapPieceDrawer.class" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AStar.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AStar.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AStarOctileHeuristic.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AStarOctileHeuristic.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AStarStaticMemory.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AStarStaticMemory.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AcceleratedAStar.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AcceleratedAStar.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/Anya.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/Anya.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/BasicThetaStar.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/BasicThetaStar.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/BreadthFirstSearch.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/BreadthFirstSearch.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/JumpPointSearch.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/JumpPointSearch.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/LazyThetaStar.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/LazyThetaStar.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/PathFindingAlgorithm.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/PathFindingAlgorithm.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/RecursiveThetaStar.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/RecursiveThetaStar.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/VisibilityGraphAlgorithm.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/VisibilityGraphAlgorithm.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya/FractionTest.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya/FractionTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/Anya16.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/Anya16.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/AnyaSearch.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/AnyaSearch.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/BitpackedGrid.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/BitpackedGrid.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/bst/AVLTreeTest.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/bst/AVLTreeTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/priorityqueue/IndirectHeapTest.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/priorityqueue/IndirectHeapTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/ConvexHullRPSScanner.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/ConvexHullRPSScanner.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/GridPolygonGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/GridPolygonGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/RPSScanner.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/RPSScanner.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullHeuristic.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullHeuristic.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullSplitGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullSplitGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/SG16Algorithm.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/SG16Algorithm.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/SG16VisibilityGraph.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/SG16VisibilityGraph.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraph.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraph.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraphAlgorithm.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraphAlgorithm.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraphAlgorithmFibHeap.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraphAlgorithmFibHeap.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/LineOfSightScanner.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/LineOfSightScanner.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/LineOfSightScannerDouble.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/LineOfSightScannerDouble.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraph.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraph.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraphAlgorithm.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraphAlgorithm.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraphAlgorithmFibHeap.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraphAlgorithmFibHeap.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/VisibilityGraphAlgorithmOptimised.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/VisibilityGraphAlgorithmOptimised.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/VisibilityGraphOptimised.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/VisibilityGraphOptimised.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/strictthetastar/RecursiveStrictThetaStar.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/strictthetastar/RecursiveStrictThetaStar.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/strictthetastar/StrictThetaStar.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/strictthetastar/StrictThetaStar.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/visibilitygraph/BFSVisibilityGraph.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/visibilitygraph/BFSVisibilityGraph.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/visibilitygraph/VisibilityGraph.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/visibilitygraph/VisibilityGraph.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/DrawCanvas.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/DrawCanvas.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/EditorUI.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/EditorUI.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridGraphDrawer.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridGraphDrawer.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridLineDrawer.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridLineDrawer.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridLineSet.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridLineSet.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridObjects.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridObjects.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridPointDrawer.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridPointDrawer.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/VariableSizePointDrawer.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/VariableSizePointDrawer.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/VisualiserKeyboardControls.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/VisualiserKeyboardControls.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/VisualiserMouseControls.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/VisualiserMouseControls.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/GridGraph.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/GridGraph.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/ReachableNodes.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/ReachableNodes.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/ReachableNodesFast.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/ReachableNodesFast.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/unittest/GridGraphTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AlgoFunction.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AlgoFunction.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AlgoTest.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AlgoTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AnyAnglePathfinding.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AnyAnglePathfinding.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/Experiment.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/Experiment.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/GridGraphVisualiser.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/GridGraphVisualiser.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/TextOutputVisualisation.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/TextOutputVisualisation.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/Visualisation.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/Visualisation.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/ExplorableRegionAnalysis.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/ExplorableRegionAnalysis.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/MazeAnalyser.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/MazeAnalyser.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/MazeAnalysis.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/MazeAnalysis.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/ProblemAnalysis.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/ProblemAnalysis.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/TwoPoint.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/analysis/TwoPoint.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/AffineMapTransformation.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/AffineMapTransformation.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/AutomataGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/AutomataGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/DefaultGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/DefaultGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/MazeMapGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/MazeMapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/TiledMapGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/TiledMapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/UpscaledMapGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/graphgeneration/UpscaledMapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/mazes/MazeAndTestCases.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/mazes/MazeAndTestCases.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/mazes/StoredTestMazes.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/mazes/StoredTestMazes.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/StandardMazes.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/StandardMazes.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/StartEndPointData.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/StartEndPointData.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/TestDataGenerator.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/TestDataGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/TestDataLibrary.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/TestDataLibrary.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/movement/PathFinder.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/movement/PathFinder.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/MapObjectType.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/MapObjectType.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/MapObjectsGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/MapObjectsGenerator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/roads/RoadGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/roads/RoadGenerator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/terrains/Terrain.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/terrains/Terrain.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/TREE/size2/0 - Copy.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharDrawCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharDrawCalculator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharDrawer.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawCalculator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/mapObjects/MapObjectSprite.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/mapObjects/MapObjectSprite.class" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/TREE/size2/0 - Copy.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/controller/isoView/IsoMapKeyController.java" afterPath="$PROJECT_DIR$/src/controller/isoView/IsoMapKeyController.java" />
       <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/utility/Utility.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/utility/Utility.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Test1.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Example.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/BenchmarkGraphImporter.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/BenchmarkGraphImporter.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/BenchmarkGraphSets.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/BenchmarkGraphSets.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/GraphExporter.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/GraphExporter.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/GraphExporterPretty.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/GraphExporterPretty.java" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/GraphImporter.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/uiandio/GraphImporter.java" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Example.java" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Example.java" />
       <change beforePath="$PROJECT_DIR$/src/model/Battle.java" afterPath="$PROJECT_DIR$/src/model/Battle.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" afterPath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/character/Character.java" afterPath="$PROJECT_DIR$/src/model/character/Character.java" />
       <change beforePath="$PROJECT_DIR$/src/model/character/movement/CharMover.java" afterPath="$PROJECT_DIR$/src/model/character/movement/CharMover.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/character/movement/CharTurner.java" afterPath="$PROJECT_DIR$/src/model/character/movement/CharTurner.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/Map.java" afterPath="$PROJECT_DIR$/src/model/map/Map.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/MapGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/MapPiece.java" afterPath="$PROJECT_DIR$/src/model/map/MapPiece.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/buildings/BuildingGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/buildings/BuildingGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/heights/HeightGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/heights/HeightGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/terrains/TerrainGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/terrains/TerrainGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/character/movement/PathFinder.java" afterPath="$PROJECT_DIR$/src/model/character/movement/PathFinder.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectType.java" afterPath="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectType.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectsGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectsGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/roads/RoadGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/roads/RoadGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/terrains/Terrain.java" afterPath="$PROJECT_DIR$/src/model/map/terrains/Terrain.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/characters/CharDrawCalculator.java" afterPath="$PROJECT_DIR$/src/viewIso/characters/CharDrawCalculator.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/characters/CharDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/characters/CharDrawer.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" />
       <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectSprite.java" afterPath="$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectSprite.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -132,69 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HeightGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/map/heights/HeightGenerator.java">
+      <file leaf-file-name="RoadGenerator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/map/roads/RoadGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Example.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Example.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapPiece.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/map/MapPiece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="126" column="19" lean-forward="true" selection-start-line="126" selection-start-column="19" selection-end-line="126" selection-end-column="19" />
-              <folding>
-                <element signature="method#isClicked#0;class#MapPiece#0" expanded="false" />
-                <element signature="e#2499#2500#0" expanded="true" />
-                <element signature="e#2530#2531#0" expanded="true" />
-                <element signature="e#2579#2580#0" expanded="true" />
-                <element signature="e#2619#2620#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="20" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BuildingGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/map/buildings/BuildingGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="51" column="60" lean-forward="false" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="60" />
+            <state relative-caret-position="155">
+              <caret line="149" column="12" lean-forward="false" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -203,38 +65,33 @@
       <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+            <state relative-caret-position="102">
+              <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+              <folding>
+                <element signature="e#3209#3210#0" expanded="true" />
+                <element signature="e#3241#3242#0" expanded="true" />
+                <element signature="e#3294#3295#0" expanded="true" />
+                <element signature="e#3336#3337#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TerrainGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/map/terrains/TerrainGenerator.java">
+      <file leaf-file-name="MapImageGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapImageGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Terrain.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/map/terrains/Terrain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapObjectsGenerator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/map/mapObjects/MapObjectsGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+            <state relative-caret-position="282">
+              <caret line="83" column="45" lean-forward="true" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -253,9 +110,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>front</find>
-      <find>labe</find>
-      <find>move</find>
       <find>clea</find>
       <find>IsoMapMoveController.MAP_MOVE_STEP</find>
       <find>moveStep</find>
@@ -283,6 +137,9 @@
       <find>+ 5</find>
       <find>destination</find>
       <find>syst</find>
+      <find>label</find>
+      <find>inradius</find>
+      <find>mapImage ready</find>
     </findStrings>
     <replaceStrings>
       <replace>+ &quot; &quot; +</replace>
@@ -333,20 +190,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/viewIso/map/MapImage.java" />
-        <option value="$PROJECT_DIR$/src/controller/isoView/IsoMapClickController.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/IsoViewer.java" />
         <option value="$PROJECT_DIR$/src/model/map/mapObjects/MapObject.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectSprite.java" />
-        <option value="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectType.java" />
         <option value="$PROJECT_DIR$/src/viewIso/map/MapImageGenerator.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/IsoMapMoveController.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
-        <option value="$PROJECT_DIR$/src/controller/isoView/IsoMapKeyController.java" />
-        <option value="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectsGenerator.java" />
-        <option value="$PROJECT_DIR$/src/model/map/terrains/Terrain.java" />
         <option value="$PROJECT_DIR$/src/viewIso/MapPieceInfo.java" />
         <option value="$PROJECT_DIR$/src/viewIso/ClickMenuButton.java" />
         <option value="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" />
@@ -364,26 +211,36 @@
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullHeuristic.java" />
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/mazes/StoredTestMazes.java" />
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/GridGraphVisualiser.java" />
-        <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/utility/Utility.java" />
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/EditorUI.java" />
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/Experiment.java" />
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/VisibilityGraphAlgorithm.java" />
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AnyAnglePathfinding.java" />
         <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Test1.java" />
         <option value="$PROJECT_DIR$/src/model/map/MapPiece.java" />
-        <option value="$PROJECT_DIR$/src/model/map/Map.java" />
-        <option value="$PROJECT_DIR$/src/model/character/movement/PathFinder.java" />
         <option value="$PROJECT_DIR$/src/model/character/Character.java" />
         <option value="$PROJECT_DIR$/src/model/character/movement/CharTurner.java" />
         <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
-        <option value="$PROJECT_DIR$/src/model/Battle.java" />
-        <option value="$PROJECT_DIR$/src/model/character/movement/CharMover.java" />
         <option value="$PROJECT_DIR$/src/model/map/heights/HeightGenerator.java" />
-        <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Example.java" />
-        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/map/terrains/TerrainGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/map/buildings/BuildingGenerator.java" />
+        <option value="$PROJECT_DIR$/src/model/map/terrains/Terrain.java" />
+        <option value="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectsGenerator.java" />
+        <option value="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectType.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectSprite.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/characters/CharDrawer.java" />
+        <option value="$PROJECT_DIR$/src/controller/isoView/IsoMapKeyController.java" />
+        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/characters/CharDrawCalculator.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" />
+        <option value="$PROJECT_DIR$/src/model/Battle.java" />
+        <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/GridGraph.java" />
+        <option value="$PROJECT_DIR$/src/model/map/Map.java" />
+        <option value="$PROJECT_DIR$/src/model/character/movement/PathFinder.java" />
+        <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Example.java" />
+        <option value="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/utility/Utility.java" />
+        <option value="$PROJECT_DIR$/src/model/character/movement/CharMover.java" />
         <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
+        <option value="$PROJECT_DIR$/src/model/map/roads/RoadGenerator.java" />
       </list>
     </option>
   </component>
@@ -430,8 +287,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -455,27 +310,6 @@
               <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-              <item name="downloaded" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-              <item name="downloaded" type="462c0819:PsiDirectoryNode" />
-              <item name="pathfinding" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
@@ -525,6 +359,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="mapObjects" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="roads" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="map" type="462c0819:PsiDirectoryNode" />
               <item name="terrains" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -558,6 +408,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -848,56 +700,35 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3234811" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753164" sideWeight="0.50512445" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24794745" sideWeight="0.49487555" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3087028" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20196672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27093595" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753164" sideWeight="0.50512445" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39244664" sideWeight="0.49791667" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3234811" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753164" sideWeight="0.50512445" order="15" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3234811" sideWeight="0.49487555" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20196672" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20499243" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.49791667" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3087028" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916668" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -917,152 +748,24 @@
           <option name="timeStamp" value="153" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="172" />
+      <option name="time" value="204" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="map.points" />
+        <watch expression="charGridPositions" language="JAVA" />
+        <watch expression="map" />
+        <watch expression="map" language="JAVA" />
+        <watch expression="map" language="JAVA" />
+        <watch expression="map" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/mazes/MazeAndTestCases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridPointSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/Anya16.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/TestDataLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/BitpackedGrid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/BasicThetaStar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya16/AnyaInterval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridPointDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/anya/Fraction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/DrawCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/draw/GridGraphDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/datatypes/Memory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/mazes/StoredTestMazes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/ReachableNodes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullHeuristic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/GridGraphVisualiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-850">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/testgen/TestDataGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,19 +792,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/unittest/GridGraphTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/unittest/GridGraphTest.java" />
     <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/bst/AVLTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,7 +822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1137,16 +830,6 @@
         <state relative-caret-position="327">
           <caret line="258" column="76" lean-forward="false" selection-start-line="258" selection-start-column="76" selection-end-line="258" selection-end-column="76" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/utility/Utility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1162,25 +845,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/GridGraph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
-          <folding>
-            <element signature="e#814#815#0" expanded="false" />
-            <element signature="e#856#857#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoMapKeyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1205,31 +869,188 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/movement/CharTurner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java">
+    <entry file="file://$PROJECT_DIR$/src/model/map/heights/HeightGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        <state relative-caret-position="119">
+          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/MapPiece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="126" column="19" lean-forward="false" selection-start-line="126" selection-start-column="19" selection-end-line="126" selection-end-column="19" />
+          <folding>
+            <element signature="method#isClicked#0;class#MapPiece#0" expanded="false" />
+            <element signature="e#2499#2500#0" expanded="false" />
+            <element signature="e#2530#2531#0" expanded="false" />
+            <element signature="e#2579#2580#0" expanded="false" />
+            <element signature="e#2619#2620#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/terrains/TerrainGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/buildings/BuildingGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="51" column="60" lean-forward="false" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/terrains/Terrain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/mapObjects/MapObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/mapObjects/MapObjectType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-265">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectSprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="49" lean-forward="false" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharDescriptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoMapKeyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="42" column="47" lean-forward="false" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/mapObjects/MapObjectsGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="40" column="49" lean-forward="false" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="85" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="147" column="69" lean-forward="false" selection-start-line="147" selection-start-column="69" selection-end-line="147" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharDrawCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="33" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="89" column="18" lean-forward="false" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+          <folding>
+            <element signature="e#3664#3665#0" expanded="true" />
+            <element signature="e#3739#3740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/CharacterType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+        <state relative-caret-position="136">
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding>
             <element signature="method#Character#0;class#Character#0" expanded="false" />
             <element signature="method#Character#1;class#Character#0" expanded="false" />
             <element signature="method#getPosition#0;class#Character#0" expanded="false" />
-            <element signature="e#3007#3008#0" expanded="true" />
-            <element signature="e#3745#3746#0" expanded="true" />
-            <element signature="e#3772#3773#0" expanded="true" />
-            <element signature="e#3886#3887#0" expanded="true" />
-            <element signature="e#3920#3921#0" expanded="true" />
             <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
             <element signature="method#getMsLeft#0;class#Character#0" expanded="false" />
             <element signature="method#getReflex#0;class#Character#0" expanded="false" />
@@ -1262,154 +1083,139 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/movement/CharTurner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/movement/PathFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="37" column="59" lean-forward="false" selection-start-line="37" selection-start-column="59" selection-end-line="37" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
-          <caret line="101" column="29" lean-forward="false" selection-start-line="101" selection-start-column="29" selection-end-line="101" selection-end-column="29" />
-          <folding>
-            <element signature="e#3338#3339#0" expanded="false" />
-            <element signature="e#3384#3385#0" expanded="false" />
-            <element signature="e#3829#3830#0" expanded="false" />
-            <element signature="e#3867#3868#0" expanded="false" />
-            <element signature="e#4787#4788#0" expanded="false" />
-            <element signature="e#4843#4844#0" expanded="false" />
-            <element signature="e#4908#4909#0" expanded="false" />
-            <element signature="e#4966#4967#0" expanded="false" />
-            <element signature="e#5031#5032#0" expanded="false" />
-            <element signature="e#5087#5088#0" expanded="false" />
-            <element signature="e#5152#5153#0" expanded="false" />
-            <element signature="e#5210#5211#0" expanded="false" />
-            <element signature="e#5273#5274#0" expanded="false" />
-            <element signature="e#5327#5328#0" expanded="false" />
-            <element signature="e#5390#5391#0" expanded="false" />
-            <element signature="e#5446#5447#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="84" column="65" lean-forward="false" selection-start-line="84" selection-start-column="65" selection-end-line="84" selection-end-column="65" />
-          <folding>
-            <element signature="e#3426#3427#0" expanded="true" />
-            <element signature="e#3500#3501#0" expanded="true" />
-            <element signature="e#3553#3554#0" expanded="true" />
-            <element signature="e#3628#3629#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/movement/CharMover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="40" column="68" lean-forward="false" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
+          <caret line="103" column="19" lean-forward="false" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/mapObjects/MapObjectsGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/datatypes/Memory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="79" column="47" lean-forward="false" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+        <state relative-caret-position="129">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/heights/HeightGenerator.java">
+    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/rt.jar!/java/lang/System.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="50" lean-forward="false" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+        <state relative-caret-position="129">
+          <caret line="235" column="23" lean-forward="false" selection-start-line="235" selection-start-column="23" selection-end-line="235" selection-end-column="23" />
+          <folding>
+            <element signature="e#6602#6603#0" expanded="true" />
+            <element signature="e#6643#6644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/utility/Utility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="155" column="15" lean-forward="false" selection-start-line="155" selection-start-column="15" selection-end-line="155" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraphAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="746" column="0" lean-forward="false" selection-start-line="746" selection-start-column="0" selection-end-line="746" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/myTests/Example.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        <state relative-caret-position="238">
+          <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/movement/PathFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/movement/CharMover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="127" column="12" lean-forward="false" selection-start-line="127" selection-start-column="11" selection-end-line="127" selection-end-column="12" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#moveStraight#0;class#CharMover#0" expanded="false" />
+            <element signature="method#turnChar#0;class#CharMover#0" expanded="false" />
+            <element signature="method#step#0;class#CharMover#0" expanded="false" />
+            <element signature="e#6148#6149#0" expanded="true" />
+            <element signature="e#6197#6198#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
+    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/GridGraph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapPiece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="126" column="19" lean-forward="true" selection-start-line="126" selection-start-column="19" selection-end-line="126" selection-end-column="19" />
+        <state relative-caret-position="121">
+          <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
           <folding>
-            <element signature="method#isClicked#0;class#MapPiece#0" expanded="false" />
-            <element signature="e#2499#2500#0" expanded="true" />
-            <element signature="e#2530#2531#0" expanded="true" />
-            <element signature="e#2579#2580#0" expanded="true" />
-            <element signature="e#2619#2620#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#856#857#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/terrains/Terrain.java">
+    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="26" lean-forward="false" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/terrains/TerrainGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="27" lean-forward="false" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/buildings/BuildingGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="51" column="60" lean-forward="false" selection-start-line="51" selection-start-column="60" selection-end-line="51" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="20" selection-end-column="33" />
+        <state relative-caret-position="129">
+          <caret line="154" column="30" lean-forward="false" selection-start-line="154" selection-start-column="30" selection-end-line="154" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        <state relative-caret-position="146">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapImageGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="83" column="45" lean-forward="true" selection-start-line="83" selection-start-column="45" selection-end-line="83" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
+          <folding>
+            <element signature="e#3209#3210#0" expanded="true" />
+            <element signature="e#3241#3242#0" expanded="true" />
+            <element signature="e#3294#3295#0" expanded="true" />
+            <element signature="e#3336#3337#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/roads/RoadGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="149" column="12" lean-forward="false" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="12" />
           <folding />
         </state>
       </provider>

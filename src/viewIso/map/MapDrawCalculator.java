@@ -72,7 +72,7 @@ public class MapDrawCalculator {
         return null;
     }
 
-    public static java.util.Map<MapPiece, Double> closeMapPieces2DistByMapPixPos(Point mapPixPos) {
+    public static java.util.Map<MapPiece, Double> closeMapPiecesWithDistByMapPixPos(Point mapPixPos) {
         java.util.Map<MapPiece, Double> closeMapPiecesWithDist = new HashMap<>();
         for (Point point: closePointsByPixPosition(mapPixPos)) {
             double dist = mapPixPos.distance(relativeScreenPosition(point));
@@ -150,5 +150,17 @@ public class MapDrawCalculator {
     private static boolean isOnCanvas(Point screenPoint){
         return screenPoint.x >= 0 && screenPoint.x <= mapDrawer.getCanvas().getWidth() + MAP_PIECE_SCREEN_SIZE_X &&
                 screenPoint.y >= 0 + map.MIN_HEIGHT_PIX * 10 && screenPoint.y <= mapDrawer.getCanvas().getHeight() + map.MAX_HEIGHT_PIX * 10;
+    }
+
+    public static List<Point> pointsInRadius(Point centerPoint, int radius, Map map){
+        List<Point> pointsInRadius = new ArrayList<>();
+        for(int i = -radius; i < radius; i++) {
+            for (int j = -radius; j < radius; j++) {
+                Point point = new Point(centerPoint.x + i, centerPoint.y + j);
+                if (map.isOnMapPoints(point) && point.distance(centerPoint) < radius)
+                    pointsInRadius.add(point);
+            }
+        }
+        return pointsInRadius;
     }
 }

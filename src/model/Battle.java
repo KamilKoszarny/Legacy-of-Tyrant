@@ -62,7 +62,8 @@ public class Battle {
         StatsCalculator.calcCharSA(irith, false);
 
         characters.addAll(new ArrayList<>(Arrays.asList(czlehulec, slimako, skowronka, irith)));
-
+        CharMover.setCharacters(new ArrayList<>(characters));
+        CharMover.blockPiecesWithChar(true, map);
     }
 
     public Map getMap() {
@@ -92,7 +93,7 @@ public class Battle {
     public void updateCharacters(int ms) {
         for (Character character: characters) {
             if (character.getDestination() != null)
-                CharMover.updateCharacterMove(character, ms);
+                CharMover.updateCharacterMove(character, ms, map);
             else if (timer%3 == 0) {
                 CharDrawer.nextFrame(character);
             }

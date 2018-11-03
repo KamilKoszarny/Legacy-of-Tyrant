@@ -3,6 +3,7 @@ package model.map.roads;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.terrains.Terrain;
+import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -146,29 +147,18 @@ public class RoadGenerator {
         int avgHeight;
 
         for (Point midPoint: midPoints) {
-            width = r.nextInt((int)((15 / Map.RESOLUTION_M * Map.M_PER_POINT) + 10)) + 2;
-            closePoints = pointsInRadius(midPoint, width / 2);
+            final int BASE_WIDTH = 10;
+            width = r.nextInt((int)((BASE_WIDTH / Map.RESOLUTION_M * Map.M_PER_POINT))) + 3;
+            closePoints = MapDrawCalculator.pointsInRadius(midPoint, width / 2, map);
             roadPoints.addAll(closePoints);
-            width = (int)(15 / Map.RESOLUTION_M * Map.M_PER_POINT) + 5;
-            closePoints = pointsInRadius(midPoint, width / 2);
+            width = (int)(BASE_WIDTH / Map.RESOLUTION_M * Map.M_PER_POINT);
+            closePoints = MapDrawCalculator.pointsInRadius(midPoint, width / 2, map);
             avgHeight = avgHeight(closePoints);
             setHeights(avgHeight, closePoints);
             i++;
         }
 
         return roadPoints;
-    }
-
-    private List<Point> pointsInRadius(Point centerPoint, int radius){
-        List<Point> pointsInRadius = new ArrayList<>();
-        for(int i = -radius; i < radius; i++) {
-            for (int j = -radius; j < radius; j++) {
-                Point point = new Point(centerPoint.x + i, centerPoint.y + j);
-                if (map.isOnMapPoints(point) && point.distance(centerPoint) < radius)
-                    pointsInRadius.add(point);
-            }
-        }
-        return pointsInRadius;
     }
 
     public static boolean isOnMidRoad(Point point){

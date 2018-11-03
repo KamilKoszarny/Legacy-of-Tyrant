@@ -141,20 +141,20 @@ public class Utility {
     }
     
     public static void cleanUpPreallocatedMemory() {
-        Anya.clearMemory();
+//        Anya.clearMemory();
         Anya16.clearMemory();
-        VisibilityGraph.clearMemory();
-        SparseVisibilityGraph.clearMemory();
-        SparseVisibilityGraphAlgorithmFibHeap.clearMemory();
-        Memory.clearMemory();
-        ReusableIndirectHeap.clearMemory();
-        LineOfSightScanner.clearMemory();
-        EdgeNLevelSparseVisibilityGraph.clearMemory();
-        EdgeNLevelSparseVisibilityGraphAlgorithmFibHeap.clearMemory();
-        VisibilityGraphOptimised.clearMemory();
-        SnapshotItem.clearCached();
+//        VisibilityGraph.clearMemory();
+//        SparseVisibilityGraph.clearMemory();
+//        SparseVisibilityGraphAlgorithmFibHeap.clearMemory();
+//        Memory.clearMemory();
+//        ReusableIndirectHeap.clearMemory();
+//        LineOfSightScanner.clearMemory();
+//        EdgeNLevelSparseVisibilityGraph.clearMemory();
+//        EdgeNLevelSparseVisibilityGraphAlgorithmFibHeap.clearMemory();
+//        VisibilityGraphOptimised.clearMemory();
+//        SnapshotItem.clearCached();
         //IVGAlgorithm.clearCached();
         
-        System.gc(); System.gc();
+//        System.gc(); System.gc();
     }
 }
