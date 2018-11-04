@@ -5,6 +5,7 @@ import model.map.terrains.Terrain;
 public enum MapObjectType {
     TREE(3, 16, Terrain.TREES, 100),
     BUSH(3, 5, Terrain.BUSH, 50),
+    WALL(3, 5, null, 50),
     ;
 
     private int sizes, looks;

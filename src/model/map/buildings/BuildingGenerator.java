@@ -48,7 +48,7 @@ public class BuildingGenerator {
 
     private void drawBuilding(Building building){
         for (Point wallPoint: building.getWallPoints()) {
-            map.getPoints().get(wallPoint).setTerrain(Terrain.WALL);
+            map.getPoints().get(wallPoint).setObject(new Wall(0));
             map.getPoints().get(wallPoint).setWalkable(false);
         }
         for (Point inPoint: building.getInPoints()) {

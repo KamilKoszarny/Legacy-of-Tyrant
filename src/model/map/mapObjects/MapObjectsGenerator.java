@@ -81,7 +81,7 @@ public class MapObjectsGenerator {
 
     private boolean hasObjects(Terrain terrain){
         for (MapObjectType objectType: MapObjectType.values()) {
-            if (objectType.getTerrain().equals(terrain))
+            if (objectType.getTerrain() != null && objectType.getTerrain().equals(terrain))
                 return true;
         }
         return false;
