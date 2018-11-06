@@ -152,15 +152,4 @@ public class MapDrawCalculator {
                 screenPoint.y >= 0 + map.MIN_HEIGHT_PIX * 10 && screenPoint.y <= mapDrawer.getCanvas().getHeight() + map.MAX_HEIGHT_PIX * 10;
     }
 
-    public static List<Point> pointsInRadius(Point centerPoint, int radius, Map map){
-        List<Point> pointsInRadius = new ArrayList<>();
-        for(int i = -radius; i < radius; i++) {
-            for (int j = -radius; j < radius; j++) {
-                Point point = new Point(centerPoint.x + i, centerPoint.y + j);
-                if (map.isOnMapPoints(point) && point.distance(centerPoint) < radius)
-                    pointsInRadius.add(point);
-            }
-        }
-        return pointsInRadius;
-    }
 }

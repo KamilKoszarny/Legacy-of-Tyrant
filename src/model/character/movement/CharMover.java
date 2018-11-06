@@ -8,7 +8,6 @@ import model.character.Character;
 import model.map.Map;
 import model.map.MapPiece;
 import viewIso.characters.CharDrawer;
-import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -88,7 +87,7 @@ public class CharMover {
         List<Character> otherCharacters = (List<Character>) characters.clone();
         otherCharacters.remove(character);
         for (Character otherChar : otherCharacters) {
-            List<Point> charClosePoints = MapDrawCalculator.pointsInRadius(otherChar.getPosition(), 2, map);
+            List<Point> charClosePoints = GeomerticHelper.pointsInRadius(otherChar.getPosition(), 2, map);
             for (Point point: charClosePoints) {
                 int[] gridPoint = PathFinder.gridPointByMapPoint(point);
                 charGridPositions.add(new int[]{gridPoint[0] - 1, gridPoint[1] + 2});
@@ -131,7 +130,7 @@ public class CharMover {
 
     public static void blockPiecesWithChar(boolean block, Map map) {
         for (Character character: characters) {
-            List<Point> closePoints = MapDrawCalculator.pointsInRadius(character.getPosition(), 2, map);
+            List<Point> closePoints = GeomerticHelper.pointsInRadius(character.getPosition(), 2, map);
             MapPiece mapPiece;
             for (Point point : closePoints) {
                 mapPiece = map.getPoints().get(point);

@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Random;
 
 public enum MapType {
-    GRASSLAND(70, 40, 30, 10, 1, 200),
-    FOREST(30, 30, 80, 30, 1, 100),
-    VILLAGE(50, 30, 30, 60, 10, 250);
+    GRASSLAND(70, 40, 30, 10, 1, 75),
+    FOREST(30, 30, 80, 30, 1, 50),
+    VILLAGE(50, 30, 30, 60, 10, 150);
 
     private int grass, bush, trees, ground;
     private int buildings, buildingMaxSize;

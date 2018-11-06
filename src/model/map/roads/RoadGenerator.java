@@ -1,9 +1,9 @@
 package model.map.roads;
 
+import helpers.my.GeomerticHelper;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.terrains.Terrain;
-import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -149,35 +149,19 @@ public class RoadGenerator {
         for (Point midPoint: midPoints) {
             final int BASE_WIDTH = 10;
             width = r.nextInt((int)((BASE_WIDTH / Map.RESOLUTION_M * Map.M_PER_POINT))) + 3;
-            closePoints = MapDrawCalculator.pointsInRadius(midPoint, width / 2, map);
+            closePoints = GeomerticHelper.pointsInRadius(midPoint, width / 2, map);
             roadPoints.addAll(closePoints);
             width = (int)(BASE_WIDTH / Map.RESOLUTION_M * Map.M_PER_POINT);
-            closePoints = MapDrawCalculator.pointsInRadius(midPoint, width / 2, map);
-            avgHeight = avgHeight(closePoints);
-            setHeights(avgHeight, closePoints);
+            closePoints = GeomerticHelper.pointsInRadius(midPoint, width / 2, map);
+            GeomerticHelper.flatten(closePoints, map, 0);
             i++;
         }
 
         return roadPoints;
     }
 
-    public static boolean isOnMidRoad(Point point){
-        return roadMidPoints.contains(point);
-    }
-
-    private int avgHeight(List<Point> points) {
-        int avgHeight, sumHeight = 0;
-        for (Point point: points) {
-            sumHeight += map.getPoints().get(point).getHeight();
-        }
-        avgHeight = sumHeight / points.size();
-        return avgHeight;
-    }
-
-    private void setHeights(int height, List<Point> points) {
-        for (Point point: points) {
-            map.getPoints().get(point).setHeight(height);
-        }
+    public static boolean isOnRoad(Point point){
+        return roadPoints.contains(point);
     }
 
     private void setRoadTerrain() {
