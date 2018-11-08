@@ -14,7 +14,9 @@ public class MapObjectSprite {
     public MapObjectSprite(MapObject mapObject) {
         StringBuilder path = new StringBuilder("/sprites");
         path.append("/" + mapObject.getType());
-        path.append("/size" + mapObject.getSize());
+        int size = mapObject.getSize();
+        if (size > 0)
+            path.append("/size" + size);
         path.append("/" + mapObject.getLook() + ".png");
         image = new Image(path.toString());
         offset.x = (int) (image.getWidth() / 2);

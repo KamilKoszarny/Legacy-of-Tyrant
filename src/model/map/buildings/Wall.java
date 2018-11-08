@@ -5,7 +5,11 @@ import model.map.mapObjects.MapObjectType;
 
 public class Wall extends MapObject {
 
-    public Wall(int look) {
-        super(MapObjectType.WALL, 1, look);
+    public Wall(int look, WallType type) {
+        super(MapObjectType.WALL, 0, type.getCode() + look);
+    }
+
+    public Wall(int side1, int side2, WallType type) {
+        super(MapObjectType.WALL, 0, type.getCode() + side1 * 100 + side2 * 10);
     }
 }

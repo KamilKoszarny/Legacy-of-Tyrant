@@ -1,6 +1,7 @@
 package model.map;
 
 import helpers.downloaded.pathfinding.grid.GridGraph;
+import helpers.my.GeomerticHelper;
 import model.map.buildings.BuildingGenerator;
 import model.map.heights.HeightGenerator;
 import model.map.lights.LightGenerator;
@@ -27,34 +28,39 @@ public class MapGenerator {
         System.out.println("heightGen:" + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
 
+        if(map.isWithWater()) {
+            WaterGenerator waterGenerator = new WaterGenerator(map);
+            waterGenerator.generateWater();
+            System.out.println("waterGen:" + (System.nanoTime() - time)/1000000. + " ms");
+            time = System.nanoTime();
+        }
+
         if(map.isWithRiver()) {
             RiverGenerator roadGenerator = new RiverGenerator(map);
             roadGenerator.generateRiver(25);
+            System.out.println("riverGen:" + (System.nanoTime() - time)/1000000. + " ms");
+            time = System.nanoTime();
         }
-        System.out.println("riverGen:" + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-
-        if(map.isWithWater()) {
-            WaterGenerator roadGenerator = new WaterGenerator(map);
-            roadGenerator.generateWater();
-        }
-        System.out.println("waterGen:" + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
 
         if(map.isWithRoad()) {
             RoadGenerator roadGenerator = new RoadGenerator(map);
-            roadGenerator.generateRoad();
+            roadGenerator.generateRoad(10);
+            System.out.println("roadGen:" + (System.nanoTime() - time)/1000000. + " ms");
+            time = System.nanoTime();
         }
-        System.out.println("roadGen:" + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
 
+        BuildingGenerator buildingGenerator = new BuildingGenerator(map);
         if(map.getBuildingsCount() > 0) {
-            BuildingGenerator buildingGenerator = new BuildingGenerator(map);
             buildingGenerator.generateAndDrawBuildings(map.getBuildingsCount(), map.getBuildingMaxSize());
+            System.out.println("buildingsGen:" + (System.nanoTime() - time)/1000000. + " ms");
+            time = System.nanoTime();
         }
-        System.out.println("buildingsGen:" + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
 
+        for (int i = 0; i < 5; i++) {
+            heightGenerator.shapeMapPieces();
+            GeomerticHelper.smooth(map);
+        }
+        buildingGenerator.reflattenBuildings();
         heightGenerator.shapeMapPieces();
         LightGenerator lightGenerator = new LightGenerator(map);
         lightGenerator.generateLight(50, 50, 1);
