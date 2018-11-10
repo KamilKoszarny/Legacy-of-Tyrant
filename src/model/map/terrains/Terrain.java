@@ -6,6 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public enum Terrain {
+    SPECIAL(Color.RED, 1),
     GROUND(Color.rgb(135, 86, 1), 1),
     GRASS(Color.rgb(0, 180, 0), 0.9),
     BUSH(Color.rgb(0, 120, 0), 0.8),

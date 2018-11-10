@@ -169,4 +169,11 @@ public class HeightGenerator {
 //        System.out.println(dir + " s: " + size);
 
     }
+
+    public void setNonWalkableBigSlope() {
+        for (MapPiece mapPiece: map.getPoints().values()) {
+            if (mapPiece.getSlopeSize() > HeightGenerator.MAX_WALKABLE_SLOPE)
+                mapPiece.setWalkable(false);
+        }
+    }
 }

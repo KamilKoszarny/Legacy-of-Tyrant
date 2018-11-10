@@ -100,8 +100,6 @@ public class MapPiece {
     public void setSlope(int dir, int size) {
         slopeDir = dir;
         slopeSize = size;
-        if (slopeSize > HeightGenerator.MAX_WALKABLE_SLOPE)
-            walkable = false;
     }
 
     public int getLight() {

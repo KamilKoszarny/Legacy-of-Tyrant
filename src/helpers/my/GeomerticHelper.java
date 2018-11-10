@@ -27,7 +27,7 @@ public class GeomerticHelper {
     }
 
     public static void smooth(Map map) {
-        final int RADIUS = 2, SLOPE_LIMIT_CAN = 10000, SLOPE_LIMIT_MUST = 35000;
+        final int RADIUS = 2, SLOPE_LIMIT_CAN = 5000, SLOPE_LIMIT_MUST = 100000;
         int slope;
         List<Point> closePoints;
         for (Point point: map.getPoints().keySet()) {
@@ -65,11 +65,12 @@ public class GeomerticHelper {
     }
 
     public static int avgHeight(List<Point> points, Map map, int offset) {
-        int avgHeight, sumHeight = 0;
+        int avgHeight;
+        long sumHeight = 0;
         for (Point point: points) {
             sumHeight += map.getPoints().get(point).getHeight();
         }
-        avgHeight = sumHeight / points.size() + offset;
+        avgHeight = (int) (sumHeight / points.size() + offset);
         return avgHeight;
     }
 

@@ -62,6 +62,7 @@ public class MapGenerator {
         }
         buildingGenerator.reflattenBuildings();
         heightGenerator.shapeMapPieces();
+        heightGenerator.setNonWalkableBigSlope();
         LightGenerator lightGenerator = new LightGenerator(map);
         lightGenerator.generateLight(50, 50, 1);
         System.out.println("shapeAndLightGen:" + (System.nanoTime() - time)/1000000. + " ms");
