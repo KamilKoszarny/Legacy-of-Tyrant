@@ -1,9 +1,7 @@
 package controller.isoView;
 
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import model.IsoBattleLoop;
 import viewIso.IsoViewer;
 
@@ -40,7 +38,7 @@ public class IsoMapKeyController {
             } else if (keyEvent.getCode().equals(KeyCode.SLASH))
                 isoViewer.switchCutView();
             else if (keyEvent.getCode().equals(KeyCode.ESCAPE))
-                isoViewer.getClickMenusDrawer().hideChar2PointMenu();
+                isoViewer.getClickMenusDrawer().hideMenus();
         });
         scene.setOnKeyReleased(keyEvent -> {
             isoBattleLoop.resetMapMove(new Point(0, 0));

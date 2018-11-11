@@ -95,7 +95,10 @@ public class Battle {
     public void updateCharacters(int ms) {
         for (Character character: characters) {
             if (character.getDestination() != null)
-                CharMover.updateCharacterMove(character, ms, map);
+                if (character.getPath().isEmpty())
+                    CharMover.stopCharacter(character);
+                else
+                    CharMover.updateCharacterMove(character, ms, map);
             else if (timer%3 == 0) {
                 CharDrawer.nextFrame(character);
             }

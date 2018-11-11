@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.map.Map;
 import model.map.MapPiece;
+import model.map.buildings.Door;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 import viewIso.map.MapPieceDrawer;
@@ -17,21 +18,14 @@ import java.util.List;
 
 public class ClickMenusDrawer {
 
-    private Map map;
     private Canvas canvas;
-    private GraphicsContext gc;
-    private MapDrawer mapDrawer;
-    private MapPieceDrawer mPDrawer;
-    List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
+    static List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
+    static List<ClickMenuButton> char2DoorMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.DOOR_OPEN, ClickMenuButton.DOOR_CLOSE);
 
     ClickMenusDrawer(MapDrawer mapDrawer) {
-        this.mapDrawer = mapDrawer;
-        map = mapDrawer.getMap();
         canvas = mapDrawer.getCanvas();
-        gc = canvas.getGraphicsContext2D();
-        mPDrawer = mapDrawer.getmPDrawer();
-
-        initChar2PointMenu();
+        initMenu(char2PointMenu);
+//        initMenu(char2DoorMenu);
     }
 
     public void drawChar2PointMenu(Point clickPoint) {
@@ -53,14 +47,33 @@ public class ClickMenusDrawer {
         }
     }
 
-    public void hideChar2PointMenu() {
-        for (ClickMenuButton button: char2PointMenu) {
+    public void drawChar2DoorMenu(Point clickPoint) {
+        MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
+        Door door = (Door) clickedMapPiece.getObject();
+        ClickMenuButton.DOOR_OPEN.setGrayed(door.isOpen());
+        ClickMenuButton.DOOR_CLOSE.setGrayed(!door.isOpen());
+        ClickMenuButton.colorButtons(char2DoorMenu);
+        for (ClickMenuButton button: char2DoorMenu) {
+            drawButton(button, clickPoint);
+        }
+    }
+
+    public void hideMenus() {
+        hideMenu(char2PointMenu);
+        hideMenu(char2DoorMenu);
+    }
+
+    public void hideMenu(List<ClickMenuButton> menu) {
+        for (ClickMenuButton button: menu) {
             hideButton(button);
         }
     }
 
     public void moveMenus(Point mapMove) {
         for (ClickMenuButton button: char2PointMenu) {
+            moveButton(button, mapMove);
+        }
+        for (ClickMenuButton button: char2DoorMenu) {
             moveButton(button, mapMove);
         }
     }
@@ -73,11 +86,11 @@ public class ClickMenusDrawer {
         return null;
     }
 
-    private void initChar2PointMenu() {
-        ClickMenuButton.groupButtons(char2PointMenu);
-        ClickMenuButton.shapeButtons(char2PointMenu);
-        ClickMenuButton.colorButtons(char2PointMenu);
-        for (ClickMenuButton button: char2PointMenu) {
+    private void initMenu(List<ClickMenuButton> menu) {
+        ClickMenuButton.groupButtons(menu);
+        ClickMenuButton.shapeButtons(menu);
+        ClickMenuButton.colorButtons(menu);
+        for (ClickMenuButton button: menu) {
             Shape shape = button.getShape();
             shape.setVisible(false);
             Label label = button.getLabel();
@@ -86,8 +99,6 @@ public class ClickMenusDrawer {
             pane.getChildren().addAll(shape, label);
         }
     }
-
-
 
     private void drawButton(ClickMenuButton button, Point clickPoint) {
         Shape shape = button.getShape();

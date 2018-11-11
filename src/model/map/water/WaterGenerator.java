@@ -13,7 +13,7 @@ public class WaterGenerator {
 
     private final Random R = new Random();
     int minHeight = Integer.MAX_VALUE;
-    List<MapPiece> waterPieces = new ArrayList<>();
+    static List<MapPiece> flatPieces = new ArrayList<>();
 
     Map map;
 
@@ -44,7 +44,7 @@ public class WaterGenerator {
         }
 
         for (int i = 1; i < shore.length; i++) {
-            shore[i] = (int) (shore[i - 1] + ((R.nextDouble() - .4) * map.mapXPoints * .02));
+            shore[i] = (int) (shore[i - 1] + ((R.nextDouble() - .33) * map.mapXPoints * .01));
             if (shore[i] < 0)
                 shore[i] *= -1;
             if (shore[i] > map.mapXPoints)
@@ -65,18 +65,26 @@ public class WaterGenerator {
                     case 3: mapPiece = map.getPoints().get(new Point(waterRow, waterCol)); break;
                     default: mapPiece = null;
                 }
-                mapPiece.setTerrain(Terrain.WATER);
-                mapPiece.setWalkable(false);
-                waterPieces.add(mapPiece);
+
+                int beachWidth = 2;
+                if (waterRow < shore[waterCol] - beachWidth) {
+                    mapPiece.setTerrain(Terrain.WATER);
+                    mapPiece.setWalkable(false);
+                }
+                flatPieces.add(mapPiece);
                 if(minHeight > mapPiece.getHeight())
                     minHeight = mapPiece.getHeight();
             }
         }
     }
 
-    private void setHeights() {
-        for (MapPiece waterPiece: waterPieces) {
+    public void setHeights() {
+        for (MapPiece waterPiece: flatPieces) {
             waterPiece.setHeight(minHeight);
         }
+    }
+
+    public static boolean isOnWater(Point point){
+        return flatPieces.contains(point);
     }
 }

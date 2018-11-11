@@ -28,8 +28,8 @@ public class MapGenerator {
         System.out.println("heightGen:" + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
 
+        WaterGenerator waterGenerator = new WaterGenerator(map);
         if(map.isWithWater()) {
-            WaterGenerator waterGenerator = new WaterGenerator(map);
             waterGenerator.generateWater();
             System.out.println("waterGen:" + (System.nanoTime() - time)/1000000. + " ms");
             time = System.nanoTime();
@@ -60,6 +60,7 @@ public class MapGenerator {
             heightGenerator.shapeMapPieces();
             GeomerticHelper.smooth(map);
         }
+        waterGenerator.setHeights();
         buildingGenerator.reflattenBuildings();
         heightGenerator.shapeMapPieces();
         heightGenerator.setNonWalkableBigSlope();

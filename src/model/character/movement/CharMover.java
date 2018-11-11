@@ -55,13 +55,17 @@ public class CharMover {
         }
         else if (last) {
             character.setPosition(character.getDestination());
-            character.setDestination(null);
-            character.setState(CharState.IDLE);
-            character.setCurrentSpeed(0);
+            stopCharacter(character);
         } else {
             character.setPathSection(character.getPathSection() + 1);
             turnChar(character, character.getPath().get(character.getPathSection()));
         }
+    }
+
+    public static void stopCharacter(Character character) {
+        character.setDestination(null);
+        character.setState(CharState.IDLE);
+        character.setCurrentSpeed(0);
     }
 
     private static void turnChar(Character character, Point2D next) {

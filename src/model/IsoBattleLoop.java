@@ -4,6 +4,7 @@ import controller.isoView.IsoMapMoveController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import model.map.MapPiece;
+import model.map.mapObjects.MapObjectType;
 import viewIso.*;
 import viewIso.characters.CharDrawer;
 import viewIso.map.MapDrawCalculator;
@@ -25,6 +26,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private boolean canvasHoverFlag = false;
     private Point canvasHoverPoint = new Point(0, 0);
     private Point clickedMapPoint;
+    private MapPiece clickedMapPiece;
     private Alert alert;
     private boolean alertOn = false;
     private IsoViewer isoViewer;
@@ -79,8 +81,12 @@ public class IsoBattleLoop extends AnimationTimer{
         }
         else {
             clickedMapPoint = MapDrawCalculator.mapPointByClickPoint(canvasLClickPoint);
+            clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
-                clickMenusDrawer.drawChar2PointMenu(canvasLClickPoint);
+                if (clickedMapPiece.getObject() != null && clickedMapPiece.getObject().getType().equals(MapObjectType.DOOR))
+                    clickMenusDrawer.drawChar2DoorMenu(canvasLClickPoint);
+                else
+                    clickMenusDrawer.drawChar2PointMenu(canvasLClickPoint);
             }
             canvasLClickFlag = false;
         }
@@ -104,7 +110,7 @@ public class IsoBattleLoop extends AnimationTimer{
             battle.startRunCharacter(clickedMapPoint);
 
 
-        clickMenusDrawer.hideChar2PointMenu();
+        clickMenusDrawer.hideMenus();
     }
 
     public void setMapMoveFlag(boolean mapMoveFlag) {

@@ -19,7 +19,10 @@ public enum ClickMenuButton {
     LOOK("Look", "look"),
     WALK("Walk", "walk"),
     RUN("Run", "run"),
-    SNEAK("Sneak", "sneak");
+    SNEAK("Sneak", "sneak"),
+    DOOR_OPEN("Open", "doorOpen"),
+    DOOR_CLOSE("Close", "doorClose"),
+    ;
 
     private static final int RADIUS_IN = 5;
     private static final int RADIUS_OUT = 36;

@@ -39,7 +39,7 @@ public class MapObjectsGenerator {
             size = checkAvailableSize(point, terrain);
             look = r.nextInt(type.getLooks());
             mapPiece.setObject(new MapObject(type, size, look));
-            setNonWalkablePieces(point, size);
+            setNonWalkablePieces(point, size + 1);
         }
     }
 

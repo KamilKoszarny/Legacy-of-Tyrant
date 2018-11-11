@@ -5,12 +5,16 @@ import model.map.terrains.Terrain;
 public enum MapObjectType {
     TREE(3, 16, Terrain.TREES, 100),
     BUSH(3, 5, Terrain.BUSH, 50),
-    WALL(3, 5, null, 50),
+    WALL(),
+    DOOR(),
     ;
 
     private int sizes, looks;
     private Terrain terrain;
     private int probabilityDivider;
+
+    MapObjectType() {
+    }
 
     MapObjectType(int sizes, int looks, Terrain terrain, int probabilityDivider) {
         this.sizes = sizes;
