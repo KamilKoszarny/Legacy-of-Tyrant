@@ -23,4 +23,8 @@ public class MapObject{
     public int getLook() {
         return look;
     }
+
+    public void setLook(int look) {
+        this.look = look;
+    }
 }

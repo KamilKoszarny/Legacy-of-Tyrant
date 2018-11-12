@@ -16,14 +16,36 @@ public class GeomerticHelper {
 
     public static java.util.List<Point> pointsInRadius(Point centerPoint, int radius, Map map){
         List<Point> pointsInRadius = new ArrayList<>();
-        for(int i = -radius; i < radius; i++) {
-            for (int j = -radius; j < radius; j++) {
+        for(int i = -radius; i <= radius; i++) {
+            for (int j = -radius; j <= radius; j++) {
                 Point point = new Point(centerPoint.x + i, centerPoint.y + j);
                 if (map.isOnMapPoints(point) && point.distance(centerPoint) < radius)
                     pointsInRadius.add(point);
             }
         }
         return pointsInRadius;
+    }
+
+    public static java.util.List<Point> pointsInSquare(Point centerPoint, int radius){
+        List<Point> pointsInSquare = new ArrayList<>();
+        for(int i = -radius; i <= radius; i++) {
+            for (int j = -radius; j <= radius; j++) {
+                Point point = new Point(centerPoint.x + i, centerPoint.y + j);
+                pointsInSquare.add(point);
+            }
+        }
+        return pointsInSquare;
+    }
+
+    public static java.util.List<Point> pointsInRect(Point centerPoint, int x, int y){
+        List<Point> pointsInSquare = new ArrayList<>();
+        for(int i = -x; i <= x; i++) {
+            for (int j = -y; j <= y; j++) {
+                Point point = new Point(centerPoint.x + i, centerPoint.y + j);
+                pointsInSquare.add(point);
+            }
+        }
+        return pointsInSquare;
     }
 
     public static void smooth(Map map) {

@@ -2,6 +2,7 @@ package model.map;
 
 import helpers.downloaded.pathfinding.grid.GridGraph;
 import helpers.my.GeomerticHelper;
+import model.character.Character;
 import model.map.buildings.BuildingGenerator;
 import model.map.heights.HeightGenerator;
 import model.map.lights.LightGenerator;
@@ -12,6 +13,8 @@ import model.map.water.RiverGenerator;
 import model.map.water.WaterGenerator;
 
 import java.awt.*;
+import java.util.Collection;
+import java.util.List;
 
 public class MapGenerator {
 
@@ -74,44 +77,6 @@ public class MapGenerator {
         System.out.println("objectsGen:" + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
 
-        map.setGridGraph(generateGridGraph(map));
-        System.out.println("gridGen:" + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-
         return map;
     }
-
-    @SuppressWarnings("PointlessArithmeticExpression")
-    private GridGraph generateGridGraph(Map map) {
-        GridGraph gridGraph = map.getGridGraph();
-
-        MapPiece mapPiece;
-        int x, y;
-        for (Point point: map.getPoints().keySet()) {
-            mapPiece = map.getPoints().get(point);
-            if (!mapPiece.isWalkable()) {
-                x = point.x;
-                y = point.y;
-                gridGraph.trySetBlocked(x*4 - 1, y*4 + 2, true);
-                gridGraph.setBlocked(x*4 + 0, y*4 + 1, true);
-                gridGraph.setBlocked(x*4 + 0, y*4 + 2, true);
-                gridGraph.trySetBlocked(x*4 + 1, y*4 - 1, true);
-                gridGraph.setBlocked(x*4 + 1, y*4 + 0, true);
-                gridGraph.setBlocked(x*4 + 1, y*4 + 1, true);
-                gridGraph.setBlocked(x*4 + 1, y*4 + 2, true);
-                gridGraph.setBlocked(x*4 + 1, y*4 + 3, true);
-                gridGraph.setBlocked(x*4 + 2, y*4 + 0, true);
-                gridGraph.setBlocked(x*4 + 2, y*4 + 1, true);
-                gridGraph.setBlocked(x*4 + 2, y*4 + 2, true);
-                gridGraph.setBlocked(x*4 + 2, y*4 + 3, true);
-                gridGraph.trySetBlocked(x*4 + 2, y*4 + 4, true);
-                gridGraph.setBlocked(x*4 + 3, y*4 + 1, true);
-                gridGraph.setBlocked(x*4 + 3, y*4 + 2, true);
-                gridGraph.trySetBlocked(x*4 + 4, y*4 + 1, true);
-            }
-        }
-        return gridGraph;
-    }
-
-
 }

@@ -84,7 +84,7 @@ public class IsoBattleLoop extends AnimationTimer{
             clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
                 if (clickedMapPiece.getObject() != null && clickedMapPiece.getObject().getType().equals(MapObjectType.DOOR))
-                    clickMenusDrawer.drawChar2DoorMenu(canvasLClickPoint);
+                    clickMenusDrawer.drawChar2DoorMenu(canvasLClickPoint, battle.getChosenCharacter());
                 else
                     clickMenusDrawer.drawChar2PointMenu(canvasLClickPoint);
             }
@@ -104,10 +104,16 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleButtonAction(ClickMenuButton button) {
-        if (button == ClickMenuButton.LOOK) {
+        if (button == ClickMenuButton.LOOK)
             battle.turnCharacter(clickedMapPoint);
-        } if (button == ClickMenuButton.RUN)
+        if (button == ClickMenuButton.RUN)
             battle.startRunCharacter(clickedMapPoint);
+        if (button == ClickMenuButton.DOOR_LOOK)
+            battle.turnCharacter(clickedMapPoint);
+        if (button == ClickMenuButton.DOOR_OPEN)
+            battle.openDoor(clickedMapPoint);
+        if (button == ClickMenuButton.DOOR_CLOSE)
+            ;
 
 
         clickMenusDrawer.hideMenus();

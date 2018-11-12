@@ -20,12 +20,18 @@ public class MapObjectDrawer {
 
     private Map map;
     private Canvas canvas;
-    private java.util.Map<Point, MapObjectSprite> mapObjectSpriteMap = new HashMap<>();
+    private static java.util.Map<Point, MapObjectSprite> mapObjectSpriteMap = new HashMap<>();
 
     public MapObjectDrawer(Map map, Canvas canvas) {
         this.map = map;
         this.canvas = canvas;
         initSpriteMap();
+    }
+
+    public static void refreshSpriteMap(Point point, Map map) {
+        MapPiece mapPiece = map.getPoints().get(point);
+        if (mapPiece.getObject() != null)
+            mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject()));
     }
 
     private void initSpriteMap() {

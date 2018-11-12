@@ -1,16 +1,14 @@
 package viewIso;
 
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
-import model.map.Map;
+import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Door;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
-import viewIso.map.MapPieceDrawer;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -20,15 +18,19 @@ public class ClickMenusDrawer {
 
     private Canvas canvas;
     static List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
-    static List<ClickMenuButton> char2DoorMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.DOOR_OPEN, ClickMenuButton.DOOR_CLOSE);
+    static List<ClickMenuButton> char2DoorMenu = Arrays.asList(ClickMenuButton.DOOR_LOOK, ClickMenuButton.DOOR_OPEN, ClickMenuButton.DOOR_CLOSE);
+    static List<ClickMenuButton> activeMenu = char2PointMenu;
+
 
     ClickMenusDrawer(MapDrawer mapDrawer) {
         canvas = mapDrawer.getCanvas();
         initMenu(char2PointMenu);
-//        initMenu(char2DoorMenu);
+        initMenu(char2DoorMenu);
     }
 
     public void drawChar2PointMenu(Point clickPoint) {
+        hideMenus();
+        activeMenu = char2PointMenu;
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
         if (!clickedMapPiece.isWalkable()) {
             ClickMenuButton.WALK.setGrayed(true);
@@ -47,11 +49,20 @@ public class ClickMenusDrawer {
         }
     }
 
-    public void drawChar2DoorMenu(Point clickPoint) {
+    public void drawChar2DoorMenu(Point clickPoint, Character character) {
+        hideMenus();
+        activeMenu = char2DoorMenu;
+        Point clickedPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
         Door door = (Door) clickedMapPiece.getObject();
-        ClickMenuButton.DOOR_OPEN.setGrayed(door.isOpen());
-        ClickMenuButton.DOOR_CLOSE.setGrayed(!door.isOpen());
+        if (clickedPoint.distance(character.getPosition()) > Door.ACTION_DIST) {
+            ClickMenuButton.DOOR_OPEN.setGrayed(true);
+            ClickMenuButton.DOOR_CLOSE.setGrayed(true);
+        } else {
+            ClickMenuButton.DOOR_OPEN.setGrayed(door.isOpen());
+            ClickMenuButton.DOOR_CLOSE.setGrayed(!door.isOpen());
+        }
+
         ClickMenuButton.colorButtons(char2DoorMenu);
         for (ClickMenuButton button: char2DoorMenu) {
             drawButton(button, clickPoint);
@@ -70,10 +81,7 @@ public class ClickMenusDrawer {
     }
 
     public void moveMenus(Point mapMove) {
-        for (ClickMenuButton button: char2PointMenu) {
-            moveButton(button, mapMove);
-        }
-        for (ClickMenuButton button: char2DoorMenu) {
+        for (ClickMenuButton button: activeMenu) {
             moveButton(button, mapMove);
         }
     }

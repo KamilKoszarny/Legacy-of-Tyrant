@@ -135,7 +135,7 @@ public class BuildingGenerator {
             }
 //            mapPiece.setTerrain(Terrain.GROUND);
             mapPiece.setTerrain(Terrain.SPECIAL);
-            List<Point> nonWalkablePoints = GeomerticHelper.pointsInRadius(wallPoint, 3, map);
+            List<Point> nonWalkablePoints = GeomerticHelper.pointsInSquare(wallPoint, 1);
             for (Point point : nonWalkablePoints) {
                 mapPiece = map.getPoints().get(point);
                 mapPiece.setWalkable(false);

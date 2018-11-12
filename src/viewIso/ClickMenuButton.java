@@ -20,6 +20,8 @@ public enum ClickMenuButton {
     WALK("Walk", "walk"),
     RUN("Run", "run"),
     SNEAK("Sneak", "sneak"),
+
+    DOOR_LOOK("Look", "look"),
     DOOR_OPEN("Open", "doorOpen"),
     DOOR_CLOSE("Close", "doorClose"),
     ;

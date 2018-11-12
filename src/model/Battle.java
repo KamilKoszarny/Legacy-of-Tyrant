@@ -1,5 +1,6 @@
 package model;
 
+import helpers.my.GeomerticHelper;
 import javafx.scene.paint.Color;
 import model.armor.*;
 import model.character.Character;
@@ -8,9 +9,11 @@ import model.character.CharacterType;
 import model.character.movement.CharMover;
 import model.character.movement.CharTurner;
 import model.map.*;
+import model.map.buildings.Door;
 import model.map.heights.MapHeightType;
 import model.weapon.Weapon;
 import viewIso.characters.CharDrawer;
+import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -65,7 +68,8 @@ public class Battle {
 
         characters.addAll(new ArrayList<>(Arrays.asList(czlehulec, slimako, skowronka, irith)));
         CharMover.setCharacters(new ArrayList<>(characters));
-        CharMover.blockPiecesWithChar(true, map);
+        CharMover.pushCharsToClosestWalkable(map);
+        MapGridCalc.regenerateGridGraph(map, map.getPoints().keySet(), characters);
     }
 
     public Map getMap() {
@@ -96,7 +100,7 @@ public class Battle {
         for (Character character: characters) {
             if (character.getDestination() != null)
                 if (character.getPath().isEmpty())
-                    CharMover.stopCharacter(character);
+                    CharMover.stopCharacter(character, map);
                 else
                     CharMover.updateCharacterMove(character, ms, map);
             else if (timer%3 == 0) {
@@ -107,6 +111,40 @@ public class Battle {
 
     public Character getChosenCharacter() {
         return chosenCharacter;
+    }
+
+    public void openDoor(Point clickedMapPoint) {
+        MapPiece mapPiece =  map.getPoints().get(clickedMapPoint);
+        Door door = (Door) mapPiece.getObject();
+        door.switchOpen();
+        int newLook = door.getLook() + 1;
+        MapPiece newMapPiece;
+        Point newPoint = clickedMapPoint;
+        switch (newLook%4) {
+            case 0:{
+                newLook -= 4;
+                newPoint = new Point(clickedMapPoint.x - 1, clickedMapPoint.y + 1); break;
+            }
+            case 1: newPoint = new Point(clickedMapPoint.x + 1, clickedMapPoint.y + 1); break;
+            case 2: newPoint = new Point(clickedMapPoint.x + 1, clickedMapPoint.y - 1); break;
+            case 3: newPoint = new Point(clickedMapPoint.x - 1, clickedMapPoint.y - 1); break;
+        }
+        newMapPiece = map.getPoints().get(newPoint);
+        door.setLook(newLook);
+        mapPiece.setObject(null);
+        newMapPiece.setObject(door);
+        MapObjectDrawer.refreshSpriteMap(clickedMapPoint, map);
+        MapObjectDrawer.refreshSpriteMap(newPoint, map);
+        for (Point point: GeomerticHelper.pointsInSquare(clickedMapPoint, 1)) {
+            mapPiece = map.getPoints().get(point);
+            mapPiece.setWalkable(true);
+        }
+        for (Point point: GeomerticHelper.pointsInRect(newPoint, 1 - newLook%2, newLook%2)) {
+            mapPiece = map.getPoints().get(point);
+            mapPiece.setWalkable(false);
+        }
+        CharMover.pushCharsToClosestWalkable(map);
+        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(clickedMapPoint, 4), characters);
     }
 
     public void incrementTimer() {
