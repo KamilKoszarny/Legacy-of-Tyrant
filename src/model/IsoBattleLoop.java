@@ -4,11 +4,14 @@ import controller.isoView.IsoMapMoveController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import model.map.MapPiece;
+import model.map.buildings.Door;
+import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.*;
-import viewIso.characters.CharDrawer;
+import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
+import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 
@@ -27,12 +30,13 @@ public class IsoBattleLoop extends AnimationTimer{
     private Point canvasHoverPoint = new Point(0, 0);
     private Point clickedMapPoint;
     private MapPiece clickedMapPiece;
+    private MapObject clickedObject;
     private Alert alert;
     private boolean alertOn = false;
     private IsoViewer isoViewer;
     private PanelViewer panelViewer;
     private MapDrawer mapDrawer;
-    private CharDrawer charDrawer;
+    private CharsDrawer charsDrawer;
     private ClickMenusDrawer clickMenusDrawer;
     private int lastMs, curMs;
 
@@ -75,21 +79,20 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleCanvasLClick(){
-        if (charDrawer.isCharClicked(canvasLClickPoint)) {
-            battle.chooseCharacter(charDrawer.getClickedCharacter());
-            canvasLClickFlag = false;
-        }
-        else {
+        if (charsDrawer.isOtherCharClicked(canvasLClickPoint, battle.getChosenCharacter())) {
+            battle.chooseCharacter(charsDrawer.getClickedCharacter());
+        } else {
             clickedMapPoint = MapDrawCalculator.mapPointByClickPoint(canvasLClickPoint);
-            clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
-                if (clickedMapPiece.getObject() != null && clickedMapPiece.getObject().getType().equals(MapObjectType.DOOR))
-                    clickMenusDrawer.drawChar2DoorMenu(canvasLClickPoint, battle.getChosenCharacter());
+                clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(canvasLClickPoint);
+                clickedObject = MapObjectDrawer.clickedObject(canvasLClickPoint);
+                if (clickedObject != null && clickedObject.getType().equals(MapObjectType.DOOR))
+                    clickMenusDrawer.drawChar2DoorMenu(canvasLClickPoint, (Door) clickedObject, battle.getChosenCharacter());
                 else
                     clickMenusDrawer.drawChar2PointMenu(canvasLClickPoint);
             }
-            canvasLClickFlag = false;
         }
+        canvasLClickFlag = false;
     }
 
     private void handleCanvasRClick(){
@@ -99,7 +102,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleCanvasHover() {
-        charDrawer.checkHoverCharacter(canvasHoverPoint);
+        charsDrawer.checkHoverCharacter(canvasHoverPoint);
         canvasHoverFlag = false;
     }
 
@@ -111,9 +114,9 @@ public class IsoBattleLoop extends AnimationTimer{
         if (button == ClickMenuButton.DOOR_LOOK)
             battle.turnCharacter(clickedMapPoint);
         if (button == ClickMenuButton.DOOR_OPEN)
-            battle.openDoor(clickedMapPoint);
+            battle.openDoor(clickedObject);
         if (button == ClickMenuButton.DOOR_CLOSE)
-            ;
+            battle.closeDoor(clickedObject);
 
 
         clickMenusDrawer.hideMenus();
@@ -192,7 +195,7 @@ public class IsoBattleLoop extends AnimationTimer{
         this.isoViewer = isoViewer;
         this.panelViewer = panelViewer;
         mapDrawer = isoViewer.getMapDrawer();
-        charDrawer = isoViewer.getCharDrawer();
+        charsDrawer = isoViewer.getCharsDrawer();
         clickMenusDrawer = isoViewer.getClickMenusDrawer();
     }
 

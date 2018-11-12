@@ -3,6 +3,8 @@ package model.map.buildings;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 
+import java.awt.*;
+
 public class Door extends MapObject {
 
     public static final int ACTION_DIST = 4;

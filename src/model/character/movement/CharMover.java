@@ -6,7 +6,7 @@ import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
 import model.map.MapGridCalc;
-import viewIso.characters.CharDrawer;
+import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 import java.util.*;
@@ -46,7 +46,7 @@ public class CharMover {
             character.setPosition(new Point2D(pos.getX() + step.getX(), pos.getY() + step.getY()));
             if (distToNext%POINTS_TO_NEXT_FRAME <
                     GeomerticHelper.distTo0(step.getX(), step.getY()))
-                CharDrawer.nextFrame(character);
+                CharsDrawer.nextFrame(character);
         }
         else if (last) {
             character.setPosition(character.getDestination());

@@ -1,10 +1,13 @@
 package model.map.mapObjects;
 
+import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
+
 public class MapObject{
 
     private MapObjectType type;
     private int size;
     private int look;
+
 
     public MapObject(MapObjectType type, int size, int look) {
         this.type = type;

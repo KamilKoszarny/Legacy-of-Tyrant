@@ -3,7 +3,7 @@ package viewIso;
 import javafx.scene.canvas.Canvas;
 import model.character.Character;
 import model.map.Map;
-import viewIso.characters.CharDrawer;
+import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class IsoViewer {
     private MapDrawer mapDrawer;
-    private CharDrawer charDrawer;
+    private CharsDrawer charsDrawer;
     private MapObjectDrawer mapObjectDrawer;
     private ClickMenusDrawer clickMenusDrawer;
     private SpritesDrawer spritesDrawer;
@@ -49,8 +49,8 @@ public class IsoViewer {
         return mapDrawer;
     }
 
-    public CharDrawer getCharDrawer() {
-        return spritesDrawer.getCharDrawer();
+    public CharsDrawer getCharsDrawer() {
+        return spritesDrawer.getCharsDrawer();
     }
 
     public ClickMenusDrawer getClickMenusDrawer() {

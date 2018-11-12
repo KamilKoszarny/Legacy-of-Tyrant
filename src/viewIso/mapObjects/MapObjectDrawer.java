@@ -2,25 +2,21 @@ package viewIso.mapObjects;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.WritableImage;
-import model.character.Character;
 import model.map.Map;
 import model.map.MapPiece;
+import model.map.mapObjects.MapObject;
 import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
-import java.awt.image.ImagingOpException;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 
 public class MapObjectDrawer {
 
     private Map map;
     private Canvas canvas;
     private static java.util.Map<Point, MapObjectSprite> mapObjectSpriteMap = new HashMap<>();
+    private static java.util.Map<MapObject, Point> mapObjectPointMap = new HashMap<>();
+    private static boolean cutView;
 
     public MapObjectDrawer(Map map, Canvas canvas) {
         this.map = map;
@@ -30,19 +26,24 @@ public class MapObjectDrawer {
 
     public static void refreshSpriteMap(Point point, Map map) {
         MapPiece mapPiece = map.getPoints().get(point);
-        if (mapPiece.getObject() != null)
+        if (mapPiece.getObject() != null) {
             mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject()));
+            mapObjectPointMap.put(mapPiece.getObject(), point);
+        }
     }
 
     private void initSpriteMap() {
         for (Point point: map.getPoints().keySet()) {
             MapPiece mapPiece = map.getPoints().get(point);
-            if (mapPiece.getObject() != null)
+            if (mapPiece.getObject() != null) {
                 mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject()));
+                mapObjectPointMap.put(mapPiece.getObject(), point);
+            }
         }
     }
 
     public void drawObject (Point point, boolean cutView) {
+        this.cutView = cutView;
         MapObjectSprite mapObjectSprite = mapObjectSpriteMap.get(point);
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
@@ -61,5 +62,28 @@ public class MapObjectDrawer {
                 screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
     }
 
+    public static MapObject clickedObject(Point clickPoint) {
+        if (cutView)
+            return null;
+        for (Point point: mapObjectSpriteMap.keySet()) {
+            MapObjectSprite sprite =  mapObjectSpriteMap.get(point);
+            Rectangle clickBox = calcClickBox(sprite, point);
+            if (clickBox.contains(clickPoint)){
+                if (sprite.getObject().getType().isClickable())
+                    return sprite.getObject();
+            }
+        }
+        return null;
+    }
 
+    private static Rectangle calcClickBox(MapObjectSprite sprite, Point spritePos) {
+        Point spriteScreenPos = MapDrawCalculator.screenPositionWithHeight(spritePos);
+        int width = (int) sprite.getImage().getWidth();
+        int height = (int) sprite.getImage().getHeight();
+        return new Rectangle(spriteScreenPos.x - width/2, (int) (spriteScreenPos.y - height*MapObjectSprite.Y_BASE_RATIO), width, height);
+    }
+
+    public static java.util.Map<MapObject, Point> getMapObjectPointMap() {
+        return mapObjectPointMap;
+    }
 }

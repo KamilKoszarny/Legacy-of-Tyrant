@@ -19,7 +19,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-public class CharDrawer {
+public class CharsDrawer {
 
     private Dimension SPRITES_SPAN = new Dimension(192, 192);
     private Dimension SPRITE_SIZE = new Dimension(124, 160);
@@ -37,7 +37,7 @@ public class CharDrawer {
     private static java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
     private java.util.Map<Character, Label> charLabelsMap = new HashMap<>();
 
-    public CharDrawer(Map map, Canvas canvas, MapDrawer mapDrawer, List<Character> characters) {
+    public CharsDrawer(Map map, Canvas canvas, MapDrawer mapDrawer, List<Character> characters) {
         this.map = map;
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
@@ -46,47 +46,8 @@ public class CharDrawer {
 
         initCharSpriteMap();
         initCharLabelsMap();
-        drawChars(characters);
+//        drawChars(characters);
     }
-
-    public boolean isCharClicked(Point clickPoint) {
-        for (Character character: characters) {
-            Rectangle clickBox = calcClickBox(character);
-            if (clickBox.contains(clickPoint)){
-                clickedCharacter = character;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void drawAllChars() {
-        drawChars(characters);
-    }
-
-    public void drawVisibleChars() {
-        List<Character> visibleChars = new ArrayList<>();
-        List<Point> visiblePoints = MapDrawCalculator.calcVisiblePoints();
-        for (Character character: characters) {
-            if (visiblePoints.contains(character.getPosition())) {
-                visibleChars.add(character);
-            }
-        }
-        drawChars(visibleChars);
-    }
-
-    public void drawChars(List<Character> characters) {
-        for (Character character: characters) {
-            clearCharProximity(character);
-        }
-
-        List<Character> charactersInDrawOrder = new ArrayList<>(characters);
-        charactersInDrawOrder.sort(Comparator.comparingInt(c -> c.getPosition().x + c.getPosition().y));
-        for (Character character: charactersInDrawOrder) {
-            drawChar(character);
-        }
-    }
-
 
     public void drawChar(Character character) {
         Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPrecisePosition());
@@ -108,10 +69,6 @@ public class CharDrawer {
     public static void nextFrame(Character character) {
         CharSprite charSprite = charSpriteSheetMap.get(character);
         charSprite.nextFrame();
-    }
-
-    private void clearCharProximity(Character character) {
-        mapDrawer.clearPointAround(character.getPosition(), SPRITE_SIZE.width, SPRITE_SIZE.height, SPRITE_BASE.width, SPRITE_BASE.height);
     }
 
     private void drawLabel(Character character, Point charScreenPos) {
@@ -157,9 +114,26 @@ public class CharDrawer {
         }
     }
 
-
     private CharSprite chooseSpriteSheet(Character character) {
         return new CharSprite(new Image("/sprites/chars/flare/vesuvvio.png"));
+    }
+
+
+    public boolean isOtherCharClicked(Point clickPoint, Character chosenChar) {
+        for (Character character: characters) {
+            Rectangle clickBox = calcClickBox(character);
+            if (!character.equals(chosenChar) && clickBox.contains(clickPoint)){
+                clickedCharacter = character;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Rectangle calcClickBox(Character character) {
+        Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPosition());
+        return new Rectangle(charScreenPos.x - SPRITE_BASE.width/2, charScreenPos.y - SPRITE_BASE.height*2/3,
+                SPRITE_SIZE.width/2, SPRITE_SIZE.height*2/3);
     }
 
     public Character getClickedCharacter() {
@@ -172,11 +146,5 @@ public class CharDrawer {
             if(calcClickBox(character).contains(hoverPoint))
                 hoverCharacter = character;
         }
-    }
-
-    private Rectangle calcClickBox(Character character) {
-        Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPosition());
-        return new Rectangle(charScreenPos.x - SPRITE_BASE.width/2, charScreenPos.y - SPRITE_BASE.height*2/3,
-                SPRITE_SIZE.width/2, SPRITE_SIZE.height*2/3);
     }
 }

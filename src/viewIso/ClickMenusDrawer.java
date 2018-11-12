@@ -5,10 +5,13 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.character.Character;
+import model.map.Map;
 import model.map.MapPiece;
 import model.map.buildings.Door;
+import model.map.mapObjects.MapObject;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
+import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -49,13 +52,11 @@ public class ClickMenusDrawer {
         }
     }
 
-    public void drawChar2DoorMenu(Point clickPoint, Character character) {
+    public void drawChar2DoorMenu(Point clickPoint, Door door, Character character) {
         hideMenus();
         activeMenu = char2DoorMenu;
-        Point clickedPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
-        MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
-        Door door = (Door) clickedMapPiece.getObject();
-        if (clickedPoint.distance(character.getPosition()) > Door.ACTION_DIST) {
+        Point doorPos = MapObjectDrawer.getMapObjectPointMap().get(door);
+        if (doorPos.distance(character.getPosition()) > Door.ACTION_DIST) {
             ClickMenuButton.DOOR_OPEN.setGrayed(true);
             ClickMenuButton.DOOR_CLOSE.setGrayed(true);
         } else {

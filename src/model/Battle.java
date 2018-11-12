@@ -1,7 +1,7 @@
 package model;
 
-import helpers.my.GeomerticHelper;
 import javafx.scene.paint.Color;
+import model.actions.DoorActioner;
 import model.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
@@ -9,11 +9,10 @@ import model.character.CharacterType;
 import model.character.movement.CharMover;
 import model.character.movement.CharTurner;
 import model.map.*;
-import model.map.buildings.Door;
 import model.map.heights.MapHeightType;
+import model.map.mapObjects.MapObject;
 import model.weapon.Weapon;
-import viewIso.characters.CharDrawer;
-import viewIso.mapObjects.MapObjectDrawer;
+import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -104,7 +103,7 @@ public class Battle {
                 else
                     CharMover.updateCharacterMove(character, ms, map);
             else if (timer%3 == 0) {
-                CharDrawer.nextFrame(character);
+                CharsDrawer.nextFrame(character);
             }
         }
     }
@@ -113,38 +112,12 @@ public class Battle {
         return chosenCharacter;
     }
 
-    public void openDoor(Point clickedMapPoint) {
-        MapPiece mapPiece =  map.getPoints().get(clickedMapPoint);
-        Door door = (Door) mapPiece.getObject();
-        door.switchOpen();
-        int newLook = door.getLook() + 1;
-        MapPiece newMapPiece;
-        Point newPoint = clickedMapPoint;
-        switch (newLook%4) {
-            case 0:{
-                newLook -= 4;
-                newPoint = new Point(clickedMapPoint.x - 1, clickedMapPoint.y + 1); break;
-            }
-            case 1: newPoint = new Point(clickedMapPoint.x + 1, clickedMapPoint.y + 1); break;
-            case 2: newPoint = new Point(clickedMapPoint.x + 1, clickedMapPoint.y - 1); break;
-            case 3: newPoint = new Point(clickedMapPoint.x - 1, clickedMapPoint.y - 1); break;
-        }
-        newMapPiece = map.getPoints().get(newPoint);
-        door.setLook(newLook);
-        mapPiece.setObject(null);
-        newMapPiece.setObject(door);
-        MapObjectDrawer.refreshSpriteMap(clickedMapPoint, map);
-        MapObjectDrawer.refreshSpriteMap(newPoint, map);
-        for (Point point: GeomerticHelper.pointsInSquare(clickedMapPoint, 1)) {
-            mapPiece = map.getPoints().get(point);
-            mapPiece.setWalkable(true);
-        }
-        for (Point point: GeomerticHelper.pointsInRect(newPoint, 1 - newLook%2, newLook%2)) {
-            mapPiece = map.getPoints().get(point);
-            mapPiece.setWalkable(false);
-        }
-        CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(clickedMapPoint, 4), characters);
+    public void openDoor(MapObject object){
+        DoorActioner.openDoor(object, map, characters);
+    }
+
+    public void closeDoor(MapObject object){
+        DoorActioner.closeDoor(object, map, characters);
     }
 
     public void incrementTimer() {
