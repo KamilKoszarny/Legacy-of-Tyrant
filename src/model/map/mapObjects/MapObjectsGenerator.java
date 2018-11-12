@@ -3,6 +3,7 @@ package model.map.mapObjects;
 import helpers.my.GeomerticHelper;
 import model.map.Map;
 import model.map.MapPiece;
+import model.map.buildings.BuildingGenerator;
 import model.map.terrains.Terrain;
 import viewIso.map.MapDrawCalculator;
 
@@ -19,15 +20,13 @@ public class MapObjectsGenerator {
     }
 
     public void generateObjects() {
-        generateTrees();
-    }
-
-    private void generateTrees() {
         Terrain terrain;
         for (Point point: map.getPoints().keySet()) {
-            terrain = map.getPoints().get(point).getTerrain();
-            if (hasObjects(terrain))
-                calcAndSetMapObject(point, terrain);
+            if (!BuildingGenerator.inBuilding(point)) {
+                terrain = map.getPoints().get(point).getTerrain();
+                if (hasObjects(terrain))
+                    calcAndSetMapObject(point, terrain);
+            }
         }
     }
 
@@ -39,7 +38,7 @@ public class MapObjectsGenerator {
         if (r.nextInt(type.getProbabilityDivider()) < 1) {
             size = checkAvailableSize(point, terrain);
             look = r.nextInt(type.getLooks());
-            mapPiece.setObject(new MapObject(type, size, look));
+            mapPiece.setObject(new MapObject(type, size, look, true));
             setNonWalkablePieces(point, size + 1);
         }
     }

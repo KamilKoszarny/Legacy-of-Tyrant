@@ -1,8 +1,10 @@
 package model.map.heights;
 
 import helpers.downloaded.heigthGeneration.OpenSimplexNoise;
+import helpers.my.GeomerticHelper;
 import model.map.Map;
 import model.map.MapPiece;
+import model.map.terrains.Terrain;
 
 import java.awt.*;
 import java.util.Random;
@@ -10,7 +12,8 @@ import java.util.Random;
 public class HeightGenerator {
 
     public static final int H_PEX_PIX = 1000;
-    public static final int MAX_WALKABLE_SLOPE = 20000;
+    private static final int MAX_WALKABLE_SLOPE = 20000;
+    private static final int MIN_ROCK_SLOPE = 25000;
 
     Map map;
     MapHeightType heightType;
@@ -134,46 +137,26 @@ public class HeightGenerator {
         }
         if (dir < 0)
             dir += 100;
-
-//
-//
-////        int paramN = 50;
-////        int paramE = 75;
-////        int paramS = 0;
-////        int paramW = 25;
-////        if (pieceHeightE > pieceHeightW)
-////            paramS = 100;
-//        while (pieceHeightN < 0 || pieceHeightE < 0 || pieceHeightS < 0 || pieceHeightW < 0) {
-//            pieceHeightN++;            pieceHeightE++;            pieceHeightS++;            pieceHeightW++;
-//        }
-//        if ((pieceHeightN + pieceHeightE + pieceHeightS + pieceHeightW) == 0){
-//            pieceHeightN++;            pieceHeightE++;            pieceHeightS++;            pieceHeightW++;
-//        }
-//        if (pieceHeightN > 0)
-//            pieceHeightN = 1;
-//        if (pieceHeightE > 0)
-//            pieceHeightE = 1;
-//        if (pieceHeightS > 0)
-//            pieceHeightS = 1;
-//        if (pieceHeightW > 0)
-//            pieceHeightW = 1;
-//        int dir = (pieceHeightN * paramN + pieceHeightE * paramE + pieceHeightS * paramS + pieceHeightW * paramW) /
-//                (pieceHeightN + pieceHeightE + pieceHeightS + pieceHeightW);
-////        System.out.println(dir);
         int size = Math.abs(pieceHeightN - pieceHeightS) + Math.abs(pieceHeightE - pieceHeightW);
         if (size < 100)
             size = 0;
         piece.setSlope (dir, size);
-
-//        System.out.println(pieceHeightN+ " " +            pieceHeightE+ " " +            pieceHeightS+ " " +            pieceHeightW);
-//        System.out.println(dir + " s: " + size);
-
     }
 
     public void setNonWalkableBigSlope() {
         for (MapPiece mapPiece: map.getPoints().values()) {
             if (mapPiece.getSlopeSize() > HeightGenerator.MAX_WALKABLE_SLOPE)
                 mapPiece.setWalkable(false);
+        }
+    }
+
+    public void createRocks() {
+        MapPiece mapPiece;
+        for (Point point: map.getPoints().keySet()) {
+            mapPiece = map.getPoints().get(point);
+            if (mapPiece.getSlopeSize() > MIN_ROCK_SLOPE) {
+                mapPiece.setTerrain(Terrain.ROCK);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ public class Door extends MapObject {
 
 
     public Door(int look, WallType type) {
-        super(MapObjectType.DOOR, 0, type.getCode() + look);
+        super(MapObjectType.DOOR, 0, type.getCode() + look, true);
     }
 
     public boolean isOpen() {

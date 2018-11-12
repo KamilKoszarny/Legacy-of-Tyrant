@@ -19,7 +19,8 @@ import java.util.List;
 public class MapGenerator {
 
     public Map generateMap(Map map){
-        long time = System.nanoTime();
+        long startTime = System.nanoTime();
+        long time = startTime;
 
         TerrainGenerator terrainGenerator = new TerrainGenerator(map);
         terrainGenerator.generateTerrain();
@@ -65,6 +66,8 @@ public class MapGenerator {
         }
         waterGenerator.setHeights();
         buildingGenerator.reflattenBuildings();
+        waterGenerator.createSwampsAndSands();
+        heightGenerator.createRocks();
         heightGenerator.shapeMapPieces();
         heightGenerator.setNonWalkableBigSlope();
         LightGenerator lightGenerator = new LightGenerator(map);
@@ -77,6 +80,7 @@ public class MapGenerator {
         System.out.println("objectsGen:" + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
 
+        System.out.println("TOTAL: " + (System.nanoTime() - startTime)/1000000. + " ms");
         return map;
     }
 }

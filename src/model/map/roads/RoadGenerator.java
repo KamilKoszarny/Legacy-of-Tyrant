@@ -6,6 +6,7 @@ import model.map.Map;
 import model.map.MapPiece;
 import model.map.terrains.Terrain;
 import model.map.water.RiverGenerator;
+import model.map.water.WaterGenerator;
 
 import java.awt.*;
 import java.util.Random;
@@ -24,8 +25,11 @@ public class RoadGenerator {
     public void generateRoad(int width){
         roadMidPoints = GeomerticHelper.generateMiddleOfStrip(map, map.getRoadSides());
         if (map.isWithRiver()) {
-            while (calcCreatedBridges() > calcPossibleBridges())
+            int possibleBridges = calcPossibleBridges();
+            while (calcCreatedBridges() > possibleBridges) {
+                System.out.println("crea: " + calcCreatedBridges() + "poss: " + calcPossibleBridges());
                 roadMidPoints = GeomerticHelper.generateMiddleOfStrip(map, map.getRoadSides());
+            }
         }
         roadPoints = GeomerticHelper.generateStripByMidPoints(roadMidPoints, map, 0, width, 0);
         setRoadTerrain();
@@ -38,7 +42,10 @@ public class RoadGenerator {
     private void setRoadTerrain() {
         for (Point point: roadPoints) {
             MapPiece mapPiece = map.getPoints().get(point);
-            mapPiece.setTerrain(Terrain.GROUND);
+            if (mapPiece.getTerrain().equals(Terrain.WATER))
+                mapPiece.setTerrain(Terrain.SWAMP);
+            else
+                mapPiece.setTerrain(Terrain.GROUND);
             mapPiece.setWalkable(true);
         }
     }
@@ -68,6 +75,8 @@ public class RoadGenerator {
         int numberOfPoints = 0;
         for (Point point: roadMidPoints) {
             if (RiverGenerator.isOnRiver(point))
+                numberOfPoints++;
+            if (WaterGenerator.isOnWater(point, map))
                 numberOfPoints++;
         }
         return numberOfPoints / RiverGenerator.getWidth();

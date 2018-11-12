@@ -11,9 +11,11 @@ public class MapObjectSprite {
     public static final double Y_BASE_RATIO = .85;
     private Point offset = new Point();
     private MapObject object;
+    private boolean cutable = true;
 
-    public MapObjectSprite(MapObject mapObject) {
+    public MapObjectSprite(MapObject mapObject, boolean cutable) {
         object = mapObject;
+        this.cutable = cutable;
         StringBuilder path = new StringBuilder("/sprites");
         path.append("/" + mapObject.getType());
         int size = mapObject.getSize();
@@ -35,6 +37,10 @@ public class MapObjectSprite {
 
     public MapObject getObject() {
         return object;
+    }
+
+    public boolean isCutable() {
+        return cutable;
     }
 }
 

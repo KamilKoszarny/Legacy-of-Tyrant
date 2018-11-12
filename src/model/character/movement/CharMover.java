@@ -88,7 +88,9 @@ public class CharMover {
         for (Character character: characters) {
             Point pos = character.getPosition();
             while (!map.getPoints().get(pos).isWalkable()) {
-                character.setPosition(new Point(pos.x + new Random().nextInt(3) - 1, pos.y + new Random().nextInt(3) - 1));
+                int newX = Math.min(Math.max(pos.x + new Random().nextInt(3) - 1, 0), map.getWidth());
+                int newY = Math.min(Math.max(pos.y + new Random().nextInt(3) - 1, 0), map.getHeight());
+                character.setPosition(new Point(newX, newY));
                 pos = character.getPosition();
             }
         }

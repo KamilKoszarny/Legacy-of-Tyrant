@@ -17,7 +17,7 @@ public class Furniture extends MapObject {
     }
 
     public Furniture(int look) {
-        super(MapObjectType.FURNITURE, 0, look);
+        super(MapObjectType.FURNITURE, 0, look, false);
         sizeX = (look - look/1000*1000)/100;
         sizeY = (look - look/100*100)/10;
     }

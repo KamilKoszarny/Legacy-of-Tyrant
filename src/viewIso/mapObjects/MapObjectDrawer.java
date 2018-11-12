@@ -26,8 +26,9 @@ public class MapObjectDrawer {
 
     public static void refreshSpriteMap(Point point, Map map) {
         MapPiece mapPiece = map.getPoints().get(point);
-        if (mapPiece.getObject() != null) {
-            mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject()));
+        MapObject mapObject = mapPiece.getObject();
+        if (mapObject != null) {
+            mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
             mapObjectPointMap.put(mapPiece.getObject(), point);
         }
     }
@@ -35,8 +36,9 @@ public class MapObjectDrawer {
     private void initSpriteMap() {
         for (Point point: map.getPoints().keySet()) {
             MapPiece mapPiece = map.getPoints().get(point);
-            if (mapPiece.getObject() != null) {
-                mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject()));
+            MapObject mapObject = mapPiece.getObject();
+            if (mapObject != null) {
+                mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
                 mapObjectPointMap.put(mapPiece.getObject(), point);
             }
         }
@@ -47,7 +49,7 @@ public class MapObjectDrawer {
         MapObjectSprite mapObjectSprite = mapObjectSpriteMap.get(point);
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
-        if (cutView){
+        if (cutView && mapObjectSprite.isCutable()){
             int sourceX = (int) (image.getWidth() * .4);
             int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
             int sourceWidth = (int) (image.getWidth() * .2);

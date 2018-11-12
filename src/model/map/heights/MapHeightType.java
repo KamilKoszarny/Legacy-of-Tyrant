@@ -2,9 +2,9 @@ package model.map.heights;
 
 public enum MapHeightType {
     FLAT(5),
-    VALLEY(20),
+    VALLEY(25),
     MOUTAINS(80),
-    PEAK(100);
+    PEAK(120);
 
     private int hilly;
 

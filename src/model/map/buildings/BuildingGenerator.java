@@ -102,18 +102,41 @@ public class BuildingGenerator {
     }
 
     private void putFurnitures(Building building) {
+        initFurnitureCounts(building);
         for (int side = 0; side < 4; side++) {
             for (Point wallPoint: building.getWallPoints(side)) {
-                if (new Random().nextInt(5) == 0) {
-                    tryPutFurniture(side, wallPoint);
-                }
+                tryPutFurniture(building, side, wallPoint);
             }
         }
     }
 
-    private void tryPutFurniture(int side, Point wallPoint) {
-        Furniture furniture = new Furniture(FurnitureType.BED);
-        int dist = new Random().nextInt(4) + 1;
+    private void initFurnitureCounts(Building building) {
+        java.util.Map<FurnitureType, Integer> furnitureMaxCounts = building.getFurnitureMaxCounts();
+        furnitureMaxCounts.put(FurnitureType.BED, 3);
+        furnitureMaxCounts.put(FurnitureType.FOOD_TABLE, 2);
+        furnitureMaxCounts.put(FurnitureType.CHEST, 2);
+        furnitureMaxCounts.put(FurnitureType.PALLET, 4);
+        furnitureMaxCounts.put(FurnitureType.BIG_TABLE, 1);
+        java.util.Map<FurnitureType, Integer> furnitureCounts = building.getFurnitureCounts();
+        for (FurnitureType furnitureType: FurnitureType.values()) {
+            furnitureCounts.put(furnitureType, 0);
+        }
+    }
+
+    private void tryPutFurniture(Building building, int side, Point wallPoint) {
+        FurnitureType furnitureType = FurnitureType.getRandomType();
+        int countOfType = 1;
+        int maxCountOfType = 0;
+        int i = 0;
+        while (countOfType >= maxCountOfType && i++ < 10) {
+            furnitureType = FurnitureType.getRandomType();
+            countOfType = building.getFurnitureCounts().get(furnitureType);
+            maxCountOfType = building.getFurnitureMaxCounts().get(furnitureType);
+        }
+        if (countOfType >= maxCountOfType)
+            return;
+        Furniture furniture = new Furniture(furnitureType);
+        int dist = side%2*furniture.getSizeX()/2 + (side+1)%2*furniture.getSizeY()/2 + new Random().nextInt(3);
         Point innerPoint = new Point(wallPoint.x + side%2*(side - 2)*dist, wallPoint.y + (side%2 - 1)*(side - 1)*dist);
         MapPiece innerMapPiece = map.getPoints().get(innerPoint);
         List<Point> furniturePoints = spaceForFurniture(furniture, innerPoint);
@@ -124,6 +147,7 @@ public class BuildingGenerator {
                 mapPiece = map.getPoints().get(point);
                 mapPiece.setWalkable(false);
             }
+            building.getFurnitureCounts().put(furnitureType, countOfType + 1);
         }
     }
 
@@ -164,18 +188,44 @@ public class BuildingGenerator {
                     mapPiece.setObject(new Wall(side, WallType.WOOD));
                 wallSpritePieces.add(mapPiece);
             }
-//            mapPiece.setTerrain(Terrain.GROUND);
-            mapPiece.setTerrain(Terrain.SPECIAL);
-            List<Point> nonWalkablePoints = GeomerticHelper.pointsInSquare(wallPoint, 1, map);
-            for (Point point : nonWalkablePoints) {
-                mapPiece = map.getPoints().get(point);
-                mapPiece.setWalkable(false);
-            }
+            mapPiece.setTerrain(Terrain.WALL);
+            setNonWalkablePointsAround(wallPoint);
             i++;
         }
         if (door) {
+            putDoor(side, wallSpritePieces);
+        }
+    }
+
+    private void putDoor(int side, List<MapPiece> wallSpritePieces) {
+        boolean walkable = false;
+        MapPiece mapPiece = null;
+        int i = 0;
+        while (!walkable && i++ < 2*wallSpritePieces.size()) {
             int doorIndex = new Random().nextInt(wallSpritePieces.size());
-            wallSpritePieces.get(doorIndex).setObject(new Door(side, WallType.WOOD));
+            mapPiece = wallSpritePieces.get(doorIndex);
+            Point point = GeomerticHelper.PointByMapPiece(mapPiece, map);
+            int dist = 3;
+            Point frontBasePoint = new Point(point.x - side % 2 * (side - 2) * dist, point.y - (side % 2 - 1) * (side - 1) * dist);
+            walkable = true;
+            for (Point frontPoint : GeomerticHelper.pointsInSquare(frontBasePoint, 1, map)) {
+                if (!map.getPoints().get(frontPoint).isWalkable())
+                    walkable = false;
+            }
+            Point inBasePoint = new Point(point.x + side % 2 * (side - 2) * dist, point.y + (side % 2 - 1) * (side - 1) * dist);
+            for (Point inPoint : GeomerticHelper.pointsInSquare(inBasePoint, 1, map)) {
+                if (!map.getPoints().get(inPoint).isWalkable())
+                    walkable = false;
+            }
+        }
+        mapPiece.setObject(new Door(side, WallType.WOOD));
+    }
+
+    private void setNonWalkablePointsAround(Point wallPoint) {
+        MapPiece mapPiece;List<Point> nonWalkablePoints = GeomerticHelper.pointsInSquare(wallPoint, 1, map);
+        for (Point point : nonWalkablePoints) {
+            mapPiece = map.getPoints().get(point);
+            mapPiece.setWalkable(false);
         }
     }
 
@@ -203,7 +253,7 @@ public class BuildingGenerator {
         }
         if (map.isWithWater()) {
             for (Point point : building.getAllOutWallPoints()) {
-                if (WaterGenerator.isOnWater(point))
+                if (WaterGenerator.isOnWater(point, map))
                     return true;
             }
         }
@@ -243,5 +293,15 @@ public class BuildingGenerator {
             }
         }
         return furnPoints;
+    }
+
+    public static boolean inBuilding(Point point) {
+        for (Building building: buildings) {
+            for (Point bPoint: building.getAllPoints()) {
+                if (point.equals(bPoint))
+                    return true;
+            }
+        }
+        return false;
     }
 }

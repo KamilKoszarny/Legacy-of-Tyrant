@@ -50,6 +50,14 @@ public class GeomerticHelper {
         return pointsInRect;
     }
 
+    public static Point PointByMapPiece(MapPiece mapPiece, Map map) {
+        for (Point point: map.getPoints().keySet()) {
+            if (map.getPoints().get(point).equals(mapPiece))
+                return point;
+        }
+        return null;
+    }
+
     public static void smooth(Map map) {
         final int RADIUS = 2, SLOPE_LIMIT_CAN = 5000, SLOPE_LIMIT_MUST = 100000;
         int slope;

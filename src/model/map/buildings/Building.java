@@ -17,6 +17,8 @@ public class Building {
     private List<Point>[] wallPoints = new List[4];
     private java.util.Map<List<Point>, Integer> innerWallsPoints = new HashMap<>();
     private java.util.Map<List<Point>, Integer> extraInnerWallsPoints = new HashMap<>();
+    java.util.Map<FurnitureType, Integer> furnitureCounts = new HashMap<>();
+    java.util.Map<FurnitureType, Integer> furnitureMaxCounts = new HashMap<>();
 
     Building(int sizeX, int sizeY, int posX, int posY, Map map) {
         this.sizeX = sizeX; this.sizeY = sizeY; this.posX = posX; this.posY = posY;
@@ -416,5 +418,13 @@ public class Building {
 
     public Map getMap() {
         return map;
+    }
+
+    public java.util.Map<FurnitureType, Integer> getFurnitureCounts() {
+        return furnitureCounts;
+    }
+
+    public java.util.Map<FurnitureType, Integer> getFurnitureMaxCounts() {
+        return furnitureMaxCounts;
     }
 }

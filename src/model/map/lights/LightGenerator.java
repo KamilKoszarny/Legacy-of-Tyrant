@@ -28,7 +28,7 @@ public class LightGenerator {
     }
 
     private void lightMapPiece(MapPiece mapPiece){
-        if (mapPiece.getTerrain().equals(Terrain.WATER))
+        if (mapPiece.getTerrain().equals(Terrain.WATER) || mapPiece.getTerrain().equals(Terrain.SWAMP))
             return;
         int slopeDir = mapPiece.getSlopeDir();
         int slopeSize = mapPiece.getSlopeSize();
