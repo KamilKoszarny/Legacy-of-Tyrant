@@ -7,6 +7,8 @@ public enum MapObjectType {
     BUSH(3, 5, Terrain.BUSH, 50, false),
     WALL(false),
     DOOR(true),
+    WINDOW(true),
+    FURNITURE(false),
     ;
 
     private int sizes, looks;

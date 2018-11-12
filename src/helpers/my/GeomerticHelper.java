@@ -26,26 +26,28 @@ public class GeomerticHelper {
         return pointsInRadius;
     }
 
-    public static java.util.List<Point> pointsInSquare(Point centerPoint, int radius){
+    public static java.util.List<Point> pointsInSquare(Point centerPoint, int radius, Map map){
         List<Point> pointsInSquare = new ArrayList<>();
         for(int i = -radius; i <= radius; i++) {
             for (int j = -radius; j <= radius; j++) {
                 Point point = new Point(centerPoint.x + i, centerPoint.y + j);
-                pointsInSquare.add(point);
+                if (map.isOnMapPoints(point))
+                    pointsInSquare.add(point);
             }
         }
         return pointsInSquare;
     }
 
-    public static java.util.List<Point> pointsInRect(Point centerPoint, int x, int y){
-        List<Point> pointsInSquare = new ArrayList<>();
-        for(int i = -x; i <= x; i++) {
-            for (int j = -y; j <= y; j++) {
+    public static java.util.List<Point> pointsInRect(Point centerPoint, int xRad, int yRad, Map map){
+        List<Point> pointsInRect = new ArrayList<>();
+        for(int i = -xRad; i <= xRad; i++) {
+            for (int j = -yRad; j <= yRad; j++) {
                 Point point = new Point(centerPoint.x + i, centerPoint.y + j);
-                pointsInSquare.add(point);
+                if (map.isOnMapPoints(point))
+                    pointsInRect.add(point);
             }
         }
-        return pointsInSquare;
+        return pointsInRect;
     }
 
     public static void smooth(Map map) {

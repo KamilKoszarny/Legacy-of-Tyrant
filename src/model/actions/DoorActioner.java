@@ -34,9 +34,9 @@ public class DoorActioner {
         }
         door.setLook(newLook);
         refreshMapObjects(map, door, objectPoint, newPoint);
-        refreshWalkables(map, objectPoint, newLook, newPoint);
+        refreshWalkables(map, objectPoint, newLook, newPoint, true);
         CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4), characters);
+        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), characters);
     }
 
     public static void closeDoor(MapObject object, Map map, List<Character> characters) {
@@ -58,18 +58,23 @@ public class DoorActioner {
         }
         door.setLook(newLook);
         refreshMapObjects(map, door, objectPoint, newPoint);
-        refreshWalkables(map, objectPoint, newLook, newPoint);
+        refreshWalkables(map, objectPoint, newLook, newPoint, false);
         CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4), characters);
+        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), characters);
     }
 
-    private static void refreshWalkables(Map map, Point objectPoint, int newLook, Point newPoint) {
+    private static void refreshWalkables(Map map, Point objectPoint, int newLook, Point newPoint, boolean open) {
         MapPiece mapPiece;
-        for (Point point: GeomerticHelper.pointsInSquare(objectPoint, 1)) {
+        List<Point> walkablePoints;
+        if (open)
+            walkablePoints = GeomerticHelper.pointsInSquare(objectPoint, 1, map);
+        else
+            walkablePoints = GeomerticHelper.pointsInRect(objectPoint, 1 - newLook%2, newLook%2, map);
+        for (Point point: walkablePoints) {
             mapPiece = map.getPoints().get(point);
             mapPiece.setWalkable(true);
         }
-        for (Point point: GeomerticHelper.pointsInRect(newPoint, 1 - newLook%2, newLook%2)) {
+        for (Point point: GeomerticHelper.pointsInRect(newPoint, 1 - newLook%2, newLook%2, map)) {
             mapPiece = map.getPoints().get(point);
             mapPiece.setWalkable(false);
         }

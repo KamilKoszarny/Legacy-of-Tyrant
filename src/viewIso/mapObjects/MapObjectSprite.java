@@ -20,7 +20,6 @@ public class MapObjectSprite {
         if (size > 0)
             path.append("/size" + size);
         path.append("/" + mapObject.getLook() + ".png");
-        System.out.println(path);
         image = new Image(path.toString());
         offset.x = (int) (image.getWidth() / 2);
         offset.y = (int) (image.getHeight() * Y_BASE_RATIO);

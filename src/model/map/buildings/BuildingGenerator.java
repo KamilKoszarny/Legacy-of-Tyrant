@@ -4,6 +4,7 @@ import helpers.my.GeomerticHelper;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.mapObjects.MapObject;
+import model.map.mapObjects.MapObjectType;
 import model.map.roads.RoadGenerator;
 import model.map.terrains.Terrain;
 import model.map.water.RiverGenerator;
@@ -39,6 +40,7 @@ public class BuildingGenerator {
                i--;
             else{
                 putTerrainAndWalls(building);
+                putFurnitures(building);
                 GeomerticHelper.flatten(building.getAllPointsPlusRadius(FLATTEN_PLUS_RADIUS), map, 0);
                 buildings.add(building);
             }
@@ -81,22 +83,48 @@ public class BuildingGenerator {
         for (int side = 0; side < 4; side++) {
             wallPoints = building.getWallPoints(side);
             if (wallPoints != null)
-                chooseAndPutWalls(wallPoints, side, doorSides[side]);
+                chooseAndPutWalls(wallPoints, side, doorSides[side], true);
         }
         int side;
         for (List<Point> inWPoints: building.getInnerWallsPoints().keySet()) {
             if (!inWPoints.isEmpty()) {
                 side = building.getInnerWallsPoints().get(inWPoints);
-                chooseAndPutWalls(inWPoints, side, true);
+                chooseAndPutWalls(inWPoints, side, true, false);
             }
         }
         for (List<Point> inWPoints: building.getExtraInnerWallsPoints().keySet()) {
             if (!inWPoints.isEmpty()) {
                 side = building.getExtraInnerWallsPoints().get(inWPoints);
-                chooseAndPutWalls(inWPoints, side, false);
+                chooseAndPutWalls(inWPoints, side, false, false);
             }
         }
         chooseAndPutWallCorners(building);
+    }
+
+    private void putFurnitures(Building building) {
+        for (int side = 0; side < 4; side++) {
+            for (Point wallPoint: building.getWallPoints(side)) {
+                if (new Random().nextInt(5) == 0) {
+                    tryPutFurniture(side, wallPoint);
+                }
+            }
+        }
+    }
+
+    private void tryPutFurniture(int side, Point wallPoint) {
+        Furniture furniture = new Furniture(FurnitureType.BED);
+        int dist = new Random().nextInt(4) + 1;
+        Point innerPoint = new Point(wallPoint.x + side%2*(side - 2)*dist, wallPoint.y + (side%2 - 1)*(side - 1)*dist);
+        MapPiece innerMapPiece = map.getPoints().get(innerPoint);
+        List<Point> furniturePoints = spaceForFurniture(furniture, innerPoint);
+        if (furniturePoints != null) {
+            innerMapPiece.setObject(furniture);
+            MapPiece mapPiece;
+            for (Point point: furniturePoints) {
+                mapPiece = map.getPoints().get(point);
+                mapPiece.setWalkable(false);
+            }
+        }
     }
 
     private boolean[] shuffleDoorSides() {
@@ -116,7 +144,7 @@ public class BuildingGenerator {
         return doorSides;
     }
 
-    private void chooseAndPutWalls(List<Point> wallPoints, int side, boolean door) {
+    private void chooseAndPutWalls(List<Point> wallPoints, int side, boolean door, boolean window) {
         int i = 0;
         MapPiece mapPiece;
         int prevX = wallPoints.get(0).x, prevY = wallPoints.get(0).y;
@@ -130,12 +158,15 @@ public class BuildingGenerator {
             prevX = wallPoint.x;
             prevY = wallPoint.y;
             if (i % SIZE_STEP == SIZE_STEP / 2 + 1) {
-                mapPiece.setObject(new Wall(side, WallType.WOOD));
+                if (window && (i / SIZE_STEP)%2 == 0 && new Random().nextInt(4) == 0)
+                    mapPiece.setObject(new Window(side, WallType.WOOD));
+                else
+                    mapPiece.setObject(new Wall(side, WallType.WOOD));
                 wallSpritePieces.add(mapPiece);
             }
 //            mapPiece.setTerrain(Terrain.GROUND);
             mapPiece.setTerrain(Terrain.SPECIAL);
-            List<Point> nonWalkablePoints = GeomerticHelper.pointsInSquare(wallPoint, 1);
+            List<Point> nonWalkablePoints = GeomerticHelper.pointsInSquare(wallPoint, 1, map);
             for (Point point : nonWalkablePoints) {
                 mapPiece = map.getPoints().get(point);
                 mapPiece.setWalkable(false);
@@ -197,5 +228,20 @@ public class BuildingGenerator {
                 return false;
         }
         return true;
+    }
+
+    private List<Point> spaceForFurniture(Furniture furniture, Point basePoint) {
+        List<Point> furnPoints = GeomerticHelper.pointsInRect(basePoint, furniture.getSizeX()/2, furniture.getSizeY()/2, map);
+        for (Point fPoint : furnPoints) {
+            if (!map.getPoints().get(fPoint).isWalkable())
+                return null;
+            for (Point closePoint: GeomerticHelper.pointsInSquare(fPoint, 5, map)) {
+                MapObject mapObject = map.getPoints().get(closePoint).getObject();
+                if (mapObject != null && mapObject.getType() == MapObjectType.DOOR) {
+                    return null;
+                }
+            }
+        }
+        return furnPoints;
     }
 }

@@ -1,5 +1,6 @@
 package model.map.mapObjects;
 
+import helpers.my.GeomerticHelper;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.terrains.Terrain;
@@ -68,13 +69,9 @@ public class MapObjectsGenerator {
     }
 
     private void setNonWalkablePieces(Point basePoint, int radius) {
-        Point point;
-        for (int y = -radius/2; y <= (radius - 1)/2; y++) {
-            for (int x = -radius/2; x <= (radius - 1)/2; x++) {
-                point = new Point(basePoint.x + x, basePoint.y + y);
-                if (map.getPoints().get(point) != null) {
-                    map.getPoints().get(point).setWalkable(false);
-                }
+        for (Point point: GeomerticHelper.pointsInRadius(basePoint, radius, map)) {
+            if (map.getPoints().get(point) != null) {
+                map.getPoints().get(point).setWalkable(false);
             }
         }
     }
