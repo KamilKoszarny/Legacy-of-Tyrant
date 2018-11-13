@@ -9,18 +9,18 @@ public enum Boots implements Armor{
     STEEL_BOOTS(4, 16),
     PLATE_BOOTS(3, 13);
 
-    private double armor, durability;
+    private int armor, durability;
 
-    Boots(double armor, double durability) {
+    Boots(int armor, int durability) {
         this.armor = armor;
         this.durability = durability;
     }
 
-    public double getArmor() {
+    public int getArmor() {
         return armor;
     }
 
-    public double getDurability() {
+    public int getDurability() {
         return durability;
     }
 }

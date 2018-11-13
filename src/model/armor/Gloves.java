@@ -9,18 +9,18 @@ public enum Gloves implements Armor{
     STEEL_GLOVES(4, 16),
     PLATE_GLOVES(3, 13);
 
-    private double armor, durability;
+    private int armor, durability;
 
-    Gloves(double armor, double durability) {
+    Gloves(int armor, int durability) {
         this.armor = armor;
         this.durability = durability;
     }
 
-    public double getArmor() {
+    public int getArmor() {
         return armor;
     }
 
-    public double getDurability() {
+    public int getDurability() {
         return durability;
     }
 }

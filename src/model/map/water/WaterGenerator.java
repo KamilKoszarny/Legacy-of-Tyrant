@@ -52,7 +52,6 @@ public class WaterGenerator {
             if (shore[i] > map.mapXPoints)
                 shore[i] = map.mapXPoints - 1;
         }
-
         return shore;
     }
 

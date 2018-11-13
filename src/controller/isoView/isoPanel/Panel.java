@@ -1,4 +1,4 @@
-package controller.isoView;
+package controller.isoView.isoPanel;
 
 import javafx.scene.control.Label;
 

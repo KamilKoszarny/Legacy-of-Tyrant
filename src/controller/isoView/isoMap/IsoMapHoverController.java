@@ -1,4 +1,4 @@
-package controller.isoView;
+package controller.isoView.isoMap;
 
 import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
@@ -15,12 +15,12 @@ public class IsoMapHoverController {
     private Canvas mapCanvas;
     private IsoBattleLoop isoBattleLoop;
 
-    IsoMapHoverController(Canvas mapCanvas, IsoBattleLoop isoBattleLoop, List<Character> characters) {
+    public IsoMapHoverController(Canvas mapCanvas, IsoBattleLoop isoBattleLoop, List<Character> characters) {
         this.mapCanvas = mapCanvas;
         this.isoBattleLoop = isoBattleLoop;
     }
 
-    void initialize(){
+    public void initialize(){
         initCanvasHover();
     }
 

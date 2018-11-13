@@ -1,19 +1,19 @@
 package model.character;
 
 public class SecondaryAttributes {
-    public Double msLeft = 0.;
-    public Double reflex = 0.;
-    public Double speed;
-    public Double dmgMin;
-    public Double dmgMax;
-    public Double hitPoints;
-    public Double range;
-    public Double chanceToHit;
-    public Double chanceToBeHit;
-    public Double attackDuration;
-    public Double headArmor;
-    public Double bodyArmor;
-    public Double armsArmor;
-    public Double legsArmor;
-    public Double vigor = -999.;
+    public int msLeft = 0;
+    public int reflex = 0;
+    public double speed;
+    public double dmgMin;
+    public double dmgMax;
+    public int hitPoints;
+    public double range;
+    public int chanceToHit;
+    public int chanceToBeHit;
+    public double attackDuration;
+    public int headArmor;
+    public int bodyArmor;
+    public int armsArmor;
+    public int legsArmor;
+    public int vigor = -999;
 }

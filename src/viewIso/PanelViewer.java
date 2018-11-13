@@ -1,6 +1,6 @@
 package viewIso;
 
-import controller.isoView.Panel;
+import controller.isoView.isoPanel.Panel;
 import model.character.Character;
 import viewIso.characters.CharDescriptor;
 

@@ -44,7 +44,7 @@ public class Battle {
         czlehulec.setCurrentPA(13, 15, 15, 36, 40, 29, 15, 5, 25);
         czlehulec.setWeapons(new Weapon[]{Weapon.HUNTER_BOW, Weapon.TWO_HAND_SWORD});
         czlehulec.setArmor(new Armor[]{Shield.NOTHING, BodyArmor.LEATHER_ARMOR, Helmet.NOTHING, Gloves.RAG_GLOVES, Boots.NOTHING, Belt.NOTHING});
-        czlehulec.setEye(czlehulec.getDoubleEye() - 5);
+        czlehulec.setEye(czlehulec.getEye() - 5);
         StatsCalculator.calcCharSA(czlehulec, false);
 
         Character slimako = new Character("Slimako", Color.BLACK, CharacterType.DWARF, CharacterClass.ADEPT, new Point(20,10), 2);

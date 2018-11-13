@@ -1,6 +1,6 @@
 package model;
 
-import controller.isoView.IsoMapMoveController;
+import controller.isoView.isoMap.IsoMapMoveController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
 import model.map.MapPiece;

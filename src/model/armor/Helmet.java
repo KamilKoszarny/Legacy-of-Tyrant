@@ -17,18 +17,18 @@ public enum Helmet implements Armor{
     TOURNAMENT_HELMET(5, 20),
     CROWN(5, 30);
 
-    private double armor, durability;
+    private int armor, durability;
 
-    Helmet(double armor, double durability) {
+    Helmet(int armor, int durability) {
         this.armor = armor;
         this.durability = durability;
     }
 
-    public double getArmor() {
+    public int getArmor() {
         return armor;
     }
 
-    public double getDurability() {
+    public int getDurability() {
         return durability;
     }
 }

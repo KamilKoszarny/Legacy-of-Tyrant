@@ -1,6 +1,6 @@
 package viewIso.map;
 
-import controller.isoView.IsoMapMoveController;
+import controller.isoView.isoMap.IsoMapMoveController;
 import javafx.geometry.Point2D;
 import model.map.Map;
 import model.map.MapPiece;

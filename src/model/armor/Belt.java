@@ -8,18 +8,18 @@ public enum Belt implements Armor{
     WIDE_BELT(1, 8),
     PLATE_BELT(2, 14);
 
-    private double armor, durability;
+    private int armor, durability;
 
-    Belt(double armor, double durability) {
+    Belt(int armor, int durability) {
         this.armor = armor;
         this.durability = durability;
     }
 
-    public double getArmor() {
+    public int getArmor() {
         return armor;
     }
 
-    public double getDurability() {
+    public int getDurability() {
         return durability;
     }
 }

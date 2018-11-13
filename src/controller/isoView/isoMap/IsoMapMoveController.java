@@ -1,4 +1,4 @@
-package controller.isoView;
+package controller.isoView.isoMap;
 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -22,14 +22,14 @@ public class IsoMapMoveController {
     private HBox panel;
     private IsoBattleLoop isoBattleLoop;
 
-    IsoMapMoveController(Canvas mapCanvas, List<Canvas> borderCanvases, HBox panel, IsoBattleLoop isoBattleLoop) {
+    public IsoMapMoveController(Canvas mapCanvas, List<Canvas> borderCanvases, HBox panel, IsoBattleLoop isoBattleLoop) {
         this.mapCanvas = mapCanvas;
         this.borderCanvases = borderCanvases;
         this.panel = panel;
         this.isoBattleLoop = isoBattleLoop;
     }
 
-    void initialize(){
+    public void initialize(){
         initMapMoving();
     }
 

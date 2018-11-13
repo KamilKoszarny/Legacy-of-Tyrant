@@ -1,14 +1,12 @@
 package viewIso.map;
 
-import controller.isoView.IsoMapMoveController;
+import controller.isoView.isoMap.IsoMapMoveController;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.map.Map;
-import model.map.terrains.TerrainGenerator;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.List;
 
 import static viewIso.map.MapDrawCalculator.screenPosition;

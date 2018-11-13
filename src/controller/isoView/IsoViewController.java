@@ -1,5 +1,11 @@
 package controller.isoView;
 
+import controller.isoView.isoMap.IsoMapClickController;
+import controller.isoView.isoMap.IsoMapHoverController;
+import controller.isoView.isoMap.IsoMapKeyController;
+import controller.isoView.isoMap.IsoMapMoveController;
+import controller.isoView.isoPanel.Panel;
+import controller.isoView.isoPanel.PanelController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -48,7 +54,7 @@ public class IsoViewController {
         List<Canvas> borderCanvases = new ArrayList<>(Arrays.asList(topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
                 topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas));
         List<Label> charLabels = Arrays.asList(name, type, charClass);
-        Panel panel = new Panel(charLabels);
+        controller.isoView.isoPanel.Panel panel = new Panel(charLabels);
 
         isoViewer = new IsoViewer(map, mapCanvas, characters);
         panelViewer = new PanelViewer(panel, characters);

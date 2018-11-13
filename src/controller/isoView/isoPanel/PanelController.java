@@ -1,4 +1,4 @@
-package controller.isoView;
+package controller.isoView.isoPanel;
 
 public class PanelController {
 
@@ -8,7 +8,7 @@ public class PanelController {
         this.panel = panel;
     }
 
-    void initialize(){
+    public void initialize(){
 
     }
 }

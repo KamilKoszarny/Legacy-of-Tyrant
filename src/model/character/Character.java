@@ -8,10 +8,7 @@ import model.weapon.Weapon;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.List;
-import java.util.Locale;
 
 public class Character {
 
@@ -61,7 +58,6 @@ public class Character {
     public CharacterType getType() {
         return type;
     }
-
     public void setType(CharacterType type) {
         this.type = type;
     }
@@ -69,7 +65,6 @@ public class Character {
     public CharacterClass getCharClass() {
         return charClass;
     }
-
     public void setCharClass(CharacterClass charClass) {
         this.charClass = charClass;
     }
@@ -77,7 +72,6 @@ public class Character {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -85,7 +79,6 @@ public class Character {
     public Color getColor() {
         return color;
     }
-
     public void setColor(Color color) {
         this.color = color;
     }
@@ -94,7 +87,6 @@ public class Character {
     public CharState getState() {
         return state;
     }
-
     public void setState(CharState state) {
         this.state = state;
     }
@@ -102,11 +94,9 @@ public class Character {
     public Point getPosition() {
         return new Point(Math.round(Math.round(precisePosition.getX())), Math.round(Math.round(precisePosition.getY())));
     }
-
     public void setPosition(Point position) {
         precisePosition = new Point2D(position.x, position.y);
     }
-
     public void setPosition(Point2D position) {
         precisePosition = position;
     }
@@ -118,7 +108,6 @@ public class Character {
     public int getDirection() {
         return Math.round(Math.round(direction));
     }
-
     public void setDirection(int direction) {
         this.direction = direction;
     }
@@ -126,7 +115,6 @@ public class Character {
     public double getPreciseDirection() {
         return direction;
     }
-
     public void setPreciseDirection(double direction) {
         this.direction = direction;
     }
@@ -134,7 +122,6 @@ public class Character {
     public double getCurrentSpeed() {
         return currentSpeed;
     }
-
     public void setCurrentSpeed(double currentSpeed) {
         this.currentSpeed = currentSpeed;
     }
@@ -142,7 +129,6 @@ public class Character {
     public Point getDestination() {
         return destination;
     }
-
     public void setDestination(Point destination) {
         this.destination = destination;
     }
@@ -150,7 +136,6 @@ public class Character {
     public List<Point2D> getPath() {
         return path;
     }
-
     public void setPath(List<Point2D> path) {
         this.path = path;
     }
@@ -158,7 +143,6 @@ public class Character {
     public int getPathSection() {
         return pathSection;
     }
-
     public void setPathSection(int pathSection) {
         this.pathSection = pathSection;
     }
@@ -166,7 +150,6 @@ public class Character {
     public boolean isChosen() {
         return chosen;
     }
-
     public void setChosen(boolean chosen) {
         this.chosen = chosen;
     }
@@ -174,7 +157,6 @@ public class Character {
     public boolean isTargeted() {
         return targeted;
     }
-
     public void setTargeted(boolean targeted) {
         this.targeted = targeted;
     }
@@ -182,7 +164,6 @@ public class Character {
     public boolean isReady() {
         return ready;
     }
-
     public void setReady(boolean ready) {
         this.ready = ready;
     }
@@ -190,23 +171,20 @@ public class Character {
     public boolean isRunning() {
         return running;
     }
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
 
     public boolean isSneaking() {
         return sneaking;
     }
-
     public void setSneaking(boolean sneaking) {
         this.sneaking = sneaking;
-    }
-
-    public void setRunning(boolean running) {
-        this.running = running;
     }
 
     public boolean isWasDodging() {
         return wasDodging;
     }
-
     public void setWasDodging(boolean wasDodging) {
         this.wasDodging = wasDodging;
     }
@@ -214,7 +192,6 @@ public class Character {
     public boolean isWasParrying() {
         return wasParrying;
     }
-
     public void setWasParrying(boolean wasParrying) {
         this.wasParrying = wasParrying;
     }
@@ -222,7 +199,6 @@ public class Character {
     public boolean isWasBouncing() {
         return wasBouncing;
     }
-
     public void setWasBouncing(boolean wasBouncing) {
         this.wasBouncing = wasBouncing;
     }
@@ -231,7 +207,6 @@ public class Character {
     public PrimaryAttributes getBasePA() {
         return basePA;
     }
-
     public void setBasePA(PrimaryAttributes basePA) {
         this.basePA = basePA;
     }
@@ -239,21 +214,19 @@ public class Character {
     public PrimaryAttributes getCurrentPA() {
         return currentPA;
     }
-
     public PrimaryAttributes setCurrentPA(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int charisma) {
-        currentPA.strength = (double)(double)strength;
-        currentPA.durability = (double)durability;
-        currentPA.stamina = (double)stamina;
-        currentPA.arm = (double)arm;
-        currentPA.eye = (double)eye;
-        currentPA.agility = (double)agility;
-        currentPA.knowledge = (double)knowledge;
-        currentPA.focus = (double)focus;
-        currentPA.charisma = (double)charisma;
+        setStrength(strength);
+        setDurability(durability);
+        setStamina(stamina);
+        setArm(arm);
+        setEye(eye);
+        setAgility(agility);
+        setKnowledge(knowledge);
+        setFocus(focus);
+        setSpirit(charisma);
 
         return currentPA;
     }
-
     public void setCurrentPA(PrimaryAttributes currentPA) {
         this.currentPA = currentPA;
     }
@@ -261,7 +234,6 @@ public class Character {
     public SecondaryAttributes getBaseSA() {
         return baseSA;
     }
-
     public void setBaseSA(SecondaryAttributes baseSA) {
         this.baseSA = baseSA;
     }
@@ -269,7 +241,6 @@ public class Character {
     public SecondaryAttributes getCurrentSA() {
         return currentSA;
     }
-
     public void setCurrentSA(SecondaryAttributes currentSA) {
         this.currentSA = currentSA;
     }
@@ -277,7 +248,6 @@ public class Character {
     public Weapon[] getWeapons() {
         return weapons;
     }
-
     public void setWeapons(Weapon[] weapons) {
         this.weapons = weapons;
     }
@@ -289,7 +259,6 @@ public class Character {
     public Armor[] getArmor() {
         return armor;
     }
-
     public void setArmor(Armor[] armor) {
         this.armor = armor;
     }
@@ -297,334 +266,192 @@ public class Character {
     public int getChosenWeapon() {
         return chosenWeapon;
     }
-
     public void setChosenWeapon(int chosenWeapon) {
         this.chosenWeapon = chosenWeapon;
     }
 
 
-    public double getDoubleMsLeft(){
+    public int getMsLeft(){
         return currentSA.msLeft;
     }
-    public void setMsLeft(double msLeft){
+    public void setMsLeft(int msLeft){
         currentSA.msLeft = msLeft;
     }
-    public String getMsLeft(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.msLeft);
-    }
-    public void setMsLeft(String msLeft){
-        currentSA.msLeft = Double.parseDouble(msLeft);
-    }
 
-    public double getDoubleReflex(){
+    public int getReflex(){
         return currentSA.reflex;
     }
-    public void setReflex(double reflex){
+    public void setReflex(int reflex){
         currentSA.reflex = reflex;
     }
-    public String getReflex(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.reflex);
-    }
-    public void setReflex(String reflex){
-        currentSA.reflex = Double.parseDouble(reflex);
-    }
 
-    public double getDoubleStrength(){
+    public int getStrength(){
         return currentPA.strength;
     }
-    public void setStrength(double strength){
+    public void setStrength(int strength){
         currentPA.strength = strength;
-    }
-    public String getStrength(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.strength);
-    }
-    public void setStrength(String strength){
-        currentPA.strength = Double.parseDouble(strength);
+        updateVim();
     }
 
-    public double getDoubleDurability(){
+    public int getDurability(){
         return currentPA.durability;
     }
-    public void setDurability(double durability){
+    public void setDurability(int durability){
         currentPA.durability = durability;
-    }
-    public String getDurability(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.durability);
-    }
-    public void setDurability(String durability){
-        currentPA.durability = Double.parseDouble(durability);
+        updateVim();
     }
 
-    public double getDoubleStamina(){
+    public int getStamina(){
         return currentPA.stamina;
     }
-    public void setStamina(double stamina){
+    public void setStamina(int stamina){
         currentPA.stamina = stamina;
-    }
-    public String getStamina(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.stamina);
-    }
-    public void setStamina(String stamina){
-        currentPA.stamina = Double.parseDouble(stamina);
+        updateVim();
     }
 
-    public double getDoubleArm(){
+    private void updateVim() {
+        currentPA.vim = (currentPA.strength + currentPA.durability + currentPA.stamina) / 3;
+    }
+
+    public int getArm(){
         return currentPA.arm;
     }
-    public void setArm(double arm){
+    public void setArm(int arm){
         currentPA.arm = arm;
-    }
-    public String getArm(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.arm);
-    }
-    public void setArm(String arm){
-        currentPA.arm = Double.parseDouble(arm);
+        updateDexterity();
     }
 
-    public double getDoubleEye(){
+    public int getEye(){
         return currentPA.eye;
     }
-    public void setEye(double eye){
+    public void setEye(int eye){
         currentPA.eye = eye;
-    }
-    public String getEye(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.eye);
-    }
-    public void setEye(String eye){
-        currentPA.eye = Double.parseDouble(eye);
+        updateDexterity();
     }
 
-    public double getDoubleAgility(){
+    public int getAgility(){
         return currentPA.agility;
     }
-    public void setAgility(double agility){
+    public void setAgility(int agility){
         currentPA.agility = agility;
-    }
-    public String getAgility(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.agility);
-    }
-    public void setAgility(String agility){
-        currentPA.agility = Double.parseDouble(agility);
+        updateDexterity();
     }
 
-    public double getDoubleKnowledge(){
+    private void updateDexterity() {
+        currentPA.dexterity = (currentPA.arm + currentPA.eye + currentPA.agility) / 3;
+    }
+
+    public int getKnowledge(){
         return currentPA.knowledge;
     }
-    public void setKnowledge(double knowledge){
+    public void setKnowledge(int knowledge){
         currentPA.knowledge = knowledge;
-    }
-    public String getKnowledge(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.knowledge);
-    }
-    public void setKnowledge(String knowledge){
-        currentPA.knowledge = Double.parseDouble(knowledge);
+        updateIntelligence();
     }
 
-    public double getDoubleFocus(){
+    public int getFocus(){
         return currentPA.focus;
     }
-    public void setFocus(double focus){
+    public void setFocus(int focus){
         currentPA.focus = focus;
-    }
-    public String getFocus(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.focus);
-    }
-    public void setFocus(String focus){
-        currentPA.focus = Double.parseDouble(focus);
+        updateIntelligence();
     }
 
-    public double getDoubleCharisma(){
-        return currentPA.charisma;
+    public int getSpirit(){
+        return currentPA.spirit;
     }
-    public void setCharisma(double charisma){
-        currentPA.charisma = charisma;
+    public void setSpirit(int charisma){
+        currentPA.spirit = charisma;
+        updateIntelligence();
     }
-    public String getCharisma(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentPA.charisma);
-    }
-    public void setCharisma(String charisma){
-        currentPA.charisma = Double.parseDouble(charisma);
+
+    private void updateIntelligence() {
+        currentPA.intelligence = (currentPA.knowledge + currentPA.focus + currentPA.spirit) / 3;
     }
 
 
-
-    public double getDoubleSpeed(){
+    public double getSpeed(){
         return currentSA.speed;
     }
     public void setSpeed(double speed){
         currentSA.speed = speed;
     }
-    public String getSpeed(){
-        DecimalFormat formatter = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.speed);
-    }
-    public void setSpeed(String speed){
-        currentSA.speed = Double.parseDouble(speed);
-    }
 
-    public double getDoubleDmgMin(){
+    public double getDmgMin(){
         return currentSA.dmgMin;
     }
     public void setDmgMin(double dmgMin){
         currentSA.dmgMin = dmgMin;
     }
-    public String getDmgMin(){
-        DecimalFormat formatter = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.dmgMin);
-    }
-    public void setDmgMin(String dmgMin){
-        currentSA.dmgMin = Double.parseDouble(dmgMin);
-    }
 
-    public double getDoubleDmgMax(){
+    public double getDmgMax(){
         return currentSA.dmgMax;
     }
     public void setDmgMax(double dmgMax){
         currentSA.dmgMax = dmgMax;
     }
-    public String getDmgMax(){
-        DecimalFormat formatter = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.dmgMax);
-    }
-    public void setDmgMax(String dmgMax){
-        currentSA.dmgMax = Double.parseDouble(dmgMax);
-    }
 
-    public double getDoubleHitPoints(){
+    public int getHitPoints(){
         return currentSA.hitPoints;
     }
-    public void setHitPoints(double hitPoints){
+    public void setHitPoints(int hitPoints){
         currentSA.hitPoints = hitPoints;
     }
-    public String getHitPoints(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.hitPoints);
-    }
-    public void setHitPoints(String hitPoints){
-        currentSA.hitPoints = Double.parseDouble(hitPoints);
-    }
 
-    public double getDoubleRange(){
+    public double getRange(){
         return currentSA.range;
     }
     public void setRange(double range){
         currentSA.range = range;
     }
-    public String getRange(){
-        DecimalFormat formatter = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.range);
-    }
-    public void setRange(String range){
-        currentSA.range = Double.parseDouble(range);
-    }
 
-    public double getDoubleChanceToHit(){
+    public int getChanceToHit(){
         return currentSA.chanceToHit;
     }
-    public void setChanceToHit(double chanceToHit){
+    public void setChanceToHit(int chanceToHit){
         currentSA.chanceToHit = chanceToHit;
     }
-    public String getChanceToHit(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.chanceToHit);
-    }
-    public void setChanceToHit(String chanceToHit){
-        currentSA.chanceToHit = Double.parseDouble(chanceToHit);
-    }
 
-    public double getDoubleChanceToBeHit(){
+    public int getChanceToBeHit(){
         return currentSA.chanceToBeHit;
     }
-    public void setChanceToBeHit(double chanceToBeHit){
+    public void setChanceToBeHit(int chanceToBeHit){
         currentSA.chanceToBeHit = chanceToBeHit;
     }
-    public String getChanceToBeHit(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.chanceToBeHit);
-    }
-    public void setChanceToBeHit(String chanceToBeHit){
-        currentSA.chanceToBeHit = Double.parseDouble(chanceToBeHit);
-    }
 
-    public double getDoubleAttackDuration(){
+    public double getAttackDuration(){
         return currentSA.attackDuration;
     }
     public void setAttackDuration(double attackDuration){
         currentSA.attackDuration = attackDuration;
     }
-    public String getAttackDuration(){
-        DecimalFormat formatter = new DecimalFormat("#.0", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.attackDuration);
-    }
-    public void setAttackDuration(String attackDuration){
-        currentSA.attackDuration = Double.parseDouble(attackDuration);
-    }
 
-    public double getDoubleHeadArmor(){
+    public int getHeadArmor(){
         return currentSA.headArmor;
     }
-    public void setHeadArmor(double headArmor){
+    public void setHeadArmor(int headArmor){
         currentSA.headArmor = headArmor;
     }
-    public String getHeadArmor(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.headArmor);
-    }
-    public void setHeadArmor(String headArmor){
-        currentSA.headArmor = Double.parseDouble(headArmor);
-    }
 
-    public double getDoubleBodyArmor(){
+    public int getBodyArmor(){
         return currentSA.bodyArmor;
     }
-    public void setBodyArmor(double bodyArmor){
+    public void setBodyArmor(int bodyArmor){
         currentSA.bodyArmor = bodyArmor;
     }
-    public String getBodyArmor(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.bodyArmor);
-    }
-    public void setBodyArmor(String bodyArmor){
-        currentSA.bodyArmor = Double.parseDouble(bodyArmor);
-    }
 
-    public double getDoubleArmsArmor(){
+    public int getArmsArmor(){
         return currentSA.armsArmor;
     }
-    public void setArmsArmor(double armsArmor){
+    public void setArmsArmor(int armsArmor){
         currentSA.armsArmor = armsArmor;
     }
-    public String getArmsArmor(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.armsArmor);
-    }
-    public void setArmsArmor(String armsArmor){
-        currentSA.armsArmor = Double.parseDouble(armsArmor);
-    }
 
-    public double getDoubleLegsArmor(){
+    public int getLegsArmor(){
         return currentSA.legsArmor;
     }
-    public void setLegsArmor(double legsArmor){
+    public void setLegsArmor(int legsArmor){
         currentSA.legsArmor = legsArmor;
-    }
-    public String getLegsArmor(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.legsArmor);
-    }
-    public void setLegsArmor(String legsArmor){
-        currentSA.legsArmor = Double.parseDouble(legsArmor);
     }
 
     public void setArmor(int head, int body, int arms, int legs){
@@ -634,18 +461,11 @@ public class Character {
         setLegsArmor(legs);
     }
 
-    public double getDoubleVigor(){
+    public int getVigor(){
         return currentSA.vigor;
     }
-    public void setVigor(double vigor){
+    public void setVigor(int vigor){
         currentSA.vigor = vigor;
-    }
-    public String getVigor(){
-        DecimalFormat formatter = new DecimalFormat("#", DecimalFormatSymbols.getInstance( Locale.ENGLISH ));
-        return formatter.format(currentSA.vigor);
-    }
-    public void setVigor(String vigor){
-        currentSA.vigor = Double.parseDouble(vigor);
     }
 
     public void setDoubleValue(String propertyName, String value){

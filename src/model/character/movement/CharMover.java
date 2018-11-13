@@ -16,8 +16,6 @@ public class CharMover {
 
     private static double POINTS_TO_NEXT_FRAME = 1.6;
     private static ArrayList<Character> characters;
-    private static Set<int[]> charGridPositions;
-    private static List<int[]> objectGridPositions = new ArrayList<>();
 
     public static void startRunCharacter(Character character, Point movePoint, Map map) {
         MapGridCalc.regenerateGridGraph(map, map.getPoints().keySet(), characters);
@@ -27,7 +25,7 @@ public class CharMover {
         character.setState(CharState.RUN);
         character.setDestination(movePoint);
         character.setPathSection(0);
-        character.setCurrentSpeed(character.getDoubleSpeed() * 2);
+        character.setCurrentSpeed(character.getSpeed() * 2);
     }
 
     public static void updateCharacterMove(Character character, int ms, Map map) {
@@ -61,6 +59,7 @@ public class CharMover {
         character.setDestination(null);
         character.setState(CharState.IDLE);
         character.setCurrentSpeed(0);
+        pushCharToClosestWalkable(map, character);
         MapGridCalc.regenerateGridGraph(map, map.getPoints().keySet(), characters);
     }
 
@@ -85,14 +84,28 @@ public class CharMover {
     }
 
     public static void pushCharsToClosestWalkable(Map map){
-        for (Character character: characters) {
-            Point pos = character.getPosition();
-            while (!map.getPoints().get(pos).isWalkable()) {
-                int newX = Math.min(Math.max(pos.x + new Random().nextInt(3) - 1, 0), map.getWidth());
-                int newY = Math.min(Math.max(pos.y + new Random().nextInt(3) - 1, 0), map.getHeight());
-                character.setPosition(new Point(newX, newY));
-                pos = character.getPosition();
-            }
+        for (Character character: characters)
+            pushCharToClosestWalkable(map, character);
+    }
+
+    public static void pushCharToClosestWalkable(Map map, Character character){
+        Point pos = character.getPosition();
+        while (!map.getPoints().get(pos).isWalkable() || pointOccupiedByOther(character)) {
+            int newX = Math.min(Math.max(pos.x + new Random().nextInt(3) - 1, 0), map.getWidth());
+            int newY = Math.min(Math.max(pos.y + new Random().nextInt(3) - 1, 0), map.getHeight());
+            character.setPosition(new Point(newX, newY));
+            pos = character.getPosition();
         }
     }
+
+    public static boolean pointOccupiedByOther(Character character) {
+        Point point = character.getPosition();
+        for (Character otherChar : characters) {
+            if (!otherChar.equals(character) && otherChar.getPosition().equals(point))
+                return true;
+        }
+        return false;
+    }
+
+
 }

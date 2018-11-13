@@ -17,19 +17,19 @@ public enum CharacterClass {
     FANATIC(50, 40, 50, 20, 30, 30, 20, 35, 20, createFanaticWeaponsMap(), createFanaticArmorMaps()),
     WIZARD(20, 25, 25, 30, 20, 35, 50, 50, 40, createWizardWeaponsMap(), createWizardArmorMaps());
 
-    private double strength;
-    private double durability;
-    private double stamina;
-    private double eye;
-    private double arm;
-    private double agility;
-    private double knowledge;
-    private double focus;
-    private double charisma;
+    private int strength;
+    private int durability;
+    private int stamina;
+    private int eye;
+    private int arm;
+    private int agility;
+    private int knowledge;
+    private int focus;
+    private int charisma;
     private Map<Weapon, Double> weaponsMap;
     private List<Map<Armor, Double>> armorMaps;
 
-    CharacterClass(double strength, double durability, double stamina, double eye, double arm, double agility, double knowledge, double focus, double charisma,
+    CharacterClass(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int charisma,
                    Map<Weapon, Double> weaponsMap, List<Map<Armor, Double>> armorMaps) {
         this.strength = strength;
         this.durability = durability;
@@ -342,39 +342,39 @@ public enum CharacterClass {
 
 
 
-    public double getStrength() {
+    public int getStrength() {
         return strength;
     }
 
-    public double getDurability() {
+    public int getDurability() {
         return durability;
     }
 
-    public double getStamina() {
+    public int getStamina() {
         return stamina;
     }
 
-    public double getEye() {
+    public int getEye() {
         return eye;
     }
 
-    public double getArm() {
+    public int getArm() {
         return arm;
     }
 
-    public double getAgility() {
+    public int getAgility() {
         return agility;
     }
 
-    public double getKnowledge() {
+    public int getKnowledge() {
         return knowledge;
     }
 
-    public double getFocus() {
+    public int getFocus() {
         return focus;
     }
 
-    public double getCharisma() {
+    public int getCharisma() {
         return charisma;
     }
 

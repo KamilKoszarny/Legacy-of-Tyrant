@@ -1,4 +1,4 @@
-package controller.isoView;
+package controller.isoView.isoMap;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
@@ -19,8 +19,7 @@ public class IsoMapKeyController {
         this.isoBattleLoop = isoBattleLoop;
     }
 
-    void initiazile() {
-
+    public void initiazile() {
         scene.setOnKeyPressed(keyEvent -> {
             KeyCode keyCode = keyEvent.getCode();
             if (keyCode == KeyCode.UP) {

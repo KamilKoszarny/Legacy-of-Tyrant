@@ -17,9 +17,9 @@ public enum BodyArmor implements Armor{
     FULL_PLATE_ARMOR(0, 7, 4, 4, 40),
     FORGED_ARMOR(2, 8, 4, 1, 50);
 
-    private double headArmor, bodyArmor, armsArmor, legsArmor, durability;
+    private int headArmor, bodyArmor, armsArmor, legsArmor, durability;
 
-    BodyArmor(double headArmor, double bodyArmor, double armsArmor, double legsArmor, double durability) {
+    BodyArmor(int headArmor, int bodyArmor, int armsArmor, int legsArmor, int durability) {
         this.headArmor = headArmor;
         this.bodyArmor = bodyArmor;
         this.armsArmor = armsArmor;
@@ -27,23 +27,23 @@ public enum BodyArmor implements Armor{
         this.durability = durability;
     }
 
-    public double getHeadArmor() {
+    public int getHeadArmor() {
         return headArmor;
     }
 
-    public double getBodyArmor() {
+    public int getBodyArmor() {
         return bodyArmor;
     }
 
-    public double getArmsArmor() {
+    public int getArmsArmor() {
         return armsArmor;
     }
 
-    public double getLegsArmor() {
+    public int getLegsArmor() {
         return legsArmor;
     }
 
-    public double getDurability() {
+    public int getDurability() {
         return durability;
     }
 }

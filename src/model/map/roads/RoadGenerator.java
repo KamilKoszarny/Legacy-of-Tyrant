@@ -25,8 +25,7 @@ public class RoadGenerator {
     public void generateRoad(int width){
         roadMidPoints = GeomerticHelper.generateMiddleOfStrip(map, map.getRoadSides());
         if (map.isWithRiver()) {
-            int possibleBridges = calcPossibleBridges();
-            while (calcCreatedBridges() > possibleBridges) {
+            while (calcCreatedBridges() != calcPossibleBridges()) {
                 System.out.println("crea: " + calcCreatedBridges() + "poss: " + calcPossibleBridges());
                 roadMidPoints = GeomerticHelper.generateMiddleOfStrip(map, map.getRoadSides());
             }
