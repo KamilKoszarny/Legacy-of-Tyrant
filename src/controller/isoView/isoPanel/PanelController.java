@@ -1,11 +1,30 @@
 package controller.isoView.isoPanel;
 
+import javafx.geometry.Insets;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+
+import java.awt.*;
+
 public class PanelController {
 
-    private Panel panel;
+    public static final int PANEL_HEIGHT = 200;
+    private static final Color PANEL_COLOR = Color.DARKGRAY;
 
-    public PanelController(Panel panel) {
-        this.panel = panel;
+    private HBox panel;
+
+
+    public PanelController(HBox panelHbox) {
+        panel = panelHbox;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        panel.setLayoutX(0);
+        panel.setLayoutY(screenSize.height - PANEL_HEIGHT);
+        panel.setPrefWidth(screenSize.width);
+        panel.setPrefHeight(PANEL_HEIGHT);
+        panel.setBackground(new Background(new BackgroundFill(PANEL_COLOR, CornerRadii.EMPTY, Insets.EMPTY)));
+        panel.setBorder(new Border(new BorderStroke(PANEL_COLOR.darker(),
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
     }
 
     public void initialize(){

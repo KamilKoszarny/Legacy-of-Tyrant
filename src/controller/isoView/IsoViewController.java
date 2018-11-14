@@ -37,11 +37,7 @@ public class IsoViewController {
     @FXML
     private HBox panelHBox;
     @FXML
-    private VBox charBasicsVBox;
-    @FXML
     private javafx.scene.control.Label name, type, charClass;
-
-    private static final int PANEL_HEIGHT = 200;
 
     private IsoViewer isoViewer;
     private PanelViewer panelViewer;
@@ -51,19 +47,14 @@ public class IsoViewController {
         this.isoBattleLoop = isoBattleLoop;
         openWindow(primaryStage);
 
-        List<Canvas> borderCanvases = new ArrayList<>(Arrays.asList(topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
-                topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas));
-        List<Label> charLabels = Arrays.asList(name, type, charClass);
-        controller.isoView.isoPanel.Panel panel = new Panel(charLabels);
-
         isoViewer = new IsoViewer(map, mapCanvas, characters);
-        panelViewer = new PanelViewer(panel, characters);
+        panelViewer = new PanelViewer(preparePanel(), characters);
 
-        new IsoMapMoveController(mapCanvas, borderCanvases, panelHBox, isoBattleLoop).initialize();
+        new IsoMapMoveController(mapCanvas, groupBorderCanvases(), panelHBox, isoBattleLoop).initialize();
         new IsoMapClickController(mapCanvas, isoBattleLoop, characters).initialize();
         new IsoMapHoverController(mapCanvas, isoBattleLoop, characters).initialize();
         new IsoMapKeyController(mapCanvas.getScene(), isoViewer, isoBattleLoop).initiazile();
-        new PanelController(panel).initialize();
+        new PanelController(panelHBox).initialize();
     }
 
     private void openWindow(Stage primaryStage) throws IOException {
@@ -84,16 +75,19 @@ public class IsoViewController {
         mainPane.setPrefWidth(screenSize.width);
         mainPane.setPrefWidth(screenSize.height);
         mapCanvas.setWidth(screenSize.width);
-        mapCanvas.setHeight(screenSize.height - PANEL_HEIGHT);
-
-        panelHBox.setLayoutX(0);
-        panelHBox.setLayoutY(screenSize.height - PANEL_HEIGHT);
-        panelHBox.setPrefWidth(screenSize.width);
-        panelHBox.setPrefHeight(PANEL_HEIGHT);
-        panelHBox.setBorder(new Border(new BorderStroke(Color.BROWN,
-                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
+        mapCanvas.setHeight(screenSize.height - PanelController.PANEL_HEIGHT);
 
         primaryStage.show();
+    }
+
+    private List<Canvas> groupBorderCanvases() {
+        return new ArrayList<>(Arrays.asList(topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
+                topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas));
+    }
+
+    private Panel preparePanel() {
+        List<Label> charLabels = Arrays.asList(name, type, charClass);
+        return new Panel(charLabels);
     }
 
     @FXML
@@ -107,4 +101,6 @@ public class IsoViewController {
     public PanelViewer getPanelViewer() {
         return panelViewer;
     }
+
+
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.canvas.*?>
@@ -17,12 +19,180 @@
       </AnchorPane>
       <HBox fx:id="panelHBox" layoutX="53.0" layoutY="1716.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox fx:id="minimapVBox" prefHeight="200.0" prefWidth="100.0" />
-            <VBox fx:id="charBasicsVBox" prefHeight="200.0" prefWidth="100.0">
+            <VBox fx:id="charBasicsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="name" text="Label" />
-                  <Label fx:id="type" text="Label" />
-                  <Label fx:id="charClass" text="Label" />
+                  <Rectangle fx:id="charPictRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="128.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
+                  <Label fx:id="name" text="NAME" />
+                  <Label fx:id="type" text="TYPE" />
+                  <Label fx:id="charClass" text="CLASS" />
+               </children>
+            </VBox>
+            <VBox fx:id="hitPointsVBox" alignment="CENTER" maxWidth="30.0" minWidth="30.0" prefHeight="200.0" prefWidth="30.0">
+               <children>
+                  <ProgressBar fx:id="hitPointsProgressBar" minWidth="150.0" prefWidth="150.0" progress="0.0" rotate="90.0" />
+                  <Label fx:id="hitPointsLabel" text="HP" translateY="70.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="manaVBox" alignment="CENTER" maxWidth="30.0" minWidth="30.0" prefHeight="200.0" prefWidth="30.0">
+               <children>
+                  <ProgressBar fx:id="manaProgressBar" minWidth="150.0" prefWidth="150.0" progress="0.0" rotate="90.0" />
+                  <Label fx:id="manaLabel" text="M" translateY="70.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="vigorVBox" alignment="CENTER" maxWidth="30.0" minWidth="30.0" prefHeight="200.0" prefWidth="30.0">
+               <children>
+                  <ProgressBar fx:id="vigorProgressBar" minWidth="150.0" prefWidth="150.0" progress="0.0" rotate="90.0" />
+                  <Label fx:id="vigorLabel" text="V" translateY="70.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="charPAandSkillsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox fx:id="charPAHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="vimLabel" text="VIM" />
+                              <Label fx:id="strengthLabel" text="Str." />
+                              <Label fx:id="durabilityLabel" text="Dur." />
+                              <Label fx:id="staminaLabel" text="Sta." />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="dexterityLabel" text="DEX" />
+                              <Label fx:id="armLabel" text="Arm" />
+                              <Label fx:id="eyeLabel" text="Eye" />
+                              <Label fx:id="agilityLabel" text="Agi." />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="intelligenceLabel" text="INT" />
+                              <Label fx:id="knowledgeLabel" text="kno." />
+                              <Label fx:id="focusLabel" text="foc." />
+                              <Label fx:id="spiritLabel" text="spi." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="charSkillsHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
+               </children></VBox>
+            <VBox fx:id="charEquipmentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle fx:id="helmetRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                        <Rectangle fx:id="weaponRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                        <Rectangle fx:id="armorRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                        <Rectangle fx:id="shieldRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Rectangle fx:id="glovesRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                              <Rectangle fx:id="bootsRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle fx:id="amuletRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+                        <Rectangle fx:id="ring1Rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+                        <Rectangle fx:id="beltRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
+                        <Rectangle fx:id="ring2Rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </HBox.margin></VBox>
+            <VBox fx:id="charSpareWeaponsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle fx:id="spareWeaponRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Rectangle>
+                        <Rectangle fx:id="spareShieldRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="charInventoryVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <GridPane gridLinesVisible="true" maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="150.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </children>
+            </VBox>
+            <VBox fx:id="charSAVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox fx:id="charSAHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="speedLabel" text="speed" />
+                              <Label fx:id="magicResistanceLabel" text="mag. res." />
+                              <Label fx:id="loadLabel" text="load" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="setIdmgLabel" text="dmg I" />
+                              <Label fx:id="setIhitLabel" text="hit I" />
+                              <Label fx:id="setIparryLabel" text="par. I" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="setIIdmgLabel" text="dmg II" />
+                              <Label fx:id="setIIhitLabel" text="hit II" />
+                              <Label fx:id="setIIparryLabel" text="par. II" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <GridPane gridLinesVisible="true">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox fx:id="minimapVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Rectangle fx:id="minimapRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="128.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" translateX="50.0" width="128.0" />
                </children>
             </VBox>
          </children>
