@@ -13,7 +13,7 @@ import model.character.Character;
 import model.map.Map;
 import sun.misc.Unsafe;
 import viewIso.IsoViewer;
-import viewIso.PanelViewer;
+import viewIso.panel.PanelViewer;
 
 import java.lang.reflect.Field;
 import java.util.List;

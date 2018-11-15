@@ -11,15 +11,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.IsoBattleLoop;
 import model.character.Character;
 import model.map.Map;
 import viewIso.IsoViewer;
-import viewIso.PanelViewer;
+import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -30,14 +31,31 @@ import java.util.List;
 public class IsoViewController {
 
     @FXML
-    private Canvas mapCanvas, topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
-            topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas;
-    @FXML
     private AnchorPane mainPane;
+    @FXML
+    private Canvas mapCanvas, topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
+    topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas;
+
     @FXML
     private HBox panelHBox;
     @FXML
-    private javafx.scene.control.Label name, type, charClass;
+    private Rectangle charPictRect;
+    @FXML
+    private javafx.scene.control.Label nameLabel, typeLabel, charClassLabel;
+    @FXML
+    private ProgressBar hitPointsProgressBar, manaProgressBar, vigorProgressBar;
+    @FXML
+    private Label hitPointsLabel, manaLabel, vigorLabel;
+    @FXML
+    private Label vimLabel, strengthLabel, durabilityLabel, staminaLabel, dexterityLabel, eyeLabel, armLabel, agilityLabel, intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel;
+    @FXML
+    private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
+    @FXML
+    private GridPane inventoryGridPane, defenceGridPane;
+    @FXML
+    private Label loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel;
+    @FXML
+    private Rectangle minimapRect;
 
     private IsoViewer isoViewer;
     private PanelViewer panelViewer;
@@ -86,7 +104,12 @@ public class IsoViewController {
     }
 
     private Panel preparePanel() {
-        List<Label> charLabels = Arrays.asList(name, type, charClass);
+        List<Label> charLabels = Arrays.asList(nameLabel, typeLabel, charClassLabel,
+                hitPointsLabel, manaLabel, vigorLabel,
+                vimLabel, strengthLabel, durabilityLabel, staminaLabel, dexterityLabel, eyeLabel, armLabel, agilityLabel, intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel,
+                loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel
+    );
+
         return new Panel(charLabels);
     }
 

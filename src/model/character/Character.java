@@ -309,6 +309,9 @@ public class Character {
         updateVim();
     }
 
+    public int getVim(){
+        return currentPA.vim;
+    }
     private void updateVim() {
         currentPA.vim = (currentPA.strength + currentPA.durability + currentPA.stamina) / 3;
     }
@@ -337,6 +340,9 @@ public class Character {
         updateDexterity();
     }
 
+    public int getDexterity() {
+        return currentPA.dexterity;
+    }
     private void updateDexterity() {
         currentPA.dexterity = (currentPA.arm + currentPA.eye + currentPA.agility) / 3;
     }
@@ -365,10 +371,19 @@ public class Character {
         updateIntelligence();
     }
 
+    public int getIntelligence() {
+        return currentPA.intelligence;
+    }
     private void updateIntelligence() {
         currentPA.intelligence = (currentPA.knowledge + currentPA.focus + currentPA.spirit) / 3;
     }
 
+    public int getLoad(){
+        return currentSA.load;
+    }
+    public void setLoad(int load){
+        currentSA.load = load;
+    }
 
     public double getSpeed(){
         return currentSA.speed;
@@ -405,25 +420,32 @@ public class Character {
         currentSA.range = range;
     }
 
-    public int getChanceToHit(){
-        return currentSA.chanceToHit;
+    public int getMagicResistance(){
+        return currentSA.magicResistance;
     }
-    public void setChanceToHit(int chanceToHit){
-        currentSA.chanceToHit = chanceToHit;
-    }
-
-    public int getChanceToBeHit(){
-        return currentSA.chanceToBeHit;
-    }
-    public void setChanceToBeHit(int chanceToBeHit){
-        currentSA.chanceToBeHit = chanceToBeHit;
+    public void setMagicResistance(int magicResistance){
+        currentSA.magicResistance = magicResistance;
     }
 
-    public double getAttackDuration(){
-        return currentSA.attackDuration;
+    public int getAccuracy(){
+        return currentSA.accuracy;
     }
-    public void setAttackDuration(double attackDuration){
-        currentSA.attackDuration = attackDuration;
+    public void setAccuracy(int accuracy){
+        currentSA.accuracy = accuracy;
+    }
+
+    public int getAvoidance(){
+        return currentSA.avoidance;
+    }
+    public void setAvoidance(int avoidance){
+        currentSA.avoidance = avoidance;
+    }
+
+    public double getAttackSpeed(){
+        return currentSA.attackSpeed;
+    }
+    public void setAttackSpeed(double attackDuration){
+        currentSA.attackSpeed = attackDuration;
     }
 
     public int getHeadArmor(){

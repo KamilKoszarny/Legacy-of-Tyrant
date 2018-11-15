@@ -12,6 +12,7 @@ import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
+import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 

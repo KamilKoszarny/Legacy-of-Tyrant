@@ -115,6 +115,8 @@ public class StatsCalculator {
             character.setDmgMax(character.getType().getDmgMax());
         }
 
+        character.setLoad(character.getStrength());
+
         if(!recalc)
             character.setHitPoints(character.getStrength() / 9);
     }
@@ -135,8 +137,7 @@ public class StatsCalculator {
     private static void calcAndSetSAByArm(Character character, boolean recalc){
         Weapon weapon = character.getWeapon();
         if(!WeaponGroup.RANGE.getWeapons().contains(weapon) && !WeaponGroup.THROWING.getWeapons().contains(weapon)) {
-            int weaponAccuracy = weapon.getAccuracy();
-            character.setChanceToHit(character.getArm() + weaponAccuracy);
+            character.setAccuracy(character.getArm() + weapon.getAccuracy());
         }
 
         character.setSpeed(1 + character.getArm() / 75.);
@@ -145,8 +146,7 @@ public class StatsCalculator {
     private static void calcAndSetSAByEye(Character character, boolean recalc){
         Weapon weapon = character.getWeapon();
         if(WeaponGroup.RANGE.getWeapons().contains(weapon) || WeaponGroup.THROWING.getWeapons().contains(weapon)) {
-            int weaponAccuracy = weapon.getAccuracy();
-            character.setChanceToHit(character.getEye() + weaponAccuracy);
+            character.setAccuracy(character.getEye() + weapon.getAccuracy());
 
             character.setDmgMin(weapon.getDmgMin() * (1 + character.getEye() / 100.));
             character.setDmgMax(weapon.getDmgMax() * (1 + character.getEye() / 100.));
@@ -156,6 +156,8 @@ public class StatsCalculator {
     }
 
     private static void calcAndSetSAByAgility(Character character, boolean recalc){
+        Weapon weapon = character.getWeapon();
+        character.setAvoidance(character.getAgility() + weapon.getParry());
 
         character.setSpeed(character.getSpeed() + character.getAgility()/75.);
     }
@@ -175,7 +177,7 @@ public class StatsCalculator {
     private static void calcAndSetOtherSA(Character character, boolean recalc){
         Weapon weapon = character.getWeapon();
         character.setRange(weapon.getRange());
-        character.setAttackDuration(weapon.getAttackDuration());
+        character.setAttackSpeed(1 / weapon.getAttackDuration());
 
         Armor[] armor = character.getArmor();
         Shield shield = (Shield) armor[0];

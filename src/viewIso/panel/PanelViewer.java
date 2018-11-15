@@ -1,8 +1,7 @@
-package viewIso;
+package viewIso.panel;
 
 import controller.isoView.isoPanel.Panel;
 import model.character.Character;
-import viewIso.characters.CharDescriptor;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class PanelViewer {
 
     public PanelViewer(Panel panel, List<Character> characters) {
         this.panel = panel;
-        charDescriptor = new CharDescriptor(panel.getCharBasicLabels(), characters);
+        charDescriptor = new CharDescriptor(panel, characters);
     }
 
     public void refresh() {

@@ -6,13 +6,13 @@ import java.util.List;
 
 public class Panel {
 
-    private List<Label> charBasicLabels;
+    private List<Label> charLabels;
 
-    public Panel(List<Label> charBasicLabels) {
-        this.charBasicLabels = charBasicLabels;
+    public Panel(List<Label> charLabels) {
+        this.charLabels = charLabels;
     }
 
-    public List<Label> getCharBasicLabels() {
-        return charBasicLabels;
+    public List<Label> getCharLabels() {
+        return charLabels;
     }
 }

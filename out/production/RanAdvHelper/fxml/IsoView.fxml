@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1930.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1930.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;">
          <children>
@@ -22,9 +22,9 @@
             <VBox fx:id="charBasicsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Rectangle fx:id="charPictRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="128.0" stroke="BLACK" strokeType="INSIDE" width="128.0" />
-                  <Label fx:id="name" text="NAME" />
-                  <Label fx:id="type" text="TYPE" />
-                  <Label fx:id="charClass" text="CLASS" />
+                  <Label fx:id="nameLabel" text="NAME" />
+                  <Label fx:id="typeLabel" text="TYPE" />
+                  <Label fx:id="charClassLabel" text="CLASS" />
                </children>
             </VBox>
             <VBox fx:id="hitPointsVBox" alignment="CENTER" maxWidth="30.0" minWidth="30.0" prefHeight="200.0" prefWidth="30.0">
@@ -124,7 +124,7 @@
             </VBox>
             <VBox fx:id="charInventoryVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <GridPane gridLinesVisible="true" maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="150.0">
+                  <GridPane fx:id="inventoryGridPane" gridLinesVisible="true" maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="150.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -140,36 +140,32 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
+                  <Label fx:id="loadLabel" text="load" />
                </children>
             </VBox>
             <VBox fx:id="charSAVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <HBox fx:id="charSAHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" minWidth="70.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label fx:id="speedLabel" text="speed" />
+                              <Label fx:id="attackSpeedLabel" text="aSpeed:" />
+                              <Label fx:id="rangeLabel" text="ran:" />
                               <Label fx:id="magicResistanceLabel" text="mag. res." />
-                              <Label fx:id="loadLabel" text="load" />
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
+                        <VBox alignment="CENTER" minWidth="70.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="setIdmgLabel" text="dmg I" />
-                              <Label fx:id="setIhitLabel" text="hit I" />
-                              <Label fx:id="setIparryLabel" text="par. I" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" minWidth="50.0" prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label fx:id="setIIdmgLabel" text="dmg II" />
-                              <Label fx:id="setIIhitLabel" text="hit II" />
-                              <Label fx:id="setIIparryLabel" text="par. II" />
+                              <Label fx:id="dmgMinLabel" text="dmg" />
+                              <Label fx:id="dmgMaxLabel" text="dmg" />
+                              <Label fx:id="accuracyLabel" text="acc." />
+                              <Label fx:id="avoidanceLabel" text="avo." />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <GridPane gridLinesVisible="true">
+                  <GridPane fx:id="defenceGridPane" gridLinesVisible="true">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
