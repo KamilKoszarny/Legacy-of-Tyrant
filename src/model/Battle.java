@@ -2,7 +2,8 @@ package model;
 
 import javafx.scene.paint.Color;
 import model.actions.DoorActioner;
-import model.armor.*;
+import model.character.StatsCalculator;
+import model.items.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
 import model.character.CharacterType;
@@ -11,7 +12,7 @@ import model.character.movement.CharTurner;
 import model.map.*;
 import model.map.heights.MapHeightType;
 import model.map.mapObjects.MapObject;
-import model.weapon.Weapon;
+import model.items.weapon.Weapon;
 import viewIso.characters.CharsDrawer;
 
 import java.awt.*;

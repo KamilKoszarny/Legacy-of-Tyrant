@@ -3,7 +3,9 @@ package viewIso.panel;
 import controller.isoView.isoPanel.Panel;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 import model.character.Character;
 
 import java.lang.reflect.InvocationTargetException;
@@ -27,7 +29,23 @@ public class CharDescriptor {
             refreshLabels(firstChosenCharacter);
             refreshBars(firstChosenCharacter);
             refreshPortrait(firstChosenCharacter);
+            refreshEquipment(firstChosenCharacter);
         }
+    }
+
+    private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
+
+    private void refreshEquipment(Character character) {
+        refreshEqRect(character, panel.getWeaponRect(), character.getWeapon().getImage());
+        refreshEqRect(character, panel.getSpareWeaponRect(), character.getSpareWeapon().getImage());
+        refreshEqRect(character, panel.getHelmetRect(), character.getHelmet().getImage());
+        refreshEqRect(character, panel.getArmorRect(), character.getBodyArmorItem().getImage());
+    }
+
+    private void refreshEqRect(Character character, Rectangle rectangle, Image image) {
+        rectangle.setWidth(image.getWidth());
+        rectangle.setHeight(image.getHeight());
+        rectangle.setFill(new ImagePattern(image));
     }
 
     private void refreshPortrait(Character character) {
@@ -36,7 +54,6 @@ public class CharDescriptor {
 
     private void refreshBars(Character character) {
         double baseWidth = panel.getCharBars().get(0).getPrefWidth();
-        baseWidth = 160;
         ProgressBar hpBar = panel.getCharBars().get(0), manaBar = panel.getCharBars().get(1), vigorBar = panel.getCharBars().get(2);
 
         hpBar.setMinWidth(baseWidth * character.getHitPoints() / 100.);
@@ -51,10 +68,6 @@ public class CharDescriptor {
         vigorBar.setMaxWidth(baseWidth * character.getVigor() / 100.);
         vigorBar.setTranslateY(baseWidth / 2 - vigorBar.getMinWidth() / 2);
         vigorBar.setProgress((double)character.getCurrentVigor() / (double)character.getVigor());
-
-//        for (ProgressBar bar: panel.getCharBars()) {
-//            bar.setTranslateY(baseWidth/2 - bar.getWidth() / 2);
-//        }
     }
 
     private void refreshLabels(Character character){

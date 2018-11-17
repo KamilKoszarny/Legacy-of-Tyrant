@@ -3,9 +3,8 @@ package model.character;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
-import model.StatsCalculator;
-import model.armor.Armor;
-import model.weapon.Weapon;
+import model.items.armor.*;
+import model.items.weapon.Weapon;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -276,11 +275,34 @@ public class Character {
         return weapons[chosenWeapon];
     }
 
+    public Weapon getSpareWeapon() {
+        return weapons[(chosenWeapon + 1)%2];
+    }
+
     public Armor[] getArmor() {
         return armor;
     }
     public void setArmor(Armor[] armor) {
         this.armor = armor;
+    }
+
+    public Shield getShield() {
+        return (Shield) armor[0];
+    }
+    public BodyArmor getBodyArmorItem() {
+        return (BodyArmor) armor[1];
+    }
+    public Helmet getHelmet() {
+        return (Helmet) armor[2];
+    }
+    public Gloves getGloves() {
+        return (Gloves) armor[3];
+    }
+    public Boots getBoots() {
+        return (Boots) armor[4];
+    }
+    public Belt getBelt() {
+        return (Belt) armor[5];
     }
 
     public int getChosenWeapon() {

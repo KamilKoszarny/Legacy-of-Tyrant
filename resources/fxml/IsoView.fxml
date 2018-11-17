@@ -79,42 +79,78 @@
                </children></VBox>
             <VBox fx:id="charEquipmentVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" maxWidth="300.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0">
                      <children>
-                        <Rectangle fx:id="helmetRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-                        <Rectangle fx:id="weaponRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-                        <Rectangle fx:id="armorRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-                        <Rectangle fx:id="shieldRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <Rectangle fx:id="helmetRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="90.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
+                        <Rectangle fx:id="weaponRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
+                        <Rectangle fx:id="armorRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
+                        <Rectangle fx:id="shieldRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Rectangle fx:id="glovesRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-                              <Rectangle fx:id="bootsRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                              <Rectangle fx:id="glovesRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </VBox.margin></Rectangle>
+                              <Rectangle fx:id="bootsRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </VBox.margin></Rectangle>
                            </children>
                         </VBox>
                      </children>
+                     <padding>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </padding>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Rectangle fx:id="amuletRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-                        <Rectangle fx:id="ring1Rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-                        <Rectangle fx:id="beltRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
-                        <Rectangle fx:id="ring2Rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+                        <Rectangle fx:id="amuletRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
+                        <Rectangle fx:id="ring1Rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
+                        <Rectangle fx:id="beltRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
+                        <Rectangle fx:id="ring2Rect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="30.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
                      </children>
                   </HBox>
                </children>
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin></VBox>
-            <VBox fx:id="charSpareWeaponsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox fx:id="charSpareWeaponsVBox" alignment="CENTER" maxWidth="150.0" minWidth="150.0">
                <children>
-                  <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Rectangle fx:id="spareWeaponRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </HBox.margin>
                         </Rectangle>
-                        <Rectangle fx:id="spareShieldRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+                        <Rectangle fx:id="spareShieldRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="60.0">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                           </HBox.margin></Rectangle>
                      </children>
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

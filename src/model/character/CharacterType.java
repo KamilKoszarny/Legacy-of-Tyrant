@@ -1,6 +1,6 @@
 package model.character;
 
-import model.MoveCalculator;
+import model.character.movement.MoveCalculator;
 
 import java.awt.*;
 import java.util.Set;

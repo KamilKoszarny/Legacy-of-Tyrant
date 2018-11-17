@@ -111,7 +111,9 @@ public class IsoViewController {
     );
         List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
 
-        return new Panel(charLabels, charBars, charPictRect);
+        return new Panel(charLabels, charBars, charPictRect,
+                helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
+                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect);
     }
 
     @FXML

@@ -1,8 +1,8 @@
 package model.character;
 
-import model.ItemsCalculator;
-import model.armor.*;
-import model.weapon.Weapon;
+import model.items.ItemsCalculator;
+import model.items.armor.*;
+import model.items.weapon.Weapon;
 
 import java.util.ArrayList;
 import java.util.HashMap;
