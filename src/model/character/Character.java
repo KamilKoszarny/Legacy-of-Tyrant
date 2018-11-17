@@ -2,6 +2,7 @@ package model.character;
 
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
+import model.StatsCalculator;
 import model.armor.Armor;
 import model.weapon.Weapon;
 
@@ -290,7 +291,7 @@ public class Character {
     }
     public void setStrength(int strength){
         currentPA.strength = strength;
-        updateVim();
+        StatsCalculator.updateVimAndHP(this);
     }
 
     public int getDurability(){
@@ -298,7 +299,7 @@ public class Character {
     }
     public void setDurability(int durability){
         currentPA.durability = durability;
-        updateVim();
+        StatsCalculator.updateVimAndHP(this);
     }
 
     public int getStamina(){
@@ -306,14 +307,14 @@ public class Character {
     }
     public void setStamina(int stamina){
         currentPA.stamina = stamina;
-        updateVim();
+        StatsCalculator.updateVimAndHP(this);
     }
 
     public int getVim(){
         return currentPA.vim;
     }
-    private void updateVim() {
-        currentPA.vim = (currentPA.strength + currentPA.durability + currentPA.stamina) / 3;
+    public void setVim(int vim){
+        currentPA.vim = vim;
     }
 
     public int getArm(){
@@ -321,7 +322,7 @@ public class Character {
     }
     public void setArm(int arm){
         currentPA.arm = arm;
-        updateDexterity();
+        StatsCalculator.updateDexterityAndSpeed(this);
     }
 
     public int getEye(){
@@ -329,7 +330,7 @@ public class Character {
     }
     public void setEye(int eye){
         currentPA.eye = eye;
-        updateDexterity();
+        StatsCalculator.updateDexterityAndSpeed(this);
     }
 
     public int getAgility(){
@@ -337,14 +338,14 @@ public class Character {
     }
     public void setAgility(int agility){
         currentPA.agility = agility;
-        updateDexterity();
+        StatsCalculator.updateDexterityAndSpeed(this);
     }
 
     public int getDexterity() {
         return currentPA.dexterity;
     }
-    private void updateDexterity() {
-        currentPA.dexterity = (currentPA.arm + currentPA.eye + currentPA.agility) / 3;
+    public void setDexterity(int dexterity) {
+        currentPA.dexterity = dexterity;
     }
 
     public int getKnowledge(){
@@ -352,7 +353,7 @@ public class Character {
     }
     public void setKnowledge(int knowledge){
         currentPA.knowledge = knowledge;
-        updateIntelligence();
+        StatsCalculator.updateIntelligenceAndMana(this);
     }
 
     public int getFocus(){
@@ -360,7 +361,7 @@ public class Character {
     }
     public void setFocus(int focus){
         currentPA.focus = focus;
-        updateIntelligence();
+        StatsCalculator.updateIntelligenceAndMana(this);
     }
 
     public int getSpirit(){
@@ -368,14 +369,14 @@ public class Character {
     }
     public void setSpirit(int charisma){
         currentPA.spirit = charisma;
-        updateIntelligence();
+        StatsCalculator.updateIntelligenceAndMana(this);
     }
 
     public int getIntelligence() {
         return currentPA.intelligence;
     }
-    private void updateIntelligence() {
-        currentPA.intelligence = (currentPA.knowledge + currentPA.focus + currentPA.spirit) / 3;
+    public void setIntelligence(int intelligence) {
+        currentPA.intelligence = intelligence;
     }
 
     public int getLoad(){
@@ -413,11 +414,55 @@ public class Character {
         currentSA.hitPoints = hitPoints;
     }
 
+    public int getMana(){
+        return currentSA.mana;
+    }
+    public void setMana(int mana){
+        currentSA.mana = mana;
+    }
+
+    public int getVigor(){
+        return currentSA.vigor;
+    }
+    public void setVigor(int vigor){
+        currentSA.vigor = vigor;
+    }
+
+
+    public int getCurrentHitPoints(){
+        return currentSA.currentHitPoints;
+    }
+    public void setCurrentHitPoints(int hitPoints){
+        currentSA.currentHitPoints = hitPoints;
+    }
+
+    public int getCurrentMana(){
+        return currentSA.currentMana;
+    }
+    public void setCurrentMana(int mana){
+        currentSA.currentMana = mana;
+    }
+
+    public int getCurrentVigor(){
+        return currentSA.currentVigor;
+    }
+    public void setCurrentVigor(int vigor){
+        currentSA.currentVigor = vigor;
+    }
+
+
     public double getRange(){
         return currentSA.range;
     }
     public void setRange(double range){
         currentSA.range = range;
+    }
+
+    public int getBlock(){
+        return currentSA.block;
+    }
+    public void setBlock(int block){
+        currentSA.block = block;
     }
 
     public int getMagicResistance(){
@@ -481,13 +526,6 @@ public class Character {
         setBodyArmor(body);
         setArmsArmor(arms);
         setLegsArmor(legs);
-    }
-
-    public int getVigor(){
-        return currentSA.vigor;
-    }
-    public void setVigor(int vigor){
-        currentSA.vigor = vigor;
     }
 
     public void setDoubleValue(String propertyName, String value){

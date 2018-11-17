@@ -21,19 +21,19 @@ public class StatsCalculator {
 
     }
 
-    public static void calcCharSA(Character character, boolean recalc){
+    public static void calcCharSA(Character character){
 
-        calcAndSetSAByStrength(character, recalc);
-        calcAndSetSAByDurability(character, recalc);
-        calcAndSetSAByStamina(character, recalc);
-        calcAndSetSAByArm(character, recalc);
-        calcAndSetSAByEye(character, recalc);
-        calcAndSetSAByAgility(character, recalc);
-        calcAndSetSAByKnowledge(character, recalc);
-        calcAndSetSAByFocus(character, recalc);
-        calcAndSetSAByCharisma(character, recalc);
+        calcAndSetSAByStrength(character);
+        calcAndSetSAByDurability(character);
+        calcAndSetSAByStamina(character);
+        calcAndSetSAByArm(character);
+        calcAndSetSAByEye(character);
+        calcAndSetSAByAgility(character);
+        calcAndSetSAByKnowledge(character);
+        calcAndSetSAByFocus(character);
+        calcAndSetSAByCharisma(character);
 
-        calcAndSetOtherSA(character, recalc);
+        calcAndSetOtherSA(character);
     }
 
 
@@ -102,7 +102,7 @@ public class StatsCalculator {
         character.setSpirit(charisma);
     }
 
-    private static void calcAndSetSAByStrength(Character character, boolean recalc){
+    private static void calcAndSetSAByStrength(Character character){
         if(CharacterGroup.INTELLIGENT.getBelongingTypes().contains(character.getType()) ||
                 CharacterGroup.HUMANOIDS.getBelongingTypes().contains(character.getType()) ) {
             Weapon weapon = character.getWeapon();
@@ -117,33 +117,36 @@ public class StatsCalculator {
 
         character.setLoad(character.getStrength());
 
-        if(!recalc)
-            character.setHitPoints(character.getStrength() / 9);
+        updateVimAndHP(character);
     }
 
-    private static void calcAndSetSAByDurability(Character character, boolean recalc){
-        if(!recalc)
-            character.setHitPoints(character.getHitPoints() + character.getDurability() / 9);
+    private static void calcAndSetSAByDurability(Character character){
+        updateVimAndHP(character);
     }
 
-    private static void calcAndSetSAByStamina(Character character, boolean recalc){
-        if(!recalc) {
-            Random r = new Random();
-            character.setVigor(20 + character.getStamina() / 5 + r.nextInt(20));
-            character.setHitPoints(character.getHitPoints() + character.getStamina() / 9);
-        }
+    private static void calcAndSetSAByStamina(Character character){
+        Random r = new Random();
+        character.setVigor(20 + character.getStamina() / 5 + r.nextInt(20));
+        character.setCurrentVigor(20 + character.getStamina() / 5 + r.nextInt(20) - 10);
+        updateVimAndHP(character);
     }
 
-    private static void calcAndSetSAByArm(Character character, boolean recalc){
+    public static void updateVimAndHP(Character character) {
+        character.setVim((character.getStrength() + character.getDurability() + character.getStamina()) / 3);
+        character.setHitPoints((int) (30 + character.getVim() * .7));
+        character.setCurrentHitPoints((int) (30 + character.getVim() * .7/2.));
+    }
+
+    private static void calcAndSetSAByArm(Character character){
         Weapon weapon = character.getWeapon();
         if(!WeaponGroup.RANGE.getWeapons().contains(weapon) && !WeaponGroup.THROWING.getWeapons().contains(weapon)) {
             character.setAccuracy(character.getArm() + weapon.getAccuracy());
         }
 
-        character.setSpeed(1 + character.getArm() / 75.);
+        updateDexterityAndSpeed(character);
     }
 
-    private static void calcAndSetSAByEye(Character character, boolean recalc){
+    private static void calcAndSetSAByEye(Character character){
         Weapon weapon = character.getWeapon();
         if(WeaponGroup.RANGE.getWeapons().contains(weapon) || WeaponGroup.THROWING.getWeapons().contains(weapon)) {
             character.setAccuracy(character.getEye() + weapon.getAccuracy());
@@ -152,29 +155,40 @@ public class StatsCalculator {
             character.setDmgMax(weapon.getDmgMax() * (1 + character.getEye() / 100.));
         }
 
-        character.setSpeed(character.getSpeed() + character.getEye()/75.);
+        updateDexterityAndSpeed(character);
     }
 
-    private static void calcAndSetSAByAgility(Character character, boolean recalc){
+    private static void calcAndSetSAByAgility(Character character){
         Weapon weapon = character.getWeapon();
         character.setAvoidance(character.getAgility() + weapon.getParry());
 
-        character.setSpeed(character.getSpeed() + character.getAgility()/75.);
+        updateDexterityAndSpeed(character);
     }
 
-    private static void calcAndSetSAByKnowledge(Character character, boolean recalc){
-
+    public static void updateDexterityAndSpeed(Character character) {
+        character.setDexterity((character.getArm() + character.getEye() + character.getAgility()) / 3);
+        character.setSpeed(character.getDexterity() / 25.);
     }
 
-    private static void calcAndSetSAByFocus(Character character, boolean recalc){
-
+    private static void calcAndSetSAByKnowledge(Character character){
+        updateIntelligenceAndMana(character);
     }
 
-    private static void calcAndSetSAByCharisma(Character character, boolean recalc){
-
+    private static void calcAndSetSAByFocus(Character character){
+        updateIntelligenceAndMana(character);
     }
 
-    private static void calcAndSetOtherSA(Character character, boolean recalc){
+    private static void calcAndSetSAByCharisma(Character character){
+        updateIntelligenceAndMana(character);
+    }
+
+    public static void updateIntelligenceAndMana(Character character) {
+        character.setIntelligence((character.getKnowledge() + character.getFocus() + character.getSpirit()) / 3);
+        character.setMana(character.getIntelligence() / 5);
+        character.setCurrentMana(character.getIntelligence() / 5/2);
+    }
+
+    private static void calcAndSetOtherSA(Character character){
         Weapon weapon = character.getWeapon();
         character.setRange(weapon.getRange());
         character.setAttackSpeed(1 / weapon.getAttackDuration());
@@ -191,5 +205,6 @@ public class StatsCalculator {
         character.setBodyArmor(bodyArmor.getBodyArmor() + belt.getArmor());
         character.setArmsArmor(bodyArmor.getArmsArmor() + gloves.getArmor());
         character.setLegsArmor(bodyArmor.getLegsArmor() + boots.getArmor());
+        character.setBlock(shield.getBlock());
     }
 }

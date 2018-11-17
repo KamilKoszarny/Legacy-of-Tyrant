@@ -27,22 +27,22 @@
                   <Label fx:id="charClassLabel" text="CLASS" />
                </children>
             </VBox>
-            <VBox fx:id="hitPointsVBox" alignment="CENTER" maxWidth="30.0" minWidth="30.0" prefHeight="200.0" prefWidth="30.0">
+            <VBox fx:id="hitPointsVBox" alignment="CENTER" maxWidth="35.0" minWidth="35.0" prefHeight="200.0" prefWidth="35.0">
                <children>
-                  <ProgressBar fx:id="hitPointsProgressBar" minWidth="150.0" prefWidth="150.0" progress="0.0" rotate="90.0" />
+                  <ProgressBar fx:id="hitPointsProgressBar" minWidth="160.0" prefWidth="160.0" progress="0.0" rotate="270.0" />
                   <Label fx:id="hitPointsLabel" text="HP" translateY="70.0" />
                </children>
             </VBox>
-            <VBox fx:id="manaVBox" alignment="CENTER" maxWidth="30.0" minWidth="30.0" prefHeight="200.0" prefWidth="30.0">
+            <VBox fx:id="vigorVBox" alignment="CENTER" maxWidth="35.0" minWidth="35.0" prefHeight="200.0" prefWidth="35.0">
                <children>
-                  <ProgressBar fx:id="manaProgressBar" minWidth="150.0" prefWidth="150.0" progress="0.0" rotate="90.0" />
-                  <Label fx:id="manaLabel" text="M" translateY="70.0" />
+                  <ProgressBar fx:id="vigorProgressBar" minWidth="160.0" prefWidth="160.0" progress="0.0" rotate="270.0" />
+                  <Label fx:id="vigorLabel" text="V" translateY="70.0" />
                </children>
             </VBox>
-            <VBox fx:id="vigorVBox" alignment="CENTER" maxWidth="30.0" minWidth="30.0" prefHeight="200.0" prefWidth="30.0">
+            <VBox fx:id="manaVBox" alignment="CENTER" maxWidth="35.0" minWidth="35.0" prefHeight="200.0" prefWidth="35.0">
                <children>
-                  <ProgressBar fx:id="vigorProgressBar" minWidth="150.0" prefWidth="150.0" progress="0.0" rotate="90.0" />
-                  <Label fx:id="vigorLabel" text="V" translateY="70.0" />
+                  <ProgressBar fx:id="manaProgressBar" minWidth="160.0" prefWidth="160.0" progress="0.0" rotate="270.0" />
+                  <Label fx:id="manaLabel" text="M" translateY="70.0" />
                </children>
             </VBox>
             <VBox fx:id="charPAandSkillsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -152,6 +152,7 @@
                               <Label fx:id="speedLabel" text="speed" />
                               <Label fx:id="attackSpeedLabel" text="aSpeed:" />
                               <Label fx:id="rangeLabel" text="ran:" />
+                              <Label fx:id="blockLabel" text="block" />
                               <Label fx:id="magicResistanceLabel" text="mag. res." />
                            </children>
                         </VBox>
@@ -165,7 +166,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <GridPane fx:id="defenceGridPane" gridLinesVisible="true">
+                  <GridPane fx:id="defenceGridPane" gridLinesVisible="true" maxHeight="100.0" minHeight="100.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

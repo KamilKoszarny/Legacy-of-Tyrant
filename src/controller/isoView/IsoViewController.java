@@ -83,7 +83,7 @@ public class IsoViewController {
 
         Pane pane = fxmlLoader.load();
         Scene scene = new Scene(pane);
-        scene.getStylesheets().add("style.css");
+        scene.getStylesheets().add("fxml/mainStyle.css");
         primaryStage.setScene(scene);
         primaryStage.setTitle("BattleIsoView");
         primaryStage.setMaximized(true);
@@ -109,8 +109,9 @@ public class IsoViewController {
                 vimLabel, strengthLabel, durabilityLabel, staminaLabel, dexterityLabel, eyeLabel, armLabel, agilityLabel, intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel,
                 loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel
     );
+        List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
 
-        return new Panel(charLabels);
+        return new Panel(charLabels, charBars);
     }
 
     @FXML

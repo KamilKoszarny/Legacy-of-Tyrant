@@ -16,23 +16,23 @@ public enum Shield implements Armor{
     HERALD_SHIELD(30, 3, 40),
     DRAGON_SHIELD(35, 3, 50);
 
-    private double block, dmg, durability;
+    private int block, dmg, durability;
 
-    Shield(double block, double dmg, double durability) {
+    Shield(int block, int dmg, int durability) {
         this.block = block;
         this.dmg = dmg;
         this.durability = durability;
     }
 
-    public double getBlock() {
+    public int getBlock() {
         return block;
     }
 
-    public double getDmg() {
+    public int getDmg() {
         return dmg;
     }
 
-    public double getDurability() {
+    public int getDurability() {
         return durability;
     }
 }

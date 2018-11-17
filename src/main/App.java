@@ -1,7 +1,6 @@
 package main;
 
 import controller.isoView.IsoViewController;
-import controller.javaFX.BattlePaneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -41,8 +40,8 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(this.getClass().getResource("/fxml/MainWindow.fxml"));
 
-        BattlePaneController battlePaneController = new BattlePaneController();
-        fxmlLoader.setController(battlePaneController);
+//        BattlePaneController battlePaneController = new BattlePaneController();
+//        fxmlLoader.setController(battlePaneController);
 
         Pane pane = fxmlLoader.load();
         Scene scene = new Scene(pane);

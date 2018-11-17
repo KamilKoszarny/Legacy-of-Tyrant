@@ -82,6 +82,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private void handleCanvasLClick(){
         if (charsDrawer.isOtherCharClicked(canvasLClickPoint, battle.getChosenCharacter())) {
             battle.chooseCharacter(charsDrawer.getClickedCharacter());
+
         } else {
             clickedMapPoint = MapDrawCalculator.mapPointByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
