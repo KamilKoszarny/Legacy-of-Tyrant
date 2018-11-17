@@ -11,11 +11,11 @@ import java.util.Map;
 
 public enum CharacterClass {
 
-    BULLY(25, 25, 25, 10, 10, 10, 10, 10, 10, createBullyWeaponsMap(), createBullyArmorMaps()),
-    RASCAL(10, 10, 10, 25, 25, 25, 10, 10, 10, createRascalWeaponsMap(), createRascalArmorMaps()),
-    ADEPT(10, 10, 10, 10, 10, 10, 25, 25, 25, createAdeptWeaponsMap(), createAdeptArmorMaps()),
-    FANATIC(50, 40, 50, 20, 30, 30, 20, 35, 20, createFanaticWeaponsMap(), createFanaticArmorMaps()),
-    WIZARD(20, 25, 25, 30, 20, 35, 50, 50, 40, createWizardWeaponsMap(), createWizardArmorMaps());
+    BULLY(25, 25, 25, 10, 10, 10, 10, 10, 10, createBullyWeaponsMap(), createBullyArmorMaps(), 'S'),
+    RASCAL(10, 10, 10, 25, 25, 25, 10, 10, 10, createRascalWeaponsMap(), createRascalArmorMaps(), 'D'),
+    ADEPT(10, 10, 10, 10, 10, 10, 25, 25, 25, createAdeptWeaponsMap(), createAdeptArmorMaps(), 'M'),
+    FANATIC(50, 40, 50, 20, 30, 30, 20, 35, 20, createFanaticWeaponsMap(), createFanaticArmorMaps(), 'S'),
+    WIZARD(20, 25, 25, 30, 20, 35, 50, 50, 40, createWizardWeaponsMap(), createWizardArmorMaps(), 'M');
 
     private int strength;
     private int durability;
@@ -28,9 +28,10 @@ public enum CharacterClass {
     private int charisma;
     private Map<Weapon, Double> weaponsMap;
     private List<Map<Armor, Double>> armorMaps;
+    private char portaitLetter;
 
     CharacterClass(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int charisma,
-                   Map<Weapon, Double> weaponsMap, List<Map<Armor, Double>> armorMaps) {
+                   Map<Weapon, Double> weaponsMap, List<Map<Armor, Double>> armorMaps, char portaitLetter) {
         this.strength = strength;
         this.durability = durability;
         this.stamina = stamina;
@@ -42,6 +43,7 @@ public enum CharacterClass {
         this.charisma = charisma;
         this.weaponsMap = weaponsMap;
         this.armorMaps = armorMaps;
+        this.portaitLetter = portaitLetter;
     }
 
     private static Map<Weapon, Double> createBullyWeaponsMap(){
@@ -384,5 +386,9 @@ public enum CharacterClass {
 
     public List<Map<Armor, Double>> getArmorMaps() {
         return armorMaps;
+    }
+
+    public char getPortaitLetter() {
+        return portaitLetter;
     }
 }

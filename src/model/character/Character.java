@@ -1,6 +1,7 @@
 package model.character;
 
 import javafx.geometry.Point2D;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import model.StatsCalculator;
 import model.armor.Armor;
@@ -14,6 +15,7 @@ import java.util.List;
 public class Character {
 
     private String name;
+    private boolean male;
     private Color color;
     private CharacterType type;
     private CharacterClass charClass;
@@ -25,6 +27,8 @@ public class Character {
     private Armor[] armor;
     private int chosenWeapon = 0;
 
+
+    private Image portrait;
     private CharState state = CharState.IDLE;
     private Point2D precisePosition;
     private double direction;
@@ -46,13 +50,16 @@ public class Character {
     public Character() {
     }
 
-    public Character(String name, Color color, CharacterType type, CharacterClass charClass, Point position, int direction) {
+    public Character(String name, boolean male, Color color, CharacterType type, CharacterClass charClass, Point position, int direction) {
         this.name = name;
+        this.male = male;
         this.color = color;
         this.type = type;
         this.charClass = charClass;
         precisePosition = new Point2D(position.x, position.y);
         this.direction = direction;
+
+        portrait = CharLoader.loadPortrait(this);
     }
 
 
@@ -77,6 +84,10 @@ public class Character {
         this.name = name;
     }
 
+    public boolean isMale() {
+        return male;
+    }
+
     public Color getColor() {
         return color;
     }
@@ -84,6 +95,14 @@ public class Character {
         this.color = color;
     }
 
+
+    public Image getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(Image portrait) {
+        this.portrait = portrait;
+    }
 
     public CharState getState() {
         return state;
@@ -384,6 +403,13 @@ public class Character {
     }
     public void setLoad(int load){
         currentSA.load = load;
+    }
+
+    public int getCurrentLoad(){
+        return currentSA.currentLoad;
+    }
+    public void setCurrentLoad(int currentLoad){
+        currentSA.currentLoad = currentLoad;
     }
 
     public double getSpeed(){

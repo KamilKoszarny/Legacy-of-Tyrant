@@ -111,7 +111,7 @@ public class IsoViewController {
     );
         List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
 
-        return new Panel(charLabels, charBars);
+        return new Panel(charLabels, charBars, charPictRect);
     }
 
     @FXML

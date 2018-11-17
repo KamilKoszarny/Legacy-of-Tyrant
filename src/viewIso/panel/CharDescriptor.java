@@ -3,6 +3,7 @@ package viewIso.panel;
 import controller.isoView.isoPanel.Panel;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.paint.ImagePattern;
 import model.character.Character;
 
 import java.lang.reflect.InvocationTargetException;
@@ -22,26 +23,33 @@ public class CharDescriptor {
     public void refresh() {
         List<Character> chosenCharacters = calcChosenCharacters();
         if (chosenCharacters.size() == 1) {
-            refreshLabels(chosenCharacters.get(0));
-            refreshBars(chosenCharacters.get(0));
+            Character firstChosenCharacter = chosenCharacters.get(0);
+            refreshLabels(firstChosenCharacter);
+            refreshBars(firstChosenCharacter);
+            refreshPortrait(firstChosenCharacter);
         }
     }
 
+    private void refreshPortrait(Character character) {
+        panel.getPortraitRect().setFill(new ImagePattern(character.getPortrait()));
+    }
+
     private void refreshBars(Character character) {
-        int baseWidth = (int) panel.getCharBars().get(0).getPrefWidth();
+        double baseWidth = panel.getCharBars().get(0).getPrefWidth();
+        baseWidth = 160;
         ProgressBar hpBar = panel.getCharBars().get(0), manaBar = panel.getCharBars().get(1), vigorBar = panel.getCharBars().get(2);
 
         hpBar.setMinWidth(baseWidth * character.getHitPoints() / 100.);
         hpBar.setMaxWidth(baseWidth * character.getHitPoints() / 100.);
-        hpBar.setTranslateY(baseWidth / 2 - hpBar.getWidth() / 2);
+        hpBar.setTranslateY(baseWidth / 2 - hpBar.getMinWidth() / 2);
         hpBar.setProgress((double)character.getCurrentHitPoints() / (double)character.getHitPoints());
         manaBar.setMinWidth(baseWidth * character.getMana() * 5 / 100.);
         manaBar.setMaxWidth(baseWidth * character.getMana() * 5 / 100.);
-        manaBar.setTranslateY(baseWidth / 2 - manaBar.getWidth() / 2);
+        manaBar.setTranslateY(baseWidth / 2 - manaBar.getMinWidth() / 2);
         manaBar.setProgress((double)character.getCurrentMana() / (double)character.getMana());
         vigorBar.setMinWidth(baseWidth * character.getVigor() / 100.);
         vigorBar.setMaxWidth(baseWidth * character.getVigor() / 100.);
-        vigorBar.setTranslateY(baseWidth / 2 - vigorBar.getWidth() / 2);
+        vigorBar.setTranslateY(baseWidth / 2 - vigorBar.getMinWidth() / 2);
         vigorBar.setProgress((double)character.getCurrentVigor() / (double)character.getVigor());
 
 //        for (ProgressBar bar: panel.getCharBars()) {

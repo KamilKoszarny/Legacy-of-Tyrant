@@ -116,6 +116,7 @@ public class StatsCalculator {
         }
 
         character.setLoad(character.getStrength());
+        character.setCurrentLoad(character.getStrength() / 2);
 
         updateVimAndHP(character);
     }

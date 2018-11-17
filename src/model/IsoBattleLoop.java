@@ -69,7 +69,6 @@ public class IsoBattleLoop extends AnimationTimer{
     private void animate() {
         battle.updateCharacters(FRAME_RATE);
         isoViewer.draw();
-        panelViewer.refresh();
     }
 
 
@@ -82,7 +81,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private void handleCanvasLClick(){
         if (charsDrawer.isOtherCharClicked(canvasLClickPoint, battle.getChosenCharacter())) {
             battle.chooseCharacter(charsDrawer.getClickedCharacter());
-
+            panelViewer.refresh();
         } else {
             clickedMapPoint = MapDrawCalculator.mapPointByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {

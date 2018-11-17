@@ -10,6 +10,7 @@ public class SecondaryAttributes {
     public int vigor = -999;
     public int currentVigor = -999;
     public int load;
+    public int currentLoad;
     public double speed;
     public double attackSpeed;
     public double range;

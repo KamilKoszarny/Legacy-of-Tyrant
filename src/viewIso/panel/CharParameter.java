@@ -19,7 +19,7 @@ public enum CharParameter {
     KNO("knowledge", "KNO: ", "", ""),
     FOC("focus", "FOC: ", "", ""),
     SPI("spirit", "SPI: ", "", ""),
-    LOAD("load", "load: ", "", ""),
+    LOAD("load", "", "", "", true),
     SPEED("speed", "mSpeed: ", "", ""),
     ATT_SPEED("attackSpeed", "aSpeed: ", "", ""),
     RANGE("range", "range: ", "", ""),
