@@ -168,7 +168,7 @@ public class StatsCalculator {
 
     public static void updateDexterityAndSpeed(Character character) {
         character.setDexterity((character.getArm() + character.getEye() + character.getAgility()) / 3);
-        character.setSpeed(character.getDexterity() / 25.);
+        character.setSpeed(1 + character.getDexterity() / 50.);
     }
 
     private static void calcAndSetSAByKnowledge(Character character){

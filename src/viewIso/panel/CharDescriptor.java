@@ -40,6 +40,14 @@ public class CharDescriptor {
         refreshEqRect(character, panel.getSpareWeaponRect(), character.getSpareWeapon().getImage());
         refreshEqRect(character, panel.getHelmetRect(), character.getHelmet().getImage());
         refreshEqRect(character, panel.getArmorRect(), character.getBodyArmorItem().getImage());
+        refreshEqRect(character, panel.getShieldRect(), character.getShield().getImage());
+        refreshEqRect(character, panel.getGlovesRect(), character.getGloves().getImage());
+        refreshEqRect(character, panel.getBootsRect(), character.getBoots().getImage());
+        refreshEqRect(character, panel.getBeltRect(), character.getBelt().getImage());
+        refreshEqRect(character, panel.getAmuletRect(), character.getAmulet().getImage());
+        refreshEqRect(character, panel.getRing1Rect(), character.getRing1().getImage());
+        refreshEqRect(character, panel.getRing2Rect(), character.getRing2().getImage());
+        refreshEqRect(character, panel.getSpareShieldRect(), character.getSpareShield().getImage());
     }
 
     private void refreshEqRect(Character character, Rectangle rectangle, Image image) {
@@ -49,6 +57,7 @@ public class CharDescriptor {
     }
 
     private void refreshPortrait(Character character) {
+        panel.getCharPortraitBackgroundRect().setFill(character.getColor());
         panel.getPortraitRect().setFill(new ImagePattern(character.getPortrait()));
     }
 

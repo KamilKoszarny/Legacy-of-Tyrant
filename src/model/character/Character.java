@@ -304,6 +304,18 @@ public class Character {
     public Belt getBelt() {
         return (Belt) armor[5];
     }
+    public Amulet getAmulet() {
+        return (Amulet) armor[6];
+    }
+    public Ring getRing1() {
+        return (Ring) armor[7];
+    }
+    public Ring getRing2() {
+        return (Ring) armor[8];
+    }
+    public Shield getSpareShield() {
+        return (Shield) armor[9];
+    }
 
     public int getChosenWeapon() {
         return chosenWeapon;

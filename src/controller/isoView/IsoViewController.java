@@ -39,7 +39,7 @@ public class IsoViewController {
     @FXML
     private HBox panelHBox;
     @FXML
-    private Rectangle charPictRect;
+    private Rectangle charPictRect, charPictBackgroundRect;
     @FXML
     private javafx.scene.control.Label nameLabel, typeLabel, charClassLabel;
     @FXML
@@ -111,7 +111,7 @@ public class IsoViewController {
     );
         List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
 
-        return new Panel(charLabels, charBars, charPictRect,
+        return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
                 helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
                 amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect);
     }

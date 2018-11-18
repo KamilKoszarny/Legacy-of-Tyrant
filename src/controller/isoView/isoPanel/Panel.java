@@ -10,13 +10,17 @@ public class Panel {
 
     private List<Label> charLabels;
     private List<ProgressBar> charBars;
-    private Rectangle portraitRect;
+    private Rectangle portraitRect, charPictBackgroundRect;
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
 
-    public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect, Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect, Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect) {
+    public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
+                 Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
+                 Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
+                 Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
+        this.charPictBackgroundRect = charPictBackgroundRect;
         this.helmetRect = helmetRect;
         this.weaponRect = weaponRect;
         this.armorRect = armorRect;
@@ -41,6 +45,10 @@ public class Panel {
 
     public Rectangle getPortraitRect() {
         return portraitRect;
+    }
+
+    public Rectangle getCharPortraitBackgroundRect() {
+        return charPictBackgroundRect;
     }
 
     public Rectangle getHelmetRect() {

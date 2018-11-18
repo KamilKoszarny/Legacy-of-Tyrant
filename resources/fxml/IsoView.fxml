@@ -21,7 +21,12 @@
          <children>
             <VBox fx:id="charBasicsVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Rectangle fx:id="charPictRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle fx:id="charPictBackgroundRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                        <Rectangle fx:id="charPictRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="100.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+                     </children>
+                  </StackPane>
                   <Label fx:id="nameLabel" text="NAME" />
                   <Label fx:id="typeLabel" text="TYPE" />
                   <Label fx:id="charClassLabel" text="CLASS" />
@@ -176,8 +181,16 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
-                  <Label fx:id="loadLabel" text="load" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="load: " />
+                        <Label fx:id="loadLabel" text="load" />
+                     </children>
+                  </HBox>
                </children>
+               <HBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </HBox.margin>
             </VBox>
             <VBox fx:id="charSAVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>

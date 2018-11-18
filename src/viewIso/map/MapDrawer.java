@@ -37,9 +37,9 @@ public class MapDrawer {
         long time = System.nanoTime();
         mapImage = MapImageGenerator.generateMapPreImage();
         System.out.println("mapPreImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
-//        time = System.nanoTime();
-//        mapImage = MapImageGenerator.generateMapImage();
-//        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+        mapImage = MapImageGenerator.generateMapImage();
+        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
 //        time = System.nanoTime();
     }
 

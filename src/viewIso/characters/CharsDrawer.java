@@ -101,7 +101,7 @@ public class CharsDrawer {
         for (Character character: characters) {
             Label label = new Label(character.getName().toUpperCase());
             label.setFont(new Font("SansSerif", 20));
-            label.setTextFill(Color.GOLD);
+            label.setTextFill(character.getColor());
             label.setEffect(new DropShadow(.5f, 1.f, 1.f, Color.BLACK));
             label.setCache(true);
 

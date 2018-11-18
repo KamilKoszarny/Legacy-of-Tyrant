@@ -1,8 +1,12 @@
 package model.items.armor;
 
+import javafx.scene.image.Image;
+import model.items.ItemsLoader;
+
 public enum Shield implements Armor{
 
     NOTHING(0, 0, 0),
+    BLOCKED(0, 0, 0),
     WOODEN_SHIELD(10, 0, 5),
     BUCKLER(15, 0, 12),
     TARGE(15, 1, 15),
@@ -17,11 +21,16 @@ public enum Shield implements Armor{
     DRAGON_SHIELD(35, 3, 50);
 
     private int block, dmg, durability;
+    private Image image;
+    private String name;
 
     Shield(int block, int dmg, int durability) {
         this.block = block;
         this.dmg = dmg;
         this.durability = durability;
+
+        image = ItemsLoader.loadItemImage("/items/shields/" + this.name() + ".png");
+        name = ItemsLoader.setItemName(this.name());
     }
 
     public int getBlock() {
@@ -34,5 +43,13 @@ public enum Shield implements Armor{
 
     public int getDurability() {
         return durability;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public String getName() {
+        return name;
     }
 }
