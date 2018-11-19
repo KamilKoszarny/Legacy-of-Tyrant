@@ -51,6 +51,8 @@ public class IsoViewController {
     @FXML
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     @FXML
+    private Rectangle catchedItemRect;
+    @FXML
     private GridPane inventoryGridPane, defenceGridPane;
     @FXML
     private Label loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel;
@@ -66,7 +68,7 @@ public class IsoViewController {
         openWindow(primaryStage);
 
         isoViewer = new IsoViewer(map, mapCanvas, characters);
-        panelViewer = new PanelViewer(preparePanel(), characters);
+        panelViewer = new PanelViewer(preparePanel(), characters, isoBattleLoop.getBattle());
 
         new IsoMapMoveController(mapCanvas, groupBorderCanvases(), panelHBox, isoBattleLoop).initialize();
         new IsoMapClickController(mapCanvas, isoBattleLoop, characters).initialize();
@@ -111,9 +113,14 @@ public class IsoViewController {
     );
         List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
 
+        List<Rectangle> itemRectangles = Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect,
+                glovesRect, bootsRect, beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
+        IsoMapClickController.setItemRectangles(itemRectangles);
+
+
         return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
                 helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
-                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect);
+                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, catchedItemRect);
     }
 
     @FXML

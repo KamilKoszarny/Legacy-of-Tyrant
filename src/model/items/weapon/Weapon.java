@@ -1,9 +1,10 @@
 package model.items.weapon;
 
 import javafx.scene.image.Image;
+import model.items.Item;
 import model.items.ItemsLoader;
 
-public enum Weapon {
+public enum Weapon implements Item{
     NOTHING(            1, 1, .6, .4,       1, 0, 0, 10000),
 
     //swords

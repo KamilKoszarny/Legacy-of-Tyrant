@@ -1,4 +1,7 @@
 package model.items.armor;
 
-public interface Armor {
+
+import model.items.Item;
+
+public interface Armor extends Item {
 }

@@ -274,6 +274,9 @@ public class Character {
     public Weapon getWeapon(){
         return weapons[chosenWeapon];
     }
+    public void setWeapon(Weapon weapon){
+        weapons[chosenWeapon] = weapon;
+    }
 
     public Weapon getSpareWeapon() {
         return weapons[(chosenWeapon + 1)%2];
@@ -281,6 +284,9 @@ public class Character {
 
     public Armor[] getArmor() {
         return armor;
+    }
+    public Armor getArmorPart(int partNo) {
+        return armor[partNo];
     }
     public void setArmor(Armor[] armor) {
         this.armor = armor;

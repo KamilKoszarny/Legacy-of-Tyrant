@@ -16,8 +16,7 @@ public class ItemsLoader {
     }
 
     public static String setItemName(String enumName) {
-        String name = enumName.substring(0 , 1) + enumName.substring(1, enumName.length()).toLowerCase();
-        name = name.replace('_', ' ');
+        String name = enumName.replace('_', ' ');
         return name;
     }
 }

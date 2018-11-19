@@ -12,11 +12,13 @@ public class Panel {
     private List<ProgressBar> charBars;
     private Rectangle portraitRect, charPictBackgroundRect;
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
+    private Rectangle catchedItemRect;
 
     public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
                  Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
-                 Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect) {
+                 Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
+                 Rectangle catchedItemRect) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
@@ -33,6 +35,8 @@ public class Panel {
         this.ring2Rect = ring2Rect;
         this.spareWeaponRect = spareWeaponRect;
         this.spareShieldRect = spareShieldRect;
+        this.catchedItemRect = catchedItemRect;
+        catchedItemRect.setVisible(false);
     }
 
     public List<Label> getCharLabels() {
@@ -97,5 +101,9 @@ public class Panel {
 
     public Rectangle getSpareShieldRect() {
         return spareShieldRect;
+    }
+
+    public Rectangle getCatchedItemRect() {
+        return catchedItemRect;
     }
 }

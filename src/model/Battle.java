@@ -1,8 +1,10 @@
 package model;
 
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import model.actions.DoorActioner;
 import model.character.StatsCalculator;
+import model.items.Item;
 import model.items.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
@@ -14,6 +16,7 @@ import model.map.heights.MapHeightType;
 import model.map.mapObjects.MapObject;
 import model.items.weapon.Weapon;
 import viewIso.characters.CharsDrawer;
+import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -26,6 +29,7 @@ public class Battle {
     private List<Character> characters;
     private Character chosenCharacter;
     private int timer = 0;
+    private Item catchedItem = null;
 
     public Battle() {
         initMap();
@@ -72,14 +76,6 @@ public class Battle {
         MapGridCalc.regenerateGridGraph(map, map.getPoints().keySet(), characters);
     }
 
-    public Map getMap() {
-        return map;
-    }
-
-    public List<Character> getCharacters() {
-        return characters;
-    }
-
     public void chooseCharacter(Character clickedCharacter) {
         for (Character character: characters) {
             character.setChosen(false);
@@ -109,10 +105,6 @@ public class Battle {
         }
     }
 
-    public Character getChosenCharacter() {
-        return chosenCharacter;
-    }
-
     public void openDoor(MapObject object){
         DoorActioner.openDoor(object, map, characters);
     }
@@ -121,7 +113,42 @@ public class Battle {
         DoorActioner.closeDoor(object, map, characters);
     }
 
+    public Item catchItem(int clickedItemNo, Point clickedItemPoint) {
+        if (clickedItemNo == 0) {
+            catchedItem = chosenCharacter.getWeapon();
+            if (catchedItem == Weapon.NOTHING) return null;
+            chosenCharacter.setWeapon(Weapon.NOTHING);
+        } else if (clickedItemNo == 1) {
+            catchedItem = chosenCharacter.getSpareWeapon();
+            if (catchedItem == Weapon.NOTHING) return null;
+        } else {
+            catchedItem = chosenCharacter.getArmorPart(clickedItemNo - 2);
+            if (catchedItem.getName().equals("NOTHING")) return null;
+        }
+
+
+
+        System.out.println(catchedItem);
+        return catchedItem;
+    }
+
     public void incrementTimer() {
         timer++;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+
+    public Character getChosenCharacter() {
+        return chosenCharacter;
+    }
+
+    public Item getCatchedItem() {
+        return catchedItem;
     }
 }

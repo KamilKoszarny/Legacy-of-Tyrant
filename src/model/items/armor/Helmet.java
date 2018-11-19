@@ -43,4 +43,9 @@ public enum Helmet implements Armor{
     public Image getImage() {
         return image;
     }
+
+    @Override
+    public String getName() {
+        return name;
+    }
 }
