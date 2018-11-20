@@ -1,10 +1,10 @@
 package controller.isoView.isoMap;
 
-import controller.isoView.isoPanel.ItemMoveController;
-import javafx.event.EventHandler;
+import controller.isoView.isoPanel.Panel;
+import helpers.my.GeomerticHelper;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import model.IsoBattleLoop;
 import model.character.Character;
@@ -17,10 +17,11 @@ public class IsoMapClickController {
 
     private IsoBattleLoop isoBattleLoop;
     private Canvas mapCanvas;
-    private static List<Rectangle> itemRectangles;
+    private Panel panel;
 
-    public IsoMapClickController(Canvas mapCanvas, IsoBattleLoop isoBattleLoop, List<Character> characters) {
+    public IsoMapClickController(Canvas mapCanvas, Panel panel, IsoBattleLoop isoBattleLoop, List<Character> characters) {
         this.mapCanvas = mapCanvas;
+        this.panel = panel;
         this.isoBattleLoop = isoBattleLoop;
     }
 
@@ -42,16 +43,27 @@ public class IsoMapClickController {
     }
 
     private void initItemClick() {
-        for (Rectangle rectangle: itemRectangles) {
+        for (Rectangle rectangle: panel.getItemRectangles()) {
             rectangle.setOnMouseClicked(mouseEvent -> {
-                isoBattleLoop.setClickedItemNo(itemRectangles.indexOf(rectangle));
+                isoBattleLoop.setClickedItemNo(panel.getItemRectangles().indexOf(rectangle));
                 isoBattleLoop.setClickedItemPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
+                isoBattleLoop.setItemCatch(true);
                 isoBattleLoop.setItemClickFlag(true);
             });
         }
-    }
 
-    public static void setItemRectangles(List<Rectangle> itemRectangles) {
-        IsoMapClickController.itemRectangles = itemRectangles;
+        panel.getCatchedItemRect().setOnMouseClicked(mouseEvent -> {
+            Rectangle itemRectangle = null;
+            for (Rectangle rectangle: panel.getItemRectangles()) {
+                Point clickPoint = MouseInfo.getPointerInfo().getLocation();
+                Rectangle screenRectangle = GeomerticHelper.screenRectangle(rectangle);
+                if (screenRectangle.contains(new Point2D(clickPoint.x, clickPoint.y)))
+                    itemRectangle = rectangle;
+            }
+            if (itemRectangle != null)
+                isoBattleLoop.setClickedItemNo(panel.getItemRectangles().indexOf(itemRectangle));
+            isoBattleLoop.setItemCatch(false);
+            isoBattleLoop.setItemClickFlag(true);
+        });
     }
 }

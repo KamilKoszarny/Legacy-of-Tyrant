@@ -5,6 +5,7 @@ import javafx.scene.shape.Rectangle;
 import model.actions.DoorActioner;
 import model.character.StatsCalculator;
 import model.items.Item;
+import model.items.ItemsCalculator;
 import model.items.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
@@ -113,20 +114,46 @@ public class Battle {
         DoorActioner.closeDoor(object, map, characters);
     }
 
-    public Item catchItem(int clickedItemNo, Point clickedItemPoint) {
+    public Item catchItem(int clickedItemNo, Point clickedItemPoint, boolean itemCatch) {
         if (clickedItemNo == 0) {
-            catchedItem = chosenCharacter.getWeapon();
-            if (catchedItem == Weapon.NOTHING) return null;
-            chosenCharacter.setWeapon(Weapon.NOTHING);
+            if (itemCatch) {
+                catchedItem = chosenCharacter.getWeapon();
+                if (catchedItem == Weapon.NOTHING)
+                    return null;
+                chosenCharacter.setWeapon(Weapon.NOTHING);
+            } else {
+                if (catchedItem.getClass().equals(Weapon.class)) {
+                    chosenCharacter.setWeapon((Weapon) catchedItem);
+                    catchedItem = null;
+                }
+            }
         } else if (clickedItemNo == 1) {
-            catchedItem = chosenCharacter.getSpareWeapon();
-            if (catchedItem == Weapon.NOTHING) return null;
+            if (itemCatch) {
+                catchedItem = chosenCharacter.getSpareWeapon();
+                if (catchedItem == Weapon.NOTHING)
+                    return null;
+                chosenCharacter.setSpareWeapon(Weapon.NOTHING);
+            } else {
+                if (catchedItem.getClass().equals(Weapon.class)) {
+                    chosenCharacter.setSpareWeapon((Weapon) catchedItem);
+                    catchedItem = null;
+                }
+            }
         } else {
-            catchedItem = chosenCharacter.getArmorPart(clickedItemNo - 2);
-            if (catchedItem.getName().equals("NOTHING")) return null;
+            int armorNo = clickedItemNo - 2;
+            if (itemCatch) {
+                catchedItem = chosenCharacter.getArmorPart(armorNo);
+                if (catchedItem.getName().equals("NOTHING"))
+                    return null;
+
+                chosenCharacter.setArmorPart((Armor) ItemsCalculator.getNothingItemByArmorNo(armorNo), armorNo);
+            } else {
+                if (catchedItem.getClass().equals(chosenCharacter.getArmorPart(armorNo).getClass())) {
+                    chosenCharacter.setArmorPart((Armor) catchedItem, armorNo);
+                    catchedItem = null;
+                }
+            }
         }
-
-
 
         System.out.println(catchedItem);
         return catchedItem;

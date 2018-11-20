@@ -6,7 +6,6 @@ import model.map.Map;
 import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
-import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.List;
@@ -14,8 +13,6 @@ import java.util.List;
 
 public class IsoViewer {
     private MapDrawer mapDrawer;
-    private CharsDrawer charsDrawer;
-    private MapObjectDrawer mapObjectDrawer;
     private ClickMenusDrawer clickMenusDrawer;
     private SpritesDrawer spritesDrawer;
     private boolean cutView = false;

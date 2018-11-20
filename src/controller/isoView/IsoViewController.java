@@ -51,7 +51,7 @@ public class IsoViewController {
     @FXML
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     @FXML
-    private Rectangle catchedItemRect;
+    private Rectangle caughtItemRect;
     @FXML
     private GridPane inventoryGridPane, defenceGridPane;
     @FXML
@@ -67,11 +67,12 @@ public class IsoViewController {
         this.isoBattleLoop = isoBattleLoop;
         openWindow(primaryStage);
 
+        Panel panel = preparePanel();
         isoViewer = new IsoViewer(map, mapCanvas, characters);
-        panelViewer = new PanelViewer(preparePanel(), characters, isoBattleLoop.getBattle());
+        panelViewer = new PanelViewer(panel, characters, caughtItemRect);
 
         new IsoMapMoveController(mapCanvas, groupBorderCanvases(), panelHBox, isoBattleLoop).initialize();
-        new IsoMapClickController(mapCanvas, isoBattleLoop, characters).initialize();
+        new IsoMapClickController(mapCanvas, panel, isoBattleLoop, characters).initialize();
         new IsoMapHoverController(mapCanvas, isoBattleLoop, characters).initialize();
         new IsoMapKeyController(mapCanvas.getScene(), isoViewer, isoBattleLoop).initiazile();
         new PanelController(panelHBox).initialize();
@@ -115,12 +116,11 @@ public class IsoViewController {
 
         List<Rectangle> itemRectangles = Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect,
                 glovesRect, bootsRect, beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
-        IsoMapClickController.setItemRectangles(itemRectangles);
 
 
         return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
                 helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
-                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, catchedItemRect);
+                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, caughtItemRect);
     }
 
     @FXML

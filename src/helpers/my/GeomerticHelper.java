@@ -1,5 +1,7 @@
 package helpers.my;
 
+import javafx.geometry.Bounds;
+import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import model.map.MapPiece;
 
@@ -236,5 +238,15 @@ public class GeomerticHelper {
             currentPoint = new Point(currentPoint.x - 1, currentPoint.y);
 
         return currentPoint;
+    }
+
+    public static Rectangle screenRectangle(javafx.scene.shape.Rectangle rectangle) {
+        Bounds itemRectLocalBounds = rectangle.getBoundsInLocal();
+        Bounds itemRectScreenBounds = rectangle.localToScreen(itemRectLocalBounds);
+        int x = (int) itemRectScreenBounds.getMinX();
+        int y = (int) itemRectScreenBounds.getMinY();
+        int width = (int) itemRectScreenBounds.getWidth();
+        int height = (int) itemRectScreenBounds.getHeight();
+        return new Rectangle(x, y, width, height);
     }
 }

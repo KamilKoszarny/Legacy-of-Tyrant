@@ -3,7 +3,6 @@ package model;
 import controller.isoView.isoMap.IsoMapMoveController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.Alert;
-import javafx.scene.shape.Rectangle;
 import model.items.Item;
 import model.map.MapPiece;
 import model.map.buildings.Door;
@@ -25,7 +24,8 @@ public class IsoBattleLoop extends AnimationTimer{
     private Battle battle;
     private boolean mapMoveFlag = false;
     private Point mapMove = new Point(0, 0);
-    private boolean canvasLClickFlag = false, canvasRClickFlag = false, canvasHoverFlag = false, itemClickFlag = false;
+    private boolean canvasLClickFlag = false, canvasRClickFlag = false, canvasHoverFlag = false, itemClickFlag = false,
+                    itemCatch = false;
     private Point canvasLClickPoint, canvasRClickPoint, canvasHoverPoint = new Point(0, 0);
     private Point clickedMapPoint;
     private int clickedItemNo;
@@ -72,6 +72,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private void animate() {
         battle.updateCharacters(FRAME_RATE);
         isoViewer.draw();
+        panelViewer.refresh();
     }
 
 
@@ -84,7 +85,6 @@ public class IsoBattleLoop extends AnimationTimer{
     private void handleCanvasLClick(){
         if (charsDrawer.isOtherCharClicked(canvasLClickPoint, battle.getChosenCharacter())) {
             battle.chooseCharacter(charsDrawer.getClickedCharacter());
-            panelViewer.refresh();
         } else {
             clickedMapPoint = MapDrawCalculator.mapPointByClickPoint(canvasLClickPoint);
             if (battle.getChosenCharacter() != null && clickedMapPoint != null) {
@@ -111,10 +111,9 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleItemClick() {
-        Item catchedItem = battle.catchItem(clickedItemNo, clickedItemPoint);
-        panelViewer.setCatchItem(catchedItem);
+        Item caughtItem = battle.catchItem(clickedItemNo, clickedItemPoint, itemCatch);
+        panelViewer.setCatchItem(caughtItem);
         panelViewer.setCatchPoint(clickedItemPoint);
-        panelViewer.refresh();
         itemClickFlag = false;
     }
 
@@ -179,6 +178,7 @@ public class IsoBattleLoop extends AnimationTimer{
         this.start();
     }
 
+
     public void setCanvasLClickFlag(boolean canvasLClickFlag) {
         this.canvasLClickFlag = canvasLClickFlag;
     }
@@ -211,6 +211,10 @@ public class IsoBattleLoop extends AnimationTimer{
         this.clickedItemPoint = clickedItemPoint;
     }
 
+    public void setItemCatch(boolean itemCatch) {
+        this.itemCatch = itemCatch;
+    }
+
     public void setCanvasHoverPoint(Point canvasHoverPoint) {
         this.canvasHoverPoint = canvasHoverPoint;
     }
@@ -221,9 +225,5 @@ public class IsoBattleLoop extends AnimationTimer{
         mapDrawer = isoViewer.getMapDrawer();
         charsDrawer = isoViewer.getCharsDrawer();
         clickMenusDrawer = isoViewer.getClickMenusDrawer();
-    }
-
-    public Battle getBattle() {
-        return battle;
     }
 }

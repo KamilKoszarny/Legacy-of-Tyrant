@@ -4,6 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.shape.Rectangle;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Panel {
@@ -18,7 +19,7 @@ public class Panel {
                  Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
                  Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
                  Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
-                 Rectangle catchedItemRect) {
+                 Rectangle caughtItemRect) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
@@ -35,8 +36,8 @@ public class Panel {
         this.ring2Rect = ring2Rect;
         this.spareWeaponRect = spareWeaponRect;
         this.spareShieldRect = spareShieldRect;
-        this.catchedItemRect = catchedItemRect;
-        catchedItemRect.setVisible(false);
+        this.catchedItemRect = caughtItemRect;
+        caughtItemRect.setVisible(false);
     }
 
     public List<Label> getCharLabels() {
@@ -101,6 +102,11 @@ public class Panel {
 
     public Rectangle getSpareShieldRect() {
         return spareShieldRect;
+    }
+
+    public List<Rectangle> getItemRectangles() {
+        return Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect,
+                glovesRect, bootsRect, beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
     }
 
     public Rectangle getCatchedItemRect() {

@@ -282,14 +282,21 @@ public class Character {
         return weapons[(chosenWeapon + 1)%2];
     }
 
+    public void setSpareWeapon(Weapon weapon){
+        weapons[(chosenWeapon + 1)%2] = weapon;
+    }
+
     public Armor[] getArmor() {
         return armor;
+    }
+    public void setArmor(Armor[] armor) {
+        this.armor = armor;
     }
     public Armor getArmorPart(int partNo) {
         return armor[partNo];
     }
-    public void setArmor(Armor[] armor) {
-        this.armor = armor;
+    public void setArmorPart(Armor armor, int partNo) {
+        this.armor[partNo] = armor;
     }
 
     public Shield getShield() {
