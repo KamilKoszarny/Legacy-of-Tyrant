@@ -15,7 +15,7 @@ public class PanelViewer {
     private Panel panel;
     private CharDescriptor charDescriptor;
     private Rectangle caughtItemRect;
-    Item catchItem;
+    Item heldItem;
     Point catchPoint;
 
     public PanelViewer(Panel panel, List<Character> characters, Rectangle caughtItemRect) {
@@ -26,14 +26,14 @@ public class PanelViewer {
 
     public void refresh() {
         charDescriptor.refresh();
-        if (catchItem != null)
+        if (heldItem != null)
             drawCaughtItem();
         else
             caughtItemRect.setVisible(false);
     }
 
     private void drawCaughtItem() {
-        Image itemImage = catchItem.getImage();
+        Image itemImage = heldItem.getImage();
         caughtItemRect.setFill(new ImagePattern(itemImage));
         caughtItemRect.setX(MouseInfo.getPointerInfo().getLocation().x - catchPoint.x);
         caughtItemRect.setY(MouseInfo.getPointerInfo().getLocation().y - catchPoint.y);
@@ -42,8 +42,8 @@ public class PanelViewer {
         caughtItemRect.setVisible(true);
     }
 
-    public void setCatchItem(Item catchItem) {
-        this.catchItem = catchItem;
+    public void setHeldItem(Item heldItem) {
+        this.heldItem = heldItem;
     }
 
     public void setCatchPoint(Point catchPoint) {

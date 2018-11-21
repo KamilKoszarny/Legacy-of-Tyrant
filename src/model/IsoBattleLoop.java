@@ -99,7 +99,7 @@ public class IsoBattleLoop extends AnimationTimer{
         canvasLClickFlag = false;
     }
 
-    private void handleCanvasRClick(){
+    private void handleCanvasRClick() {
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(canvasRClickPoint);
         if (clickedMapPiece != null)
             showMapPieceInfo(clickedMapPiece);
@@ -111,8 +111,9 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleItemClick() {
-        Item caughtItem = battle.catchItem(clickedItemNo, clickedItemPoint, itemCatch);
-        panelViewer.setCatchItem(caughtItem);
+        System.out.println(itemCatch);
+        Item heldItem = battle.moveItem(clickedItemNo, clickedItemPoint, itemCatch);
+        panelViewer.setHeldItem(heldItem);
         panelViewer.setCatchPoint(clickedItemPoint);
         itemClickFlag = false;
     }

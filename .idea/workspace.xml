@@ -39,24 +39,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PanelViewer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/panel/PanelViewer.java">
+      <file leaf-file-name="Battle.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Panel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoPanel/Panel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1176">
-              <caret line="107" column="15" lean-forward="true" selection-start-line="107" selection-start-column="15" selection-end-line="107" selection-end-column="15" />
+            <state relative-caret-position="118">
+              <caret line="114" column="16" lean-forward="false" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="16" />
               <folding>
-                <element signature="e#3302#3303#0" expanded="true" />
-                <element signature="e#3340#3341#0" expanded="true" />
+                <element signature="method#Battle#0;class#Battle#0" expanded="false" />
+                <element signature="method#initMap#0;class#Battle#0" expanded="false" />
+                <element signature="method#chooseCharacter#0;class#Battle#0" expanded="false" />
+                <element signature="method#updateCharacters#0;class#Battle#0" expanded="false" />
+                <element signature="e#6299#6300#0" expanded="true" />
+                <element signature="e#6322#6323#0" expanded="true" />
+                <element signature="e#6349#6350#0" expanded="true" />
+                <element signature="e#6375#6376#0" expanded="true" />
+                <element signature="e#6421#6422#0" expanded="true" />
+                <element signature="e#6454#6455#0" expanded="true" />
+                <element signature="e#6499#6500#0" expanded="true" />
+                <element signature="e#6537#6538#0" expanded="true" />
+                <element signature="e#6573#6574#0" expanded="true" />
+                <element signature="e#6607#6608#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,8 +67,8 @@
       <file leaf-file-name="IsoBattleLoop.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-188">
-              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="115" column="28" lean-forward="true" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
               <folding>
                 <element signature="method#IsoBattleLoop#0;class#IsoBattleLoop#0" expanded="false" />
                 <element signature="method#handleMapMoving#0;class#IsoBattleLoop#0" expanded="false" />
@@ -76,43 +78,19 @@
                 <element signature="method#changeMapMove#0;class#IsoBattleLoop#0" expanded="false" />
                 <element signature="method#nextFrame#0;class#IsoBattleLoop#0" expanded="false" />
                 <element signature="method#showMapPieceInfo#0;class#IsoBattleLoop#0" expanded="false" />
+                <element signature="e#6887#6888#0" expanded="true" />
+                <element signature="e#6937#6938#0" expanded="true" />
                 <element signature="method#setViewersAndDrawers#0;class#IsoBattleLoop#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Battle.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="151" column="77" lean-forward="false" selection-start-line="151" selection-start-column="70" selection-end-line="151" selection-end-column="77" />
-              <folding>
-                <element signature="method#Battle#0;class#Battle#0" expanded="false" />
-                <element signature="method#initMap#0;class#Battle#0" expanded="false" />
-                <element signature="method#initCharacters#0;class#Battle#0" expanded="false" />
-                <element signature="method#chooseCharacter#0;class#Battle#0" expanded="false" />
-                <element signature="method#updateCharacters#0;class#Battle#0" expanded="false" />
-                <element signature="e#6934#6935#0" expanded="true" />
-                <element signature="e#6957#6958#0" expanded="true" />
-                <element signature="e#6984#6985#0" expanded="true" />
-                <element signature="e#7010#7011#0" expanded="true" />
-                <element signature="e#7056#7057#0" expanded="true" />
-                <element signature="e#7089#7090#0" expanded="true" />
-                <element signature="e#7134#7135#0" expanded="true" />
-                <element signature="e#7172#7173#0" expanded="true" />
-                <element signature="e#7208#7209#0" expanded="true" />
-                <element signature="e#7242#7243#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemsCalculator.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ItemsCalculator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/items/ItemsCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="98" column="18" lean-forward="true" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
+            <state relative-caret-position="288">
+              <caret line="129" column="20" lean-forward="true" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -121,30 +99,43 @@
       <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="304" column="39" lean-forward="false" selection-start-line="304" selection-start-column="39" selection-end-line="304" selection-end-column="39" />
+            <state relative-caret-position="204">
+              <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
               <folding>
                 <element signature="method#Character#0;class#Character#0" expanded="false" />
+                <element signature="method#Character#1;class#Character#0" expanded="false" />
                 <element signature="method#getPosition#0;class#Character#0" expanded="false" />
                 <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
-                <element signature="e#6873#6874#0" expanded="true" />
-                <element signature="e#6917#6918#0" expanded="true" />
-                <element signature="e#6959#6960#0" expanded="true" />
-                <element signature="e#7005#7006#0" expanded="true" />
-                <element signature="e#7143#7144#0" expanded="true" />
-                <element signature="e#7197#7198#0" expanded="true" />
-                <element signature="e#7230#7231#0" expanded="true" />
-                <element signature="e#7258#7259#0" expanded="true" />
-                <element signature="e#7378#7379#0" expanded="true" />
-                <element signature="e#7414#7415#0" expanded="true" />
-                <element signature="e#7470#7471#0" expanded="true" />
-                <element signature="e#7512#7513#0" expanded="true" />
+                <element signature="method#setWeapons#0;class#Character#0" expanded="false" />
+                <element signature="method#setWeapon#0;class#Character#0" expanded="false" />
+                <element signature="method#setSpareWeapon#0;class#Character#0" expanded="false" />
+                <element signature="method#getEquipmentPart#0;class#Character#0" expanded="false" />
+                <element signature="method#setEquipmentPart#0;class#Character#0" expanded="false" />
+                <element signature="method#setStrength#0;class#Character#0" expanded="false" />
                 <element signature="method#setDurability#0;class#Character#0" expanded="false" />
                 <element signature="method#setStamina#0;class#Character#0" expanded="false" />
+                <element signature="method#setArm#0;class#Character#0" expanded="false" />
+                <element signature="method#setEye#0;class#Character#0" expanded="false" />
+                <element signature="method#setAgility#0;class#Character#0" expanded="false" />
                 <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
                 <element signature="method#setFocus#0;class#Character#0" expanded="false" />
                 <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
                 <element signature="method#setArmor#1;class#Character#0" expanded="false" />
+                <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StatsCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/character/StatsCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="196" column="34" lean-forward="false" selection-start-line="196" selection-start-column="34" selection-end-line="196" selection-end-column="34" />
+              <folding>
+                <element signature="method#calcCharPA#0;class#StatsCalculator#0" expanded="false" />
+                <element signature="method#calcAndSetPAByTypeAndClass#0;class#StatsCalculator#0" expanded="false" />
+                <element signature="method#calcAndSetPAByType#0;class#StatsCalculator#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -156,18 +147,6 @@
             <state relative-caret-position="118">
               <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IsoMapClickController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="64" column="44" lean-forward="false" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -310,12 +289,12 @@
         <option value="$PROJECT_DIR$/src/controller/isoView/isoPanel/Panel.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
         <option value="$PROJECT_DIR$/src/helpers/my/GeomerticHelper.java" />
+        <option value="$PROJECT_DIR$/src/model/items/ItemsCalculator.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java" />
+        <option value="$PROJECT_DIR$/src/model/Battle.java" />
         <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
         <option value="$PROJECT_DIR$/src/viewIso/panel/PanelViewer.java" />
         <option value="$PROJECT_DIR$/src/model/character/Character.java" />
-        <option value="$PROJECT_DIR$/src/model/items/ItemsCalculator.java" />
-        <option value="$PROJECT_DIR$/src/model/Battle.java" />
       </list>
     </option>
   </component>
@@ -786,7 +765,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="307" />
+      <option name="time" value="308" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1084,19 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/StatsCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-          <folding>
-            <element signature="method#calcCharPA#0;class#StatsCalculator#0" expanded="false" />
-            <element signature="method#calcAndSetPAByTypeAndClass#0;class#StatsCalculator#0" expanded="false" />
-            <element signature="method#calcAndSetPAByType#0;class#StatsCalculator#0" expanded="false" />
-            <element signature="method#calcAndSetOtherSA#0;class#StatsCalculator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1227,58 +1193,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="64" column="44" lean-forward="false" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/panel/CharDescriptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-547">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-188">
-          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="method#IsoBattleLoop#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#handleMapMoving#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#handleCanvasRClick#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#handleCanvasHover#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#handleButtonAction#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#changeMapMove#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#nextFrame#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#showMapPieceInfo#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#setViewersAndDrawers#0;class#IsoBattleLoop#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/panel/PanelViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/isoView/IsoViewController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7">
@@ -1300,65 +1214,132 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="60" column="46" lean-forward="true" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/panel/CharDescriptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/StatsCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="196" column="34" lean-forward="false" selection-start-line="196" selection-start-column="34" selection-end-line="196" selection-end-column="34" />
+          <folding>
+            <element signature="method#calcCharPA#0;class#StatsCalculator#0" expanded="false" />
+            <element signature="method#calcAndSetPAByTypeAndClass#0;class#StatsCalculator#0" expanded="false" />
+            <element signature="method#calcAndSetPAByType#0;class#StatsCalculator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="114" column="16" lean-forward="false" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="16" />
+          <folding>
+            <element signature="method#Battle#0;class#Battle#0" expanded="false" />
+            <element signature="method#initMap#0;class#Battle#0" expanded="false" />
+            <element signature="method#chooseCharacter#0;class#Battle#0" expanded="false" />
+            <element signature="method#updateCharacters#0;class#Battle#0" expanded="false" />
+            <element signature="e#6299#6300#0" expanded="true" />
+            <element signature="e#6322#6323#0" expanded="true" />
+            <element signature="e#6349#6350#0" expanded="true" />
+            <element signature="e#6375#6376#0" expanded="true" />
+            <element signature="e#6421#6422#0" expanded="true" />
+            <element signature="e#6454#6455#0" expanded="true" />
+            <element signature="e#6499#6500#0" expanded="true" />
+            <element signature="e#6537#6538#0" expanded="true" />
+            <element signature="e#6573#6574#0" expanded="true" />
+            <element signature="e#6607#6608#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="115" column="28" lean-forward="true" selection-start-line="115" selection-start-column="28" selection-end-line="115" selection-end-column="28" />
+          <folding>
+            <element signature="method#IsoBattleLoop#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#handleMapMoving#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#handleCanvasRClick#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#handleCanvasHover#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#handleButtonAction#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#changeMapMove#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#nextFrame#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#showMapPieceInfo#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="e#6887#6888#0" expanded="true" />
+            <element signature="e#6937#6938#0" expanded="true" />
+            <element signature="method#setViewersAndDrawers#0;class#IsoBattleLoop#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/panel/PanelViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="45" column="27" lean-forward="true" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding>
+            <element signature="e#1408#1409#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-547">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="304" column="39" lean-forward="false" selection-start-line="304" selection-start-column="39" selection-end-line="304" selection-end-column="39" />
+        <state relative-caret-position="204">
+          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
           <folding>
             <element signature="method#Character#0;class#Character#0" expanded="false" />
+            <element signature="method#Character#1;class#Character#0" expanded="false" />
             <element signature="method#getPosition#0;class#Character#0" expanded="false" />
             <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
-            <element signature="e#6873#6874#0" expanded="true" />
-            <element signature="e#6917#6918#0" expanded="true" />
-            <element signature="e#6959#6960#0" expanded="true" />
-            <element signature="e#7005#7006#0" expanded="true" />
-            <element signature="e#7143#7144#0" expanded="true" />
-            <element signature="e#7197#7198#0" expanded="true" />
-            <element signature="e#7230#7231#0" expanded="true" />
-            <element signature="e#7258#7259#0" expanded="true" />
-            <element signature="e#7378#7379#0" expanded="true" />
-            <element signature="e#7414#7415#0" expanded="true" />
-            <element signature="e#7470#7471#0" expanded="true" />
-            <element signature="e#7512#7513#0" expanded="true" />
+            <element signature="method#setWeapons#0;class#Character#0" expanded="false" />
+            <element signature="method#setWeapon#0;class#Character#0" expanded="false" />
+            <element signature="method#setSpareWeapon#0;class#Character#0" expanded="false" />
+            <element signature="method#getEquipmentPart#0;class#Character#0" expanded="false" />
+            <element signature="method#setEquipmentPart#0;class#Character#0" expanded="false" />
+            <element signature="method#setStrength#0;class#Character#0" expanded="false" />
             <element signature="method#setDurability#0;class#Character#0" expanded="false" />
             <element signature="method#setStamina#0;class#Character#0" expanded="false" />
+            <element signature="method#setArm#0;class#Character#0" expanded="false" />
+            <element signature="method#setEye#0;class#Character#0" expanded="false" />
+            <element signature="method#setAgility#0;class#Character#0" expanded="false" />
             <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
             <element signature="method#setFocus#0;class#Character#0" expanded="false" />
             <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
             <element signature="method#setArmor#1;class#Character#0" expanded="false" />
+            <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/items/ItemsCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="98" column="18" lean-forward="true" selection-start-line="98" selection-start-column="18" selection-end-line="98" selection-end-column="18" />
+        <state relative-caret-position="288">
+          <caret line="129" column="20" lean-forward="true" selection-start-line="129" selection-start-column="20" selection-end-line="129" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="151" column="77" lean-forward="false" selection-start-line="151" selection-start-column="70" selection-end-line="151" selection-end-column="77" />
-          <folding>
-            <element signature="method#Battle#0;class#Battle#0" expanded="false" />
-            <element signature="method#initMap#0;class#Battle#0" expanded="false" />
-            <element signature="method#initCharacters#0;class#Battle#0" expanded="false" />
-            <element signature="method#chooseCharacter#0;class#Battle#0" expanded="false" />
-            <element signature="method#updateCharacters#0;class#Battle#0" expanded="false" />
-            <element signature="e#6934#6935#0" expanded="true" />
-            <element signature="e#6957#6958#0" expanded="true" />
-            <element signature="e#6984#6985#0" expanded="true" />
-            <element signature="e#7010#7011#0" expanded="true" />
-            <element signature="e#7056#7057#0" expanded="true" />
-            <element signature="e#7089#7090#0" expanded="true" />
-            <element signature="e#7134#7135#0" expanded="true" />
-            <element signature="e#7172#7173#0" expanded="true" />
-            <element signature="e#7208#7209#0" expanded="true" />
-            <element signature="e#7242#7243#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -53,15 +53,21 @@ public class IsoMapClickController {
         }
 
         panel.getCatchedItemRect().setOnMouseClicked(mouseEvent -> {
-            Rectangle itemRectangle = null;
+            Rectangle itemRectangle = null, screenRectangle = null;
+            Point clickPoint = MouseInfo.getPointerInfo().getLocation();
             for (Rectangle rectangle: panel.getItemRectangles()) {
-                Point clickPoint = MouseInfo.getPointerInfo().getLocation();
-                Rectangle screenRectangle = GeomerticHelper.screenRectangle(rectangle);
+                                screenRectangle = GeomerticHelper.screenRectangle(rectangle);
                 if (screenRectangle.contains(new Point2D(clickPoint.x, clickPoint.y)))
                     itemRectangle = rectangle;
             }
-            if (itemRectangle != null)
+            if (itemRectangle != null) {
                 isoBattleLoop.setClickedItemNo(panel.getItemRectangles().indexOf(itemRectangle));
+                screenRectangle = GeomerticHelper.screenRectangle(itemRectangle);
+                isoBattleLoop.setClickedItemPoint(
+                        new Point((int) (clickPoint.x - screenRectangle.getX()), (int) (clickPoint.y - screenRectangle.getY())));
+            } else {
+                isoBattleLoop.setClickedItemNo(-1);
+            }
             isoBattleLoop.setItemCatch(false);
             isoBattleLoop.setItemClickFlag(true);
         });

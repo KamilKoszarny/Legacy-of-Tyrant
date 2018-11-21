@@ -3,12 +3,14 @@ package model.character;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import model.items.Item;
 import model.items.armor.*;
 import model.items.weapon.Weapon;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Character {
@@ -22,10 +24,11 @@ public class Character {
     private PrimaryAttributes currentPA = new PrimaryAttributes();
     private SecondaryAttributes baseSA = new SecondaryAttributes();
     private SecondaryAttributes currentSA = new SecondaryAttributes();
-    private Weapon[] weapons;
-    private Armor[] armor;
+    private Weapon[] weapons = new Weapon[2];
+    private Armor[] armor = new Armor[10];
     private int chosenWeapon = 0;
-
+    private boolean[][] inventoryGridBlock = new boolean[5][5];
+    private List<Item> inventory = new ArrayList<>();
 
     private Image portrait;
     private CharState state = CharState.IDLE;
@@ -268,7 +271,14 @@ public class Character {
         return weapons;
     }
     public void setWeapons(Weapon[] weapons) {
-        this.weapons = weapons;
+        setWeapon(weapons[0]);
+        setSpareWeapon(weapons[1]);
+    }
+    public Armor[] getArmor() {
+        return armor;
+    }
+    public void setArmor(Armor[] armor) {
+        this.armor = armor;
     }
 
     public Weapon getWeapon(){
@@ -276,27 +286,24 @@ public class Character {
     }
     public void setWeapon(Weapon weapon){
         weapons[chosenWeapon] = weapon;
+        if (weapon.getHands() == 2)
+            setEquipmentPart(Shield.BLOCKED, 2);
+        else if (getShield().equals(Shield.BLOCKED))
+            setEquipmentPart(Shield.NOTHING, 2);
+        if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
+            setEquipmentPart(Shield.NOTHING, 2);
     }
-
     public Weapon getSpareWeapon() {
         return weapons[(chosenWeapon + 1)%2];
     }
-
     public void setSpareWeapon(Weapon weapon){
         weapons[(chosenWeapon + 1)%2] = weapon;
-    }
-
-    public Armor[] getArmor() {
-        return armor;
-    }
-    public void setArmor(Armor[] armor) {
-        this.armor = armor;
-    }
-    public Armor getArmorPart(int partNo) {
-        return armor[partNo];
-    }
-    public void setArmorPart(Armor armor, int partNo) {
-        this.armor[partNo] = armor;
+        if (weapon.getHands() == 2)
+            setEquipmentPart(Shield.BLOCKED, 11);
+        else if (getSpareShield().equals(Shield.BLOCKED))
+            setEquipmentPart(Shield.NOTHING, 11);
+        if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
+            setEquipmentPart(Shield.NOTHING, 11);
     }
 
     public Shield getShield() {
@@ -328,6 +335,21 @@ public class Character {
     }
     public Shield getSpareShield() {
         return (Shield) armor[9];
+    }
+
+    public Item getEquipmentPart(int partNo) {
+        switch (partNo) {
+            case 0: return getWeapon();
+            case 1: return getSpareWeapon();
+            default: return armor[partNo - 2];
+        }
+    }
+    public void setEquipmentPart(Item item, int partNo) {
+        switch (partNo) {
+            case 0: setWeapon((Weapon) item); break;
+            case 1: setSpareWeapon((Weapon) item); break;
+            default: this.armor[partNo - 2] = (Armor) item; break;
+        }
     }
 
     public int getChosenWeapon() {
