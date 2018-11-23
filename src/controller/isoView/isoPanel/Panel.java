@@ -1,7 +1,9 @@
 package controller.isoView.isoPanel;
 
+import helpers.my.GeomerticHelper;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Arrays;
@@ -14,12 +16,13 @@ public class Panel {
     private Rectangle portraitRect, charPictBackgroundRect;
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     private Rectangle catchedItemRect;
+    private GridPane inventoryGridPane;
 
     public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
                  Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
                  Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
-                 Rectangle caughtItemRect) {
+                 Rectangle caughtItemRect, GridPane inventoryGridPane) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
@@ -38,6 +41,7 @@ public class Panel {
         this.spareShieldRect = spareShieldRect;
         this.catchedItemRect = caughtItemRect;
         caughtItemRect.setVisible(false);
+        this.inventoryGridPane = inventoryGridPane;
     }
 
     public List<Label> getCharLabels() {
@@ -104,12 +108,16 @@ public class Panel {
         return spareShieldRect;
     }
 
-    public List<Rectangle> getItemRectangles() {
+    public List<Rectangle> getEquipmentSlots() {
         return Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect,
                 glovesRect, bootsRect, beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
     }
 
     public Rectangle getCatchedItemRect() {
         return catchedItemRect;
+    }
+
+    public Rectangle getInventoryRectangle() {
+        return GeomerticHelper.screenRectangle(inventoryGridPane);
     }
 }

@@ -120,7 +120,7 @@ public class IsoViewController {
 
         return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
                 helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
-                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, caughtItemRect);
+                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, caughtItemRect, inventoryGridPane);
     }
 
     @FXML

@@ -2,9 +2,9 @@ package model;
 
 import javafx.scene.paint.Color;
 import model.actions.DoorActioner;
+import model.actions.ItemHandler;
 import model.character.StatsCalculator;
 import model.items.Item;
-import model.items.ItemsCalculator;
 import model.items.armor.*;
 import model.character.Character;
 import model.character.CharacterClass;
@@ -112,36 +112,8 @@ public class Battle {
         DoorActioner.closeDoor(object, map, characters);
     }
 
-    public Item moveItem(int clickedItemNo, Point clickedItemPoint, boolean itemCatch) {
-        if (itemCatch) {
-            if (moveItem(clickedItemNo)) return null;
-        } else {
-            if (clickedItemNo >= 0) {
-                Item underItem = chosenCharacter.getEquipmentPart(clickedItemNo);
-                if (catchedItem.getClass().equals(underItem.getClass()) && !underItem.equals(Shield.BLOCKED)) {
-                    chosenCharacter.setEquipmentPart(catchedItem, clickedItemNo);
-                    if (!underItem.getName().equals("NOTHING"))
-                        catchedItem = underItem;
-                    else
-                        catchedItem = null;
-                }
-            } else {
-                //drop
-            }
-        }
-
-        System.out.println(catchedItem);
-        return catchedItem;
-    }
-
-    private boolean moveItem(int clickedItemNo) {
-        catchedItem = chosenCharacter.getEquipmentPart(clickedItemNo);
-        if (catchedItem.getName().equals("NOTHING") || catchedItem.getName().equals("BLOCKED")) {
-            catchedItem = null;
-            return true;
-        }
-        chosenCharacter.setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedItemNo), clickedItemNo);
-        return false;
+    public Item moveItem(int[] clickedInventorySlot, Point clickedItemPoint, boolean itemCatch) {
+        return ItemHandler.moveItem(chosenCharacter, clickedInventorySlot, clickedItemPoint, itemCatch);
     }
 
     public void incrementTimer() {
@@ -158,9 +130,5 @@ public class Battle {
 
     public Character getChosenCharacter() {
         return chosenCharacter;
-    }
-
-    public Item getCatchedItem() {
-        return catchedItem;
     }
 }

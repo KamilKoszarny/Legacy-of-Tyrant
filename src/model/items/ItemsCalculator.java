@@ -113,20 +113,4 @@ public class ItemsCalculator {
         }
         return null;
     }
-
-    public static Item getNothingItemByArmorNo(int armorNo) {
-        switch (armorNo) {
-            case 0: return Shield.NOTHING;
-            case 1: return BodyArmor.NOTHING;
-            case 2: return Helmet.NOTHING;
-            case 3: return Gloves.NOTHING;
-            case 4: return Boots.NOTHING;
-            case 5: return Belt.NOTHING;
-            case 6: return Amulet.NOTHING;
-            case 7: return Ring.NOTHING;
-            case 8: return Ring.NOTHING;
-            case 9: return Shield.NOTHING;
-        }
-        return null;
-    }
 }

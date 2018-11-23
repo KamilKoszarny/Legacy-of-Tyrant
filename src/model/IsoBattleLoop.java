@@ -28,7 +28,7 @@ public class IsoBattleLoop extends AnimationTimer{
                     itemCatch = false;
     private Point canvasLClickPoint, canvasRClickPoint, canvasHoverPoint = new Point(0, 0);
     private Point clickedMapPoint;
-    private int clickedItemNo;
+    private int[] clickedInventorySlot;
     private Point clickedItemPoint;
     private MapPiece clickedMapPiece;
     private MapObject clickedObject;
@@ -111,8 +111,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleItemClick() {
-        System.out.println(itemCatch);
-        Item heldItem = battle.moveItem(clickedItemNo, clickedItemPoint, itemCatch);
+        Item heldItem = battle.moveItem(clickedInventorySlot, clickedItemPoint, itemCatch);
         panelViewer.setHeldItem(heldItem);
         panelViewer.setCatchPoint(clickedItemPoint);
         itemClickFlag = false;
@@ -204,10 +203,14 @@ public class IsoBattleLoop extends AnimationTimer{
         this.itemClickFlag = itemClickFlag;
     }
 
-    public void setClickedItemNo(int clickedItemNo) {
-        this.clickedItemNo = clickedItemNo;
+
+    public void setClickedInventorySlot(int[] clickedInventorySlot) {
+        this.clickedInventorySlot = clickedInventorySlot;
     }
 
+    public Point getClickedItemPoint() {
+        return clickedItemPoint;
+    }
     public void setClickedItemPoint(Point clickedItemPoint) {
         this.clickedItemPoint = clickedItemPoint;
     }

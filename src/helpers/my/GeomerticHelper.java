@@ -1,6 +1,7 @@
 package helpers.my;
 
 import javafx.geometry.Bounds;
+import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import model.map.MapPiece;
@@ -240,13 +241,13 @@ public class GeomerticHelper {
         return currentPoint;
     }
 
-    public static Rectangle screenRectangle(javafx.scene.shape.Rectangle rectangle) {
-        Bounds itemRectLocalBounds = rectangle.getBoundsInLocal();
-        Bounds itemRectScreenBounds = rectangle.localToScreen(itemRectLocalBounds);
-        int x = (int) itemRectScreenBounds.getMinX();
-        int y = (int) itemRectScreenBounds.getMinY();
-        int width = (int) itemRectScreenBounds.getWidth();
-        int height = (int) itemRectScreenBounds.getHeight();
+    public static Rectangle screenRectangle(Node node) {
+        Bounds nodeLocalBounds = node.getBoundsInLocal();
+        Bounds nodeScreenBounds = node.localToScreen(nodeLocalBounds);
+        int x = (int) nodeScreenBounds.getMinX();
+        int y = (int) nodeScreenBounds.getMinY();
+        int width = (int) nodeScreenBounds.getWidth();
+        int height = (int) nodeScreenBounds.getHeight();
         return new Rectangle(x, y, width, height);
     }
 }

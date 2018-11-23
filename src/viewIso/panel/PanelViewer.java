@@ -39,6 +39,7 @@ public class PanelViewer {
         caughtItemRect.setY(MouseInfo.getPointerInfo().getLocation().y - catchPoint.y);
         caughtItemRect.setWidth(itemImage.getWidth());
         caughtItemRect.setHeight(itemImage.getHeight());
+        caughtItemRect.toFront();
         caughtItemRect.setVisible(true);
     }
 

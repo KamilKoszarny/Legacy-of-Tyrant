@@ -11,7 +11,9 @@ import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Character {
 
@@ -27,8 +29,7 @@ public class Character {
     private Weapon[] weapons = new Weapon[2];
     private Armor[] armor = new Armor[10];
     private int chosenWeapon = 0;
-    private boolean[][] inventoryGridBlock = new boolean[5][5];
-    private List<Item> inventory = new ArrayList<>();
+    private Map<Item, int[]> inventory = new HashMap<>();
 
     private Image portrait;
     private CharState state = CharState.IDLE;
@@ -352,13 +353,9 @@ public class Character {
         }
     }
 
-    public int getChosenWeapon() {
-        return chosenWeapon;
+    public Map<Item, int[]> getInventory() {
+        return inventory;
     }
-    public void setChosenWeapon(int chosenWeapon) {
-        this.chosenWeapon = chosenWeapon;
-    }
-
 
     public int getMsLeft(){
         return currentSA.msLeft;
