@@ -2,13 +2,18 @@ package controller.isoView.isoMap;
 
 import controller.isoView.isoPanel.Panel;
 import helpers.my.GeomerticHelper;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
 import model.character.Character;
+import model.items.Item;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,9 +22,9 @@ import java.util.List;
 public class IsoMapClickController {
 
 
-    private IsoBattleLoop isoBattleLoop;
+    private static IsoBattleLoop isoBattleLoop;
     private Canvas mapCanvas;
-    private Panel panel;
+    private static Panel panel;
 
     public IsoMapClickController(Canvas mapCanvas, Panel panel, IsoBattleLoop isoBattleLoop, List<Character> characters) {
         this.mapCanvas = mapCanvas;
@@ -47,7 +52,7 @@ public class IsoMapClickController {
     private void initItemClick() {
         for (Rectangle rectangle: panel.getEquipmentSlots()) {
             rectangle.setOnMouseClicked(mouseEvent -> {
-                isoBattleLoop.setClickedInventorySlot(new int[]{-1, panel.getEquipmentSlots().indexOf(rectangle)});
+                isoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(rectangle)});
                 isoBattleLoop.setClickedItemPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
                 isoBattleLoop.setItemCatch(true);
                 isoBattleLoop.setItemClickFlag(true);
@@ -57,10 +62,9 @@ public class IsoMapClickController {
         panel.getCatchedItemRect().setOnMouseClicked(mouseEvent -> {
             Point clickPoint = MouseInfo.getPointerInfo().getLocation();
             Point shapeClickPoint = isoBattleLoop.getClickedItemPoint();
-            System.out.println(shapeClickPoint);
             Rectangle equipmentSlot = checkEquipmentSlot(clickPoint);
             if (equipmentSlot != null) {
-                isoBattleLoop.setClickedInventorySlot(new int[]{-1, panel.getEquipmentSlots().indexOf(equipmentSlot)});
+                isoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(equipmentSlot)});
             } else {
                 int[] inventorySlot = checkInventorySlot(clickPoint, shapeClickPoint);
                 if(inventorySlot != null) {
@@ -72,9 +76,21 @@ public class IsoMapClickController {
             isoBattleLoop.setItemCatch(false);
             isoBattleLoop.setItemClickFlag(true);
         });
+
+//        initInventoryClick();
     }
 
-    private Rectangle checkEquipmentSlot(Point clickPoint) {
+    public static void initInventoryClick(Rectangle rect) {
+        rect.setOnMousePressed(mouseEvent -> {
+            int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), null);
+            System.out.println(inventorySlot[0] + " " + inventorySlot[1]);
+            isoBattleLoop.setClickedInventorySlot(inventorySlot);
+            isoBattleLoop.setItemCatch(true);
+            isoBattleLoop.setItemClickFlag(true);
+        });
+    }
+
+    private static Rectangle checkEquipmentSlot(Point clickPoint) {
         Rectangle itemRectangle = null, screenRectangle;
         for (Rectangle rectangle: panel.getEquipmentSlots()) {
             screenRectangle = GeomerticHelper.screenRectangle(rectangle);
@@ -84,7 +100,7 @@ public class IsoMapClickController {
         return itemRectangle;
     }
 
-    private int[] checkInventorySlot(Point clickPoint, Point shapeClickPoint) {
+    private static int[] checkInventorySlot(Point clickPoint, Point shapeClickPoint) {
         int[] inventorySlot = null;
         List<Rectangle> slotScreenRects = calcInventoryScreenRects(panel);
         for (Rectangle rectangle: slotScreenRects) {
@@ -94,11 +110,9 @@ public class IsoMapClickController {
             }
         }
 
-        if (inventorySlot != null) {
-            System.out.println(inventorySlot[0]);
+        if (inventorySlot != null && shapeClickPoint != null) {
             inventorySlot[0] -= (int)(shapeClickPoint.getX() / ItemHandler.ITEM_SLOT_SIZE);
             inventorySlot[1] -= (int)(shapeClickPoint.getY() / ItemHandler.ITEM_SLOT_SIZE);
-            System.out.println(inventorySlot[0]);
         }
 
         return inventorySlot;

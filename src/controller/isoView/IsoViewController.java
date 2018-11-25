@@ -53,7 +53,7 @@ public class IsoViewController {
     @FXML
     private Rectangle caughtItemRect;
     @FXML
-    private GridPane inventoryGridPane, defenceGridPane;
+    private Pane inventoryGridPane, defenceGridPane;
     @FXML
     private Label loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel;
     @FXML
@@ -71,11 +71,11 @@ public class IsoViewController {
         isoViewer = new IsoViewer(map, mapCanvas, characters);
         panelViewer = new PanelViewer(panel, characters, caughtItemRect);
 
+        new PanelController(panelHBox).initialize();
         new IsoMapMoveController(mapCanvas, groupBorderCanvases(), panelHBox, isoBattleLoop).initialize();
         new IsoMapClickController(mapCanvas, panel, isoBattleLoop, characters).initialize();
         new IsoMapHoverController(mapCanvas, isoBattleLoop, characters).initialize();
         new IsoMapKeyController(mapCanvas.getScene(), isoViewer, isoBattleLoop).initiazile();
-        new PanelController(panelHBox).initialize();
     }
 
     private void openWindow(Stage primaryStage) throws IOException {

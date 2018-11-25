@@ -29,7 +29,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private Point canvasLClickPoint, canvasRClickPoint, canvasHoverPoint = new Point(0, 0);
     private Point clickedMapPoint;
     private int[] clickedInventorySlot;
-    private Point clickedItemPoint;
+    private static Point clickedItemPoint;
     private MapPiece clickedMapPiece;
     private MapObject clickedObject;
     private Alert alert;
@@ -211,8 +211,8 @@ public class IsoBattleLoop extends AnimationTimer{
     public Point getClickedItemPoint() {
         return clickedItemPoint;
     }
-    public void setClickedItemPoint(Point clickedItemPoint) {
-        this.clickedItemPoint = clickedItemPoint;
+    public static void setClickedItemPoint(Point clickedItemPoint) {
+        IsoBattleLoop.clickedItemPoint = clickedItemPoint;
     }
 
     public void setItemCatch(boolean itemCatch) {

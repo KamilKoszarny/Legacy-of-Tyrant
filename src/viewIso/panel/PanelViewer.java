@@ -2,6 +2,8 @@ package viewIso.panel;
 
 import controller.isoView.isoPanel.Panel;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import model.character.Character;
@@ -15,8 +17,8 @@ public class PanelViewer {
     private Panel panel;
     private CharDescriptor charDescriptor;
     private Rectangle caughtItemRect;
-    Item heldItem;
-    Point catchPoint;
+    private Item heldItem;
+    private Point catchPoint;
 
     public PanelViewer(Panel panel, List<Character> characters, Rectangle caughtItemRect) {
         this.panel = panel;

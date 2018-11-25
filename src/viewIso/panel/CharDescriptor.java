@@ -2,7 +2,6 @@ package viewIso.panel;
 
 import controller.isoView.isoMap.IsoMapClickController;
 import controller.isoView.isoPanel.Panel;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -13,7 +12,6 @@ import model.actions.ItemHandler;
 import model.character.Character;
 import model.items.Item;
 
-import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +20,8 @@ public class CharDescriptor {
 
     private Panel panel;
     private List<Character> characters;
-    private Image inventoryImg;
-
+    private Rectangle inventoryRect, inventoryClickRect;
+    private boolean inventoryRectsSet = false;
 
     public CharDescriptor(Panel panel, List<Character> characters) {
         this.panel = panel;
@@ -32,7 +30,14 @@ public class CharDescriptor {
     }
 
     private void initInvRect() {
-        inventoryImg = new Image("/items/inventory.png");
+        Image inventoryImg = new Image("/items/inventory.png");
+        Rectangle invFirstRect = IsoMapClickController.calcInventoryScreenRect(panel, new int[]{0, 0});
+        inventoryRect = new Rectangle(invFirstRect.getX(), invFirstRect.getY(),
+                ItemHandler.INVENTORY_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_Y * ItemHandler.ITEM_SLOT_SIZE);
+        inventoryRect.setFill(new ImagePattern(inventoryImg));
+        Pane pane = (Pane) panel.getCatchedItemRect().getParent();
+        inventoryRect.setVisible(true);
+        pane.getChildren().add(inventoryRect);
     }
 
     public void refresh() {
@@ -134,23 +139,46 @@ public class CharDescriptor {
 
     private void refreshInventory(Character character) {
         Pane pane = (Pane) panel.getCatchedItemRect().getParent();
-        Rectangle invFirstRect = IsoMapClickController.calcInventoryScreenRect(panel, new int[]{0, 0});
-        Rectangle invRect = new Rectangle(invFirstRect.getX(), invFirstRect.getY(),
-                ItemHandler.INVENTORY_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_Y * ItemHandler.ITEM_SLOT_SIZE);
-        invRect.setFill(new ImagePattern(inventoryImg));
-        invRect.setVisible(true);
-        pane.getChildren().add(invRect);
+        redrawInventoryRect(pane);
 
         int[] itemInvPos;
         Rectangle itemInvFirstRect;
         for (Item item: character.getInventory().keySet()) {
             itemInvPos = character.getInventory().get(item);
             itemInvFirstRect = IsoMapClickController.calcInventoryScreenRect(panel, itemInvPos);
-            Rectangle invItemRect = new Rectangle(itemInvFirstRect.getX(), itemInvFirstRect.getY(),
+            Rectangle inventoryItemRect = new Rectangle(itemInvFirstRect.getX(), itemInvFirstRect.getY(),
                     item.getImage().getWidth(), item.getImage().getHeight());
-            invItemRect.setFill(new ImagePattern(item.getImage()));
-            pane.getChildren().add(invItemRect);
+            inventoryItemRect.setFill(new ImagePattern(item.getImage()));
+            pane.getChildren().add(inventoryItemRect);
         }
+        redrawInventoryClickRect(pane);
+    }
+
+    private void redrawInventoryRect(Pane pane) {
+        if (!inventoryRectsSet) {
+            Rectangle invFirstRect = IsoMapClickController.calcInventoryScreenRect(panel, new int[]{0, 0});
+            inventoryRect.setX(invFirstRect.getX());
+            inventoryRect.setY(invFirstRect.getY());
+            initInventoryClickRectangle();
+        }
+        pane.getChildren().remove(inventoryRect);
+        pane.getChildren().add(inventoryRect);
+    }
+
+    private void redrawInventoryClickRect(Pane pane) {
+        if (!inventoryRectsSet) {
+            initInventoryClickRectangle();
+            inventoryRectsSet = true;
+        }
+        pane.getChildren().remove(inventoryClickRect);
+        pane.getChildren().add(inventoryClickRect);
+    }
+
+    private void initInventoryClickRectangle() {
+        inventoryClickRect = panel.getInventoryRectangle();
+        inventoryClickRect.setOpacity(0);
+        IsoMapClickController.initInventoryClick(inventoryClickRect);
+        inventoryClickRect.setVisible(true);
     }
 
 

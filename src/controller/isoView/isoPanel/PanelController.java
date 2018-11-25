@@ -16,6 +16,10 @@ public class PanelController {
 
     public PanelController(HBox panelHbox) {
         panel = panelHbox;
+
+    }
+
+    public void initialize(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         panel.setLayoutX(0);
@@ -25,9 +29,5 @@ public class PanelController {
         panel.setBackground(new Background(new BackgroundFill(PANEL_COLOR, CornerRadii.EMPTY, Insets.EMPTY)));
         panel.setBorder(new Border(new BorderStroke(PANEL_COLOR.darker(),
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
-    }
-
-    public void initialize(){
-
     }
 }

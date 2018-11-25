@@ -4,6 +4,8 @@ import helpers.my.GeomerticHelper;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Arrays;
@@ -11,18 +13,20 @@ import java.util.List;
 
 public class Panel {
 
+
     private List<Label> charLabels;
     private List<ProgressBar> charBars;
     private Rectangle portraitRect, charPictBackgroundRect;
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     private Rectangle catchedItemRect;
-    private GridPane inventoryGridPane;
+    private Pane inventoryGridPane;
+    private Rectangle inventoryScreenRect;
 
     public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
                  Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
                  Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
-                 Rectangle caughtItemRect, GridPane inventoryGridPane) {
+                 Rectangle caughtItemRect, Pane inventoryGridPane) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
@@ -42,6 +46,14 @@ public class Panel {
         this.catchedItemRect = caughtItemRect;
         caughtItemRect.setVisible(false);
         this.inventoryGridPane = inventoryGridPane;
+//        initInventoryClick();
+    }
+
+    private void initInventoryClick() {
+        inventoryScreenRect = getInventoryRectangle();
+        inventoryScreenRect.setOnMouseClicked(mouseEvent -> {
+            System.out.println("inv click");
+        });
     }
 
     public List<Label> getCharLabels() {
@@ -118,6 +130,8 @@ public class Panel {
     }
 
     public Rectangle getInventoryRectangle() {
-        return GeomerticHelper.screenRectangle(inventoryGridPane);
+        if (inventoryScreenRect == null)
+            return GeomerticHelper.screenRectangle(inventoryGridPane);
+        return inventoryScreenRect;
     }
 }

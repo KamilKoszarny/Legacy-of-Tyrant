@@ -1,5 +1,6 @@
 package model.actions;
 
+import model.IsoBattleLoop;
 import model.character.Character;
 import model.character.StatsCalculator;
 import model.items.Item;
@@ -43,19 +44,28 @@ public class ItemHandler {
     }
 
     private static Item catchItem(Character character, int[] clickedInventorySlot) {
-        caughtItem = character.getEquipmentPart(clickedInventorySlot[1]);
-        if (caughtItem.getName().equals("NOTHING") || caughtItem.getName().equals("BLOCKED")) {
-            caughtItem = null;
-            return caughtItem;
+        if (clickedInventorySlot[0] == -10) {
+            caughtItem = character.getEquipmentPart(clickedInventorySlot[1]);
+            if (caughtItem.getName().equals("NOTHING") || caughtItem.getName().equals("BLOCKED")) {
+                caughtItem = null;
+                return caughtItem;
+            }
+            character.setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedInventorySlot[1]), clickedInventorySlot[1]);
+        } else {
+            caughtItem = itemByInventorySlot(character, clickedInventorySlot);
+            Point itemClickPoint = new Point(
+                    (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[0] - character.getInventory().get(caughtItem)[0] + .5)),
+                    (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[1] - character.getInventory().get(caughtItem)[1] + .5)));
+            IsoBattleLoop.setClickedItemPoint(itemClickPoint);
+            character.getInventory().keySet().remove(caughtItem);
         }
-        character.setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedInventorySlot[1]), clickedInventorySlot[1]);
         return caughtItem;
     }
 
     private static boolean equipmentClicked(int[] clickedInventorySlot) {
         if (clickedInventorySlot == null)
             return false;
-        return clickedInventorySlot[0] == -1;
+        return clickedInventorySlot[0] == -10;
     }
 
     private static boolean canBeDressed(Item underItem) {
@@ -65,14 +75,14 @@ public class ItemHandler {
     private static boolean inventoryClicked(int[] clickedInventorySlot) {
         if (clickedInventorySlot == null)
             return false;
-        return clickedInventorySlot[0] >= -1;
+        return clickedInventorySlot[0] >= 0;
     }
 
     private static boolean isSpaceInInventory(Character character, Item itemToPut, int[] clickedInventorySlot) {
         List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, itemToPut, clickedInventorySlot);
         List<int[]> allOccupiedSlots = allOccupiedSlots(character);
         for (int[] slot: itemOccupiedSlots) {
-            if (slot[0] >= INVENTORY_X || slot[1] >= INVENTORY_Y)
+            if (slot[0] < 0 || slot[1] < 0 || slot[0] >= INVENTORY_X || slot[1] >= INVENTORY_Y)
                 return false;
             for (int[] invSlot: allOccupiedSlots) {
                 if (invSlot[0] == slot[0] && invSlot[1] == slot[1])
@@ -82,15 +92,15 @@ public class ItemHandler {
         return true;
     }
 
-    public static void main(String[] args) {
-        List<int[]> a = Arrays.asList(new int[]{0, 0});
-        List<int[]> b = Arrays.asList(new int[]{0, 0});
-        for (int[] slot: a){
-            for (int[] bslot: b){
-
-                System.out.println(bslot[0] == slot[0] && bslot[1] == slot[1]);
+    public static Item itemByInventorySlot(Character character, int[] inventorySlot) {
+        for (Item item: character.getInventory().keySet()) {
+            List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, item, null);
+            for (int[] itemSlot: itemOccupiedSlots) {
+                if (itemSlot[0] == inventorySlot[0] && itemSlot[1] == inventorySlot[1])
+                    return item;
             }
         }
+        return null;
     }
 
     private static List<int[]> allOccupiedSlots(Character character) {

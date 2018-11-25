@@ -26,7 +26,7 @@ public class MapGenerator {
         terrainGenerator.generateTerrain();
         System.out.println("terrainGen:" + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
-//
+
 //        HeightGenerator heightGenerator = new HeightGenerator(map);
 //        heightGenerator.generateHeights();
 //        System.out.println("heightGen:" + (System.nanoTime() - time)/1000000. + " ms");
