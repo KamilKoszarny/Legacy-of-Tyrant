@@ -1,8 +1,10 @@
 package viewIso.map;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import model.map.Map;
 import model.map.heights.HeightGenerator;
@@ -87,6 +89,17 @@ public class MapImageGenerator {
         return mapImage;
     }
 
+    static Image generateMinimapImage() {
+        WritableImage minimapImage = new WritableImage(map.mapXPoints, map.mapYPoints);
+        PixelWriter pixelWriter = minimapImage.getPixelWriter();
+        for (int y = 0; y < map.mapYPoints; y++) {
+            for (int x = 0; x < map.mapXPoints; x++) {
+                pixelWriter.setColor(x, y, map.getPoints().get(new Point(x, y)).getTerrain().getColor());
+            }
+        }
+        return minimapImage;
+    }
+
     private static Color calcPixelColor(PixelReader pixelReader, int x, int y) {
         Color originColor = pixelReader.getColor(x, y);
         if (originColor.equals(MapDrawer.BACKGROUND_COLOR))
@@ -112,5 +125,9 @@ public class MapImageGenerator {
 
     private static Point posRelToMapZero(int pixelX, int pixelY) {
         return new Point(pixelX + mapImage.getxShift(), pixelY + mapImage.getyShift());
+    }
+
+    public static MapImage getMapImage() {
+        return mapImage;
     }
 }

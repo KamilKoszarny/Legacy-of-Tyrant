@@ -5,6 +5,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import model.map.Map;
+import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 import java.util.List;
@@ -41,6 +42,7 @@ public class MapDrawer {
 //        mapImage = MapImageGenerator.generateMapImage();
 //        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
 //        time = System.nanoTime();
+        PanelViewer.setMapImg(MapImageGenerator.generateMinimapImage());
     }
 
     public void drawMap() {

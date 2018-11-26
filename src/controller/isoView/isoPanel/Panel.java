@@ -20,13 +20,13 @@ public class Panel {
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     private Rectangle catchedItemRect;
     private Pane inventoryGridPane;
-    private Rectangle inventoryScreenRect;
+    private Rectangle inventoryScreenRect, miniMapRect;
 
     public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
                  Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
                  Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
-                 Rectangle caughtItemRect, Pane inventoryGridPane) {
+                 Rectangle caughtItemRect, Pane inventoryGridPane, Rectangle miniMapRect) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
@@ -46,6 +46,7 @@ public class Panel {
         this.catchedItemRect = caughtItemRect;
         caughtItemRect.setVisible(false);
         this.inventoryGridPane = inventoryGridPane;
+        this.miniMapRect = miniMapRect;
 //        initInventoryClick();
     }
 
@@ -133,5 +134,9 @@ public class Panel {
         if (inventoryScreenRect == null)
             return GeomerticHelper.screenRectangle(inventoryGridPane);
         return inventoryScreenRect;
+    }
+
+    public Rectangle getMiniMapRect() {
+        return miniMapRect;
     }
 }
