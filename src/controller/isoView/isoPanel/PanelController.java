@@ -17,6 +17,7 @@ public class PanelController {
     public PanelController(HBox panelHbox) {
         panel = panelHbox;
 
+        initialize();
     }
 
     public void initialize(){

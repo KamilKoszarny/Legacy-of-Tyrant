@@ -126,7 +126,7 @@ public class Panel {
                 glovesRect, bootsRect, beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
     }
 
-    public Rectangle getCatchedItemRect() {
+    public Rectangle getHeldItemRect() {
         return catchedItemRect;
     }
 

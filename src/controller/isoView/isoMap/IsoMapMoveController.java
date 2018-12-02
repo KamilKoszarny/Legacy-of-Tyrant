@@ -1,11 +1,6 @@
 package controller.isoView.isoMap;
 
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import model.IsoBattleLoop;
 
@@ -20,13 +15,13 @@ public class IsoMapMoveController {
     private Canvas mapCanvas;
     private List<Canvas> borderCanvases;
     private HBox panel;
-    private IsoBattleLoop isoBattleLoop;
 
-    public IsoMapMoveController(Canvas mapCanvas, List<Canvas> borderCanvases, HBox panel, IsoBattleLoop isoBattleLoop) {
+    public IsoMapMoveController(Canvas mapCanvas, List<Canvas> borderCanvases, HBox panel) {
         this.mapCanvas = mapCanvas;
         this.borderCanvases = borderCanvases;
         this.panel = panel;
-        this.isoBattleLoop = isoBattleLoop;
+
+        initialize();
     }
 
     public void initialize(){
@@ -38,17 +33,17 @@ public class IsoMapMoveController {
 
         for (Canvas borderCanvas: borderCanvases) {
             borderCanvas.setOnMouseEntered(mouseEvent -> {
-                isoBattleLoop.changeMapMove(moveByBorder(borderCanvas));
-                isoBattleLoop.setMapMoveFlag(true);
+                IsoBattleLoop.changeMapMove(moveByBorder(borderCanvas));
+                IsoBattleLoop.setMapMoveFlag(true);
             });
         }
         mapCanvas.setOnMouseEntered(mouseEvent -> {
-            isoBattleLoop.resetMapMove(new Point(0, 0));
-            isoBattleLoop.setMapMoveFlag(false);
+            IsoBattleLoop.resetMapMove(new Point(0, 0));
+            IsoBattleLoop.setMapMoveFlag(false);
         });
         panel.setOnMouseEntered(mouseEvent -> {
-            isoBattleLoop.resetMapMove(new Point(0, 0));
-            isoBattleLoop.setMapMoveFlag(false);
+            IsoBattleLoop.resetMapMove(new Point(0, 0));
+            IsoBattleLoop.setMapMoveFlag(false);
         });
     }
 

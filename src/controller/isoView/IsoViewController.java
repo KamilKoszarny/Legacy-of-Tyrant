@@ -16,11 +16,6 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.IsoBattleLoop;
-import model.character.Character;
-import model.map.Map;
-import viewIso.IsoViewer;
-import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -34,7 +29,7 @@ public class IsoViewController {
     private AnchorPane mainPane;
     @FXML
     private Canvas mapCanvas, topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
-    topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas;
+            topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas;
 
     @FXML
     private HBox panelHBox;
@@ -51,7 +46,7 @@ public class IsoViewController {
     @FXML
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     @FXML
-    private Rectangle caughtItemRect;
+    private Rectangle heldItemRect;
     @FXML
     private Pane inventoryGridPane, defenceGridPane;
     @FXML
@@ -59,27 +54,22 @@ public class IsoViewController {
     @FXML
     private Rectangle minimapRect;
 
-    private IsoViewer isoViewer;
-    private PanelViewer panelViewer;
+    private Panel panel;
 
-    public IsoViewController(Stage primaryStage, IsoBattleLoop isoBattleLoop, Map map, List<Character> characters) throws IOException {
+    public IsoViewController(Stage primaryStage) throws IOException {
         openWindow(primaryStage);
+        panel = preparePanel();
 
-        Panel panel = preparePanel();
-        isoViewer = new IsoViewer(map, mapCanvas, characters);
-        panelViewer = new PanelViewer(panel, characters, caughtItemRect);
-
-        new PanelController(panelHBox).initialize();
-        new IsoMapMoveController(mapCanvas, groupBorderCanvases(), panelHBox, isoBattleLoop).initialize();
-        new IsoMapClickController(mapCanvas, panel, isoBattleLoop, characters).initialize();
-        new IsoMapHoverController(mapCanvas, isoBattleLoop, characters).initialize();
-        new IsoMapKeyController(mapCanvas.getScene(), isoViewer, isoBattleLoop).initiazile();
+        new PanelController(panelHBox);
+        new IsoMapMoveController(mapCanvas, groupBorderCanvases(), panelHBox);
+        new IsoMapClickController(mapCanvas, preparePanel());
+        new IsoMapHoverController(mapCanvas);
+        new IsoMapKeyController(mapCanvas.getScene());
     }
 
     private void openWindow(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(this.getClass().getResource("/fxml/IsoView.fxml"));
-
         fxmlLoader.setController(this);
 
         Pane pane = fxmlLoader.load();
@@ -118,20 +108,18 @@ public class IsoViewController {
 
         return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
                 helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
-                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, caughtItemRect, inventoryGridPane, minimapRect);
+                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, heldItemRect, inventoryGridPane, minimapRect);
     }
 
-    @FXML
-    void initialize(){
+    public Canvas getMapCanvas() {
+        return mapCanvas;
     }
 
-    public IsoViewer getIsoViewer() {
-        return isoViewer;
+    public Panel getPanel() {
+        return panel;
     }
 
-    public PanelViewer getPanelViewer() {
-        return panelViewer;
+    public Rectangle getHeldItemRect() {
+        return heldItemRect;
     }
-
-
 }

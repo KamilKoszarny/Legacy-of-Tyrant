@@ -35,7 +35,7 @@ public class CharDescriptor {
         inventoryRect = new Rectangle(invFirstRect.getX(), invFirstRect.getY(),
                 ItemHandler.INVENTORY_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_Y * ItemHandler.ITEM_SLOT_SIZE);
         inventoryRect.setFill(new ImagePattern(inventoryImg));
-        Pane pane = (Pane) panel.getCatchedItemRect().getParent();
+        Pane pane = (Pane) panel.getHeldItemRect().getParent();
         inventoryRect.setVisible(true);
         pane.getChildren().add(inventoryRect);
     }
@@ -138,7 +138,7 @@ public class CharDescriptor {
     }
 
     private void refreshInventory(Character character) {
-        Pane pane = (Pane) panel.getCatchedItemRect().getParent();
+        Pane pane = (Pane) panel.getHeldItemRect().getParent();
         redrawInventoryRect(pane);
 
         int[] itemInvPos;

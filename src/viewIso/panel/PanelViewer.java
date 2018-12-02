@@ -17,16 +17,16 @@ public class PanelViewer {
 
     private static Panel panel;
     private CharDescriptor charDescriptor;
-    private Rectangle caughtItemRect;
+    private Rectangle heldItemRect;
     private Item heldItem;
     private Point catchPoint;
     private static Image mapImg, minimapImg;
     private static Rectangle miniMapRect;
 
-    public PanelViewer(Panel panel, List<Character> characters, Rectangle caughtItemRect) {
-        this.panel = panel;
-        this.caughtItemRect = caughtItemRect;
-        charDescriptor = new CharDescriptor(this.panel, characters);
+    public PanelViewer(Panel panel, List<Character> characters) {
+        PanelViewer.panel = panel;
+        this.heldItemRect = panel.getHeldItemRect();
+        charDescriptor = new CharDescriptor(PanelViewer.panel, characters);
         initMinimapImage();
     }
 
@@ -52,7 +52,7 @@ public class PanelViewer {
         if (heldItem != null)
             drawCaughtItem();
         else
-            caughtItemRect.setVisible(false);
+            heldItemRect.setVisible(false);
         refreshMinimap(panel);
     }
 
@@ -64,13 +64,13 @@ public class PanelViewer {
 
     private void drawCaughtItem() {
         Image itemImage = heldItem.getImage();
-        caughtItemRect.setFill(new ImagePattern(itemImage));
-        caughtItemRect.setX(MouseInfo.getPointerInfo().getLocation().x - catchPoint.x);
-        caughtItemRect.setY(MouseInfo.getPointerInfo().getLocation().y - catchPoint.y);
-        caughtItemRect.setWidth(itemImage.getWidth());
-        caughtItemRect.setHeight(itemImage.getHeight());
-        caughtItemRect.toFront();
-        caughtItemRect.setVisible(true);
+        heldItemRect.setFill(new ImagePattern(itemImage));
+        heldItemRect.setX(MouseInfo.getPointerInfo().getLocation().x - catchPoint.x);
+        heldItemRect.setY(MouseInfo.getPointerInfo().getLocation().y - catchPoint.y);
+        heldItemRect.setWidth(itemImage.getWidth());
+        heldItemRect.setHeight(itemImage.getHeight());
+        heldItemRect.toFront();
+        heldItemRect.setVisible(true);
     }
 
     public void setHeldItem(Item heldItem, Point catchPoint) {

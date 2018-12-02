@@ -2,18 +2,12 @@ package controller.isoView.isoMap;
 
 import controller.isoView.isoPanel.Panel;
 import helpers.my.GeomerticHelper;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
-import model.character.Character;
-import model.items.Item;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,15 +15,14 @@ import java.util.List;
 
 public class IsoMapClickController {
 
-
-    private static IsoBattleLoop isoBattleLoop;
     private Canvas mapCanvas;
     private static Panel panel;
 
-    public IsoMapClickController(Canvas mapCanvas, Panel panel, IsoBattleLoop isoBattleLoop, List<Character> characters) {
+    public IsoMapClickController(Canvas mapCanvas, Panel panel) {
         this.mapCanvas = mapCanvas;
-        this.panel = panel;
-        this.isoBattleLoop = isoBattleLoop;
+        IsoMapClickController.panel = panel;
+
+        initialize();
     }
 
     public void initialize(){
@@ -40,27 +33,27 @@ public class IsoMapClickController {
     private void initCanvasClick(){
         mapCanvas.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                isoBattleLoop.setCanvasLClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-                isoBattleLoop.setCanvasLClickFlag(true);
+                IsoBattleLoop.setCanvasLClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+                IsoBattleLoop.setCanvasLClickFlag(true);
             } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-                isoBattleLoop.setCanvasRClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-                isoBattleLoop.setCanvasRClickFlag(true);
+                IsoBattleLoop.setCanvasRClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+                IsoBattleLoop.setCanvasRClickFlag(true);
             }
         });
     }
 
     private void initItemClick() {
-        panel.getCatchedItemRect().setMouseTransparent(true);
+        panel.getHeldItemRect().setMouseTransparent(true);
 
         for (Rectangle rectangle: panel.getEquipmentSlots()) {
             rectangle.setOnMouseClicked(mouseEvent -> {
-                isoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(rectangle)});
+                IsoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(rectangle)});
                 IsoBattleLoop.setClickedItemPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
-                isoBattleLoop.setItemClickFlag(true);
+                IsoBattleLoop.setItemClickFlag(true);
             });
         }
 //
-//        panel.getCatchedItemRect().setOnMouseClicked(mouseEvent -> {
+//        panel.getHeldItemRect().setOnMouseClicked(mouseEvent -> {
 //            Point clickPoint = MouseInfo.getPointerInfo().getLocation();
 //            Point shapeClickPoint = isoBattleLoop.getClickedItemPoint();
 //            Rectangle equipmentSlot = checkEquipmentSlot(clickPoint);
@@ -83,11 +76,11 @@ public class IsoMapClickController {
 
     public static void initInventoryClick(Rectangle rect) {
         rect.setOnMousePressed(mouseEvent -> {
-            Point shapeClickPoint = isoBattleLoop.getClickedItemPoint();
+            Point shapeClickPoint = IsoBattleLoop.getClickedItemPoint();
             int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), shapeClickPoint);
             System.out.println(inventorySlot[0] + " " + inventorySlot[1]);
-            isoBattleLoop.setClickedInventorySlot(inventorySlot);
-            isoBattleLoop.setItemClickFlag(true);
+            IsoBattleLoop.setClickedInventorySlot(inventorySlot);
+            IsoBattleLoop.setItemClickFlag(true);
         });
     }
 

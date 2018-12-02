@@ -1,25 +1,23 @@
 package viewIso;
 
 import javafx.scene.canvas.Canvas;
-import model.character.Character;
-import model.map.Map;
+import model.Battle;
 import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 
 import java.awt.*;
-import java.util.List;
 
 
 public class IsoViewer {
     private MapDrawer mapDrawer;
-    private ClickMenusDrawer clickMenusDrawer;
+    private static ClickMenusDrawer clickMenusDrawer;
     private SpritesDrawer spritesDrawer;
-    private boolean cutView = false;
+    private static boolean cutView = false;
 
-    public IsoViewer(Map map, Canvas canvas, List<Character> characters) {
-        mapDrawer = new MapDrawer(map, canvas);
-        spritesDrawer = new SpritesDrawer(map, canvas, mapDrawer, characters);
+    public IsoViewer(Battle battle, Canvas canvas) {
+        mapDrawer = new MapDrawer(battle.getMap(), canvas);
+        spritesDrawer = new SpritesDrawer(battle.getMap(), canvas, mapDrawer, battle.getCharacters());
         clickMenusDrawer = new ClickMenusDrawer(mapDrawer);
         mapDrawer.drawMap();
         spritesDrawer.drawVisibleSprites(cutView);
@@ -50,11 +48,11 @@ public class IsoViewer {
         return spritesDrawer.getCharsDrawer();
     }
 
-    public ClickMenusDrawer getClickMenusDrawer() {
+    public static ClickMenusDrawer getClickMenusDrawer() {
         return clickMenusDrawer;
     }
 
-    public void switchCutView() {
+    public static void switchCutView() {
         cutView = !cutView;
     }
 }

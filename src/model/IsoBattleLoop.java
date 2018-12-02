@@ -21,7 +21,7 @@ public class IsoBattleLoop extends AnimationTimer{
 
     private static final int FRAME_RATE = 50;
 
-    private Battle battle;
+    private static Battle battle;
     private static boolean mapMoveFlag = false;
     private static Point mapMove = new Point(0, 0);
     private static boolean canvasLClickFlag = false, canvasRClickFlag = false, canvasHoverFlag = false, itemClickFlag = false;
@@ -41,7 +41,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private static int lastMs, curMs;
 
     public IsoBattleLoop(Battle battle) {
-        this.battle = battle;
+        IsoBattleLoop.battle = battle;
         lastMs = (int) (System.nanoTime() / 1000000);
     }
 
@@ -75,13 +75,13 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
 
-    private void handleMapMoving(){
+    private static void handleMapMoving(){
         if (mapMoveFlag) {
             isoViewer.moveMap(mapMove);
         }
     }
 
-    private void handleCanvasLClick(){
+    private static void handleCanvasLClick(){
         if (charsDrawer.isOtherCharClicked(canvasLClickPoint, battle.getChosenCharacter())) {
             battle.chooseCharacter(charsDrawer.getClickedCharacter());
         } else {
@@ -104,18 +104,18 @@ public class IsoBattleLoop extends AnimationTimer{
             showMapPieceInfo(clickedMapPiece);
     }
 
-    private void handleCanvasHover() {
+    private static void handleCanvasHover() {
         charsDrawer.checkHoverCharacter(canvasHoverPoint);
         canvasHoverFlag = false;
     }
 
-    private void handleItemClick() {
+    private static void handleItemClick() {
         Item heldItem = battle.moveItem(clickedInventorySlot, clickedItemPoint);
         panelViewer.setHeldItem(heldItem, clickedItemPoint);
         itemClickFlag = false;
     }
 
-    private void handleButtonAction(ClickMenuButton button) {
+    private static void handleButtonAction(ClickMenuButton button) {
         if (button == ClickMenuButton.LOOK)
             battle.turnCharacter(clickedMapPoint);
         if (button == ClickMenuButton.RUN)
@@ -131,11 +131,11 @@ public class IsoBattleLoop extends AnimationTimer{
         clickMenusDrawer.hideMenus();
     }
 
-    public void setMapMoveFlag(boolean mapMoveFlag) {
+    public static void setMapMoveFlag(boolean mapMoveFlag) {
         IsoBattleLoop.mapMoveFlag = mapMoveFlag;
     }
 
-    public void changeMapMove(Point mapMoveChange) {
+    public static void changeMapMove(Point mapMoveChange) {
         mapMove.x = mapMove.x + mapMoveChange.x;
         mapMove.y = mapMove.y + mapMoveChange.y;
         if (mapMove.x > IsoMapMoveController.MAP_MOVE_STEP)
@@ -144,11 +144,11 @@ public class IsoBattleLoop extends AnimationTimer{
             mapMove.y = IsoMapMoveController.MAP_MOVE_STEP;
     }
 
-    public void resetMapMove(Point mapMove) {
+    public static void resetMapMove(Point mapMove) {
         IsoBattleLoop.mapMove = mapMove;
     }
 
-    private boolean nextFrame(long curNanoTime) {
+    private static boolean nextFrame(long curNanoTime) {
         curMs = (int) (curNanoTime / 1000000);
         if (curMs - lastMs > FRAME_RATE){
             lastMs = curMs;
@@ -221,6 +221,6 @@ public class IsoBattleLoop extends AnimationTimer{
         IsoBattleLoop.panelViewer = panelViewer;
         mapDrawer = isoViewer.getMapDrawer();
         charsDrawer = isoViewer.getCharsDrawer();
-        clickMenusDrawer = isoViewer.getClickMenusDrawer();
+        clickMenusDrawer = IsoViewer.getClickMenusDrawer();
     }
 }
