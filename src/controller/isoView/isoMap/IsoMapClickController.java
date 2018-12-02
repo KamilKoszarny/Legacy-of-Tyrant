@@ -50,42 +50,43 @@ public class IsoMapClickController {
     }
 
     private void initItemClick() {
+        panel.getCatchedItemRect().setMouseTransparent(true);
+
         for (Rectangle rectangle: panel.getEquipmentSlots()) {
             rectangle.setOnMouseClicked(mouseEvent -> {
                 isoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(rectangle)});
-                isoBattleLoop.setClickedItemPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
-                isoBattleLoop.setItemCatch(true);
+                IsoBattleLoop.setClickedItemPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
                 isoBattleLoop.setItemClickFlag(true);
             });
         }
-
-        panel.getCatchedItemRect().setOnMouseClicked(mouseEvent -> {
-            Point clickPoint = MouseInfo.getPointerInfo().getLocation();
-            Point shapeClickPoint = isoBattleLoop.getClickedItemPoint();
-            Rectangle equipmentSlot = checkEquipmentSlot(clickPoint);
-            if (equipmentSlot != null) {
-                isoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(equipmentSlot)});
-            } else {
-                int[] inventorySlot = checkInventorySlot(clickPoint, shapeClickPoint);
-                if(inventorySlot != null) {
-                    isoBattleLoop.setClickedInventorySlot(inventorySlot);
-                } else {
-                    isoBattleLoop.setClickedInventorySlot(null);
-                }
-            }
-            isoBattleLoop.setItemCatch(false);
-            isoBattleLoop.setItemClickFlag(true);
-        });
+//
+//        panel.getCatchedItemRect().setOnMouseClicked(mouseEvent -> {
+//            Point clickPoint = MouseInfo.getPointerInfo().getLocation();
+//            Point shapeClickPoint = isoBattleLoop.getClickedItemPoint();
+//            Rectangle equipmentSlot = checkEquipmentSlot(clickPoint);
+//            if (equipmentSlot != null) {
+//                isoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(equipmentSlot)});
+//            } else {
+//                int[] inventorySlot = checkInventorySlot(clickPoint, shapeClickPoint);
+//                if(inventorySlot != null) {
+//                    isoBattleLoop.setClickedInventorySlot(inventorySlot);
+//                } else {
+//                    isoBattleLoop.setClickedInventorySlot(null);
+//                }
+//            }
+//            isoBattleLoop.setItemCatch(false);
+//            isoBattleLoop.setItemClickFlag(true);
+//        });
 
 //        initInventoryClick();
     }
 
     public static void initInventoryClick(Rectangle rect) {
         rect.setOnMousePressed(mouseEvent -> {
-            int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), null);
+            Point shapeClickPoint = isoBattleLoop.getClickedItemPoint();
+            int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), shapeClickPoint);
             System.out.println(inventorySlot[0] + " " + inventorySlot[1]);
             isoBattleLoop.setClickedInventorySlot(inventorySlot);
-            isoBattleLoop.setItemCatch(true);
             isoBattleLoop.setItemClickFlag(true);
         });
     }

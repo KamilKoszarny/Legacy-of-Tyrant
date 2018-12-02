@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import model.IsoBattleLoop;
 import model.character.Character;
 import model.items.Item;
 import viewIso.map.MapImageGenerator;
@@ -72,11 +73,12 @@ public class PanelViewer {
         caughtItemRect.setVisible(true);
     }
 
-    public void setHeldItem(Item heldItem) {
+    public void setHeldItem(Item heldItem, Point catchPoint) {
         this.heldItem = heldItem;
-    }
-
-    public void setCatchPoint(Point catchPoint) {
         this.catchPoint = catchPoint;
+        if (heldItem == null) {
+            this.catchPoint = new Point(0, 0);
+            IsoBattleLoop.setClickedItemPoint(new Point(0, 0));
+        }
     }
 }

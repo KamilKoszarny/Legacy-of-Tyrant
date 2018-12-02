@@ -19,27 +19,26 @@ import java.awt.*;
 
 public class IsoBattleLoop extends AnimationTimer{
 
-    public static final int FRAME_RATE = 50;
+    private static final int FRAME_RATE = 50;
 
     private Battle battle;
-    private boolean mapMoveFlag = false;
-    private Point mapMove = new Point(0, 0);
-    private boolean canvasLClickFlag = false, canvasRClickFlag = false, canvasHoverFlag = false, itemClickFlag = false,
-                    itemCatch = false;
-    private Point canvasLClickPoint, canvasRClickPoint, canvasHoverPoint = new Point(0, 0);
-    private Point clickedMapPoint;
-    private int[] clickedInventorySlot;
+    private static boolean mapMoveFlag = false;
+    private static Point mapMove = new Point(0, 0);
+    private static boolean canvasLClickFlag = false, canvasRClickFlag = false, canvasHoverFlag = false, itemClickFlag = false;
+    private static Point canvasLClickPoint, canvasRClickPoint, canvasHoverPoint = new Point(0, 0);
+    private static Point clickedMapPoint;
+    private static int[] clickedInventorySlot;
     private static Point clickedItemPoint;
-    private MapPiece clickedMapPiece;
-    private MapObject clickedObject;
-    private Alert alert;
-    private boolean alertOn = false;
-    private IsoViewer isoViewer;
-    private PanelViewer panelViewer;
-    private MapDrawer mapDrawer;
-    private CharsDrawer charsDrawer;
-    private ClickMenusDrawer clickMenusDrawer;
-    private int lastMs, curMs;
+    private static MapPiece clickedMapPiece;
+    private static MapObject clickedObject;
+    private static Alert alert;
+    private static boolean alertOn = false;
+    private static IsoViewer isoViewer;
+    private static PanelViewer panelViewer;
+    private static MapDrawer mapDrawer;
+    private static CharsDrawer charsDrawer;
+    private static ClickMenusDrawer clickMenusDrawer;
+    private static int lastMs, curMs;
 
     public IsoBattleLoop(Battle battle) {
         this.battle = battle;
@@ -111,9 +110,8 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleItemClick() {
-        Item heldItem = battle.moveItem(clickedInventorySlot, clickedItemPoint, itemCatch);
-        panelViewer.setHeldItem(heldItem);
-        panelViewer.setCatchPoint(clickedItemPoint);
+        Item heldItem = battle.moveItem(clickedInventorySlot, clickedItemPoint);
+        panelViewer.setHeldItem(heldItem, clickedItemPoint);
         itemClickFlag = false;
     }
 
@@ -134,7 +132,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     public void setMapMoveFlag(boolean mapMoveFlag) {
-        this.mapMoveFlag = mapMoveFlag;
+        IsoBattleLoop.mapMoveFlag = mapMoveFlag;
     }
 
     public void changeMapMove(Point mapMoveChange) {
@@ -147,7 +145,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     public void resetMapMove(Point mapMove) {
-        this.mapMove = mapMove;
+        IsoBattleLoop.mapMove = mapMove;
     }
 
     private boolean nextFrame(long curNanoTime) {
@@ -179,53 +177,48 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
 
-    public void setCanvasLClickFlag(boolean canvasLClickFlag) {
-        this.canvasLClickFlag = canvasLClickFlag;
+    public static void setCanvasLClickFlag(boolean canvasLClickFlag) {
+        IsoBattleLoop.canvasLClickFlag = canvasLClickFlag;
     }
 
-    public void setCanvasLClickPoint(Point canvasLClickPoint) {
-        this.canvasLClickPoint = canvasLClickPoint;
+    public static void setCanvasLClickPoint(Point canvasLClickPoint) {
+        IsoBattleLoop.canvasLClickPoint = canvasLClickPoint;
     }
 
-    public void setCanvasRClickFlag(boolean canvasRClickFlag) {
-        this.canvasRClickFlag = canvasRClickFlag;
+    public static void setCanvasRClickFlag(boolean canvasRClickFlag) {
+        IsoBattleLoop.canvasRClickFlag = canvasRClickFlag;
     }
 
-    public void setCanvasRClickPoint(Point canvasRClickPoint) {
-        this.canvasRClickPoint = canvasRClickPoint;
+    public static void setCanvasRClickPoint(Point canvasRClickPoint) {
+        IsoBattleLoop.canvasRClickPoint = canvasRClickPoint;
     }
 
-    public void setCanvasHoverFlag(boolean canvasHoverFlag) {
-        this.canvasHoverFlag = canvasHoverFlag;
+    public static void setCanvasHoverFlag(boolean canvasHoverFlag) {
+        IsoBattleLoop.canvasHoverFlag = canvasHoverFlag;
     }
 
-    public void setItemClickFlag(boolean itemClickFlag) {
-        this.itemClickFlag = itemClickFlag;
+    public static void setItemClickFlag(boolean itemClickFlag) {
+        IsoBattleLoop.itemClickFlag = itemClickFlag;
     }
 
-
-    public void setClickedInventorySlot(int[] clickedInventorySlot) {
-        this.clickedInventorySlot = clickedInventorySlot;
+    public static void setClickedInventorySlot(int[] clickedInventorySlot) {
+        IsoBattleLoop.clickedInventorySlot = clickedInventorySlot;
     }
 
-    public Point getClickedItemPoint() {
+    public static Point getClickedItemPoint() {
         return clickedItemPoint;
     }
     public static void setClickedItemPoint(Point clickedItemPoint) {
         IsoBattleLoop.clickedItemPoint = clickedItemPoint;
     }
 
-    public void setItemCatch(boolean itemCatch) {
-        this.itemCatch = itemCatch;
+    public static void setCanvasHoverPoint(Point canvasHoverPoint) {
+        IsoBattleLoop.canvasHoverPoint = canvasHoverPoint;
     }
 
-    public void setCanvasHoverPoint(Point canvasHoverPoint) {
-        this.canvasHoverPoint = canvasHoverPoint;
-    }
-
-    public void setViewersAndDrawers(IsoViewer isoViewer, PanelViewer panelViewer) {
-        this.isoViewer = isoViewer;
-        this.panelViewer = panelViewer;
+    public static void setViewersAndDrawers(IsoViewer isoViewer, PanelViewer panelViewer) {
+        IsoBattleLoop.isoViewer = isoViewer;
+        IsoBattleLoop.panelViewer = panelViewer;
         mapDrawer = isoViewer.getMapDrawer();
         charsDrawer = isoViewer.getCharsDrawer();
         clickMenusDrawer = isoViewer.getClickMenusDrawer();

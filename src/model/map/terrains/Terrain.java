@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public enum Terrain {
     GROUND(Color.rgb(80, 50, 0), 1),
+    WOOD(Color.rgb(133,94,66), 1),
     WALL(Color.rgb(40, 25, 1), 1),
     GRASS(Color.rgb(0, 180, 0), 0.9),
     BUSH(Color.rgb(0, 120, 0), 0.8),

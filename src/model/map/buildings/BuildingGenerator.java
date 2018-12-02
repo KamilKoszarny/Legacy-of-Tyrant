@@ -53,7 +53,7 @@ public class BuildingGenerator {
                 List<Point> pointsToFlatten = building.getAllPointsPlusRadius(1);
                 GeomerticHelper.flatten(pointsToFlatten, map, 0);
                 for (Point point: pointsToFlatten) {
-                    map.getPoints().get(point).setTerrain(Terrain.GROUND);
+                    map.getPoints().get(point).setTerrain(Terrain.WOOD);
                 }
             }
         }
@@ -76,7 +76,7 @@ public class BuildingGenerator {
 
     private void putTerrainAndWalls(Building building){
         for (Point inPoint: building.getInPoints()) {
-            map.getPoints().get(inPoint).setTerrain(Terrain.GROUND);
+            map.getPoints().get(inPoint).setTerrain(Terrain.WOOD);
         }
         List<Point> wallPoints;
         boolean[] doorSides = shuffleDoorSides();

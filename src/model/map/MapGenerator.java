@@ -1,8 +1,6 @@
 package model.map;
 
-import helpers.downloaded.pathfinding.grid.GridGraph;
 import helpers.my.GeomerticHelper;
-import model.character.Character;
 import model.map.buildings.BuildingGenerator;
 import model.map.heights.HeightGenerator;
 import model.map.lights.LightGenerator;
@@ -11,10 +9,6 @@ import model.map.roads.RoadGenerator;
 import model.map.terrains.TerrainGenerator;
 import model.map.water.RiverGenerator;
 import model.map.water.WaterGenerator;
-
-import java.awt.*;
-import java.util.Collection;
-import java.util.List;
 
 public class MapGenerator {
 

@@ -2,11 +2,9 @@ package main;
 
 import controller.isoView.IsoViewController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Battle;
+import model.BattleInitializer;
 import model.IsoBattleLoop;
 import model.character.Character;
 import model.map.Map;
@@ -20,40 +18,21 @@ import java.util.List;
 public class App extends Application {
 
     public static void main(String[] args) {
-//        System.out.println(App.class.getResource("/sprites/flare/demo/"));
-//
-//        System.out.println(App.class.getResource("/sprites/flare/demo/vesuvvio.png"));
         disableWarning();
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Battle battle = new Battle();
-        Map map = battle.getMap();
-        List<Character> characters = battle.getCharacters();
-//        startBattleFX(primaryStage, map);
-        startBattleIso(battle, primaryStage, map, characters);
+        Map map = BattleInitializer.initMap();
+        List<Character> characters = BattleInitializer.initCharacters(map);
+        Battle battle = new Battle(map, characters);
+        startBattleIso(battle, primaryStage);
     }
 
-    private void startBattleFX(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(this.getClass().getResource("/fxml/MainWindow.fxml"));
-
-//        BattlePaneController battlePaneController = new BattlePaneController();
-//        fxmlLoader.setController(battlePaneController);
-
-        Pane pane = fxmlLoader.load();
-        Scene scene = new Scene(pane);
-        scene.getStylesheets().add("style.css");
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Random Adventures Helper");
-        primaryStage.show();
-    }
-
-    private void startBattleIso(Battle battle, Stage primaryStage, Map map, List<Character> characters) throws Exception {
+    private void startBattleIso(Battle battle, Stage primaryStage) throws Exception {
         IsoBattleLoop isoBattleLoop = new IsoBattleLoop(battle);
-        IsoViewController isoViewController = new IsoViewController(primaryStage, isoBattleLoop, map, characters);
+        IsoViewController isoViewController = new IsoViewController(primaryStage, isoBattleLoop, battle.getMap(), battle.getCharacters());
         IsoViewer isoViewer = isoViewController.getIsoViewer();
         PanelViewer panelViewer = isoViewController.getPanelViewer();
         isoBattleLoop.setViewersAndDrawers(isoViewer, panelViewer);

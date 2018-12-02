@@ -18,9 +18,9 @@ public class ItemHandler {
     public static final int ITEM_SLOT_SIZE = 30;
     private static Item caughtItem = null;
 
-    public static Item moveItem(Character character, int[] clickedInventorySlot, Point clickedItemPoint, boolean itemCatch) {
-        if (itemCatch) {
-            if (catchItem(character, clickedInventorySlot) == null) return null;
+    public static Item moveItem(Character character, int[] clickedInventorySlot, Point clickedItemPoint) {
+        if (caughtItem == null) {
+            caughtItem = catchItem(character, clickedInventorySlot);
         } else {
             if (equipmentClicked(clickedInventorySlot)) {
                 Item underItem = character.getEquipmentPart(clickedInventorySlot[1]);
@@ -44,6 +44,7 @@ public class ItemHandler {
     }
 
     private static Item catchItem(Character character, int[] clickedInventorySlot) {
+        // equipment
         if (clickedInventorySlot[0] == -10) {
             caughtItem = character.getEquipmentPart(clickedInventorySlot[1]);
             if (caughtItem.getName().equals("NOTHING") || caughtItem.getName().equals("BLOCKED")) {
@@ -51,7 +52,9 @@ public class ItemHandler {
                 return caughtItem;
             }
             character.setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedInventorySlot[1]), clickedInventorySlot[1]);
-        } else {
+        }
+        //inventory
+        else {
             caughtItem = itemByInventorySlot(character, clickedInventorySlot);
             Point itemClickPoint = new Point(
                     (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[0] - character.getInventory().get(caughtItem)[0] + .5)),

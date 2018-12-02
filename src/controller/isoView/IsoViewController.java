@@ -61,10 +61,8 @@ public class IsoViewController {
 
     private IsoViewer isoViewer;
     private PanelViewer panelViewer;
-    private IsoBattleLoop isoBattleLoop;
 
     public IsoViewController(Stage primaryStage, IsoBattleLoop isoBattleLoop, Map map, List<Character> characters) throws IOException {
-        this.isoBattleLoop = isoBattleLoop;
         openWindow(primaryStage);
 
         Panel panel = preparePanel();
