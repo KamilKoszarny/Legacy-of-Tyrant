@@ -16,10 +16,10 @@ import java.util.List;
 public class PanelViewer {
 
     private static Panel panel;
-    private CharDescriptor charDescriptor;
-    private Rectangle heldItemRect;
-    private Item heldItem;
-    private Point catchPoint;
+    private static CharDescriptor charDescriptor;
+    private static Rectangle heldItemRect;
+    private static Item heldItem;
+    private static Point catchPoint;
     private static Image mapImg, minimapImg;
     private static Rectangle miniMapRect;
 
@@ -43,11 +43,11 @@ public class PanelViewer {
         miniMapRect.setFill(new ImagePattern(mapImg));
     }
 
-    private void refreshMinimap(Panel panel) {
+    private static void refreshMinimap(Panel panel) {
 
     }
 
-    public void refresh() {
+    public static void refresh() {
         charDescriptor.refresh();
         if (heldItem != null)
             drawCaughtItem();
@@ -62,7 +62,7 @@ public class PanelViewer {
 //        miniMapRect.setFill();
     }
 
-    private void drawCaughtItem() {
+    private static void drawCaughtItem() {
         Image itemImage = heldItem.getImage();
         heldItemRect.setFill(new ImagePattern(itemImage));
         heldItemRect.setX(MouseInfo.getPointerInfo().getLocation().x - catchPoint.x);
@@ -73,11 +73,11 @@ public class PanelViewer {
         heldItemRect.setVisible(true);
     }
 
-    public void setHeldItem(Item heldItem, Point catchPoint) {
-        this.heldItem = heldItem;
-        this.catchPoint = catchPoint;
+    public static void setHeldItem(Item heldItem, Point catchPoint) {
+        PanelViewer.heldItem = heldItem;
+        PanelViewer.catchPoint = catchPoint;
         if (heldItem == null) {
-            this.catchPoint = new Point(0, 0);
+            PanelViewer.catchPoint = new Point(0, 0);
             IsoBattleLoop.setClickedItemPoint(new Point(0, 0));
         }
     }

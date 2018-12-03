@@ -1,6 +1,6 @@
 package viewIso.map;
 
-import controller.isoView.isoMap.IsoMapMoveController;
+import controller.isoView.isoMap.IsoMapBorderHoverController;
 import javafx.geometry.Point2D;
 import model.map.Map;
 import model.map.MapPiece;
@@ -39,7 +39,7 @@ public class MapDrawCalculator {
     }
 
     public static boolean mapOnScreen(){
-        int bonus = IsoMapMoveController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y + 30;
+        int bonus = IsoMapBorderHoverController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y + 30;
         boolean mapOnScreen = mapDrawer.getZeroScreenPosition().x < - relativeScreenPosition(new Point(0, map.getHeight())).x + bonus &&
                 mapDrawer.getZeroScreenPosition().x > - relativeScreenPosition(new Point(map.getWidth(), 0)).x + mapDrawer.getCanvas().getWidth() - bonus &&
                 mapDrawer.getZeroScreenPosition().y < - relativeScreenPosition(new Point(0, 0)).y + bonus + map.getPoints().get(new Point(0, 0)).getHeight() / HeightGenerator.H_PEX_PIX &&
@@ -85,7 +85,7 @@ public class MapDrawCalculator {
     }
 
     private static List<Point> closePointsByPixPosition(Point pixPos) {
-        final int RADIUS = 25;
+        final int RADIUS = 35;
         List<Point> closePoints = new ArrayList<>();
 
         Point mapPoint = closePointByPixPosition(pixPos);

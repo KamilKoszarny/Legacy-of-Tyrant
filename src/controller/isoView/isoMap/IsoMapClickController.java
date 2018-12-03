@@ -6,8 +6,16 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
 import javafx.scene.shape.Rectangle;
+import model.Battle;
+import model.BattleEvent;
+import model.EventType;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
+import model.map.mapObjects.MapObject;
+import model.map.mapObjects.MapObjectType;
+import viewIso.characters.CharsDrawer;
+import viewIso.map.MapDrawCalculator;
+import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -32,14 +40,32 @@ public class IsoMapClickController {
 
     private void initCanvasClick(){
         mapCanvas.setOnMouseClicked(mouseEvent -> {
+            Point clickPoint = new Point((int) mouseEvent.getX(), (int) mouseEvent.getY());
             if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                IsoBattleLoop.setCanvasLClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-                IsoBattleLoop.setCanvasLClickFlag(true);
+                IsoBattleLoop.setBattleEvent(eventByLClickPoint(clickPoint));
             } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-                IsoBattleLoop.setCanvasRClickPoint(new Point((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-                IsoBattleLoop.setCanvasRClickFlag(true);
+                IsoBattleLoop.setBattleEvent(new BattleEvent(EventType.MAP_PIECE_INFO, clickPoint,
+                        MapDrawCalculator.mapPointByClickPoint(clickPoint), MapDrawCalculator.mapPieceByClickPoint(clickPoint)));
             }
         });
+    }
+
+    private BattleEvent eventByLClickPoint(Point clickPoint) {
+        BattleEvent battleEvent = null;
+        if (CharsDrawer.isOtherCharClicked(clickPoint, Battle.getChosenCharacter())) {
+            battleEvent = new BattleEvent(EventType.CHOOSE_CHARACTER, clickPoint);
+        } else {
+            Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
+            if (Battle.getChosenCharacter() != null && mapPoint != null) {
+                MapObject object = MapObjectDrawer.clickedObject(clickPoint);
+                if (object != null && object.getType().equals(MapObjectType.DOOR))
+                    battleEvent = new BattleEvent(EventType.CHAR2OBJECT, clickPoint, object);
+                else
+                    battleEvent = new BattleEvent(EventType.CHAR2POINT, clickPoint, mapPoint);
+            }
+        }
+
+        return battleEvent;
     }
 
     private void initItemClick() {

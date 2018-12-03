@@ -31,7 +31,7 @@ public class ClickMenusDrawer {
         initMenu(char2DoorMenu);
     }
 
-    public void drawChar2PointMenu(Point clickPoint) {
+    public static void drawChar2PointMenu(Point clickPoint) {
         hideMenus();
         activeMenu = char2PointMenu;
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
@@ -52,7 +52,7 @@ public class ClickMenusDrawer {
         }
     }
 
-    public void drawChar2DoorMenu(Point clickPoint, Door door, Character character) {
+    public static void drawChar2DoorMenu(Point clickPoint, Door door, Character character) {
         hideMenus();
         activeMenu = char2DoorMenu;
         Point doorPos = MapObjectDrawer.getMapObjectPointMap().get(door);
@@ -70,12 +70,12 @@ public class ClickMenusDrawer {
         }
     }
 
-    public void hideMenus() {
+    public static void hideMenus() {
         hideMenu(char2PointMenu);
         hideMenu(char2DoorMenu);
     }
 
-    public void hideMenu(List<ClickMenuButton> menu) {
+    private static void hideMenu(List<ClickMenuButton> menu) {
         for (ClickMenuButton button: menu) {
             hideButton(button);
         }
@@ -87,7 +87,7 @@ public class ClickMenusDrawer {
         }
     }
 
-    public ClickMenuButton clickedButton () {
+    public static ClickMenuButton clickedButton () {
         for (ClickMenuButton button: ClickMenuButton.values()) {
             if (button.wasClicked())
                 return button;
@@ -109,7 +109,7 @@ public class ClickMenusDrawer {
         }
     }
 
-    private void drawButton(ClickMenuButton button, Point clickPoint) {
+    private static void drawButton(ClickMenuButton button, Point clickPoint) {
         Shape shape = button.getShape();
         shape.setTranslateX(clickPoint.x);
         shape.setTranslateY(clickPoint.y);
@@ -123,7 +123,7 @@ public class ClickMenusDrawer {
         label.setVisible(true);
     }
 
-    private void hideButton(ClickMenuButton button) {
+    private static void hideButton(ClickMenuButton button) {
         Shape shape = button.getShape();
         shape.setVisible(false);
 

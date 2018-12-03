@@ -33,10 +33,9 @@ public class App extends Application {
     private void startBattleIso(Battle battle, Stage primaryStage) throws Exception {
         IsoBattleLoop isoBattleLoop = new IsoBattleLoop(battle);
         IsoViewController isoViewController = new IsoViewController(primaryStage);
-        IsoViewer isoViewer = new IsoViewer(battle, isoViewController.getMapCanvas());
-        PanelViewer panelViewer = new PanelViewer(isoViewController.getPanel(), battle.getCharacters());
+        new IsoViewer(battle, isoViewController.getMapCanvas());
+        new PanelViewer(isoViewController.getPanel(), battle.getCharacters());
 
-        IsoBattleLoop.setViewersAndDrawers(isoViewer, panelViewer);
         isoBattleLoop.start();
     }
 

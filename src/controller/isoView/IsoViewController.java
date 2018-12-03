@@ -3,7 +3,7 @@ package controller.isoView;
 import controller.isoView.isoMap.IsoMapClickController;
 import controller.isoView.isoMap.IsoMapHoverController;
 import controller.isoView.isoMap.IsoMapKeyController;
-import controller.isoView.isoMap.IsoMapMoveController;
+import controller.isoView.isoMap.IsoMapBorderHoverController;
 import controller.isoView.isoPanel.Panel;
 import controller.isoView.isoPanel.PanelController;
 import javafx.fxml.FXML;
@@ -61,7 +61,7 @@ public class IsoViewController {
         panel = preparePanel();
 
         new PanelController(panelHBox);
-        new IsoMapMoveController(mapCanvas, groupBorderCanvases(), panelHBox);
+        new IsoMapBorderHoverController(mapCanvas, groupBorderCanvases(), panelHBox);
         new IsoMapClickController(mapCanvas, preparePanel());
         new IsoMapHoverController(mapCanvas);
         new IsoMapKeyController(mapCanvas.getScene());
@@ -117,9 +117,5 @@ public class IsoViewController {
 
     public Panel getPanel() {
         return panel;
-    }
-
-    public Rectangle getHeldItemRect() {
-        return heldItemRect;
     }
 }

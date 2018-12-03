@@ -21,8 +21,8 @@ public class IsoMapHoverController {
 
     private void initCanvasHover(){
         mapCanvas.setOnMouseMoved(mouseEvent -> {
-            IsoBattleLoop.setCanvasHoverPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
-            IsoBattleLoop.setCanvasHoverFlag(true);
+            IsoBattleLoop.setHoverPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
+//            IsoBattleLoop.setBattleEvent(new BattleEvent(EventType.MAP_HOVER, new Point((int)mouseEvent.getX(), (int)mouseEvent.getY())));
         });
     }
 }

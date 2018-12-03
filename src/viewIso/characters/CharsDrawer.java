@@ -21,19 +21,19 @@ import java.util.List;
 
 public class CharsDrawer {
 
-    private Dimension SPRITES_SPAN = new Dimension(192, 192);
-    private Dimension SPRITE_SIZE = new Dimension(124, 160);
-    private Dimension SPRITE_OFFSET =
+    private static Dimension SPRITES_SPAN = new Dimension(192, 192);
+    private static Dimension SPRITE_SIZE = new Dimension(124, 160);
+    private static Dimension SPRITE_OFFSET =
             new Dimension((SPRITES_SPAN.width - SPRITE_SIZE.width)/2, (SPRITES_SPAN.height - SPRITE_SIZE.height)/2);
-    private Dimension SPRITE_BASE = new Dimension(64, 132);
+    private static Dimension SPRITE_BASE = new Dimension(64, 132);
 
     private Map map;
     private Canvas canvas;
     private GraphicsContext gc;
     private MapDrawer mapDrawer;
-    private List<Character> characters;
-    private Character clickedCharacter;
-    private Character hoverCharacter;
+    private static List<Character> characters;
+    private static Character clickedCharacter;
+    private static Character hoverCharacter;
     private static java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
     private java.util.Map<Character, Label> charLabelsMap = new HashMap<>();
 
@@ -42,7 +42,7 @@ public class CharsDrawer {
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
         this.mapDrawer = mapDrawer;
-        this.characters = characters;
+        CharsDrawer.characters = characters;
 
         initCharSpriteMap();
         initCharLabelsMap();
@@ -119,7 +119,7 @@ public class CharsDrawer {
     }
 
 
-    public boolean isOtherCharClicked(Point clickPoint, Character chosenChar) {
+    public static boolean isOtherCharClicked(Point clickPoint, Character chosenChar) {
         for (Character character: characters) {
             Rectangle clickBox = calcClickBox(character);
             if (!character.equals(chosenChar) && clickBox.contains(clickPoint)){
@@ -130,17 +130,17 @@ public class CharsDrawer {
         return false;
     }
 
-    private Rectangle calcClickBox(Character character) {
+    private static Rectangle calcClickBox(Character character) {
         Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPosition());
         return new Rectangle(charScreenPos.x - SPRITE_BASE.width/2, charScreenPos.y - SPRITE_BASE.height*2/3,
                 SPRITE_SIZE.width/2, SPRITE_SIZE.height*2/3);
     }
 
-    public Character getClickedCharacter() {
+    public static Character getClickedCharacter() {
         return clickedCharacter;
     }
 
-    public void checkHoverCharacter(Point hoverPoint){
+    public static void checkHoverCharacter(Point hoverPoint){
         hoverCharacter = null;
         for (Character character: characters) {
             if(calcClickBox(character).contains(hoverPoint))

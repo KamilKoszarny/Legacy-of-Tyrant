@@ -2,28 +2,33 @@ package viewIso;
 
 import javafx.scene.canvas.Canvas;
 import model.Battle;
-import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 
 import java.awt.*;
 
-
 public class IsoViewer {
-    private MapDrawer mapDrawer;
+
+    private static MapDrawer mapDrawer;
     private static ClickMenusDrawer clickMenusDrawer;
-    private SpritesDrawer spritesDrawer;
+    private static SpritesDrawer spritesDrawer;
     private static boolean cutView = false;
+    private static Point mapMove = new Point(0, 0);
 
     public IsoViewer(Battle battle, Canvas canvas) {
         mapDrawer = new MapDrawer(battle.getMap(), canvas);
         spritesDrawer = new SpritesDrawer(battle.getMap(), canvas, mapDrawer, battle.getCharacters());
         clickMenusDrawer = new ClickMenusDrawer(mapDrawer);
+    }
+
+    public static void draw() {
+        if (!mapMove.equals(new Point(0, 0)))
+            moveMap();
         mapDrawer.drawMap();
         spritesDrawer.drawVisibleSprites(cutView);
     }
 
-    public void moveMap(Point mapMove) {
+    private static void moveMap() {
         mapDrawer.changeZeroScreenPosition(mapMove);
         if (MapDrawCalculator.mapOnScreen()) {
             mapDrawer.clearMapBounds();
@@ -35,21 +40,13 @@ public class IsoViewer {
         }
     }
 
-    public void draw() {
-        mapDrawer.drawMap();
-        spritesDrawer.drawVisibleSprites(cutView);
-    }
-
-    public MapDrawer getMapDrawer() {
-        return mapDrawer;
-    }
-
-    public CharsDrawer getCharsDrawer() {
-        return spritesDrawer.getCharsDrawer();
-    }
-
-    public static ClickMenusDrawer getClickMenusDrawer() {
-        return clickMenusDrawer;
+    public static void setMapMove(Point mapMove) {
+        if (IsoViewer.mapMove.x != 0 && mapMove.y != 0)
+            IsoViewer.mapMove.y = mapMove.y;
+        else if (IsoViewer.mapMove.y != 0 && mapMove.x != 0)
+            IsoViewer.mapMove.x = mapMove.x;
+        else
+            IsoViewer.mapMove = mapMove;
     }
 
     public static void switchCutView() {

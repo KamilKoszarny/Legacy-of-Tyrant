@@ -1,6 +1,5 @@
 package model.character.movement;
 
-import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
 import helpers.downloaded.pathfinding.main.utility.Utility;
 import javafx.geometry.Point2D;
 import model.map.Map;
@@ -18,8 +17,8 @@ public class PathFinder {
             Utility.cleanUpPreallocatedMemory();
         int[][] gridPath = Utility.computeOptimalPathOnline(map.getGridGraph(),
                 startGridPoint[0], startGridPoint[1], endGridPoint[0], endGridPoint[1]);
-        for (int i = 0; i < gridPath.length; i++) {
-            mapPath.add(mapPointByGridPoint(gridPath[i]));
+        for (int[] gridPoint : gridPath) {
+            mapPath.add(mapPointByGridPoint(gridPoint));
         }
         return mapPath;
     }
@@ -30,17 +29,17 @@ public class PathFinder {
         return new Point2D(x, y);
     }
 
-    static int[] gridPointByMapPoint(Point2D mapPoint) {
+    private static int[] gridPointByMapPoint(Point2D mapPoint) {
         int[] gridPoint = new int[2];
         gridPoint[0] = (int) (mapPoint.getX() * 4);
         gridPoint[1] = (int) (mapPoint.getY() * 4);
         return gridPoint;
     }
 
-    static int[] gridPointByMapPoint(java.awt.Point mapPoint) {
+    private static int[] gridPointByMapPoint(java.awt.Point mapPoint) {
         int[] gridPoint = new int[2];
-        gridPoint[0] = (int) (mapPoint.x * 4);
-        gridPoint[1] = (int) (mapPoint.y * 4);
+        gridPoint[0] = (mapPoint.x * 4);
+        gridPoint[1] = (mapPoint.y * 4);
         return gridPoint;
     }
 }

@@ -1,41 +1,32 @@
 package model;
 
-import javafx.scene.paint.Color;
 import model.actions.DoorActioner;
 import model.actions.ItemHandler;
-import model.character.StatsCalculator;
 import model.items.Item;
-import model.items.armor.*;
 import model.character.Character;
-import model.character.CharacterClass;
-import model.character.CharacterType;
 import model.character.movement.CharMover;
 import model.character.movement.CharTurner;
 import model.map.*;
-import model.map.heights.MapHeightType;
 import model.map.mapObjects.MapObject;
-import model.items.weapon.Weapon;
 import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Battle {
 
     private Map map;
-    private List<Character> characters;
-    private Character chosenCharacter;
+    private static List<Character> characters;
+    private static Character chosenCharacter;
     private int timer = 0;
     private Item catchedItem = null;
 
     public Battle(Map map, List<Character> characters) {
         this.map = map;
-        this.characters = characters;
+        Battle.characters = characters;
     }
 
-    public void chooseCharacter(Character clickedCharacter) {
+    public static void chooseCharacter(Character clickedCharacter) {
         for (Character character: characters) {
             character.setChosen(false);
         }
@@ -88,7 +79,7 @@ public class Battle {
         return characters;
     }
 
-    public Character getChosenCharacter() {
+    public static Character getChosenCharacter() {
         return chosenCharacter;
     }
 }

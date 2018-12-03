@@ -1,6 +1,6 @@
 package viewIso.map;
 
-import controller.isoView.isoMap.IsoMapMoveController;
+import controller.isoView.isoMap.IsoMapBorderHoverController;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -20,7 +20,7 @@ public class MapDrawer {
     public static int PIX_PER_M;
 
     private Point zeroScreenPosition = new Point(600, -50);
-    private Map map;
+    private static Map map;
     private Canvas canvas;
     private GraphicsContext gc;
     private MapPieceDrawer mPDrawer;
@@ -38,9 +38,9 @@ public class MapDrawer {
         long time = System.nanoTime();
         mapImage = MapImageGenerator.generateMapPreImage();
         System.out.println("mapPreImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-        mapImage = MapImageGenerator.generateMapImage();
-        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
+//        time = System.nanoTime();
+//        mapImage = MapImageGenerator.generateMapImage();
+//        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
 //        time = System.nanoTime();
         PanelViewer.setMapImg(MapImageGenerator.generateMinimapImage());
     }
@@ -77,7 +77,7 @@ public class MapDrawer {
         double[] xCoords = new double[8];
         double[] yCoords = new double[8];
         Point point;
-        int moveStep = IsoMapMoveController.MAP_MOVE_STEP;
+        int moveStep = IsoMapBorderHoverController.MAP_MOVE_STEP;
 
         setCoordsUpper(xCoords, yCoords, moveStep);
         gc.setFill(BACKGROUND_COLOR);
@@ -161,7 +161,7 @@ public class MapDrawer {
         return zeroScreenPosition;
     }
 
-    public Map getMap() {
+    public static Map getMap() {
         return map;
     }
 
