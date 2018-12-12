@@ -75,7 +75,7 @@ public class Battle {
         return map;
     }
 
-    public List<Character> getCharacters() {
+    public static List<Character> getCharacters() {
         return characters;
     }
 

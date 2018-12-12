@@ -42,7 +42,7 @@ public class MapDrawer {
 //        mapImage = MapImageGenerator.generateMapImage();
 //        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
 //        time = System.nanoTime();
-        PanelViewer.setMapImg(MapImageGenerator.generateMinimapImage());
+        PanelViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
     }
 
     public void drawMap() {
