@@ -236,11 +236,12 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </VBox>
-            <VBox fx:id="minimapVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <StackPane fx:id="minimapStackPane" minWidth="200.0" prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Rectangle fx:id="minimapRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" translateX="30.0" width="140.0" />
+                  <Rectangle fx:id="minimapRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+                  <Rectangle fx:id="minimapPosRect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="44.0" mouseTransparent="true" stroke="YELLOW" strokeType="OUTSIDE" strokeWidth="2.0" width="78.0" />
                </children>
-            </VBox>
+            </StackPane>
          </children>
       </HBox>
       <Canvas fx:id="topBorderCanvas" height="200.0" width="200.0" />

@@ -52,7 +52,7 @@ public class IsoViewController {
     @FXML
     private Label loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel;
     @FXML
-    private Rectangle minimapRect;
+    private Rectangle minimapRect, minimapPosRect;
 
     private Panel panel;
 
@@ -60,9 +60,9 @@ public class IsoViewController {
         openWindow(primaryStage);
         panel = preparePanel();
 
-        new PanelController(panelHBox);
+        new PanelController(panelHBox, panel);
         new IsoMapBorderHoverController(mapCanvas, groupBorderCanvases(), panelHBox);
-        new IsoMapClickController(mapCanvas, preparePanel());
+        new IsoMapClickController(mapCanvas, panel);
         new IsoMapHoverController(mapCanvas);
         new IsoMapKeyController(mapCanvas.getScene());
     }
@@ -108,7 +108,8 @@ public class IsoViewController {
 
         return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
                 helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
-                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, heldItemRect, inventoryGridPane, minimapRect);
+                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, heldItemRect, inventoryGridPane,
+                minimapRect, minimapPosRect);
     }
 
     public Canvas getMapCanvas() {

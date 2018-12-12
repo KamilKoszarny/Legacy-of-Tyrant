@@ -15,16 +15,15 @@ public class HeightGenerator {
     private static final int MAX_WALKABLE_SLOPE = 20000;
     private static final int MIN_ROCK_SLOPE = 25000;
 
-    Map map;
-    MapHeightType heightType;
+    private Map map;
     private int hilly;
-    private int maxHeight = 0;
-    Random r = new Random();
+    private int avgHeight = 0;
+    private Random r = new Random();
 
 
     public HeightGenerator(Map map) {
         this.map = map;
-        heightType = map.getHeightType();
+        MapHeightType heightType = map.getHeightType();
         hilly = (int) (heightType.getHilly() * (r.nextDouble()*0.5 + 0.5));
     }
 

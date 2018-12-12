@@ -4,9 +4,9 @@ public enum EventType {
     NULL,
     MOVE_MAP,
     CHOOSE_CHARACTER,
-    CHAR2POINT,
-    CHAR2OBJECT,
-    MAP_PIECE_INFO,
-    MAP_HOVER,
+    SHOW_CHAR2POINT,
+    SHOW_CHAR2OBJECT,
+    SHOW_MAP_PIECE_INFO,
+    ITEM_CLICK,
     ;
 }

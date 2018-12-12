@@ -20,13 +20,13 @@ public class Panel {
     private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     private Rectangle catchedItemRect;
     private Pane inventoryGridPane;
-    private Rectangle inventoryScreenRect, miniMapRect;
+    private Rectangle inventoryScreenRect, miniMapRect, miniMapPosRect;
 
     public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
                  Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
                  Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
-                 Rectangle caughtItemRect, Pane inventoryGridPane, Rectangle miniMapRect) {
+                 Rectangle caughtItemRect, Pane inventoryGridPane, Rectangle miniMapRect, Rectangle miniMapPosRect) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
@@ -47,6 +47,7 @@ public class Panel {
         caughtItemRect.setVisible(false);
         this.inventoryGridPane = inventoryGridPane;
         this.miniMapRect = miniMapRect;
+        this.miniMapPosRect = miniMapPosRect;
 //        initInventoryClick();
     }
 
@@ -138,5 +139,9 @@ public class Panel {
 
     public Rectangle getMiniMapRect() {
         return miniMapRect;
+    }
+
+    public Rectangle getMiniMapPosRect() {
+        return miniMapPosRect;
     }
 }

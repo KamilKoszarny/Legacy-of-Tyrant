@@ -40,10 +40,10 @@ public class MapDrawCalculator {
 
     public static boolean mapOnScreen(){
         int bonus = IsoMapBorderHoverController.MAP_MOVE_STEP * MAP_PIECE_SCREEN_SIZE_Y + 30;
-        boolean mapOnScreen = mapDrawer.getZeroScreenPosition().x < - relativeScreenPosition(new Point(0, map.getHeight())).x + bonus &&
-                mapDrawer.getZeroScreenPosition().x > - relativeScreenPosition(new Point(map.getWidth(), 0)).x + mapDrawer.getCanvas().getWidth() - bonus &&
-                mapDrawer.getZeroScreenPosition().y < - relativeScreenPosition(new Point(0, 0)).y + bonus + map.getPoints().get(new Point(0, 0)).getHeight() / HeightGenerator.H_PEX_PIX &&
-                mapDrawer.getZeroScreenPosition().y > - relativeScreenPosition(new Point(map.getWidth(), map.getHeight())).y + mapDrawer.getCanvas().getHeight() - bonus + map.getPoints().get(new Point(map.mapXPoints - 1, map.mapYPoints - 1)).getHeight() / HeightGenerator.H_PEX_PIX;
+        boolean mapOnScreen = (MapDrawer.getZeroScreenPosition().x < (-relativeScreenPosition(new Point(0, map.getHeight())).x + bonus)) &&
+                (MapDrawer.getZeroScreenPosition().x > ((-relativeScreenPosition(new Point(map.getWidth(), 0)).x + mapDrawer.getCanvas().getWidth()) - bonus)) &&
+                (MapDrawer.getZeroScreenPosition().y < (-relativeScreenPosition(new Point(0, 0)).y + bonus + (map.getPoints().get(new Point(0, 0)).getHeight() / HeightGenerator.H_PEX_PIX))) &&
+                (MapDrawer.getZeroScreenPosition().y > (((-relativeScreenPosition(new Point(map.getWidth(), map.getHeight())).y + mapDrawer.getCanvas().getHeight()) - bonus) + (map.getPoints().get(new Point(map.mapXPoints - 1, map.mapYPoints - 1)).getHeight() / HeightGenerator.H_PEX_PIX)));
         return mapOnScreen;
     }
 
@@ -63,7 +63,7 @@ public class MapDrawCalculator {
                 suspectedMapPieces.add(map.getPoints().get(point));
             }
         }
-        Point relClickPoint = new Point(clickPoint.x - mapDrawer.getZeroScreenPosition().x, clickPoint.y - mapDrawer.getZeroScreenPosition().y);
+        Point relClickPoint = new Point(clickPoint.x - MapDrawer.getZeroScreenPosition().x, clickPoint.y - MapDrawer.getZeroScreenPosition().y);
         for (MapPiece mapPiece: suspectedMapPieces) {
             if (mapPiece.isClicked(relClickPoint)) {
                 return mapPiece;
@@ -102,29 +102,29 @@ public class MapDrawCalculator {
     }
 
     private static Point closePointByPixPosition (Point pixPos) {
-        Point zero = mapDrawer.getZeroScreenPosition();
+        Point zero = MapDrawer.getZeroScreenPosition();
         return new Point(
                 (pixPos.x - zero.x)/MAP_PIECE_SCREEN_SIZE_X + (pixPos.y - zero.y)/MAP_PIECE_SCREEN_SIZE_Y,
                 (- pixPos.x + zero.x)/MAP_PIECE_SCREEN_SIZE_X + (pixPos.y - zero.y)/MAP_PIECE_SCREEN_SIZE_Y);
     }
 
     static Point screenPosition(Point point){
-        return new Point(mapDrawer.getZeroScreenPosition().x + (point.x - point.y)* MAP_PIECE_SCREEN_SIZE_X /2,
-                mapDrawer.getZeroScreenPosition().y + (point.x + point.y) * MAP_PIECE_SCREEN_SIZE_Y /2);
+        return new Point(MapDrawer.getZeroScreenPosition().x + (point.x - point.y)* MAP_PIECE_SCREEN_SIZE_X /2,
+                MapDrawer.getZeroScreenPosition().y + (point.x + point.y) * MAP_PIECE_SCREEN_SIZE_Y /2);
     }
 
     public static Point screenPositionWithHeight(Point point){
         if (!map.getPoints().keySet().contains(point))
             return null;
-        return new Point(mapDrawer.getZeroScreenPosition().x + point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
-                mapDrawer.getZeroScreenPosition().y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2 -
+        return new Point(MapDrawer.getZeroScreenPosition().x + point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
+                MapDrawer.getZeroScreenPosition().y + point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2 -
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX);
     }
 
     public static Point screenPositionWithHeight(Point2D point2D){
         Point point = new Point(Math.round(Math.round(point2D.getX())), Math.round(Math.round(point2D.getY())));
-        return new Point((int)(mapDrawer.getZeroScreenPosition().x + point2D.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point2D.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
-                (int)(mapDrawer.getZeroScreenPosition().y + point2D.getX() * MAP_PIECE_SCREEN_SIZE_Y /2 + point2D.getY() * MAP_PIECE_SCREEN_SIZE_Y /2 -
+        return new Point((int)(MapDrawer.getZeroScreenPosition().x + point2D.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point2D.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
+                (int)(MapDrawer.getZeroScreenPosition().y + point2D.getX() * MAP_PIECE_SCREEN_SIZE_Y /2 + point2D.getY() * MAP_PIECE_SCREEN_SIZE_Y /2 -
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
     }
 

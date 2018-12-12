@@ -71,8 +71,8 @@ public class MapPieceDrawer {
         double[] xCoords = new double[6];
         double[] yCoords = new double[6];
         for (int i = 0; i < 6; i++) {
-            xCoords[i] = md.getZeroScreenPosition().x + mapPiece.getRelXCoords()[i];
-            yCoords[i] = md.getZeroScreenPosition().y + mapPiece.getRelYCoords()[i];
+            xCoords[i] = MapDrawer.getZeroScreenPosition().x + mapPiece.getRelXCoords()[i];
+            yCoords[i] = MapDrawer.getZeroScreenPosition().y + mapPiece.getRelYCoords()[i];
         }
         Color color = mapPiece.getTerrain().getColor();
         color = color.deriveColor(0, 1, .5 + (double)mapPiece.getLight()/100, 1);

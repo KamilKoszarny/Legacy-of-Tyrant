@@ -2,6 +2,7 @@ package viewIso.panel;
 
 import controller.isoView.isoMap.IsoMapClickController;
 import controller.isoView.isoPanel.Panel;
+import controller.isoView.isoPanel.PanelController;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -31,7 +32,7 @@ public class CharDescriptor {
 
     private void initInvRect() {
         Image inventoryImg = new Image("/items/inventory.png");
-        Rectangle invFirstRect = IsoMapClickController.calcInventoryScreenRect(panel, new int[]{0, 0});
+        Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel, new int[]{0, 0});
         inventoryRect = new Rectangle(invFirstRect.getX(), invFirstRect.getY(),
                 ItemHandler.INVENTORY_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_Y * ItemHandler.ITEM_SLOT_SIZE);
         inventoryRect.setFill(new ImagePattern(inventoryImg));
@@ -145,7 +146,7 @@ public class CharDescriptor {
         Rectangle itemInvFirstRect;
         for (Item item: character.getInventory().keySet()) {
             itemInvPos = character.getInventory().get(item);
-            itemInvFirstRect = IsoMapClickController.calcInventoryScreenRect(panel, itemInvPos);
+            itemInvFirstRect = PanelController.calcInventoryScreenRect(panel, itemInvPos);
             Rectangle inventoryItemRect = new Rectangle(itemInvFirstRect.getX(), itemInvFirstRect.getY(),
                     item.getImage().getWidth(), item.getImage().getHeight());
             inventoryItemRect.setFill(new ImagePattern(item.getImage()));
@@ -156,7 +157,7 @@ public class CharDescriptor {
 
     private void redrawInventoryRect(Pane pane) {
         if (!inventoryRectsSet) {
-            Rectangle invFirstRect = IsoMapClickController.calcInventoryScreenRect(panel, new int[]{0, 0});
+            Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel, new int[]{0, 0});
             inventoryRect.setX(invFirstRect.getX());
             inventoryRect.setY(invFirstRect.getY());
             initInventoryClickRectangle();
@@ -177,7 +178,7 @@ public class CharDescriptor {
     private void initInventoryClickRectangle() {
         inventoryClickRect = panel.getInventoryRectangle();
         inventoryClickRect.setOpacity(0);
-        IsoMapClickController.initInventoryClick(inventoryClickRect);
+        PanelController.initInventoryClick(inventoryClickRect);
         inventoryClickRect.setVisible(true);
     }
 

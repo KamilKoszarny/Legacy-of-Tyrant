@@ -9,4 +9,4 @@ diff a/src/controller/isoView/IsoViewController.java b/src/controller/isoView/Is
 -        this.isoBattleLoop = isoBattleLoop;
          openWindow(primaryStage);
  
-         Panel panel = preparePanel();
+         Panel panelHBox = preparePanel();

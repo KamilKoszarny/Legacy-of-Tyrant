@@ -15,8 +15,8 @@ public class Map {
     public final int MIN_HEIGHT_PIX = -50;
     public final int MAX_HEIGHT_PIX = 500;
 
-    public int mapXPoints;
-    public int mapYPoints;
+    public static int mapXPoints;
+    public static int mapYPoints;
     private MapType type;
     private MapHeightType heightType;
     private int widthM;

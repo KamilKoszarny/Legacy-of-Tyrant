@@ -66,21 +66,20 @@ public class IsoBattleLoop extends AnimationTimer{
             case CHOOSE_CHARACTER:
                 Battle.chooseCharacter(CharsDrawer.getClickedCharacter());
                 break;
-            case CHAR2POINT:
+            case SHOW_CHAR2POINT:
                 ClickMenusDrawer.drawChar2PointMenu(battleEvent.getClickPoint());
                 buttonBattleEvent = battleEvent;
                 break;
-            case CHAR2OBJECT: ClickMenusDrawer.drawChar2DoorMenu(battleEvent.getClickPoint(),
+            case SHOW_CHAR2OBJECT: ClickMenusDrawer.drawChar2DoorMenu(battleEvent.getClickPoint(),
                     (Door) battleEvent.getObject(), Battle.getChosenCharacter());
                 buttonBattleEvent = battleEvent;
                 break;
-            case MAP_PIECE_INFO:
+            case SHOW_MAP_PIECE_INFO:
                 showMapPieceInfo(battleEvent.getMapPoint(), battleEvent.getMapPiece());
                 break;
-            case MAP_HOVER:
-                CharsDrawer.checkHoverCharacter(battleEvent.getClickPoint());
-                break;
         }
+
+        battleEvent = null;
     }
 
     private static void handleItemClick() {
@@ -100,9 +99,9 @@ public class IsoBattleLoop extends AnimationTimer{
         if (button == ClickMenuButton.DOOR_LOOK)
             battle.turnCharacter(buttonBattleEvent.getMapPoint());
         if (button == ClickMenuButton.DOOR_OPEN)
-            battle.openDoor(battleEvent.getObject());
+            battle.openDoor(buttonBattleEvent.getObject());
         if (button == ClickMenuButton.DOOR_CLOSE)
-            battle.closeDoor(battleEvent.getObject());
+            battle.closeDoor(buttonBattleEvent.getObject());
 
 
         ClickMenusDrawer.hideMenus();

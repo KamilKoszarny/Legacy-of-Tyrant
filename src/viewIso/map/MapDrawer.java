@@ -19,7 +19,7 @@ public class MapDrawer {
     public static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
     public static int PIX_PER_M;
 
-    private Point zeroScreenPosition = new Point(600, -50);
+    private static Point zeroScreenPosition = new Point(600, -50);
     private static Map map;
     private Canvas canvas;
     private GraphicsContext gc;
@@ -27,7 +27,7 @@ public class MapDrawer {
     private MapImage mapImage;
 
     public MapDrawer(Map map, Canvas canvas) {
-        this.map = map;
+        MapDrawer.map = map;
         this.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
         mPDrawer = new MapPieceDrawer(map, gc, this, MAP_PIECE_SCREEN_SIZE_X, MAP_PIECE_SCREEN_SIZE_Y);
@@ -151,14 +151,18 @@ public class MapDrawer {
         yCoords[7] = screenPosition(point).y - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
     }
 
-    public void changeZeroScreenPosition(Point zSPChange) {
-        this.zeroScreenPosition.x += zSPChange.x * MAP_PIECE_SCREEN_SIZE_X;
-        this.zeroScreenPosition.y += zSPChange.y * MAP_PIECE_SCREEN_SIZE_Y;
+
+    public static Point getZeroScreenPosition() {
+        return zeroScreenPosition;
     }
 
+    public static void changeZeroScreenPosition(Point zSPChange) {
+        zeroScreenPosition.x += zSPChange.x * MAP_PIECE_SCREEN_SIZE_X;
+        zeroScreenPosition.y += zSPChange.y * MAP_PIECE_SCREEN_SIZE_Y;
+    }
 
-    public Point getZeroScreenPosition() {
-        return zeroScreenPosition;
+    public static void setZeroScreenPosition(double x, double y) {
+        zeroScreenPosition = new Point((int)x, (int)y);
     }
 
     public static Map getMap() {
@@ -167,10 +171,6 @@ public class MapDrawer {
 
     public Canvas getCanvas() {
         return canvas;
-    }
-
-    public MapPieceDrawer getmPDrawer() {
-        return mPDrawer;
     }
 
 
