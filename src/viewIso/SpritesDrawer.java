@@ -30,6 +30,7 @@ public class SpritesDrawer {
     }
 
     public void drawVisibleSprites(boolean cutView) {
+        charsDrawer.hideLabels();
         List<Point> visiblePoints = MapDrawCalculator.calcVisiblePoints();
         visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
         for (Point point: visiblePoints) {

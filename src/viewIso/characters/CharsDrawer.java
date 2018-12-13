@@ -84,10 +84,16 @@ public class CharsDrawer {
         label.setTranslateX(charScreenPos.x - label.getWidth()/2);
         label.setTranslateY(charScreenPos.y - SPRITE_SIZE.height * (.6));
 
-        if (label.getTranslateY() < canvas.getHeight() - label.getHeight()/2)
+//        if (label.getTranslateY() < canvas.getHeight() - label.getHeight()/2)
             label.setVisible(true);
-        else
+//        else
+//            label.setVisible(false);
+    }
+
+    public void hideLabels() {
+        for (Label label: charLabelsMap.values()) {
             label.setVisible(false);
+        }
     }
 
     private void initCharSpriteMap() {
