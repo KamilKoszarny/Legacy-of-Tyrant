@@ -1,11 +1,17 @@
 package model;
 
 import javafx.animation.AnimationTimer;
+import model.actions.CharsChooser;
+import model.actions.DoorActioner;
+import model.actions.ItemHandler;
+import model.actions.movement.CharMover;
+import model.actions.movement.CharTurner;
 import model.items.Item;
 import model.map.MapPiece;
 import model.map.buildings.Door;
 import viewIso.*;
 import viewIso.characters.CharsDrawer;
+import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.PanelViewer;
 
 import java.awt.*;
@@ -64,7 +70,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 IsoViewer.setMapMove(battleEvent.getClickPoint());
                 break;
             case CHOOSE_CHARACTER:
-                Battle.chooseCharacter(CharsDrawer.getClickedCharacter());
+                CharsChooser.chooseCharacter(CharsDrawer.getClickedCharacter());
                 break;
             case SHOW_CHAR2POINT:
                 ClickMenusDrawer.drawChar2PointMenu(battleEvent.getClickPoint());
@@ -72,6 +78,10 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
             case SHOW_CHAR2OBJECT: ClickMenusDrawer.drawChar2DoorMenu(battleEvent.getClickPoint(),
                     (Door) battleEvent.getObject(), Battle.getChosenCharacter());
+                buttonBattleEvent = battleEvent;
+                break;
+            case SHOW_CHAR2ENEMY:
+                ClickMenusDrawer.drawChar2EnemyMenu(battleEvent.getClickPoint(), Battle.getChosenCharacter(), CharsDrawer.getClickedCharacter());
                 buttonBattleEvent = battleEvent;
                 break;
             case SHOW_MAP_PIECE_INFO:
@@ -83,26 +93,36 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private static void handleItemClick() {
-        Item heldItem = battle.moveItem(clickedInventorySlot, clickedItemPoint);
+        Item heldItem = ItemHandler.moveItem(Battle.getChosenCharacter(), clickedInventorySlot, clickedItemPoint);
         PanelViewer.setHeldItem(heldItem, clickedItemPoint);
         itemClickFlag = false;
     }
 
     private static void handleButtonAction(ClickMenuButton button) {
-        if (button == ClickMenuButton.LOOK)
-            battle.turnCharacter(buttonBattleEvent.getMapPoint());
-        if (button == ClickMenuButton.RUN) {
-            if (buttonBattleEvent.getMapPoint() == null)
-                System.out.println("null");
-            battle.startRunCharacter(buttonBattleEvent.getMapPoint());
+        switch (button){
+            case LOOK:
+                CharTurner.turnCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint(), true);
+                break;
+            case DOOR_LOOK:
+                CharTurner.turnCharacter(Battle.getChosenCharacter(),
+                        MapObjectDrawer.getMapObjectPointMap().get(buttonBattleEvent.getObject()), true);
+                break;
+            case ENEMY_LOOK:
+                CharTurner.turnCharacter(Battle.getChosenCharacter(),
+                        buttonBattleEvent.getCharacter().getPosition(), true);
+                break;
+            case RUN:
+                if (buttonBattleEvent.getMapPoint() == null)
+                    System.out.println("null");
+                CharMover.startRunCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint(), Battle.getMap());
+                break;
+            case DOOR_OPEN:
+                DoorActioner.openDoor(buttonBattleEvent.getObject());
+                break;
+            case DOOR_CLOSE:
+                DoorActioner.closeDoor(buttonBattleEvent.getObject());
+                break;
         }
-        if (button == ClickMenuButton.DOOR_LOOK)
-            battle.turnCharacter(buttonBattleEvent.getMapPoint());
-        if (button == ClickMenuButton.DOOR_OPEN)
-            battle.openDoor(buttonBattleEvent.getObject());
-        if (button == ClickMenuButton.DOOR_CLOSE)
-            battle.closeDoor(buttonBattleEvent.getObject());
-
 
         ClickMenusDrawer.hideMenus();
     }

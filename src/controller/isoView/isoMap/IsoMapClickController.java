@@ -1,16 +1,12 @@
 package controller.isoView.isoMap;
 
 import controller.isoView.isoPanel.Panel;
-import helpers.my.GeomerticHelper;
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
-import javafx.scene.shape.Rectangle;
 import model.Battle;
 import model.BattleEvent;
 import model.EventType;
 import model.IsoBattleLoop;
-import model.actions.ItemHandler;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.characters.CharsDrawer;
@@ -18,8 +14,6 @@ import viewIso.map.MapDrawCalculator;
 import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class IsoMapClickController {
 
@@ -52,7 +46,11 @@ public class IsoMapClickController {
     private BattleEvent eventByLClickPoint(Point clickPoint) {
         BattleEvent battleEvent = null;
         if (CharsDrawer.isOtherCharClicked(clickPoint, Battle.getChosenCharacter())) {
-            battleEvent = new BattleEvent(EventType.CHOOSE_CHARACTER, clickPoint);
+            if (CharsDrawer.getClickedCharacter().getColor().equals(Battle.getPlayerColor())) {
+                battleEvent = new BattleEvent(EventType.CHOOSE_CHARACTER, clickPoint);
+            } else if (Battle.getChosenCharacter() != null) {
+                battleEvent = new BattleEvent(EventType.SHOW_CHAR2ENEMY, clickPoint, CharsDrawer.getClickedCharacter());
+            }
         } else {
             Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
             if (Battle.getChosenCharacter() != null && mapPoint != null) {

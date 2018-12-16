@@ -4,6 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
+import model.actions.AttackCalculator;
 import model.character.Character;
 import model.map.Map;
 import model.map.MapPiece;
@@ -20,15 +21,17 @@ import java.util.List;
 public class ClickMenusDrawer {
 
     private Canvas canvas;
-    static List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
-    static List<ClickMenuButton> char2DoorMenu = Arrays.asList(ClickMenuButton.DOOR_LOOK, ClickMenuButton.DOOR_OPEN, ClickMenuButton.DOOR_CLOSE);
-    static List<ClickMenuButton> activeMenu = char2PointMenu;
+    private static List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
+    private static List<ClickMenuButton> char2DoorMenu = Arrays.asList(ClickMenuButton.DOOR_LOOK, ClickMenuButton.DOOR_OPEN, ClickMenuButton.DOOR_CLOSE);
+    private static List<ClickMenuButton> char2EnemyMenu = Arrays.asList(ClickMenuButton.ENEMY_LOOK, ClickMenuButton.ATTACK_HEAD, ClickMenuButton.ATTACK_BODY, ClickMenuButton.ATTACK_ARMS, ClickMenuButton.ATTACK_LEGS);
+    private static List<ClickMenuButton> activeMenu = char2PointMenu;
 
 
     ClickMenusDrawer(MapDrawer mapDrawer) {
         canvas = mapDrawer.getCanvas();
         initMenu(char2PointMenu);
         initMenu(char2DoorMenu);
+        initMenu(char2EnemyMenu);
     }
 
     public static void drawChar2PointMenu(Point clickPoint) {
@@ -39,13 +42,12 @@ public class ClickMenusDrawer {
             ClickMenuButton.WALK.setGrayed(true);
             ClickMenuButton.RUN.setGrayed(true);
             ClickMenuButton.SNEAK.setGrayed(true);
-            ClickMenuButton.colorButtons(char2PointMenu);
         } else {
             ClickMenuButton.WALK.setGrayed(false);
             ClickMenuButton.RUN.setGrayed(false);
             ClickMenuButton.SNEAK.setGrayed(false);
-            ClickMenuButton.colorButtons(char2PointMenu);
         }
+        ClickMenuButton.colorButtons(char2PointMenu);
 
         for (ClickMenuButton button: char2PointMenu) {
             drawButton(button, clickPoint);
@@ -70,9 +72,26 @@ public class ClickMenusDrawer {
         }
     }
 
+    public static void drawChar2EnemyMenu(Point clickPoint, Character character, Character enemy) {
+        hideMenus();
+        activeMenu = char2EnemyMenu;
+
+        boolean inRange = AttackCalculator.isInRange(character, enemy);
+        ClickMenuButton.ATTACK_HEAD.setGrayed(!inRange);
+        ClickMenuButton.ATTACK_BODY.setGrayed(!inRange);
+        ClickMenuButton.ATTACK_ARMS.setGrayed(!inRange);
+        ClickMenuButton.ATTACK_LEGS.setGrayed(!inRange);
+
+        ClickMenuButton.colorButtons(char2EnemyMenu);
+        for (ClickMenuButton button: char2EnemyMenu) {
+            drawButton(button, clickPoint);
+        }
+    }
+
     public static void hideMenus() {
         hideMenu(char2PointMenu);
         hideMenu(char2DoorMenu);
+        hideMenu(char2EnemyMenu);
     }
 
     private static void hideMenu(List<ClickMenuButton> menu) {

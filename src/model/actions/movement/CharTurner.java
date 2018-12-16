@@ -1,4 +1,4 @@
-package model.character.movement;
+package model.actions.movement;
 
 import javafx.geometry.Point2D;
 import model.character.CharState;

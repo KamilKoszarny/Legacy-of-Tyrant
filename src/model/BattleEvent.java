@@ -1,6 +1,7 @@
 package model;
 
 
+import model.character.Character;
 import model.map.MapPiece;
 import model.map.mapObjects.MapObject;
 import viewIso.map.MapDrawCalculator;
@@ -13,6 +14,7 @@ public class BattleEvent {
     private Point clickPoint, mapPoint;
     private MapPiece mapPiece;
     private MapObject object;
+    private Character character;
 
     public BattleEvent(EventType type) {
         this.type = type;
@@ -27,6 +29,12 @@ public class BattleEvent {
         this.type = type;
         this.clickPoint = clickPoint;
         this.object = object;
+    }
+
+    public BattleEvent(EventType type, Point clickPoint, Character character) {
+        this.type = type;
+        this.clickPoint = clickPoint;
+        this.character = character;
     }
 
     public BattleEvent(EventType type, Point clickPoint, Point mapPoint) {
@@ -74,5 +82,9 @@ public class BattleEvent {
 
     public MapObject getObject() {
         return object;
+    }
+
+    public Character getCharacter() {
+        return character;
     }
 }

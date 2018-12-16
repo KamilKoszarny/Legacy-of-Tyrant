@@ -1,4 +1,4 @@
-package model.character.movement;
+package model.actions.movement;
 
 import helpers.downloaded.pathfinding.main.utility.Utility;
 import javafx.geometry.Point2D;

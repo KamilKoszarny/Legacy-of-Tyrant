@@ -1,4 +1,4 @@
-package model.character.movement;
+package model.actions.movement;
 
 import model.character.Character;
 import model.character.CharacterType;

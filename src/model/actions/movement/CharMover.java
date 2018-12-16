@@ -1,4 +1,4 @@
-package model.character.movement;
+package model.actions.movement;
 
 import helpers.my.GeomerticHelper;
 import javafx.geometry.Point2D;

@@ -24,6 +24,12 @@ public enum ClickMenuButton {
     DOOR_LOOK("Look", "look"),
     DOOR_OPEN("Open", "doorOpen"),
     DOOR_CLOSE("Close", "doorClose"),
+
+    ATTACK_HEAD("Attack Head", "head"),
+    ATTACK_BODY("Attack Body", "body"),
+    ATTACK_ARMS("Attack Arms", "arm"),
+    ATTACK_LEGS("Attack Legs", "leg"),
+    ENEMY_LOOK("Look", "look"),
     ;
 
     private static final int RADIUS_IN = 5;

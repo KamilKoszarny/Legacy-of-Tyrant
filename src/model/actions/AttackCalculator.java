@@ -8,8 +8,10 @@ import model.map.Map;
 public class AttackCalculator {
 
     public static boolean isInRange(Character charA, Character charB){
-        if (charA.getPosition().distance(charB.getPosition()) * Map.RESOLUTION_M <
-                charA.getRange() + charA.getType().getSize()/2 + charB.getType().getSize()/2)
+        System.out.println(charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT);
+//        if (charA.getPosition().distance(charB.getPosition()) * Map.RESOLUTION_M <
+//                charA.getRange() + charA.getType().getSize()/2 + charB.getType().getSize()/2)
+        if (charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getRange())
             return true;
         return false;
     }

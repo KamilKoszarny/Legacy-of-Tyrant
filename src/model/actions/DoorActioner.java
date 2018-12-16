@@ -1,8 +1,8 @@
 package model.actions;
 
 import helpers.my.GeomerticHelper;
-import model.character.Character;
-import model.character.movement.CharMover;
+import model.Battle;
+import model.actions.movement.CharMover;
 import model.map.Map;
 import model.map.MapGridCalc;
 import model.map.MapPiece;
@@ -15,7 +15,8 @@ import java.util.List;
 
 public class DoorActioner {
 
-    public static void openDoor(MapObject object, Map map, List<Character> characters) {
+    public static void openDoor(MapObject object) {
+        Map map = Battle.getMap();
         Door door = (Door) object;
         door.switchOpen();
 
@@ -36,10 +37,11 @@ public class DoorActioner {
         refreshMapObjects(map, door, objectPoint, newPoint);
         refreshWalkables(map, objectPoint, newLook, newPoint, true);
         CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), characters);
+        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
     }
 
-    public static void closeDoor(MapObject object, Map map, List<Character> characters) {
+    public static void closeDoor(MapObject object) {
+        Map map = Battle.getMap();
         Door door = (Door) object;
         door.switchOpen();
 
@@ -60,7 +62,7 @@ public class DoorActioner {
         refreshMapObjects(map, door, objectPoint, newPoint);
         refreshWalkables(map, objectPoint, newLook, newPoint, false);
         CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), characters);
+        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
     }
 
     private static void refreshWalkables(Map map, Point objectPoint, int newLook, Point newPoint, boolean open) {

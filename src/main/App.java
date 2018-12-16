@@ -2,6 +2,7 @@ package main;
 
 import controller.isoView.IsoViewController;
 import javafx.application.Application;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Battle;
 import model.BattleInitializer;
@@ -26,7 +27,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Map map = BattleInitializer.initMap();
         List<Character> characters = BattleInitializer.initCharacters(map);
-        Battle battle = new Battle(map, characters);
+        Battle battle = new Battle(map, characters, Color.YELLOW);
         startBattleIso(battle, primaryStage);
     }
 
