@@ -5,6 +5,8 @@ import javafx.scene.control.ButtonType;
 import model.character.Character;
 import model.map.Map;
 
+import java.util.Random;
+
 public class AttackCalculator {
 
     public static boolean isInRange(Character charA, Character charB){
@@ -16,18 +18,24 @@ public class AttackCalculator {
         return false;
     }
 
-    public static double calcChanceToHit(Character charA, Character charB){
-        return 50 + charA.getAccuracy() - charB.getAgility() - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M;
-    }
+    public static AttackResult attackCharacter(Character charA, Character charB, AttackType attackType){
+        int score = new Random().nextInt(100);
+        int chanceToHit = calcChanceToHit(charA, charB);
+        if (score > chanceToHit)
+            return AttackResult.MISS;
 
-    public static void attackCharacter(Character charA, Character charB, int score){
-        int damage = calcDamage(charA, charB, score);
+        int damage = calcDamage(charA, charB, score, attackType);
         Alert alert = new Alert(Alert.AlertType.INFORMATION,
                 charA.getName() + " attacks " + charB.getName() + " for " + damage + " damage!", ButtonType.OK);
-        alert.showAndWait();
+        alert.show();
         charB.setHitPoints(charB.getHitPoints() - damage);
         charA.setMsLeft(charA.getMsLeft() - (int)(1 / charA.getAttackSpeed() * 1000));
         charA.setVigor((int) (charA.getVigor() - (1 / charA.getAttackSpeed())));
+        return AttackResult.HIT;
+    }
+
+    public static int calcChanceToHit(Character charA, Character charB){
+        return (int) (50 + charA.getAccuracy() - charB.getAgility() - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
     }
 
     public static Double calcDodgeChance(Character character){
@@ -51,21 +59,19 @@ public class AttackCalculator {
         return bounceChance;
     }
 
-    private static int calcDamage(Character charA, Character charB, int score){
+    private static int calcDamage(Character charA, Character charB, int score, AttackType attackType){
         if (score > charB.getAvoidance())
             return 0;
         int damage =  (int)(charA.getDmgMin() +
                 (charA.getDmgMax() - charA.getDmgMin()) *
                 (charB.getAvoidance() - score) / charB.getAvoidance());
-        int damageResisted = (int) (charB.getDurability() / 10);
-        if (score%10 < 2)
-            damageResisted += (int)charB.getHeadArmor() - 1;
-        else if (score%10 < 4)
-            damageResisted += (int)charB.getLegsArmor();
-        else if (score%10 < 6)
-            damageResisted += (int)charB.getArmsArmor();
-        else
-            damageResisted += (int)charB.getBodyArmor();
+        int damageResisted = charB.getDurability() / 10;
+        switch (attackType){
+            case HEAD: damageResisted += charB.getHeadArmor() - 1; break;
+            case BODY: damageResisted += charB.getBodyArmor(); break;
+            case ARMS: damageResisted += charB.getArmsArmor(); break;
+            case LEGS: damageResisted += charB.getLegsArmor(); break;
+        }
 
         damage -= damageResisted;
         if (damage < 0)

@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
 import viewIso.map.MapDrawCalculator;
@@ -66,9 +67,13 @@ public class CharsDrawer {
         drawLabel(character, charScreenPos);
     }
 
-    public static void nextFrame(Character character) {
-        CharSprite charSprite = charSpriteSheetMap.get(character);
-        charSprite.nextFrame();
+    public static void nextFrame(Character character, int timer) {
+        if (timer%character.getState().getPose().getDelay() == 0) {
+            CharSprite charSprite = charSpriteSheetMap.get(character);
+            if (!charSprite.nextFrame()) {
+                character.setState(CharState.IDLE);
+            }
+        }
     }
 
     private void drawLabel(Character character, Point charScreenPos) {

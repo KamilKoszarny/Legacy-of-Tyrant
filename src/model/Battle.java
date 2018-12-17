@@ -31,8 +31,8 @@ public class Battle {
                     CharMover.stopCharacter(character, map);
                 else
                     CharMover.updateCharacterMove(character, ms, map);
-            else if (timer%3 == 0) {
-                CharsDrawer.nextFrame(character);
+            else {
+                CharsDrawer.nextFrame(character, timer);
             }
         }
     }

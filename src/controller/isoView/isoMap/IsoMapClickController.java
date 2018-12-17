@@ -18,11 +18,9 @@ import java.awt.*;
 public class IsoMapClickController {
 
     private Canvas mapCanvas;
-    private static Panel panel;
 
     public IsoMapClickController(Canvas mapCanvas, Panel panel) {
         this.mapCanvas = mapCanvas;
-        IsoMapClickController.panel = panel;
 
         initialize();
     }

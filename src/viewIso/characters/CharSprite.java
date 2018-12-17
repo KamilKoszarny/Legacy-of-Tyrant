@@ -4,9 +4,9 @@ import javafx.scene.image.Image;
 
 public class CharSprite {
     private Image charSpriteSheet;
-    private int dir = 0, animationFrame = 0;
+    private int animationFrame = 0;
     private CharPose charPose = CharPose.IDLE;
-    private boolean reverse = false;
+    private boolean reverse = false, start = true;
 
     public CharSprite(Image charSpriteSheet) {
         this.charSpriteSheet = charSpriteSheet;
@@ -16,7 +16,18 @@ public class CharSprite {
         return charPose.getStartFrame() + animationFrame;
     }
 
-    public void nextFrame() {
+    public boolean nextFrame() {
+        if (charPose.isSingle()) {
+            if (start) {
+                animationFrame = 0;
+                start = false;
+            }
+            if (animationFrame == charPose.getFramesCount() - 1) {
+                start = true;
+                return false;
+            }
+        }
+
         if (charPose.isReversible()) {
             if (animationFrame == charPose.getFramesCount() - 1)
                 reverse = true;
@@ -31,6 +42,7 @@ public class CharSprite {
             animationFrame += 1;
             animationFrame %= charPose.getFramesCount();
         }
+        return true;
     }
 
     public Image getCharSpriteSheet() {

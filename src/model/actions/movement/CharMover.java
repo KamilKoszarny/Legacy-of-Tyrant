@@ -44,7 +44,7 @@ public class CharMover {
             character.setPosition(new Point2D(pos.getX() + step.getX(), pos.getY() + step.getY()));
             if (distToNext%POINTS_TO_NEXT_FRAME <
                     GeomerticHelper.distTo0(step.getX(), step.getY()))
-                CharsDrawer.nextFrame(character);
+                CharsDrawer.nextFrame(character, 0);
         }
         else if (last) {
             character.setPosition(character.getDestination());

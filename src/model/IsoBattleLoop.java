@@ -1,9 +1,7 @@
 package model;
 
 import javafx.animation.AnimationTimer;
-import model.actions.CharsChooser;
-import model.actions.DoorActioner;
-import model.actions.ItemHandler;
+import model.actions.*;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
 import model.items.Item;
@@ -20,7 +18,7 @@ public class IsoBattleLoop extends AnimationTimer{
 
     private static final int FRAME_RATE = 50;
 
-    private static int lastMs, curMs;
+    private static int lastMs;
 
     private static Battle battle;
     private static BattleEvent battleEvent = null;
@@ -122,6 +120,18 @@ public class IsoBattleLoop extends AnimationTimer{
             case DOOR_CLOSE:
                 DoorActioner.closeDoor(buttonBattleEvent.getObject());
                 break;
+            case ATTACK_BODY:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.BODY);
+                break;
+            case ATTACK_HEAD:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.HEAD);
+                break;
+            case ATTACK_ARMS:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.ARMS);
+                break;
+            case ATTACK_LEGS:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.LEGS);
+                break;
         }
 
         ClickMenusDrawer.hideMenus();
@@ -134,7 +144,7 @@ public class IsoBattleLoop extends AnimationTimer{
 
 
     private static boolean nextFrame(long curNanoTime) {
-        curMs = (int) (curNanoTime / 1000000);
+        int curMs = (int) (curNanoTime / 1000000);
         if (curMs - lastMs > FRAME_RATE){
             lastMs = curMs;
             return true;

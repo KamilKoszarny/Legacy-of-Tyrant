@@ -6,10 +6,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.actions.AttackCalculator;
 import model.character.Character;
-import model.map.Map;
 import model.map.MapPiece;
 import model.map.buildings.Door;
-import model.map.mapObjects.MapObject;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
@@ -38,6 +36,8 @@ public class ClickMenusDrawer {
         hideMenus();
         activeMenu = char2PointMenu;
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
+        if (clickedMapPiece == null)
+            return;
         if (!clickedMapPiece.isWalkable()) {
             ClickMenuButton.WALK.setGrayed(true);
             ClickMenuButton.RUN.setGrayed(true);
