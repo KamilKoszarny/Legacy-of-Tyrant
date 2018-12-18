@@ -2,9 +2,11 @@ package viewIso.mapObjects;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
+import model.Battle;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.mapObjects.MapObject;
+import viewIso.IsoViewer;
 import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
@@ -12,20 +14,16 @@ import java.util.HashMap;
 
 public class MapObjectDrawer {
 
-    private Map map;
-    private Canvas canvas;
     private static java.util.Map<Point, MapObjectSprite> mapObjectSpriteMap = new HashMap<>();
     private static java.util.Map<MapObject, Point> mapObjectPointMap = new HashMap<>();
     private static boolean cutView;
 
-    public MapObjectDrawer(Map map, Canvas canvas) {
-        this.map = map;
-        this.canvas = canvas;
+    public MapObjectDrawer() {
         initSpriteMap();
     }
 
     public static void refreshSpriteMap(Point point, Map map) {
-        MapPiece mapPiece = map.getPoints().get(point);
+        MapPiece mapPiece = Battle.getMap().getPoints().get(point);
         MapObject mapObject = mapPiece.getObject();
         if (mapObject != null) {
             mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
@@ -34,8 +32,8 @@ public class MapObjectDrawer {
     }
 
     private void initSpriteMap() {
-        for (Point point: map.getPoints().keySet()) {
-            MapPiece mapPiece = map.getPoints().get(point);
+        for (Point point: Battle.getMap().getPoints().keySet()) {
+            MapPiece mapPiece = Battle.getMap().getPoints().get(point);
             MapObject mapObject = mapPiece.getObject();
             if (mapObject != null) {
                 mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
@@ -54,13 +52,13 @@ public class MapObjectDrawer {
             int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
             int sourceWidth = (int) (image.getWidth() * .2);
             int sourceHeight = (int)(image.getHeight() - mapObjectSprite.getOffset().y);
-            canvas.getGraphicsContext2D().drawImage(image,
+            IsoViewer.getCanvas().getGraphicsContext2D().drawImage(image,
                     sourceX, sourceY,
                     sourceWidth, sourceHeight,
                     screenPos.x - mapObjectSprite.getOffset().x + sourceX, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
                     sourceWidth, sourceHeight);
         } else
-            canvas.getGraphicsContext2D().drawImage(image,
+            IsoViewer.getCanvas().getGraphicsContext2D().drawImage(image,
                 screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
     }
 

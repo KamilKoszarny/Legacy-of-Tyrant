@@ -3,9 +3,11 @@ package model.character;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import model.actions.attack.AttackResult;
 import model.items.Item;
 import model.items.armor.*;
 import model.items.weapon.Weapon;
+import viewIso.LabelsDrawer;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -49,6 +51,8 @@ public class Character {
     private boolean wasDodging = false;
     private boolean wasParrying = false;
     private boolean wasBouncing = false;
+
+    private AttackResult attackResult = null;
 
     public Character() {
     }
@@ -204,6 +208,7 @@ public class Character {
     public void setSneaking(boolean sneaking) {
         this.sneaking = sneaking;
     }
+
 
     public boolean isWasDodging() {
         return wasDodging;
@@ -629,5 +634,14 @@ public class Character {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
+    }
+
+    public AttackResult getAttackResult() {
+        return attackResult;
+    }
+
+    public void setAttackResult(AttackResult attackResult) {
+        this.attackResult = attackResult;
+        LabelsDrawer.resetDamageLabel(this);
     }
 }

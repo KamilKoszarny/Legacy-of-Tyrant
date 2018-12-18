@@ -4,7 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
-import model.actions.AttackCalculator;
+import model.actions.attack.AttackCalculator;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Door;
@@ -18,15 +18,13 @@ import java.util.List;
 
 public class ClickMenusDrawer {
 
-    private Canvas canvas;
     private static List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
     private static List<ClickMenuButton> char2DoorMenu = Arrays.asList(ClickMenuButton.DOOR_LOOK, ClickMenuButton.DOOR_OPEN, ClickMenuButton.DOOR_CLOSE);
     private static List<ClickMenuButton> char2EnemyMenu = Arrays.asList(ClickMenuButton.ENEMY_LOOK, ClickMenuButton.ATTACK_HEAD, ClickMenuButton.ATTACK_BODY, ClickMenuButton.ATTACK_ARMS, ClickMenuButton.ATTACK_LEGS);
     private static List<ClickMenuButton> activeMenu = char2PointMenu;
 
 
-    ClickMenusDrawer(MapDrawer mapDrawer) {
-        canvas = mapDrawer.getCanvas();
+    ClickMenusDrawer() {
         initMenu(char2PointMenu);
         initMenu(char2DoorMenu);
         initMenu(char2EnemyMenu);
@@ -123,7 +121,7 @@ public class ClickMenusDrawer {
             shape.setVisible(false);
             Label label = button.getLabel();
             label.setVisible(false);
-            Pane pane = (Pane) canvas.getParent();
+            Pane pane = (Pane) IsoViewer.getCanvas().getParent();
             pane.getChildren().addAll(shape, label);
         }
     }

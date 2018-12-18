@@ -1,16 +1,11 @@
-package model.actions;
+package model.actions.attack;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import model.character.Character;
 import model.map.Map;
-
-import java.util.Random;
 
 public class AttackCalculator {
 
     public static boolean isInRange(Character charA, Character charB){
-        System.out.println(charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT);
 //        if (charA.getPosition().distance(charB.getPosition()) * Map.RESOLUTION_M <
 //                charA.getRange() + charA.getType().getSize()/2 + charB.getType().getSize()/2)
         if (charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getRange())
@@ -18,20 +13,10 @@ public class AttackCalculator {
         return false;
     }
 
-    public static AttackResult attackCharacter(Character charA, Character charB, AttackType attackType){
-        int score = new Random().nextInt(100);
-        int chanceToHit = calcChanceToHit(charA, charB);
-        if (score > chanceToHit)
-            return AttackResult.MISS;
-
-        int damage = calcDamage(charA, charB, score, attackType);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION,
-                charA.getName() + " attacks " + charB.getName() + " for " + damage + " damage!", ButtonType.OK);
-        alert.show();
-        charB.setHitPoints(charB.getHitPoints() - damage);
-        charA.setMsLeft(charA.getMsLeft() - (int)(1 / charA.getAttackSpeed() * 1000));
-        charA.setVigor((int) (charA.getVigor() - (1 / charA.getAttackSpeed())));
-        return AttackResult.HIT;
+    public static void updateStats(Character attacker, Character victim, int damage){
+        victim.setHitPoints(victim.getHitPoints() - damage);
+        attacker.setMsLeft(attacker.getMsLeft() - (int)(1 / attacker.getAttackSpeed() * 1000));
+        attacker.setVigor((int) (attacker.getVigor() - (1 / attacker.getAttackSpeed())));
     }
 
     public static int calcChanceToHit(Character charA, Character charB){
@@ -59,12 +44,9 @@ public class AttackCalculator {
         return bounceChance;
     }
 
-    private static int calcDamage(Character charA, Character charB, int score, AttackType attackType){
-        if (score > charB.getAvoidance())
-            return 0;
+    static int calcDamage(Character charA, Character charB, int score, int chanceToHit, AttackType attackType){
         int damage =  (int)(charA.getDmgMin() +
-                (charA.getDmgMax() - charA.getDmgMin()) *
-                (charB.getAvoidance() - score) / charB.getAvoidance());
+                (charA.getDmgMax() - charA.getDmgMin()) * (chanceToHit - score) / chanceToHit);
         int damageResisted = charB.getDurability() / 10;
         switch (attackType){
             case HEAD: damageResisted += charB.getHeadArmor() - 1; break;

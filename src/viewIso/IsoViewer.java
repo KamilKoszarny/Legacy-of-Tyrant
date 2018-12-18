@@ -19,8 +19,8 @@ public class IsoViewer {
     public IsoViewer(Battle battle, Canvas canvas) {
         IsoViewer.canvas = canvas;
         mapDrawer = new MapDrawer(battle.getMap(), canvas);
-        spritesDrawer = new SpritesDrawer(battle.getMap(), canvas, mapDrawer, battle.getCharacters());
-        clickMenusDrawer = new ClickMenusDrawer(mapDrawer);
+        spritesDrawer = new SpritesDrawer();
+        clickMenusDrawer = new ClickMenusDrawer();
     }
 
     public static void draw() {

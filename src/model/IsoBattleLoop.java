@@ -2,6 +2,8 @@ package model;
 
 import javafx.animation.AnimationTimer;
 import model.actions.*;
+import model.actions.attack.AttackActioner;
+import model.actions.attack.AttackType;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
 import model.items.Item;
@@ -139,7 +141,7 @@ public class IsoBattleLoop extends AnimationTimer{
 
     private void handleHover() {
         if (hoverPoint != null)
-            CharsDrawer.checkHoverCharacter(hoverPoint);
+            LabelsDrawer.checkHoverCharacter(hoverPoint);
     }
 
 

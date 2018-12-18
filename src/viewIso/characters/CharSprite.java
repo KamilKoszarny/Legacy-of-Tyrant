@@ -18,10 +18,6 @@ public class CharSprite {
 
     public boolean nextFrame() {
         if (charPose.isSingle()) {
-            if (start) {
-                animationFrame = 0;
-                start = false;
-            }
             if (animationFrame == charPose.getFramesCount() - 1) {
                 start = true;
                 return false;
@@ -55,5 +51,11 @@ public class CharSprite {
 
     public void setCharPose(CharPose charPose) {
         this.charPose = charPose;
+        if (charPose.isSingle()) {
+            if (start) {
+                animationFrame = 0;
+                start = false;
+            }
+        }
     }
 }
