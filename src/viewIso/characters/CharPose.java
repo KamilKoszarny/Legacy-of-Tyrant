@@ -3,7 +3,10 @@ package viewIso.characters;
 public enum CharPose {
     IDLE(0, 4, 3, true, false),
     RUN(4, 8, 999, false, false),
-    ATTACK(12, 4, 2, false, true);
+    ATTACK(12, 4, 2, false, true),
+    DEATH(18, 6, 3, false, true),
+    DEAD(23, 1, 999, false, true)
+    ;
 
     private int startFrame, framesCount, delay;
     private boolean reversible, single;

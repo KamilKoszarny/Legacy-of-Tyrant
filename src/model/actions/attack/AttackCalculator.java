@@ -1,6 +1,5 @@
 package model.actions.attack;
 
-import com.sun.org.apache.regexp.internal.RE;
 import model.character.Character;
 import model.map.Map;
 
@@ -9,7 +8,8 @@ import java.util.Random;
 
 public class AttackCalculator {
 
-    public static final int HEAD2HEAD_CHANCE = 50, HEAD2BODY_CHANCE = 20,
+    public static final int
+            HEAD2HEAD_CHANCE = 50, HEAD2BODY_CHANCE = 20,
             BODY2BODY_CHANCE = 60, BODY2HEAD_CHANCE = 10, BODY2ARMS_CHANCE = 15, BODY2LEGS_CHANCE = 15,
             ARMS2BODY_CHANCE = 20, ARMS2ARMS_CHANCE = 70,
             LEGS2BODY_CHANCE = 20, LEGS2LEGS_CHANCE = 70;

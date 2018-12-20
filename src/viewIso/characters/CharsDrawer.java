@@ -51,7 +51,7 @@ public class CharsDrawer {
         if (timer%character.getState().getPose().getDelay() == 0) {
             CharSprite charSprite = charSpriteSheetMap.get(character);
             if (!charSprite.nextFrame()) {
-                character.setState(CharState.IDLE);
+                character.setState(CharState.stateAfter(character.getState()));
             }
         }
     }

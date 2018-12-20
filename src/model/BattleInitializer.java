@@ -44,7 +44,7 @@ public class BattleInitializer {
         StatsCalculator.calcCharSA(slimako);
 
         Character skowronka = new Character("Skowronka", false, Color.RED, CharacterType.DWARF, CharacterClass.BULLY, new Point(10,20), 6);
-        skowronka.setCurrentPA(39, 35, 25, 10, 15, 5, 10, 20, 10);
+        skowronka.setCurrentPA(9, 5, 5, 10, 15, 5, 10, 20, 10);
         skowronka.setArmor(new Armor[]{Shield.BUCKLER, BodyArmor.GAMBISON, Helmet.NOTHING, Gloves.NOTHING, Boots.NOTHING, Belt.NOTHING, Amulet.NOTHING, Ring.NOTHING, Ring.NOTHING, Shield.WOODEN_SHIELD});
         skowronka.setWeapons(new Weapon[]{Weapon.CHOPPER, Weapon.SPIKE_CLUB});
         StatsCalculator.calcCharSA(skowronka);

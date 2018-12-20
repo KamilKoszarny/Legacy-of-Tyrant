@@ -2,25 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/helpers/my/SortHelper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/helpers/my/StringHelper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/AttackCalculatorTest.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/CalcHelper.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/CalcHelper.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackActioner.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackActioner.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackCalculator$1.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackCalculator$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackCalculator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackType.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/ClickMenuButton.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/ClickMenuButton.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/ClickMenusDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/ClickMenusDrawer.class" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/my/CalcHelper.java" afterPath="$PROJECT_DIR$/src/helpers/my/CalcHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" afterPath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java" afterPath="$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharState.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharState.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/Character.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/Character.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/StatsCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/StatsCalculator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharPose.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharPose.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharSprite.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharSprite.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharsDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharsDrawer.class" />
+      <change beforePath="$PROJECT_DIR$/src/model/BattleInitializer.java" afterPath="$PROJECT_DIR$/src/model/BattleInitializer.java" />
       <change beforePath="$PROJECT_DIR$/src/model/actions/attack/AttackCalculator.java" afterPath="$PROJECT_DIR$/src/model/actions/attack/AttackCalculator.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/actions/attack/AttackType.java" afterPath="$PROJECT_DIR$/src/model/actions/attack/BodyPart.java" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/ClickMenuButton.java" afterPath="$PROJECT_DIR$/src/viewIso/ClickMenuButton.java" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/character/CharState.java" afterPath="$PROJECT_DIR$/src/model/character/CharState.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/character/Character.java" afterPath="$PROJECT_DIR$/src/model/character/Character.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/character/StatsCalculator.java" afterPath="$PROJECT_DIR$/src/model/character/StatsCalculator.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/characters/CharPose.java" afterPath="$PROJECT_DIR$/src/viewIso/characters/CharPose.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/characters/CharSprite.java" afterPath="$PROJECT_DIR$/src/viewIso/characters/CharSprite.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,11 +38,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="CharsDrawer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="714">
+              <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+              <folding>
+                <element signature="e#3565#3566#0" expanded="true" />
+                <element signature="e#3604#3605#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CharState.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/character/CharState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="111">
+              <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+              <folding>
+                <element signature="e#280#281#0" expanded="true" />
+                <element signature="e#312#313#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="IsoBattleLoop.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="118">
-              <caret line="125" column="42" lean-forward="true" selection-start-line="125" selection-start-column="42" selection-end-line="125" selection-end-column="42" />
+              <caret line="125" column="40" lean-forward="true" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
               <folding>
                 <element signature="method#IsoBattleLoop#0;class#IsoBattleLoop#0" expanded="false" />
                 <element signature="method#showMapPieceInfo#0;class#IsoBattleLoop#0" expanded="false" />
@@ -58,8 +82,8 @@
       <file leaf-file-name="AttackActioner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+            <state relative-caret-position="184">
+              <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -70,13 +94,12 @@
       <file leaf-file-name="AttackCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+            <state relative-caret-position="135">
+              <caret line="111" column="21" lean-forward="true" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#isInRange#0;class#AttackCalculator#0" expanded="false" />
-                <element signature="e#585#669#0" expanded="false" />
-                <element signature="method#updateStats#0;class#AttackCalculator#0" expanded="false" />
+                <element signature="e#551#635#0" expanded="false" />
                 <element signature="method#calcDodgeChance#0;class#AttackCalculator#0" expanded="false" />
                 <element signature="method#calcParryChance#0;class#AttackCalculator#0" expanded="false" />
                 <element signature="method#calcBounceChance#0;class#AttackCalculator#0" expanded="false" />
@@ -85,53 +108,75 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClickMenuButton.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenuButton.java">
+      <file leaf-file-name="CharSprite.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharSprite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="24" />
+            <state relative-caret-position="884">
+              <caret line="54" column="16" lean-forward="false" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
               <folding>
-                <element signature="e#4171#4172#0" expanded="true" />
-                <element signature="e#4199#4200#0" expanded="true" />
+                <element signature="e#390#391#0" expanded="true" />
+                <element signature="e#454#455#0" expanded="true" />
+                <element signature="e#1244#1245#0" expanded="true" />
+                <element signature="e#1282#1283#0" expanded="true" />
+                <element signature="e#1343#1344#0" expanded="true" />
+                <element signature="e#1397#1398#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClickMenusDrawer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java">
+      <file leaf-file-name="CharPose.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharPose.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="100" column="81" lean-forward="false" selection-start-line="100" selection-start-column="81" selection-end-line="100" selection-end-column="81" />
+            <state relative-caret-position="-156">
+              <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="509" column="21" lean-forward="false" selection-start-line="509" selection-start-column="21" selection-end-line="509" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#hideMenu#0;class#ClickMenusDrawer#0" expanded="false" />
-                <element signature="method#moveMenus#0;class#ClickMenusDrawer#0" expanded="false" />
-                <element signature="method#clickedButton#0;class#ClickMenusDrawer#0" expanded="false" />
-                <element signature="method#hideButton#0;class#ClickMenusDrawer#0" expanded="false" />
-                <element signature="method#moveButton#0;class#ClickMenusDrawer#0" expanded="false" />
+                <element signature="method#Character#0;class#Character#0" expanded="false" />
+                <element signature="method#Character#1;class#Character#0" expanded="false" />
+                <element signature="method#getPosition#0;class#Character#0" expanded="false" />
+                <element signature="e#5228#5229#0" expanded="true" />
+                <element signature="e#5259#5260#0" expanded="true" />
+                <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
+                <element signature="method#setWeapons#0;class#Character#0" expanded="false" />
+                <element signature="method#setWeapon#0;class#Character#0" expanded="false" />
+                <element signature="method#setSpareWeapon#0;class#Character#0" expanded="false" />
+                <element signature="method#setStrength#0;class#Character#0" expanded="false" />
+                <element signature="method#setDurability#0;class#Character#0" expanded="false" />
+                <element signature="method#setStamina#0;class#Character#0" expanded="false" />
+                <element signature="method#setArm#0;class#Character#0" expanded="false" />
+                <element signature="method#setEye#0;class#Character#0" expanded="false" />
+                <element signature="method#setAgility#0;class#Character#0" expanded="false" />
+                <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
+                <element signature="method#setFocus#0;class#Character#0" expanded="false" />
+                <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
+                <element signature="e#14763#14764#0" expanded="true" />
+                <element signature="e#14805#14806#0" expanded="true" />
+                <element signature="e#14850#14851#0" expanded="true" />
+                <element signature="e#14897#14898#0" expanded="true" />
+                <element signature="method#setArmor#1;class#Character#0" expanded="false" />
+                <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
+                <element signature="e#16546#16547#0" expanded="true" />
+                <element signature="e#16581#16582#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SortHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/helpers/my/SortHelper.java">
+      <file leaf-file-name="StatsCalculator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/character/StatsCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="6" column="39" lean-forward="false" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-              <folding>
-                <element signature="e#293#323#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CalcHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/helpers/my/CalcHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+            <state relative-caret-position="142">
+              <caret line="137" column="38" lean-forward="false" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -230,7 +275,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapKeyController.java" />
         <option value="$PROJECT_DIR$/src/model/map/Map.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/isoPanel/Panel.java" />
         <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" />
@@ -244,7 +288,6 @@
         <option value="$PROJECT_DIR$/src/model/EventType.java" />
         <option value="$PROJECT_DIR$/src/main/App.java" />
         <option value="$PROJECT_DIR$/src/model/BattleEvent.java" />
-        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
         <option value="$PROJECT_DIR$/src/model/ActionsHandler.java" />
         <option value="$PROJECT_DIR$/src/model/actions/DoorActioner.java" />
         <option value="$PROJECT_DIR$/src/model/actions/ActionsHandler.java" />
@@ -253,10 +296,8 @@
         <option value="$PROJECT_DIR$/src/model/actions/CharsChooser.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java" />
         <option value="$PROJECT_DIR$/src/model/actions/AttackType.java" />
-        <option value="$PROJECT_DIR$/src/model/character/CharState.java" />
         <option value="$PROJECT_DIR$/src/model/Battle.java" />
         <option value="$PROJECT_DIR$/src/model/actions/movement/CharMover.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/characters/CharPose.java" />
         <option value="$PROJECT_DIR$/src/model/actions/AttackCalculator.java" />
         <option value="$PROJECT_DIR$/src/model/actions/AttackResultType.java" />
         <option value="$PROJECT_DIR$/src/model/actions/AttackResult.java" />
@@ -266,25 +307,29 @@
         <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" />
         <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/characters/CharSprite.java" />
         <option value="$PROJECT_DIR$/src/viewIso/LabelsDrawer.java" />
-        <option value="$PROJECT_DIR$/src/model/character/Character.java" />
         <option value="$PROJECT_DIR$/src/model/actions/attack/AttackCalculatorTest.groovy" />
         <option value="$PROJECT_DIR$/src/test/AttackCalculatorTest.java" />
         <option value="$PROJECT_DIR$/src/model/actions/attack/AttackType.java" />
         <option value="$PROJECT_DIR$/src/model/actions/attack/BodyPart.java" />
         <option value="$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java" />
         <option value="$PROJECT_DIR$/src/viewIso/ClickMenuButton.java" />
-        <option value="$PROJECT_DIR$/src/model/actions/attack/AttackCalculator.java" />
         <option value="$PROJECT_DIR$/src/helpers/my/CalcHelper.java" />
         <option value="$PROJECT_DIR$/src/helpers/my/StringHelper.java" />
         <option value="$PROJECT_DIR$/src/helpers/my/SortHelper.java" />
         <option value="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/attack/AttackCalculator.java" />
+        <option value="$PROJECT_DIR$/src/model/character/CharState.java" />
+        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
+        <option value="$PROJECT_DIR$/src/model/character/Character.java" />
+        <option value="$PROJECT_DIR$/src/model/character/StatsCalculator.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/characters/CharSprite.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/characters/CharPose.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="683" />
     <option name="height" value="728" />
   </component>
@@ -691,7 +736,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -775,7 +820,7 @@
           <option name="timeStamp" value="328" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="357" />
+      <option name="time" value="359" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -922,14 +967,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="45" column="73" lean-forward="false" selection-start-line="45" selection-start-column="73" selection-end-line="45" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/actions/DoorActioner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -999,29 +1036,6 @@
           <folding>
             <element signature="e#703#704#0" expanded="false" />
             <element signature="e#736#737#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/CharState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharPose.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding>
-            <element signature="e#618#619#0" expanded="false" />
-            <element signature="e#652#653#0" expanded="false" />
-            <element signature="e#681#682#0" expanded="false" />
-            <element signature="e#709#710#0" expanded="false" />
-            <element signature="e#812#813#0" expanded="false" />
-            <element signature="e#841#842#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1102,22 +1116,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/StatsCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="163" column="18" lean-forward="false" selection-start-line="163" selection-start-column="18" selection-end-line="163" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharSprite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackCalculatorTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1136,41 +1134,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="644" column="42" lean-forward="false" selection-start-line="644" selection-start-column="42" selection-end-line="644" selection-end-column="42" />
-          <folding>
-            <element signature="method#Character#0;class#Character#0" expanded="false" />
-            <element signature="method#Character#1;class#Character#0" expanded="false" />
-            <element signature="method#getPosition#0;class#Character#0" expanded="false" />
-            <element signature="e#5228#5229#0" expanded="true" />
-            <element signature="e#5259#5260#0" expanded="true" />
-            <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
-            <element signature="method#setWeapons#0;class#Character#0" expanded="false" />
-            <element signature="method#setWeapon#0;class#Character#0" expanded="false" />
-            <element signature="method#setSpareWeapon#0;class#Character#0" expanded="false" />
-            <element signature="method#setStrength#0;class#Character#0" expanded="false" />
-            <element signature="method#setDurability#0;class#Character#0" expanded="false" />
-            <element signature="method#setStamina#0;class#Character#0" expanded="false" />
-            <element signature="method#setArm#0;class#Character#0" expanded="false" />
-            <element signature="method#setEye#0;class#Character#0" expanded="false" />
-            <element signature="method#setAgility#0;class#Character#0" expanded="false" />
-            <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
-            <element signature="method#setFocus#0;class#Character#0" expanded="false" />
-            <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
-            <element signature="e#14657#14658#0" expanded="true" />
-            <element signature="e#14699#14700#0" expanded="true" />
-            <element signature="e#14744#14745#0" expanded="true" />
-            <element signature="e#14791#14792#0" expanded="true" />
-            <element signature="method#setArmor#1;class#Character#0" expanded="false" />
-            <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
-            <element signature="e#16440#16441#0" expanded="true" />
-            <element signature="e#16475#16476#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/SpritesDrawer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
@@ -1183,52 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/LabelsDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="108" column="62" lean-forward="false" selection-start-line="108" selection-start-column="62" selection-end-line="108" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3977#3978#0" expanded="true" />
-            <element signature="e#4046#4047#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="46" column="34" lean-forward="true" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
-          <folding>
-            <element signature="e#896#897#0" expanded="false" />
-            <element signature="e#931#932#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="125" column="42" lean-forward="true" selection-start-line="125" selection-start-column="42" selection-end-line="125" selection-end-column="42" />
-          <folding>
-            <element signature="method#IsoBattleLoop#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#showMapPieceInfo#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#setClickedInventorySlot#0;class#IsoBattleLoop#0" expanded="false" />
-            <element signature="method#setClickedItemPoint#0;class#IsoBattleLoop#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/helpers/my/CalcHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -1237,38 +1154,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="28" column="51" lean-forward="false" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#isInRange#0;class#AttackCalculator#0" expanded="false" />
-            <element signature="e#585#669#0" expanded="false" />
-            <element signature="method#updateStats#0;class#AttackCalculator#0" expanded="false" />
-            <element signature="method#calcDodgeChance#0;class#AttackCalculator#0" expanded="false" />
-            <element signature="method#calcParryChance#0;class#AttackCalculator#0" expanded="false" />
-            <element signature="method#calcBounceChance#0;class#AttackCalculator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/actions/attack/BodyPart.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenuButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="e#4171#4172#0" expanded="true" />
-            <element signature="e#4199#4200#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1292,7 +1182,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
+        <state relative-caret-position="475">
           <caret line="100" column="81" lean-forward="false" selection-start-line="100" selection-start-column="81" selection-end-line="100" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1302,6 +1192,163 @@
             <element signature="method#hideButton#0;class#ClickMenusDrawer#0" expanded="false" />
             <element signature="method#moveButton#0;class#ClickMenusDrawer#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenuButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <element signature="e#4171#4172#0" expanded="true" />
+            <element signature="e#4199#4200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/LabelsDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="101" column="22" lean-forward="false" selection-start-line="101" selection-start-column="22" selection-end-line="101" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3977#3978#0" expanded="true" />
+            <element signature="e#4046#4047#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="509" column="21" lean-forward="false" selection-start-line="509" selection-start-column="21" selection-end-line="509" selection-end-column="21" />
+          <folding>
+            <element signature="method#Character#0;class#Character#0" expanded="false" />
+            <element signature="method#Character#1;class#Character#0" expanded="false" />
+            <element signature="method#getPosition#0;class#Character#0" expanded="false" />
+            <element signature="e#5228#5229#0" expanded="true" />
+            <element signature="e#5259#5260#0" expanded="true" />
+            <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
+            <element signature="method#setWeapons#0;class#Character#0" expanded="false" />
+            <element signature="method#setWeapon#0;class#Character#0" expanded="false" />
+            <element signature="method#setSpareWeapon#0;class#Character#0" expanded="false" />
+            <element signature="method#setStrength#0;class#Character#0" expanded="false" />
+            <element signature="method#setDurability#0;class#Character#0" expanded="false" />
+            <element signature="method#setStamina#0;class#Character#0" expanded="false" />
+            <element signature="method#setArm#0;class#Character#0" expanded="false" />
+            <element signature="method#setEye#0;class#Character#0" expanded="false" />
+            <element signature="method#setAgility#0;class#Character#0" expanded="false" />
+            <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
+            <element signature="method#setFocus#0;class#Character#0" expanded="false" />
+            <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
+            <element signature="e#14763#14764#0" expanded="true" />
+            <element signature="e#14805#14806#0" expanded="true" />
+            <element signature="e#14850#14851#0" expanded="true" />
+            <element signature="e#14897#14898#0" expanded="true" />
+            <element signature="method#setArmor#1;class#Character#0" expanded="false" />
+            <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
+            <element signature="e#16546#16547#0" expanded="true" />
+            <element signature="e#16581#16582#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/StatsCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="137" column="38" lean-forward="false" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
+          <folding>
+            <element signature="e#3565#3566#0" expanded="true" />
+            <element signature="e#3604#3605#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/CharState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="22" column="28" lean-forward="false" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+          <folding>
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="125" column="40" lean-forward="true" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
+          <folding>
+            <element signature="method#IsoBattleLoop#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#showMapPieceInfo#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#setClickedInventorySlot#0;class#IsoBattleLoop#0" expanded="false" />
+            <element signature="method#setClickedItemPoint#0;class#IsoBattleLoop#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="24" column="37" lean-forward="false" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="111" column="21" lean-forward="true" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#isInRange#0;class#AttackCalculator#0" expanded="false" />
+            <element signature="e#551#635#0" expanded="false" />
+            <element signature="method#calcDodgeChance#0;class#AttackCalculator#0" expanded="false" />
+            <element signature="method#calcParryChance#0;class#AttackCalculator#0" expanded="false" />
+            <element signature="method#calcBounceChance#0;class#AttackCalculator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharSprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="54" column="16" lean-forward="false" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+          <folding>
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1282#1283#0" expanded="true" />
+            <element signature="e#1343#1344#0" expanded="true" />
+            <element signature="e#1397#1398#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharPose.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156">
+          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

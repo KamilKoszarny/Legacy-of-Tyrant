@@ -17,6 +17,9 @@ public class CharSprite {
     }
 
     public boolean nextFrame() {
+        if (charPose.equals(CharPose.DEAD))
+            System.out.println();
+
         if (charPose.isSingle()) {
             if (animationFrame == charPose.getFramesCount() - 1) {
                 start = true;

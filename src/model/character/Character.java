@@ -509,6 +509,9 @@ public class Character {
     }
     public void setHitPoints(int hitPoints){
         currentSA.hitPoints = hitPoints;
+        if (hitPoints <= 0)
+            setState(CharState.DEATH);
+        System.out.println(hitPoints);
     }
 
     public int getMana(){
