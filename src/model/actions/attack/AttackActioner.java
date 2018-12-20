@@ -8,21 +8,24 @@ import java.util.Random;
 
 public class AttackActioner {
 
-    public static void attackCharacter(Character attacker, Character victim, AttackType attackType){
+    public static void attackCharacter(Character attacker, Character victim, BodyPart bodyPart){
         AttackResult result;
         CharTurner.turnCharacter(attacker, victim.getPosition(), true);
         attacker.setState(CharState.ATTACK);
         int score = new Random().nextInt(100);
         int chanceToHit = AttackCalculator.calcChanceToHit(attacker, victim);
-        int damage = -5;
         if (score > chanceToHit) {
             result = new AttackResult(AttackResultType.MISS);
         } else {
-            damage = AttackCalculator.calcDamage(attacker, victim, score, chanceToHit, attackType);
-            AttackCalculator.updateStats(attacker, victim, damage);
-            result = new AttackResult(AttackResultType.HIT, damage);
+            bodyPart = AttackCalculator.calcBodyPartHit(bodyPart);
+            if (bodyPart == null)
+                result = new AttackResult(AttackResultType.MISS);
+            else {
+                int damage = AttackCalculator.calcDamage(attacker, victim, score, chanceToHit, bodyPart);
+                AttackCalculator.updateStats(attacker, victim, damage);
+                result = new AttackResult(AttackResultType.HIT, damage);
+            }
         }
-
         victim.setAttackResult(result);
     }
 }

@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Rotate;
+import model.actions.attack.BodyPart;
 
 import java.awt.*;
 import java.util.List;
@@ -139,5 +140,21 @@ public enum ClickMenuButton {
 
     public void setGrayed(boolean grayed) {
         this.grayed = grayed;
+    }
+
+    public void setTooltipText(String text) {
+        Tooltip tooltip = new Tooltip(text);
+        Tooltip.install(shape, tooltip);
+        Tooltip.install(label, tooltip);
+    }
+
+    public static ClickMenuButton byBodyPart(BodyPart bodyPart) {
+        switch (bodyPart) {
+            case HEAD: return ATTACK_HEAD;
+            case BODY: return ATTACK_BODY;
+            case ARMS: return ATTACK_ARMS;
+            case LEGS: return ATTACK_LEGS;
+        }
+        return null;
     }
 }

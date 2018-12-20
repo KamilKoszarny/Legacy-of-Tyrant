@@ -1,5 +1,5 @@
 package model.actions.attack;
 
-public enum AttackType {
+public enum BodyPart {
     HEAD, BODY, ARMS, LEGS;
 }

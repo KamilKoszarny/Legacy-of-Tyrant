@@ -1,10 +1,13 @@
 package viewIso;
 
-import javafx.scene.canvas.Canvas;
+import helpers.my.CalcHelper;
+import helpers.my.SortHelper;
+import helpers.my.StringHelper;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.actions.attack.AttackCalculator;
+import model.actions.attack.BodyPart;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Door;
@@ -15,6 +18,7 @@ import viewIso.mapObjects.MapObjectDrawer;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class ClickMenusDrawer {
 
@@ -81,8 +85,26 @@ public class ClickMenusDrawer {
         ClickMenuButton.ATTACK_LEGS.setGrayed(!inRange);
 
         ClickMenuButton.colorButtons(char2EnemyMenu);
+        setTooltipText(character, enemy);
+
         for (ClickMenuButton button: char2EnemyMenu) {
             drawButton(button, clickPoint);
+        }
+    }
+
+    private static void setTooltipText(Character character, Character enemy) {
+        for (BodyPart bodyPart: BodyPart.values()) {
+            Map<BodyPart, Integer> chancesToHitByPart = AttackCalculator.calcChancesToHitByBodyPart(character, enemy, bodyPart);
+            int chanceToHit = CalcHelper.sum(chancesToHitByPart.values());
+            StringBuilder tooltipText = new StringBuilder();
+            tooltipText.append("Chance to hit: " + chanceToHit + "%\n");
+            chancesToHitByPart = SortHelper.sortByValue(chancesToHitByPart, false);
+
+            for (BodyPart bodyPart1: chancesToHitByPart.keySet()) {
+                if (chancesToHitByPart.get(bodyPart1) > 0)
+                    tooltipText.append(StringHelper.firstUpper(bodyPart1.name())).append(": ").append(chancesToHitByPart.get(bodyPart1)).append("%\n");
+            }
+            ClickMenuButton.byBodyPart(bodyPart).setTooltipText(tooltipText.toString());
         }
     }
 

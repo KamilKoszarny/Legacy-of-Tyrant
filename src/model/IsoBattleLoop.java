@@ -3,7 +3,7 @@ package model;
 import javafx.animation.AnimationTimer;
 import model.actions.*;
 import model.actions.attack.AttackActioner;
-import model.actions.attack.AttackType;
+import model.actions.attack.BodyPart;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
 import model.items.Item;
@@ -123,16 +123,16 @@ public class IsoBattleLoop extends AnimationTimer{
                 DoorActioner.closeDoor(buttonBattleEvent.getObject());
                 break;
             case ATTACK_BODY:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.BODY);
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), BodyPart.BODY);
                 break;
             case ATTACK_HEAD:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.HEAD);
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), BodyPart.HEAD);
                 break;
             case ATTACK_ARMS:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.ARMS);
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), BodyPart.ARMS);
                 break;
             case ATTACK_LEGS:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), AttackType.LEGS);
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), BodyPart.LEGS);
                 break;
         }
 
