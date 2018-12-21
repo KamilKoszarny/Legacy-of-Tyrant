@@ -7,8 +7,8 @@ public enum BodyArmor implements Armor{
 
     NOTHING(0, 0, 0, 0, 0),
     LEATHER_SHIRT(0, 1, 1, 0, 12),
-    GAMBISON(0, 1, 1, 1, 8),
-    LEATHER_ARMOR(0, 2, 1, 0, 16),
+    GAMBISON(0, 1, 1, 1, 8, "leather_chest_pants"),
+    LEATHER_ARMOR(0, 2, 1, 0, 16, "leather_chest"),
     STUDDED_ARMOR(0, 3, 0, 1, 19),
     CHAIN_SHIRT(0, 4, 3, 0, 23),
     SCALE_SHIRT(0, 5, 2, 0, 27),
@@ -22,7 +22,7 @@ public enum BodyArmor implements Armor{
 
     private int headArmor, bodyArmor, armsArmor, legsArmor, durability;
     private Image image;
-    private String name;
+    private String name, spriteName;
 
     BodyArmor(int headArmor, int bodyArmor, int armsArmor, int legsArmor, int durability) {
         this.headArmor = headArmor;
@@ -33,6 +33,18 @@ public enum BodyArmor implements Armor{
 
         image = ItemsLoader.loadItemImage("/items/armors/" + this.name() + ".png");
         name = ItemsLoader.setItemName(this.name());
+    }
+
+    BodyArmor(int headArmor, int bodyArmor, int armsArmor, int legsArmor, int durability, String spriteName) {
+        this.headArmor = headArmor;
+        this.bodyArmor = bodyArmor;
+        this.armsArmor = armsArmor;
+        this.legsArmor = legsArmor;
+        this.durability = durability;
+
+        image = ItemsLoader.loadItemImage("/items/armors/" + this.name() + ".png");
+        name = ItemsLoader.setItemName(this.name());
+        this.spriteName = spriteName + ".png";
     }
 
     public int getHeadArmor() {
@@ -61,5 +73,9 @@ public enum BodyArmor implements Armor{
 
     public String getName() {
         return name;
+    }
+
+    public String getSpriteName() {
+        return spriteName;
     }
 }

@@ -29,7 +29,7 @@ public class LabelsDrawer {
     private static void initCharNameLabelsMap() {
         for (Character character: Battle.getCharacters()) {
             Label label = new Label(character.getName().toUpperCase());
-            label.setFont(new Font("SansSerif", 20));
+            label.setFont(new Font("SansSerif", 15));
             label.setTextFill(character.getColor());
             label.setEffect(new DropShadow(.5f, 1.f, 1.f, Color.BLACK));
             label.setCache(true);

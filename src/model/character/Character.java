@@ -8,6 +8,7 @@ import model.items.Item;
 import model.items.armor.*;
 import model.items.weapon.Weapon;
 import viewIso.LabelsDrawer;
+import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -298,6 +299,7 @@ public class Character {
             setEquipmentPart(Shield.NOTHING, 2);
         if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
             setEquipmentPart(Shield.NOTHING, 2);
+        CharsDrawer.createCharSpriteSheet(this);
     }
     public Weapon getSpareWeapon() {
         return weapons[(chosenWeapon + 1)%2];

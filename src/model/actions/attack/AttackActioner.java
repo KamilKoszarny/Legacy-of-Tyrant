@@ -3,6 +3,7 @@ package model.actions.attack;
 import model.actions.movement.CharTurner;
 import model.character.CharState;
 import model.character.Character;
+import model.items.weapon.WeaponGroup;
 
 import java.util.Random;
 
@@ -11,7 +12,10 @@ public class AttackActioner {
     public static void attackCharacter(Character attacker, Character victim, BodyPart bodyPart){
         AttackResult result;
         CharTurner.turnCharacter(attacker, victim.getPosition(), true);
-        attacker.setState(CharState.ATTACK);
+        if (WeaponGroup.RANGE.getWeapons().contains(attacker.getWeapon()))
+            attacker.setState(CharState.ATTACK_RANGE);
+        else
+            attacker.setState(CharState.ATTACK);
         int score = new Random().nextInt(100);
         int chanceToHit = AttackCalculator.calcChanceToHit(attacker, victim);
         if (score > chanceToHit) {

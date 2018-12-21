@@ -2,23 +2,33 @@ package viewIso.characters;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import main.App;
 import model.Battle;
 import model.character.CharState;
 import model.character.Character;
+import model.items.ItemsLoader;
+import model.items.weapon.Weapon;
 import viewIso.IsoViewer;
 import viewIso.LabelsDrawer;
 import viewIso.map.MapDrawCalculator;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CharsDrawer {
 
-    private static Dimension SPRITES_SPAN = new Dimension(192, 192);
-    public static Dimension SPRITE_SIZE = new Dimension(124, 160);
-    private static Dimension SPRITE_OFFSET =
-            new Dimension((SPRITES_SPAN.width - SPRITE_SIZE.width)/2, (SPRITES_SPAN.height - SPRITE_SIZE.height)/2);
-    private static Dimension SPRITE_BASE = new Dimension(64, 132);
+    public static final Dimension
+            SPRITESHEET_SIZE = new Dimension(6144, 1536),
+            SPRITE_SIZE = new Dimension(124, 160),
+            SPRITES_SPAN = new Dimension(192, 192),
+            SPRITE_BASE = new Dimension(64, 132),
+            SPRITE_OFFSET = new Dimension
+                    ((SPRITES_SPAN.width - SPRITE_SIZE.width)/2, (SPRITES_SPAN.height - SPRITE_SIZE.height)/2);
 
     private static Character clickedCharacter;
     private static java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
@@ -58,13 +68,26 @@ public class CharsDrawer {
 
     private void initCharSpriteMap() {
         for (Character character: Battle.getCharacters()) {
-            CharSprite sprite = chooseSpriteSheet(character);
-            charSpriteSheetMap.put(character, sprite);
+            createCharSpriteSheet(character);
         }
     }
 
-    private CharSprite chooseSpriteSheet(Character character) {
-        return new CharSprite(new Image("/sprites/chars/flare/vesuvvio.png"));
+    public static void createCharSpriteSheet(Character character) {
+        CharSprite sprite = createSpriteSheet(character);
+        charSpriteSheetMap.put(character, sprite);
+    }
+
+    private static CharSprite createSpriteSheet(Character character) {
+        List<BufferedImage> charSubSprites = new ArrayList<>();
+        charSubSprites.addAll(ItemsLoader.loadItemSprites(character));
+
+        BufferedImage combinedImage = new BufferedImage(SPRITESHEET_SIZE.width, SPRITESHEET_SIZE.height, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = combinedImage.getGraphics();
+        for (BufferedImage sprite: charSubSprites) {
+            g.drawImage(sprite, 0, 0, null);
+        }
+
+        return new CharSprite(combinedImage);
     }
 
 

@@ -6,6 +6,7 @@ public enum CharState {
     IDLE(CharPose.IDLE),
     RUN(CharPose.RUN),
     ATTACK(CharPose.ATTACK),
+    ATTACK_RANGE(CharPose.ATTACK_RANGE),
     DEATH(CharPose.DEATH),
     DEAD(CharPose.DEAD),
     ;
@@ -23,6 +24,7 @@ public enum CharState {
     public static CharState stateAfter(CharState stateBefore) {
         switch (stateBefore) {
             case ATTACK:
+            case ATTACK_RANGE:
                 return IDLE;
             case DEATH:
                 return DEAD;

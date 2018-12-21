@@ -10,11 +10,11 @@ public enum Weapon implements Item{
     //swords
     SHORT_SWORD(        2, 4, 1, 1,         1, 0, 15, 12),
     SABRE(              2, 5, .8, 1.2,      1, 10, 35, 8),
-    CHOPPER(            3, 7, 1.2, 1,       1, -10, 15, 14),
+    CHOPPER(            3, 7, 1.2, 1,       1, -10, 15, 14, "sword_short"),
     GLASS_SWORD(        4, 8, 1, 1.3,       1, 0, 20, 4),
     BROAD_SWORD(        3, 8, 1.1, 1,       1, 0, 25, 18),
     LONG_SWORD(         4, 7, 1, 1.5,       1, 0, 35, 16),
-    TWO_HAND_SWORD(     5, 11, 1.9, 2,      2, 0, 30, 18),
+    TWO_HAND_SWORD(     5, 11, 1.9, 2,      2, 0, 30, 18, "sword_great"),
     CLAYMORE(           5, 8, 1.3, 1.8,     2, 0, 55, 16),
     HALF_HAND_SWORD_1H( 4, 10, 2.2, 2.2,    1, 0, 30, 19),
     HALF_HAND_SWORD_2H( 5, 12, 1.7, 1.8,    2, 0, 30, 19),
@@ -28,7 +28,7 @@ public enum Weapon implements Item{
     TWO_SIDE_AXE(       4, 6, 1, 1,         2, 0, 10, 15),
     PICK(               1, 4, 2, .9,        1, -10, 10, 12),
     BEARD_AXE(          6, 7, 1.2, 1,       1, 0, 25, 22),
-    BIG_ADZE(           2, 10, 2.3, 1.9,    2, -10, 10, 14),
+    BIG_ADZE(           2, 10, 2.3, 1.9,    2, -10, 10, 14, "axe1H1S"),
     BATTLE_AXE(         6, 12, 1.4, 1.4,    2, 0, 25, 19),
     GRAND_AXE(          5, 19, 2.2, 1.9,    2, 0, 35, 24),
     DWARF_AXE(          4, 12, 1.3, 1,      2, 0, 30, 28),
@@ -36,7 +36,7 @@ public enum Weapon implements Item{
     //maces
     CUDGEL(             1, 2, .8, .9,       1, 0, 20, 15),
     HAMMER(             2, 6, 1.8, .6,      1, 0, 10, 20),
-    SPIKE_CLUB(         1, 5, 1, 1.1,       1, 0, 10, 10),
+    SPIKE_CLUB(         1, 5, 1, 1.1,       1, 0, 10, 10, "club"),
     MACE(               3, 5, .9, .9,       1, 0, 15, 16),
     SPIKE_STAR(         4, 6, 1, 1,         1, 0, 10, 13),
     SCEPTER(            4, 6, 1.1, 1.2,     1, 0, 25, 12),
@@ -47,7 +47,7 @@ public enum Weapon implements Item{
 
     //short
     KNIFE(              2, 3, .6, .5,       1, 0, 0, 7),
-    DAGGER(             2, 5, .6, .6,       1, 0, 0, 9),
+    DAGGER(             2, 5, .6, .6,       1, 0, 0, 9, "dagger"),
     CEREMONY_DAGGER(    2, 4, .8, .8,       1, 0, 0, 13),
     SPIKE(              1, 5, 1, .8,        1, 0, 0, 10),
     KNUCKLE_DUSTER(     2, 3, .6, .4,       1, 0, 0, 17),
@@ -56,7 +56,7 @@ public enum Weapon implements Item{
     CLAWS(              2, 11, 1, 1,        1, 0, 0, 11),
 
     //long
-    SPEAR(              4, 8, 1.3, 3,       2, 0, 20, 10),
+    SPEAR(              4, 8, 1.3, 3,       2, 0, 20, 10, "staff"), //////////////////////////////
     TRIDENT(            7, 9, 1.4, 3,       2, 0, 25, 15),
     PIQUE(              9, 13, 1.9, 4,      2, 0, 15, 12),
     HARPOON(            5, 10, 1.3, 3,      2, 0, 20, 9),
@@ -71,8 +71,8 @@ public enum Weapon implements Item{
     JAVELIN_DIR(        1, 4, 1, 1.2,       1, 0, 0, 1),
 
     //range
-    SHORT_BOW(          2, 5, 1.8, 20,      2, 0, 0, 9),
-    HUNTER_BOW(         3, 6, 1.7, 20,      2, 5, 0, 13),
+    SHORT_BOW(          2, 5, 1.8, 20,      2, 0, 0, 9, "bow_short"),
+    HUNTER_BOW(         3, 6, 1.7, 20,      2, 5, 0, 13, "bow_short"),
     LONG_BOW(           3, 8, 2, 25,        2, 5, 0, 10),
     LIGHT_CROSSBOW(     4, 7, 2.8, 15,      2, 0, 0, 15),
     CROSSBOW(           6, 9, 3, 15,        2, 0, 0, 15),
@@ -96,7 +96,7 @@ public enum Weapon implements Item{
     private double dmgMin, dmgMax, attackDuration, range;
     private int hands, accuracy, parry, durability;
     private Image image;
-    private String name;
+    private String name, spriteName;
 
     Weapon(double dmgMin, double dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int durability) {
         this.dmgMin = dmgMin;
@@ -110,6 +110,21 @@ public enum Weapon implements Item{
 
         image = ItemsLoader.loadItemImage("/items/weapons/" + this.name() + ".png");
         name = ItemsLoader.setItemName(this.name());
+    }
+
+    Weapon(double dmgMin, double dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int durability, String spriteName) {
+        this.dmgMin = dmgMin;
+        this.dmgMax = dmgMax;
+        this.attackDuration = attackDuration;
+        this.range = range;
+        this.hands = hands;
+        this.accuracy = accuracy;
+        this.parry = parry;
+        this.durability = durability;
+
+        image = ItemsLoader.loadItemImage("/items/weapons/" + this.name() + ".png");
+        name = ItemsLoader.setItemName(this.name());
+        this.spriteName = spriteName + ".png";
     }
 
     public double getDmgMin() {
@@ -151,4 +166,9 @@ public enum Weapon implements Item{
     public String getName() {
         return name;
     }
+
+    public String getSpriteName() {
+        return spriteName;
+    }
+
 }

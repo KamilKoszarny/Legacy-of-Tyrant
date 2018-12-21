@@ -1,6 +1,9 @@
 package viewIso.characters;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+
+import java.awt.image.BufferedImage;
 
 public class CharSprite {
     private Image charSpriteSheet;
@@ -8,8 +11,8 @@ public class CharSprite {
     private CharPose charPose = CharPose.IDLE;
     private boolean reverse = false, start = true;
 
-    public CharSprite(Image charSpriteSheet) {
-        this.charSpriteSheet = charSpriteSheet;
+    public CharSprite(BufferedImage charSpriteSheet) {
+        this.charSpriteSheet = SwingFXUtils.toFXImage(charSpriteSheet, null);;
     }
 
     public int getFramePos() {
