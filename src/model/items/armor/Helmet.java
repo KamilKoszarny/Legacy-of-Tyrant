@@ -6,8 +6,8 @@ import model.items.ItemsLoader;
 public enum Helmet implements Armor{
 
     NOTHING(0, 0),
-    LEATHER_HOOD(1, 5),
-    CASQUE(2, 15),
+    LEATHER_HOOD(1, 5, "leather_hood"),
+    CASQUE(2, 15, "plate_helm"),
     HELMET(3, 12),
     CLOSED_HELMET(4, 16),
     MASK(1, 10),
@@ -22,7 +22,7 @@ public enum Helmet implements Armor{
 
     private int armor, durability;
     private Image image;
-    private String name;
+    private String name, spriteName;
 
     Helmet(int armor, int durability) {
         this.armor = armor;
@@ -31,6 +31,17 @@ public enum Helmet implements Armor{
         image = ItemsLoader.loadItemImage("/items/helmets/" + this.name() + ".png");
         name = ItemsLoader.setItemName(this.name());
     }
+
+    Helmet(int armor, int durability, String spriteName) {
+        this.armor = armor;
+        this.durability = durability;
+
+        image = ItemsLoader.loadItemImage("/items/helmets/" + this.name() + ".png");
+        name = ItemsLoader.setItemName(this.name());
+        this.spriteName = spriteName + ".png";
+    }
+
+
 
     public int getArmor() {
         return armor;
@@ -47,5 +58,9 @@ public enum Helmet implements Armor{
     @Override
     public String getName() {
         return name;
+    }
+
+    public String getSpriteName() {
+        return spriteName;
     }
 }

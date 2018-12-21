@@ -32,17 +32,14 @@ public class ItemsLoader {
         List<BufferedImage> itemsSprites = new ArrayList<>();
         String path = "";
         try {
-            String sex = "/";
+            String sex;
             if (character.isMale()) {
-                path = "/sprites/chars/clothesM.png";
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
-                path = "/sprites/chars/heads/male_head1.png";
+                path = "/sprites/chars/baseM.png";
+                sex = "/";
             }
             else {
-                path = "/sprites/chars/clothesF.png";
+                path = "/sprites/chars/baseF.png";
                 sex = "F/";
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
-                path = "/sprites/chars/headsF/head_long.png";
             }
             itemsSprites.add(ImageIO.read(App.class.getResource(path)));
 
@@ -52,9 +49,26 @@ public class ItemsLoader {
                 itemsSprites.add(ImageIO.read(App.class.getResource(path)));
             }
             spriteName = character.getBodyArmorItem().getSpriteName();
-            System.out.println(spriteName);
             if (spriteName != null) {
                 path = "/sprites/chars/armors" + sex + spriteName;
+                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
+            }
+            spriteName = character.getHelmet().getSpriteName();
+            System.out.println(spriteName);
+            if (spriteName != null) {
+                path = "/sprites/chars/heads" + sex + spriteName;
+                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
+            }
+            spriteName = character.getGloves().getSpriteName();
+            System.out.println(spriteName);
+            if (spriteName != null) {
+                path = "/sprites/chars/hands" + sex + spriteName;
+                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
+            }
+            spriteName = character.getBoots().getSpriteName();
+            System.out.println(spriteName);
+            if (spriteName != null) {
+                path = "/sprites/chars/feets" + sex + spriteName;
                 itemsSprites.add(ImageIO.read(App.class.getResource(path)));
             }
         } catch (IOException e) {

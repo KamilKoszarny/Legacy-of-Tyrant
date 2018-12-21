@@ -356,7 +356,10 @@ public class Character {
         switch (partNo) {
             case 0: setWeapon((Weapon) item); break;
             case 1: setSpareWeapon((Weapon) item); break;
-            default: this.armor[partNo - 2] = (Armor) item; break;
+            default:
+                this.armor[partNo - 2] = (Armor) item;
+                if (partNo <= 6)
+                    CharsDrawer.createCharSpriteSheet(this);
         }
     }
 

@@ -6,15 +6,15 @@ import model.items.ItemsLoader;
 public enum Boots implements Armor{
 
     NOTHING(0, 0),
-    RAG_BOOTS(0, 3),
-    LEATHER_BOOTS(1, 6),
+    RAG_BOOTS(0, 3, "cloth_sandals"),
+    LEATHER_BOOTS(1, 6, "leather_boots"),
     CHAIN_BOOTS(2, 9),
     STEEL_BOOTS(4, 16),
     PLATE_BOOTS(3, 13);
 
     private int armor, durability;
     private Image image;
-    private String name;
+    private String name, spriteName;
 
     Boots(int armor, int durability) {
         this.armor = armor;
@@ -22,6 +22,15 @@ public enum Boots implements Armor{
 
         image = ItemsLoader.loadItemImage("/items/boots/" + this.name() + ".png");
         name = ItemsLoader.setItemName(this.name());
+    }
+
+    Boots(int armor, int durability, String spriteName) {
+        this.armor = armor;
+        this.durability = durability;
+
+        image = ItemsLoader.loadItemImage("/items/boots/" + this.name() + ".png");
+        name = ItemsLoader.setItemName(this.name());
+        this.spriteName = spriteName + ".png";
     }
 
     public int getArmor() {
@@ -38,5 +47,9 @@ public enum Boots implements Armor{
 
     public String getName() {
         return name;
+    }
+
+    public String getSpriteName() {
+        return spriteName;
     }
 }
