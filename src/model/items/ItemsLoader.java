@@ -38,15 +38,24 @@ public class ItemsLoader {
         System.out.println(" base: " + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
 
-        loadAndAddSpriteSheet(itemsSprites, "weapons", sex, character.getWeapon().getSpriteName());
-        System.out.println(" weapon: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
         loadAndAddSpriteSheet(itemsSprites, "armors", sex, character.getBodyArmorItem().getSpriteName());
         System.out.println(" armor: " + (System.nanoTime() - time)/1000000. + " ms");
         time = System.nanoTime();
         loadAndAddSpriteSheet(itemsSprites, "heads", sex, character.getHelmet().getSpriteName());
+        System.out.println(" helmet: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
         loadAndAddSpriteSheet(itemsSprites, "hands", sex, character.getGloves().getSpriteName());
+        System.out.println(" hand: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
         loadAndAddSpriteSheet(itemsSprites, "feets", sex, character.getBoots().getSpriteName());
+        System.out.println(" feet: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+        loadAndAddSpriteSheet(itemsSprites, "shields", sex, character.getShield().getSpriteName());
+        System.out.println(" shields: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+        loadAndAddSpriteSheet(itemsSprites, "weapons", sex, character.getWeapon().getSpriteName());
+        System.out.println(" weapon: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
 
         System.out.println(" TOTAL item load: " + (System.nanoTime() - startTime)/1000000. + " ms");
 

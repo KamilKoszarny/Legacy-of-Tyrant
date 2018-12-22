@@ -39,7 +39,7 @@ public class BattleInitializer {
         czlehulec.setEye(czlehulec.getEye() - 5);
         StatsCalculator.calcCharSA(czlehulec);
 
-        Character slimako = new Character("Slimako", true, Color.YELLOW, CharacterType.DWARF, CharacterClass.ADEPT,
+        Character slimako = new Character("Slimako", true, Color.RED, CharacterType.DWARF, CharacterClass.ADEPT,
                 new Point(20,10), 2);
         slimako.setCurrentPA(25, 25, 13, 10, 15, 13, 44, 36, 20);
         slimako.setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.CASQUE, Gloves.NOTHING, Boots.RAG_BOOTS,
@@ -50,12 +50,12 @@ public class BattleInitializer {
         Character skowronka = new Character("Skowronka", false, Color.YELLOW, CharacterType.DWARF, CharacterClass.BULLY,
                 new Point(10,20), 6);
         skowronka.setCurrentPA(9, 5, 5, 10, 15, 5, 10, 20, 10);
-        skowronka.setArmor(new Armor[]{Shield.BUCKLER, BodyArmor.GAMBISON, Helmet.NOTHING, Gloves.NOTHING, Boots.LEATHER_BOOTS,
+        skowronka.setArmor(new Armor[]{Shield.BUCKLER, BodyArmor.GAMBISON, Helmet.CASQUE, Gloves.RAG_GLOVES, Boots.LEATHER_BOOTS,
                 Belt.NOTHING, Amulet.NOTHING, Ring.NOTHING, Ring.NOTHING, Shield.WOODEN_SHIELD});
         skowronka.setWeapons(new Weapon[]{Weapon.CHOPPER, Weapon.SPIKE_CLUB}, false);
         StatsCalculator.calcCharSA(skowronka);
 
-        Character irith = new Character("Irith", false, Color.YELLOW, CharacterType.ELF, CharacterClass.RASCAL,
+        Character irith = new Character("Irith", false, Color.RED, CharacterType.ELF, CharacterClass.RASCAL,
                 new Point(20,20), 7);
         irith.setCurrentPA(11, 16, 24, 40, 31, 38, 15, 12, 13);
         irith.setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.LEATHER_HOOD, Gloves.LEATHER_GLOVES, Boots.NOTHING,

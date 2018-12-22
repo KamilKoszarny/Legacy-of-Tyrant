@@ -294,11 +294,11 @@ public class Character {
     public void setWeapon(Weapon weapon, boolean showSprite){
         weapons[chosenWeapon] = weapon;
         if (weapon.getHands() == 2)
-            setEquipmentPart(Shield.BLOCKED, 2, showSprite);
+            setEquipmentPart(Shield.BLOCKED, 2, false);
         else if (getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 2, showSprite);
+            setEquipmentPart(Shield.NOTHING, 2, false);
         if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 2, showSprite);
+            setEquipmentPart(Shield.NOTHING, 2, false);
         if (showSprite)
             CharsDrawer.createCharSpriteSheet(this);
     }

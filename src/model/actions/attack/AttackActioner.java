@@ -16,6 +16,7 @@ public class AttackActioner {
             attacker.setState(CharState.ATTACK_RANGE);
         else
             attacker.setState(CharState.ATTACK);
+        victim.setState(CharState.HIT);
         int score = new Random().nextInt(100);
         int chanceToHit = AttackCalculator.calcChanceToHit(attacker, victim);
         if (score > chanceToHit) {

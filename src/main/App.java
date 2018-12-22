@@ -37,7 +37,7 @@ public class App extends Application {
         IsoBattleLoop isoBattleLoop = new IsoBattleLoop(battle);
         IsoViewController isoViewController = new IsoViewController(primaryStage);
         new IsoViewer(battle, isoViewController.getMapCanvas());
-        new PanelViewer(isoViewController.getPanel(), battle.getCharacters());
+        new PanelViewer(isoViewController.getPanel(), Battle.getCharacters());
 
         isoBattleLoop.start();
     }

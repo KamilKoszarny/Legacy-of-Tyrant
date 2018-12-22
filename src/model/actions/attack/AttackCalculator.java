@@ -23,7 +23,7 @@ public class AttackCalculator {
     }
 
     public static int calcChanceToHit(Character charA, Character charB){
-        return (int) (50 + charA.getAccuracy() - charB.getAgility() - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
+        return (int) (50 + charA.getAccuracy()/2 - charB.getAvoidance()/2 - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
     }
 
     public static java.util.Map<BodyPart, Integer> calcChancesToHitByBodyPart(Character charA, Character charB, BodyPart bodyPart) {
