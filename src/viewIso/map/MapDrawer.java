@@ -4,6 +4,7 @@ import controller.isoView.isoMap.IsoMapBorderHoverController;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import main.App;
 import model.map.Map;
 import viewIso.panel.PanelViewer;
 
@@ -38,10 +39,12 @@ public class MapDrawer {
         long time = System.nanoTime();
         mapImage = MapImageGenerator.generateMapPreImage();
         System.out.println("mapPreImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
-//        time = System.nanoTime();
-//        mapImage = MapImageGenerator.generateMapImage();
-//        System.out.println("mapImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
-//        time = System.nanoTime();
+        if (App.FULL_MODE) {
+            time = System.nanoTime();
+            mapImage = MapImageGenerator.generateMapImage();
+            System.out.println("mapImageGen:" + (System.nanoTime() - time) / 1000000. + " ms");
+            time = System.nanoTime();
+        }
         PanelViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
     }
 

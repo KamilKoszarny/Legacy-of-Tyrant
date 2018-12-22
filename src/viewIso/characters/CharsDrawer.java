@@ -29,6 +29,7 @@ public class CharsDrawer {
             SPRITE_BASE = new Dimension(64, 132),
             SPRITE_OFFSET = new Dimension
                     ((SPRITES_SPAN.width - SPRITE_SIZE.width)/2, (SPRITES_SPAN.height - SPRITE_SIZE.height)/2);
+    public static final double SCALING = 1.5;
 
     private static Character clickedCharacter;
     private static java.util.Map<Character, CharSprite> charSpriteSheetMap = new HashMap<>();
@@ -47,8 +48,8 @@ public class CharsDrawer {
 
         GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
         gc.drawImage(spriteSheet,
-                SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width, SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height,
-                SPRITE_SIZE.width, SPRITE_SIZE.height,
+                (SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width)/SCALING, (SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height)/SCALING,
+                SPRITE_SIZE.width/SCALING, SPRITE_SIZE.height/SCALING,
                 charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
                 SPRITE_SIZE.width, SPRITE_SIZE.height);
 
@@ -73,8 +74,11 @@ public class CharsDrawer {
     }
 
     public static void createCharSpriteSheet(Character character) {
+        long startTime = System.nanoTime();
+        long time = startTime;
         CharSprite sprite = createSpriteSheet(character);
         charSpriteSheetMap.put(character, sprite);
+        System.out.println(character.getName() + " TOTAL sprite: " + (System.nanoTime() - time)/1000000. + " ms");
     }
 
     private static CharSprite createSpriteSheet(Character character) {

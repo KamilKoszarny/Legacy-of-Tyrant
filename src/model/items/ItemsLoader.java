@@ -29,52 +29,39 @@ public class ItemsLoader {
     }
 
     public static List<BufferedImage> loadItemSprites(Character character) {
+        long startTime = System.nanoTime();
+        long time = startTime;
         List<BufferedImage> itemsSprites = new ArrayList<>();
-        String path = "";
-        try {
-            String sex;
-            if (character.isMale()) {
-                path = "/sprites/chars/baseM.png";
-                sex = "/";
-            }
-            else {
-                path = "/sprites/chars/baseF.png";
-                sex = "F/";
-            }
-            itemsSprites.add(ImageIO.read(App.class.getResource(path)));
 
-            String spriteName = character.getWeapon().getSpriteName();
-            if (spriteName != null) {
-                path = "/sprites/chars/weapons" + sex + spriteName;
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
-            }
-            spriteName = character.getBodyArmorItem().getSpriteName();
-            if (spriteName != null) {
-                path = "/sprites/chars/armors" + sex + spriteName;
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
-            }
-            spriteName = character.getHelmet().getSpriteName();
-            System.out.println(spriteName);
-            if (spriteName != null) {
-                path = "/sprites/chars/heads" + sex + spriteName;
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
-            }
-            spriteName = character.getGloves().getSpriteName();
-            System.out.println(spriteName);
-            if (spriteName != null) {
-                path = "/sprites/chars/hands" + sex + spriteName;
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
-            }
-            spriteName = character.getBoots().getSpriteName();
-            System.out.println(spriteName);
-            if (spriteName != null) {
-                path = "/sprites/chars/feets" + sex + spriteName;
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
-            }
-        } catch (IOException e) {
-            System.out.println(path);
-            e.printStackTrace();
-        }
+        String sex = character.isMale() ? "/" : "F/";
+        loadAndAddSpriteSheet(itemsSprites, "base", sex, "base.png");
+        System.out.println(" base: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+
+        loadAndAddSpriteSheet(itemsSprites, "weapons", sex, character.getWeapon().getSpriteName());
+        System.out.println(" weapon: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+        loadAndAddSpriteSheet(itemsSprites, "armors", sex, character.getBodyArmorItem().getSpriteName());
+        System.out.println(" armor: " + (System.nanoTime() - time)/1000000. + " ms");
+        time = System.nanoTime();
+        loadAndAddSpriteSheet(itemsSprites, "heads", sex, character.getHelmet().getSpriteName());
+        loadAndAddSpriteSheet(itemsSprites, "hands", sex, character.getGloves().getSpriteName());
+        loadAndAddSpriteSheet(itemsSprites, "feets", sex, character.getBoots().getSpriteName());
+
+        System.out.println(" TOTAL item load: " + (System.nanoTime() - startTime)/1000000. + " ms");
+
         return itemsSprites;
+    }
+
+    private static void loadAndAddSpriteSheet(List<BufferedImage> itemsSprites, String folder, String sex, String spriteName){
+        if (spriteName != null) {
+            String path = "/sprites/chars/" + folder + sex + spriteName;
+            try {
+                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println(path);
+            }
+        }
     }
 }

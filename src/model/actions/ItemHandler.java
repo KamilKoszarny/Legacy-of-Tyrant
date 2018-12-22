@@ -25,7 +25,7 @@ public class ItemHandler {
             if (equipmentClicked(clickedInventorySlot)) {
                 Item underItem = character.getEquipmentPart(clickedInventorySlot[1]);
                 if (canBeDressed(underItem)) {
-                    character.setEquipmentPart(caughtItem, clickedInventorySlot[1]);
+                    character.setEquipmentPart(caughtItem, clickedInventorySlot[1], true);
                     if (!underItem.getName().equals("NOTHING"))
                         caughtItem = underItem;
                     else
@@ -51,7 +51,7 @@ public class ItemHandler {
                 caughtItem = null;
                 return caughtItem;
             }
-            character.setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedInventorySlot[1]), clickedInventorySlot[1]);
+            character.setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedInventorySlot[1]), clickedInventorySlot[1], true);
         }
         //inventory
         else {

@@ -2,14 +2,54 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/iloveimg-resized.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/iloveimg-resized.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/armors/leather_chest.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/armors/leather_chest.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/armors/leather_chest_pants.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/armors/leather_chest_pants.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/armorsF/leather_chest.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/armorsF/leather_chest.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/armorsF/leather_chest_pants.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/armorsF/leather_chest_pants.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/armorsF/leather_pants.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/armorsF/leather_pants.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/baseF.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/baseM.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/clothesF.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/clothesF.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/clothesM.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/clothesM.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/feets/M_nothing.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/feets/M_nothing.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/feets/cloth_sandals.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/feets/cloth_sandals.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/feets/leather_boots.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/feets/leather_boots.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/feetsF/cloth_sandals.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/feetsF/cloth_sandals.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/feetsF/leather_boots.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/feetsF/leather_boots.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/hands/M_nothing.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/hands/M_nothing.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/hands/cloth_gloves.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/hands/cloth_gloves.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/hands/leather_gloves.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/hands/leather_gloves.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/handsF/cloth_gloves.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/handsF/cloth_gloves.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/handsF/leather_gloves.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/handsF/leather_gloves.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/heads/leather_hood.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/heads/leather_hood.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/heads/male_head1.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/heads/male_head1.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/heads/male_head2.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/heads/male_head2.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/heads/plate_helm.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/heads/plate_helm.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/headsF/head_long.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/headsF/head_long.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/headsF/leather_hood.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/headsF/leather_hood.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/headsF/plate_helm.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/headsF/plate_helm.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/axe1H1S.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/axe1H1S.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/axe1H2S.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/axe1H2S.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/bow_short.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/bow_short.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/club.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/club.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/dagger.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/dagger.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/staff.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/staff.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/sword_great.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/sword_great.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/sword_short.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weapons/sword_short.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/axe1H1S.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/axe1H1S.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/axe1H2S.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/bow_short.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/bow_short.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/club.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/club.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/dagger.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/dagger.png" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/sword_short.png" afterPath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/sword_short.png" />
+      <change beforePath="$PROJECT_DIR$/src/main/App.java" afterPath="$PROJECT_DIR$/src/main/App.java" />
       <change beforePath="$PROJECT_DIR$/src/model/BattleInitializer.java" afterPath="$PROJECT_DIR$/src/model/BattleInitializer.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/actions/ItemHandler.java" afterPath="$PROJECT_DIR$/src/model/actions/ItemHandler.java" />
       <change beforePath="$PROJECT_DIR$/src/model/character/Character.java" afterPath="$PROJECT_DIR$/src/model/character/Character.java" />
       <change beforePath="$PROJECT_DIR$/src/model/items/ItemsLoader.java" afterPath="$PROJECT_DIR$/src/model/items/ItemsLoader.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/Boots.java" afterPath="$PROJECT_DIR$/src/model/items/armor/Boots.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/Gloves.java" afterPath="$PROJECT_DIR$/src/model/items/armor/Gloves.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/Helmet.java" afterPath="$PROJECT_DIR$/src/model/items/armor/Helmet.java" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/MapGenerator.java" afterPath="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,11 +69,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ItemsLoader.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CharsDrawer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="51" column="69" lean-forward="false" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemsLoader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/items/ItemsLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+            <state relative-caret-position="187">
+              <caret line="30" column="44" lean-forward="false" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,87 +91,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BodyArmor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/armor/BodyArmor.java">
+      <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="51" lean-forward="false" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-              <folding>
-                <element signature="e#2168#2169#0" expanded="true" />
-                <element signature="e#2201#2202#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Weapon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/weapon/Weapon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="169" column="0" lean-forward="false" selection-start-line="169" selection-start-column="0" selection-end-line="171" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeaponGroup.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/weapon/WeaponGroup.java">
+      <file leaf-file-name="MapGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            <state relative-caret-position="269">
+              <caret line="79" column="8" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="89" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BattleInitializer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="60" column="73" lean-forward="false" selection-start-line="60" selection-start-column="73" selection-end-line="60" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Helmet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/armor/Helmet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Boots.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/armor/Boots.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="53" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gloves.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/armor/Gloves.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/actions/ItemHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="27" column="39" lean-forward="false" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-              <folding>
-                <element signature="method#allOccupiedSlots#0;class#ItemHandler#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -129,15 +114,18 @@
       <file leaf-file-name="Character.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="361" column="20" lean-forward="false" selection-start-line="361" selection-start-column="20" selection-end-line="361" selection-end-column="20" />
+            <state relative-caret-position="152">
+              <caret line="355" column="29" lean-forward="false" selection-start-line="355" selection-start-column="29" selection-end-line="355" selection-end-column="29" />
               <folding>
                 <element signature="method#Character#0;class#Character#0" expanded="false" />
-                <element signature="method#Character#1;class#Character#0" expanded="false" />
                 <element signature="method#getPosition#0;class#Character#0" expanded="false" />
                 <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
-                <element signature="e#8874#8875#0" expanded="true" />
-                <element signature="e#8914#8915#0" expanded="true" />
+                <element signature="e#7436#7437#0" expanded="true" />
+                <element signature="e#7480#7481#0" expanded="true" />
+                <element signature="e#8055#8056#0" expanded="true" />
+                <element signature="e#8107#8108#0" expanded="true" />
+                <element signature="e#9058#9059#0" expanded="true" />
+                <element signature="e#9098#9099#0" expanded="true" />
                 <element signature="method#setStrength#0;class#Character#0" expanded="false" />
                 <element signature="method#setDurability#0;class#Character#0" expanded="false" />
                 <element signature="method#setStamina#0;class#Character#0" expanded="false" />
@@ -147,6 +135,8 @@
                 <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
                 <element signature="method#setFocus#0;class#Character#0" expanded="false" />
                 <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
+                <element signature="e#13464#13465#0" expanded="true" />
+                <element signature="e#13506#13507#0" expanded="true" />
                 <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
               </folding>
             </state>
@@ -166,9 +156,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>IsoV</find>
-      <find>panelViewer</find>
-      <find>mapDrawer</find>
       <find>charsDrawer</find>
       <find>clickMenusDrawer</find>
       <find>sys</find>
@@ -196,6 +183,9 @@
       <find>getstate</find>
       <find>setbodya</find>
       <find>seteq</find>
+      <find>gethitpo</find>
+      <find>charSprites:</find>
+      <find>time</find>
     </findStrings>
     <replaceStrings>
       <replace>wallPoints[0]</replace>
@@ -246,12 +236,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/map/heights/HeightGenerator.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/isoPanel/PanelController.java" />
         <option value="$PROJECT_DIR$/src/viewIso/panel/PanelViewer.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
         <option value="$PROJECT_DIR$/src/model/EventType.java" />
-        <option value="$PROJECT_DIR$/src/main/App.java" />
         <option value="$PROJECT_DIR$/src/model/BattleEvent.java" />
         <option value="$PROJECT_DIR$/src/model/ActionsHandler.java" />
         <option value="$PROJECT_DIR$/src/model/actions/DoorActioner.java" />
@@ -269,7 +256,6 @@
         <option value="$PROJECT_DIR$/src/model/actions/AttackActioner.java" />
         <option value="$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectDrawer.java" />
         <option value="$PROJECT_DIR$/src/viewIso/IsoViewer.java" />
-        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
         <option value="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" />
         <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
         <option value="$PROJECT_DIR$/src/model/actions/attack/AttackCalculatorTest.groovy" />
@@ -287,20 +273,24 @@
         <option value="$PROJECT_DIR$/src/viewIso/LabelsDrawer.java" />
         <option value="$PROJECT_DIR$/src/model/items/weapon/Weapon.java" />
         <option value="$PROJECT_DIR$/src/model/items/armor/BodyArmor.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" />
         <option value="$PROJECT_DIR$/src/viewIso/characters/CharPose.java" />
         <option value="$PROJECT_DIR$/src/model/character/CharState.java" />
         <option value="$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java" />
         <option value="$PROJECT_DIR$/src/model/items/armor/Gloves.java" />
         <option value="$PROJECT_DIR$/src/model/items/armor/Boots.java" />
-        <option value="$PROJECT_DIR$/src/model/character/Character.java" />
-        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
         <option value="$PROJECT_DIR$/src/model/items/armor/Helmet.java" />
+        <option value="$PROJECT_DIR$/src/main/App.java" />
+        <option value="$PROJECT_DIR$/src/model/map/MapGenerator.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
+        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
+        <option value="$PROJECT_DIR$/src/model/character/Character.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/ItemHandler.java" />
         <option value="$PROJECT_DIR$/src/model/items/ItemsLoader.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="683" />
     <option name="height" value="728" />
   </component>
@@ -707,8 +697,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -719,7 +708,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32753164" sideWeight="0.50512445" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33990148" sideWeight="0.49487555" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33990148" sideWeight="0.49487555" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -783,14 +772,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/actions/ItemHandler.java</url>
-          <line>98</line>
-          <properties />
-          <option name="timeStamp" value="328" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="360" />
     </breakpoint-manager>
     <watches-manager>
@@ -816,24 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="123" column="24" lean-forward="false" selection-start-line="123" selection-start-column="24" selection-end-line="123" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="40" column="35" lean-forward="true" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="method#disableWarning#0;class#App#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -938,14 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="22" column="48" lean-forward="false" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="74" column="35" lean-forward="true" selection-start-line="74" selection-start-column="35" selection-end-line="74" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -1175,18 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="63" column="45" lean-forward="false" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#4345#4346#0" expanded="false" />
-            <element signature="e#4384#4385#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/actions/attack/AttackActioner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -1195,46 +1138,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/actions/ItemHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="27" column="39" lean-forward="false" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-          <folding>
-            <element signature="method#allOccupiedSlots#0;class#ItemHandler#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/items/armor/Gloves.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="40" lean-forward="false" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="361" column="20" lean-forward="false" selection-start-line="361" selection-start-column="20" selection-end-line="361" selection-end-column="20" />
-          <folding>
-            <element signature="method#Character#0;class#Character#0" expanded="false" />
-            <element signature="method#Character#1;class#Character#0" expanded="false" />
-            <element signature="method#getPosition#0;class#Character#0" expanded="false" />
-            <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
-            <element signature="e#8874#8875#0" expanded="true" />
-            <element signature="e#8914#8915#0" expanded="true" />
-            <element signature="method#setStrength#0;class#Character#0" expanded="false" />
-            <element signature="method#setDurability#0;class#Character#0" expanded="false" />
-            <element signature="method#setStamina#0;class#Character#0" expanded="false" />
-            <element signature="method#setArm#0;class#Character#0" expanded="false" />
-            <element signature="method#setEye#0;class#Character#0" expanded="false" />
-            <element signature="method#setAgility#0;class#Character#0" expanded="false" />
-            <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
-            <element signature="method#setFocus#0;class#Character#0" expanded="false" />
-            <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
-            <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1254,19 +1162,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="60" column="73" lean-forward="false" selection-start-line="60" selection-start-column="73" selection-end-line="60" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/items/weapon/WeaponGroup.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+          <folding>
+            <element signature="method#disableWarning#0;class#App#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1283,19 +1193,91 @@
         <state relative-caret-position="153">
           <caret line="10" column="51" lean-forward="false" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
           <folding>
-            <element signature="e#2168#2169#0" expanded="true" />
-            <element signature="e#2201#2202#0" expanded="true" />
+            <element signature="e#2168#2169#0" expanded="false" />
+            <element signature="e#2201#2202#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="62" column="77" lean-forward="false" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/ItemHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+          <folding>
+            <element signature="method#allOccupiedSlots#0;class#ItemHandler#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/character/Character.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="355" column="29" lean-forward="false" selection-start-line="355" selection-start-column="29" selection-end-line="355" selection-end-column="29" />
+          <folding>
+            <element signature="method#Character#0;class#Character#0" expanded="false" />
+            <element signature="method#getPosition#0;class#Character#0" expanded="false" />
+            <element signature="method#setCurrentPA#0;class#Character#0" expanded="false" />
+            <element signature="e#7436#7437#0" expanded="true" />
+            <element signature="e#7480#7481#0" expanded="true" />
+            <element signature="e#8055#8056#0" expanded="true" />
+            <element signature="e#8107#8108#0" expanded="true" />
+            <element signature="e#9058#9059#0" expanded="true" />
+            <element signature="e#9098#9099#0" expanded="true" />
+            <element signature="method#setStrength#0;class#Character#0" expanded="false" />
+            <element signature="method#setDurability#0;class#Character#0" expanded="false" />
+            <element signature="method#setStamina#0;class#Character#0" expanded="false" />
+            <element signature="method#setArm#0;class#Character#0" expanded="false" />
+            <element signature="method#setEye#0;class#Character#0" expanded="false" />
+            <element signature="method#setAgility#0;class#Character#0" expanded="false" />
+            <element signature="method#setKnowledge#0;class#Character#0" expanded="false" />
+            <element signature="method#setFocus#0;class#Character#0" expanded="false" />
+            <element signature="method#setSpirit#0;class#Character#0" expanded="false" />
+            <element signature="e#13464#13465#0" expanded="true" />
+            <element signature="e#13506#13507#0" expanded="true" />
+            <element signature="method#setDoubleValue#0;class#Character#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/MapGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="79" column="8" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/items/ItemsLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="30" column="44" lean-forward="false" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="51" column="69" lean-forward="false" selection-start-line="51" selection-start-column="69" selection-end-line="51" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>

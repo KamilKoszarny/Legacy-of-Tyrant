@@ -277,9 +277,9 @@ public class Character {
     public Weapon[] getWeapons() {
         return weapons;
     }
-    public void setWeapons(Weapon[] weapons) {
-        setWeapon(weapons[0]);
-        setSpareWeapon(weapons[1]);
+    public void setWeapons(Weapon[] weapons, boolean showSprite) {
+        setWeapon(weapons[0], showSprite);
+        setSpareWeapon(weapons[1], showSprite);
     }
     public Armor[] getArmor() {
         return armor;
@@ -291,27 +291,28 @@ public class Character {
     public Weapon getWeapon(){
         return weapons[chosenWeapon];
     }
-    public void setWeapon(Weapon weapon){
+    public void setWeapon(Weapon weapon, boolean showSprite){
         weapons[chosenWeapon] = weapon;
         if (weapon.getHands() == 2)
-            setEquipmentPart(Shield.BLOCKED, 2);
+            setEquipmentPart(Shield.BLOCKED, 2, showSprite);
         else if (getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 2);
+            setEquipmentPart(Shield.NOTHING, 2, showSprite);
         if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 2);
-        CharsDrawer.createCharSpriteSheet(this);
+            setEquipmentPart(Shield.NOTHING, 2, showSprite);
+        if (showSprite)
+            CharsDrawer.createCharSpriteSheet(this);
     }
     public Weapon getSpareWeapon() {
         return weapons[(chosenWeapon + 1)%2];
     }
-    public void setSpareWeapon(Weapon weapon){
+    public void setSpareWeapon(Weapon weapon, boolean showSprite){
         weapons[(chosenWeapon + 1)%2] = weapon;
         if (weapon.getHands() == 2)
-            setEquipmentPart(Shield.BLOCKED, 11);
+            setEquipmentPart(Shield.BLOCKED, 11, showSprite);
         else if (getSpareShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 11);
+            setEquipmentPart(Shield.NOTHING, 11, showSprite);
         if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 11);
+            setEquipmentPart(Shield.NOTHING, 11, showSprite);
     }
 
     public Shield getShield() {
@@ -352,13 +353,13 @@ public class Character {
             default: return armor[partNo - 2];
         }
     }
-    public void setEquipmentPart(Item item, int partNo) {
+    public void setEquipmentPart(Item item, int partNo, boolean showSprite) {
         switch (partNo) {
-            case 0: setWeapon((Weapon) item); break;
-            case 1: setSpareWeapon((Weapon) item); break;
+            case 0: setWeapon((Weapon) item, showSprite); break;
+            case 1: setSpareWeapon((Weapon) item, showSprite); break;
             default:
                 this.armor[partNo - 2] = (Armor) item;
-                if (partNo <= 6)
+                if (partNo <= 6 && showSprite)
                     CharsDrawer.createCharSpriteSheet(this);
         }
     }
@@ -516,7 +517,7 @@ public class Character {
         currentSA.hitPoints = hitPoints;
         if (hitPoints <= 0)
             setState(CharState.DEATH);
-        System.out.println(hitPoints);
+//        System.out.println(hitPoints);
     }
 
     public int getMana(){
