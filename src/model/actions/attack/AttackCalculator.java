@@ -109,7 +109,7 @@ public class AttackCalculator {
     }
 
     public static void updateStats(Character attacker, Character victim, int damage){
-        victim.setHitPoints(victim.getHitPoints() - damage);
+        victim.setCurrentHitPoints(victim.getCurrentHitPoints() - damage);
         attacker.setMsLeft(attacker.getMsLeft() - (int)(1 / attacker.getAttackSpeed() * 1000));
         attacker.setVigor((int) (attacker.getVigor() - (1 / attacker.getAttackSpeed())));
     }

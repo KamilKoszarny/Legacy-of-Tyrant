@@ -33,9 +33,12 @@ public class SpritesDrawer {
             }
             for (Character character: Battle.getCharacters()) {
                 if (point.equals(character.getPosition())) {
-                    charsDrawer.drawChar(character);
+                    charsDrawer.drawChar(character, false);
                 }
             }
+        }
+        for (Character character: Battle.getCharacters()) {
+                charsDrawer.drawChar(character, true);
         }
     }
 

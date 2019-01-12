@@ -7,6 +7,7 @@ import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
 import model.map.MapGridCalc;
+import viewIso.PathDrawer;
 import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
@@ -19,18 +20,22 @@ public class CharMover {
     private static ArrayList<Character> characters;
 
     public static void startRunCharacter(Character character, Point movePoint) {
-        calcAndSetPath(character, movePoint);
+        List<Point2D> path = calcPath(character, movePoint);
+        if (path != null) {
+            character.setPath(path);
+            PathDrawer.createPathView(character);
+        }
         character.setState(CharState.RUN);
         character.setDestination(movePoint);
         character.setPathSection(0);
         character.setCurrentSpeed(character.getSpeed() * 2);
     }
 
-    public static void calcAndSetPath(Character character, Point movePoint) {
+    public static List<Point2D> calcPath(Character character, Point movePoint) {
         MapGridCalc.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), characters);
         MapGridCalc.clearGridGraphForChar(character);
         List<Point2D> path = PathFinder.calcPath(character.getPrecisePosition(), movePoint, true);
-        character.setPath(path);
+        return path;
     }
 
     public static void updateCharacterMove(Character character, int ms) {
@@ -62,6 +67,8 @@ public class CharMover {
 
     public static void stopCharacter(Character character) {
         character.setDestination(null);
+        character.setPath(null);
+        character.setPathView(null);
         character.setState(CharState.IDLE);
         character.setCurrentSpeed(0);
         pushCharToClosestWalkable(character, Battle.getMap());

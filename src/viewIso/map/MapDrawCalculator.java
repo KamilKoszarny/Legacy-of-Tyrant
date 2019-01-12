@@ -128,7 +128,14 @@ public class MapDrawCalculator {
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
     }
 
-    static Point relativeScreenPosition(Point point){
+    public static Point relativeScreenPositionWithHeight(Point2D point2D){
+        Point point = new Point(Math.round(Math.round(point2D.getX())), Math.round(Math.round(point2D.getY())));
+        return new Point((int)(point2D.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point2D.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
+                (int)(point2D.getX() * MAP_PIECE_SCREEN_SIZE_Y /2 + point2D.getY() * MAP_PIECE_SCREEN_SIZE_Y /2 -
+                        map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
+    }
+
+    public static Point relativeScreenPosition(Point point){
         return new Point(point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
                 point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
     }

@@ -3,6 +3,7 @@ package model.character;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import model.actions.attack.AttackResult;
 import model.items.Item;
 import model.items.armor.*;
@@ -44,6 +45,7 @@ public class Character {
     private Point destination;
     private List<Point2D> path;
     private int pathSection;
+    private List<Polygon> pathView;
     private int msLeft = 0;
 
     private boolean chosen = false;
@@ -178,6 +180,13 @@ public class Character {
     }
     public void setPathSection(int pathSection) {
         this.pathSection = pathSection;
+    }
+
+    public List<Polygon> getPathView() {
+        return pathView;
+    }
+    public void setPathView(List<Polygon> pathView) {
+        this.pathView = pathView;
     }
 
     public boolean isChosen() {
@@ -527,9 +536,6 @@ public class Character {
     }
     public void setHitPoints(int hitPoints){
         currentSA.hitPoints = hitPoints;
-        if (hitPoints <= 0)
-            setState(CharState.DEATH);
-//        System.out.println(hitPoints);
     }
 
     public int getMana(){
@@ -552,6 +558,8 @@ public class Character {
     }
     public void setCurrentHitPoints(int hitPoints){
         currentSA.currentHitPoints = hitPoints;
+        if (hitPoints <= 0)
+            setState(CharState.DEATH);
     }
 
     public int getCurrentMana(){

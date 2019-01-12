@@ -27,7 +27,9 @@ public class IsoViewer {
         if (!mapMove.equals(new Point(0, 0)))
             moveMap();
         mapDrawer.drawMap();
+        PathDrawer.drawPaths(true);
         spritesDrawer.drawVisibleSprites(cutView);
+        PathDrawer.drawPaths(false);
     }
 
     private static void moveMap() {

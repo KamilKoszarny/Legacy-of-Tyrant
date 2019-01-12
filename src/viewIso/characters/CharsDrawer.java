@@ -38,7 +38,7 @@ public class CharsDrawer {
         initCharSpriteMap();
     }
 
-    public void drawChar(Character character) {
+    public void drawChar(Character character, boolean transparency) {
         Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPrecisePosition());
         CharSprite charSprite = charSpriteSheetMap.get(character);
         Image spriteSheet = charSprite.getCharSpriteSheet();
@@ -47,11 +47,22 @@ public class CharsDrawer {
         int framePosY = (character.getDirection() + 6) % 8;
 
         GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
-        gc.drawImage(spriteSheet,
-                (SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width)/SCALING, (SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height)/SCALING,
-                SPRITE_SIZE.width/SCALING, SPRITE_SIZE.height/SCALING,
-                charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
-                SPRITE_SIZE.width, SPRITE_SIZE.height);
+
+        if(transparency) {
+            gc.setGlobalAlpha(.5);
+            gc.drawImage(spriteSheet,
+                    (SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width)/SCALING, (SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height)/SCALING,
+                    SPRITE_SIZE.width/SCALING, SPRITE_SIZE.height/SCALING,
+                    charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
+                    SPRITE_SIZE.width, SPRITE_SIZE.height);
+            gc.setGlobalAlpha(1);
+        } else {
+            gc.drawImage(spriteSheet,
+                    (SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width)/SCALING, (SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height)/SCALING,
+                    SPRITE_SIZE.width/SCALING, SPRITE_SIZE.height/SCALING,
+                    charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
+                    SPRITE_SIZE.width, SPRITE_SIZE.height);
+        }
 
         LabelsDrawer.drawNameLabel(character, charScreenPos);
         if (character.getAttackResult() != null)

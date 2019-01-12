@@ -3,10 +3,10 @@ package viewIso;
 import helpers.my.CalcHelper;
 import helpers.my.SortHelper;
 import helpers.my.StringHelper;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
-import model.Battle;
 import model.actions.attack.AttackCalculator;
 import model.actions.attack.BodyPart;
 import model.character.Character;
@@ -35,13 +35,13 @@ public class ClickMenusDrawer {
         initMenu(char2EnemyMenu);
     }
 
-    public static void drawChar2PointMenu(Point clickPoint) {
+    public static void drawChar2PointMenu(Point clickPoint, List<Point2D> path) {
         hideMenus();
         activeMenu = char2PointMenu;
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
         if (clickedMapPiece == null)
             return;
-        if (!clickedMapPiece.isWalkable() || Battle.getChosenCharacter().getPath().size() == 0) {
+        if (!clickedMapPiece.isWalkable() || path.size() == 0) {
             ClickMenuButton.WALK.setGrayed(true);
             ClickMenuButton.RUN.setGrayed(true);
             ClickMenuButton.SNEAK.setGrayed(true);
@@ -79,11 +79,11 @@ public class ClickMenusDrawer {
         hideMenus();
         activeMenu = char2EnemyMenu;
 
-        boolean inRange = AttackCalculator.isInRange(character, enemy);
-        ClickMenuButton.ATTACK_HEAD.setGrayed(!inRange);
-        ClickMenuButton.ATTACK_BODY.setGrayed(!inRange);
-        ClickMenuButton.ATTACK_ARMS.setGrayed(!inRange);
-        ClickMenuButton.ATTACK_LEGS.setGrayed(!inRange);
+        boolean attackable = AttackCalculator.isInRange(character, enemy) && enemy.getCurrentHitPoints() > 0;
+        ClickMenuButton.ATTACK_HEAD.setGrayed(!attackable);
+        ClickMenuButton.ATTACK_BODY.setGrayed(!attackable);
+        ClickMenuButton.ATTACK_ARMS.setGrayed(!attackable);
+        ClickMenuButton.ATTACK_LEGS.setGrayed(!attackable);
 
         ClickMenuButton.colorButtons(char2EnemyMenu);
         setTooltipText(character, enemy);

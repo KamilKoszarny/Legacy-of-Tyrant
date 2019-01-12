@@ -1,6 +1,7 @@
 package helpers.my;
 
 import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
@@ -249,5 +250,23 @@ public class GeomerticHelper {
         int width = (int) nodeScreenBounds.getWidth();
         int height = (int) nodeScreenBounds.getHeight();
         return new Rectangle(x, y, width, height);
+    }
+
+    public static List<Point2D> pointsOnPath(List<Point2D> path, double span) {
+        List<Point2D> pointsOnPath = new ArrayList<>();
+        for (int i = 0; i < path.size() - 1; i++) {
+            Point2D pathPoint = path.get(i);
+            Point2D nextPathPoint = path.get(i + 1);
+            int pointsPerPathSection = (int) (pathPoint.distance(nextPathPoint) / span);
+
+            for (int j = 0; j < pointsPerPathSection; j++) {
+                Point2D pointOnPathSection = new Point2D(
+                        pathPoint.getX() + (nextPathPoint.getX() - pathPoint.getX())*j/pointsPerPathSection,
+                        pathPoint.getY() + (nextPathPoint.getY() - pathPoint.getY())*j/pointsPerPathSection);
+                pointsOnPath.add(pointOnPathSection);
+            }
+
+        }
+        return pointsOnPath;
     }
 }

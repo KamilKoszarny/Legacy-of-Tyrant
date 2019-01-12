@@ -1,6 +1,7 @@
 package model;
 
 import javafx.animation.AnimationTimer;
+import javafx.geometry.Point2D;
 import model.actions.*;
 import model.actions.attack.AttackActioner;
 import model.actions.attack.BodyPart;
@@ -15,6 +16,7 @@ import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.PanelViewer;
 
 import java.awt.*;
+import java.util.List;
 
 public class IsoBattleLoop extends AnimationTimer{
 
@@ -71,8 +73,14 @@ public class IsoBattleLoop extends AnimationTimer{
                 CharsChooser.chooseCharacter(CharsDrawer.getClickedCharacter());
                 break;
             case SHOW_CHAR2POINT:
-                CharMover.calcAndSetPath(Battle.getChosenCharacter(), battleEvent.getMapPoint());
-                ClickMenusDrawer.drawChar2PointMenu(battleEvent.getClickPoint());
+                List<Point2D> path = CharMover.calcPath(Battle.getChosenCharacter(), battleEvent.getMapPoint());
+                if (Battle.getChosenCharacter().getCurrentSpeed() == 0) {
+                    Battle.getChosenCharacter().setPath(path);
+                    if (path.size() > 0) {
+                        PathDrawer.createPathView(Battle.getChosenCharacter());
+                    }
+                }
+                ClickMenusDrawer.drawChar2PointMenu(battleEvent.getClickPoint(), path);
                 buttonBattleEvent = battleEvent;
                 break;
             case SHOW_CHAR2OBJECT: ClickMenusDrawer.drawChar2DoorMenu(battleEvent.getClickPoint(),

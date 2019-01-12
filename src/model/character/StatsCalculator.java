@@ -134,8 +134,7 @@ public class StatsCalculator {
 
     public static void updateVimAndHP(Character character) {
         character.setVim((character.getStrength() + character.getDurability() + character.getStamina()) / 3);
-//        character.setHitPoints((int) (30 + character.getVim() * .7));
-        character.setHitPoints((int) (character.getVim() * .7));
+        character.setHitPoints((int) (30 + character.getVim() * .7/2.));
         character.setCurrentHitPoints((int) (30 + character.getVim() * .7/2.));
     }
 

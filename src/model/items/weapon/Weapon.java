@@ -93,14 +93,16 @@ public enum Weapon implements Item{
     EARTH_STAFF(        3, 3, 1.3, 1.8,     2, 0, 25, 10),
     ;
 
+    private static final double DAMAGE_MULTIPLIER = 2;
+
     private double dmgMin, dmgMax, attackDuration, range;
     private int hands, accuracy, parry, durability;
     private Image image;
     private String name, spriteName;
 
     Weapon(double dmgMin, double dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int durability) {
-        this.dmgMin = dmgMin;
-        this.dmgMax = dmgMax;
+        this.dmgMin = dmgMin * DAMAGE_MULTIPLIER;
+        this.dmgMax = dmgMax * DAMAGE_MULTIPLIER;
         this.attackDuration = attackDuration;
         this.range = range;
         this.hands = hands;
@@ -113,8 +115,8 @@ public enum Weapon implements Item{
     }
 
     Weapon(double dmgMin, double dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int durability, String spriteName) {
-        this.dmgMin = dmgMin;
-        this.dmgMax = dmgMax;
+        this.dmgMin = dmgMin * DAMAGE_MULTIPLIER;
+        this.dmgMax = dmgMax * DAMAGE_MULTIPLIER;
         this.attackDuration = attackDuration;
         this.range = range;
         this.hands = hands;
