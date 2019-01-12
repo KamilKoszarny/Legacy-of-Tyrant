@@ -75,7 +75,7 @@ public class RoadGenerator {
         for (Point point: roadMidPoints) {
             if (RiverGenerator.isOnRiver(point))
                 numberOfPoints++;
-            if (WaterGenerator.isOnWater(point, map))
+            if (WaterGenerator.isOnWater(point))
                 numberOfPoints++;
         }
         return numberOfPoints / RiverGenerator.getWidth();

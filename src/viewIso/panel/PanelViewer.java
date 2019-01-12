@@ -16,7 +16,6 @@ import viewIso.IsoViewer;
 import viewIso.map.MapDrawer;
 
 import java.awt.*;
-import java.util.List;
 
 public class PanelViewer {
 
@@ -31,10 +30,10 @@ public class PanelViewer {
     public static double minimapToScreenRatioX, minimapToScreenRatioY;
     private static int choserCharRadius = 5;
 
-    public PanelViewer(Panel panel, List<Character> characters) {
+    public PanelViewer(Panel panel) {
         PanelViewer.panel = panel;
         heldItemRect = panel.getHeldItemRect();
-        charDescriptor = new CharDescriptor(PanelViewer.panel, characters);
+        charDescriptor = new CharDescriptor(PanelViewer.panel, Battle.getCharacters());
         initMinimap();
     }
 
@@ -59,8 +58,8 @@ public class PanelViewer {
 
     private static void initSizes() {
         minimapScreenSize = minimapRect.getWidth() * Math.sqrt(2);
-        int mapScreenWidth = Map.mapXPoints * MapDrawer.MAP_PIECE_SCREEN_SIZE_X;
-        int mapScreenHeight = Map.mapXPoints * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y;
+        int mapScreenWidth = Battle.getMap().mapXPoints * MapDrawer.MAP_PIECE_SCREEN_SIZE_X;
+        int mapScreenHeight = Battle.getMap().mapXPoints * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y;
         minimapToScreenRatioX = minimapScreenSize / mapScreenWidth;
         minimapToScreenRatioY = minimapScreenSize / mapScreenHeight;
     }
@@ -70,7 +69,7 @@ public class PanelViewer {
         PixelWriter pixelWriter = minimapImgWithChars.getPixelWriter();
         for (Character character : Battle.getCharacters()) {
             int radius = calcMinimapRadius(character);
-            for (Point point: GeomerticHelper.pointsInRadius(character.getPosition(), radius, MapDrawer.getMap())) {
+            for (Point point: GeomerticHelper.pointsInRadius(character.getPosition(), radius, Battle.getMap())) {
                 pixelWriter.setColor(point.x, point.y, character.getColor());
             }
         }

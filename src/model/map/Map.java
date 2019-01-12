@@ -15,17 +15,13 @@ public class Map {
     public final int MIN_HEIGHT_PIX = -50;
     public final int MAX_HEIGHT_PIX = 500;
 
-    public static int mapXPoints;
-    public static int mapYPoints;
+    public int mapXPoints, mapYPoints;
     private MapType type;
     private MapHeightType heightType;
-    private int widthM;
-    private int heightM;
-    private java.util.Map<Point, MapPiece> points = new HashMap<>();
+    private int widthM, heightM;
+    private static java.util.Map<Point, MapPiece> points = new HashMap<>();
     private GridGraph gridGraph;
-    private boolean[] roadSides;
-    private boolean[] waterSides;
-    private boolean[] riverSides;
+    private boolean[] roadSides, waterSides, riverSides;
     private int buildingsCount, buildingMaxSize;
 
     public Map(int widthM, int heightM, MapType type, MapHeightType heightType,

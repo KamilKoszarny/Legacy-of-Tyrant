@@ -253,7 +253,7 @@ public class BuildingGenerator {
         }
         if (map.isWithWater()) {
             for (Point point : building.getAllOutWallPoints()) {
-                if (WaterGenerator.isOnWater(point, map))
+                if (WaterGenerator.isOnWater(point))
                     return true;
             }
         }

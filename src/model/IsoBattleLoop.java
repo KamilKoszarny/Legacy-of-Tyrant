@@ -22,7 +22,6 @@ public class IsoBattleLoop extends AnimationTimer{
 
     private static int lastMs;
 
-    private static Battle battle;
     private static BattleEvent battleEvent = null;
     private static BattleEvent buttonBattleEvent = null;
 
@@ -33,8 +32,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private static Point clickedItemPoint;
 
 
-    public IsoBattleLoop(Battle battle) {
-        IsoBattleLoop.battle = battle;
+    public IsoBattleLoop() {
         lastMs = (int) (System.nanoTime() / 1000000);
     }
 
@@ -42,7 +40,7 @@ public class IsoBattleLoop extends AnimationTimer{
     public void handle(long curNanoTime) {
         if(nextFrame(curNanoTime)) {
             animate();
-            battle.incrementTimer();
+            Battle.incrementTimer();
         }
 
         if (battleEvent != null)
@@ -59,7 +57,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void animate() {
-        battle.updateCharacters(FRAME_RATE);
+        Battle.updateCharacters(FRAME_RATE);
         IsoViewer.draw();
         PanelViewer.refresh();
     }
@@ -73,6 +71,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 CharsChooser.chooseCharacter(CharsDrawer.getClickedCharacter());
                 break;
             case SHOW_CHAR2POINT:
+                CharMover.calcAndSetPath(Battle.getChosenCharacter(), battleEvent.getMapPoint());
                 ClickMenusDrawer.drawChar2PointMenu(battleEvent.getClickPoint());
                 buttonBattleEvent = battleEvent;
                 break;
@@ -114,7 +113,7 @@ public class IsoBattleLoop extends AnimationTimer{
             case RUN:
                 if (buttonBattleEvent.getMapPoint() == null)
                     System.out.println("null");
-                CharMover.startRunCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint(), Battle.getMap());
+                CharMover.startRunCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint());
                 break;
             case DOOR_OPEN:
                 DoorActioner.openDoor(buttonBattleEvent.getObject());

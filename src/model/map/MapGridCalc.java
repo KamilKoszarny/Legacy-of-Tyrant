@@ -2,6 +2,7 @@ package model.map;
 
 import helpers.downloaded.pathfinding.grid.GridGraph;
 import helpers.my.GeomerticHelper;
+import model.Battle;
 import model.character.Character;
 
 import java.awt.*;
@@ -26,15 +27,15 @@ public class MapGridCalc {
         map.setGridGraph(gridGraph);
     }
 
-    public static void clearGridGraphForChar(Map map, Character character) {
-        GridGraph gridGraph = map.getGridGraph();
+    public static void clearGridGraphForChar(Character character) {
+        GridGraph gridGraph = Battle.getMap().getGridGraph();
 
-        for (Point point: GeomerticHelper.pointsInRadius(character.getPosition(), 3, map)) {
-            if (map.getPoints().get(point).isWalkable())
+        for (Point point: GeomerticHelper.pointsInRadius(character.getPosition(), 3, Battle.getMap())) {
+            if (Battle.getMap().getPoints().get(point).isWalkable())
                 blockGridPoints(gridGraph, point, false);
         }
 
-        map.setGridGraph(gridGraph);
+        Battle.getMap().setGridGraph(gridGraph);
     }
 
     @SuppressWarnings("PointlessArithmeticExpression")

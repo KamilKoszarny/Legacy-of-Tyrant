@@ -2,6 +2,7 @@ package model.actions.movement;
 
 import helpers.my.GeomerticHelper;
 import javafx.geometry.Point2D;
+import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
@@ -17,50 +18,54 @@ public class CharMover {
     private static double POINTS_TO_NEXT_FRAME = 1.6;
     private static ArrayList<Character> characters;
 
-    public static void startRunCharacter(Character character, Point movePoint, Map map) {
-        MapGridCalc.regenerateGridGraph(map, map.getPoints().keySet(), characters);
-        MapGridCalc.clearGridGraphForChar(map, character);
-        List<Point2D> path = PathFinder.calcPath(character.getPrecisePosition(), movePoint, map, true);
-        character.setPath(path);
+    public static void startRunCharacter(Character character, Point movePoint) {
+        calcAndSetPath(character, movePoint);
         character.setState(CharState.RUN);
         character.setDestination(movePoint);
         character.setPathSection(0);
         character.setCurrentSpeed(character.getSpeed() * 2);
     }
 
-    public static void updateCharacterMove(Character character, int ms, Map map) {
+    public static void calcAndSetPath(Character character, Point movePoint) {
+        MapGridCalc.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), characters);
+        MapGridCalc.clearGridGraphForChar(character);
+        List<Point2D> path = PathFinder.calcPath(character.getPrecisePosition(), movePoint, true);
+        character.setPath(path);
+    }
+
+    public static void updateCharacterMove(Character character, int ms) {
         List<Point2D> path = character.getPath();
         int pathSection = character.getPathSection();
         boolean last = (pathSection == path.size() - 1);
-        moveStraight(character, character.getPath().get(character.getPathSection()), ms, last, map);
+        moveStraight(character, character.getPath().get(character.getPathSection()), ms, last);
     }
 
-    private static void moveStraight(Character character, Point2D next, int ms, boolean last, Map map) {
+    private static void moveStraight(Character character, Point2D next, int ms, boolean last) {
         Point2D pos = character.getPrecisePosition();
         double distToNext = pos.distance(next);
         Point2D step = step(character, ms);
 
-        if (distToNext >= step.magnitude()) {
+        final double SHORT_PATH_CORRECTION = 2;
+        if (distToNext > step.magnitude() * SHORT_PATH_CORRECTION) {
             character.setPosition(new Point2D(pos.getX() + step.getX(), pos.getY() + step.getY()));
-            if (distToNext%POINTS_TO_NEXT_FRAME <
-                    GeomerticHelper.distTo0(step.getX(), step.getY()))
+            if (distToNext%POINTS_TO_NEXT_FRAME < GeomerticHelper.distTo0(step.getX(), step.getY()))
                 CharsDrawer.nextFrame(character, 0);
         }
         else if (last) {
             character.setPosition(character.getDestination());
-            stopCharacter(character, map);
+            stopCharacter(character);
         } else {
             character.setPathSection(character.getPathSection() + 1);
             turnChar(character, character.getPath().get(character.getPathSection()));
         }
     }
 
-    public static void stopCharacter(Character character, Map map) {
+    public static void stopCharacter(Character character) {
         character.setDestination(null);
         character.setState(CharState.IDLE);
         character.setCurrentSpeed(0);
-        pushCharToClosestWalkable(map, character);
-        MapGridCalc.regenerateGridGraph(map, map.getPoints().keySet(), characters);
+        pushCharToClosestWalkable(character, Battle.getMap());
+        MapGridCalc.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), characters);
     }
 
     private static void turnChar(Character character, Point2D next) {
@@ -85,10 +90,10 @@ public class CharMover {
 
     public static void pushCharsToClosestWalkable(Map map){
         for (Character character: characters)
-            pushCharToClosestWalkable(map, character);
+            pushCharToClosestWalkable(character, map);
     }
 
-    public static void pushCharToClosestWalkable(Map map, Character character){
+    public static void pushCharToClosestWalkable(Character character, Map map){
         Point pos = character.getPosition();
         while (!map.getPoints().get(pos).isWalkable() || pointOccupiedByOther(character)) {
             int newX = Math.min(Math.max(pos.x + new Random().nextInt(3) - 1, 0), map.getWidth());

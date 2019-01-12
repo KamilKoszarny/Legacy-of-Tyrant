@@ -36,8 +36,8 @@ public class DoorActioner {
         door.setLook(newLook);
         refreshMapObjects(map, door, objectPoint, newPoint);
         refreshWalkables(map, objectPoint, newLook, newPoint, true);
-        CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
+        CharMover.pushCharsToClosestWalkable(Battle.getMap());
+        MapGridCalc.regenerateGridGraph(Battle.getMap(), GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
     }
 
     public static void closeDoor(MapObject object) {
@@ -61,8 +61,8 @@ public class DoorActioner {
         door.setLook(newLook);
         refreshMapObjects(map, door, objectPoint, newPoint);
         refreshWalkables(map, objectPoint, newLook, newPoint, false);
-        CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
+        CharMover.pushCharsToClosestWalkable(Battle.getMap());
+        MapGridCalc.regenerateGridGraph(Battle.getMap(), GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
     }
 
     private static void refreshWalkables(Map map, Point objectPoint, int newLook, Point newPoint, boolean open) {
@@ -73,18 +73,18 @@ public class DoorActioner {
         else
             walkablePoints = GeomerticHelper.pointsInRect(objectPoint, 1 - newLook%2, newLook%2, map);
         for (Point point: walkablePoints) {
-            mapPiece = map.getPoints().get(point);
+            mapPiece = Battle.getMap().getPoints().get(point);
             mapPiece.setWalkable(true);
         }
         for (Point point: GeomerticHelper.pointsInRect(newPoint, 1 - newLook%2, newLook%2, map)) {
-            mapPiece = map.getPoints().get(point);
+            mapPiece = Battle.getMap().getPoints().get(point);
             mapPiece.setWalkable(false);
         }
     }
 
     private static void refreshMapObjects(Map map, Door door, Point objectPoint, Point newPoint) {
-        MapPiece newMapPiece;MapPiece mapPiece = map.getPoints().get(objectPoint);
-        newMapPiece = map.getPoints().get(newPoint);
+        MapPiece newMapPiece;MapPiece mapPiece = Battle.getMap().getPoints().get(objectPoint);
+        newMapPiece = Battle.getMap().getPoints().get(newPoint);
         mapPiece.setObject(null);
         MapObjectDrawer.refreshSpriteMap(objectPoint, map);
         newMapPiece.setObject(door);

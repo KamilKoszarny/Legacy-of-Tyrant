@@ -16,7 +16,7 @@ public class Battle {
     private static Character chosenCharacter;
     private static Color playerColor;
     private final CharsChooser charsChooser = new CharsChooser();
-    private int timer = 0;
+    private static int timer = 0;
 
     public Battle(Map map, List<Character> characters, Color playerColor) {
         Battle.map = map;
@@ -24,20 +24,20 @@ public class Battle {
         Battle.playerColor = playerColor;
     }
 
-    public void updateCharacters(int ms) {
+    public static void updateCharacters(int ms) {
         for (Character character: characters) {
-            if (character.getDestination() != null)
+            if (character.getDestination() != null) {
                 if (character.getPath().isEmpty())
-                    CharMover.stopCharacter(character, map);
+                    CharMover.stopCharacter(character);
                 else
-                    CharMover.updateCharacterMove(character, ms, map);
-            else {
+                    CharMover.updateCharacterMove(character, ms);
+            } else {
                 CharsDrawer.nextFrame(character, timer);
             }
         }
     }
 
-    public void incrementTimer() {
+    public static void incrementTimer() {
         timer++;
     }
 

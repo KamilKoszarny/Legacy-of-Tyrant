@@ -28,7 +28,6 @@ public class BattleInitializer {
     }
 
     public static List<Character> initCharacters(Map map){
-        ArrayList<Character> characters = new ArrayList<>();
 
         Character czlehulec = new Character("Czlehulec", true, Color.YELLOW, CharacterType.HUMAN, CharacterClass.RASCAL,
                 new Point(10,10), 1);
@@ -63,7 +62,7 @@ public class BattleInitializer {
         irith.setWeapons(new Weapon[]{Weapon.SHORT_BOW, Weapon.DAGGER}, false);
         StatsCalculator.calcCharSA(irith);
 
-        characters.addAll(new ArrayList<>(Arrays.asList(czlehulec, slimako, skowronka, irith)));
+        ArrayList<Character> characters = new ArrayList<>(new ArrayList<>(Arrays.asList(czlehulec, slimako, skowronka, irith)));
 
         CharMover.setCharacters(characters);
         CharMover.pushCharsToClosestWalkable(map);

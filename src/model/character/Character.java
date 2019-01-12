@@ -11,6 +11,7 @@ import viewIso.LabelsDrawer;
 import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class Character {
     private Map<Item, int[]> inventory = new HashMap<>();
 
     private Image portrait;
+    private Map<String, BufferedImage> itemsSprites = new HashMap<>();
     private CharState state = CharState.IDLE;
     private Point2D precisePosition;
     private double direction;
@@ -107,9 +109,12 @@ public class Character {
     public Image getPortrait() {
         return portrait;
     }
-
     public void setPortrait(Image portrait) {
         this.portrait = portrait;
+    }
+
+    public Map<String, BufferedImage> getItemsSprites() {
+        return itemsSprites;
     }
 
     public CharState getState() {
@@ -299,8 +304,10 @@ public class Character {
             setEquipmentPart(Shield.NOTHING, 2, false);
         if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
             setEquipmentPart(Shield.NOTHING, 2, false);
-        if (showSprite)
+        if (showSprite) {
+            itemsSprites.put("weapons", null);
             CharsDrawer.createCharSpriteSheet(this);
+        }
     }
     public Weapon getSpareWeapon() {
         return weapons[(chosenWeapon + 1)%2];
@@ -355,12 +362,17 @@ public class Character {
     }
     public void setEquipmentPart(Item item, int partNo, boolean showSprite) {
         switch (partNo) {
-            case 0: setWeapon((Weapon) item, showSprite); break;
-            case 1: setSpareWeapon((Weapon) item, showSprite); break;
-            default:
-                this.armor[partNo - 2] = (Armor) item;
-                if (partNo <= 6 && showSprite)
-                    CharsDrawer.createCharSpriteSheet(this);
+            case 0: setWeapon((Weapon) item, showSprite); return;
+            case 1: setSpareWeapon((Weapon) item, showSprite); return;
+            case 2: itemsSprites.put("shields", null); break;
+            case 3: itemsSprites.put("armors", null); break;
+            case 4: itemsSprites.put("heads", null); break;
+            case 5: itemsSprites.put("hands", null); break;
+            case 6: itemsSprites.put("feets", null); break;
+        }
+        this.armor[partNo - 2] = (Armor) item;
+        if (partNo <= 6 && showSprite) {
+            CharsDrawer.createCharSpriteSheet(this);
         }
     }
 

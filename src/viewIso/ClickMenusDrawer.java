@@ -6,6 +6,7 @@ import helpers.my.StringHelper;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
+import model.Battle;
 import model.actions.attack.AttackCalculator;
 import model.actions.attack.BodyPart;
 import model.character.Character;
@@ -40,7 +41,7 @@ public class ClickMenusDrawer {
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
         if (clickedMapPiece == null)
             return;
-        if (!clickedMapPiece.isWalkable()) {
+        if (!clickedMapPiece.isWalkable() || Battle.getChosenCharacter().getPath().size() == 0) {
             ClickMenuButton.WALK.setGrayed(true);
             ClickMenuButton.RUN.setGrayed(true);
             ClickMenuButton.SNEAK.setGrayed(true);
@@ -97,7 +98,7 @@ public class ClickMenusDrawer {
             Map<BodyPart, Integer> chancesToHitByPart = AttackCalculator.calcChancesToHitByBodyPart(character, enemy, bodyPart);
             int chanceToHit = CalcHelper.sum(chancesToHitByPart.values());
             StringBuilder tooltipText = new StringBuilder();
-            tooltipText.append("Chance to hit: " + chanceToHit + "%\n");
+            tooltipText.append("Chance to hit: ").append(chanceToHit).append("%\n");
             chancesToHitByPart = SortHelper.sortByValue(chancesToHitByPart, false);
 
             for (BodyPart bodyPart1: chancesToHitByPart.keySet()) {

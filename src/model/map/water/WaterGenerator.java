@@ -17,7 +17,7 @@ public class WaterGenerator {
     int minHeight = Integer.MAX_VALUE;
     static List<MapPiece> flatPieces = new ArrayList<>();
 
-    Map map;
+    static Map map;
 
     public WaterGenerator(Map map) {
         this.map = map;
@@ -39,10 +39,10 @@ public class WaterGenerator {
         int[] shore;
         if (side%2 == 0) {
             shore = new int[map.mapXPoints];
-            shore[0] = (int) (map.mapYPoints*.05 + R.nextInt(map.mapYPoints)*.2);
+            shore[0] = (int) (map.mapYPoints *.05 + R.nextInt(map.mapYPoints)*.2);
         } else {
             shore = new int[map.mapYPoints];
-            shore[0] = (int) (map.mapXPoints*.05 + R.nextInt(map.mapXPoints)*.2);
+            shore[0] = (int) (map.mapXPoints *.05 + R.nextInt(map.mapXPoints)*.2);
         }
 
         for (int i = 1; i < shore.length; i++) {
@@ -85,7 +85,7 @@ public class WaterGenerator {
         }
     }
 
-    public static boolean isOnWater(Point point, Map map){
+    public static boolean isOnWater(Point point){
         return flatPieces.contains(map.getPoints().get(point));
     }
 

@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemsLoader {
@@ -32,45 +33,49 @@ public class ItemsLoader {
         long startTime = System.nanoTime();
         long time = startTime;
         List<BufferedImage> itemsSprites = new ArrayList<>();
-
+        List<String> spriteFolderNames = Arrays.asList("base", "armors", "heads", "hands", "feets", "shields", "weapons");
         String sex = character.isMale() ? "/" : "F/";
-        loadAndAddSpriteSheet(itemsSprites, "base", sex, "base.png");
-        System.out.println(" base: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
 
-        loadAndAddSpriteSheet(itemsSprites, "armors", sex, character.getBodyArmorItem().getSpriteName());
-        System.out.println(" armor: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-        loadAndAddSpriteSheet(itemsSprites, "heads", sex, character.getHelmet().getSpriteName());
-        System.out.println(" helmet: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-        loadAndAddSpriteSheet(itemsSprites, "hands", sex, character.getGloves().getSpriteName());
-        System.out.println(" hand: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-        loadAndAddSpriteSheet(itemsSprites, "feets", sex, character.getBoots().getSpriteName());
-        System.out.println(" feet: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-        loadAndAddSpriteSheet(itemsSprites, "shields", sex, character.getShield().getSpriteName());
-        System.out.println(" shields: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
-        loadAndAddSpriteSheet(itemsSprites, "weapons", sex, character.getWeapon().getSpriteName());
-        System.out.println(" weapon: " + (System.nanoTime() - time)/1000000. + " ms");
-        time = System.nanoTime();
+        for (String spriteFolderName : spriteFolderNames) {
+            BufferedImage itemSprite = character.getItemsSprites().get(spriteFolderName);
+            if (itemSprite == null) {
+                itemSprite = loadSpriteSheet(spriteFolderName, sex, getSpriteNameByFolder(spriteFolderName, character));
+                character.getItemsSprites().put(spriteFolderName, itemSprite);
+
+                System.out.println(" " + spriteFolderName + ": " + (System.nanoTime() - time) / 1000000. + " ms");
+                time = System.nanoTime();
+            }
+            itemsSprites.add(itemSprite);
+        }
 
         System.out.println(" TOTAL item load: " + (System.nanoTime() - startTime)/1000000. + " ms");
 
         return itemsSprites;
     }
 
-    private static void loadAndAddSpriteSheet(List<BufferedImage> itemsSprites, String folder, String sex, String spriteName){
+    public static String getSpriteNameByFolder(String folderName, Character character) {
+        switch (folderName){
+            case "base": return "base.png";
+            case "armors": return character.getBodyArmorItem().getSpriteName();
+            case "heads": return character.getHelmet().getSpriteName();
+            case "hands": return character.getGloves().getSpriteName();
+            case "feets": return character.getBoots().getSpriteName();
+            case "shields": return character.getShield().getSpriteName();
+            case "weapons": return character.getWeapon().getSpriteName();
+        }
+        return null;
+    }
+
+    private static BufferedImage loadSpriteSheet(String folder, String sex, String spriteName){
         if (spriteName != null) {
             String path = "/sprites/chars/" + folder + sex + spriteName;
             try {
-                itemsSprites.add(ImageIO.read(App.class.getResource(path)));
+                return ImageIO.read(App.class.getResource(path));
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println(path);
             }
         }
+        return null;
     }
 }

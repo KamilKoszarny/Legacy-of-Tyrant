@@ -29,15 +29,15 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Map map = BattleInitializer.initMap();
         List<Character> characters = BattleInitializer.initCharacters(map);
-        Battle battle = new Battle(map, characters, Color.YELLOW);
-        startBattleIso(battle, primaryStage);
+        new Battle(map, characters, Color.YELLOW);
+        startBattleIso(primaryStage);
     }
 
-    private void startBattleIso(Battle battle, Stage primaryStage) throws Exception {
-        IsoBattleLoop isoBattleLoop = new IsoBattleLoop(battle);
+    private void startBattleIso(Stage primaryStage) throws Exception {
+        IsoBattleLoop isoBattleLoop = new IsoBattleLoop();
         IsoViewController isoViewController = new IsoViewController(primaryStage);
-        new IsoViewer(battle, isoViewController.getMapCanvas());
-        new PanelViewer(isoViewController.getPanel(), Battle.getCharacters());
+        new IsoViewer(isoViewController.getMapCanvas());
+        new PanelViewer(isoViewController.getPanel());
 
         isoBattleLoop.start();
     }

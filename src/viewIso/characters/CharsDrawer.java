@@ -82,8 +82,7 @@ public class CharsDrawer {
     }
 
     private static CharSprite createSpriteSheet(Character character) {
-        List<BufferedImage> charSubSprites = new ArrayList<>();
-        charSubSprites.addAll(ItemsLoader.loadItemSprites(character));
+        List<BufferedImage> charSubSprites = new ArrayList<>(ItemsLoader.loadItemSprites(character));
 
         BufferedImage combinedImage = new BufferedImage(SPRITESHEET_SIZE.width, SPRITESHEET_SIZE.height, BufferedImage.TYPE_INT_ARGB);
         Graphics g = combinedImage.getGraphics();
