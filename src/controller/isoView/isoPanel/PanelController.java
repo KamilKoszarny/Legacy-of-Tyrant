@@ -1,19 +1,16 @@
 package controller.isoView.isoPanel;
 
 import helpers.my.GeomerticHelper;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import model.Battle;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
+import model.character.Character;
 import model.items.Item;
-import model.items.ItemsLoader;
 import viewIso.map.MapDrawer;
 import viewIso.panel.PanelViewer;
 
@@ -28,8 +25,6 @@ public class PanelController {
 
     private static HBox panelHBox;
     private static Panel panel;
-
-    private static Tooltip inventoryTooltip = new Tooltip("bla");
 
 
     public PanelController(HBox panelHbox, Panel panel) {
@@ -71,22 +66,22 @@ public class PanelController {
 //        initInventoryClick();
     }
 
-    public static void initInventoryClick(javafx.scene.shape.Rectangle inventoryClickRect) {
-        inventoryClickRect.setOnMousePressed(mouseEvent -> {
+    public static void initInventoryClick(javafx.scene.shape.Rectangle inventoryRect) {
+        inventoryRect.setOnMousePressed(mouseEvent -> {
             Point shapeClickPoint = IsoBattleLoop.getClickedItemPoint();
             int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), shapeClickPoint);
             System.out.println(inventorySlot[0] + " " + inventorySlot[1]);
             IsoBattleLoop.setClickedInventorySlot(inventorySlot);
             IsoBattleLoop.setItemClickFlag(true);
         });
-//        inventoryClickRect.setOnMouseMoved(mouseEvent -> {
-//            int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), new Point(0, 0));
-//            Item hoveredItem = ItemHandler.itemByInventorySlot(Battle.getChosenCharacter(), inventorySlot);
-//            if (hoveredItem != null && !hoveredItem.getName().equals(inventoryTooltip.getText())) {
-//                inventoryTooltip.setText(hoveredItem.getName());
-//            }
-//        });
-//        Tooltip.install(inventoryClickRect, inventoryTooltip);
+    }
+
+    public static void initInventoryItemClick(Rectangle rectangle, Item item, Character character) {
+        rectangle.setOnMousePressed(mouseEvent -> {
+            Point clickPoint = new Point((int)(mouseEvent.getX() - rectangle.getX()), (int)(mouseEvent.getY() - rectangle.getY()));
+            IsoBattleLoop.setClickedInventorySlot(ItemHandler.inventorySlotByItemClickPoint(item, character, clickPoint));
+            IsoBattleLoop.setItemClickFlag(true);
+        });
     }
 
     private static void initMinimapClick() {

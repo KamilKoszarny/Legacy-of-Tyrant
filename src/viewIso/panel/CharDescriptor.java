@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import model.Battle;
 import model.actions.ItemHandler;
 import model.character.Character;
 import model.items.Item;
@@ -22,7 +23,7 @@ public class CharDescriptor {
 
     private static Panel panel;
     private List<Character> characters;
-    private static Rectangle inventoryRect, inventoryClickRect;
+    private static Rectangle inventoryRect;
     private static boolean inventoryRectsSet = false;
 
     public CharDescriptor(Panel panel, List<Character> characters) {
@@ -50,7 +51,9 @@ public class CharDescriptor {
             refreshBars(firstChosenCharacter);
             refreshPortrait(firstChosenCharacter);
             refreshEquipment(firstChosenCharacter);
-            refreshInventory(firstChosenCharacter);
+            if (!inventoryRectsSet) {
+                refreshInventory(firstChosenCharacter);
+            }
         }
     }
 
@@ -162,9 +165,10 @@ public class CharDescriptor {
             Tooltip tooltip = new Tooltip(name);
             Tooltip.install(inventoryItemRect, tooltip);
 
+            PanelController.initInventoryItemClick(inventoryItemRect, item, character);
+
             pane.getChildren().add(inventoryItemRect);
         }
-        redrawInventoryClickRect(pane);
     }
 
     private static void redrawInventoryRect(Pane pane) {
@@ -172,26 +176,16 @@ public class CharDescriptor {
             Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel, new int[]{0, 0});
             inventoryRect.setX(invFirstRect.getX());
             inventoryRect.setY(invFirstRect.getY());
-            initInventoryClickRectangle();
+            initInventoryRectangle();
+            inventoryRectsSet = true;
         }
         pane.getChildren().remove(inventoryRect);
         pane.getChildren().add(inventoryRect);
     }
 
-    private static void redrawInventoryClickRect(Pane pane) {
-        if (!inventoryRectsSet) {
-            initInventoryClickRectangle();
-            inventoryRectsSet = true;
-        }
-        pane.getChildren().remove(inventoryClickRect);
-        pane.getChildren().add(inventoryClickRect);
-    }
-
-    private static void initInventoryClickRectangle() {
-        inventoryClickRect = panel.getInventoryRectangle();
-        inventoryClickRect.setOpacity(0);
-        PanelController.initInventoryClick(inventoryClickRect);
-        inventoryClickRect.setVisible(true);
+    private static void initInventoryRectangle() {
+        PanelController.initInventoryClick(inventoryRect);
+        inventoryRect.setVisible(true);
     }
 
 

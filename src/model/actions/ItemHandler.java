@@ -1,5 +1,6 @@
 package model.actions;
 
+import model.Battle;
 import model.IsoBattleLoop;
 import model.character.Character;
 import model.character.StatsCalculator;
@@ -34,6 +35,7 @@ public class ItemHandler {
             } else if (inventoryClicked(clickedInventorySlot) && isSpaceInInventory(character, caughtItem, clickedInventorySlot)){
                 character.getItems().getInventory().put(caughtItem, clickedInventorySlot);
                 caughtItem = null;
+                CharDescriptor.refreshInventory(Battle.getChosenCharacter());
             } else {
                 //drop
             }
@@ -63,6 +65,7 @@ public class ItemHandler {
                     (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[1] - character.getItems().getInventory().get(caughtItem)[1] + .5)));
             IsoBattleLoop.setClickedItemPoint(itemClickPoint);
             character.getItems().getInventory().keySet().remove(caughtItem);
+            CharDescriptor.refreshInventory(Battle.getChosenCharacter());
         }
         return caughtItem;
     }
@@ -95,6 +98,15 @@ public class ItemHandler {
             }
         }
         return true;
+    }
+
+    public static int[] inventorySlotByItemClickPoint(Item item, Character character, Point point){
+        int[] firstSlot = character.getItems().getInventory().get(item);
+        int[] slot = new int[2];
+
+        slot[0] = firstSlot[0] + point.x / ITEM_SLOT_SIZE;
+        slot[1] = firstSlot[1] + point.y / ITEM_SLOT_SIZE;
+        return slot;
     }
 
     public static Item itemByInventorySlot(Character character, int[] inventorySlot) {
