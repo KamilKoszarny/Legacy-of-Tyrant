@@ -50,6 +50,11 @@ public class ClickMenusDrawer {
             ClickMenuButton.RUN.setGrayed(false);
             ClickMenuButton.SNEAK.setGrayed(false);
         }
+
+        ClickMenuButton.WALK.setGrayed(true);
+        ClickMenuButton.SNEAK.setGrayed(true);
+
+
         ClickMenuButton.colorButtons(char2PointMenu);
 
         for (ClickMenuButton button: char2PointMenu) {

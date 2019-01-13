@@ -26,28 +26,10 @@ public class Character {
     private Color color;
     private CharacterType type;
     private CharacterClass charClass;
-    private Stats stats = new Stats();
-
-    private PrimaryAttributes basePA = new PrimaryAttributes();
-    private PrimaryAttributes currentPA = new PrimaryAttributes();
-    private SecondaryAttributes baseSA = new SecondaryAttributes();
-    private SecondaryAttributes currentSA = new SecondaryAttributes();
-    private Weapon[] weapons = new Weapon[2];
-    private Armor[] armor = new Armor[10];
-    private int chosenWeapon = 0;
-    private Map<Item, int[]> inventory = new HashMap<>();
-
     private Image portrait;
-    private Map<String, BufferedImage> itemsSprites = new HashMap<>();
-    private CharState state = CharState.IDLE;
-    private Point2D precisePosition;
-    private double direction;
-    private double currentSpeed;
-    private Point destination;
-    private List<Point2D> path;
-    private int pathSection;
-    private List<Polygon> pathView;
+    private Stats stats = new Stats(this);
 
+    private CharState state = CharState.IDLE;
     private boolean chosen = false;
     private boolean targeted = false;
     private boolean ready = false;
@@ -56,8 +38,17 @@ public class Character {
     private boolean afterDodging = false;
     private boolean afterParrying = false;
     private boolean afterBouncing = false;
-
     private AttackResult attackResult = null;
+
+    private Point2D precisePosition;
+    private double direction;
+    private Point destination;
+    private List<Point2D> path;
+    private int pathSection;
+    private List<Polygon> pathView;
+
+    private Items items = new Items(this);
+
 
     public Character() {
     }
@@ -71,7 +62,7 @@ public class Character {
         precisePosition = new Point2D(position.x, position.y);
         this.direction = direction;
 
-        portrait = CharLoader.loadPortrait(this);
+        setPortrait(CharLoader.loadPortrait(this));
     }
 
     public String getName() {
@@ -109,7 +100,6 @@ public class Character {
     public Stats getStats() {
         return stats;
     }
-
     public void setStats(Stats stats) {
         this.stats = stats;
     }
@@ -121,15 +111,66 @@ public class Character {
         this.portrait = portrait;
     }
 
-    public Map<String, BufferedImage> getItemsSprites() {
-        return itemsSprites;
-    }
-
     public CharState getState() {
         return state;
     }
     public void setState(CharState state) {
         this.state = state;
+    }
+    public boolean isChosen() {
+        return chosen;
+    }
+    public void setChosen(boolean chosen) {
+        this.chosen = chosen;
+    }
+    public boolean isTargeted() {
+        return targeted;
+    }
+    public void setTargeted(boolean targeted) {
+        this.targeted = targeted;
+    }
+    public boolean isReady() {
+        return ready;
+    }
+    public void setReady(boolean ready) {
+        this.ready = ready;
+    }
+    public boolean isRunning() {
+        return running;
+    }
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+    public boolean isSneaking() {
+        return sneaking;
+    }
+    public void setSneaking(boolean sneaking) {
+        this.sneaking = sneaking;
+    }
+    public boolean isAfterDodging() {
+        return afterDodging;
+    }
+    public void setAfterDodging(boolean afterDodging) {
+        this.afterDodging = afterDodging;
+    }
+    public boolean isAfterParrying() {
+        return afterParrying;
+    }
+    public void setAfterParrying(boolean afterParrying) {
+        this.afterParrying = afterParrying;
+    }
+    public boolean isAfterBouncing() {
+        return afterBouncing;
+    }
+    public void setAfterBouncing(boolean afterBouncing) {
+        this.afterBouncing = afterBouncing;
+    }
+    public AttackResult getAttackResult() {
+        return attackResult;
+    }
+    public void setAttackResult(AttackResult attackResult) {
+        this.attackResult = attackResult;
+        LabelsDrawer.resetDamageLabel(this);
     }
 
     public Point getPosition() {
@@ -141,7 +182,6 @@ public class Character {
     public void setPosition(Point2D position) {
         precisePosition = position;
     }
-
     public Point2D getPrecisePosition() {
         return precisePosition;
     }
@@ -152,19 +192,11 @@ public class Character {
     public void setDirection(int direction) {
         this.direction = direction;
     }
-
     public double getPreciseDirection() {
         return direction;
     }
     public void setPreciseDirection(double direction) {
         this.direction = direction;
-    }
-
-    public double getCurrentSpeed() {
-        return currentSpeed;
-    }
-    public void setCurrentSpeed(double currentSpeed) {
-        this.currentSpeed = currentSpeed;
     }
 
     public Point getDestination() {
@@ -180,14 +212,12 @@ public class Character {
     public void setPath(List<Point2D> path) {
         this.path = path;
     }
-
     public int getPathSection() {
         return pathSection;
     }
     public void setPathSection(int pathSection) {
         this.pathSection = pathSection;
     }
-
     public List<Polygon> getPathView() {
         return pathView;
     }
@@ -195,163 +225,9 @@ public class Character {
         this.pathView = pathView;
     }
 
-    public boolean isChosen() {
-        return chosen;
-    }
-    public void setChosen(boolean chosen) {
-        this.chosen = chosen;
-    }
 
-    public boolean isTargeted() {
-        return targeted;
-    }
-    public void setTargeted(boolean targeted) {
-        this.targeted = targeted;
-    }
-
-    public boolean isReady() {
-        return ready;
-    }
-    public void setReady(boolean ready) {
-        this.ready = ready;
-    }
-
-    public boolean isRunning() {
-        return running;
-    }
-    public void setRunning(boolean running) {
-        this.running = running;
-    }
-
-    public boolean isSneaking() {
-        return sneaking;
-    }
-    public void setSneaking(boolean sneaking) {
-        this.sneaking = sneaking;
-    }
-
-
-    public boolean isAfterDodging() {
-        return afterDodging;
-    }
-    public void setAfterDodging(boolean afterDodging) {
-        this.afterDodging = afterDodging;
-    }
-
-    public boolean isAfterParrying() {
-        return afterParrying;
-    }
-    public void setAfterParrying(boolean afterParrying) {
-        this.afterParrying = afterParrying;
-    }
-
-    public boolean isAfterBouncing() {
-        return afterBouncing;
-    }
-    public void setAfterBouncing(boolean afterBouncing) {
-        this.afterBouncing = afterBouncing;
-    }
-
-
-    public Weapon[] getWeapons() {
-        return weapons;
-    }
-    public void setWeapons(Weapon[] weapons, boolean showSprite) {
-        setWeapon(weapons[0], showSprite);
-        setSpareWeapon(weapons[1], showSprite);
-    }
-    public Armor[] getArmor() {
-        return armor;
-    }
-    public void setArmor(Armor[] armor) {
-        this.armor = armor;
-    }
-
-    public Weapon getWeapon(){
-        return weapons[chosenWeapon];
-    }
-    public void setWeapon(Weapon weapon, boolean showSprite){
-        weapons[chosenWeapon] = weapon;
-        if (weapon.getHands() == 2)
-            setEquipmentPart(Shield.BLOCKED, 2, false);
-        else if (getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 2, false);
-        if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 2, false);
-        if (showSprite) {
-            itemsSprites.put("weapons", null);
-            CharsDrawer.createCharSpriteSheet(this);
-        }
-    }
-    public Weapon getSpareWeapon() {
-        return weapons[(chosenWeapon + 1)%2];
-    }
-    public void setSpareWeapon(Weapon weapon, boolean showSprite){
-        weapons[(chosenWeapon + 1)%2] = weapon;
-        if (weapon.getHands() == 2)
-            setEquipmentPart(Shield.BLOCKED, 11, showSprite);
-        else if (getSpareShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 11, showSprite);
-        if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 11, showSprite);
-    }
-
-    public Shield getShield() {
-        return (Shield) armor[0];
-    }
-    public BodyArmor getBodyArmorItem() {
-        return (BodyArmor) armor[1];
-    }
-    public Helmet getHelmet() {
-        return (Helmet) armor[2];
-    }
-    public Gloves getGloves() {
-        return (Gloves) armor[3];
-    }
-    public Boots getBoots() {
-        return (Boots) armor[4];
-    }
-    public Belt getBelt() {
-        return (Belt) armor[5];
-    }
-    public Amulet getAmulet() {
-        return (Amulet) armor[6];
-    }
-    public Ring getRing1() {
-        return (Ring) armor[7];
-    }
-    public Ring getRing2() {
-        return (Ring) armor[8];
-    }
-    public Shield getSpareShield() {
-        return (Shield) armor[9];
-    }
-
-    public Item getEquipmentPart(int partNo) {
-        switch (partNo) {
-            case 0: return getWeapon();
-            case 1: return getSpareWeapon();
-            default: return armor[partNo - 2];
-        }
-    }
-    public void setEquipmentPart(Item item, int partNo, boolean showSprite) {
-        switch (partNo) {
-            case 0: setWeapon((Weapon) item, showSprite); return;
-            case 1: setSpareWeapon((Weapon) item, showSprite); return;
-            case 2: itemsSprites.put("shields", null); break;
-            case 3: itemsSprites.put("armors", null); break;
-            case 4: itemsSprites.put("heads", null); break;
-            case 5: itemsSprites.put("hands", null); break;
-            case 6: itemsSprites.put("feets", null); break;
-        }
-        this.armor[partNo - 2] = (Armor) item;
-        if (partNo <= 6 && showSprite) {
-            CharsDrawer.createCharSpriteSheet(this);
-        }
-    }
-
-    public Map<Item, int[]> getInventory() {
-        return inventory;
+    public Items getItems() {
+        return items;
     }
 
     public void setDoubleValue(String propertyName, String value){
@@ -363,14 +239,5 @@ public class Character {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-    }
-
-    public AttackResult getAttackResult() {
-        return attackResult;
-    }
-
-    public void setAttackResult(AttackResult attackResult) {
-        this.attackResult = attackResult;
-        LabelsDrawer.resetDamageLabel(this);
     }
 }

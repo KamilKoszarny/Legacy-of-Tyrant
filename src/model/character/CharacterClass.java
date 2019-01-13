@@ -11,15 +11,15 @@ import java.util.Map;
 
 public enum CharacterClass {
 
-    BULLY(new Stats(25, 25, 25, 10, 10, 10, 10, 10, 10),
+    BULLY(new Stats(null, 25, 25, 25, 10, 10, 10, 10, 10, 10),
             createBullyWeaponsMap(), createBullyArmorMaps(), 'S'),
-    RASCAL(new Stats(10, 10, 10, 25, 25, 25, 10, 10, 10),
+    RASCAL(new Stats(null, 10, 10, 10, 25, 25, 25, 10, 10, 10),
             createRascalWeaponsMap(), createRascalArmorMaps(), 'D'),
-    ADEPT(new Stats(10, 10, 10, 10, 10, 10, 25, 25, 25),
+    ADEPT(new Stats(null, 10, 10, 10, 10, 10, 10, 25, 25, 25),
             createAdeptWeaponsMap(), createAdeptArmorMaps(), 'M'),
-    FANATIC(new Stats(50, 40, 50, 20, 30, 30, 20, 35, 20),
+    FANATIC(new Stats(null, 50, 40, 50, 20, 30, 30, 20, 35, 20),
             createFanaticWeaponsMap(), createFanaticArmorMaps(), 'S'),
-    WIZARD(new Stats(20, 25, 25, 30, 20, 35, 50, 50, 40),
+    WIZARD(new Stats(null, 20, 25, 25, 30, 20, 35, 50, 50, 40),
             createWizardWeaponsMap(), createWizardArmorMaps(), 'M');
 
     private Stats stats;

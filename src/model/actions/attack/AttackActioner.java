@@ -12,7 +12,7 @@ public class AttackActioner {
     public static void attackCharacter(Character attacker, Character victim, BodyPart bodyPart){
         AttackResult result;
         CharTurner.turnCharacter(attacker, victim.getPosition(), true);
-        if (WeaponGroup.RANGE.getWeapons().contains(attacker.getWeapon()))
+        if (WeaponGroup.RANGE.getWeapons().contains(attacker.getItems().getWeapon()))
             attacker.setState(CharState.ATTACK_RANGE);
         else
             attacker.setState(CharState.ATTACK);

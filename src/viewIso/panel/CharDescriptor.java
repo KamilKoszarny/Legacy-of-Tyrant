@@ -20,10 +20,10 @@ import java.util.List;
 
 public class CharDescriptor {
 
-    private Panel panel;
+    private static Panel panel;
     private List<Character> characters;
-    private Rectangle inventoryRect, inventoryClickRect;
-    private boolean inventoryRectsSet = false;
+    private static Rectangle inventoryRect, inventoryClickRect;
+    private static boolean inventoryRectsSet = false;
 
     public CharDescriptor(Panel panel, List<Character> characters) {
         this.panel = panel;
@@ -68,8 +68,8 @@ public class CharDescriptor {
         String parText = CharParameter.signByName(parameter) + findValue(character, parameter);
 
         if (CharParameter.isWithCurrent(parameter)){
-            parameter = parameter.substring(0, 1).toUpperCase() + parameter.substring(1, parameter.length());
-            parText = findValue(character, parameter) + "/" + parText;
+            parameter += "Max";
+            parText += "/" + findValue(character, parameter);
         }
 
         return parText;
@@ -120,18 +120,18 @@ public class CharDescriptor {
     }
 
     private void refreshEquipment(Character character) {
-        refreshEqRect(panel.getWeaponRect(), character.getWeapon());
-        refreshEqRect(panel.getSpareWeaponRect(), character.getSpareWeapon());
-        refreshEqRect(panel.getHelmetRect(), character.getHelmet());
-        refreshEqRect(panel.getArmorRect(), character.getBodyArmorItem());
-        refreshEqRect(panel.getShieldRect(), character.getShield());
-        refreshEqRect(panel.getGlovesRect(), character.getGloves());
-        refreshEqRect(panel.getBootsRect(), character.getBoots());
-        refreshEqRect(panel.getBeltRect(), character.getBelt());
-        refreshEqRect(panel.getAmuletRect(), character.getAmulet());
-        refreshEqRect(panel.getRing1Rect(), character.getRing1());
-        refreshEqRect(panel.getRing2Rect(), character.getRing2());
-        refreshEqRect(panel.getSpareShieldRect(), character.getSpareShield());
+        refreshEqRect(panel.getWeaponRect(), character.getItems().getWeapon());
+        refreshEqRect(panel.getSpareWeaponRect(), character.getItems().getSpareWeapon());
+        refreshEqRect(panel.getHelmetRect(), character.getItems().getHelmet());
+        refreshEqRect(panel.getArmorRect(), character.getItems().getBodyArmorItem());
+        refreshEqRect(panel.getShieldRect(), character.getItems().getShield());
+        refreshEqRect(panel.getGlovesRect(), character.getItems().getGloves());
+        refreshEqRect(panel.getBootsRect(), character.getItems().getBoots());
+        refreshEqRect(panel.getBeltRect(), character.getItems().getBelt());
+        refreshEqRect(panel.getAmuletRect(), character.getItems().getAmulet());
+        refreshEqRect(panel.getRing1Rect(), character.getItems().getRing1());
+        refreshEqRect(panel.getRing2Rect(), character.getItems().getRing2());
+        refreshEqRect(panel.getSpareShieldRect(), character.getItems().getSpareShield());
     }
 
     private void refreshEqRect(Rectangle rectangle, Item item) {
@@ -145,14 +145,14 @@ public class CharDescriptor {
         Tooltip.install(rectangle, tooltip);
     }
 
-    private void refreshInventory(Character character) {
+    public static void refreshInventory(Character character) {
         Pane pane = (Pane) panel.getHeldItemRect().getParent();
         redrawInventoryRect(pane);
 
         int[] itemInvPos;
         Rectangle itemInvFirstRect;
-        for (Item item: character.getInventory().keySet()) {
-            itemInvPos = character.getInventory().get(item);
+        for (Item item: character.getItems().getInventory().keySet()) {
+            itemInvPos = character.getItems().getInventory().get(item);
             itemInvFirstRect = PanelController.calcInventoryScreenRect(panel, itemInvPos);
             Rectangle inventoryItemRect = new Rectangle(itemInvFirstRect.getX(), itemInvFirstRect.getY(),
                     item.getImage().getWidth(), item.getImage().getHeight());
@@ -167,7 +167,7 @@ public class CharDescriptor {
         redrawInventoryClickRect(pane);
     }
 
-    private void redrawInventoryRect(Pane pane) {
+    private static void redrawInventoryRect(Pane pane) {
         if (!inventoryRectsSet) {
             Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel, new int[]{0, 0});
             inventoryRect.setX(invFirstRect.getX());
@@ -178,7 +178,7 @@ public class CharDescriptor {
         pane.getChildren().add(inventoryRect);
     }
 
-    private void redrawInventoryClickRect(Pane pane) {
+    private static void redrawInventoryClickRect(Pane pane) {
         if (!inventoryRectsSet) {
             initInventoryClickRectangle();
             inventoryRectsSet = true;
@@ -187,7 +187,7 @@ public class CharDescriptor {
         pane.getChildren().add(inventoryClickRect);
     }
 
-    private void initInventoryClickRectangle() {
+    private static void initInventoryClickRectangle() {
         inventoryClickRect = panel.getInventoryRectangle();
         inventoryClickRect.setOpacity(0);
         PanelController.initInventoryClick(inventoryClickRect);

@@ -1,6 +1,8 @@
 package model.character;
 
 public class Stats {
+
+    private Character character;
     
     private int vim;
     private int strength;
@@ -47,10 +49,13 @@ public class Stats {
     private int armsArmor;
     private int legsArmor;
 
-    public Stats() {
+    public Stats(Character character) {
+        this.character = character;
     }
 
-    public Stats(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int spirit) {
+    public Stats(Character character, int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int spirit) {
+        this.character = character;
+
         this.strength = strength;
         this.durability = durability;
         this.stamina = stamina;
@@ -64,7 +69,9 @@ public class Stats {
         this.spirit = spirit;
     }
 
-    public Stats(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int spirit, double dmgMin, double dmgMax) {
+    public Stats(Character character, int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int spirit, double dmgMin, double dmgMax) {
+        this.character = character;
+
         this.strength = strength;
         this.durability = durability;
         this.stamina = stamina;
@@ -183,6 +190,8 @@ public class Stats {
 
     public void setHitPoints(int hitPoints) {
         this.hitPoints = hitPoints;
+        if (hitPoints <= 0)
+            character.setState(CharState.DEATH);
     }
 
     public int getHitPointsMax() {

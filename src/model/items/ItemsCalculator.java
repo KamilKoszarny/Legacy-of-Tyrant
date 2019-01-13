@@ -66,7 +66,7 @@ public class ItemsCalculator {
             }
         }
 
-        if(character.getWeapon().getHands() == 2)
+        if(character.getItems().getWeapon().getHands() == 2)
             armors[0] = Shield.NOTHING;
 
         return armors;

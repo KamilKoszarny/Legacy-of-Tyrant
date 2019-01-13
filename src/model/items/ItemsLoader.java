@@ -37,10 +37,10 @@ public class ItemsLoader {
         String sex = character.isMale() ? "/" : "F/";
 
         for (String spriteFolderName : spriteFolderNames) {
-            BufferedImage itemSprite = character.getItemsSprites().get(spriteFolderName);
+            BufferedImage itemSprite = character.getItems().getItemsSprites().get(spriteFolderName);
             if (itemSprite == null) {
                 itemSprite = loadSpriteSheet(spriteFolderName, sex, getSpriteNameByFolder(spriteFolderName, character));
-                character.getItemsSprites().put(spriteFolderName, itemSprite);
+                character.getItems().getItemsSprites().put(spriteFolderName, itemSprite);
 
                 System.out.println(" " + spriteFolderName + ": " + (System.nanoTime() - time) / 1000000. + " ms");
                 time = System.nanoTime();
@@ -56,12 +56,12 @@ public class ItemsLoader {
     public static String getSpriteNameByFolder(String folderName, Character character) {
         switch (folderName){
             case "base": return "base.png";
-            case "armors": return character.getBodyArmorItem().getSpriteName();
-            case "heads": return character.getHelmet().getSpriteName();
-            case "hands": return character.getGloves().getSpriteName();
-            case "feets": return character.getBoots().getSpriteName();
-            case "shields": return character.getShield().getSpriteName();
-            case "weapons": return character.getWeapon().getSpriteName();
+            case "armors": return character.getItems().getBodyArmorItem().getSpriteName();
+            case "heads": return character.getItems().getHelmet().getSpriteName();
+            case "hands": return character.getItems().getGloves().getSpriteName();
+            case "feets": return character.getItems().getBoots().getSpriteName();
+            case "shields": return character.getItems().getShield().getSpriteName();
+            case "weapons": return character.getItems().getWeapon().getSpriteName();
         }
         return null;
     }

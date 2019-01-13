@@ -122,7 +122,7 @@ public class AttackCalculator {
     }
 
     public static Double calcParryChance(Character character){
-        double parryChance = character.getWeapon().getParry();
+        double parryChance = character.getItems().getWeapon().getParry();
         if(character.isReady())
             parryChance += 30;
         return parryChance;

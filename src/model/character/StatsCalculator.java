@@ -24,31 +24,16 @@ public class StatsCalculator {
         Random r = new Random();
 
         int strength = charType.getStats().getStrength() + charClass.getStats().getStrength() + r.nextInt(10);
-        character.getStats().setStrength(strength);
-
         int durability = charType.getStats().getDurability() + charClass.getStats().getDurability() + r.nextInt(10);
-        character.getStats().setDurability(durability);
-
         int stamina = charType.getStats().getStamina() + charClass.getStats().getStamina() + r.nextInt(10);
-        character.getStats().setStamina(stamina);
-
         int arm = charType.getStats().getArm() + charClass.getStats().getArm() + r.nextInt(10);
-        character.getStats().setArm(arm);
-
         int eye = charType.getStats().getEye() + charClass.getStats().getEye() + r.nextInt(10);
-        character.getStats().setEye(eye);
-
         int agility = charType.getStats().getAgility() + charClass.getStats().getAgility() + r.nextInt(10);
-        character.getStats().setAgility(agility);
-
         int knowledge = charType.getStats().getKnowledge() + charClass.getStats().getKnowledge() + r.nextInt(10);
-        character.getStats().setKnowledge(knowledge);
-
         int focus = charType.getStats().getFocus() + charClass.getStats().getFocus() + r.nextInt(10);
-        character.getStats().setFocus(focus);
+        int spirit = charType.getStats().getSpirit() + charClass.getStats().getSpirit() + r.nextInt(10);
 
-        int charisma = charType.getStats().getSpirit() + charClass.getStats().getSpirit() + r.nextInt(10);
-        character.getStats().setSpirit(charisma);
+        character.setStats(new Stats(character, strength, durability, stamina, arm, eye, agility, knowledge, focus, spirit));
     }
 
     private static void setStatsByType(Character character){
@@ -56,31 +41,16 @@ public class StatsCalculator {
         Random r = new Random();
 
         int strength = charType.getStats().getStrength() + r.nextInt(10);
-        character.getStats().setStrength(strength);
-
         int durability = charType.getStats().getDurability() +  r.nextInt(10);
-        character.getStats().setDurability(durability);
-
         int stamina = charType.getStats().getStamina() + r.nextInt(10);
-        character.getStats().setStamina(stamina);
-
         int arm = charType.getStats().getArm() + r.nextInt(10);
-        character.getStats().setArm(arm);
-
         int eye = charType.getStats().getEye() + r.nextInt(10);
-        character.getStats().setEye(eye);
-
         int agility = charType.getStats().getAgility() + r.nextInt(10);
-        character.getStats().setAgility(agility);
-
         int knowledge = charType.getStats().getKnowledge() + r.nextInt(10);
-        character.getStats().setKnowledge(knowledge);
-
         int focus = charType.getStats().getFocus() + r.nextInt(10);
-        character.getStats().setFocus(focus);
+        int spirit = charType.getStats().getSpirit() + r.nextInt(10);
 
-        int charisma = charType.getStats().getSpirit() + r.nextInt(10);
-        character.getStats().setSpirit(charisma);
+        character.setStats(new Stats(character, strength, durability, stamina, arm, eye, agility, knowledge, focus, spirit));
     }
 
     public static void calcStats(Character character) {
@@ -137,17 +107,17 @@ public class StatsCalculator {
     }
 
     private static void calcRange(Character character) {
-        character.getStats().setRange(character.getWeapon().getRange());
+        character.getStats().setRange(character.getItems().getWeapon().getRange());
     }
 
     private static void calcAttackSpeed(Character character) {
-        character.getStats().setAttackSpeed(1 / character.getWeapon().getAttackDuration());
+        character.getStats().setAttackSpeed(1 / character.getItems().getWeapon().getAttackDuration());
     }
 
     private static void calcDmgAndAccuracy(Character character){
         Stats stats = character.getStats();
         if(CharacterGroup.useWeapon(character.getType())) {
-            Weapon weapon = character.getWeapon();
+            Weapon weapon = character.getItems().getWeapon();
             if (WeaponGroup.isRange(weapon)) {
                 stats.setAccuracy(stats.getEye() + weapon.getAccuracy());
                 stats.setDmgMin(weapon.getDmgMin() * (1 + stats.getEye() / 100.));
@@ -164,11 +134,11 @@ public class StatsCalculator {
     }
 
     private static void calcAvoidance(Character character) {
-        character.getStats().setAvoidance(character.getStats().getAgility() + character.getWeapon().getParry());
+        character.getStats().setAvoidance(character.getStats().getAgility() + character.getItems().getWeapon().getParry());
     }
 
     private static void calcBlock(Character character) {
-        character.getStats().setBlock(character.getShield().getBlock());
+        character.getStats().setBlock(character.getItems().getShield().getBlock());
     }
 
     private static void calcMagicResistance(Character character) {
@@ -176,7 +146,7 @@ public class StatsCalculator {
     }
 
     private static void calcArmor(Character character) {
-        Armor[] armor = character.getArmor();
+        Armor[] armor = character.getItems().getArmor();
         BodyArmor bodyArmor = (BodyArmor) armor[1];
         Helmet helmet = (Helmet) armor[2];
         Gloves gloves = (Gloves) armor[3];
