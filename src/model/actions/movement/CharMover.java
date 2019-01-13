@@ -28,7 +28,7 @@ public class CharMover {
         character.setState(CharState.RUN);
         character.setDestination(movePoint);
         character.setPathSection(0);
-        character.setCurrentSpeed(character.getSpeed() * 2);
+        character.getStats().setSpeed(character.getStats().getSpeedMax() * 2);
     }
 
     public static List<Point2D> calcPath(Character character, Point movePoint) {
@@ -70,7 +70,7 @@ public class CharMover {
         character.setPath(null);
         character.setPathView(null);
         character.setState(CharState.IDLE);
-        character.setCurrentSpeed(0);
+        character.getStats().setSpeed(0);
         pushCharToClosestWalkable(character, Battle.getMap());
         MapGridCalc.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), characters);
     }
@@ -85,9 +85,9 @@ public class CharMover {
     private static Point2D step(Character character, int ms) {
         double changeX, changeY;
         changeX = Math.cos(((character.getPreciseDirection() + 1) / 8) * 2 * Math.PI) *
-                character.getCurrentSpeed() * ms/1000 / Map.M_PER_POINT;
+                character.getStats().getSpeed() * ms/1000 / Map.M_PER_POINT;
         changeY = Math.sin(((character.getPreciseDirection() + 1) / 8) * 2 * Math.PI) *
-                character.getCurrentSpeed() * ms/1000 / Map.M_PER_POINT;
+                character.getStats().getSpeed() * ms/1000 / Map.M_PER_POINT;
         return new Point2D(changeX, changeY);
     }
 

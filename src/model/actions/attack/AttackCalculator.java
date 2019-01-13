@@ -16,14 +16,14 @@ public class AttackCalculator {
 
     public static boolean isInRange(Character charA, Character charB){
 //        if (charA.getPosition().distance(charB.getPosition()) * Map.RESOLUTION_M <
-//                charA.getRange() + charA.getType().getSize()/2 + charB.getType().getSize()/2)
-        if (charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getRange())
+//                charA.getStats().getRange() + charA.getType().getSize()/2 + charB.getType().getSize()/2)
+        if (charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getStats().getRange())
             return true;
         return false;
     }
 
     public static int calcChanceToHit(Character charA, Character charB){
-        return (int) (50 + charA.getAccuracy()/2 - charB.getAvoidance()/2 - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
+        return (int) (50 + charA.getStats().getAccuracy()/2 - charB.getStats().getAvoidance()/2 - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
     }
 
     public static java.util.Map<BodyPart, Integer> calcChancesToHitByBodyPart(Character charA, Character charB, BodyPart bodyPart) {
@@ -92,14 +92,14 @@ public class AttackCalculator {
     }
 
     static int calcDamage(Character charA, Character charB, int score, int chanceToHit, BodyPart bodyPart){
-        int damage =  (int)(charA.getDmgMin() + (charA.getDmgMax() - charA.getDmgMin())
+        int damage =  (int)(charA.getStats().getDmgMin() + (charA.getStats().getDmgMax() - charA.getStats().getDmgMin())
                 * (chanceToHit - score) / chanceToHit);
-        int damageResisted = charB.getDurability() / 10;
+        int damageResisted = charB.getStats().getDurability() / 10;
         switch (bodyPart){
-            case HEAD: damageResisted += charB.getHeadArmor() - 1; break;
-            case BODY: damageResisted += charB.getBodyArmor(); break;
-            case ARMS: damageResisted += charB.getArmsArmor(); break;
-            case LEGS: damageResisted += charB.getLegsArmor(); break;
+            case HEAD: damageResisted += charB.getStats().getHeadArmor() - 1; break;
+            case BODY: damageResisted += charB.getStats().getBodyArmor(); break;
+            case ARMS: damageResisted += charB.getStats().getArmsArmor(); break;
+            case LEGS: damageResisted += charB.getStats().getLegsArmor(); break;
         }
 
         damage -= damageResisted;
@@ -109,13 +109,13 @@ public class AttackCalculator {
     }
 
     public static void updateStats(Character attacker, Character victim, int damage){
-        victim.setCurrentHitPoints(victim.getCurrentHitPoints() - damage);
-        attacker.setMsLeft(attacker.getMsLeft() - (int)(1 / attacker.getAttackSpeed() * 1000));
-        attacker.setVigor((int) (attacker.getVigor() - (1 / attacker.getAttackSpeed())));
+        victim.getStats().setHitPoints(victim.getStats().getHitPoints() - damage);
+        attacker.getStats().setMsLeft(attacker.getStats().getMsLeft() - (int)(1 / attacker.getStats().getAttackSpeed() * 1000));
+        attacker.getStats().setVigor((int) (attacker.getStats().getVigor() - (1 / attacker.getStats().getAttackSpeed())));
     }
 
     public static Double calcDodgeChance(Character character){
-        double dodgeChance = character.getAgility();
+        double dodgeChance = character.getStats().getAgility();
         if(character.isReady())
             dodgeChance += 30;
         return dodgeChance;
@@ -129,7 +129,7 @@ public class AttackCalculator {
     }
 
     public static Double calcBounceChance(Character character){
-        double bounceChance = character.getAgility() + 10;
+        double bounceChance = character.getStats().getAgility() + 10;
         if(character.isReady())
             bounceChance += 30;
         return bounceChance;

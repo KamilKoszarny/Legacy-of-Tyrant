@@ -50,7 +50,7 @@ public class IsoViewController {
     @FXML
     private Pane inventoryGridPane, defenceGridPane;
     @FXML
-    private Label loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel;
+    private Label loadLabel, speedMaxLabel, attackSpeedLabel, rangeLabel, blockLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel;
     @FXML
     private Rectangle minimapRect, minimapPosRect;
 
@@ -98,7 +98,7 @@ public class IsoViewController {
         List<Label> charLabels = Arrays.asList(nameLabel, typeLabel, charClassLabel,
                 hitPointsLabel, manaLabel, vigorLabel,
                 vimLabel, strengthLabel, durabilityLabel, staminaLabel, dexterityLabel, eyeLabel, armLabel, agilityLabel, intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel,
-                loadLabel, speedLabel, attackSpeedLabel, rangeLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel
+                loadLabel, speedMaxLabel, attackSpeedLabel, rangeLabel, blockLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel
     );
         List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
 

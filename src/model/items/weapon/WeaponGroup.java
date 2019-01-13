@@ -31,4 +31,8 @@ public enum WeaponGroup {
     public List<Weapon> getWeapons() {
         return weapons;
     }
+
+    public static boolean isRange(Weapon weapon) {
+        return WeaponGroup.RANGE.getWeapons().contains(weapon) || WeaponGroup.THROWING.getWeapons().contains(weapon);
+    }
 }

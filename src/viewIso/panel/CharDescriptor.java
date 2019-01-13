@@ -5,6 +5,7 @@ import controller.isoView.isoPanel.Panel;
 import controller.isoView.isoPanel.PanelController;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
@@ -60,13 +61,14 @@ public class CharDescriptor {
         }
     }
 
+    //use label Id
     private String getParameterText(Label label, Character character) {
         String parameter = label.getId().substring(0,label.getId().length() - 5);
 
         String parText = CharParameter.signByName(parameter) + findValue(character, parameter);
 
         if (CharParameter.isWithCurrent(parameter)){
-            parameter = "current" + parameter.substring(0, 1).toUpperCase() + parameter.substring(1, parameter.length());
+            parameter = parameter.substring(0, 1).toUpperCase() + parameter.substring(1, parameter.length());
             parText = findValue(character, parameter) + "/" + parText;
         }
 
@@ -79,9 +81,9 @@ public class CharDescriptor {
         java.lang.reflect.Method method;
         Class returnType = null;
         try {
-            method = character.getClass().getMethod(getterName);
+            method = character.getStats().getClass().getMethod(getterName);
             returnType = method.getReturnType();
-            value = method.invoke(character).toString();
+            value = method.invoke(character.getStats()).toString();
         } catch (SecurityException | NoSuchMethodException e) {} catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
@@ -98,18 +100,18 @@ public class CharDescriptor {
         double baseWidth = panel.getCharBars().get(0).getPrefWidth();
         ProgressBar hpBar = panel.getCharBars().get(0), manaBar = panel.getCharBars().get(1), vigorBar = panel.getCharBars().get(2);
 
-        hpBar.setMinWidth(baseWidth * character.getHitPoints() / 100.);
-        hpBar.setMaxWidth(baseWidth * character.getHitPoints() / 100.);
+        hpBar.setMinWidth(baseWidth * character.getStats().getHitPointsMax() / 100.);
+        hpBar.setMaxWidth(baseWidth * character.getStats().getHitPointsMax() / 100.);
         hpBar.setTranslateY(baseWidth / 2 - hpBar.getMinWidth() / 2);
-        hpBar.setProgress((double)character.getCurrentHitPoints() / (double)character.getHitPoints());
-        manaBar.setMinWidth(baseWidth * character.getMana() * 5 / 100.);
-        manaBar.setMaxWidth(baseWidth * character.getMana() * 5 / 100.);
+        hpBar.setProgress((double)character.getStats().getHitPoints() / (double)character.getStats().getHitPointsMax());
+        manaBar.setMinWidth(baseWidth * character.getStats().getManaMax() * 5 / 100.);
+        manaBar.setMaxWidth(baseWidth * character.getStats().getManaMax() * 5 / 100.);
         manaBar.setTranslateY(baseWidth / 2 - manaBar.getMinWidth() / 2);
-        manaBar.setProgress((double)character.getCurrentMana() / (double)character.getMana());
-        vigorBar.setMinWidth(baseWidth * character.getVigor() / 100.);
-        vigorBar.setMaxWidth(baseWidth * character.getVigor() / 100.);
+        manaBar.setProgress((double)character.getStats().getMana() / (double)character.getStats().getManaMax());
+        vigorBar.setMinWidth(baseWidth * character.getStats().getVigorMax() / 100.);
+        vigorBar.setMaxWidth(baseWidth * character.getStats().getVigorMax() / 100.);
         vigorBar.setTranslateY(baseWidth / 2 - vigorBar.getMinWidth() / 2);
-        vigorBar.setProgress((double)character.getCurrentVigor() / (double)character.getVigor());
+        vigorBar.setProgress((double)character.getStats().getVigor() / (double)character.getStats().getVigorMax());
     }
 
     private void refreshPortrait(Character character) {
@@ -118,24 +120,29 @@ public class CharDescriptor {
     }
 
     private void refreshEquipment(Character character) {
-        refreshEqRect(character, panel.getWeaponRect(), character.getWeapon().getImage());
-        refreshEqRect(character, panel.getSpareWeaponRect(), character.getSpareWeapon().getImage());
-        refreshEqRect(character, panel.getHelmetRect(), character.getHelmet().getImage());
-        refreshEqRect(character, panel.getArmorRect(), character.getBodyArmorItem().getImage());
-        refreshEqRect(character, panel.getShieldRect(), character.getShield().getImage());
-        refreshEqRect(character, panel.getGlovesRect(), character.getGloves().getImage());
-        refreshEqRect(character, panel.getBootsRect(), character.getBoots().getImage());
-        refreshEqRect(character, panel.getBeltRect(), character.getBelt().getImage());
-        refreshEqRect(character, panel.getAmuletRect(), character.getAmulet().getImage());
-        refreshEqRect(character, panel.getRing1Rect(), character.getRing1().getImage());
-        refreshEqRect(character, panel.getRing2Rect(), character.getRing2().getImage());
-        refreshEqRect(character, panel.getSpareShieldRect(), character.getSpareShield().getImage());
+        refreshEqRect(panel.getWeaponRect(), character.getWeapon());
+        refreshEqRect(panel.getSpareWeaponRect(), character.getSpareWeapon());
+        refreshEqRect(panel.getHelmetRect(), character.getHelmet());
+        refreshEqRect(panel.getArmorRect(), character.getBodyArmorItem());
+        refreshEqRect(panel.getShieldRect(), character.getShield());
+        refreshEqRect(panel.getGlovesRect(), character.getGloves());
+        refreshEqRect(panel.getBootsRect(), character.getBoots());
+        refreshEqRect(panel.getBeltRect(), character.getBelt());
+        refreshEqRect(panel.getAmuletRect(), character.getAmulet());
+        refreshEqRect(panel.getRing1Rect(), character.getRing1());
+        refreshEqRect(panel.getRing2Rect(), character.getRing2());
+        refreshEqRect(panel.getSpareShieldRect(), character.getSpareShield());
     }
 
-    private void refreshEqRect(Character character, Rectangle rectangle, Image image) {
+    private void refreshEqRect(Rectangle rectangle, Item item) {
+        Image image = item.getImage();
         rectangle.setWidth(image.getWidth());
         rectangle.setHeight(image.getHeight());
         rectangle.setFill(new ImagePattern(image));
+
+        String name = item.getName();
+        Tooltip tooltip = new Tooltip(name);
+        Tooltip.install(rectangle, tooltip);
     }
 
     private void refreshInventory(Character character) {
@@ -150,6 +157,11 @@ public class CharDescriptor {
             Rectangle inventoryItemRect = new Rectangle(itemInvFirstRect.getX(), itemInvFirstRect.getY(),
                     item.getImage().getWidth(), item.getImage().getHeight());
             inventoryItemRect.setFill(new ImagePattern(item.getImage()));
+
+            String name = item.getName();
+            Tooltip tooltip = new Tooltip(name);
+            Tooltip.install(inventoryItemRect, tooltip);
+
             pane.getChildren().add(inventoryItemRect);
         }
         redrawInventoryClickRect(pane);

@@ -257,9 +257,14 @@ public class GeomerticHelper {
         for (int i = 0; i < path.size() - 1; i++) {
             Point2D pathPoint = path.get(i);
             Point2D nextPathPoint = path.get(i + 1);
-            int pointsPerPathSection = (int) (pathPoint.distance(nextPathPoint) / span);
+            int pointsPerPathSection = (int) (pathPoint.distance(nextPathPoint) / span) + 1;
 
-            for (int j = 0; j < pointsPerPathSection; j++) {
+//            if (pointsPerPathSection == 0)
+//                pointsPerPathSection = 1;
+//            if (i == path.size() - 2)
+//                pointsPerPathSection ++;
+
+            for (int j = 0; j <= pointsPerPathSection; j++) {
                 Point2D pointOnPathSection = new Point2D(
                         pathPoint.getX() + (nextPathPoint.getX() - pathPoint.getX())*j/pointsPerPathSection,
                         pathPoint.getY() + (nextPathPoint.getY() - pathPoint.getY())*j/pointsPerPathSection);

@@ -15,7 +15,7 @@ public class MoveCalculator {
         Point start = character.getPosition();
 
         double xFactor, yFactor, sum;
-        double speed = character.getCurrentSA().speed / Map.RESOLUTION_M;
+        double speed = character.getStats().getSpeed() / Map.RESOLUTION_M;
 
         if(character.isRunning())
             speed *= 2;
@@ -27,8 +27,8 @@ public class MoveCalculator {
         yFactor = (destination.y - start.y) / sum;
 
         Point stop = new Point();
-        stop.x = start.x + (int) (xFactor * speed * character.getMsLeft() / 1000);
-        stop.y = start.y + (int) (yFactor * speed * character.getMsLeft() / 1000);
+        stop.x = start.x + (int) (xFactor * speed * character.getStats().getMsLeft() / 1000);
+        stop.y = start.y + (int) (yFactor * speed * character.getStats().getMsLeft() / 1000);
 
         Set<Point> pointsUnderMove = new HashSet<>();
         for (double i = 0; i < start.distance(stop); i += character.getType().getSize() / Map.RESOLUTION_M){
@@ -42,14 +42,14 @@ public class MoveCalculator {
 
         if (start.distance(stop) > start.distance(destination)) {
             character.setPosition(destination);
-            character.setMsLeft(character.getMsLeft() - (int) (start.distance(destination) / speed * 1000));
+            character.getStats().setMsLeft(character.getStats().getMsLeft() - (int) (start.distance(destination) / speed * 1000));
             if (character.isRunning())
-                character.setVigor((int) (character.getVigor() - start.distance(destination) / speed * 2));
+                character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(destination) / speed * 2));
         } else {
             character.setPosition(stop);
-            character.setMsLeft(0);
+            character.getStats().setMsLeft(0);
             if (character.isRunning())
-                character.setVigor((int) (character.getVigor() - start.distance(stop) / speed * 2));
+                character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(stop) / speed * 2));
         }
     }
 

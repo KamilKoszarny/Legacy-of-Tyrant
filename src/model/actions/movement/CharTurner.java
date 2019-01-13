@@ -15,7 +15,7 @@ public class CharTurner {
         if (stop) {
             character.setDestination(null);
             character.setState(CharState.IDLE);
-            character.setCurrentSpeed(0);
+            character.getStats().setSpeed(0);
         }
     }
 
@@ -26,7 +26,7 @@ public class CharTurner {
         if (stop) {
             character.setDestination(null);
             character.setState(CharState.IDLE);
-            character.setCurrentSpeed(0);
+            character.getStats().setSpeed(0);
         }
     }
 }

@@ -9,7 +9,6 @@ import model.items.armor.Shield;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ItemHandler {
@@ -39,7 +38,7 @@ public class ItemHandler {
             }
         }
 
-        StatsCalculator.calcCharSA(character);
+        StatsCalculator.calcStats(character);
         return caughtItem;
     }
 

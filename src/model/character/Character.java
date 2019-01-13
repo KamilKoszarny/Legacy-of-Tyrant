@@ -15,7 +15,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +26,8 @@ public class Character {
     private Color color;
     private CharacterType type;
     private CharacterClass charClass;
+    private Stats stats = new Stats();
+
     private PrimaryAttributes basePA = new PrimaryAttributes();
     private PrimaryAttributes currentPA = new PrimaryAttributes();
     private SecondaryAttributes baseSA = new SecondaryAttributes();
@@ -46,16 +47,15 @@ public class Character {
     private List<Point2D> path;
     private int pathSection;
     private List<Polygon> pathView;
-    private int msLeft = 0;
 
     private boolean chosen = false;
     private boolean targeted = false;
     private boolean ready = false;
     private boolean running = false;
     private boolean sneaking = false;
-    private boolean wasDodging = false;
-    private boolean wasParrying = false;
-    private boolean wasBouncing = false;
+    private boolean afterDodging = false;
+    private boolean afterParrying = false;
+    private boolean afterBouncing = false;
 
     private AttackResult attackResult = null;
 
@@ -72,21 +72,6 @@ public class Character {
         this.direction = direction;
 
         portrait = CharLoader.loadPortrait(this);
-    }
-
-
-    public CharacterType getType() {
-        return type;
-    }
-    public void setType(CharacterType type) {
-        this.type = type;
-    }
-
-    public CharacterClass getCharClass() {
-        return charClass;
-    }
-    public void setCharClass(CharacterClass charClass) {
-        this.charClass = charClass;
     }
 
     public String getName() {
@@ -107,6 +92,27 @@ public class Character {
         this.color = color;
     }
 
+    public CharacterType getType() {
+        return type;
+    }
+    public void setType(CharacterType type) {
+        this.type = type;
+    }
+
+    public CharacterClass getCharClass() {
+        return charClass;
+    }
+    public void setCharClass(CharacterClass charClass) {
+        this.charClass = charClass;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
 
     public Image getPortrait() {
         return portrait;
@@ -225,68 +231,27 @@ public class Character {
     }
 
 
-    public boolean isWasDodging() {
-        return wasDodging;
+    public boolean isAfterDodging() {
+        return afterDodging;
     }
-    public void setWasDodging(boolean wasDodging) {
-        this.wasDodging = wasDodging;
-    }
-
-    public boolean isWasParrying() {
-        return wasParrying;
-    }
-    public void setWasParrying(boolean wasParrying) {
-        this.wasParrying = wasParrying;
+    public void setAfterDodging(boolean afterDodging) {
+        this.afterDodging = afterDodging;
     }
 
-    public boolean isWasBouncing() {
-        return wasBouncing;
+    public boolean isAfterParrying() {
+        return afterParrying;
     }
-    public void setWasBouncing(boolean wasBouncing) {
-        this.wasBouncing = wasBouncing;
-    }
-
-
-    public PrimaryAttributes getBasePA() {
-        return basePA;
-    }
-    public void setBasePA(PrimaryAttributes basePA) {
-        this.basePA = basePA;
+    public void setAfterParrying(boolean afterParrying) {
+        this.afterParrying = afterParrying;
     }
 
-    public PrimaryAttributes getCurrentPA() {
-        return currentPA;
+    public boolean isAfterBouncing() {
+        return afterBouncing;
     }
-    public PrimaryAttributes setCurrentPA(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int charisma) {
-        setStrength(strength);
-        setDurability(durability);
-        setStamina(stamina);
-        setArm(arm);
-        setEye(eye);
-        setAgility(agility);
-        setKnowledge(knowledge);
-        setFocus(focus);
-        setSpirit(charisma);
-
-        return currentPA;
-    }
-    public void setCurrentPA(PrimaryAttributes currentPA) {
-        this.currentPA = currentPA;
+    public void setAfterBouncing(boolean afterBouncing) {
+        this.afterBouncing = afterBouncing;
     }
 
-    public SecondaryAttributes getBaseSA() {
-        return baseSA;
-    }
-    public void setBaseSA(SecondaryAttributes baseSA) {
-        this.baseSA = baseSA;
-    }
-
-    public SecondaryAttributes getCurrentSA() {
-        return currentSA;
-    }
-    public void setCurrentSA(SecondaryAttributes currentSA) {
-        this.currentSA = currentSA;
-    }
 
     public Weapon[] getWeapons() {
         return weapons;
@@ -387,271 +352,6 @@ public class Character {
 
     public Map<Item, int[]> getInventory() {
         return inventory;
-    }
-
-    public int getMsLeft(){
-        return currentSA.msLeft;
-    }
-    public void setMsLeft(int msLeft){
-        currentSA.msLeft = msLeft;
-    }
-
-    public int getReflex(){
-        return currentSA.reflex;
-    }
-    public void setReflex(int reflex){
-        currentSA.reflex = reflex;
-    }
-
-    public int getStrength(){
-        return currentPA.strength;
-    }
-    public void setStrength(int strength){
-        currentPA.strength = strength;
-        StatsCalculator.updateVimAndHP(this);
-    }
-
-    public int getDurability(){
-        return currentPA.durability;
-    }
-    public void setDurability(int durability){
-        currentPA.durability = durability;
-        StatsCalculator.updateVimAndHP(this);
-    }
-
-    public int getStamina(){
-        return currentPA.stamina;
-    }
-    public void setStamina(int stamina){
-        currentPA.stamina = stamina;
-        StatsCalculator.updateVimAndHP(this);
-    }
-
-    public int getVim(){
-        return currentPA.vim;
-    }
-    public void setVim(int vim){
-        currentPA.vim = vim;
-    }
-
-    public int getArm(){
-        return currentPA.arm;
-    }
-    public void setArm(int arm){
-        currentPA.arm = arm;
-        StatsCalculator.updateDexterityAndSpeed(this);
-    }
-
-    public int getEye(){
-        return currentPA.eye;
-    }
-    public void setEye(int eye){
-        currentPA.eye = eye;
-        StatsCalculator.updateDexterityAndSpeed(this);
-    }
-
-    public int getAgility(){
-        return currentPA.agility;
-    }
-    public void setAgility(int agility){
-        currentPA.agility = agility;
-        StatsCalculator.updateDexterityAndSpeed(this);
-    }
-
-    public int getDexterity() {
-        return currentPA.dexterity;
-    }
-    public void setDexterity(int dexterity) {
-        currentPA.dexterity = dexterity;
-    }
-
-    public int getKnowledge(){
-        return currentPA.knowledge;
-    }
-    public void setKnowledge(int knowledge){
-        currentPA.knowledge = knowledge;
-        StatsCalculator.updateIntelligenceAndMana(this);
-    }
-
-    public int getFocus(){
-        return currentPA.focus;
-    }
-    public void setFocus(int focus){
-        currentPA.focus = focus;
-        StatsCalculator.updateIntelligenceAndMana(this);
-    }
-
-    public int getSpirit(){
-        return currentPA.spirit;
-    }
-    public void setSpirit(int charisma){
-        currentPA.spirit = charisma;
-        StatsCalculator.updateIntelligenceAndMana(this);
-    }
-
-    public int getIntelligence() {
-        return currentPA.intelligence;
-    }
-    public void setIntelligence(int intelligence) {
-        currentPA.intelligence = intelligence;
-    }
-
-    public int getLoad(){
-        return currentSA.load;
-    }
-    public void setLoad(int load){
-        currentSA.load = load;
-    }
-
-    public int getCurrentLoad(){
-        return currentSA.currentLoad;
-    }
-    public void setCurrentLoad(int currentLoad){
-        currentSA.currentLoad = currentLoad;
-    }
-
-    public double getSpeed(){
-        return currentSA.speed;
-    }
-    public void setSpeed(double speed){
-        currentSA.speed = speed;
-    }
-
-    public double getDmgMin(){
-        return currentSA.dmgMin;
-    }
-    public void setDmgMin(double dmgMin){
-        currentSA.dmgMin = dmgMin;
-    }
-
-    public double getDmgMax(){
-        return currentSA.dmgMax;
-    }
-    public void setDmgMax(double dmgMax){
-        currentSA.dmgMax = dmgMax;
-    }
-
-    public int getHitPoints(){
-        return currentSA.hitPoints;
-    }
-    public void setHitPoints(int hitPoints){
-        currentSA.hitPoints = hitPoints;
-    }
-
-    public int getMana(){
-        return currentSA.mana;
-    }
-    public void setMana(int mana){
-        currentSA.mana = mana;
-    }
-
-    public int getVigor(){
-        return currentSA.vigor;
-    }
-    public void setVigor(int vigor){
-        currentSA.vigor = vigor;
-    }
-
-
-    public int getCurrentHitPoints(){
-        return currentSA.currentHitPoints;
-    }
-    public void setCurrentHitPoints(int hitPoints){
-        currentSA.currentHitPoints = hitPoints;
-        if (hitPoints <= 0)
-            setState(CharState.DEATH);
-    }
-
-    public int getCurrentMana(){
-        return currentSA.currentMana;
-    }
-    public void setCurrentMana(int mana){
-        currentSA.currentMana = mana;
-    }
-
-    public int getCurrentVigor(){
-        return currentSA.currentVigor;
-    }
-    public void setCurrentVigor(int vigor){
-        currentSA.currentVigor = vigor;
-    }
-
-
-    public double getRange(){
-        return currentSA.range;
-    }
-    public void setRange(double range){
-        currentSA.range = range;
-    }
-
-    public int getBlock(){
-        return currentSA.block;
-    }
-    public void setBlock(int block){
-        currentSA.block = block;
-    }
-
-    public int getMagicResistance(){
-        return currentSA.magicResistance;
-    }
-    public void setMagicResistance(int magicResistance){
-        currentSA.magicResistance = magicResistance;
-    }
-
-    public int getAccuracy(){
-        return currentSA.accuracy;
-    }
-    public void setAccuracy(int accuracy){
-        currentSA.accuracy = accuracy;
-    }
-
-    public int getAvoidance(){
-        return currentSA.avoidance;
-    }
-    public void setAvoidance(int avoidance){
-        currentSA.avoidance = avoidance;
-    }
-
-    public double getAttackSpeed(){
-        return currentSA.attackSpeed;
-    }
-    public void setAttackSpeed(double attackDuration){
-        currentSA.attackSpeed = attackDuration;
-    }
-
-    public int getHeadArmor(){
-        return currentSA.headArmor;
-    }
-    public void setHeadArmor(int headArmor){
-        currentSA.headArmor = headArmor;
-    }
-
-    public int getBodyArmor(){
-        return currentSA.bodyArmor;
-    }
-    public void setBodyArmor(int bodyArmor){
-        currentSA.bodyArmor = bodyArmor;
-    }
-
-    public int getArmsArmor(){
-        return currentSA.armsArmor;
-    }
-    public void setArmsArmor(int armsArmor){
-        currentSA.armsArmor = armsArmor;
-    }
-
-    public int getLegsArmor(){
-        return currentSA.legsArmor;
-    }
-    public void setLegsArmor(int legsArmor){
-        currentSA.legsArmor = legsArmor;
-    }
-
-    public void setArmor(int head, int body, int arms, int legs){
-        setHeadArmor(head);
-        setBodyArmor(body);
-        setArmsArmor(arms);
-        setLegsArmor(legs);
     }
 
     public void setDoubleValue(String propertyName, String value){

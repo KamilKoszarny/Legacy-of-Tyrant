@@ -1,10 +1,6 @@
 package model.character;
 
 import model.items.armor.*;
-import model.character.Character;
-import model.character.CharacterClass;
-import model.character.CharacterGroup;
-import model.character.CharacterType;
 import model.items.weapon.Weapon;
 import model.items.weapon.WeaponGroup;
 
@@ -12,200 +8,184 @@ import java.util.Random;
 
 public class StatsCalculator {
 
-    public static void calcCharPA(Character character){
+    public static void createStats(Character character){
         if(CharacterGroup.INTELLIGENT.getBelongingTypes().contains(character.getType()) ||
                 CharacterGroup.HUMANOIDS.getBelongingTypes().contains(character.getType()) )
-            calcAndSetPAByTypeAndClass(character);
+            setStatsByTypeAndClass(character);
         else
-            calcAndSetPAByType(character);
-
+            setStatsByType(character);
+        calcMainStats(character);
+        calcMinorStats(character);
     }
 
-    public static void calcCharSA(Character character){
-
-        calcAndSetSAByStrength(character);
-        calcAndSetSAByDurability(character);
-        calcAndSetSAByStamina(character);
-        calcAndSetSAByArm(character);
-        calcAndSetSAByEye(character);
-        calcAndSetSAByAgility(character);
-        calcAndSetSAByKnowledge(character);
-        calcAndSetSAByFocus(character);
-        calcAndSetSAByCharisma(character);
-
-        calcAndSetOtherSA(character);
-    }
-
-
-    private static void calcAndSetPAByTypeAndClass(Character character){
+    private static void setStatsByTypeAndClass(Character character){
         CharacterType charType = character.getType();
         CharacterClass charClass = character.getCharClass();
         Random r = new Random();
 
-        int strength = charType.getStrength() + charClass.getStrength() + r.nextInt(10);
-        character.setStrength(strength);
+        int strength = charType.getStats().getStrength() + charClass.getStats().getStrength() + r.nextInt(10);
+        character.getStats().setStrength(strength);
 
-        int durability = charType.getDurability() + charClass.getDurability() + r.nextInt(10);
-        character.setDurability(durability);
+        int durability = charType.getStats().getDurability() + charClass.getStats().getDurability() + r.nextInt(10);
+        character.getStats().setDurability(durability);
 
-        int stamina = charType.getStamina() + charClass.getStamina() + r.nextInt(10);
-        character.setStamina(stamina);
+        int stamina = charType.getStats().getStamina() + charClass.getStats().getStamina() + r.nextInt(10);
+        character.getStats().setStamina(stamina);
 
-        int arm = charType.getArm() + charClass.getArm() + r.nextInt(10);
-        character.setArm(arm);
+        int arm = charType.getStats().getArm() + charClass.getStats().getArm() + r.nextInt(10);
+        character.getStats().setArm(arm);
 
-        int eye = charType.getEye() + charClass.getEye() + r.nextInt(10);
-        character.setEye(eye);
+        int eye = charType.getStats().getEye() + charClass.getStats().getEye() + r.nextInt(10);
+        character.getStats().setEye(eye);
 
-        int agility = charType.getAgility() + charClass.getAgility() + r.nextInt(10);
-        character.setAgility(agility);
+        int agility = charType.getStats().getAgility() + charClass.getStats().getAgility() + r.nextInt(10);
+        character.getStats().setAgility(agility);
 
-        int knowledge = charType.getKnowledge() + charClass.getKnowledge() + r.nextInt(10);
-        character.setKnowledge(knowledge);
+        int knowledge = charType.getStats().getKnowledge() + charClass.getStats().getKnowledge() + r.nextInt(10);
+        character.getStats().setKnowledge(knowledge);
 
-        int focus = charType.getFocus() + charClass.getFocus() + r.nextInt(10);
-        character.setFocus(focus);
+        int focus = charType.getStats().getFocus() + charClass.getStats().getFocus() + r.nextInt(10);
+        character.getStats().setFocus(focus);
 
-        int charisma = charType.getCharisma() + charClass.getCharisma() + r.nextInt(10);
-        character.setSpirit(charisma);
+        int charisma = charType.getStats().getSpirit() + charClass.getStats().getSpirit() + r.nextInt(10);
+        character.getStats().setSpirit(charisma);
     }
 
-    private static void calcAndSetPAByType(Character character){
+    private static void setStatsByType(Character character){
         CharacterType charType = character.getType();
         Random r = new Random();
 
-        int strength = charType.getStrength() + r.nextInt(10);
-        character.setStrength(strength);
+        int strength = charType.getStats().getStrength() + r.nextInt(10);
+        character.getStats().setStrength(strength);
 
-        int durability = charType.getDurability() +  r.nextInt(10);
-        character.setDurability(durability);
+        int durability = charType.getStats().getDurability() +  r.nextInt(10);
+        character.getStats().setDurability(durability);
 
-        int stamina = charType.getStamina() + r.nextInt(10);
-        character.setStamina(stamina);
+        int stamina = charType.getStats().getStamina() + r.nextInt(10);
+        character.getStats().setStamina(stamina);
 
-        int arm = charType.getArm() + r.nextInt(10);
-        character.setArm(arm);
+        int arm = charType.getStats().getArm() + r.nextInt(10);
+        character.getStats().setArm(arm);
 
-        int eye = charType.getEye() + r.nextInt(10);
-        character.setEye(eye);
+        int eye = charType.getStats().getEye() + r.nextInt(10);
+        character.getStats().setEye(eye);
 
-        int agility = charType.getAgility() + r.nextInt(10);
-        character.setAgility(agility);
+        int agility = charType.getStats().getAgility() + r.nextInt(10);
+        character.getStats().setAgility(agility);
 
-        int knowledge = charType.getKnowledge() + r.nextInt(10);
-        character.setKnowledge(knowledge);
+        int knowledge = charType.getStats().getKnowledge() + r.nextInt(10);
+        character.getStats().setKnowledge(knowledge);
 
-        int focus = charType.getFocus() + r.nextInt(10);
-        character.setFocus(focus);
+        int focus = charType.getStats().getFocus() + r.nextInt(10);
+        character.getStats().setFocus(focus);
 
-        int charisma = charType.getCharisma() + r.nextInt(10);
-        character.setSpirit(charisma);
+        int charisma = charType.getStats().getSpirit() + r.nextInt(10);
+        character.getStats().setSpirit(charisma);
     }
 
-    private static void calcAndSetSAByStrength(Character character){
-        if(CharacterGroup.INTELLIGENT.getBelongingTypes().contains(character.getType()) ||
-                CharacterGroup.HUMANOIDS.getBelongingTypes().contains(character.getType()) ) {
+    public static void calcStats(Character character) {
+        calcMainStats(character);
+        calcMinorStats(character);
+    }
+
+    private static void calcMainStats(Character character) {
+        Stats stats = character.getStats();
+        stats.setVim((stats.getStrength() + stats.getDurability() + stats.getStamina()) / 3);
+        stats.setDexterity((stats.getArm() + stats.getEye() + stats.getAgility()) / 3);
+        stats.setIntelligence((stats.getKnowledge() + stats.getFocus() + stats.getSpirit()) / 3);
+    }
+
+    private static void calcMinorStats(Character character){
+        Stats stats = character.getStats();
+        calcHitPoints(stats);
+        calcMana(stats);
+        calcVigor(stats);
+        calcLoad(stats);
+        calcSpeed(stats);
+        calcRange(character);
+        calcAttackSpeed(character);
+        calcDmgAndAccuracy(character);
+        calcAvoidance(character);
+        calcBlock(character);
+        calcMagicResistance(character);
+        calcArmor(character);
+    }
+
+    private static void calcHitPoints(Stats stats) {
+       stats.setHitPointsMax((int) (30 + stats.getVim() * .7));
+       stats.setHitPoints((int) (30 + stats.getVim() * .7/2.));
+    }
+
+    private static void calcMana(Stats stats) {
+        stats.setManaMax(stats.getIntelligence() / 4);
+        stats.setMana(stats.getIntelligence() / 4/2);
+    }
+
+    private static void calcVigor(Stats stats) {
+        Random r = new Random();
+        stats.setVigorMax(20 + stats.getStamina() / 5 + r.nextInt(20));
+        stats.setVigor(20 + stats.getStamina() / 5 + r.nextInt(20) - 10);
+    }
+
+    private static void calcLoad(Stats stats) {
+        stats.setLoadMax(stats.getStrength());
+        stats.setLoad(stats.getStrength() / 2);
+    }
+
+    private static void calcSpeed(Stats stats) {
+        stats.setSpeedMax(1 + stats.getDexterity() / 50.);
+    }
+
+    private static void calcRange(Character character) {
+        character.getStats().setRange(character.getWeapon().getRange());
+    }
+
+    private static void calcAttackSpeed(Character character) {
+        character.getStats().setAttackSpeed(1 / character.getWeapon().getAttackDuration());
+    }
+
+    private static void calcDmgAndAccuracy(Character character){
+        Stats stats = character.getStats();
+        if(CharacterGroup.useWeapon(character.getType())) {
             Weapon weapon = character.getWeapon();
-            if (!WeaponGroup.RANGE.getWeapons().contains(weapon) && !WeaponGroup.THROWING.getWeapons().contains(weapon)) {
-                character.setDmgMin(weapon.getDmgMin() * (1 + character.getStrength() / 50.));
-                character.setDmgMax(weapon.getDmgMax() * (1 + character.getStrength() / 50.));
+            if (WeaponGroup.isRange(weapon)) {
+                stats.setAccuracy(stats.getEye() + weapon.getAccuracy());
+                stats.setDmgMin(weapon.getDmgMin() * (1 + stats.getEye() / 100.));
+                stats.setDmgMax(weapon.getDmgMax() * (1 + stats.getEye() / 100.));
+            } else {
+                character.getStats().setAccuracy(character.getStats().getArm() + weapon.getAccuracy());
+                stats.setDmgMin(weapon.getDmgMin() * (1 + stats.getStrength() / 50.));
+                stats.setDmgMax(weapon.getDmgMax() * (1 + stats.getStrength() / 50.));
             }
         } else {
-            character.setDmgMin(character.getType().getDmgMin());
-            character.setDmgMax(character.getType().getDmgMax());
+            stats.setDmgMin(character.getType().getStats().getDmgMin());
+            stats.setDmgMax(character.getType().getStats().getDmgMax());
         }
-
-        character.setLoad(character.getStrength());
-        character.setCurrentLoad(character.getStrength() / 2);
-
-        updateVimAndHP(character);
     }
 
-    private static void calcAndSetSAByDurability(Character character){
-        updateVimAndHP(character);
+    private static void calcAvoidance(Character character) {
+        character.getStats().setAvoidance(character.getStats().getAgility() + character.getWeapon().getParry());
     }
 
-    private static void calcAndSetSAByStamina(Character character){
-        Random r = new Random();
-        character.setVigor(20 + character.getStamina() / 5 + r.nextInt(20));
-        character.setCurrentVigor(20 + character.getStamina() / 5 + r.nextInt(20) - 10);
-        updateVimAndHP(character);
+    private static void calcBlock(Character character) {
+        character.getStats().setBlock(character.getShield().getBlock());
     }
 
-    public static void updateVimAndHP(Character character) {
-        character.setVim((character.getStrength() + character.getDurability() + character.getStamina()) / 3);
-        character.setHitPoints((int) (30 + character.getVim() * .7/2.));
-        character.setCurrentHitPoints((int) (30 + character.getVim() * .7/2.));
+    private static void calcMagicResistance(Character character) {
+
     }
 
-    private static void calcAndSetSAByArm(Character character){
-        Weapon weapon = character.getWeapon();
-        if(!WeaponGroup.RANGE.getWeapons().contains(weapon) && !WeaponGroup.THROWING.getWeapons().contains(weapon)) {
-            character.setAccuracy(character.getArm() + weapon.getAccuracy());
-        }
-
-        updateDexterityAndSpeed(character);
-    }
-
-    private static void calcAndSetSAByEye(Character character){
-        Weapon weapon = character.getWeapon();
-        if(WeaponGroup.RANGE.getWeapons().contains(weapon) || WeaponGroup.THROWING.getWeapons().contains(weapon)) {
-            character.setAccuracy(character.getEye() + weapon.getAccuracy());
-
-            character.setDmgMin(weapon.getDmgMin() * (1 + character.getEye() / 100.));
-            character.setDmgMax(weapon.getDmgMax() * (1 + character.getEye() / 100.));
-        }
-
-        updateDexterityAndSpeed(character);
-    }
-
-    private static void calcAndSetSAByAgility(Character character){
-        Weapon weapon = character.getWeapon();
-        character.setAvoidance(character.getAgility() + weapon.getParry());
-
-        updateDexterityAndSpeed(character);
-    }
-
-    public static void updateDexterityAndSpeed(Character character) {
-        character.setDexterity((character.getArm() + character.getEye() + character.getAgility()) / 3);
-        character.setSpeed(1 + character.getDexterity() / 50.);
-    }
-
-    private static void calcAndSetSAByKnowledge(Character character){
-        updateIntelligenceAndMana(character);
-    }
-
-    private static void calcAndSetSAByFocus(Character character){
-        updateIntelligenceAndMana(character);
-    }
-
-    private static void calcAndSetSAByCharisma(Character character){
-        updateIntelligenceAndMana(character);
-    }
-
-    public static void updateIntelligenceAndMana(Character character) {
-        character.setIntelligence((character.getKnowledge() + character.getFocus() + character.getSpirit()) / 3);
-        character.setMana(character.getIntelligence() / 5);
-        character.setCurrentMana(character.getIntelligence() / 5/2);
-    }
-
-    private static void calcAndSetOtherSA(Character character){
-        Weapon weapon = character.getWeapon();
-        character.setRange(weapon.getRange());
-        character.setAttackSpeed(1 / weapon.getAttackDuration());
-
+    private static void calcArmor(Character character) {
         Armor[] armor = character.getArmor();
-        Shield shield = (Shield) armor[0];
         BodyArmor bodyArmor = (BodyArmor) armor[1];
         Helmet helmet = (Helmet) armor[2];
         Gloves gloves = (Gloves) armor[3];
         Boots boots = (Boots) armor[4];
         Belt belt = (Belt) armor[5];
 
-        character.setHeadArmor(bodyArmor.getHeadArmor() + helmet.getArmor());
-        character.setBodyArmor(bodyArmor.getBodyArmor() + belt.getArmor());
-        character.setArmsArmor(bodyArmor.getArmsArmor() + gloves.getArmor());
-        character.setLegsArmor(bodyArmor.getLegsArmor() + boots.getArmor());
-        character.setBlock(shield.getBlock());
+        character.getStats().setHeadArmor(bodyArmor.getHeadArmor() + helmet.getArmor());
+        character.getStats().setBodyArmor(bodyArmor.getBodyArmor() + belt.getArmor());
+        character.getStats().setArmsArmor(bodyArmor.getArmsArmor() + gloves.getArmor());
+        character.getStats().setLegsArmor(bodyArmor.getLegsArmor() + boots.getArmor());
     }
 }

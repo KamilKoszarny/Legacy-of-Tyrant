@@ -11,36 +11,24 @@ import java.util.Map;
 
 public enum CharacterClass {
 
-    BULLY(25, 25, 25, 10, 10, 10, 10, 10, 10, createBullyWeaponsMap(), createBullyArmorMaps(), 'S'),
-    RASCAL(10, 10, 10, 25, 25, 25, 10, 10, 10, createRascalWeaponsMap(), createRascalArmorMaps(), 'D'),
-    ADEPT(10, 10, 10, 10, 10, 10, 25, 25, 25, createAdeptWeaponsMap(), createAdeptArmorMaps(), 'M'),
-    FANATIC(50, 40, 50, 20, 30, 30, 20, 35, 20, createFanaticWeaponsMap(), createFanaticArmorMaps(), 'S'),
-    WIZARD(20, 25, 25, 30, 20, 35, 50, 50, 40, createWizardWeaponsMap(), createWizardArmorMaps(), 'M');
+    BULLY(new Stats(25, 25, 25, 10, 10, 10, 10, 10, 10),
+            createBullyWeaponsMap(), createBullyArmorMaps(), 'S'),
+    RASCAL(new Stats(10, 10, 10, 25, 25, 25, 10, 10, 10),
+            createRascalWeaponsMap(), createRascalArmorMaps(), 'D'),
+    ADEPT(new Stats(10, 10, 10, 10, 10, 10, 25, 25, 25),
+            createAdeptWeaponsMap(), createAdeptArmorMaps(), 'M'),
+    FANATIC(new Stats(50, 40, 50, 20, 30, 30, 20, 35, 20),
+            createFanaticWeaponsMap(), createFanaticArmorMaps(), 'S'),
+    WIZARD(new Stats(20, 25, 25, 30, 20, 35, 50, 50, 40),
+            createWizardWeaponsMap(), createWizardArmorMaps(), 'M');
 
-    private int strength;
-    private int durability;
-    private int stamina;
-    private int eye;
-    private int arm;
-    private int agility;
-    private int knowledge;
-    private int focus;
-    private int charisma;
+    private Stats stats;
     private Map<Weapon, Double> weaponsMap;
     private List<Map<Armor, Double>> armorMaps;
     private char portaitLetter;
 
-    CharacterClass(int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int charisma,
-                   Map<Weapon, Double> weaponsMap, List<Map<Armor, Double>> armorMaps, char portaitLetter) {
-        this.strength = strength;
-        this.durability = durability;
-        this.stamina = stamina;
-        this.eye = eye;
-        this.arm = arm;
-        this.agility = agility;
-        this.knowledge = knowledge;
-        this.focus = focus;
-        this.charisma = charisma;
+    CharacterClass(Stats stats, Map<Weapon, Double> weaponsMap, List<Map<Armor, Double>> armorMaps, char portaitLetter) {
+        this.stats = stats;
         this.weaponsMap = weaponsMap;
         this.armorMaps = armorMaps;
         this.portaitLetter = portaitLetter;
@@ -342,42 +330,8 @@ public enum CharacterClass {
     }
 
 
-
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public int getDurability() {
-        return durability;
-    }
-
-    public int getStamina() {
-        return stamina;
-    }
-
-    public int getEye() {
-        return eye;
-    }
-
-    public int getArm() {
-        return arm;
-    }
-
-    public int getAgility() {
-        return agility;
-    }
-
-    public int getKnowledge() {
-        return knowledge;
-    }
-
-    public int getFocus() {
-        return focus;
-    }
-
-    public int getCharisma() {
-        return charisma;
+    public Stats getStats() {
+        return stats;
     }
 
     public Map<Weapon, Double> getWeaponsMap() {

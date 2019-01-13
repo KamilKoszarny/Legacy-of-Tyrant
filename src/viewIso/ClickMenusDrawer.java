@@ -79,7 +79,7 @@ public class ClickMenusDrawer {
         hideMenus();
         activeMenu = char2EnemyMenu;
 
-        boolean attackable = AttackCalculator.isInRange(character, enemy) && enemy.getCurrentHitPoints() > 0;
+        boolean attackable = AttackCalculator.isInRange(character, enemy) && enemy.getStats().getHitPoints() > 0;
         ClickMenuButton.ATTACK_HEAD.setGrayed(!attackable);
         ClickMenuButton.ATTACK_BODY.setGrayed(!attackable);
         ClickMenuButton.ATTACK_ARMS.setGrayed(!attackable);

@@ -20,7 +20,7 @@ public enum CharParameter {
     FOC("focus", "FOC: ", "", ""),
     SPI("spirit", "SPI: ", "", ""),
     LOAD("load", "", "", "", true),
-    SPEED("speed", "mSpeed: ", "", ""),
+    SPEED("speedMax", "mSpeed: ", "", ""),
     ATT_SPEED("attackSpeed", "aSpeed: ", "", ""),
     RANGE("range", "range: ", "", ""),
     BLOCK("block", "block: ", "", ""),

@@ -23,4 +23,8 @@ public enum CharacterGroup {
     public List<CharacterType> getBelongingTypes() {
         return belongingTypes;
     }
+
+    public static boolean useWeapon(CharacterType characterType) {
+        return CharacterGroup.INTELLIGENT.getBelongingTypes().contains(characterType) || CharacterGroup.HUMANOIDS.getBelongingTypes().contains(characterType);
+    }
 }

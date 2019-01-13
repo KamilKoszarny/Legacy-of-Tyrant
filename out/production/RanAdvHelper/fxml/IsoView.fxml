@@ -198,7 +198,7 @@
                      <children>
                         <VBox alignment="CENTER" minWidth="70.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="speedLabel" text="speed" />
+                              <Label fx:id="speedMaxLabel" text="speed" />
                               <Label fx:id="attackSpeedLabel" text="aSpeed:" />
                               <Label fx:id="rangeLabel" text="ran:" />
                               <Label fx:id="blockLabel" text="block" />

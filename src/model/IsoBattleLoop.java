@@ -74,7 +74,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
             case SHOW_CHAR2POINT:
                 List<Point2D> path = CharMover.calcPath(Battle.getChosenCharacter(), battleEvent.getMapPoint());
-                if (Battle.getChosenCharacter().getCurrentSpeed() == 0) {
+                if (Battle.getChosenCharacter().getStats().getSpeed() == 0) {
                     Battle.getChosenCharacter().setPath(path);
                     if (path.size() > 0) {
                         PathDrawer.createPathView(Battle.getChosenCharacter());

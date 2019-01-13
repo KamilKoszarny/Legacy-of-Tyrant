@@ -23,6 +23,7 @@ public class DrawHelper {
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(polygon.getFill());
+        gc.setStroke(polygon.getStroke());
 
         if (fill)
             gc.fillPolygon(xs, ys, points);
