@@ -10,11 +10,11 @@ public enum Weapon implements Item{
     //swords
     SHORT_SWORD(        2, 4, 1, 1,         1, 0, 15, 12),
     SABRE(              2, 5, .8, 1.2,      1, 10, 35, 8),
-    CHOPPER(            3, 7, 1.2, 1,       1, -10, 15, 14, "sword_short"),
+    CHOPPER(            3, 7, 1.2, 1,       1, -10, 15, 14, "shortsword"),
     GLASS_SWORD(        4, 8, 1, 1.3,       1, 0, 20, 4),
     BROAD_SWORD(        3, 8, 1.1, 1,       1, 0, 25, 18),
     LONG_SWORD(         4, 7, 1, 1.5,       1, 0, 35, 16),
-    TWO_HAND_SWORD(     5, 11, 1.9, 2,      2, 0, 30, 18, "sword_great"),
+    TWO_HAND_SWORD(     5, 11, 1.9, 2,      2, 0, 30, 18, "greatsword"),
     CLAYMORE(           5, 8, 1.3, 1.8,     2, 0, 55, 16),
     HALF_HAND_SWORD_1H( 4, 10, 2.2, 2.2,    1, 0, 30, 19),
     HALF_HAND_SWORD_2H( 5, 12, 1.7, 1.8,    2, 0, 30, 19),
@@ -93,7 +93,7 @@ public enum Weapon implements Item{
     EARTH_STAFF(        3, 3, 1.3, 1.8,     2, 0, 25, 10),
     ;
 
-    private static final double DAMAGE_MULTIPLIER = 2;
+    private static final double DAMAGE_MULTIPLIER = 1.5;
 
     private double dmgMin, dmgMax, attackDuration, range;
     private int hands, accuracy, parry, durability;

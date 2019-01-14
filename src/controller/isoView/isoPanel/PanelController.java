@@ -70,7 +70,6 @@ public class PanelController {
         inventoryRect.setOnMousePressed(mouseEvent -> {
             Point shapeClickPoint = IsoBattleLoop.getClickedItemPoint();
             int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), shapeClickPoint);
-            System.out.println(inventorySlot[0] + " " + inventorySlot[1]);
             IsoBattleLoop.setClickedInventorySlot(inventorySlot);
             IsoBattleLoop.setItemClickFlag(true);
         });
@@ -80,6 +79,7 @@ public class PanelController {
         rectangle.setOnMousePressed(mouseEvent -> {
             Point clickPoint = new Point((int)(mouseEvent.getX() - rectangle.getX()), (int)(mouseEvent.getY() - rectangle.getY()));
             IsoBattleLoop.setClickedInventorySlot(ItemHandler.inventorySlotByItemClickPoint(item, character, clickPoint));
+            IsoBattleLoop.setClickedItemPoint(clickPoint);
             IsoBattleLoop.setItemClickFlag(true);
         });
     }

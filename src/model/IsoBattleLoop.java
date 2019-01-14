@@ -94,14 +94,15 @@ public class IsoBattleLoop extends AnimationTimer{
             case SHOW_MAP_PIECE_INFO:
                 showMapPieceInfo(battleEvent.getMapPoint(), battleEvent.getMapPiece());
                 break;
+            case GIVE_ITEM:
+                ItemHandler.giveItem(Battle.getChosenCharacter(), battleEvent.getCharacter(), ItemHandler.getHeldItem());
         }
 
         battleEvent = null;
     }
 
     private static void handleItemClick() {
-        Item heldItem = ItemHandler.moveItem(Battle.getChosenCharacter(), clickedInventorySlot, clickedItemPoint);
-        PanelViewer.setHeldItem(heldItem, clickedItemPoint);
+        ItemHandler.moveItem(Battle.getChosenCharacter(), clickedInventorySlot, clickedItemPoint);
         itemClickFlag = false;
     }
 

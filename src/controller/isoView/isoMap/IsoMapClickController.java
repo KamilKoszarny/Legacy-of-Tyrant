@@ -7,11 +7,13 @@ import model.Battle;
 import model.BattleEvent;
 import model.EventType;
 import model.IsoBattleLoop;
+import model.actions.ItemHandler;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.mapObjects.MapObjectDrawer;
+import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 
@@ -42,25 +44,26 @@ public class IsoMapClickController {
     }
 
     private BattleEvent eventByLClickPoint(Point clickPoint) {
-        BattleEvent battleEvent = null;
         if (CharsDrawer.isOtherCharClicked(clickPoint, Battle.getChosenCharacter())) {
             if (CharsDrawer.getClickedCharacter().getColor().equals(Battle.getPlayerColor())) {
-                battleEvent = new BattleEvent(EventType.CHOOSE_CHARACTER, clickPoint);
+                if (ItemHandler.getHeldItem() == null)
+                    return new BattleEvent(EventType.CHOOSE_CHARACTER, clickPoint);
+                else
+                    return new BattleEvent(EventType.GIVE_ITEM, CharsDrawer.getClickedCharacter());
             } else if (Battle.getChosenCharacter() != null) {
-                battleEvent = new BattleEvent(EventType.SHOW_CHAR2ENEMY, clickPoint, CharsDrawer.getClickedCharacter());
+                return new BattleEvent(EventType.SHOW_CHAR2ENEMY, clickPoint, CharsDrawer.getClickedCharacter());
             }
         } else {
             Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
             if (Battle.getChosenCharacter() != null && mapPoint != null) {
                 MapObject object = MapObjectDrawer.clickedObject(clickPoint);
                 if (object != null && object.getType().equals(MapObjectType.DOOR))
-                    battleEvent = new BattleEvent(EventType.SHOW_CHAR2OBJECT, clickPoint, object);
+                    return new BattleEvent(EventType.SHOW_CHAR2OBJECT, clickPoint, object);
                 else
-                    battleEvent = new BattleEvent(EventType.SHOW_CHAR2POINT, clickPoint, mapPoint);
+                    return new BattleEvent(EventType.SHOW_CHAR2POINT, clickPoint, mapPoint);
             }
         }
-
-        return battleEvent;
+        return null;
     }
 
 }

@@ -2,6 +2,8 @@ package model.actions;
 
 import model.Battle;
 import model.character.Character;
+import viewIso.ClickMenusDrawer;
+import viewIso.panel.CharDescriptor;
 
 public class CharsChooser {
 
@@ -11,5 +13,7 @@ public class CharsChooser {
         }
         clickedCharacter.setChosen(true);
         Battle.setChosenCharacter(clickedCharacter);
+        CharDescriptor.refreshInventory(clickedCharacter);
+        ClickMenusDrawer.hideMenus();
     }
 }

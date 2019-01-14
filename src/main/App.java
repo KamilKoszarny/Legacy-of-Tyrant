@@ -18,7 +18,7 @@ import java.util.List;
 
 public class App extends Application {
 
-    public static final boolean FULL_MODE = true;
+    public static final boolean FULL_MODE = false;
 
     public static void main(String[] args) {
         disableWarning();

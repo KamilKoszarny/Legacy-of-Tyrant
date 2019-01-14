@@ -8,10 +8,8 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import model.Battle;
-import model.IsoBattleLoop;
+import model.actions.ItemHandler;
 import model.character.Character;
-import model.items.Item;
-import model.map.Map;
 import viewIso.IsoViewer;
 import viewIso.map.MapDrawer;
 
@@ -22,8 +20,6 @@ public class PanelViewer {
     private static Panel panel;
     private static CharDescriptor charDescriptor;
     private static Rectangle heldItemRect;
-    private static Item heldItem;
-    private static Point catchPoint;
     private static Image minimapImg;
     private static Rectangle minimapRect, minimapPosRect;
     public static double minimapScreenSize;
@@ -39,8 +35,8 @@ public class PanelViewer {
 
     public static void refresh() {
         charDescriptor.refresh();
-        if (heldItem != null)
-            drawCaughtItem();
+        if (ItemHandler.getHeldItem() != null)
+            drawHeldItem();
         else
             heldItemRect.setVisible(false);
         refreshMinimap();
@@ -93,11 +89,11 @@ public class PanelViewer {
         return radius;
     }
 
-    private static void drawCaughtItem() {
-        Image itemImage = heldItem.getImage();
+    private static void drawHeldItem() {
+        Image itemImage = ItemHandler.getHeldItem().getImage();
         heldItemRect.setFill(new ImagePattern(itemImage));
-        heldItemRect.setX(MouseInfo.getPointerInfo().getLocation().x - catchPoint.x);
-        heldItemRect.setY(MouseInfo.getPointerInfo().getLocation().y - catchPoint.y);
+        heldItemRect.setX(MouseInfo.getPointerInfo().getLocation().x - ItemHandler.getHeldPoint().x);
+        heldItemRect.setY(MouseInfo.getPointerInfo().getLocation().y - ItemHandler.getHeldPoint().y);
         heldItemRect.setWidth(itemImage.getWidth());
         heldItemRect.setHeight(itemImage.getHeight());
         heldItemRect.toFront();
@@ -106,15 +102,6 @@ public class PanelViewer {
 
     public static void setMinimapImg(Image minimapImg) {
         PanelViewer.minimapImg = minimapImg;
-    }
-
-    public static void setHeldItem(Item heldItem, Point catchPoint) {
-        PanelViewer.heldItem = heldItem;
-        PanelViewer.catchPoint = catchPoint;
-        if (heldItem == null) {
-            PanelViewer.catchPoint = new Point(0, 0);
-            IsoBattleLoop.setClickedItemPoint(new Point(0, 0));
-        }
     }
 
     public static Rectangle getMinimapRect() {

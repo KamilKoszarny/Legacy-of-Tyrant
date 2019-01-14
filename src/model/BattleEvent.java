@@ -31,6 +31,11 @@ public class BattleEvent {
         this.object = object;
     }
 
+    public BattleEvent(EventType type, Character character) {
+        this.type = type;
+        this.character = character;
+    }
+
     public BattleEvent(EventType type, Point clickPoint, Character character) {
         this.type = type;
         this.clickPoint = clickPoint;
