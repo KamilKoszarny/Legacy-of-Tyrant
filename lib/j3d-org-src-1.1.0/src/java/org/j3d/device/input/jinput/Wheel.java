@@ -78,7 +78,7 @@ public class Wheel implements WheelDevice, TrackerDevice
         {
             axis_name = axes[j].getName();
 
-            //System.out.println("   axes: " + axis_name + " type: " + axes[j].getIdentifier().getName());
+            //System.out.println("   axes: " + axis_name + " type: " + axes[j].getIdentifier().getSpriteName());
 
             if(axis_name.equals("Wheel axis") ||
                 axis_name.equalsIgnoreCase("X Axis"))

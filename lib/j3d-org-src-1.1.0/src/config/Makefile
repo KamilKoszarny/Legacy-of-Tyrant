@@ -15,7 +15,7 @@ BUILD_ORDER = i18n \
 # Names of packages that we want included in the javadoc
 JAVADOC_PACKAGES =
   
-# A version number we tack onto the JAR file name for eclipse versioning
+# A version number we tack onto the JAR file spriteName for eclipse versioning
 # purposes.
 JAR_VERSION=2.0.0
 

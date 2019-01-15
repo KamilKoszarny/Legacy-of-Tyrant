@@ -22,7 +22,7 @@ public class MapObjectDrawer {
         initSpriteMap();
     }
 
-    public static void refreshSpriteMap(Point point, Map map) {
+    public static void refreshSpriteMap(Point point) {
         MapPiece mapPiece = Battle.getMap().getPoints().get(point);
         MapObject mapObject = mapPiece.getObject();
         if (mapObject != null) {

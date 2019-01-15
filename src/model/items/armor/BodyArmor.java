@@ -1,9 +1,10 @@
 package model.items.armor;
 
 import javafx.scene.image.Image;
+import model.items.ItemWithSprite;
 import model.items.ItemsLoader;
 
-public enum BodyArmor implements Armor{
+public enum BodyArmor implements Armor, ItemWithSprite{
 
     NOTHING(0, 0, 0, 0, 0),
     LEATHER_SHIRT(0, 1, 1, 0, 12),

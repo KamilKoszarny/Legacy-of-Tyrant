@@ -3,15 +3,29 @@ package model.items;
 import javafx.scene.image.Image;
 import main.App;
 import model.character.Character;
+import model.items.armor.*;
+import model.items.weapon.Weapon;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ItemsLoader {
+
+
+    public static final Map<Class, String> SPRITE_FOLDER_NAMES = new HashMap<>();
+//    public static final List<String> SPRITE_FOLDER_NAMES = Arrays.asList("base", "armors", "heads", "hands", "feets", "shields", "weapons");
+
+    static {
+        SPRITE_FOLDER_NAMES.put(null, "base");
+        SPRITE_FOLDER_NAMES.put(Weapon.class, "weapons");
+        SPRITE_FOLDER_NAMES.put(Shield.class, "shields");
+        SPRITE_FOLDER_NAMES.put(BodyArmor.class, "armors");
+        SPRITE_FOLDER_NAMES.put(Helmet.class, "heads");
+        SPRITE_FOLDER_NAMES.put(Gloves.class, "hands");
+        SPRITE_FOLDER_NAMES.put(Boots.class, "feets");
+    }
 
     public static Image loadItemImage(String path) {
         Image image;
@@ -33,10 +47,9 @@ public class ItemsLoader {
         long startTime = System.nanoTime();
         long time = startTime;
         List<BufferedImage> itemsSprites = new ArrayList<>();
-        List<String> spriteFolderNames = Arrays.asList("base", "armors", "heads", "hands", "feets", "shields", "weapons");
         String sex = character.isMale() ? "/" : "F/";
 
-        for (String spriteFolderName : spriteFolderNames) {
+        for (String spriteFolderName : SPRITE_FOLDER_NAMES.values()) {
             BufferedImage itemSprite = character.getItems().getItemsSprites().get(spriteFolderName);
             if (itemSprite == null) {
                 itemSprite = loadSpriteSheet(spriteFolderName, sex, getSpriteNameByFolder(spriteFolderName, character));
@@ -64,6 +77,13 @@ public class ItemsLoader {
             case "weapons": return character.getItems().getWeapon().getSpriteName();
         }
         return null;
+    }
+
+    public static BufferedImage loadSpriteSheetForItemOnly(ItemWithSprite item) {
+        String folder = SPRITE_FOLDER_NAMES.get(item.getClass());
+        String sex = new Random().nextInt(2) > 0 ? "/" : "F/";
+
+        return loadSpriteSheet(folder, sex, item.getSpriteName());
     }
 
     private static BufferedImage loadSpriteSheet(String folder, String sex, String spriteName){

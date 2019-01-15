@@ -1,6 +1,5 @@
 package model.map.mapObjects;
 
-import helpers.downloaded.pathfinding.algorithms.datatypes.Point;
 
 public class MapObject{
 
@@ -9,6 +8,10 @@ public class MapObject{
     private int look;
     private boolean cutable;
 
+    public MapObject(MapObjectType type, boolean cutable) {
+        this.type = type;
+        this.cutable = cutable;
+    }
 
     public MapObject(MapObjectType type, int size, int look, boolean cutable) {
         this.type = type;

@@ -68,7 +68,7 @@ JAVADOC_PACKAGES = org.j3d.util \
 	org.j3d.loaders.ac3d \
 	org.j3d.loaders.obj
 
-# A version number we tack onto the JAR file name for eclipse versioning
+# A version number we tack onto the JAR file spriteName for eclipse versioning
 # purposes.
 JAR_VERSION=1.1.0
 
@@ -127,7 +127,7 @@ BOTTOM      = '<center> \
 # here. Note that these *must* be full URLs and not just local directory
 # references. If your directory path contains a space in it, you may be in
 # trouble. We haven't tested it with that. Try using double quotes inside
-# the single quotes to get the space treated in the file name
+# the single quotes to get the space treated in the file spriteName
 #LINK_URLS   = 'file:///c:/java/jaxp-1.1/docs/api/' \
 #              'file:///c:/java/junit3.5/javadoc/' \
 #			  'file:///c:/java/jdk1.3/docs/api/' \

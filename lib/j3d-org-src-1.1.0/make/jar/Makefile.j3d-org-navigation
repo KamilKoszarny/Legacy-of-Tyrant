@@ -11,11 +11,11 @@
 #*********************************************************************
 
 # No need to put in subdirs here. We only do that if we want to explicitly
-# exclude some directory and then we name everything around it.
+# exclude some directory and then we spriteName everything around it.
 JAR_CONTENT= org/j3d/ui/navigation \
   images/navigation
 
-# Manifest file name. Stored in the make/manifest directory
+# Manifest file spriteName. Stored in the make/manifest directory
 MANIFEST=navigation.mf
 
 include ${PROJECT_ROOT}/make/Makefile.jav

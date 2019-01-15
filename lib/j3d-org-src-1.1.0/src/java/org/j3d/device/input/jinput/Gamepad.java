@@ -79,7 +79,7 @@ public class Gamepad implements GamepadDevice, TrackerDevice
 
         for(int j = 0; j < len; j++)
         {
-            //System.out.println("   axes: " + axes[j].getName() + " type: " + axes[j].getIdentifier().getName());
+            //System.out.println("   axes: " + axes[j].getSpriteName() + " type: " + axes[j].getIdentifier().getSpriteName());
             axis_name = axes[j].getName();
 
             if(axis_name.equalsIgnoreCase("X axis") || axis_name.equals("x"))

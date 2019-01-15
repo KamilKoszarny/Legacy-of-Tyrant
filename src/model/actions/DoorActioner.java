@@ -83,11 +83,12 @@ public class DoorActioner {
     }
 
     private static void refreshMapObjects(Map map, Door door, Point objectPoint, Point newPoint) {
-        MapPiece newMapPiece;MapPiece mapPiece = Battle.getMap().getPoints().get(objectPoint);
+        MapPiece newMapPiece;
+        MapPiece mapPiece = Battle.getMap().getPoints().get(objectPoint);
         newMapPiece = Battle.getMap().getPoints().get(newPoint);
         mapPiece.setObject(null);
-        MapObjectDrawer.refreshSpriteMap(objectPoint, map);
+        MapObjectDrawer.refreshSpriteMap(objectPoint);
         newMapPiece.setObject(door);
-        MapObjectDrawer.refreshSpriteMap(newPoint, map);
+        MapObjectDrawer.refreshSpriteMap(newPoint);
     }
 }

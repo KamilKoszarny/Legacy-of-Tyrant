@@ -8,6 +8,10 @@ import model.items.Item;
 import model.items.ItemsCalculator;
 import model.items.armor.Shield;
 import model.items.weapon.Weapon;
+import model.map.MapPiece;
+import model.map.mapObjects.ItemMapObject;
+import viewIso.map.MapDrawCalculator;
+import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.CharDescriptor;
 
 import java.awt.*;
@@ -95,6 +99,14 @@ public class ItemHandler {
         }
         CharDescriptor.refreshInventory(giver);
         StatsCalculator.calcStats(taker);
+    }
+
+    public static void dropItem(Item item, Point mapPoint) {
+        ItemMapObject itemMapObject = new ItemMapObject(item);
+        MapPiece mapPiece = Battle.getMap().getPoints().get(mapPoint);
+        mapPiece.setObject(itemMapObject);
+        MapObjectDrawer.refreshSpriteMap(mapPoint);
+        heldItem = null;
     }
 
     private static boolean equipmentClicked(int[] clickedInventorySlot) {

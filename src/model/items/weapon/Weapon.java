@@ -2,9 +2,10 @@ package model.items.weapon;
 
 import javafx.scene.image.Image;
 import model.items.Item;
+import model.items.ItemWithSprite;
 import model.items.ItemsLoader;
 
-public enum Weapon implements Item{
+public enum Weapon implements ItemWithSprite{
     NOTHING(            1, 1, .6, .4,       1, 0, 0, 10000),
 
     //swords
@@ -115,17 +116,8 @@ public enum Weapon implements Item{
     }
 
     Weapon(double dmgMin, double dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int durability, String spriteName) {
-        this.dmgMin = dmgMin * DAMAGE_MULTIPLIER;
-        this.dmgMax = dmgMax * DAMAGE_MULTIPLIER;
-        this.attackDuration = attackDuration;
-        this.range = range;
-        this.hands = hands;
-        this.accuracy = accuracy;
-        this.parry = parry;
-        this.durability = durability;
+        this(dmgMin, dmgMax, attackDuration, range, hands, accuracy, parry, durability);
 
-        image = ItemsLoader.loadItemImage("/items/weapons/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
         this.spriteName = spriteName + ".png";
     }
 

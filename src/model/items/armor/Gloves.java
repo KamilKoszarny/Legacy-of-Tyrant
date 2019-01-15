@@ -1,9 +1,10 @@
 package model.items.armor;
 
 import javafx.scene.image.Image;
+import model.items.ItemWithSprite;
 import model.items.ItemsLoader;
 
-public enum Gloves implements Armor{
+public enum Gloves implements Armor, ItemWithSprite{
 
     NOTHING(0, 0),
     RAG_GLOVES(0, 3, "cloth_gloves"),

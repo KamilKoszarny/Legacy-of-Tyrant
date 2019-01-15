@@ -96,6 +96,10 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
             case GIVE_ITEM:
                 ItemHandler.giveItem(Battle.getChosenCharacter(), battleEvent.getCharacter(), ItemHandler.getHeldItem());
+                break;
+            case DROP_ITEM:
+                ItemHandler.dropItem(ItemHandler.getHeldItem(), battleEvent.getMapPoint());
+                break;
         }
 
         battleEvent = null;

@@ -4,7 +4,7 @@ java3d-Specification-Version: 1.2
 java3d-Implementation-Version: 1.2.1.04
 java3d-Implementation-Vendor-Id: com.sun
 java3d-Implementation-Title: Java3D Core Runtime Environment
-java3d-Implementation-URL: http://java.sun.com/products/autodl/java3d/prefer_ogl/java3d-$(os.name)$.jar
+java3d-Implementation-URL: http://java.sun.com/products/autodl/java3d/prefer_ogl/java3d-$(os.spriteName)$.jar
 Extension-Name: j3d-org
 Specification-Vendor: Justin Couch
 Specification-Version: 1.1.0

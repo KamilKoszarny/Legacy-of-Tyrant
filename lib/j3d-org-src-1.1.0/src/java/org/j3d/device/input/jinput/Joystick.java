@@ -68,7 +68,7 @@ public class Joystick implements JoystickDevice, TrackerDevice
 
         for(int j=0; j < axes.length; j++)
         {
-            // System.out.println("   axes: " + axes[j].getName() + " type: " + axes[j].getIdentifier().getName());
+            // System.out.println("   axes: " + axes[j].getSpriteName() + " type: " + axes[j].getIdentifier().getSpriteName());
             if (axes[j].getName().equals("X Axis"))
             {
                 trackerAxes[0] = axes[j];

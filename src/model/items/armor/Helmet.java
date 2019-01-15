@@ -1,9 +1,10 @@
 package model.items.armor;
 
 import javafx.scene.image.Image;
+import model.items.ItemWithSprite;
 import model.items.ItemsLoader;
 
-public enum Helmet implements Armor{
+public enum Helmet implements Armor, ItemWithSprite{
 
     NOTHING(0, 0),
     LEATHER_HOOD(1, 5, "leather_hood"),

@@ -11,14 +11,14 @@
 #*********************************************************************
 
 # No need to put in subdirs here. We only do that if we want to explicitly
-# exclude some directory and then we name everything around it.
+# exclude some directory and then we spriteName everything around it.
 JAR_CONTENT= org/j3d/device/input/vfx \
   org/j3d/device/input/ \
   org/j3d/device/input/jinput \
 #    org/j3d/device/input/polhemus
 #    org/j3d/device/input/spaceball
 
-# Manifest file name. Stored in the make/manifest directory
+# Manifest file spriteName. Stored in the make/manifest directory
 MANIFEST=inputdevice.mf
 
 include ${PROJECT_ROOT}/make/Makefile.jav
