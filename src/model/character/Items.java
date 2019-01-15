@@ -27,7 +27,7 @@ public class Items {
     }
     public void setWeapons(Weapon[] weapons, boolean showSprite) {
         setWeapon(weapons[0], showSprite);
-        setSpareWeapon(weapons[1], showSprite);
+        setSpareWeapon(weapons[1]);
     }
     public Weapon getWeapon(){
         return weapons[chosenWeapon];
@@ -55,14 +55,14 @@ public class Items {
     public Weapon getSpareWeapon() {
         return weapons[(chosenWeapon + 1)%2];
     }
-    public void setSpareWeapon(Weapon weapon, boolean showSprite){
+    public void setSpareWeapon(Weapon weapon){
         weapons[(chosenWeapon + 1)%2] = weapon;
         if (weapon.getHands() == 2)
-            setEquipmentPart(Shield.BLOCKED, 11, showSprite);
+            setEquipmentPart(Shield.BLOCKED, 11, false);
         else if (getSpareShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 11, showSprite);
+            setEquipmentPart(Shield.NOTHING, 11, false);
         if (weapon.equals(Weapon.NOTHING) && getShield().equals(Shield.BLOCKED))
-            setEquipmentPart(Shield.NOTHING, 11, showSprite);
+            setEquipmentPart(Shield.NOTHING, 11, false);
     }
 
     public Shield getShield() {
@@ -96,6 +96,17 @@ public class Items {
         return (Shield) armor[9];
     }
 
+    public void setShield(Shield shield, boolean showSprite) {
+        armor[0] = shield;
+        if (showSprite) {
+            itemsSprites.put("weapons", null);
+            CharsDrawer.createCharSpriteSheet(character);
+        }
+    }
+    public void setSpareShield(Shield shield) {
+        armor[9] = shield;
+    }
+
     public Item getEquipmentPart(int partNo) {
         switch (partNo) {
             case 0: return getWeapon();
@@ -106,7 +117,7 @@ public class Items {
     public void setEquipmentPart(Item item, int partNo, boolean showSprite) {
         switch (partNo) {
             case 0: setWeapon((Weapon) item, showSprite); return;
-            case 1: setSpareWeapon((Weapon) item, showSprite); return;
+            case 1: setSpareWeapon((Weapon) item); return;
             case 2: itemsSprites.put("shields", null); break;
             case 3: itemsSprites.put("armors", null); break;
             case 4: itemsSprites.put("heads", null); break;

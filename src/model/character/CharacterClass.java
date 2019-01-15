@@ -124,7 +124,7 @@ public enum CharacterClass {
     private static List<Map<Armor, Double>> createRascalArmorMaps(){
         List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
         for(int i = 0; i < 6; i++)
-            armorMaps.add(new HashMap<Armor, Double>());
+            armorMaps.add(new HashMap<>());
 
         armorMaps.get(0).put(Shield.NOTHING, 1.);
         armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);
@@ -180,7 +180,7 @@ public enum CharacterClass {
     private static List<Map<Armor, Double>> createAdeptArmorMaps(){
         List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
         for(int i = 0; i < 6; i++)
-            armorMaps.add(new HashMap<Armor, Double>());
+            armorMaps.add(new HashMap<>());
 
         armorMaps.get(0).put(Shield.NOTHING, 1.);
         armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);
@@ -240,7 +240,7 @@ public enum CharacterClass {
     private static List<Map<Armor, Double>> createFanaticArmorMaps(){
         List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
         for(int i = 0; i < 6; i++)
-            armorMaps.add(new HashMap<Armor, Double>());
+            armorMaps.add(new HashMap<>());
 
         armorMaps.get(0).put(Shield.NOTHING, 1.);
         armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);
@@ -298,7 +298,7 @@ public enum CharacterClass {
     private static List<Map<Armor, Double>> createWizardArmorMaps(){
         List<Map<Armor, Double>> armorMaps =  new ArrayList<>();
         for(int i = 0; i < 6; i++)
-            armorMaps.add(new HashMap<Armor, Double>());
+            armorMaps.add(new HashMap<>());
 
         armorMaps.get(0).put(Shield.NOTHING, 1.);
         armorMaps.get(0).put(Shield.WOODEN_SHIELD, .4);

@@ -120,13 +120,18 @@ public class PanelController {
             }
         }
 
+//        recalcInventorySlotByHeldPoint(shapeClickPoint, inventorySlot);
+
+        return inventorySlot;
+    }
+
+    public static void recalcInventorySlotByHeldPoint(Point shapeClickPoint, int[] inventorySlot) {
         if (inventorySlot != null && shapeClickPoint != null) {
             inventorySlot[0] -= (int)(shapeClickPoint.getX() / ItemHandler.ITEM_SLOT_SIZE);
             inventorySlot[1] -= (int)(shapeClickPoint.getY() / ItemHandler.ITEM_SLOT_SIZE);
         }
-
-        return inventorySlot;
     }
+
 
     private static java.util.List<javafx.scene.shape.Rectangle> calcInventoryScreenRects(Panel panel){
         javafx.scene.shape.Rectangle screenInventoryRect = panel.getInventoryRectangle();

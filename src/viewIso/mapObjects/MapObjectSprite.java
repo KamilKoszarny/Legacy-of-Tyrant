@@ -2,9 +2,7 @@ package viewIso.mapObjects;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
-import model.items.Item;
 import model.items.ItemWithSprite;
-import model.items.ItemsCalculator;
 import model.items.ItemsLoader;
 import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
@@ -21,7 +19,7 @@ public class MapObjectSprite {
     public static final double Y_BASE_RATIO = .85;
     private Point offset = new Point();
     private MapObject object;
-    private boolean cutable = true;
+    private boolean cutable;
 
     public MapObjectSprite(MapObject mapObject, boolean cutable) {
         object = mapObject;
@@ -44,20 +42,25 @@ public class MapObjectSprite {
         BufferedImage bufferedImage = ItemsLoader.loadSpriteSheetForItemOnly(itemWithSprite);
         int spanX = (int) (CharsDrawer.SPRITES_SPAN.getWidth()/CharsDrawer.SCALING);
         int spanY = (int) (CharsDrawer.SPRITES_SPAN.getHeight()/CharsDrawer.SCALING);
+        int offX = (int) (CharsDrawer.SPRITE_OFFSET.getWidth()/CharsDrawer.SCALING);
+        int offY = (int) (CharsDrawer.SPRITE_OFFSET.getHeight()/CharsDrawer.SCALING);
+        int sizeX = (int) (CharsDrawer.SPRITE_SIZE.getWidth()/CharsDrawer.SCALING);
+        int sizeY = (int) (CharsDrawer.SPRITE_SIZE.getHeight()/CharsDrawer.SCALING);
         Random r = new Random();
         int direction = r.nextInt(8);
-        bufferedImage = bufferedImage.getSubimage(spanX * CharPose.DEAD.getStartFrame(), spanY * direction, spanX, spanY);
+        bufferedImage = bufferedImage.getSubimage(
+                spanX * CharPose.DEAD.getStartFrame() + offX, spanY * direction + offY, sizeX, sizeY);
         image = SwingFXUtils.toFXImage(bufferedImage, null);
     }
 
     private String buildPath(MapObject mapObject) {
         StringBuilder path = new StringBuilder("");
         path.append("/sprites");
-        path.append("/" + mapObject.getType());
+        path.append("/").append(mapObject.getType());
         int size = mapObject.getSize();
         if (size > 0)
-            path.append("/size" + size);
-        path.append("/" + mapObject.getLook() + ".png");
+            path.append("/size").append(size);
+        path.append("/").append(mapObject.getLook()).append(".png");
         return path.toString();
     }
 

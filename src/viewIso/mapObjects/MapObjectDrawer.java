@@ -1,9 +1,7 @@
 package viewIso.mapObjects;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 import model.Battle;
-import model.map.Map;
 import model.map.MapPiece;
 import model.map.mapObjects.MapObject;
 import viewIso.IsoViewer;
@@ -43,10 +41,11 @@ public class MapObjectDrawer {
     }
 
     public void drawObject (Point point, boolean cutView) {
-        this.cutView = cutView;
+        MapObjectDrawer.cutView = cutView;
         MapObjectSprite mapObjectSprite = mapObjectSpriteMap.get(point);
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
+        assert screenPos != null;
         if (cutView && mapObjectSprite.isCutable()){
             int sourceX = (int) (image.getWidth() * .4);
             int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
@@ -57,9 +56,10 @@ public class MapObjectDrawer {
                     sourceWidth, sourceHeight,
                     screenPos.x - mapObjectSprite.getOffset().x + sourceX, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
                     sourceWidth, sourceHeight);
-        } else
+        } else {
             IsoViewer.getCanvas().getGraphicsContext2D().drawImage(image,
                 screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
+        }
     }
 
     public static MapObject clickedObject(Point clickPoint) {
@@ -78,6 +78,7 @@ public class MapObjectDrawer {
 
     private static Rectangle calcClickBox(MapObjectSprite sprite, Point spritePos) {
         Point spriteScreenPos = MapDrawCalculator.screenPositionWithHeight(spritePos);
+        assert spriteScreenPos != null;
         int width = (int) sprite.getImage().getWidth();
         int height = (int) sprite.getImage().getHeight();
         return new Rectangle(spriteScreenPos.x - width/2, (int) (spriteScreenPos.y - height*MapObjectSprite.Y_BASE_RATIO), width, height);

@@ -1,5 +1,6 @@
 package model.actions;
 
+import controller.isoView.isoPanel.PanelController;
 import model.Battle;
 import model.IsoBattleLoop;
 import model.character.Character;
@@ -10,13 +11,14 @@ import model.items.armor.Shield;
 import model.items.weapon.Weapon;
 import model.map.MapPiece;
 import model.map.mapObjects.ItemMapObject;
-import viewIso.map.MapDrawCalculator;
 import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.CharDescriptor;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ItemHandler {
 
@@ -46,12 +48,24 @@ public class ItemHandler {
                 else
                     heldItem = null;
             }
-        } else if (inventoryClicked(clickedInventorySlot) && isSpaceInInventory(character, heldItem, clickedInventorySlot)){
+        } else if (inventoryClicked(clickedInventorySlot)){
+            Set<Item> underItems = underInventoryItems(character, heldItem, clickedInventorySlot);
+            if (underItems == null || underItems.size() > 1) {
+                return;
+            }
+            if (underItems.size() == 0) {
+                PanelController.recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
+                character.getItems().getInventory().put(heldItem, clickedInventorySlot);
+                heldItem = null;
+                CharDescriptor.refreshInventory(Battle.getChosenCharacter());
+                return;
+            }
+            //so: underItems.size() == 1
             character.getItems().getInventory().put(heldItem, clickedInventorySlot);
-            heldItem = null;
+            heldItem = underItems.iterator().next();
+            PanelController.recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
+            character.getItems().getInventory().remove(heldItem);
             CharDescriptor.refreshInventory(Battle.getChosenCharacter());
-        } else {
-
         }
     }
 
@@ -87,18 +101,34 @@ public class ItemHandler {
                 heldItem = null;
             } else if (taker.getItems().getSpareWeapon().equals(Weapon.NOTHING) &&
                     (((Weapon) item).getHands() == 1 || taker.getItems().getSpareShield().equals(Shield.NOTHING))) {
-                taker.getItems().setSpareWeapon((Weapon) item, true);
+                taker.getItems().setSpareWeapon((Weapon) item);
                 heldItem = null;
-            } else {
-                int[] inventorySlot = freeSpaceInInventory(taker, item);
-                if (inventorySlot != null) {
-                    taker.getItems().getInventory().put(item, inventorySlot);
-                    heldItem = null;
-                }
-            }
-        }
+            } else
+                putInFirstInventorySlot(taker, item);
+        } else if (item instanceof Shield) {
+            if (taker.getItems().getShield().equals(Shield.NOTHING)) {
+                taker.getItems().setShield((Shield) item, true);
+                heldItem = null;
+            } else if (taker.getItems().getSpareShield().equals(Shield.NOTHING)) {
+                taker.getItems().setSpareShield((Shield) item);
+                heldItem = null;
+            } else
+                putInFirstInventorySlot(taker, item);
+        } else
+            putInFirstInventorySlot(taker, item);
+
         CharDescriptor.refreshInventory(giver);
         StatsCalculator.calcStats(taker);
+    }
+
+    private static boolean putInFirstInventorySlot(Character taker, Item item) {
+        int[] inventorySlot = freeSpaceInInventory(taker, item);
+        if (inventorySlot != null) {
+            taker.getItems().getInventory().put(item, inventorySlot);
+            heldItem = null;
+            return true;
+        }
+        return false;
     }
 
     public static void dropItem(Item item, Point mapPoint) {
@@ -136,14 +166,40 @@ public class ItemHandler {
         List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, itemToPut, clickedInventorySlot);
         List<int[]> allOccupiedSlots = allOccupiedSlots(character);
         for (int[] slot: itemOccupiedSlots) {
-            if (slot[0] < 0 || slot[1] < 0 || slot[0] >= INVENTORY_X || slot[1] >= INVENTORY_Y)
+            if (outOfInventory(slot))
                 return false;
             for (int[] invSlot: allOccupiedSlots) {
-                if (invSlot[0] == slot[0] && invSlot[1] == slot[1])
+                if (sameSlot(slot, invSlot))
                     return false;
             }
         }
         return true;
+    }
+
+    private static Set<Item> underInventoryItems(Character character, Item itemToPut, int[] clickedInventorySlot) {
+        List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, itemToPut, clickedInventorySlot);
+        Set<Item> underItems = new HashSet<>();
+        List<int[]> underItemOccupiedSlots;
+        for (Item item: character.getItems().getInventory().keySet()) {
+            underItemOccupiedSlots = itemOccupiedSlots(character, item, character.getItems().getInventory().get(item));
+            for (int[] slot: itemOccupiedSlots) {
+                if (outOfInventory(slot))
+                    return null;
+                for (int[] invSlot: underItemOccupiedSlots) {
+                    if (sameSlot(slot, invSlot))
+                        underItems.add(item);
+                }
+            }
+        }
+        return underItems;
+    }
+
+    private static boolean sameSlot(int[] slot, int[] invSlot) {
+        return invSlot[0] == slot[0] && invSlot[1] == slot[1];
+    }
+
+    private static boolean outOfInventory(int[] slot) {
+        return slot[0] < 0 || slot[1] < 0 || slot[0] >= INVENTORY_X || slot[1] >= INVENTORY_Y;
     }
 
     public static int[] inventorySlotByItemClickPoint(Item item, Character character, Point point){
@@ -159,7 +215,7 @@ public class ItemHandler {
         for (Item item: character.getItems().getInventory().keySet()) {
             List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, item, null);
             for (int[] itemSlot: itemOccupiedSlots) {
-                if (itemSlot[0] == inventorySlot[0] && itemSlot[1] == inventorySlot[1])
+                if (sameSlot(inventorySlot, itemSlot))
                     return item;
             }
         }

@@ -5,7 +5,6 @@ import model.character.Character;
 import model.character.CharacterGroup;
 import model.items.weapon.Weapon;
 
-import java.awt.*;
 import java.util.Map;
 import java.util.Random;
 
@@ -72,7 +71,7 @@ public class ItemsCalculator {
         return armors;
     }
 
-    public static Map<Weapon, Double> recalcWeaponsMap(Map<Weapon, Double> weaponsMap) {
+    public static void recalcWeaponsMap(Map<Weapon, Double> weaponsMap) {
         double sum = 0;
         for (Double probability: weaponsMap.values()) {
             sum += probability;
@@ -81,10 +80,9 @@ public class ItemsCalculator {
             weaponsMap.put(weapon, weaponsMap.get(weapon) / sum);
         }
 
-        return weaponsMap;
     }
 
-    public static Map<Armor, Double> recalcArmorMap(Map<Armor, Double> armorMap) {
+    public static void recalcArmorMap(Map<Armor, Double> armorMap) {
         double sum = 0;
         for (Double probability: armorMap.values()) {
             sum += probability;
@@ -93,7 +91,6 @@ public class ItemsCalculator {
             armorMap.put(armor, armorMap.get(armor) / sum);
         }
 
-        return armorMap;
     }
 
     public static Item getNothingItemByNo(int no) {
