@@ -1,9 +1,12 @@
 package viewIso.mapObjects;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import model.Battle;
 import model.map.MapPiece;
 import model.map.mapObjects.MapObject;
+import model.map.mapObjects.MapObjectType;
 import viewIso.IsoViewer;
 import viewIso.map.MapDrawCalculator;
 
@@ -15,6 +18,7 @@ public class MapObjectDrawer {
     private static java.util.Map<Point, MapObjectSprite> mapObjectSpriteMap = new HashMap<>();
     private static java.util.Map<MapObject, Point> mapObjectPointMap = new HashMap<>();
     private static boolean cutView;
+
 
     public MapObjectDrawer() {
         initSpriteMap();
@@ -46,20 +50,25 @@ public class MapObjectDrawer {
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
         assert screenPos != null;
+        GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
         if (cutView && mapObjectSprite.isCutable()){
-            int sourceX = (int) (image.getWidth() * .4);
-            int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
-            int sourceWidth = (int) (image.getWidth() * .2);
-            int sourceHeight = (int)(image.getHeight() - mapObjectSprite.getOffset().y);
-            IsoViewer.getCanvas().getGraphicsContext2D().drawImage(image,
-                    sourceX, sourceY,
-                    sourceWidth, sourceHeight,
-                    screenPos.x - mapObjectSprite.getOffset().x + sourceX, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
-                    sourceWidth, sourceHeight);
-        } else {
-            IsoViewer.getCanvas().getGraphicsContext2D().drawImage(image,
-                screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
-        }
+            drawCutImage(mapObjectSprite, image, screenPos, gc);
+        } else if (mapObjectSprite.getObject().getType().equals(MapObjectType.ITEM))
+            ItemObjectsDrawer.drawItemObject(mapObjectSprite, image, screenPos);
+        else
+            gc.drawImage(image,
+                    screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
+    }
+
+    private void drawCutImage(MapObjectSprite mapObjectSprite, Image image, Point screenPos, GraphicsContext gc) {
+        int sourceX = (int) (image.getWidth() * .4);
+        int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
+        int sourceWidth = (int) (image.getWidth() * .2);
+        int sourceHeight = (int)(image.getHeight() - mapObjectSprite.getOffset().y);
+
+        gc.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight,
+                screenPos.x - mapObjectSprite.getOffset().x + sourceX, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
+                sourceWidth, sourceHeight);
     }
 
     public static MapObject clickedObject(Point clickPoint) {

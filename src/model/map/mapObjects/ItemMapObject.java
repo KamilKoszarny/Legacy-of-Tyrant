@@ -10,7 +10,7 @@ public class ItemMapObject extends MapObject {
     private String spriteName;
 
     public ItemMapObject(Item item) {
-        super(MapObjectType.DOOR, false);
+        super(MapObjectType.ITEM, false, item.getName());
         this.item = item;
         if (item instanceof ItemWithSprite)
             itemWithSprite = (ItemWithSprite)item;

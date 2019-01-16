@@ -12,6 +12,7 @@ import model.map.MapPiece;
 import model.map.buildings.Door;
 import viewIso.*;
 import viewIso.characters.CharsDrawer;
+import viewIso.mapObjects.ItemObjectsDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.PanelViewer;
 
@@ -152,8 +153,10 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleHover() {
-        if (hoverPoint != null)
+        if (hoverPoint != null) {
             LabelsDrawer.checkHoverCharacter(hoverPoint);
+            ItemObjectsDrawer.checkHoverItem(hoverPoint);
+        }
     }
 
 

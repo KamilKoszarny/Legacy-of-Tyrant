@@ -5,6 +5,7 @@ import model.character.Character;
 import model.map.MapPiece;
 import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
+import viewIso.mapObjects.ItemObjectsDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
@@ -40,9 +41,7 @@ public class SpritesDrawer {
         for (Character character: Battle.getCharacters()) {
                 charsDrawer.drawChar(character, true);
         }
-    }
 
-    public CharsDrawer getCharsDrawer() {
-        return charsDrawer;
+        ItemObjectsDrawer.resetItemGlowIncrement();
     }
 }

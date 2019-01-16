@@ -7,10 +7,12 @@ public class MapObject{
     private int size;
     private int look;
     private boolean cutable;
+    private String name;
 
-    public MapObject(MapObjectType type, boolean cutable) {
+    public MapObject(MapObjectType type, boolean cutable, String name) {
         this.type = type;
         this.cutable = cutable;
+        this.name = name;
     }
 
     public MapObject(MapObjectType type, int size, int look, boolean cutable) {
