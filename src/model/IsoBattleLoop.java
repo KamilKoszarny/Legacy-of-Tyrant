@@ -7,9 +7,9 @@ import model.actions.attack.AttackActioner;
 import model.actions.attack.BodyPart;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
-import model.items.Item;
 import model.map.MapPiece;
 import model.map.buildings.Door;
+import model.map.mapObjects.ItemMapObject;
 import viewIso.*;
 import viewIso.characters.CharsDrawer;
 import viewIso.mapObjects.ItemObjectsDrawer;
@@ -96,11 +96,14 @@ public class IsoBattleLoop extends AnimationTimer{
                 showMapPieceInfo(battleEvent.getMapPoint(), battleEvent.getMapPiece());
                 break;
             case GIVE_ITEM:
-                ItemHandler.giveItem(Battle.getChosenCharacter(), battleEvent.getCharacter(), ItemHandler.getHeldItem());
+                ItemHandler.tryGiveItem(Battle.getChosenCharacter(), battleEvent.getCharacter(), ItemHandler.getHeldItem());
                 break;
             case DROP_ITEM:
-                ItemHandler.dropItem(ItemHandler.getHeldItem(), battleEvent.getMapPoint());
+                ItemHandler.tryDropItem(Battle.getChosenCharacter(), ItemHandler.getHeldItem(), battleEvent.getMapPoint());
                 break;
+            case PICKUP_ITEM:
+                ItemHandler.tryPickupItem(Battle.getChosenCharacter(), (ItemMapObject) battleEvent.getObject(), battleEvent.getMapPoint());
+
         }
 
         battleEvent = null;
@@ -118,7 +121,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
             case DOOR_LOOK:
                 CharTurner.turnCharacter(Battle.getChosenCharacter(),
-                        MapObjectDrawer.getMapObjectPointMap().get(buttonBattleEvent.getObject()), true);
+                        MapObjectDrawer.getMapObject2PointMap().get(buttonBattleEvent.getObject()), true);
                 break;
             case ENEMY_LOOK:
                 CharTurner.turnCharacter(Battle.getChosenCharacter(),

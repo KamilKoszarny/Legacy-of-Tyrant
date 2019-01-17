@@ -20,7 +20,7 @@ public class DoorActioner {
         Door door = (Door) object;
         door.switchOpen();
 
-        Point objectPoint = MapObjectDrawer.getMapObjectPointMap().get(door);
+        Point objectPoint = MapObjectDrawer.getMapObject2PointMap().get(door);
 
         int newLook = door.getLook() + 1;
         Point newPoint = null;
@@ -45,7 +45,7 @@ public class DoorActioner {
         Door door = (Door) object;
         door.switchOpen();
 
-        Point objectPoint = MapObjectDrawer.getMapObjectPointMap().get(door);
+        Point objectPoint = MapObjectDrawer.getMapObject2PointMap().get(door);
 
         int newLook = door.getLook() - 1;
         Point newPoint = null;

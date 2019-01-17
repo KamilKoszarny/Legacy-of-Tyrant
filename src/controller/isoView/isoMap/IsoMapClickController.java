@@ -57,8 +57,12 @@ public class IsoMapClickController {
             Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
             if (Battle.getChosenCharacter() != null && mapPoint != null) {
                 MapObject object = MapObjectDrawer.clickedObject(clickPoint);
-                if (object != null && object.getType().equals(MapObjectType.DOOR))
-                    return new BattleEvent(EventType.SHOW_CHAR2OBJECT, clickPoint, object);
+                if (object != null) {
+                    if (object.getType().equals(MapObjectType.ITEM))
+                        return new BattleEvent(EventType.PICKUP_ITEM, object, mapPoint);
+                    if (object.getType().equals(MapObjectType.DOOR))
+                        return new BattleEvent(EventType.SHOW_CHAR2OBJECT, clickPoint, object);
+                }
                 else if (ItemHandler.getHeldItem() != null)
                     return new BattleEvent(EventType.DROP_ITEM, clickPoint, mapPoint);
                 else

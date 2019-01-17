@@ -10,7 +10,7 @@ public enum MapObjectType {
     DOOR(true),
     WINDOW(true),
     FURNITURE(false),
-    ITEM(true),
+    ITEM(false),
     ;
 
     private int sizes, looks;

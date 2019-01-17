@@ -25,6 +25,12 @@ public class BattleEvent {
         this.clickPoint = clickPoint;
     }
 
+    public BattleEvent(EventType type, MapObject object, Point mapPoint) {
+        this.type = type;
+        this.object = object;
+        this.mapPoint = mapPoint;
+    }
+
     public BattleEvent(EventType type, Point clickPoint, MapObject object) {
         this.type = type;
         this.clickPoint = clickPoint;

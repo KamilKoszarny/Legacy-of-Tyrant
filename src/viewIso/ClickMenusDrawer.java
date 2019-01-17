@@ -65,7 +65,7 @@ public class ClickMenusDrawer {
     public static void drawChar2DoorMenu(Point clickPoint, Door door, Character character) {
         hideMenus();
         activeMenu = char2DoorMenu;
-        Point doorPos = MapObjectDrawer.getMapObjectPointMap().get(door);
+        Point doorPos = MapObjectDrawer.getMapObject2PointMap().get(door);
         if (doorPos.distance(character.getPosition()) > Door.ACTION_DIST) {
             ClickMenuButton.DOOR_OPEN.setGrayed(true);
             ClickMenuButton.DOOR_CLOSE.setGrayed(true);

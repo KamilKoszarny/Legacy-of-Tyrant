@@ -11,5 +11,6 @@ public enum EventType {
     ITEM_CLICK,
     DROP_ITEM,
     GIVE_ITEM,
+    PICKUP_ITEM,
     ;
 }

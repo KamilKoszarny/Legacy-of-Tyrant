@@ -17,8 +17,8 @@ import java.util.Map;
 
 public class MapObjectDrawer {
 
-    private static java.util.Map<Point, MapObjectSprite> mapObjectSpriteMap = new HashMap<>();
-    private static java.util.Map<MapObject, Point> mapObjectPointMap = new HashMap<>();
+    private static java.util.Map<Point, MapObjectSprite> point2mapObjectSpriteMap = new HashMap<>();
+    private static java.util.Map<MapObject, Point> mapObject2PointMap = new HashMap<>();
     private static boolean cutView;
     private static Tooltip canvasTooltip = null;
 
@@ -31,8 +31,8 @@ public class MapObjectDrawer {
         MapPiece mapPiece = Battle.getMap().getPoints().get(point);
         MapObject mapObject = mapPiece.getObject();
         if (mapObject != null) {
-            mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
-            mapObjectPointMap.put(mapPiece.getObject(), point);
+            point2mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
+            mapObject2PointMap.put(mapPiece.getObject(), point);
         }
     }
 
@@ -41,15 +41,15 @@ public class MapObjectDrawer {
             MapPiece mapPiece = Battle.getMap().getPoints().get(point);
             MapObject mapObject = mapPiece.getObject();
             if (mapObject != null) {
-                mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
-                mapObjectPointMap.put(mapPiece.getObject(), point);
+                point2mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
+                mapObject2PointMap.put(mapPiece.getObject(), point);
             }
         }
     }
 
     public void drawObject (Point point, boolean cutView) {
         MapObjectDrawer.cutView = cutView;
-        MapObjectSprite mapObjectSprite = mapObjectSpriteMap.get(point);
+        MapObjectSprite mapObjectSprite = point2mapObjectSpriteMap.get(point);
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
         assert screenPos != null;
@@ -75,10 +75,16 @@ public class MapObjectDrawer {
     }
 
     public static MapObject clickedObject(Point clickPoint) {
+        MapObject itemObject = ItemObjectsDrawer.clickedItem(clickPoint);
+        if (itemObject != null)
+            return itemObject;
+
         if (cutView)
             return null;
-        for (Point point: mapObjectSpriteMap.keySet()) {
-            MapObjectSprite sprite =  mapObjectSpriteMap.get(point);
+
+        for (Point point: point2mapObjectSpriteMap.keySet()) {
+            MapObjectSprite sprite =  point2mapObjectSpriteMap.get(point);
+
             Rectangle clickBox = calcClickBox(sprite, point);
             if (clickBox.contains(clickPoint)){
                 if (sprite.getObject().getType().isClickable())
@@ -107,11 +113,19 @@ public class MapObjectDrawer {
         }
     }
 
-    public static java.util.Map<MapObject, Point> getMapObjectPointMap() {
-        return mapObjectPointMap;
+    public static void removeObject(MapObject mapObject) {
+        Point point = mapObject2PointMap.get(mapObject);
+        point2mapObjectSpriteMap.remove(point);
+        mapObject2PointMap.remove(mapObject);
+        MapPiece mapPiece = Battle.getMap().getPoints().get(point);
+        mapPiece.setObject(null);
     }
 
-    public static Map<Point, MapObjectSprite> getMapObjectSpriteMap() {
-        return mapObjectSpriteMap;
+    public static java.util.Map<MapObject, Point> getMapObject2PointMap() {
+        return mapObject2PointMap;
+    }
+
+    public static Map<Point, MapObjectSprite> getPoint2mapObjectSpriteMap() {
+        return point2mapObjectSpriteMap;
     }
 }
