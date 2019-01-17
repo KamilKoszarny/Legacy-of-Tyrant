@@ -6,6 +6,7 @@ public enum MapObjectType {
     TREE(3, 16, Terrain.TREES, 100, false),
     BUSH(3, 5, Terrain.BUSH, 50, false),
     GROUND(3, 2, Terrain.GROUND, 2500, false),
+    GRASS(0, 5, Terrain.GRASS, 10, false),
     WALL(false),
     DOOR(true),
     WINDOW(true),

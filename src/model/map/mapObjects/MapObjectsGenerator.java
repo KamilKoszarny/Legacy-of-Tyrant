@@ -45,6 +45,8 @@ public class MapObjectsGenerator {
 
     private int checkAvailableSize(Point point, Terrain terrain) {
         int sizes = MapObjectType.mapObjectTypeByTerrain(map.getPoints().get(point).getTerrain()).getSizes();
+        if (sizes == 0)
+            return 0;
         for (int size = sizes; size > 0 ; size--)
             if (isSurroundedBySameTerrain(point, size, terrain))
                 return size;

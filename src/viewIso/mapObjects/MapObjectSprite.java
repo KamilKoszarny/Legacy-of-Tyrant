@@ -39,6 +39,7 @@ public class MapObjectSprite {
             return;
         }
         String path = buildPath(mapObject);
+        System.out.println(path);
         image = new Image(path);
     }
 

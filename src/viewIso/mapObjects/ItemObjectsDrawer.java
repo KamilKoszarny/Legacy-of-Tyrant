@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
+import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
 import viewIso.IsoViewer;
 import viewIso.characters.CharsDrawer;
@@ -62,10 +63,10 @@ public class ItemObjectsDrawer {
 
     public static void checkHoverItem(Point hoverPoint){
         hoverItemObject = null;
-        for (MapObject itemObject: MapObjectDrawer.getMapObject2PointMap().keySet()) {
-            if(checkPointOnItem(hoverPoint, itemObject)) {
-                hoverItemObject = itemObject;
-                MapObjectDrawer.tooltipCanvas(itemObject.getName());
+        for (MapObject mapObject : MapObjectDrawer.getMapObject2PointMap().keySet()) {
+            if(checkPointOnItem(hoverPoint, mapObject)) {
+                hoverItemObject = mapObject;
+                MapObjectDrawer.tooltipCanvas(mapObject.getName());
             }
         }
         if (hoverItemObject == null)
@@ -73,6 +74,8 @@ public class ItemObjectsDrawer {
     }
 
     private static boolean checkPointOnItem(Point hoverPoint, MapObject itemObject) {
+        if (!(itemObject instanceof ItemMapObject))
+            return false;
         Point mapPos = MapObjectDrawer.getMapObject2PointMap().get(itemObject);
         MapObjectSprite mapObjectSprite = MapObjectDrawer.getPoint2mapObjectSpriteMap().get(mapPos);
 
