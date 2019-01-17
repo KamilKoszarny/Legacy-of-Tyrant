@@ -1,7 +1,8 @@
 package viewIso.mapObjects;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.Glow;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import model.Battle;
 import model.map.MapPiece;
@@ -12,12 +13,14 @@ import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MapObjectDrawer {
 
     private static java.util.Map<Point, MapObjectSprite> mapObjectSpriteMap = new HashMap<>();
     private static java.util.Map<MapObject, Point> mapObjectPointMap = new HashMap<>();
     private static boolean cutView;
+    private static Tooltip canvasTooltip = null;
 
 
     public MapObjectDrawer() {
@@ -93,7 +96,22 @@ public class MapObjectDrawer {
         return new Rectangle(spriteScreenPos.x - width/2, (int) (spriteScreenPos.y - height*MapObjectSprite.Y_BASE_RATIO), width, height);
     }
 
+    public static void tooltipCanvas(String text){
+        Canvas canvas = IsoViewer.getCanvas();
+        if (text.equals("") && canvasTooltip != null) {
+            Tooltip.uninstall(canvas, canvasTooltip);
+            canvasTooltip = null;
+        } else if (!text.equals("") && canvasTooltip == null){
+            canvasTooltip = new Tooltip(text);
+            Tooltip.install(canvas, canvasTooltip);
+        }
+    }
+
     public static java.util.Map<MapObject, Point> getMapObjectPointMap() {
         return mapObjectPointMap;
+    }
+
+    public static Map<Point, MapObjectSprite> getMapObjectSpriteMap() {
+        return mapObjectSpriteMap;
     }
 }

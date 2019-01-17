@@ -41,4 +41,8 @@ public class MapObject{
     public boolean isCutable() {
         return cutable;
     }
+
+    public String getName() {
+        return name;
+    }
 }

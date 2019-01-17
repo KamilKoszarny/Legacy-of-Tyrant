@@ -19,12 +19,12 @@ public class ItemsLoader {
 
     static {
         SPRITE_FOLDER_NAMES.put(null, "base");
-        SPRITE_FOLDER_NAMES.put(Weapon.class, "weapons");
-        SPRITE_FOLDER_NAMES.put(Shield.class, "shields");
         SPRITE_FOLDER_NAMES.put(BodyArmor.class, "armors");
         SPRITE_FOLDER_NAMES.put(Helmet.class, "heads");
         SPRITE_FOLDER_NAMES.put(Gloves.class, "hands");
         SPRITE_FOLDER_NAMES.put(Boots.class, "feets");
+        SPRITE_FOLDER_NAMES.put(Shield.class, "shields");
+        SPRITE_FOLDER_NAMES.put(Weapon.class, "weapons");
     }
 
     public static Image loadItemImage(String path) {
@@ -55,13 +55,13 @@ public class ItemsLoader {
                 itemSprite = loadSpriteSheet(spriteFolderName, sex, getSpriteNameByFolder(spriteFolderName, character));
                 character.getItems().getItemsSprites().put(spriteFolderName, itemSprite);
 
-                System.out.println(" " + spriteFolderName + ": " + (System.nanoTime() - time) / 1000000. + " ms");
+//                System.out.println(" " + spriteFolderName + ": " + (System.nanoTime() - time) / 1000000. + " ms");
                 time = System.nanoTime();
             }
             itemsSprites.add(itemSprite);
         }
 
-        System.out.println(" TOTAL item load: " + (System.nanoTime() - startTime)/1000000. + " ms");
+//        System.out.println(" TOTAL item load: " + (System.nanoTime() - startTime)/1000000. + " ms");
 
         return itemsSprites;
     }

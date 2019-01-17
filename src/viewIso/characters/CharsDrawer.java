@@ -48,21 +48,15 @@ public class CharsDrawer {
 
         GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
 
-        if(transparency) {
+        if(transparency)
             gc.setGlobalAlpha(.5);
-            gc.drawImage(spriteSheet,
+
+        gc.drawImage(spriteSheet,
                     (SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width)/SCALING, (SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height)/SCALING,
                     SPRITE_SIZE.width/SCALING, SPRITE_SIZE.height/SCALING,
                     charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
                     SPRITE_SIZE.width, SPRITE_SIZE.height);
-            gc.setGlobalAlpha(1);
-        } else {
-            gc.drawImage(spriteSheet,
-                    (SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width)/SCALING, (SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height)/SCALING,
-                    SPRITE_SIZE.width/SCALING, SPRITE_SIZE.height/SCALING,
-                    charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
-                    SPRITE_SIZE.width, SPRITE_SIZE.height);
-        }
+        gc.setGlobalAlpha(1);
 
         LabelsDrawer.drawNameLabel(character, charScreenPos);
         if (character.getAttackResult() != null)

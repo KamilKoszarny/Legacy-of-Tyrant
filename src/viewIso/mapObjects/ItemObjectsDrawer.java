@@ -3,8 +3,10 @@ package viewIso.mapObjects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
 import model.Battle;
 import model.character.Character;
+import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
 import viewIso.IsoViewer;
 import viewIso.characters.CharsDrawer;
@@ -54,13 +56,37 @@ public class ItemObjectsDrawer {
     public static void checkHoverItem(Point hoverPoint){
         hoverItemObject = null;
         for (MapObject itemObject: MapObjectDrawer.getMapObjectPointMap().keySet()) {
-            if(calcClickBox(itemObject).contains(hoverPoint))
+            if(checkPointOnItem(hoverPoint, itemObject)) {
                 hoverItemObject = itemObject;
+                MapObjectDrawer.tooltipCanvas(itemObject.getName());
+            }
         }
+        if (hoverItemObject == null)
+            MapObjectDrawer.tooltipCanvas("");
+    }
+
+    private static boolean checkPointOnItem(Point hoverPoint, MapObject itemObject) {
+        Point mapPos = MapObjectDrawer.getMapObjectPointMap().get(itemObject);
+        Point screenPos = MapDrawCalculator.screenPositionWithHeight(mapPos);
+        assert screenPos != null;
+
+        MapObjectSprite mapObjectSprite = MapObjectDrawer.getMapObjectSpriteMap().get(mapPos);
+        Image image = mapObjectSprite.getImage();
+        Point screenPosUpLeft = new Point(screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
+        Point onImagePos = new Point(hoverPoint.x - screenPosUpLeft.x, hoverPoint.y - screenPosUpLeft.y);
+
+        if (onImagePos.x > 0 && onImagePos.x < image.getWidth() && onImagePos.y > 0 && onImagePos.y < image.getHeight()) {
+            PixelReader pixelReader = image.getPixelReader();
+            int argb = pixelReader.getArgb(onImagePos.x, onImagePos.y);
+            int alpha = argb & 0x00ffffff;
+            return alpha > 0;
+        }
+        return false;
     }
 
     private static Rectangle calcClickBox(MapObject itemObject) {
-        Point screenPos = MapDrawCalculator.screenPositionWithHeight(MapObjectDrawer.getMapObjectPointMap().get(itemObject));
+        Point mapPos = MapObjectDrawer.getMapObjectPointMap().get(itemObject);
+        Point screenPos = MapDrawCalculator.screenPositionWithHeight(mapPos);
         assert screenPos != null;
         return new Rectangle(screenPos.x - CharsDrawer.SPRITE_BASE.width/2, screenPos.y - CharsDrawer.SPRITE_BASE.height*2/3,
                 CharsDrawer.SPRITE_SIZE.width/2, CharsDrawer.SPRITE_SIZE.height*2/3);

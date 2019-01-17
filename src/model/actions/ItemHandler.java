@@ -24,6 +24,8 @@ public class ItemHandler {
 
     public static final int INVENTORY_X = 5, INVENTORY_Y = 5;
     public static final int ITEM_SLOT_SIZE = 30;
+    private static final double ITEM_THROW_DIST = 10;
+
     private static Item heldItem = null;
     private static Point heldPoint;
 
@@ -94,31 +96,33 @@ public class ItemHandler {
     }
 
     public static void giveItem(Character giver, Character taker, Item item) {
-        if (item instanceof Weapon) {
-            if (taker.getItems().getWeapon().equals(Weapon.NOTHING) &&
-                    (((Weapon) item).getHands() == 1 || taker.getItems().getShield().equals(Shield.NOTHING))) {
-                taker.getItems().setWeapon((Weapon) item, true);
-                heldItem = null;
-            } else if (taker.getItems().getSpareWeapon().equals(Weapon.NOTHING) &&
-                    (((Weapon) item).getHands() == 1 || taker.getItems().getSpareShield().equals(Shield.NOTHING))) {
-                taker.getItems().setSpareWeapon((Weapon) item);
-                heldItem = null;
+        if (giver.getPosition().distance(taker.getPosition()) <= ITEM_THROW_DIST) {
+            if (item instanceof Weapon) {
+                if (taker.getItems().getWeapon().equals(Weapon.NOTHING) &&
+                        (((Weapon) item).getHands() == 1 || taker.getItems().getShield().equals(Shield.NOTHING))) {
+                    taker.getItems().setWeapon((Weapon) item, true);
+                    heldItem = null;
+                } else if (taker.getItems().getSpareWeapon().equals(Weapon.NOTHING) &&
+                        (((Weapon) item).getHands() == 1 || taker.getItems().getSpareShield().equals(Shield.NOTHING))) {
+                    taker.getItems().setSpareWeapon((Weapon) item);
+                    heldItem = null;
+                } else
+                    putInFirstInventorySlot(taker, item);
+            } else if (item instanceof Shield) {
+                if (taker.getItems().getShield().equals(Shield.NOTHING)) {
+                    taker.getItems().setShield((Shield) item, true);
+                    heldItem = null;
+                } else if (taker.getItems().getSpareShield().equals(Shield.NOTHING)) {
+                    taker.getItems().setSpareShield((Shield) item);
+                    heldItem = null;
+                } else
+                    putInFirstInventorySlot(taker, item);
             } else
                 putInFirstInventorySlot(taker, item);
-        } else if (item instanceof Shield) {
-            if (taker.getItems().getShield().equals(Shield.NOTHING)) {
-                taker.getItems().setShield((Shield) item, true);
-                heldItem = null;
-            } else if (taker.getItems().getSpareShield().equals(Shield.NOTHING)) {
-                taker.getItems().setSpareShield((Shield) item);
-                heldItem = null;
-            } else
-                putInFirstInventorySlot(taker, item);
-        } else
-            putInFirstInventorySlot(taker, item);
 
-        CharDescriptor.refreshInventory(giver);
-        StatsCalculator.calcStats(taker);
+            CharDescriptor.refreshInventory(giver);
+            StatsCalculator.calcStats(taker);
+        }
     }
 
     private static boolean putInFirstInventorySlot(Character taker, Item item) {
@@ -132,11 +136,13 @@ public class ItemHandler {
     }
 
     public static void dropItem(Item item, Point mapPoint) {
-        ItemMapObject itemMapObject = new ItemMapObject(item);
-        MapPiece mapPiece = Battle.getMap().getPoints().get(mapPoint);
-        mapPiece.setObject(itemMapObject);
-        MapObjectDrawer.refreshSpriteMap(mapPoint);
-        heldItem = null;
+        if (Battle.getChosenCharacter().getPosition().distance(mapPoint) <= ITEM_THROW_DIST) {
+            ItemMapObject itemMapObject = new ItemMapObject(item);
+            MapPiece mapPiece = Battle.getMap().getPoints().get(mapPoint);
+            mapPiece.setObject(itemMapObject);
+            MapObjectDrawer.refreshSpriteMap(mapPoint);
+            heldItem = null;
+        }
     }
 
     private static boolean equipmentClicked(int[] clickedInventorySlot) {
