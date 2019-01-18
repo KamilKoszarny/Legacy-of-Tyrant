@@ -12,7 +12,6 @@ public class IsoViewer {
     private static MapDrawer mapDrawer;
     private static ClickMenusDrawer clickMenusDrawer;
     private static SpritesDrawer spritesDrawer;
-    private static boolean cutView = false;
     private static Point mapMove = new Point(0, 0);
     private static Canvas canvas;
 
@@ -28,7 +27,7 @@ public class IsoViewer {
             moveMap();
         mapDrawer.drawMap();
         PathDrawer.drawPaths(true);
-        spritesDrawer.drawVisibleSprites(cutView);
+        spritesDrawer.drawVisibleSprites();
         PathDrawer.drawPaths(false);
     }
 
@@ -37,7 +36,7 @@ public class IsoViewer {
         if (MapDrawCalculator.mapOnScreen()) {
             mapDrawer.clearMapBounds();
             mapDrawer.drawMap();
-            spritesDrawer.drawVisibleSprites(cutView);
+            spritesDrawer.drawVisibleSprites();
             clickMenusDrawer.moveMenus(mapMove);
         } else {
             MapDrawer.changeZeroScreenPosition(new Point(-mapMove.x, -mapMove.y));
@@ -51,10 +50,6 @@ public class IsoViewer {
             IsoViewer.mapMove.x = mapMove.x;
         else
             IsoViewer.mapMove = mapMove;
-    }
-
-    public static void switchCutView() {
-        cutView = !cutView;
     }
 
     public static Canvas getCanvas() {

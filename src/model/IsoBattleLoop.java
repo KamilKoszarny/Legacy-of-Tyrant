@@ -158,7 +158,8 @@ public class IsoBattleLoop extends AnimationTimer{
     private void handleHover() {
         if (hoverPoint != null) {
             LabelsDrawer.checkHoverCharacter(hoverPoint);
-            ItemObjectsDrawer.checkHoverItem(hoverPoint);
+            MapObjectDrawer.checkHoverObject(hoverPoint);
+//            ItemObjectsDrawer.checkHoverItem(hoverPoint);
         }
     }
 

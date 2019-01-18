@@ -20,6 +20,7 @@ public class MapObject{
         this.size = size;
         this.look = look;
         this.cutable = cutable;
+        this.name = type.name();
     }
 
     public MapObjectType getType() {

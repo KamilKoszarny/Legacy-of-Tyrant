@@ -62,7 +62,7 @@ public class IsoViewController {
 
         new PanelController(panelHBox, panel);
         new IsoMapBorderHoverController(mapCanvas, groupBorderCanvases(), panelHBox);
-        new IsoMapClickController(mapCanvas, panel);
+        new IsoMapClickController(mapCanvas);
         new IsoMapHoverController(mapCanvas);
         new IsoMapKeyController(mapCanvas.getScene());
     }

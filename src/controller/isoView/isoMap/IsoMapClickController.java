@@ -1,6 +1,5 @@
 package controller.isoView.isoMap;
 
-import controller.isoView.isoPanel.Panel;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseButton;
 import model.Battle;
@@ -13,7 +12,6 @@ import model.map.mapObjects.MapObjectType;
 import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.mapObjects.MapObjectDrawer;
-import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 
@@ -21,7 +19,7 @@ public class IsoMapClickController {
 
     private Canvas mapCanvas;
 
-    public IsoMapClickController(Canvas mapCanvas, Panel panel) {
+    public IsoMapClickController(Canvas mapCanvas) {
         this.mapCanvas = mapCanvas;
 
         initialize();

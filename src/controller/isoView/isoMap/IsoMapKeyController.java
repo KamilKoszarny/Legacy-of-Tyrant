@@ -7,6 +7,7 @@ import model.EventType;
 import model.IsoBattleLoop;
 import viewIso.ClickMenusDrawer;
 import viewIso.IsoViewer;
+import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 
@@ -41,7 +42,7 @@ public class IsoMapKeyController {
                             new Point(IsoMapBorderHoverController.MAP_MOVE_STEP, 0)));
                     break;
                 case SLASH:
-                    IsoViewer.switchCutView();
+                    MapObjectDrawer.switchCutView();
                     break;
                 case ESCAPE:
                     ClickMenusDrawer.hideMenus();

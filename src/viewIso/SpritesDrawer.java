@@ -23,14 +23,14 @@ public class SpritesDrawer {
         mapObjectDrawer = new MapObjectDrawer();
     }
 
-    public void drawVisibleSprites(boolean cutView) {
+    public void drawVisibleSprites() {
         LabelsDrawer.hideLabels();
         List<Point> visiblePoints = MapDrawCalculator.calcVisiblePoints();
         visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
         for (Point point: visiblePoints) {
             MapPiece mapPiece = Battle.getMap().getPoints().get(point);
             if (mapPiece.getObject() != null) {
-                mapObjectDrawer.drawObject(point, cutView);
+                mapObjectDrawer.drawObject(point);
             }
             for (Character character: Battle.getCharacters()) {
                 if (point.equals(character.getPosition())) {
