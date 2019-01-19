@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import model.Battle;
 import model.map.MapPiece;
+import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.IsoViewer;
@@ -35,7 +36,7 @@ public class MapObjectDrawer {
         MapPiece mapPiece = Battle.getMap().getPoints().get(point);
         MapObject mapObject = mapPiece.getObject();
         if (mapObject != null) {
-            point2mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
+            point2mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject()));
             mapObject2PointMap.put(mapPiece.getObject(), point);
         }
     }
@@ -45,7 +46,7 @@ public class MapObjectDrawer {
             MapPiece mapPiece = Battle.getMap().getPoints().get(point);
             MapObject mapObject = mapPiece.getObject();
             if (mapObject != null) {
-                point2mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject(), mapObject.isCutable()));
+                point2mapObjectSpriteMap.put(point, new MapObjectSprite(mapPiece.getObject()));
                 mapObject2PointMap.put(mapPiece.getObject(), point);
             }
         }
@@ -57,7 +58,7 @@ public class MapObjectDrawer {
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
         assert screenPos != null;
         GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
-        if (cutView && mapObjectSprite.isCutable()){
+        if (cutView && mapObjectSprite.getObject().getType().isCutable()){
             drawCutImage(mapObjectSprite, image, screenPos, gc);
         } else {
             glow(mapObjectSprite, gc);
@@ -72,17 +73,23 @@ public class MapObjectDrawer {
     }
 
     private void drawCutImage(MapObjectSprite mapObjectSprite, Image image, Point screenPos, GraphicsContext gc) {
-        int sourceX = (int) (image.getWidth() * .4);
-        int sourceY = (int)(mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y)/2);
-        int sourceWidth = (int) (image.getWidth() * .2);
-        int sourceHeight = (int)(image.getHeight() - mapObjectSprite.getOffset().y);
+        if (mapObjectSprite.getObject().getType().hasCutImage())
+            gc.drawImage(mapObjectSprite.getCutImage(),
+                    screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);
+        else {
+            int sourceX = (int) (image.getWidth() * .4);
+            int sourceY = (int) (mapObjectSprite.getOffset().y - (image.getHeight() - mapObjectSprite.getOffset().y) / 2);
+            int sourceWidth = (int) (image.getWidth() * .2);
+            int sourceHeight = (int) (image.getHeight() - mapObjectSprite.getOffset().y);
 
-        glow(mapObjectSprite, gc);
-        gc.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight,
-                screenPos.x - mapObjectSprite.getOffset().x + sourceX, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
-                sourceWidth, sourceHeight);
-        gc.setEffect(null);
+            glow(mapObjectSprite, gc);
+            gc.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight,
+                    screenPos.x - mapObjectSprite.getOffset().x + sourceX, screenPos.y - mapObjectSprite.getOffset().y + sourceY,
+                    sourceWidth, sourceHeight);
+            gc.setEffect(null);
+        }
     }
+
 
     private static void glow(MapObjectSprite mapObjectSprite, GraphicsContext gc) {
         if (hoverObject != null && mapObjectSprite.getObject().equals(hoverObject)) {
@@ -113,6 +120,8 @@ public class MapObjectDrawer {
 
     private static boolean checkPointOnMapObject(Point mousePoint, MapObject mapObject) {
         if (!mapObject.getType().isClickable())
+            return false;
+        if (cutView && !(mapObject instanceof ItemMapObject))
             return false;
 
         Point mapPos = mapObject2PointMap.get(mapObject);

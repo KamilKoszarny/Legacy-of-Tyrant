@@ -38,7 +38,7 @@ public class MapObjectsGenerator {
         if (r.nextInt(type.getProbabilityDivider()) < 1) {
             size = checkAvailableSize(point, terrain);
             look = r.nextInt(type.getLooks());
-            mapPiece.setObject(new MapObject(type, size, look, true));
+            mapPiece.setObject(new MapObject(type, size, look));
             setNonWalkablePieces(point, size + 1);
         }
     }

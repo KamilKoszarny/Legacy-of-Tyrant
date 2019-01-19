@@ -1,16 +1,20 @@
 package viewIso.characters;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
 import main.App;
 import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.items.ItemsLoader;
 import model.items.weapon.Weapon;
+import model.map.mapObjects.MapObject;
 import viewIso.IsoViewer;
 import viewIso.LabelsDrawer;
 import viewIso.map.MapDrawCalculator;
+import viewIso.mapObjects.MapObjectSprite;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -106,6 +110,36 @@ public class CharsDrawer {
                 clickedCharacter = character;
                 return true;
             }
+        }
+        return false;
+    }
+
+    private static boolean checkPointOnCharacter(Point mousePoint, Character character) {
+
+        Point mapPos = character.getPosition();
+        CharSprite charSprite = charSpriteSheetMap.get(character);
+        Image spriteSheet = charSprite.getCharSpriteSheet();
+
+        int framePosX = charSprite.getFramePos();
+        int framePosY = (character.getDirection() + 6) % 8;
+
+        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(spriteSheet, null);
+        bufferedImage = bufferedImage.getSubimage((int)((SPRITES_SPAN.width * framePosX + SPRITE_OFFSET.width)/SCALING),
+                (int)((SPRITES_SPAN.height * framePosY + SPRITE_OFFSET.height)/SCALING),
+                (int)(SPRITE_SIZE.width/SCALING), (int)(SPRITE_SIZE.height/SCALING));
+        Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        Point screenPos = MapDrawCalculator.screenPositionWithHeight(mapPos);
+        assert screenPos != null;
+
+        Point screenPosUpLeft = new Point((int)(screenPos.x - SPRITE_OFFSET.getWidth()/SCALING), (int)(screenPos.y - SPRITE_OFFSET.getHeight()/SCALING));
+        Point onImagePos = new Point(mousePoint.x - screenPosUpLeft.x, mousePoint.y - screenPosUpLeft.y);
+
+        if (onImagePos.x > 0 && onImagePos.x < image.getWidth() && onImagePos.y > 0 && onImagePos.y < image.getHeight()) {
+            PixelReader pixelReader = image.getPixelReader();
+            int argb = pixelReader.getArgb(onImagePos.x, onImagePos.y);
+            int alpha = argb & 0x00ffffff;
+            return alpha > 0;
         }
         return false;
     }

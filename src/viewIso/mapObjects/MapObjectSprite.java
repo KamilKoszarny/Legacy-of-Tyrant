@@ -19,15 +19,13 @@ public class MapObjectSprite {
     private static final int VISIBILITY_PIXELS_LIMIT = 100, VISIBILITY_IMPROVE_TRIES = 5;
     private static int visiblePixels, visiblePixelsMax, bestVisibleDirection;
 
-    private Image image;
+    private Image image, cutImage;
     public static final double Y_BASE_RATIO = .85;
     private Point offset = new Point();
     private MapObject object;
-    private boolean cutable;
 
-    public MapObjectSprite(MapObject mapObject, boolean cutable) {
+    public MapObjectSprite(MapObject mapObject) {
         object = mapObject;
-        this.cutable = cutable;
         findImage(mapObject);
         offset.x = (int) (image.getWidth() / 2);
         offset.y = (int) (image.getHeight() * Y_BASE_RATIO);
@@ -40,6 +38,10 @@ public class MapObjectSprite {
         }
         String path = buildPath(mapObject);
         image = new Image(path);
+        if (mapObject.getType().hasCutImage()) {
+            path = pathToCutImage(path);
+            cutImage = new Image(path);
+        }
     }
 
     private void cutItemImage(ItemWithSprite itemWithSprite) {
@@ -100,8 +102,18 @@ public class MapObjectSprite {
         return path.toString();
     }
 
+    private String pathToCutImage(String path){
+        int indexOfDot = path.lastIndexOf(".");
+        String pathToCutImage = path.substring(0, indexOfDot) + "cut.png";
+        return pathToCutImage;
+    }
+
     public Image getImage() {
         return image;
+    }
+
+    public Image getCutImage() {
+        return cutImage;
     }
 
     public Point getOffset() {
@@ -110,10 +122,6 @@ public class MapObjectSprite {
 
     public MapObject getObject() {
         return object;
-    }
-
-    public boolean isCutable() {
-        return cutable;
     }
 }
 

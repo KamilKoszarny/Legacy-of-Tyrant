@@ -6,20 +6,17 @@ public class MapObject{
     private MapObjectType type;
     private int size;
     private int look;
-    private boolean cutable;
     private String name;
 
-    public MapObject(MapObjectType type, boolean cutable, String name) {
+    public MapObject(MapObjectType type, String name) {
         this.type = type;
-        this.cutable = cutable;
         this.name = name;
     }
 
-    public MapObject(MapObjectType type, int size, int look, boolean cutable) {
+    public MapObject(MapObjectType type, int size, int look) {
         this.type = type;
         this.size = size;
         this.look = look;
-        this.cutable = cutable;
         this.name = type.name();
     }
 
@@ -37,10 +34,6 @@ public class MapObject{
 
     public void setLook(int look) {
         this.look = look;
-    }
-
-    public boolean isCutable() {
-        return cutable;
     }
 
     public String getName() {

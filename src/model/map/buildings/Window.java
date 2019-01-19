@@ -10,7 +10,7 @@ public class Window extends MapObject {
 
 
     public Window(int look, WallType type) {
-        super(MapObjectType.WINDOW, 0, type.getCode() + look, true);
+        super(MapObjectType.WINDOW, 0, type.getCode() + look);
     }
 
     public boolean isOpen() {
