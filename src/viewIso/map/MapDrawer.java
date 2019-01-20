@@ -1,14 +1,25 @@
 package viewIso.map;
 
-import controller.isoView.isoMap.IsoMapBorderHoverController;
+import helpers.my.CalcHelper;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Light;
+import javafx.scene.effect.Lighting;
+import javafx.scene.image.PixelReader;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import main.App;
+import model.Battle;
+import model.character.Character;
 import model.map.Map;
+import model.map.lights.VisibilityCalculator;
 import viewIso.panel.PanelViewer;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static viewIso.map.MapDrawCalculator.screenPosition;
@@ -25,7 +36,8 @@ public class MapDrawer {
     private Canvas canvas;
     private GraphicsContext gc;
     private MapPieceDrawer mPDrawer;
-    private MapImage mapImage;
+    private static MapImage mapImage;
+    private static WritableImage lightMapImage;
 
     public MapDrawer(Map map, Canvas canvas) {
         MapDrawer.map = map;
@@ -49,109 +61,91 @@ public class MapDrawer {
     }
 
     public void drawMap() {
-        canvas.getGraphicsContext2D().drawImage(mapImage.getImage(),
-                -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
-                canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
+        clearMap();
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+//        lightMap(gc);
+        gc.setFill(new ImagePattern(mapImage.getImage(),
+                mapImage.getxShift() + zeroScreenPosition.x, mapImage.getyShift() + zeroScreenPosition.y,
+                mapImage.getWidth(), mapImage.getHeight(), false));
+
+        if (map.isDiscovered()) {
+            gc.drawImage(mapImage.getImage(),
+                    -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
+                    canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
+        } else {
+            List<List<Point>> exploredEdges = mapImage.getExploredEdges();
+            drawMapPart(gc, exploredEdges);
+        }
+
+        List<List<Point>> viewAllEdges = mapImage.getViewAllEdges();
+        gc.setEffect(new ColorAdjust(0, 0, .25, 0));
+        drawMapPart(gc, viewAllEdges);
+
+        List<List<Point>> viewEdges = mapImage.getViewEdges();
+        gc.setEffect(new ColorAdjust(0, 0, .5, 0));
+        drawMapPart(gc, viewEdges);
+        gc.setEffect(null);
     }
 
-//    public void drawMap(){
-//        drawMapPoints(MapDrawCalculator.calcVisiblePoints());
-//    }
-
-    public void drawMapPoints(List<Point> points) {
-        for (Point point: points) {
-            mPDrawer.drawMapPiece(point);
+    private void drawMapPart(GraphicsContext gc, List<List<Point>> edges) {
+        for (List<Point> edge : edges) {
+            List<Point> screenEdge = new ArrayList<>();
+            for (Point point: edge) {
+                screenEdge.add(MapDrawCalculator.screenPositionWithHeight(point));
+            }
+            double[][] xyCoords = CalcHelper.pointsList2Coords(screenEdge);
+            gc.fillPolygon(xyCoords[0], xyCoords[1], xyCoords[0].length);
         }
     }
 
-    public void clearPointAround(Point point, int width, int height, int shiftX, int shiftY) {
-        Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
-        clearBox(new Point(screenPos.x - shiftX, screenPos.y - shiftY), width, height);
-        drawMapPoints(MapDrawCalculator.calcClosePoints(point, width, height));
+
+    private static void lightMap(GraphicsContext gc) {
+        lightMapImage = mapImage.getImage();
+        Character chosenChar = Battle.getChosenCharacter();
+        if (chosenChar != null) {
+            Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(chosenChar.getPosition());
+            assert charScreenPos != null;
+
+            Light.Point light = new Light.Point();
+            light.setX(charScreenPos.x);
+            light.setY(charScreenPos.y);
+            light.setZ(800);
+            light.setColor(Color.WHITE);
+
+            Lighting lighting = new Lighting();
+            lighting.setSurfaceScale(0);
+//            lighting.setDiffuseConstant(diff += 0.02);
+//            lighting.setSpecularConstant(diff += .01);
+//            lighting.setSpecularExponent(specExp += .5);
+            lighting.setLight(light);
+            gc.setEffect(lighting);
+        }
     }
 
-    private void clearBox(Point point, int width, int height) {
+    private static void lightMapPixelVersion() {
+        lightMapImage = mapImage.getImage();
+        PixelWriter pixWriter = lightMapImage.getPixelWriter();
+        PixelReader pixReader = lightMapImage.getPixelReader();
+        Character chosenChar = Battle.getChosenCharacter();
+        if (chosenChar != null) {
+            java.util.Map<Point, Integer> lightMap = VisibilityCalculator.calcLightMap(chosenChar);
+            for (Point point: lightMap.keySet()) {
+                Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
+                if (MapDrawCalculator.isOnCanvas(screenPos)) {
+                    Color color = pixReader.getColor(screenPos.x, screenPos.y);
+//                    if (!color.equals(Color.BLACK)) {
+                        double brightnessMultiplier = 1 + lightMap.get(point) / 100;
+                        color = color.deriveColor(0, 1, brightnessMultiplier, 1);
+                        pixWriter.setColor(screenPos.x, screenPos.y, color);
+//                    }
+                }
+            }
+        }
+    }
+
+    public void clearMap(){
         gc.setFill(BACKGROUND_COLOR);
-        gc.fillRect(point.x, point.y, width, height);
-    }
-
-    public void clearMapBounds(){
-        //dir 0: N-S, 1: E_W
-        double[] xCoords = new double[8];
-        double[] yCoords = new double[8];
-        Point point;
-        int moveStep = IsoMapBorderHoverController.MAP_MOVE_STEP;
-
-        setCoordsUpper(xCoords, yCoords, moveStep);
-        gc.setFill(BACKGROUND_COLOR);
-        gc.fillPolygon(xCoords, yCoords, 8);
-
-        setCoordsBottom(xCoords, yCoords, moveStep);
-        gc.setFill(BACKGROUND_COLOR);
-        gc.fillPolygon(xCoords, yCoords, 8);
-    }
-
-    private void setCoordsUpper(double[] xCoords, double[] yCoords, int moveStep) {
-        Point point;
-        point = new Point(0, 0);
-        xCoords[0] = screenPosition(point).x;
-        yCoords[0] = screenPosition(point).y - MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        point = new Point(map.mapXPoints, 0);
-        xCoords[1] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[1] = screenPosition(point).y - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[2] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[2] = screenPosition(point).y - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[3] = screenPosition(point).x;
-        yCoords[3] = screenPosition(point).y - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        point = new Point(0, 0);
-        xCoords[4] = screenPosition(point).x;
-        yCoords[4] = screenPosition(point).y + MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        point = new Point(0, map.mapYPoints);
-        xCoords[5] = screenPosition(point).x;
-        yCoords[5] = screenPosition(point).y - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[6] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[6] = screenPosition(point).y - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[7] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[7] = screenPosition(point).y - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-    }
-
-    private void setCoordsBottom(double[] xCoords, double[] yCoords, int moveStep) {
-        Point point;
-        point = new Point(map.mapXPoints, map.mapYPoints);
-        xCoords[0] = screenPosition(point).x;
-        yCoords[0] = screenPosition(point).y - MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        point = new Point(map.mapXPoints, 0);
-        xCoords[1] = screenPosition(point).x;
-        yCoords[1] = screenPosition(point).y - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[2] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[2] = screenPosition(point).y - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[3] = screenPosition(point).x + MAP_PIECE_SCREEN_SIZE_X / 2 + moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[3] = screenPosition(point).y - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        point = new Point(map.mapXPoints, map.mapYPoints);
-        xCoords[4] = screenPosition(point).x;
-        yCoords[4] = screenPosition(point).y + MAP_PIECE_SCREEN_SIZE_Y / 2 - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y +
-                50;
-
-        point = new Point(0, map.mapYPoints);
-        xCoords[5] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[5] = screenPosition(point).y - map.MIN_HEIGHT_PIX + moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[6] = screenPosition(point).x - MAP_PIECE_SCREEN_SIZE_X / 2 - moveStep * MAP_PIECE_SCREEN_SIZE_X;
-        yCoords[6] = screenPosition(point).y - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
-
-        xCoords[7] = screenPosition(point).x;
-        yCoords[7] = screenPosition(point).y - map.MAX_HEIGHT_PIX - moveStep * MAP_PIECE_SCREEN_SIZE_Y;
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
 
@@ -175,6 +169,4 @@ public class MapDrawer {
     public Canvas getCanvas() {
         return canvas;
     }
-
-
 }

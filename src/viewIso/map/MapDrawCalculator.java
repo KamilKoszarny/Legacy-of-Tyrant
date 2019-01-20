@@ -128,6 +128,15 @@ public class MapDrawCalculator {
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
     }
 
+    public static Point relativeScreenPositionWithHeight(Point point){
+        Point relScreenPos = new Point((int)(point.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
+                (int)(point.getX() * MAP_PIECE_SCREEN_SIZE_Y /2 + point.getY() * MAP_PIECE_SCREEN_SIZE_Y /2 -
+                        map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
+        if (relScreenPos.x < 0) relScreenPos.x = 0;
+        if (relScreenPos.y < 0) relScreenPos.y = 0;
+        return relScreenPos;
+    }
+
     public static Point relativeScreenPositionWithHeight(Point2D point2D){
         Point point = new Point(Math.round(Math.round(point2D.getX())), Math.round(Math.round(point2D.getY())));
         return new Point((int)(point2D.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point2D.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
@@ -143,7 +152,7 @@ public class MapDrawCalculator {
     public static java.util.List<Point> calcVisiblePoints(){
         List<Point> visiblePoints = new ArrayList<>();
         for (Point point: map.getPoints().keySet()) {
-            if (isOnCanvas(screenPosition(point)))
+            if (isOnCanvaspPlusHeigth(screenPosition(point)))
                 visiblePoints.add(point);
         }
 
@@ -154,9 +163,14 @@ public class MapDrawCalculator {
         return point.x >= 0 && point.x < map.mapXPoints && point.y >= 0 && point.y < map.mapYPoints;
     }
 
-    private static boolean isOnCanvas(Point screenPoint){
+    public static boolean isOnCanvas(Point screenPoint){
+        return screenPoint.x >= 0 && screenPoint.x <= mapDrawer.getCanvas().getWidth() &&
+                screenPoint.y >= 0 && screenPoint.y <= mapDrawer.getCanvas().getHeight();
+    }
+
+    private static boolean isOnCanvaspPlusHeigth(Point screenPoint){
         return screenPoint.x >= 0 && screenPoint.x <= mapDrawer.getCanvas().getWidth() + MAP_PIECE_SCREEN_SIZE_X &&
-                screenPoint.y >= 0 + map.MIN_HEIGHT_PIX * 10 && screenPoint.y <= mapDrawer.getCanvas().getHeight() + map.MAX_HEIGHT_PIX * 10;
+                screenPoint.y >= map.MIN_HEIGHT_PIX * 10 && screenPoint.y <= mapDrawer.getCanvas().getHeight() + map.MAX_HEIGHT_PIX * 10;
     }
 
 }

@@ -60,8 +60,6 @@ public class PathDrawer {
         pathShapes.add(cross);
 
         character.setPathView(pathShapes);
-
-        System.out.println();
     }
 
     private static Polygon createPathTriangle(Point point, Point nextPoint) {

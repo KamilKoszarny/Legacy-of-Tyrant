@@ -23,6 +23,7 @@ public class Map {
     private GridGraph gridGraph;
     private boolean[] roadSides, waterSides, riverSides;
     private int buildingsCount, buildingMaxSize;
+    private boolean discovered = false;
 
     public Map(int widthM, int heightM, MapType type, MapHeightType heightType,
                boolean[] roadSides, boolean[] riverSides, boolean[] waterSides) {
@@ -128,5 +129,7 @@ public class Map {
         this.gridGraph = gridGraph;
     }
 
-
+    public boolean isDiscovered() {
+        return discovered;
+    }
 }

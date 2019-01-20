@@ -116,7 +116,7 @@ public class MapImageGenerator {
 
         shuffleColor = Color.hsb((shuffleColor.getHue() * ((1 - HSB_SHIFT) + r.nextDouble()* HSB_SHIFT *2))%360,
                 Math.min(shuffleColor.getSaturation()* ((1 - HSB_SHIFT) + r.nextDouble()* HSB_SHIFT *2), 1),
-                Math.min(shuffleColor.getBrightness()* ((1 - HSB_SHIFT) + r.nextDouble()* HSB_SHIFT *2), 1));
+                Math.min(shuffleColor.getBrightness()* (r.nextDouble()* HSB_SHIFT *2), 1));
 
         if (shuffleColor.equals(MapDrawer.BACKGROUND_COLOR))
             return originColor;

@@ -2,7 +2,6 @@
 
 package model.map;
 
-import model.map.heights.HeightGenerator;
 import model.map.mapObjects.MapObject;
 import model.map.terrains.Terrain;
 
@@ -15,8 +14,11 @@ public class MapPiece {
     private int slopeDir, slopeSize;
     private int light;
     private int[] relXCoords, relYCoords;
+    private double[] doubleRelXCoords, doubleRelYCoords;
     private MapObject object = null;
     private boolean walkable = true;
+    private double transparency = 1.;
+    private double visibility = 1;
 
     public Terrain getTerrain() {
         return terrain;
@@ -70,16 +72,32 @@ public class MapPiece {
         return relXCoords;
     }
 
+    public double[] getDoubleRelXCoords() {
+        return doubleRelXCoords;
+    }
+
     public void setRelXCoords(int[] relXCoords) {
         this.relXCoords = relXCoords;
+        doubleRelXCoords = new double[relXCoords.length];
+        for (int i = 0; i < relXCoords.length; i++) {
+            doubleRelXCoords[i] = relXCoords[i];
+        }
     }
 
     public int[] getRelYCoords() {
         return relYCoords;
     }
 
+    public double[] getDoubleRelYCoords() {
+        return doubleRelYCoords;
+    }
+
     public void setRelYCoords(int[] relYCoords) {
         this.relYCoords = relYCoords;
+        doubleRelYCoords = new double[relYCoords.length];
+        for (int i = 0; i < relYCoords.length; i++) {
+            doubleRelYCoords[i] = relYCoords[i];
+        }
     }
 
     public boolean isClicked(Point relClickPoint) {
@@ -124,6 +142,22 @@ public class MapPiece {
 
     public void setWalkable(boolean walkable) {
         this.walkable = walkable;
+    }
+
+    public double getTransparency() {
+        return transparency;
+    }
+
+    public void setTransparency(double transparency) {
+        this.transparency = transparency;
+    }
+
+    public double getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(double visibility) {
+        this.visibility = visibility;
     }
 }
 

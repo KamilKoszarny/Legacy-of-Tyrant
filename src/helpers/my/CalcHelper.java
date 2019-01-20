@@ -1,5 +1,6 @@
 package helpers.my;
 
+import java.awt.*;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,5 +22,16 @@ public class CalcHelper {
             sum = sum + i;
 
         return sum;
+    }
+
+    public static double[][] pointsList2Coords(List<Point> points) {
+        int size = points.size();
+        double[] xCoords = new double[size], yCoords = new double[size];
+        for (int i = 0; i < size; i++) {
+            xCoords[i] = points.get(i).getX();
+            yCoords[i] = points.get(i).getY();
+        }
+        double[][] xyCoords = {xCoords, yCoords};
+        return xyCoords;
     }
 }

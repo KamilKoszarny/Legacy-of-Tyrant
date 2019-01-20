@@ -2,6 +2,7 @@ package controller.isoView.isoMap;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import model.Battle;
 import model.BattleEvent;
 import model.EventType;
 import model.IsoBattleLoop;
@@ -46,6 +47,7 @@ public class IsoMapKeyController {
                     break;
                 case ESCAPE:
                     ClickMenusDrawer.hideMenus();
+                    Battle.setChosenCharacter(null);
             }
         });
         scene.setOnKeyReleased(keyEvent -> {

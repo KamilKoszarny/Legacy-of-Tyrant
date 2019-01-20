@@ -34,7 +34,6 @@ public class IsoViewer {
     private static void moveMap() {
         MapDrawer.changeZeroScreenPosition(mapMove);
         if (MapDrawCalculator.mapOnScreen()) {
-            mapDrawer.clearMapBounds();
             mapDrawer.drawMap();
             spritesDrawer.drawVisibleSprites();
             clickMenusDrawer.moveMenus(mapMove);
