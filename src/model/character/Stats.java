@@ -1,5 +1,9 @@
 package model.character;
 
+import javafx.scene.shape.Polygon;
+
+import java.util.List;
+
 public class Stats {
 
     private Character character;

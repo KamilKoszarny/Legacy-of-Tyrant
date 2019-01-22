@@ -5,19 +5,12 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import model.actions.attack.AttackResult;
-import model.items.Item;
-import model.items.armor.*;
-import model.items.weapon.Weapon;
 import viewIso.LabelsDrawer;
-import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Character {
 
@@ -46,6 +39,7 @@ public class Character {
     private List<Point2D> path;
     private int pathSection;
     private List<Polygon> pathView;
+    private Polygon view = new Polygon();
 
     private Items items = new Items(this);
 
@@ -225,6 +219,12 @@ public class Character {
         this.pathView = pathView;
     }
 
+    public Polygon getView() {
+        return view;
+    }
+    public void setView(Polygon view) {
+        this.view = view;
+    }
 
     public Items getItems() {
         return items;

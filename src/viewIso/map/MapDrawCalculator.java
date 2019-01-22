@@ -2,6 +2,7 @@ package viewIso.map;
 
 import controller.isoView.isoMap.IsoMapBorderHoverController;
 import javafx.geometry.Point2D;
+import javafx.scene.shape.Polygon;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.heights.HeightGenerator;
@@ -126,6 +127,18 @@ public class MapDrawCalculator {
         return new Point((int)(MapDrawer.getZeroScreenPosition().x + point2D.getX() * MAP_PIECE_SCREEN_SIZE_X /2 - point2D.getY() * MAP_PIECE_SCREEN_SIZE_X /2),
                 (int)(MapDrawer.getZeroScreenPosition().y + point2D.getX() * MAP_PIECE_SCREEN_SIZE_Y /2 + point2D.getY() * MAP_PIECE_SCREEN_SIZE_Y /2 -
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
+    }
+
+    public static double[][] screenWithHeightCoordsForDrawPolygon(Polygon polygon) {
+        int size = polygon.getPoints().size()/2;
+        double [][] coords = new double[2][size];
+        for (int i = 0; i < size; i++) {
+            Point2D point2D = new Point2D(polygon.getPoints().get(2*i), polygon.getPoints().get(2*i + 1));
+            Point point = screenPositionWithHeight(point2D);
+            coords[0][i] = point.getX();
+            coords[1][i] = point.getY();
+        }
+        return coords;
     }
 
     public static Point relativeScreenPositionWithHeight(Point point){

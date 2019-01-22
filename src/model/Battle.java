@@ -5,6 +5,7 @@ import model.actions.CharsChooser;
 import model.character.Character;
 import model.actions.movement.CharMover;
 import model.map.*;
+import model.map.lights.VisibilityCalculator;
 import viewIso.characters.CharsDrawer;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class Battle {
             } else {
                 CharsDrawer.nextFrame(character, timer);
             }
+            VisibilityCalculator.calcCharView(character);
         }
     }
 

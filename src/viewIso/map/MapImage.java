@@ -3,8 +3,8 @@ package viewIso.map;
 import helpers.my.ColorHelper;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 
-import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class MapImage {
     private WritableImage image;
     public static final int EXTRA_X = 10, EXTRA_Y = 100;
     private int width, height, xShift, yShift;
-    private List<List<Point>> viewEdges, viewAllEdges, exploredEdges;
+    private List<Polygon> exploredEdges;
 
     public MapImage(int width, int height, int xShift, int yShift) {
         this.width = width;
@@ -22,9 +22,9 @@ public class MapImage {
         this.yShift = yShift;
         image = new WritableImage(width, height);
 
-        exploredEdges = Arrays.asList(Arrays.asList(new Point(1, 2), new Point(100, 200), new Point(200, 249)));
-        viewEdges = Arrays.asList(Arrays.asList(new Point(10, 20), new Point(30, 40), new Point(40, 60)));
-        viewAllEdges = Arrays.asList(Arrays.asList(new Point(4, 30), new Point(32, 45), new Point(20, 75)));
+        exploredEdges = Arrays.asList(new Polygon(new double[]{1,1,30,1,1,60}),
+                new Polygon(new double[]{10,20,30,40,50,60}),
+                new Polygon(new double[]{19,29,39,49,59,69}));
     }
 
     public void setPixelColor(int x, int y, Color color) {
@@ -55,15 +55,7 @@ public class MapImage {
         return yShift;
     }
 
-    public List<List<Point>> getViewEdges() {
-        return viewEdges;
-    }
-
-    public List<List<Point>> getViewAllEdges() {
-        return viewAllEdges;
-    }
-
-    public List<List<Point>> getExploredEdges() {
+    public List<Polygon> getExploredEdges() {
         return exploredEdges;
     }
 }
