@@ -25,7 +25,7 @@ public class Battle {
         Battle.playerColor = playerColor;
     }
 
-    public static void updateCharacters(int ms) {
+    public static void update(int ms) {
         for (Character character: characters) {
             if (character.getDestination() != null) {
                 if (character.getPath().isEmpty())

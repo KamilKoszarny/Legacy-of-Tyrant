@@ -25,23 +25,30 @@ public class SpritesDrawer {
 
     public void drawVisibleSprites() {
         LabelsDrawer.hideLabels();
-        List<Point> visiblePoints = MapDrawCalculator.calcVisiblePoints();
+        List<Point> visiblePoints = MapDrawCalculator.calcOnCanvasPoints();
         visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
         for (Point point: visiblePoints) {
-            MapPiece mapPiece = Battle.getMap().getPoints().get(point);
-            if (mapPiece.getObject() != null) {
-                mapObjectDrawer.drawObject(point);
-            }
-            for (Character character: Battle.getCharacters()) {
-                if (point.equals(character.getPosition())) {
-                    charsDrawer.drawChar(character, false);
+            if (MapDrawCalculator.isExplored(point)) {
+                MapPiece mapPiece = Battle.getMap().getPoints().get(point);
+                if (mapPiece.getObject() != null) {
+                    mapObjectDrawer.drawObject(point);
                 }
+                drawCharIfThere(point);
             }
         }
         for (Character character: Battle.getCharacters()) {
+            if (MapDrawCalculator.isExplored(character.getPosition()))
                 charsDrawer.drawChar(character, true);
         }
 
         ItemObjectsDrawer.resetItemGlowIncrement();
+    }
+
+    private void drawCharIfThere(Point point) {
+        for (Character character : Battle.getCharacters()) {
+            if (point.equals(character.getPosition())) {
+                charsDrawer.drawChar(character, false);
+            }
+        }
     }
 }

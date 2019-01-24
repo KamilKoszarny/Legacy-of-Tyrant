@@ -12,7 +12,6 @@ import model.map.buildings.Door;
 import model.map.mapObjects.ItemMapObject;
 import viewIso.*;
 import viewIso.characters.CharsDrawer;
-import viewIso.mapObjects.ItemObjectsDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.PanelViewer;
 
@@ -60,7 +59,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void animate() {
-        Battle.updateCharacters(FRAME_RATE);
+        Battle.update(FRAME_RATE);
         IsoViewer.draw();
         PanelViewer.refresh();
     }

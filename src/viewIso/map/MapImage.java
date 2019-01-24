@@ -5,6 +5,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class MapImage {
     private WritableImage image;
     public static final int EXTRA_X = 10, EXTRA_Y = 100;
     private int width, height, xShift, yShift;
-    private List<Polygon> exploredEdges;
+    private List<Polygon> exploredView = new ArrayList<>();
 
     public MapImage(int width, int height, int xShift, int yShift) {
         this.width = width;
@@ -22,9 +23,7 @@ public class MapImage {
         this.yShift = yShift;
         image = new WritableImage(width, height);
 
-        exploredEdges = Arrays.asList(new Polygon(new double[]{1,1,30,1,1,60}),
-                new Polygon(new double[]{10,20,30,40,50,60}),
-                new Polygon(new double[]{19,29,39,49,59,69}));
+        exploredView.add(new Polygon(new double[]{1,1,30,1,1,60}));
     }
 
     public void setPixelColor(int x, int y, Color color) {
@@ -55,7 +54,7 @@ public class MapImage {
         return yShift;
     }
 
-    public List<Polygon> getExploredEdges() {
-        return exploredEdges;
+    public List<Polygon> getExploredView() {
+        return exploredView;
     }
 }

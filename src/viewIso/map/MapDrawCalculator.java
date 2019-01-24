@@ -133,10 +133,15 @@ public class MapDrawCalculator {
         int size = polygon.getPoints().size()/2;
         double [][] coords = new double[2][size];
         for (int i = 0; i < size; i++) {
-            Point2D point2D = new Point2D(polygon.getPoints().get(2*i), polygon.getPoints().get(2*i + 1));
-            Point point = screenPositionWithHeight(point2D);
-            coords[0][i] = point.getX();
-            coords[1][i] = point.getY();
+            if (polygon.getPoints().get(2*i) != null && polygon.getPoints().get(2*i) != null) {
+                Point2D point2D = new Point2D(polygon.getPoints().get(2 * i), polygon.getPoints().get(2 * i + 1));
+                Point point = screenPositionWithHeight(point2D);
+                coords[0][i] = point.getX();
+                coords[1][i] = point.getY();
+            } else {
+                coords[0][i] = coords[0][i-1];
+                coords[1][i] = coords[1][i-1];
+            }
         }
         return coords;
     }
@@ -162,7 +167,7 @@ public class MapDrawCalculator {
                 point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
     }
 
-    public static java.util.List<Point> calcVisiblePoints(){
+    public static java.util.List<Point> calcOnCanvasPoints(){
         List<Point> visiblePoints = new ArrayList<>();
         for (Point point: map.getPoints().keySet()) {
             if (isOnCanvaspPlusHeigth(screenPosition(point)))
@@ -170,6 +175,16 @@ public class MapDrawCalculator {
         }
 
         return visiblePoints;
+    }
+
+    public static boolean isExplored(Point point) {
+        Point2D point2D = new Point2D(point.x, point.y);
+        List<Polygon> exploredView = MapDrawer.getMapImage().getExploredView();
+        for (Polygon polygon: exploredView) {
+            if (polygon.contains(point2D))
+                return true;
+        }
+        return false;
     }
 
     public static boolean isOnMap(Point point) {

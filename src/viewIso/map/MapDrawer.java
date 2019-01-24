@@ -2,7 +2,7 @@ package viewIso.map;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Glow;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
@@ -64,12 +64,12 @@ public class MapDrawer {
                     -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
                     canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
         } else {
-            List<Polygon> exploredEdges = mapImage.getExploredEdges();
+            List<Polygon> exploredEdges = mapImage.getExploredView();
             drawMapPart(gc, exploredEdges);
         }
 
-        drawAllCharsViews(gc);
-        drawChosenCharView(gc);
+//        drawAllCharsViews(gc);
+//        drawChosenCharView(gc);
 
         gc.setEffect(null);
     }
@@ -80,14 +80,14 @@ public class MapDrawer {
             if (character.getColor().equals(Battle.getPlayerColor()))
             viewAll.add(character.getView());
         }
-        gc.setEffect(new ColorAdjust(0, 0, .25, 0));
+        gc.setEffect(new Glow(.5));
         drawMapPart(gc, viewAll);
     }
 
     private void drawChosenCharView(GraphicsContext gc) {
         if (Battle.getChosenCharacter() != null) {
             List<Polygon> view = Arrays.asList(Battle.getChosenCharacter().getView());
-            gc.setEffect(new ColorAdjust(0, 0, .5, 0));
+            gc.setEffect(new Glow(1));
             drawMapPart(gc, view);
         }
     }
@@ -124,5 +124,9 @@ public class MapDrawer {
 
     public Canvas getCanvas() {
         return canvas;
+    }
+
+    public static MapImage getMapImage() {
+        return mapImage;
     }
 }

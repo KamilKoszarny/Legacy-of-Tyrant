@@ -3,15 +3,17 @@ package helpers.my;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.shape.*;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import model.map.Map;
 import model.map.MapPiece;
 
+
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 
 public class GeomerticHelper {
     public static double distTo0(double x, double y) {
@@ -273,5 +275,82 @@ public class GeomerticHelper {
 
         }
         return pointsOnPath;
+    }
+
+    public static void mergePolygons(List<Polygon> polygons, Polygon newPolygon) {
+        for (int i = 0; i < polygons.size(); i++) {
+            Polygon polygon = polygons.get(i);
+            if (protrude(newPolygon, polygon)) {
+                if (layOn(newPolygon, polygon)) {
+                    Path path = (Path) Polygon.union(polygon, newPolygon);
+                    polygon = path2Polygon(path);
+                    polygons.set(i, polygon);
+                    return;
+                }
+            }
+        }
+    }
+
+    private static boolean layOn(Polygon polygon1, Polygon polygon2){
+        Path intersection = (Path) Shape.intersect(polygon1, polygon2);
+        return intersection.getElements().size() > 0;
+    }
+
+    private static boolean protrude(Polygon polygon1, Polygon polygon2){
+        Path subtraction = (Path) Shape.subtract(polygon1, polygon2);
+        return subtraction.getElements().size() > 0;
+    }
+
+    public static void smoothPolygons(List<Polygon> polygons) {
+        for (Polygon polygon: polygons) {
+            smoothPolygon(polygon);
+        }
+    }
+
+    public static void smoothPolygon(Polygon polygon) {
+        final double SMOOTH_LIMIT = 5;
+        List<Double> coords = polygon.getPoints();
+        for (int i = 0; i < coords.size()/2 - 2; i++) {
+            if (coords.get(i*2) != null && coords.get(i*2+1) != null && coords.get(i*2+2) != null &&
+                    coords.get(i*2+3) != null && coords.get(i*2+4) != null && coords.get(i*2+5) != null) {
+                Point2D point1 = new Point2D(coords.get(i * 2), coords.get(i * 2 + 1));
+                Point2D point2 = new Point2D(coords.get(i * 2 + 2), coords.get(i * 2 + 3));
+                Point2D point3 = new Point2D(coords.get(i * 2 + 4), coords.get(i * 2 + 5));
+
+                if (point1.distance(point2) < SMOOTH_LIMIT && point2.distance(point3) < SMOOTH_LIMIT) {
+                    coords.remove(i * 2 + 2);
+                    coords.remove(i * 2 + 2);
+                }
+            }
+        }
+    }
+
+    private static Polygon path2Polygon(Path path) {
+        Double[] points = new Double[(path.getElements().size() - 1)*2];
+        int i = 0;
+        for(PathElement el : path.getElements()){
+            if(el instanceof MoveTo){
+                MoveTo mt = (MoveTo) el;
+                points[i] = mt.getX();
+                points[i+1] = mt.getY();
+                if (points[i] == null || points[i+1] == null) {
+                    points[i] = points[i - 2];
+                    points[i + 1] = points[i - 1];
+                }
+            }
+            if(el instanceof LineTo){
+                LineTo lt = (LineTo) el;
+                points[i] = lt.getX();
+                points[i+1] = lt.getY();
+                if (points[i] == null || points[i+1] == null) {
+                    points[i] = points[i - 2];
+                    points[i + 1] = points[i - 1];
+                }
+            }
+            i += 2;
+        }
+        Polygon newPolygon = new Polygon();
+        newPolygon.getPoints().addAll(points);
+        return newPolygon;
     }
 }
