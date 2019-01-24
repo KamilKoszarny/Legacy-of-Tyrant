@@ -277,18 +277,37 @@ public class GeomerticHelper {
         return pointsOnPath;
     }
 
-    public static void mergePolygons(List<Polygon> polygons, Polygon newPolygon) {
+    public static void mergePolygons(List<Polygon> polygons, List<Polygon> holes, Polygon view) {
         for (int i = 0; i < polygons.size(); i++) {
-            Polygon polygon = polygons.get(i);
-            if (protrude(newPolygon, polygon)) {
-                if (layOn(newPolygon, polygon)) {
-                    Path path = (Path) Polygon.union(polygon, newPolygon);
-                    polygon = path2Polygon(path);
-                    polygons.set(i, polygon);
+            Polygon exploredPolygon = polygons.get(i);
+            if (protrude(view, exploredPolygon)) {
+                if (layOn(view, exploredPolygon)) {
+                    Path path = (Path) Polygon.union(exploredPolygon, view);
+                    exploredPolygon = path2Polygon(path);
+                    polygons.set(i, exploredPolygon);
                     return;
                 }
             }
         }
+        for (int i = 0; i < holes.size(); i++) {
+            Polygon hole = holes.get(i);
+            if (hole.getPoints().size() > 2 && layOn(view, hole)) {
+                Path path = (Path) Polygon.subtract(hole, view);
+                if (path.getElements().size() > 0) {
+                    hole = path2Polygon(path);
+                    holes.set(i, hole);
+                } else {
+                    holes.remove(i);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Polygon polygon1 = new Polygon(3,0,6,4,3,1,0,4);
+        Polygon polygon2 = new Polygon(0,2,6,2,6,3,0,3);
+        Path path = (Path) Polygon.union(polygon1, polygon2);
+        Polygon merged = path2Polygon(path);
     }
 
     private static boolean layOn(Polygon polygon1, Polygon polygon2){
@@ -308,7 +327,7 @@ public class GeomerticHelper {
     }
 
     public static void smoothPolygon(Polygon polygon) {
-        final double SMOOTH_LIMIT = 5;
+        final double SMOOTH_LIMIT = 8;
         List<Double> coords = polygon.getPoints();
         for (int i = 0; i < coords.size()/2 - 2; i++) {
             if (coords.get(i*2) != null && coords.get(i*2+1) != null && coords.get(i*2+2) != null &&
@@ -325,6 +344,30 @@ public class GeomerticHelper {
         }
     }
 
+    public static void findHolesInPolygons(List<Polygon> polygons, List<Polygon> holes) {
+        for (Polygon polygon: polygons) {
+            List<Polygon> foundHoles = findHolesInPolygon(polygon);
+            holes.addAll(foundHoles);
+        }
+    }
+
+    public static List<Polygon> findHolesInPolygon(Polygon polygon) {
+        List<Double> coords = polygon.getPoints();
+        List<Polygon> holes = new ArrayList<>();
+        int afterLastNull = 0;
+        for (int i = 0; i < coords.size(); i++) {
+            if (coords.get(i) == null) {
+                Polygon hole = new Polygon();
+                hole.getPoints().addAll(polygon.getPoints().subList(afterLastNull, i));
+                i += 2;
+                afterLastNull = i;
+                holes.add(hole);
+            }
+        }
+        polygon.getPoints().remove(0, afterLastNull);
+        return holes;
+    }
+
     private static Polygon path2Polygon(Path path) {
         Double[] points = new Double[(path.getElements().size() - 1)*2];
         int i = 0;
@@ -333,19 +376,19 @@ public class GeomerticHelper {
                 MoveTo mt = (MoveTo) el;
                 points[i] = mt.getX();
                 points[i+1] = mt.getY();
-                if (points[i] == null || points[i+1] == null) {
-                    points[i] = points[i - 2];
-                    points[i + 1] = points[i - 1];
-                }
+//                if (points[i] == null || points[i+1] == null) {
+//                    points[i] = points[i - 2];
+//                    points[i + 1] = points[i - 1];
+//                }
             }
             if(el instanceof LineTo){
                 LineTo lt = (LineTo) el;
                 points[i] = lt.getX();
                 points[i+1] = lt.getY();
-                if (points[i] == null || points[i+1] == null) {
-                    points[i] = points[i - 2];
-                    points[i + 1] = points[i - 1];
-                }
+//                if (points[i] == null || points[i+1] == null) {
+//                    points[i] = points[i - 2];
+//                    points[i + 1] = points[i - 1];
+//                }
             }
             i += 2;
         }

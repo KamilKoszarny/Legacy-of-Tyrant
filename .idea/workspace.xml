@@ -3,19 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/lights/VisibilityCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/lights/VisibilityCalculator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/SpritesDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/SpritesDrawer.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawCalculator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawCalculator.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/GeomerticHelper.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/GeomerticHelper.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImage.class" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImage.class" />
       <change beforePath="$PROJECT_DIR$/src/helpers/my/GeomerticHelper.java" afterPath="$PROJECT_DIR$/src/helpers/my/GeomerticHelper.java" />
       <change beforePath="$PROJECT_DIR$/src/main/App.java" afterPath="$PROJECT_DIR$/src/main/App.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battle.java" afterPath="$PROJECT_DIR$/src/model/Battle.java" />
       <change beforePath="$PROJECT_DIR$/src/model/BattleInitializer.java" afterPath="$PROJECT_DIR$/src/model/BattleInitializer.java" />
-      <change beforePath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" afterPath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
       <change beforePath="$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java" afterPath="$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" />
       <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
       <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapImage.java" afterPath="$PROJECT_DIR$/src/viewIso/map/MapImage.java" />
     </list>
@@ -40,19 +35,42 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+            <state relative-caret-position="51">
+              <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IsoBattleLoop.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
+      <file leaf-file-name="BattleInitializer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="136">
+              <caret line="31" column="61" lean-forward="false" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="62" column="12" lean-forward="false" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4477#4478#0" expanded="true" />
+                <element signature="e#4518#4519#0" expanded="true" />
+                <element signature="method#changeZeroScreenPosition#0;class#MapDrawer#0" expanded="false" />
+                <element signature="e#4802#4803#0" expanded="true" />
+                <element signature="e#4864#4865#0" expanded="true" />
+                <element signature="e#4898#4899#0" expanded="true" />
+                <element signature="e#4924#4925#0" expanded="true" />
+                <element signature="e#4957#4958#0" expanded="true" />
+                <element signature="e#4986#4987#0" expanded="true" />
+                <element signature="e#5030#5031#0" expanded="true" />
+                <element signature="e#5061#5062#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,57 +85,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapDrawer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="66" column="51" lean-forward="false" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3969#3970#0" expanded="true" />
-                <element signature="e#4010#4011#0" expanded="true" />
-                <element signature="method#changeZeroScreenPosition#0;class#MapDrawer#0" expanded="false" />
-                <element signature="e#4294#4295#0" expanded="true" />
-                <element signature="e#4356#4357#0" expanded="true" />
-                <element signature="e#4390#4391#0" expanded="true" />
-                <element signature="e#4416#4417#0" expanded="true" />
-                <element signature="e#4449#4450#0" expanded="true" />
-                <element signature="e#4478#4479#0" expanded="true" />
-                <element signature="e#4522#4523#0" expanded="true" />
-                <element signature="e#4553#4554#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapImage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapImage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#833#834#0" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
-                <element signature="e#928#929#0" expanded="true" />
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#1005#1006#0" expanded="true" />
-                <element signature="e#1039#1040#0" expanded="true" />
-                <element signature="e#1068#1069#0" expanded="true" />
-                <element signature="e#1096#1097#0" expanded="true" />
-                <element signature="e#1126#1127#0" expanded="true" />
-                <element signature="e#1155#1156#0" expanded="true" />
-                <element signature="e#1185#1186#0" expanded="true" />
-                <element signature="e#1214#1215#0" expanded="true" />
-                <element signature="e#1244#1245#0" expanded="true" />
-                <element signature="e#1273#1274#0" expanded="true" />
-                <element signature="e#1319#1320#0" expanded="true" />
-                <element signature="e#1354#1355#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SpritesDrawer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/viewIso/SpritesDrawer.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -128,11 +95,41 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MapImage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="56" column="29" lean-forward="false" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#866#867#0" expanded="true" />
+                <element signature="e#922#923#0" expanded="true" />
+                <element signature="e#961#962#0" expanded="true" />
+                <element signature="e#989#990#0" expanded="true" />
+                <element signature="e#1038#1039#0" expanded="true" />
+                <element signature="e#1072#1073#0" expanded="true" />
+                <element signature="e#1101#1102#0" expanded="true" />
+                <element signature="e#1129#1130#0" expanded="true" />
+                <element signature="e#1159#1160#0" expanded="true" />
+                <element signature="e#1188#1189#0" expanded="true" />
+                <element signature="e#1218#1219#0" expanded="true" />
+                <element signature="e#1247#1248#0" expanded="true" />
+                <element signature="e#1277#1278#0" expanded="true" />
+                <element signature="e#1306#1307#0" expanded="true" />
+                <element signature="e#1352#1353#0" expanded="true" />
+                <element signature="e#1387#1388#0" expanded="true" />
+                <element signature="e#1432#1433#0" expanded="true" />
+                <element signature="e#1466#1467#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="VisibilityCalculator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="39" column="34" lean-forward="false" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+            <state relative-caret-position="150">
+              <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
               <folding>
                 <element signature="method#calcViewPoint#0;class#VisibilityCalculator#0" expanded="false" />
               </folding>
@@ -143,18 +140,8 @@
       <file leaf-file-name="Battle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapDrawCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+            <state relative-caret-position="137">
+              <caret line="29" column="49" lean-forward="false" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -164,7 +151,7 @@
         <entry file="file://$PROJECT_DIR$/src/helpers/my/GeomerticHelper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="118">
-              <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+              <caret line="313" column="0" lean-forward="false" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,9 +172,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>CHOOSE</find>
-      <find>CHOOSECHA</find>
-      <find>hassp</find>
       <find>givei</find>
       <find>Weapon</find>
       <find>extends Map</find>
@@ -215,6 +199,9 @@
       <find>mini</find>
       <find>shape</find>
       <find>polygon.getPoints()</find>
+      <find>nul</find>
+      <find>BACKG</find>
+      <find>null</find>
     </findStrings>
     <replaceStrings>
       <replace>.getStats().setSpirit(</replace>
@@ -307,19 +294,19 @@
         <option value="$PROJECT_DIR$/src/model/actions/movement/CharTurner.java" />
         <option value="$PROJECT_DIR$/src/model/map/Map.java" />
         <option value="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/map/MapImage.java" />
         <option value="$PROJECT_DIR$/src/model/Battle.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
-        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
-        <option value="$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java" />
         <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
-        <option value="$PROJECT_DIR$/src/helpers/my/GeomerticHelper.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/App.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/map/MapImage.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
+        <option value="$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java" />
+        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
+        <option value="$PROJECT_DIR$/src/helpers/my/GeomerticHelper.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="width" value="683" />
     <option name="height" value="728" />
   </component>
@@ -560,14 +547,14 @@
       <module name="RanAdvHelper" />
       <envs />
     </configuration>
-    <configuration name="CharsDrawer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="viewIso.panel.*" />
+          <option name="PATTERN" value="helpers.downloaded.pathfinding.myTests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="viewIso.characters.CharsDrawer" />
+      <option name="MAIN_CLASS_NAME" value="helpers.downloaded.pathfinding.myTests.Example" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -579,14 +566,14 @@
       <module name="RanAdvHelper" />
       <envs />
     </configuration>
-    <configuration name="Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="GeomerticHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="helpers.downloaded.pathfinding.myTests.*" />
+          <option name="PATTERN" value="helpers.my.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="helpers.downloaded.pathfinding.myTests.Example" />
+      <option name="MAIN_CLASS_NAME" value="helpers.my.GeomerticHelper" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -712,19 +699,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.App" />
-      <item index="1" class="java.lang.String" itemvalue="Application.CharsDrawer" />
-      <item index="2" class="java.lang.String" itemvalue="Application.CharDescriptor" />
-      <item index="3" class="java.lang.String" itemvalue="Application.IsoViewController" />
-      <item index="4" class="java.lang.String" itemvalue="Application.Example" />
-      <item index="5" class="java.lang.String" itemvalue="Application.ItemHandler" />
+      <item index="1" class="java.lang.String" itemvalue="Application.CharDescriptor" />
+      <item index="2" class="java.lang.String" itemvalue="Application.IsoViewController" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Example" />
+      <item index="4" class="java.lang.String" itemvalue="Application.ItemHandler" />
+      <item index="5" class="java.lang.String" itemvalue="Application.GeomerticHelper" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.ItemHandler" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Example" />
-        <item index="2" class="java.lang.String" itemvalue="Application.IsoViewController" />
-        <item index="3" class="java.lang.String" itemvalue="Application.CharDescriptor" />
-        <item index="4" class="java.lang.String" itemvalue="Application.CharsDrawer" />
+        <item index="0" class="java.lang.String" itemvalue="Application.GeomerticHelper" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ItemHandler" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Example" />
+        <item index="3" class="java.lang.String" itemvalue="Application.IsoViewController" />
+        <item index="4" class="java.lang.String" itemvalue="Application.CharDescriptor" />
       </list>
     </recent_temporary>
   </component>
@@ -762,7 +749,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -838,7 +825,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="455" />
+      <option name="time" value="463" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -922,6 +909,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="64" column="26" lean-forward="false" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1178,14 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="30" column="27" lean-forward="true" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1205,62 +1185,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="56" column="25" lean-forward="false" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#1005#1006#0" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1096#1097#0" expanded="true" />
-            <element signature="e#1126#1127#0" expanded="true" />
-            <element signature="e#1155#1156#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#1214#1215#0" expanded="true" />
-            <element signature="e#1244#1245#0" expanded="true" />
-            <element signature="e#1273#1274#0" expanded="true" />
-            <element signature="e#1319#1320#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="39" column="34" lean-forward="false" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
-          <folding>
-            <element signature="method#calcViewPoint#0;class#VisibilityCalculator#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="27" column="23" lean-forward="false" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1283,24 +1211,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="66" column="51" lean-forward="false" selection-start-line="66" selection-start-column="51" selection-end-line="66" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3969#3970#0" expanded="true" />
-            <element signature="e#4010#4011#0" expanded="true" />
-            <element signature="method#changeZeroScreenPosition#0;class#MapDrawer#0" expanded="false" />
-            <element signature="e#4294#4295#0" expanded="true" />
-            <element signature="e#4356#4357#0" expanded="true" />
-            <element signature="e#4390#4391#0" expanded="true" />
-            <element signature="e#4416#4417#0" expanded="true" />
-            <element signature="e#4449#4450#0" expanded="true" />
-            <element signature="e#4478#4479#0" expanded="true" />
-            <element signature="e#4522#4523#0" expanded="true" />
-            <element signature="e#4553#4554#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="29" column="49" lean-forward="false" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1312,26 +1235,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.java">
+    <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        <state relative-caret-position="103">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="62" column="12" lean-forward="false" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4477#4478#0" expanded="true" />
+            <element signature="e#4518#4519#0" expanded="true" />
+            <element signature="method#changeZeroScreenPosition#0;class#MapDrawer#0" expanded="false" />
+            <element signature="e#4802#4803#0" expanded="true" />
+            <element signature="e#4864#4865#0" expanded="true" />
+            <element signature="e#4898#4899#0" expanded="true" />
+            <element signature="e#4924#4925#0" expanded="true" />
+            <element signature="e#4957#4958#0" expanded="true" />
+            <element signature="e#4986#4987#0" expanded="true" />
+            <element signature="e#5030#5031#0" expanded="true" />
+            <element signature="e#5061#5062#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="31" column="61" lean-forward="false" selection-start-line="31" selection-start-column="61" selection-end-line="31" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+        <state relative-caret-position="57">
+          <caret line="56" column="19" lean-forward="false" selection-start-line="56" selection-start-column="15" selection-end-line="56" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="56" column="29" lean-forward="false" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+            <element signature="e#922#923#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+            <element signature="e#1072#1073#0" expanded="true" />
+            <element signature="e#1101#1102#0" expanded="true" />
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1247#1248#0" expanded="true" />
+            <element signature="e#1277#1278#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1352#1353#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1432#1433#0" expanded="true" />
+            <element signature="e#1466#1467#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+          <folding>
+            <element signature="method#calcViewPoint#0;class#VisibilityCalculator#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/helpers/my/GeomerticHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
-          <caret line="299" column="0" lean-forward="false" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+          <caret line="313" column="0" lean-forward="false" selection-start-line="313" selection-start-column="0" selection-end-line="313" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

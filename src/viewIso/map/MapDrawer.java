@@ -60,18 +60,32 @@ public class MapDrawer {
                 mapImage.getWidth(), mapImage.getHeight(), false));
 
         if (map.isDiscovered()) {
-            gc.drawImage(mapImage.getImage(),
-                    -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
-                    canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
+            drawAll(gc);
         } else {
-            List<Polygon> exploredEdges = mapImage.getExploredView();
-            drawMapPart(gc, exploredEdges);
+            drawExploredPart(gc);
         }
 
 //        drawAllCharsViews(gc);
 //        drawChosenCharView(gc);
 
         gc.setEffect(null);
+    }
+
+    private void drawAll(GraphicsContext gc) {
+        gc.drawImage(mapImage.getImage(),
+                -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
+                canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+    private void drawExploredPart(GraphicsContext gc) {
+        List<Polygon> exploredView = mapImage.getExploredView();
+        drawMapPart(gc, exploredView);
+        gc.setFill(Color.YELLOW);
+        List<Polygon> holes = mapImage.getHolesInView();
+        drawMapPart(gc, holes);
+        gc.setFill(new ImagePattern(mapImage.getImage(),
+                mapImage.getxShift() + zeroScreenPosition.x, mapImage.getyShift() + zeroScreenPosition.y,
+                mapImage.getWidth(), mapImage.getHeight(), false));
     }
 
     private void drawAllCharsViews(GraphicsContext gc) {

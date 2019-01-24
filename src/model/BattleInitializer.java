@@ -29,7 +29,7 @@ public class BattleInitializer {
 
         Character czlehulec = new Character("Czlehulec", true, Color.YELLOW, CharacterType.HUMAN, CharacterClass.RASCAL,
                 new Point(10,10), 1);
-        czlehulec.setStats(new Stats(czlehulec, 13, 15, 15, 36, 40, 29, 15, 5, 25));
+        czlehulec.setStats(new Stats(czlehulec, 13, 15, 15, 3, 940, 929, 15, 5, 25));
         czlehulec.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.LEATHER_ARMOR, Helmet.NOTHING, Gloves.RAG_GLOVES, Boots.NOTHING,
                 Belt.NOTHING, Amulet.BRONZE_AMULET, Ring.SILVER_RING, Ring.NOTHING, Shield.BLOCKED});
         czlehulec.getItems().setWeapons(new Weapon[]{Weapon.HUNTER_BOW, Weapon.TWO_HAND_SWORD}, false);

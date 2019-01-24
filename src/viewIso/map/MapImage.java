@@ -14,7 +14,7 @@ public class MapImage {
     private WritableImage image;
     public static final int EXTRA_X = 10, EXTRA_Y = 100;
     private int width, height, xShift, yShift;
-    private List<Polygon> exploredView = new ArrayList<>();
+    private List<Polygon> exploredView = new ArrayList<>(), holesInView = new ArrayList<>();
 
     public MapImage(int width, int height, int xShift, int yShift) {
         this.width = width;
@@ -56,5 +56,9 @@ public class MapImage {
 
     public List<Polygon> getExploredView() {
         return exploredView;
+    }
+
+    public List<Polygon> getHolesInView() {
+        return holesInView;
     }
 }
