@@ -1,6 +1,6 @@
 package model.map.lights;
 
-import helpers.my.GeomerticHelper;
+import helpers.my.PolygonsHelper;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import model.Battle;
@@ -36,12 +36,18 @@ public class VisibilityCalculator {
         if (character.getColor().equals(Battle.getPlayerColor())) {
             List<Polygon> exploredView = MapDrawer.getMapImage().getExploredView();
             List<Polygon> holesInView = MapDrawer.getMapImage().getHolesInView();
-            GeomerticHelper.mergePolygons(exploredView, holesInView, character.getView());
-            GeomerticHelper.smoothPolygons(exploredView);
-            GeomerticHelper.findHolesInPolygons(exploredView, holesInView);
-            GeomerticHelper.smoothPolygons(holesInView);
+            PolygonsHelper.mergePolygons(exploredView, holesInView, character.getView());
+            PolygonsHelper.smoothPolygons(exploredView);
+            PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
+            PolygonsHelper.smoothPolygons(holesInView);
+            PolygonsHelper.removeSmall(holesInView);
+            PolygonsHelper.splitHoles(holesInView);
             System.out.println(exploredView.get(0).getPoints().size());
             System.out.println(exploredView.get(0).getPoints());
+            System.out.println(holesInView.size());
+            for (Polygon hole: holesInView) {
+                System.out.println("hole:" + hole.getPoints());
+            }
         }
     }
 

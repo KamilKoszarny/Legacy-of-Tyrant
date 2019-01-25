@@ -61,4 +61,8 @@ public class MapImage {
     public List<Polygon> getHolesInView() {
         return holesInView;
     }
+
+    public void setHolesInView(List<Polygon> holesInView) {
+        this.holesInView = holesInView;
+    }
 }

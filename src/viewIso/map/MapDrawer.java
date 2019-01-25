@@ -82,7 +82,8 @@ public class MapDrawer {
         drawMapPart(gc, exploredView);
         gc.setFill(Color.YELLOW);
         List<Polygon> holes = mapImage.getHolesInView();
-        drawMapPart(gc, holes);
+        if (holes.size() > 0)
+            drawMapPart(gc, holes);
         gc.setFill(new ImagePattern(mapImage.getImage(),
                 mapImage.getxShift() + zeroScreenPosition.x, mapImage.getyShift() + zeroScreenPosition.y,
                 mapImage.getWidth(), mapImage.getHeight(), false));
