@@ -16,7 +16,7 @@ public class VisibilityCalculator {
 
     public static void calcCharView(Character character) {
         Point pos = character.getPosition();
-        int dir = character.getDirection();
+        double dir = character.getPreciseDirection();
         List<Double> viewCoords = character.getView().getPoints();
         viewCoords.clear();
         viewCoords.add(pos.getX());
@@ -24,7 +24,7 @@ public class VisibilityCalculator {
 
         int viewDistMax = MIN_VISIBILITY_RADIUS_DAY + character.getStats().getEye()/2;
         int viewAngleRange = 90 + character.getStats().getEye(); // to add helmet
-        int viewAngleStart = ((1 - dir) * 360 / 8 - viewAngleRange/2);
+        int viewAngleStart = (int) ((1 - dir) * 360 / 8 - viewAngleRange/2);
 
 
         for (int angle = viewAngleStart; angle < viewAngleStart + viewAngleRange; angle += 2) {
@@ -33,20 +33,29 @@ public class VisibilityCalculator {
             viewCoords.add(viewPoint.getY());
         }
 
+        updateExploredView(character);
+    }
+
+    private static void updateExploredView(Character character) {
         if (character.getColor().equals(Battle.getPlayerColor())) {
             List<Polygon> exploredView = MapDrawer.getMapImage().getExploredView();
             List<Polygon> holesInView = MapDrawer.getMapImage().getHolesInView();
-            PolygonsHelper.mergePolygons(exploredView, holesInView, character.getView());
-            PolygonsHelper.smoothPolygons(exploredView);
-            PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
-            PolygonsHelper.smoothPolygons(holesInView);
-            PolygonsHelper.removeSmall(holesInView);
-            PolygonsHelper.splitHoles(holesInView);
-            System.out.println(exploredView.get(0).getPoints().size());
-            System.out.println(exploredView.get(0).getPoints());
-            System.out.println(holesInView.size());
-            for (Polygon hole: holesInView) {
-                System.out.println("hole:" + hole.getPoints());
+            PolygonsHelper.reduceHoles(holesInView, character.getView());
+            if (PolygonsHelper.mergePolygons(exploredView, character.getView())) {
+                PolygonsHelper.smoothPolygons(exploredView);
+                PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
+                PolygonsHelper.smoothPolygons(holesInView);
+                PolygonsHelper.removeSmall(holesInView);
+                PolygonsHelper.splitHoles(holesInView);
+                int zeros = 0;
+                for (Double value: exploredView.get(0).getPoints()) {
+                    if (value == 0)
+                        zeros++;
+                }
+                System.out.println("exp points: " + exploredView.get(0).getPoints().size()/2);
+                System.out.println("zeros: " + zeros);
+//                System.out.println(Battle.getMap().getPoints().get(character.getPosition()).getHeight());
+//                System.out.println("holes: " + holesInView.size());
             }
         }
     }

@@ -129,7 +129,8 @@ public class MapDrawCalculator {
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
     }
 
-    public static double[][] screenWithHeightCoordsForDrawPolygon(Polygon polygon) {
+    public static double[][] screenWithHeightCoordsForDrawPolygon(Polygon polygon, boolean heightBonus) {
+        final int MAP_EDGE_Y_BONUS = -500;
         int size = polygon.getPoints().size()/2;
         double [][] coords = new double[2][size];
         for (int i = 0; i < size; i++) {
@@ -137,7 +138,11 @@ public class MapDrawCalculator {
                 Point2D point2D = new Point2D(polygon.getPoints().get(2 * i), polygon.getPoints().get(2 * i + 1));
                 Point point = screenPositionWithHeight(point2D);
                 coords[0][i] = point.getX();
-                coords[1][i] = point.getY();
+                if (heightBonus && (point2D.getX() == 0 || point2D.getY() == 0)) {
+                    coords[1][i] = point.getY() + MAP_EDGE_Y_BONUS;
+                } else {
+                    coords[1][i] = point.getY();
+                }
             } else {
                 coords[0][i] = coords[0][i-1];
                 coords[1][i] = coords[1][i-1];

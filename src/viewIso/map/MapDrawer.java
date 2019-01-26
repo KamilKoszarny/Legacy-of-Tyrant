@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MapDrawer {
 
-    static final Color BACKGROUND_COLOR = Color.BLACK;
+    static final Color BACKGROUND_COLOR = Color.BLACK, FOG_COLOR = Color.gray(0.1);
     public static final int MAP_PIECE_SCREEN_SIZE_X = 24;
     public static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
     public static int PIX_PER_M;
@@ -60,56 +60,57 @@ public class MapDrawer {
                 mapImage.getWidth(), mapImage.getHeight(), false));
 
         if (map.isDiscovered()) {
-            drawAll(gc);
+            drawAll();
         } else {
-            drawExploredPart(gc);
+            drawExploredPart();
         }
 
-//        drawAllCharsViews(gc);
-//        drawChosenCharView(gc);
+        drawAllCharsViews();
+        drawChosenCharView();
 
         gc.setEffect(null);
     }
 
-    private void drawAll(GraphicsContext gc) {
+    private void drawAll() {
         gc.drawImage(mapImage.getImage(),
                 -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
                 canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
-    private void drawExploredPart(GraphicsContext gc) {
+    private void drawExploredPart() {
         List<Polygon> exploredView = mapImage.getExploredView();
-        drawMapPart(gc, exploredView);
-        gc.setFill(Color.YELLOW);
+        drawMapPart(exploredView, true);
+        gc.setFill(FOG_COLOR);
         List<Polygon> holes = mapImage.getHolesInView();
         if (holes.size() > 0)
-            drawMapPart(gc, holes);
+            drawMapPart(holes, false);
         gc.setFill(new ImagePattern(mapImage.getImage(),
                 mapImage.getxShift() + zeroScreenPosition.x, mapImage.getyShift() + zeroScreenPosition.y,
                 mapImage.getWidth(), mapImage.getHeight(), false));
+        gc.setEffect(null);
     }
 
-    private void drawAllCharsViews(GraphicsContext gc) {
+    private void drawAllCharsViews() {
         List<Polygon> viewAll = new ArrayList<>();
         for (Character character: Battle.getCharacters()) {
             if (character.getColor().equals(Battle.getPlayerColor()))
             viewAll.add(character.getView());
         }
         gc.setEffect(new Glow(.5));
-        drawMapPart(gc, viewAll);
+        drawMapPart(viewAll, false);
     }
 
-    private void drawChosenCharView(GraphicsContext gc) {
+    private void drawChosenCharView() {
         if (Battle.getChosenCharacter() != null) {
             List<Polygon> view = Arrays.asList(Battle.getChosenCharacter().getView());
             gc.setEffect(new Glow(1));
-            drawMapPart(gc, view);
+            drawMapPart(view, false);
         }
     }
 
-    private void drawMapPart(GraphicsContext gc, List<Polygon> polygons) {
+    private void drawMapPart(List<Polygon> polygons, boolean heightBonus) {
         for (Polygon polygon : polygons) {
-            double[][] coords = MapDrawCalculator.screenWithHeightCoordsForDrawPolygon(polygon);
+            double[][] coords = MapDrawCalculator.screenWithHeightCoordsForDrawPolygon(polygon, heightBonus);
             gc.fillPolygon(coords[0], coords[1], coords[0].length);
         }
     }
@@ -117,6 +118,11 @@ public class MapDrawer {
     public void clearMap(){
         gc.setFill(BACKGROUND_COLOR);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+//        gc.setFill(FOG_COLOR);
+//        int x = map.mapXPoints - 1, y = map.mapYPoints - 1;
+//        List<Polygon> mapPolygon = Arrays.asList(new Polygon(0,0,x,0,x,y,0,y));
+//        drawMapPart(mapPolygon);
     }
 
 

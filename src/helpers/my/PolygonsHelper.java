@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PolygonsHelper {
-    public static void mergePolygons(List<Polygon> polygons, List<Polygon> holes, Polygon view) {
+    public static boolean mergePolygons(List<Polygon> polygons, Polygon view) {
         for (int i = 0; i < polygons.size(); i++) {
             Polygon exploredPolygon = polygons.get(i);
             if (protrude(view, exploredPolygon)) {
@@ -15,13 +15,17 @@ public class PolygonsHelper {
                     Path path = (Path) Polygon.union(exploredPolygon, view);
                     exploredPolygon = path2Polygon(path);
                     polygons.set(i, exploredPolygon);
-                    return;
+                    return true;
                 }
             }
         }
+        return false;
+    }
+
+    public static void reduceHoles(List<Polygon> holes, Polygon view) {
         for (int i = 0; i < holes.size(); i++) {
             Polygon hole = holes.get(i);
-            if (hole.getPoints().size() > 2 && layOn(view, hole)) {
+            if (layOn(view, hole)) {
                 Path path = (Path) Polygon.subtract(hole, view);
                 if (path.getElements().size() > 0) {
                     hole = path2Polygon(path);
@@ -34,8 +38,8 @@ public class PolygonsHelper {
     }
 
     public static void main(String[] args) {
-        Polygon polygon1 = new Polygon(3,0,6,4,3,1,0,4);
-        Polygon polygon2 = new Polygon(0,2,6,2,6,3,0,3);
+        Polygon polygon1 = new Polygon(0,0,1,0,2,0,3,0,3,1,0,1);
+        Polygon polygon2 = new Polygon(1,0,2,0,2,2,1,2);
         Path path = (Path) Polygon.union(polygon1, polygon2);
         Polygon result = path2Polygon(path);
         polygon1 = new Polygon(1,0,2,0,2,3,1,3);
@@ -157,19 +161,11 @@ public class PolygonsHelper {
                 MoveTo mt = (MoveTo) el;
                 points[i] = mt.getX();
                 points[i+1] = mt.getY();
-//                if (points[i] == null || points[i+1] == null) {
-//                    points[i] = points[i - 2];
-//                    points[i + 1] = points[i - 1];
-//                }
             }
             if(el instanceof LineTo){
                 LineTo lt = (LineTo) el;
                 points[i] = lt.getX();
                 points[i+1] = lt.getY();
-//                if (points[i] == null || points[i+1] == null) {
-//                    points[i] = points[i - 2];
-//                    points[i + 1] = points[i - 1];
-//                }
             }
             i += 2;
         }
