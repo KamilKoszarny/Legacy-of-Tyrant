@@ -3,6 +3,8 @@ package viewIso.map;
 import controller.isoView.isoMap.IsoMapBorderHoverController;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
+import model.Battle;
+import model.character.Character;
 import model.map.Map;
 import model.map.MapPiece;
 import model.map.heights.HeightGenerator;
@@ -190,10 +192,33 @@ public class MapDrawCalculator {
 
     public static boolean isExplored(Point point) {
         Point2D point2D = new Point2D(point.x, point.y);
+        List<Polygon> holesInView = MapDrawer.getMapImage().getHolesInView();
+        for (Polygon hole : holesInView) {
+            if (hole.contains(point2D))
+                return false;
+        }
         List<Polygon> exploredView = MapDrawer.getMapImage().getExploredView();
         for (Polygon polygon: exploredView) {
             if (polygon.contains(point2D))
                 return true;
+        }
+        return false;
+    }
+
+    public static boolean isInChosenCharView (Point point) {
+        Character chosenCharacter = Battle.getChosenCharacter();
+        if (chosenCharacter == null)
+            return false;
+        Polygon view = chosenCharacter.getView();
+        return view.contains(new Point2D(point.x, point.y));
+    }
+
+    public static boolean isInPlayerCharView(Point point) {
+        for (Character character: Battle.getCharacters()) {
+            if (character.getColor().equals(Battle.getPlayerColor())
+                    && character.getView().contains(new Point2D(point.x, point.y)))
+                return true;
+
         }
         return false;
     }

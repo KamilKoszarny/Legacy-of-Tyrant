@@ -37,8 +37,7 @@ public class SpritesDrawer {
             }
         }
         for (Character character: Battle.getCharacters()) {
-            if (MapDrawCalculator.isExplored(character.getPosition()))
-                charsDrawer.drawChar(character, true);
+            charsDrawer.drawChar(character, true);
         }
 
         ItemObjectsDrawer.resetItemGlowIncrement();

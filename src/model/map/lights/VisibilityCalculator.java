@@ -19,7 +19,8 @@ public class VisibilityCalculator {
     public static void updateViews() {
         for (Character character: Battle.getCharacters()) {
             calcCharView(character);
-            updateExploredView(character);
+            if (!Battle.getMap().isDiscovered())
+                updateExploredView(character);
         }
     }
 
@@ -44,8 +45,7 @@ public class VisibilityCalculator {
     }
 
     private static int calcViewDist(int viewDistMax, double angleDeviationRatio) {
-        int viewDist = (int) (viewDistMax * (1 - Math.pow(angleDeviationRatio,2 )));
-        return viewDist;
+        return (int) (viewDistMax * (1 - Math.pow(angleDeviationRatio,2 )));
     }
 
     private static Point2D calcViewPoint(Point pos, int viewDist, int angle) {
@@ -104,14 +104,17 @@ public class VisibilityCalculator {
         if (character.getColor().equals(Battle.getPlayerColor())) {
             List<Polygon> exploredView = MapDrawer.getMapImage().getExploredView();
             List<Polygon> holesInView = MapDrawer.getMapImage().getHolesInView();
-            PolygonsHelper.splitHoles(holesInView);
+
+            PolygonsHelper.mergePolygons(exploredView, character.getView());
+            PolygonsHelper.smoothPolygons(exploredView);
+            PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
+
             PolygonsHelper.reduceHoles(holesInView, character.getView());
-            if (PolygonsHelper.mergePolygons(exploredView, character.getView())) {
-                PolygonsHelper.smoothPolygons(exploredView);
-                PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
-                PolygonsHelper.smoothPolygons(holesInView);
-                PolygonsHelper.removeSmall(holesInView);
-            }
+            PolygonsHelper.splitHoles(holesInView);
+            PolygonsHelper.removeSmall(holesInView);
+            PolygonsHelper.smoothPolygons(holesInView);
+
+            System.out.println(exploredView.get(0).getPoints().size()/2);
         }
     }
 }

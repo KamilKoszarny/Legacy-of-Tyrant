@@ -75,7 +75,8 @@ public class PolygonsHelper {
                 Point2D point2 = new Point2D(coords.get(i * 2 + 2), coords.get(i * 2 + 3));
                 Point2D point3 = new Point2D(coords.get(i * 2 + 4), coords.get(i * 2 + 5));
 
-                if (point1.distance(point2) < SMOOTH_LIMIT && point2.distance(point3) < SMOOTH_LIMIT) {
+                if (point1.distance(point2) < SMOOTH_LIMIT && point2.distance(point3) < SMOOTH_LIMIT
+                        || point1.distance(point3) < SMOOTH_LIMIT/2) {
                     coords.remove(i * 2 + 2);
                     coords.remove(i * 2 + 2);
                 }
@@ -103,7 +104,8 @@ public class PolygonsHelper {
                 holes.add(hole);
             }
         }
-        polygon.getPoints().remove(0, afterLastNull);
+        if (afterLastNull < polygon.getPoints().size() - 10)
+            polygon.getPoints().remove(0, afterLastNull);
         return holes;
     }
 
@@ -144,7 +146,7 @@ public class PolygonsHelper {
     }
 
     public static void removeSmall(List<Polygon> polygons) {
-        final int POINTS_LIMIT = 4, AREA_LIMIT = 100;
+        final int POINTS_LIMIT = 4, AREA_LIMIT = 6;
         List<Polygon> polygonsToRemove = new ArrayList<>();
         for (Polygon polygon: polygons) {
             if (polygon.getPoints().size() < POINTS_LIMIT || polygon.computeAreaInScreen() < AREA_LIMIT)

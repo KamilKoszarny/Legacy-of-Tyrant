@@ -17,7 +17,6 @@ public class CharTurner {
             character.setState(CharState.IDLE);
             character.getStats().setSpeed(0);
         }
-        System.out.println(newDir);
     }
 
     public static void turnCharacter(Character character, Point2D turnPoint, boolean stop) {

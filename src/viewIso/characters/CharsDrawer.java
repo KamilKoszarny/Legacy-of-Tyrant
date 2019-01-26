@@ -2,24 +2,20 @@ package viewIso.characters;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
-import main.App;
 import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.items.ItemsLoader;
-import model.items.weapon.Weapon;
-import model.map.mapObjects.MapObject;
 import viewIso.IsoViewer;
 import viewIso.LabelsDrawer;
 import viewIso.map.MapDrawCalculator;
-import viewIso.mapObjects.MapObjectSprite;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,14 +39,24 @@ public class CharsDrawer {
     }
 
     public void drawChar(Character character, boolean transparency) {
+        GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
+        if (character.equals(Battle.getChosenCharacter()))
+            gc.setEffect(new Glow(.6));
+        else if (character.getColor().equals(Battle.getPlayerColor()))
+            gc.setEffect(new Glow(.3));
+        else if (MapDrawCalculator.isInChosenCharView(character.getPosition()))
+            gc.setEffect(new Glow(.3));
+        else if (MapDrawCalculator.isInPlayerCharView(character.getPosition()))
+            gc.setEffect(new ColorAdjust(0, -.5, -.5, 0));
+        else
+            return;
+
         Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPrecisePosition());
         CharSprite charSprite = charSpriteSheetMap.get(character);
         Image spriteSheet = charSprite.getCharSpriteSheet();
         charSprite.setCharPose(character.getState().getPose());
         int framePosX = charSprite.getFramePos();
         int framePosY = (character.getDirection() + 6) % 8;
-
-        GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
 
         if(transparency)
             gc.setGlobalAlpha(.5);
@@ -61,6 +67,7 @@ public class CharsDrawer {
                     charScreenPos.x - SPRITE_BASE.width, charScreenPos.y - SPRITE_BASE.height,
                     SPRITE_SIZE.width, SPRITE_SIZE.height);
         gc.setGlobalAlpha(1);
+        gc.setEffect(null);
 
         LabelsDrawer.drawNameLabel(character, charScreenPos);
         if (character.getAttackResult() != null)
