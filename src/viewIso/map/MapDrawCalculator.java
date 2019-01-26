@@ -130,7 +130,6 @@ public class MapDrawCalculator {
     }
 
     public static double[][] screenWithHeightCoordsForDrawPolygon(Polygon polygon, boolean heightBonus) {
-        final int MAP_EDGE_Y_BONUS = -500;
         int size = polygon.getPoints().size()/2;
         double [][] coords = new double[2][size];
         for (int i = 0; i < size; i++) {
@@ -138,17 +137,24 @@ public class MapDrawCalculator {
                 Point2D point2D = new Point2D(polygon.getPoints().get(2 * i), polygon.getPoints().get(2 * i + 1));
                 Point point = screenPositionWithHeight(point2D);
                 coords[0][i] = point.getX();
-                if (heightBonus && (point2D.getX() == 0 || point2D.getY() == 0)) {
-                    coords[1][i] = point.getY() + MAP_EDGE_Y_BONUS;
-                } else {
-                    coords[1][i] = point.getY();
-                }
+                coords[1][i] = point.getY() + calcEdgeYBonus(point2D, heightBonus);
             } else {
                 coords[0][i] = coords[0][i-1];
                 coords[1][i] = coords[1][i-1];
             }
         }
         return coords;
+    }
+
+    private static int calcEdgeYBonus(Point2D point2D, boolean heightBonus) {
+        if (!heightBonus)
+            return 0;
+        final int MAP_EDGE_Y_BONUS = 500;
+        if (point2D.getX() == 0 || point2D.getY() == 0)
+            return -MAP_EDGE_Y_BONUS;
+        if (point2D.getX() == map.mapXPoints - 1 || point2D.getY() == map.mapYPoints)
+            return MAP_EDGE_Y_BONUS;
+        return 0;
     }
 
     public static Point relativeScreenPositionWithHeight(Point point){

@@ -144,8 +144,9 @@ public class HeightGenerator {
 
     public void setNonWalkableBigSlope() {
         for (MapPiece mapPiece: map.getPoints().values()) {
-            if (mapPiece.getSlopeSize() > HeightGenerator.MAX_WALKABLE_SLOPE)
+            if (mapPiece.getSlopeSize() > HeightGenerator.MAX_WALKABLE_SLOPE) {
                 mapPiece.setWalkable(false);
+            }
         }
     }
 

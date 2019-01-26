@@ -24,6 +24,7 @@ public class MapPieceInfo extends Alert {
         contentSB.append("HW: ").append(clickedMapPiece.getHeightW()).append("\n");
         contentSB.append("Slope dir: ").append(clickedMapPiece.getSlopeDir()).append("\n");
         contentSB.append("Slope size: ").append(clickedMapPiece.getSlopeSize()).append("\n");
+        contentSB.append("Transparency: ").append(clickedMapPiece.getTransparency()).append("\n");
 
         MapObject mapObject = clickedMapPiece.getObject();
         if (mapObject != null) {

@@ -8,6 +8,7 @@ import model.map.MapGridCalc;
 import model.map.MapPiece;
 import model.map.buildings.Door;
 import model.map.mapObjects.MapObject;
+import model.map.mapObjects.MapObjectType;
 import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
@@ -75,10 +76,12 @@ public class DoorActioner {
         for (Point point: walkablePoints) {
             mapPiece = Battle.getMap().getPoints().get(point);
             mapPiece.setWalkable(true);
+            mapPiece.setTransparency(1);
         }
         for (Point point: GeomerticHelper.pointsInRect(newPoint, 1 - newLook%2, newLook%2, map)) {
             mapPiece = Battle.getMap().getPoints().get(point);
             mapPiece.setWalkable(false);
+            mapPiece.setTransparency(MapObjectType.DOOR.getTransparency());
         }
     }
 

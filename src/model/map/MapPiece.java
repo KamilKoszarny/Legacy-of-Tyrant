@@ -18,7 +18,6 @@ public class MapPiece {
     private MapObject object = null;
     private boolean walkable = true;
     private double transparency = 1.;
-    private double visibility = 1;
 
     public Terrain getTerrain() {
         return terrain;
@@ -150,14 +149,6 @@ public class MapPiece {
 
     public void setTransparency(double transparency) {
         this.transparency = transparency;
-    }
-
-    public double getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(double visibility) {
-        this.visibility = visibility;
     }
 }
 

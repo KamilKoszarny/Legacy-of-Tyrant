@@ -35,8 +35,8 @@ public class Battle {
             } else {
                 CharsDrawer.nextFrame(character, timer);
             }
-            VisibilityCalculator.calcCharView(character);
         }
+        VisibilityCalculator.updateViews();
     }
 
     public static void incrementTimer() {

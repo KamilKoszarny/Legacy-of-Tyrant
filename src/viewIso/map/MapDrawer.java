@@ -119,10 +119,10 @@ public class MapDrawer {
         gc.setFill(BACKGROUND_COLOR);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-//        gc.setFill(FOG_COLOR);
-//        int x = map.mapXPoints - 1, y = map.mapYPoints - 1;
-//        List<Polygon> mapPolygon = Arrays.asList(new Polygon(0,0,x,0,x,y,0,y));
-//        drawMapPart(mapPolygon);
+        gc.setFill(FOG_COLOR);
+        int x = map.mapXPoints - 1, y = map.mapYPoints - 1;
+        List<Polygon> mapPolygon = Arrays.asList(new Polygon(0,0,x,0,x,y,0,y));
+        drawMapPart(mapPolygon, false);
     }
 
 

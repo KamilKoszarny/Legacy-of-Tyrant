@@ -144,10 +144,10 @@ public class PolygonsHelper {
     }
 
     public static void removeSmall(List<Polygon> polygons) {
-        final int SIZE_LIMIT = 4;
+        final int POINTS_LIMIT = 4, AREA_LIMIT = 100;
         List<Polygon> polygonsToRemove = new ArrayList<>();
         for (Polygon polygon: polygons) {
-            if (polygon.getPoints().size() < SIZE_LIMIT)
+            if (polygon.getPoints().size() < POINTS_LIMIT || polygon.computeAreaInScreen() < AREA_LIMIT)
                 polygonsToRemove.add(polygon);
         }
         polygons.removeAll(polygonsToRemove);

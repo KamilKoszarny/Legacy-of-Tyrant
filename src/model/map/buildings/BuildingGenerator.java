@@ -181,15 +181,20 @@ public class BuildingGenerator {
             }
             prevX = wallPoint.x;
             prevY = wallPoint.y;
+
+            mapPiece.setTerrain(Terrain.WALL);
+            setNonWalkablePointsAround(wallPoint);
+            mapPiece.setTransparency(MapObjectType.WALL.getTransparency());
+
             if (i % SIZE_STEP == SIZE_STEP / 2 + 1) {
-                if (window && (i / SIZE_STEP)%2 == 0 && new Random().nextInt(4) == 0)
+                if (window && (i / SIZE_STEP)%2 == 0 && new Random().nextInt(4) == 0) {
                     mapPiece.setObject(new Window(side, WallType.WOOD));
-                else
+                    setTransparencyAround(wallPoint, MapObjectType.WINDOW.getTransparency(), 1);
+                } else
                     mapPiece.setObject(new Wall(side, WallType.WOOD));
                 wallSpritePieces.add(mapPiece);
             }
-            mapPiece.setTerrain(Terrain.WALL);
-            setNonWalkablePointsAround(wallPoint);
+
             i++;
         }
         if (door) {
@@ -222,10 +227,18 @@ public class BuildingGenerator {
     }
 
     private void setNonWalkablePointsAround(Point wallPoint) {
-        MapPiece mapPiece;List<Point> nonWalkablePoints = GeomerticHelper.pointsInSquare(wallPoint, 1, map);
+        List<Point> nonWalkablePoints = GeomerticHelper.pointsInSquare(wallPoint, 1, map);
         for (Point point : nonWalkablePoints) {
-            mapPiece = map.getPoints().get(point);
+            MapPiece mapPiece = map.getPoints().get(point);
             mapPiece.setWalkable(false);
+        }
+    }
+
+    private void setTransparencyAround(Point basePoint, double transparency, int radius) {
+        List<Point> points = GeomerticHelper.pointsInSquare(basePoint, radius, map);
+        for (Point point : points) {
+            MapPiece mapPiece = map.getPoints().get(point);
+            mapPiece.setTransparency(transparency);
         }
     }
 

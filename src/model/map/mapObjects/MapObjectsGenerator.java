@@ -40,6 +40,7 @@ public class MapObjectsGenerator {
             look = r.nextInt(type.getLooks());
             mapPiece.setObject(new MapObject(type, size, look));
             setNonWalkablePieces(point, size + 1);
+            setPiecesTransparency(point, size, type.getTransparency());
         }
     }
 
@@ -73,6 +74,14 @@ public class MapObjectsGenerator {
         for (Point point: GeomerticHelper.pointsInRadius(basePoint, radius, map)) {
             if (map.getPoints().get(point) != null) {
                 map.getPoints().get(point).setWalkable(false);
+            }
+        }
+    }
+
+    private void setPiecesTransparency(Point basePoint, int radius, double transparency) {
+        for (Point point: GeomerticHelper.pointsInRadius(basePoint, radius, map)) {
+            if (map.getPoints().get(point) != null) {
+                map.getPoints().get(point).setTransparency(transparency);
             }
         }
     }
