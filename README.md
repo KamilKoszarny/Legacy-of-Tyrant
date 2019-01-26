@@ -1,2 +1,2 @@
 # RanAdvHelper
-Set of applications to help in Random Adventures RPG session leading
+2D, isometric, turn-based game.
