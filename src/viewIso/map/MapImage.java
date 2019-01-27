@@ -58,6 +58,10 @@ public class MapImage {
         return exploredView;
     }
 
+    public void setExploredView(List<Polygon> exploredView) {
+        this.exploredView = exploredView;
+    }
+
     public List<Polygon> getHolesInView() {
         return holesInView;
     }

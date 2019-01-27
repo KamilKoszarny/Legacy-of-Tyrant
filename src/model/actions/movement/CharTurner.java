@@ -3,6 +3,7 @@ package model.actions.movement;
 import javafx.geometry.Point2D;
 import model.character.CharState;
 import model.character.Character;
+import model.map.lights.VisibilityCalculator;
 
 import java.awt.*;
 
@@ -17,6 +18,7 @@ public class CharTurner {
             character.setState(CharState.IDLE);
             character.getStats().setSpeed(0);
         }
+        VisibilityCalculator.setChange(true);
     }
 
     public static void turnCharacter(Character character, Point2D turnPoint, boolean stop) {
@@ -28,5 +30,6 @@ public class CharTurner {
             character.setState(CharState.IDLE);
             character.getStats().setSpeed(0);
         }
+        VisibilityCalculator.setChange(true);
     }
 }

@@ -30,6 +30,7 @@ public class MapDrawer {
     private GraphicsContext gc;
     private MapPieceDrawer mPDrawer;
     private static MapImage mapImage;
+    private static List<Polygon> mapPolygon;
 
     public MapDrawer(Map map, Canvas canvas) {
         MapDrawer.map = map;
@@ -50,6 +51,12 @@ public class MapDrawer {
             time = System.nanoTime();
         }
         PanelViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
+
+        int x = map.mapXPoints - 1, y = map.mapYPoints - 1;
+        mapPolygon = Arrays.asList(new Polygon(0,0,x,0,x,y,0,y));
+
+        if (map.isDiscovered())
+            mapImage.setExploredView(mapPolygon);
     }
 
     public void drawMap() {
@@ -120,8 +127,6 @@ public class MapDrawer {
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         gc.setFill(FOG_COLOR);
-        int x = map.mapXPoints - 1, y = map.mapYPoints - 1;
-        List<Polygon> mapPolygon = Arrays.asList(new Polygon(0,0,x,0,x,y,0,y));
         drawMapPart(mapPolygon, false);
     }
 

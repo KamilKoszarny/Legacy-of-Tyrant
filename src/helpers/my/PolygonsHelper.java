@@ -59,14 +59,15 @@ public class PolygonsHelper {
         return subtraction.getElements().size() > 0;
     }
 
-    public static void smoothPolygons(List<Polygon> polygons) {
+    public static void smoothPolygons(List<Polygon> polygons, int smoothLimit) {
         for (Polygon polygon: polygons) {
-            smoothPolygon(polygon);
+            if (polygon.getPoints().size() > 400)
+                smoothLimit *= 2;
+            smoothPolygon(polygon, smoothLimit);
         }
     }
 
-    public static void smoothPolygon(Polygon polygon) {
-        final double SMOOTH_LIMIT = 8;
+    public static void smoothPolygon(Polygon polygon, int smoothLimit) {
         List<Double> coords = polygon.getPoints();
         for (int i = 0; i < coords.size()/2 - 2; i++) {
             if (coords.get(i*2) != null && coords.get(i*2+1) != null && coords.get(i*2+2) != null &&
@@ -75,8 +76,8 @@ public class PolygonsHelper {
                 Point2D point2 = new Point2D(coords.get(i * 2 + 2), coords.get(i * 2 + 3));
                 Point2D point3 = new Point2D(coords.get(i * 2 + 4), coords.get(i * 2 + 5));
 
-                if (point1.distance(point2) < SMOOTH_LIMIT && point2.distance(point3) < SMOOTH_LIMIT
-                        || point1.distance(point3) < SMOOTH_LIMIT/2) {
+                if (point1.distance(point2) < smoothLimit && point2.distance(point3) < smoothLimit
+                        || point1.distance(point3) < smoothLimit/2) {
                     coords.remove(i * 2 + 2);
                     coords.remove(i * 2 + 2);
                 }
@@ -146,7 +147,7 @@ public class PolygonsHelper {
     }
 
     public static void removeSmall(List<Polygon> polygons) {
-        final int POINTS_LIMIT = 4, AREA_LIMIT = 6;
+        final int POINTS_LIMIT = 4, AREA_LIMIT = 3;
         List<Polygon> polygonsToRemove = new ArrayList<>();
         for (Polygon polygon: polygons) {
             if (polygon.getPoints().size() < POINTS_LIMIT || polygon.computeAreaInScreen() < AREA_LIMIT)

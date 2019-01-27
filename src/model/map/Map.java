@@ -23,10 +23,10 @@ public class Map {
     private GridGraph gridGraph;
     private boolean[] roadSides, waterSides, riverSides;
     private int buildingsCount, buildingMaxSize;
-    private boolean discovered = false;
+    private boolean discovered;
 
     public Map(int widthM, int heightM, MapType type, MapHeightType heightType,
-               boolean[] roadSides, boolean[] riverSides, boolean[] waterSides) {
+               boolean[] roadSides, boolean[] riverSides, boolean[] waterSides, boolean discovered) {
         this.widthM = widthM;
         this.heightM = heightM;
         this.type = type;
@@ -38,6 +38,8 @@ public class Map {
         this.roadSides = roadSides;
         this.riverSides = riverSides;
         this.waterSides = waterSides;
+        this.discovered = discovered;
+
         buildingsCount = (int) (type.getBuildings() * (r.nextDouble() + 0.5));
         buildingMaxSize = type.getBuildingMaxSize();
 
@@ -51,6 +53,8 @@ public class Map {
 
         MapGenerator mapGenerator = new MapGenerator();
         mapGenerator.generateMap(this);
+
+
     }
 
     public java.util.Map<Point, MapPiece> getPoints() {

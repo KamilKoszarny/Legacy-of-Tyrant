@@ -33,7 +33,7 @@ public class HeightGenerator {
     }
 
     private void withOpenSimplexNoise(double featureSize){
-        OpenSimplexNoise noise = new OpenSimplexNoise();
+        OpenSimplexNoise noise = new OpenSimplexNoise(new Random().nextLong());
 
         Point point;
         MapPiece mapPiece;

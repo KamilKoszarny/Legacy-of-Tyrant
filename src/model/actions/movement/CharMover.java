@@ -7,6 +7,7 @@ import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
 import model.map.MapGridCalc;
+import model.map.lights.VisibilityCalculator;
 import viewIso.PathDrawer;
 import viewIso.characters.CharsDrawer;
 
@@ -43,6 +44,7 @@ public class CharMover {
         int pathSection = character.getPathSection();
         boolean last = (pathSection == path.size() - 1);
         moveStraight(character, character.getPath().get(character.getPathSection()), ms, last);
+        VisibilityCalculator.setChange(true);
     }
 
     private static void moveStraight(Character character, Point2D next, int ms, boolean last) {

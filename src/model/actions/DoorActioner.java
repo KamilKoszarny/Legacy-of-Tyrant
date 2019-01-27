@@ -7,6 +7,7 @@ import model.map.Map;
 import model.map.MapGridCalc;
 import model.map.MapPiece;
 import model.map.buildings.Door;
+import model.map.lights.VisibilityCalculator;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.mapObjects.MapObjectDrawer;
@@ -39,6 +40,7 @@ public class DoorActioner {
         refreshWalkables(map, objectPoint, newLook, newPoint, true);
         CharMover.pushCharsToClosestWalkable(Battle.getMap());
         MapGridCalc.regenerateGridGraph(Battle.getMap(), GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
+        VisibilityCalculator.setChange(true);
     }
 
     public static void closeDoor(MapObject object) {
@@ -64,6 +66,7 @@ public class DoorActioner {
         refreshWalkables(map, objectPoint, newLook, newPoint, false);
         CharMover.pushCharsToClosestWalkable(Battle.getMap());
         MapGridCalc.regenerateGridGraph(Battle.getMap(), GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
+        VisibilityCalculator.setChange(true);
     }
 
     private static void refreshWalkables(Map map, Point objectPoint, int newLook, Point newPoint, boolean open) {

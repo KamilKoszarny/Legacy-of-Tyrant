@@ -10,18 +10,24 @@ import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class VisibilityCalculator {
 
     private static final int MIN_VISIBILITY_RADIUS_DAY = 50;
+    private static boolean change = true;
 
     public static void updateViews() {
-        for (Character character: Battle.getCharacters()) {
-            calcCharView(character);
-            if (!Battle.getMap().isDiscovered())
-                updateExploredView(character);
+        if (change) {
+            for (Character character : Battle.getCharacters()) {
+                calcCharView(character);
+                if (!Battle.getMap().isDiscovered())
+                    updateExploredView(character);
+            }
         }
+        change = false;
     }
 
     private static void calcCharView(Character character) {
@@ -106,15 +112,27 @@ public class VisibilityCalculator {
             List<Polygon> holesInView = MapDrawer.getMapImage().getHolesInView();
 
             PolygonsHelper.mergePolygons(exploredView, character.getView());
-            PolygonsHelper.smoothPolygons(exploredView);
+            PolygonsHelper.smoothPolygons(exploredView, 8);
             PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
 
             PolygonsHelper.reduceHoles(holesInView, character.getView());
             PolygonsHelper.splitHoles(holesInView);
-            PolygonsHelper.removeSmall(holesInView);
-            PolygonsHelper.smoothPolygons(holesInView);
+//            PolygonsHelper.removeSmall(holesInView);
+            PolygonsHelper.smoothPolygons(holesInView, 4);
 
-            System.out.println(exploredView.get(0).getPoints().size()/2);
+            soutPolygons(exploredView, holesInView);
         }
+    }
+
+    private static void soutPolygons(List<Polygon> exploredView, List<Polygon> holesInView) {
+        System.out.println(exploredView.get(0).getPoints().size()/2);
+        System.out.println(exploredView.get(0).getPoints());
+        for (Polygon hole: holesInView) {
+                System.out.println("hole: " + holesInView.indexOf(hole) + " " + hole.getPoints());
+        }
+    }
+
+    public static void setChange(boolean change) {
+        VisibilityCalculator.change = change;
     }
 }
