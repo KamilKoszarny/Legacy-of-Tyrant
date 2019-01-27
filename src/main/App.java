@@ -20,6 +20,8 @@ import java.util.List;
 public class App extends Application {
 
     public static final boolean FULL_MODE = true;
+    public static final long START_TIME = System.nanoTime();
+    public static long[] time = new long[10];
 
     public static void main(String[] args) {
         disableWarning();
@@ -56,5 +58,18 @@ public class App extends Application {
         } catch (Exception e) {
             // ignore
         }
+    }
+
+    public static void resetTime(int level) {
+        time[level] = System.nanoTime();
+    }
+
+    public static void showAndResetTime(String text, int level) {
+        StringBuilder spaces = new StringBuilder("");
+        for (int i = 0; i < level; i++) {
+            spaces.append(" ");
+        }
+        System.out.println(spaces + text + ": " + (System.nanoTime() - time[level])/1000000. + " ms");
+        time[level] = System.nanoTime();
     }
 }

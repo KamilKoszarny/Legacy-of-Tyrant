@@ -2,18 +2,27 @@ package viewIso.panel;
 
 import controller.isoView.isoPanel.Panel;
 import helpers.my.GeomerticHelper;
+import helpers.my.PolygonsHelper;
+import helpers.my.SortHelper;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import model.Battle;
 import model.actions.ItemHandler;
 import model.character.Character;
 import viewIso.IsoViewer;
+import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
+import viewIso.map.MapImageGenerator;
 
 import java.awt.*;
+import java.util.List;
 
 public class PanelViewer {
 
@@ -77,6 +86,36 @@ public class PanelViewer {
         minimapPosRect.setTranslateY(- minimapScreenSize/2 + minimapPosRect.getHeight()/2
                 - MapDrawer.getZeroScreenPosition().getY() * minimapToScreenRatioY
                 + MapDrawer.getMap().getHeightType().getHilly() / 10);
+    }
+
+    public static void refreshMinimapFog(Polygon exploredView, List<Polygon> holes) {
+        Canvas fogCanvas = panel.getMinimapFogCanvas();
+        GraphicsContext gc = fogCanvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, fogCanvas.getWidth(), fogCanvas.getHeight());
+        gc.setFill(MapDrawer.FOG_COLOR);
+        Polygon fog = new Polygon(
+                -1,-1,  -1,fogCanvas.getHeight()+1,  fogCanvas.getWidth()+1,fogCanvas.getHeight()+1,  fogCanvas.getWidth()+1,-1);
+        Polygon scaledExploredView = scalePolygon2Minimap(exploredView);
+        fog = PolygonsHelper.subtractPolygons(fog, scaledExploredView);
+        double[][] coords = PolygonsHelper.polygon2coords(fog);
+        gc.fillPolygon(coords[0], coords[1], coords[0].length);
+        for (Polygon hole: holes) {
+            Polygon scaledHole = scalePolygon2Minimap(hole);
+            coords = PolygonsHelper.polygon2coords(scaledHole);
+            gc.fillPolygon(coords[0], coords[1], coords[0].length);
+        }
+    }
+
+    private static Polygon scalePolygon2Minimap(Polygon polygon) {
+        Polygon scaledPolygon = new Polygon();
+        List<Double> coords = polygon.getPoints();
+        double scale = panel.getMinimapFogCanvas().getWidth()/Battle.getMap().mapXPoints;
+        for (int i = 0; i < coords.size(); i++) {
+            double coord = coords.get(i);
+            coord *= scale;
+            scaledPolygon.getPoints().add(coord);
+        }
+        return scaledPolygon;
     }
 
     private static int calcMinimapRadius(Character character) {

@@ -238,8 +238,9 @@
             </VBox>
             <StackPane fx:id="minimapStackPane" minWidth="200.0" prefHeight="150.0" prefWidth="200.0">
                <children>
-                  <Rectangle fx:id="minimapRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
                   <Rectangle fx:id="minimapPosRect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="44.0" mouseTransparent="true" stroke="YELLOW" strokeType="OUTSIDE" strokeWidth="2.0" width="78.0" />
+                  <Rectangle fx:id="minimapRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+                  <Canvas fx:id="minimapFogCanvas" height="140.0" mouseTransparent="true" rotate="45.0" width="140.0" />
                </children>
             </StackPane>
          </children>

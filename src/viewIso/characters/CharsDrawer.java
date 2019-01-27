@@ -6,6 +6,7 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
+import main.App;
 import model.Battle;
 import model.character.CharState;
 import model.character.Character;
@@ -90,11 +91,10 @@ public class CharsDrawer {
     }
 
     public static void createCharSpriteSheet(Character character) {
-        long startTime = System.nanoTime();
-        long time = startTime;
+        App.resetTime(0);
         CharSprite sprite = createSpriteSheet(character);
         charSpriteSheetMap.put(character, sprite);
-        System.out.println(character.getName() + " TOTAL sprite: " + (System.nanoTime() - time)/1000000. + " ms");
+        App.showAndResetTime(character.getName() + " TOTAL sprite", 0);
     }
 
     private static CharSprite createSpriteSheet(Character character) {

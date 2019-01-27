@@ -24,4 +24,14 @@ public class SortHelper {
 
         return result;
     }
+
+    public static double[] revert(double[] array) {
+        for(int i = 0; i < array.length / 2; i++)
+        {
+            double temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+        }
+        return array;
+    }
 }

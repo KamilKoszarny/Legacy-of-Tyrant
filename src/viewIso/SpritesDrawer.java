@@ -28,13 +28,13 @@ public class SpritesDrawer {
         List<Point> visiblePoints = MapDrawCalculator.calcOnCanvasPoints();
         visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
         for (Point point: visiblePoints) {
-            if (MapDrawCalculator.isExplored(point)) {
-                MapPiece mapPiece = Battle.getMap().getPoints().get(point);
-                if (mapPiece.getObject() != null) {
+            MapPiece mapPiece = Battle.getMap().getPoints().get(point);
+            if (mapPiece.getObject() != null) {
+                if (MapDrawCalculator.isExplored(point)) {
                     mapObjectDrawer.drawObject(point);
                 }
-                drawCharIfThere(point);
             }
+            drawCharIfThere(point);
         }
         for (Character character: Battle.getCharacters()) {
             charsDrawer.drawChar(character, true);

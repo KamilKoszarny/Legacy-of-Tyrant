@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MapDrawer {
 
-    static final Color BACKGROUND_COLOR = Color.BLACK, FOG_COLOR = Color.gray(0.1);
+    public static final Color BACKGROUND_COLOR = Color.BLACK, FOG_COLOR = Color.gray(0.1);
     public static final int MAP_PIECE_SCREEN_SIZE_X = 24;
     public static final int MAP_PIECE_SCREEN_SIZE_Y = 16;
     public static int PIX_PER_M;
@@ -41,14 +41,12 @@ public class MapDrawer {
         MapDrawCalculator.setMapAndDrawer(map, this);
 
         MapImageGenerator.initialize(map, mPDrawer);
-        long time = System.nanoTime();
+        App.resetTime(0);
         mapImage = MapImageGenerator.generateMapPreImage();
-        System.out.println("mapPreImageGen:" + (System.nanoTime() - time)/1000000. + " ms");
+        App.showAndResetTime("mapPreImage", 0);
         if (App.FULL_MODE) {
-            time = System.nanoTime();
             mapImage = MapImageGenerator.generateMapImage();
-            System.out.println("mapImageGen:" + (System.nanoTime() - time) / 1000000. + " ms");
-            time = System.nanoTime();
+            App.showAndResetTime("mapImageGen", 0);
         }
         PanelViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
 
@@ -60,6 +58,7 @@ public class MapDrawer {
     }
 
     public void drawMap() {
+//        App.resetTime(0);
         clearMap();
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(new ImagePattern(mapImage.getImage(),
@@ -76,6 +75,7 @@ public class MapDrawer {
         drawChosenCharView();
 
         gc.setEffect(null);
+//        App.showAndResetTime("mapDraw: ", 0);
     }
 
     private void drawAll() {

@@ -2,24 +2,31 @@ package helpers.my;
 
 import javafx.geometry.Point2D;
 import javafx.scene.shape.*;
+import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PolygonsHelper {
-    public static boolean mergePolygons(List<Polygon> polygons, Polygon view) {
+    public static boolean mergePolygon2Polygons(List<Polygon> polygons, Polygon view) {
         for (int i = 0; i < polygons.size(); i++) {
             Polygon exploredPolygon = polygons.get(i);
             if (protrude(view, exploredPolygon)) {
                 if (layOn(view, exploredPolygon)) {
-                    Path path = (Path) Polygon.union(exploredPolygon, view);
-                    exploredPolygon = path2Polygon(path);
+                    exploredPolygon = mergePolygons(view, exploredPolygon);
                     polygons.set(i, exploredPolygon);
                     return true;
                 }
             }
         }
         return false;
+    }
+
+    public static Polygon mergePolygons(Polygon view, Polygon exploredPolygon) {
+        Path path = (Path) Polygon.union(exploredPolygon, view);
+        exploredPolygon = path2Polygon(path);
+        return exploredPolygon;
     }
 
     public static void reduceHoles(List<Polygon> holes, Polygon view) {
@@ -52,6 +59,11 @@ public class PolygonsHelper {
     private static boolean layOn(Polygon polygon1, Polygon polygon2){
         Path intersection = (Path) Shape.intersect(polygon1, polygon2);
         return intersection.getElements().size() > 0;
+    }
+
+    public static Polygon subtractPolygons(Polygon polygon1, Polygon polygon2){
+        Path subtraction = (Path) Shape.subtract(polygon1, polygon2);
+        return path2Polygon(subtraction);
     }
 
     private static boolean protrude(Polygon polygon1, Polygon polygon2){
@@ -175,5 +187,21 @@ public class PolygonsHelper {
         Polygon newPolygon = new Polygon();
         newPolygon.getPoints().addAll(points);
         return newPolygon;
+    }
+
+    public static double[][] polygon2coords(Polygon polygon) {
+        int size = polygon.getPoints().size()/2;
+        double [][] coords = new double[2][size];
+        for (int i = 0; i < size; i++) {
+            if (polygon.getPoints().get(2*i) != null && polygon.getPoints().get(2*i) != null) {
+                Point2D point = new Point2D(polygon.getPoints().get(2 * i), polygon.getPoints().get(2 * i + 1));
+                coords[0][i] = point.getX();
+                coords[1][i] = point.getY();
+            } else {
+                coords[0][i] = coords[0][i-1];
+                coords[1][i] = coords[1][i-1];
+            }
+        }
+        return coords;
     }
 }

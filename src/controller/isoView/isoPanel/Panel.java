@@ -1,6 +1,7 @@
 package controller.isoView.isoPanel;
 
 import helpers.my.GeomerticHelper;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
@@ -21,12 +22,14 @@ public class Panel {
     private Rectangle catchedItemRect;
     private Pane inventoryGridPane;
     private Rectangle inventoryScreenRect, miniMapRect, miniMapPosRect;
+    private Canvas minimapFogCanvas;
 
     public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
                  Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
                  Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
-                 Rectangle caughtItemRect, Pane inventoryGridPane, Rectangle miniMapRect, Rectangle miniMapPosRect) {
+                 Rectangle caughtItemRect, Pane inventoryGridPane, Rectangle miniMapRect, Rectangle miniMapPosRect,
+                 Canvas minimapFogCanvas) {
         this.charLabels = charLabels;
         this.charBars = charBars;
         this.portraitRect = portraitRect;
@@ -48,6 +51,7 @@ public class Panel {
         this.inventoryGridPane = inventoryGridPane;
         this.miniMapRect = miniMapRect;
         this.miniMapPosRect = miniMapPosRect;
+        this.minimapFogCanvas = minimapFogCanvas;
 //        initInventoryClick();
     }
 
@@ -143,5 +147,9 @@ public class Panel {
 
     public Rectangle getMiniMapPosRect() {
         return miniMapPosRect;
+    }
+
+    public Canvas getMinimapFogCanvas() {
+        return minimapFogCanvas;
     }
 }

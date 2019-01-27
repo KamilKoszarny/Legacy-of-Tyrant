@@ -1,11 +1,14 @@
 package viewIso.map;
 
 import javafx.embed.swing.SwingFXUtils;
+import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
+import main.App;
 import model.map.Map;
 import model.map.heights.HeightGenerator;
 
@@ -20,6 +23,7 @@ public class MapImageGenerator {
 
     private static MapImage mapPreImage;
     private static MapImage mapImage;
+    private static WritableImage fullMinimapImage;
     private static Map map;
     private static MapPieceDrawer mapPieceDrawer;
     private static Random r = new Random();
@@ -83,21 +87,39 @@ public class MapImageGenerator {
                 pixelWriter.setColor(x, y, color);
             }
         }
-        System.out.println("mapImage ready");
 //        calcAndSetColors();
 
         return mapImage;
     }
 
     static Image generateMinimapImage() {
-        WritableImage minimapImage = new WritableImage(map.mapXPoints, map.mapYPoints);
-        PixelWriter pixelWriter = minimapImage.getPixelWriter();
+        fullMinimapImage = new WritableImage(map.mapXPoints, map.mapYPoints);
+        PixelWriter pixelWriter = fullMinimapImage.getPixelWriter();
         for (int y = 0; y < map.mapYPoints; y++) {
             for (int x = 0; x < map.mapXPoints; x++) {
                 pixelWriter.setColor(x, y, map.getPoints().get(new Point(x, y)).getTerrain().getColor());
             }
         }
-        return minimapImage;
+        return fullMinimapImage;
+    }
+
+    public static Image updateMinimapImageWithFog() {
+        App.resetTime(3);
+        WritableImage minimapImageWithFog = new WritableImage(fullMinimapImage.getPixelReader(), map.mapXPoints, map.mapYPoints);
+        App.showAndResetTime("minimapCopy", 3);
+        PixelWriter pixelWriter = minimapImageWithFog.getPixelWriter();
+        for (int y = 0; y < map.mapYPoints; y++) {
+            for (int x = 0; x < map.mapXPoints; x++) {
+                if (!MapDrawer.getMapImage().getExploredView().get(0).contains(new Point2D(x, y)))
+                    pixelWriter.setColor(x, y, MapDrawer.FOG_COLOR);
+                for (Polygon hole: MapDrawer.getMapImage().getHolesInView()) {
+                    if (hole.contains(new Point2D(x, y)))
+                        pixelWriter.setColor(x, y, MapDrawer.FOG_COLOR);
+                }
+            }
+        }
+        App.showAndResetTime("foging", 3);
+        return minimapImageWithFog;
     }
 
     private static Color calcPixelColor(PixelReader pixelReader, int x, int y) {

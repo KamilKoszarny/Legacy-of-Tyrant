@@ -3,15 +3,15 @@ package model.map.lights;
 import helpers.my.PolygonsHelper;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
+import main.App;
 import model.Battle;
 import model.character.Character;
 import model.map.MapPiece;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
+import viewIso.panel.PanelViewer;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class VisibilityCalculator {
@@ -21,11 +21,16 @@ public class VisibilityCalculator {
 
     public static void updateViews() {
         if (change) {
+            App.resetTime(0);
             for (Character character : Battle.getCharacters()) {
+                App.resetTime(1);
                 calcCharView(character);
+                App.showAndResetTime("calcCharView", 1);
                 if (!Battle.getMap().isDiscovered())
                     updateExploredView(character);
+                    App.showAndResetTime("updateExpView", 1);
             }
+            App.showAndResetTime("ViewsUpdate", 0);
         }
         change = false;
     }
@@ -111,16 +116,27 @@ public class VisibilityCalculator {
             List<Polygon> exploredView = MapDrawer.getMapImage().getExploredView();
             List<Polygon> holesInView = MapDrawer.getMapImage().getHolesInView();
 
-            PolygonsHelper.mergePolygons(exploredView, character.getView());
+            App.resetTime(2);
+            PolygonsHelper.mergePolygon2Polygons(exploredView, character.getView());
+            App.showAndResetTime("mergePolygon2Polygons", 2);
             PolygonsHelper.smoothPolygons(exploredView, 8);
+            App.showAndResetTime("smoothPolygons", 2);
             PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
+            App.showAndResetTime("findHolesInPolygons", 2);
 
             PolygonsHelper.reduceHoles(holesInView, character.getView());
             PolygonsHelper.splitHoles(holesInView);
+            App.showAndResetTime("reduceSplitHoles", 2);
 //            PolygonsHelper.removeSmall(holesInView);
             PolygonsHelper.smoothPolygons(holesInView, 4);
+            App.showAndResetTime("smoothHoles", 2);
 
-            soutPolygons(exploredView, holesInView);
+            App.resetTime(2);
+//            PanelViewer.setMinimapImg(MapImageGenerator.updateMinimapImageWithFog());
+            PanelViewer.refreshMinimapFog(exploredView.get(0), holesInView);
+            App.showAndResetTime("updateMinimap", 2);
+
+//            soutPolygons(exploredView, holesInView);
         }
     }
 

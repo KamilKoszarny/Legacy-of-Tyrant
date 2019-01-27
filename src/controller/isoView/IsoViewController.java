@@ -29,7 +29,8 @@ public class IsoViewController {
     private AnchorPane mainPane;
     @FXML
     private Canvas mapCanvas, topBorderCanvas, rightBorderCanvas, bottomBorderCanvas, leftBorderCanvas,
-            topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas;
+            topRightBorderCanvas, bottomRightBorderCanvas, bottomLeftBorderCanvas, topLeftBorderCanvas,
+            minimapFogCanvas;
 
     @FXML
     private HBox panelHBox;
@@ -109,7 +110,7 @@ public class IsoViewController {
         return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
                 helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
                 amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, heldItemRect, inventoryGridPane,
-                minimapRect, minimapPosRect);
+                minimapRect, minimapPosRect, minimapFogCanvas);
     }
 
     public Canvas getMapCanvas() {
