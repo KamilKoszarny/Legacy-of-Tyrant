@@ -24,15 +24,15 @@ three default cache types available and you may also register your own custom
 versions with the system. All cache implementations are represented by an
 abstract interface. Your application code never deals directly with the
 implementation classes. An implementation is fetched from the factory. It is
-guaranteed that for each cache type, there will only be one instance created
+guaranteed that for each cache furnitureType, there will only be one instance created
 over the lifetime of your application. Feel free to grab the cache from the
 factory and then throw the reference away immediately as the factory maintains
 everything.
 <P>
 
-For those that don't feel like having to remember cache type configurations
+For those that don't feel like having to remember cache furnitureType configurations
 all the time,  the factory also provides a way of setting a default cache.
-Once set, you can always fetch this without having to remember which type to
+Once set, you can always fetch this without having to remember which furnitureType to
 use.
 
 <H4>Default Cache Implementations</H4>
@@ -74,9 +74,9 @@ the values will be ignored.
     org.j3d.texture.LRUSize
 </PRE>
 
-The default cache type is a string with one of the values <code>fixed</code>,
+The default cache furnitureType is a string with one of the values <code>fixed</code>,
 <code>lru</code> or <code>weakref</code> (case-sensitive strings). This sets
-the type of cache to be returned if there is a request for the default cache.
+the furnitureType of cache to be returned if there is a request for the default cache.
 <P>
 
 The LRUSize is used to control the maximum number of items that can be stored

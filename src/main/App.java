@@ -22,6 +22,7 @@ public class App extends Application {
     public static final boolean FULL_MODE = true;
     public static final long START_TIME = System.nanoTime();
     public static long[] time = new long[10];
+    private static boolean showTime = false;
 
     public static void main(String[] args) {
         disableWarning();
@@ -69,7 +70,8 @@ public class App extends Application {
         for (int i = 0; i < level; i++) {
             spaces.append(" ");
         }
-        System.out.println(spaces + text + ": " + (System.nanoTime() - time[level])/1000000. + " ms");
+        if (showTime)
+            System.out.println(spaces + text + ": " + (System.nanoTime() - time[level])/1000000. + " ms");
         time[level] = System.nanoTime();
     }
 }

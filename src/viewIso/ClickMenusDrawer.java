@@ -12,6 +12,7 @@ import model.actions.attack.BodyPart;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Door;
+import model.map.buildings.Furniture;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
@@ -25,6 +26,7 @@ public class ClickMenusDrawer {
 
     private static List<ClickMenuButton> char2PointMenu = Arrays.asList(ClickMenuButton.LOOK, ClickMenuButton.WALK, ClickMenuButton.RUN, ClickMenuButton.SNEAK);
     private static List<ClickMenuButton> char2DoorMenu = Arrays.asList(ClickMenuButton.DOOR_LOOK, ClickMenuButton.DOOR_OPEN, ClickMenuButton.DOOR_CLOSE);
+    private static List<ClickMenuButton> char2ChestMenu = Arrays.asList(ClickMenuButton.CHEST_LOOK, ClickMenuButton.CHEST_OPEN, ClickMenuButton.CHEST_CLOSE);
     private static List<ClickMenuButton> char2EnemyMenu = Arrays.asList(ClickMenuButton.ENEMY_LOOK, ClickMenuButton.ATTACK_HEAD, ClickMenuButton.ATTACK_BODY, ClickMenuButton.ATTACK_ARMS, ClickMenuButton.ATTACK_LEGS);
     private static List<ClickMenuButton> activeMenu = char2PointMenu;
 
@@ -32,6 +34,7 @@ public class ClickMenusDrawer {
     ClickMenusDrawer() {
         initMenu(char2PointMenu);
         initMenu(char2DoorMenu);
+        initMenu(char2ChestMenu);
         initMenu(char2EnemyMenu);
     }
 
@@ -80,6 +83,24 @@ public class ClickMenusDrawer {
         }
     }
 
+    public static void drawChar2ChestMenu(Point clickPoint, Furniture chest, Character character) {
+        hideMenus();
+        activeMenu = char2ChestMenu;
+        Point chestPos = MapObjectDrawer.getMapObject2PointMap().get(chest);
+        if (chestPos.distance(character.getPosition()) > Furniture.ACTION_DIST) {
+            ClickMenuButton.CHEST_OPEN.setGrayed(true);
+            ClickMenuButton.CHEST_CLOSE.setGrayed(true);
+        } else {
+            ClickMenuButton.CHEST_OPEN.setGrayed(false);
+            ClickMenuButton.CHEST_CLOSE.setGrayed(true);
+        }
+
+        ClickMenuButton.colorButtons(char2ChestMenu);
+        for (ClickMenuButton button: char2ChestMenu) {
+            drawButton(button, clickPoint);
+        }
+    }
+
     public static void drawChar2EnemyMenu(Point clickPoint, Character character, Character enemy) {
         hideMenus();
         activeMenu = char2EnemyMenu;
@@ -117,6 +138,7 @@ public class ClickMenusDrawer {
     public static void hideMenus() {
         hideMenu(char2PointMenu);
         hideMenu(char2DoorMenu);
+        hideMenu(char2ChestMenu);
         hideMenu(char2EnemyMenu);
     }
 

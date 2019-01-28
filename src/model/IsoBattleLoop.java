@@ -9,9 +9,11 @@ import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
 import model.map.MapPiece;
 import model.map.buildings.Door;
+import model.map.buildings.Furniture;
 import model.map.mapObjects.ItemMapObject;
 import viewIso.*;
 import viewIso.characters.CharsDrawer;
+import viewIso.mapObjects.MapObjectController;
 import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.PanelViewer;
 
@@ -83,8 +85,12 @@ public class IsoBattleLoop extends AnimationTimer{
                 ClickMenusDrawer.drawChar2PointMenu(battleEvent.getClickPoint(), path);
                 buttonBattleEvent = battleEvent;
                 break;
-            case SHOW_CHAR2OBJECT: ClickMenusDrawer.drawChar2DoorMenu(battleEvent.getClickPoint(),
+            case SHOW_CHAR2DOOR: ClickMenusDrawer.drawChar2DoorMenu(battleEvent.getClickPoint(),
                     (Door) battleEvent.getObject(), Battle.getChosenCharacter());
+                buttonBattleEvent = battleEvent;
+                break;
+            case SHOW_CHAR2CHEST: ClickMenusDrawer.drawChar2ChestMenu(battleEvent.getClickPoint(),
+                    (Furniture) battleEvent.getObject(), Battle.getChosenCharacter());
                 buttonBattleEvent = battleEvent;
                 break;
             case SHOW_CHAR2ENEMY:
@@ -119,6 +125,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 CharTurner.turnCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint(), true);
                 break;
             case DOOR_LOOK:
+            case CHEST_LOOK:
                 CharTurner.turnCharacter(Battle.getChosenCharacter(),
                         MapObjectDrawer.getMapObject2PointMap().get(buttonBattleEvent.getObject()), true);
                 break;
@@ -136,6 +143,9 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
             case DOOR_CLOSE:
                 DoorActioner.closeDoor(buttonBattleEvent.getObject());
+                break;
+            case CHEST_OPEN:
+                ChestActioner.openChest((Furniture) buttonBattleEvent.getObject());
                 break;
             case ATTACK_BODY:
                 AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), BodyPart.BODY);
@@ -157,7 +167,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private void handleHover() {
         if (hoverPoint != null) {
             LabelsDrawer.checkHoverCharacter(hoverPoint);
-            MapObjectDrawer.checkHoverObject(hoverPoint);
+            MapObjectController.checkHoverObject(hoverPoint);
 //            ItemObjectsDrawer.checkHoverItem(hoverPoint);
         }
     }

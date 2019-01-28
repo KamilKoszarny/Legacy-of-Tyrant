@@ -24,6 +24,10 @@ public enum ClickMenuButton {
     DOOR_OPEN("Open", "doorOpen"),
     DOOR_CLOSE("Close", "doorClose"),
 
+    CHEST_LOOK("Look", "look"),
+    CHEST_OPEN("Open", "doorOpen"),
+    CHEST_CLOSE("Close", "doorClose"),
+
     ATTACK_HEAD("Attack Head", "head"),
     ATTACK_BODY("Attack Body", "body"),
     ATTACK_ARMS("Attack Arms", "arm"),

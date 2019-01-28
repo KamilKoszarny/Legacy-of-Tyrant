@@ -1,5 +1,6 @@
 package viewIso.characters;
 
+import helpers.my.MouseHelper;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.ColorAdjust;
@@ -136,18 +137,9 @@ public class CharsDrawer {
                 (int)(SPRITE_SIZE.width/SCALING), (int)(SPRITE_SIZE.height/SCALING));
         Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 
-        Point screenPos = MapDrawCalculator.screenPositionWithHeight(mapPos);
-        assert screenPos != null;
-
-        Point screenPosUpLeft = new Point((int)(screenPos.x - SPRITE_OFFSET.getWidth()/SCALING), (int)(screenPos.y - SPRITE_OFFSET.getHeight()/SCALING));
-        Point onImagePos = new Point(mousePoint.x - screenPosUpLeft.x, mousePoint.y - screenPosUpLeft.y);
-
-        if (onImagePos.x > 0 && onImagePos.x < image.getWidth() && onImagePos.y > 0 && onImagePos.y < image.getHeight()) {
-            PixelReader pixelReader = image.getPixelReader();
-            int argb = pixelReader.getArgb(onImagePos.x, onImagePos.y);
-            int alpha = argb & 0x00ffffff;
-            return alpha > 0;
-        }
+        Boolean alpha = MouseHelper.mouseOnImage(mousePoint, mapPos, image,
+                new Point((int)(SPRITE_OFFSET.getWidth()/SCALING), (int)(SPRITE_OFFSET.getHeight()/SCALING)));
+        if (alpha != null) return alpha;
         return false;
     }
 

@@ -1,6 +1,9 @@
 package model.map.mapObjects;
 
 
+import model.map.buildings.Furniture;
+import model.map.buildings.FurnitureType;
+
 public class MapObject{
 
     private MapObjectType type;
@@ -17,7 +20,7 @@ public class MapObject{
         this.type = type;
         this.size = size;
         this.look = look;
-        this.name = type.name();
+        name = type.name();
     }
 
     public MapObjectType getType() {
@@ -37,6 +40,16 @@ public class MapObject{
     }
 
     public String getName() {
+        if (type.equals(MapObjectType.FURNITURE))
+            return this.getFurnitureType().name();
         return name;
+    }
+
+    public FurnitureType getFurnitureType() {
+        if (this instanceof Furniture) {
+            Furniture thisFurniture = (Furniture) this;
+            return thisFurniture.getFurnitureType();
+        }
+        return null;
     }
 }

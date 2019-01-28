@@ -11,6 +11,7 @@ import model.items.armor.Shield;
 import model.items.weapon.Weapon;
 import model.map.MapPiece;
 import model.map.mapObjects.ItemMapObject;
+import viewIso.mapObjects.MapObjectController;
 import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.CharDescriptor;
 
@@ -166,7 +167,7 @@ public class ItemHandler {
         if (character.getPosition().distance(mapPoint) <= ITEM_DROP_DIST) {
             boolean pickedUp = giveItem(null, character, item);
             if (pickedUp) {
-                MapObjectDrawer.removeObject(itemMapObject);
+                MapObjectController.removeObject(itemMapObject);
             }
         }
     }

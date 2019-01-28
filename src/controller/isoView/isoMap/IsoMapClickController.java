@@ -7,11 +7,12 @@ import model.BattleEvent;
 import model.EventType;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
+import model.map.buildings.FurnitureType;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
-import viewIso.mapObjects.MapObjectDrawer;
+import viewIso.mapObjects.MapObjectController;
 
 import java.awt.*;
 
@@ -54,12 +55,14 @@ public class IsoMapClickController {
         } else {
             Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
             if (Battle.getChosenCharacter() != null && mapPoint != null) {
-                MapObject object = MapObjectDrawer.clickedObject(clickPoint);
+                MapObject object = MapObjectController.clickedObject(clickPoint);
                 if (object != null) {
                     if (object.getType().equals(MapObjectType.ITEM))
                         return new BattleEvent(EventType.PICKUP_ITEM, object, mapPoint);
                     if (object.getType().equals(MapObjectType.DOOR))
-                        return new BattleEvent(EventType.SHOW_CHAR2OBJECT, clickPoint, object);
+                        return new BattleEvent(EventType.SHOW_CHAR2DOOR, clickPoint, object);
+                    if (object.getType().equals(MapObjectType.FURNITURE) && object.getFurnitureType().equals(FurnitureType.CHEST))
+                        return new BattleEvent(EventType.SHOW_CHAR2CHEST, clickPoint, object);
                 }
                 else if (ItemHandler.getHeldItem() != null)
                     return new BattleEvent(EventType.DROP_ITEM, clickPoint, mapPoint);
