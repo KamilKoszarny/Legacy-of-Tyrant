@@ -1,9 +1,8 @@
 package model.items.weapon;
 
 import javafx.scene.image.Image;
-import model.items.Item;
 import model.items.ItemWithSprite;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 
 public enum Weapon implements ItemWithSprite{
     NOTHING(            1, 1, .6, .4,       1, 0, 0, 10000),
@@ -111,8 +110,8 @@ public enum Weapon implements ItemWithSprite{
         this.parry = parry;
         this.durability = durability;
 
-        image = ItemsLoader.loadItemImage("/items/weapons/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/weapons/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
     }
 
     Weapon(double dmgMin, double dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int durability, String spriteName) {

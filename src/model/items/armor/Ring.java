@@ -1,7 +1,7 @@
 package model.items.armor;
 
 import javafx.scene.image.Image;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 
 public enum Ring implements Armor{
 
@@ -15,8 +15,8 @@ public enum Ring implements Armor{
     private String name;
 
     Ring() {
-        image = ItemsLoader.loadItemImage("/items/rings/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/rings/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
     }
 
     public Image getImage() {

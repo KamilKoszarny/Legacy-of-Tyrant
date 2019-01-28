@@ -11,6 +11,7 @@ import model.IsoBattleLoop;
 import model.actions.ItemHandler;
 import model.character.Character;
 import model.items.Item;
+import model.map.buildings.Furniture;
 import viewIso.map.MapDrawer;
 import viewIso.panel.PanelViewer;
 
@@ -66,10 +67,11 @@ public class PanelController {
 //        initInventoryClick();
     }
 
-    public static void initInventoryClick(javafx.scene.shape.Rectangle inventoryRect) {
+    public static void initInventoryClick(javafx.scene.shape.Rectangle inventoryRect, boolean chest) {
         inventoryRect.setOnMousePressed(mouseEvent -> {
-            Point shapeClickPoint = IsoBattleLoop.getClickedItemPoint();
-            int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), shapeClickPoint);
+            int[] inventorySlot = checkInventorySlot(new Point((int)(mouseEvent.getX()), (int)(mouseEvent.getY())), inventoryRect);
+            if (chest)
+                inventorySlot[0] += 100;
             IsoBattleLoop.setClickedInventorySlot(inventorySlot);
             IsoBattleLoop.setItemClickFlag(true);
         });
@@ -110,17 +112,15 @@ public class PanelController {
         return itemRectangle;
     }
 
-    private static int[] checkInventorySlot(Point clickPoint, Point shapeClickPoint) {
+    private static int[] checkInventorySlot(Point clickPoint, Rectangle rectangle) {
         int[] inventorySlot = null;
-        java.util.List<javafx.scene.shape.Rectangle> slotScreenRects = calcInventoryScreenRects(panel);
-        for (javafx.scene.shape.Rectangle rectangle: slotScreenRects) {
-            if (rectangle.contains(new Point2D(clickPoint.x, clickPoint.y))){
-                int index = slotScreenRects.indexOf(rectangle);
+        java.util.List<javafx.scene.shape.Rectangle> slotScreenRects = calcInventoryScreenRects(rectangle);
+        for (javafx.scene.shape.Rectangle subRectangle : slotScreenRects) {
+            if (subRectangle.contains(new Point2D(clickPoint.x, clickPoint.y))){
+                int index = slotScreenRects.indexOf(subRectangle);
                 inventorySlot = new int[]{index % ItemHandler.INVENTORY_X, index / ItemHandler.INVENTORY_X};
             }
         }
-
-//        recalcInventorySlotByHeldPoint(shapeClickPoint, inventorySlot);
 
         return inventorySlot;
     }
@@ -133,15 +133,14 @@ public class PanelController {
     }
 
 
-    private static java.util.List<javafx.scene.shape.Rectangle> calcInventoryScreenRects(Panel panel){
-        javafx.scene.shape.Rectangle screenInventoryRect = panel.getInventoryRectangle();
+    private static java.util.List<javafx.scene.shape.Rectangle> calcInventoryScreenRects(Rectangle rectangle){
         List<javafx.scene.shape.Rectangle> slotScreenRects = new ArrayList<>();
-        double slotSizeX = screenInventoryRect.getWidth() / ItemHandler.INVENTORY_X;
-        double slotSizeY = screenInventoryRect.getHeight() / ItemHandler.INVENTORY_Y;
+        double slotSizeX = rectangle.getWidth() / ItemHandler.INVENTORY_X;
+        double slotSizeY = rectangle.getHeight() / ItemHandler.INVENTORY_Y;
         for (int y = 0; y < ItemHandler.INVENTORY_Y; y++) {
             for (int x = 0; x < ItemHandler.INVENTORY_X; x++) {
                 slotScreenRects.add(new javafx.scene.shape.Rectangle(
-                        screenInventoryRect.getX() + x * slotSizeX, screenInventoryRect.getY() + y * slotSizeY,
+                        rectangle.getX() + x * slotSizeX, rectangle.getY() + y * slotSizeY,
                         slotSizeX, slotSizeY));
             }
         }

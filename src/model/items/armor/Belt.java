@@ -1,7 +1,7 @@
 package model.items.armor;
 
 import javafx.scene.image.Image;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 
 public enum Belt implements Armor{
 
@@ -19,8 +19,8 @@ public enum Belt implements Armor{
         this.armor = armor;
         this.durability = durability;
 
-        image = ItemsLoader.loadItemImage("/items/belts/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/belts/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
     }
 
     public int getArmor() {

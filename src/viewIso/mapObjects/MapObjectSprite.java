@@ -4,7 +4,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import model.items.ItemWithSprite;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
 import viewIso.characters.CharPose;
@@ -45,7 +45,7 @@ public class MapObjectSprite {
     }
 
     private void cutItemImage(ItemWithSprite itemWithSprite) {
-        BufferedImage bufferedImage = ItemsLoader.loadSpriteSheetForItemOnly(itemWithSprite);
+        BufferedImage bufferedImage = ItemImagesLoader.loadSpriteSheetForItemOnly(itemWithSprite);
         int spanX = (int) (CharsDrawer.SPRITES_SPAN.getWidth()/CharsDrawer.SCALING);
         int spanY = (int) (CharsDrawer.SPRITES_SPAN.getHeight()/CharsDrawer.SCALING);
         int offX = (int) (CharsDrawer.SPRITE_OFFSET.getWidth()/CharsDrawer.SCALING);

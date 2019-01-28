@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.actions.attack.AttackCalculator;
 import model.actions.attack.BodyPart;
+import model.actions.objects.ChestActioner;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Door;
@@ -139,6 +140,7 @@ public class ClickMenusDrawer {
         hideMenu(char2PointMenu);
         hideMenu(char2DoorMenu);
         hideMenu(char2ChestMenu);
+        ChestActioner.hideChestInventory();
         hideMenu(char2EnemyMenu);
     }
 

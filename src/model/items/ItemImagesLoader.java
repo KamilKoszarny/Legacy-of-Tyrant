@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.*;
 
-public class ItemsLoader {
+public class ItemImagesLoader {
 
 
     public static final Map<Class, String> SPRITE_FOLDER_NAMES = new HashMap<>();

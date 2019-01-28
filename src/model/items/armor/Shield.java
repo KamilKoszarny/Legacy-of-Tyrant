@@ -2,7 +2,7 @@ package model.items.armor;
 
 import javafx.scene.image.Image;
 import model.items.ItemWithSprite;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 
 public enum Shield implements Armor, ItemWithSprite{
 
@@ -30,8 +30,8 @@ public enum Shield implements Armor, ItemWithSprite{
         this.dmg = dmg;
         this.durability = durability;
 
-        image = ItemsLoader.loadItemImage("/items/shields/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/shields/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
     }
 
     Shield(int block, int dmg, int durability, String spriteName) {
@@ -39,8 +39,8 @@ public enum Shield implements Armor, ItemWithSprite{
         this.dmg = dmg;
         this.durability = durability;
 
-        image = ItemsLoader.loadItemImage("/items/shields/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/shields/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
         this.spriteName = spriteName + ".png";
     }
 

@@ -1,8 +1,8 @@
 package viewIso.panel;
 
-import controller.isoView.isoMap.IsoMapClickController;
 import controller.isoView.isoPanel.Panel;
 import controller.isoView.isoPanel.PanelController;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
@@ -10,11 +10,11 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import model.Battle;
 import model.actions.ItemHandler;
 import model.character.Character;
 import model.items.Item;
 
+import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,20 +27,25 @@ public class CharDescriptor {
     private static boolean inventoryRectsSet = false;
 
     public CharDescriptor(Panel panel, List<Character> characters) {
-        this.panel = panel;
+        CharDescriptor.panel = panel;
         this.characters = characters;
         initInvRect();
     }
 
     private void initInvRect() {
-        Image inventoryImg = new Image("/items/inventory.png");
         Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel, new int[]{0, 0});
-        inventoryRect = new Rectangle(invFirstRect.getX(), invFirstRect.getY(),
+        inventoryRect = initInvRect(new Point((int)invFirstRect.getX(), (int)invFirstRect.getY()));
+    }
+
+    public static Rectangle initInvRect(Point pos) {
+        Image inventoryImg = new Image("/items/inventory.png");
+        Rectangle inventoryRect = new Rectangle(pos.getX(), pos.getY(),
                 ItemHandler.INVENTORY_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_Y * ItemHandler.ITEM_SLOT_SIZE);
         inventoryRect.setFill(new ImagePattern(inventoryImg));
         Pane pane = (Pane) panel.getHeldItemRect().getParent();
         inventoryRect.setVisible(true);
         pane.getChildren().add(inventoryRect);
+        return inventoryRect;
     }
 
     public void refresh() {
@@ -87,9 +92,7 @@ public class CharDescriptor {
             method = character.getStats().getClass().getMethod(getterName);
             returnType = method.getReturnType();
             value = method.invoke(character.getStats()).toString();
-        } catch (SecurityException | NoSuchMethodException e) {} catch (IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        } catch (SecurityException | NoSuchMethodException | IllegalAccessException | InvocationTargetException ignored) {}
 
         if (returnType != null && returnType.equals(Double.TYPE)) {
             Double doubleValue = Double.parseDouble(value);
@@ -184,7 +187,7 @@ public class CharDescriptor {
     }
 
     private static void initInventoryRectangle() {
-        PanelController.initInventoryClick(inventoryRect);
+        PanelController.initInventoryClick(inventoryRect, false);
         inventoryRect.setVisible(true);
     }
 

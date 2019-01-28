@@ -6,12 +6,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
 import main.App;
 import model.Battle;
 import model.character.CharState;
 import model.character.Character;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 import viewIso.IsoViewer;
 import viewIso.LabelsDrawer;
 import viewIso.map.MapDrawCalculator;
@@ -99,7 +98,7 @@ public class CharsDrawer {
     }
 
     private static CharSprite createSpriteSheet(Character character) {
-        List<BufferedImage> charSubSprites = new ArrayList<>(ItemsLoader.loadItemSprites(character));
+        List<BufferedImage> charSubSprites = new ArrayList<>(ItemImagesLoader.loadItemSprites(character));
 
         BufferedImage combinedImage = new BufferedImage(SPRITESHEET_SIZE.width, SPRITESHEET_SIZE.height, BufferedImage.TYPE_INT_ARGB);
         Graphics g = combinedImage.getGraphics();

@@ -73,8 +73,7 @@ public class ItemHandler {
     }
 
     private static void catchItem(Character character, int[] clickedInventorySlot) {
-        // equipment
-        if (clickedInventorySlot[0] == -10) {
+        if (equipmentClicked(clickedInventorySlot)) {
             heldItem = character.getItems().getEquipmentPart(clickedInventorySlot[1]);
             if (heldItem.getName().equals("NOTHING") || heldItem.getName().equals("BLOCKED")) {
                 heldItem = null;
@@ -82,8 +81,10 @@ public class ItemHandler {
             }
             character.getItems().setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedInventorySlot[1]), clickedInventorySlot[1], true);
         }
-        //inventory
-        else {
+        else if (chestClicked(clickedInventorySlot)) {
+            System.out.println(clickedInventorySlot);
+        }
+        else if (inventoryClicked(clickedInventorySlot)){
             heldItem = itemByInventorySlot(character, clickedInventorySlot);
             if (heldItem == null)
                 return;
@@ -182,6 +183,10 @@ public class ItemHandler {
 
     private static boolean inventoryClicked(int[] clickedInventorySlot) {
         return clickedInventorySlot != null && clickedInventorySlot[0] >= 0;
+    }
+
+    private static boolean chestClicked(int[] clickedInventorySlot) {
+        return clickedInventorySlot != null && clickedInventorySlot[0] >= 100;
     }
 
     private static int[] freeSpaceInInventory(Character character, Item itemToPut) {

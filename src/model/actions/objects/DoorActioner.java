@@ -1,4 +1,4 @@
-package model.actions;
+package model.actions.objects;
 
 import helpers.my.GeomerticHelper;
 import model.Battle;

@@ -2,7 +2,7 @@ package model.items.armor;
 
 import javafx.scene.image.Image;
 import model.items.ItemWithSprite;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 
 public enum BodyArmor implements Armor, ItemWithSprite{
 
@@ -32,8 +32,8 @@ public enum BodyArmor implements Armor, ItemWithSprite{
         this.legsArmor = legsArmor;
         this.durability = durability;
 
-        image = ItemsLoader.loadItemImage("/items/armors/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/armors/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
     }
 
     BodyArmor(int headArmor, int bodyArmor, int armsArmor, int legsArmor, int durability, String spriteName) {
@@ -43,8 +43,8 @@ public enum BodyArmor implements Armor, ItemWithSprite{
         this.legsArmor = legsArmor;
         this.durability = durability;
 
-        image = ItemsLoader.loadItemImage("/items/armors/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/armors/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
         this.spriteName = spriteName + ".png";
     }
 

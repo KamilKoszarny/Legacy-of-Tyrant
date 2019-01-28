@@ -1,7 +1,7 @@
 package model.items.armor;
 
 import javafx.scene.image.Image;
-import model.items.ItemsLoader;
+import model.items.ItemImagesLoader;
 
 public enum Amulet implements Armor{
 
@@ -15,8 +15,8 @@ public enum Amulet implements Armor{
     private String name;
 
     Amulet() {
-        image = ItemsLoader.loadItemImage("/items/amulets/" + this.name() + ".png");
-        name = ItemsLoader.setItemName(this.name());
+        image = ItemImagesLoader.loadItemImage("/items/amulets/" + this.name() + ".png");
+        name = ItemImagesLoader.setItemName(this.name());
     }
 
     public Image getImage() {

@@ -7,6 +7,8 @@ import model.actions.attack.AttackActioner;
 import model.actions.attack.BodyPart;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
+import model.actions.objects.ChestActioner;
+import model.actions.objects.DoorActioner;
 import model.map.MapPiece;
 import model.map.buildings.Door;
 import model.map.buildings.Furniture;
@@ -145,7 +147,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 DoorActioner.closeDoor(buttonBattleEvent.getObject());
                 break;
             case CHEST_OPEN:
-                ChestActioner.openChest((Furniture) buttonBattleEvent.getObject());
+                ChestActioner.openChest((Furniture) buttonBattleEvent.getObject(), buttonBattleEvent.getClickPoint());
                 break;
             case ATTACK_BODY:
                 AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), BodyPart.BODY);
