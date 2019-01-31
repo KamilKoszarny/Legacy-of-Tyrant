@@ -40,7 +40,7 @@ public class ClickMenusDrawer {
     }
 
     public static void drawChar2PointMenu(Point clickPoint, List<Point2D> path) {
-        hideMenus();
+        hideMenus(true);
         activeMenu = char2PointMenu;
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
         if (clickedMapPiece == null)
@@ -67,7 +67,7 @@ public class ClickMenusDrawer {
     }
 
     public static void drawChar2DoorMenu(Point clickPoint, Door door, Character character) {
-        hideMenus();
+        hideMenus(true);
         activeMenu = char2DoorMenu;
         Point doorPos = MapObjectDrawer.getMapObject2PointMap().get(door);
         if (doorPos.distance(character.getPosition()) > Door.ACTION_DIST) {
@@ -85,7 +85,7 @@ public class ClickMenusDrawer {
     }
 
     public static void drawChar2ChestMenu(Point clickPoint, Furniture chest, Character character) {
-        hideMenus();
+        hideMenus(true);
         activeMenu = char2ChestMenu;
         Point chestPos = MapObjectDrawer.getMapObject2PointMap().get(chest);
         if (chestPos.distance(character.getPosition()) > Furniture.ACTION_DIST) {
@@ -103,7 +103,7 @@ public class ClickMenusDrawer {
     }
 
     public static void drawChar2EnemyMenu(Point clickPoint, Character character, Character enemy) {
-        hideMenus();
+        hideMenus(true);
         activeMenu = char2EnemyMenu;
 
         boolean attackable = AttackCalculator.isInRange(character, enemy) && enemy.getStats().getHitPoints() > 0;
@@ -136,11 +136,12 @@ public class ClickMenusDrawer {
         }
     }
 
-    public static void hideMenus() {
+    public static void hideMenus(boolean hideChestInventoyry) {
         hideMenu(char2PointMenu);
         hideMenu(char2DoorMenu);
         hideMenu(char2ChestMenu);
-        ChestActioner.hideChestInventory();
+        if (hideChestInventoyry)
+            ChestActioner.hideChestInventory();
         hideMenu(char2EnemyMenu);
     }
 

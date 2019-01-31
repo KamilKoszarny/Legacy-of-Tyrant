@@ -13,16 +13,16 @@ import sun.misc.Unsafe;
 import viewIso.IsoViewer;
 import viewIso.panel.PanelViewer;
 
-import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.List;
 
 public class App extends Application {
 
     public static final boolean FULL_MODE = true;
+    private static final boolean SHOW_TIME = false;
+
     public static final long START_TIME = System.nanoTime();
     public static long[] time = new long[10];
-    private static boolean showTime = false;
 
     public static void main(String[] args) {
         disableWarning();
@@ -70,7 +70,7 @@ public class App extends Application {
         for (int i = 0; i < level; i++) {
             spaces.append(" ");
         }
-        if (showTime)
+        if (SHOW_TIME)
             System.out.println(spaces + text + ": " + (System.nanoTime() - time[level])/1000000. + " ms");
         time[level] = System.nanoTime();
     }

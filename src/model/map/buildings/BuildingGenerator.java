@@ -135,7 +135,10 @@ public class BuildingGenerator {
         }
         if (countOfType >= maxCountOfType)
             return;
-        Furniture furniture = new Furniture(furnitureType);
+
+        Furniture furniture = FurnitureFactory.getFurniture(furnitureType);
+        if (furnitureType.equals(FurnitureType.CHEST))
+            furniture = new Chest();
         int dist = side%2*furniture.getSizeX()/2 + (side+1)%2*furniture.getSizeY()/2 + new Random().nextInt(3);
         Point innerPoint = new Point(wallPoint.x + side%2*(side - 2)*dist, wallPoint.y + (side%2 - 1)*(side - 1)*dist);
         MapPiece innerMapPiece = map.getPoints().get(innerPoint);

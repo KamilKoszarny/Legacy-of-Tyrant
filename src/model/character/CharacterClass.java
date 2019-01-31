@@ -1,6 +1,6 @@
 package model.character;
 
-import model.items.ItemsCalculator;
+import model.items.CharItemsGenerator;
 import model.items.armor.*;
 import model.items.weapon.Weapon;
 
@@ -54,7 +54,7 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.SCYTHE, .3);
         weaponsMap.put(Weapon.LIGHT_CROSSBOW, .1);
 
-        ItemsCalculator.recalcWeaponsMap(weaponsMap);
+        CharItemsGenerator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
     }
 
@@ -86,7 +86,7 @@ public enum CharacterClass {
         armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
 
         for (Map<Armor, Double> armorMap: armorMaps) {
-            ItemsCalculator.recalcArmorMap(armorMap);
+            CharItemsGenerator.recalcArmorMap(armorMap);
         }
 
         return armorMaps;
@@ -117,7 +117,7 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.HUNTER_BOW, .3);
         weaponsMap.put(Weapon.LIGHT_CROSSBOW, .3);
 
-        ItemsCalculator.recalcWeaponsMap(weaponsMap);
+        CharItemsGenerator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
     }
 
@@ -149,7 +149,7 @@ public enum CharacterClass {
         armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
 
         for (Map<Armor, Double> armorMap: armorMaps) {
-            ItemsCalculator.recalcArmorMap(armorMap);
+            CharItemsGenerator.recalcArmorMap(armorMap);
         }
 
         return armorMaps;
@@ -173,7 +173,7 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.SPHERE, .8);
         weaponsMap.put(Weapon.STAFF, .8);
 
-        ItemsCalculator.recalcWeaponsMap(weaponsMap);
+        CharItemsGenerator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
     }
 
@@ -205,7 +205,7 @@ public enum CharacterClass {
         armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
 
         for (Map<Armor, Double> armorMap: armorMaps) {
-            ItemsCalculator.recalcArmorMap(armorMap);
+            CharItemsGenerator.recalcArmorMap(armorMap);
         }
 
         return armorMaps;
@@ -233,7 +233,7 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.THROWING_AXE_THR, .2);
         weaponsMap.put(Weapon.LIGHT_CROSSBOW, .4);
 
-        ItemsCalculator.recalcWeaponsMap(weaponsMap);
+        CharItemsGenerator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
     }
 
@@ -265,7 +265,7 @@ public enum CharacterClass {
         armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
 
         for (Map<Armor, Double> armorMap: armorMaps) {
-            ItemsCalculator.recalcArmorMap(armorMap);
+            CharItemsGenerator.recalcArmorMap(armorMap);
         }
 
         return armorMaps;
@@ -291,7 +291,7 @@ public enum CharacterClass {
         weaponsMap.put(Weapon.SPHERE, 2.);
         weaponsMap.put(Weapon.STAFF, 2.);
 
-        ItemsCalculator.recalcWeaponsMap(weaponsMap);
+        CharItemsGenerator.recalcWeaponsMap(weaponsMap);
         return weaponsMap;
     }
 
@@ -323,7 +323,7 @@ public enum CharacterClass {
         armorMaps.get(5).put(Belt.LEATHER_BELT, .2);
 
         for (Map<Armor, Double> armorMap: armorMaps) {
-            ItemsCalculator.recalcArmorMap(armorMap);
+            CharItemsGenerator.recalcArmorMap(armorMap);
         }
 
         return armorMaps;

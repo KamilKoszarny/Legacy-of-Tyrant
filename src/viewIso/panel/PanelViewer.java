@@ -3,13 +3,11 @@ package viewIso.panel;
 import controller.isoView.isoPanel.Panel;
 import helpers.my.GeomerticHelper;
 import helpers.my.PolygonsHelper;
-import helpers.my.SortHelper;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
@@ -17,9 +15,7 @@ import model.Battle;
 import model.actions.ItemHandler;
 import model.character.Character;
 import viewIso.IsoViewer;
-import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
-import viewIso.map.MapImageGenerator;
 
 import java.awt.*;
 import java.util.List;
@@ -27,7 +23,7 @@ import java.util.List;
 public class PanelViewer {
 
     private static Panel panel;
-    private static CharDescriptor charDescriptor;
+    private static CharPanelViewer charPanelViewer;
     private static Rectangle heldItemRect;
     private static Image minimapImg;
     private static Rectangle minimapRect, minimapPosRect;
@@ -38,12 +34,12 @@ public class PanelViewer {
     public PanelViewer(Panel panel) {
         PanelViewer.panel = panel;
         heldItemRect = panel.getHeldItemRect();
-        charDescriptor = new CharDescriptor(PanelViewer.panel, Battle.getCharacters());
+        charPanelViewer = new CharPanelViewer(PanelViewer.panel, Battle.getCharacters());
         initMinimap();
     }
 
     public static void refresh() {
-        charDescriptor.refresh();
+        charPanelViewer.refresh();
         if (ItemHandler.getHeldItem() != null)
             drawHeldItem();
         else

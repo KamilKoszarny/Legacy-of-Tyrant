@@ -3,7 +3,7 @@ package model.actions;
 import model.Battle;
 import model.character.Character;
 import viewIso.ClickMenusDrawer;
-import viewIso.panel.CharDescriptor;
+import viewIso.panel.CharPanelViewer;
 
 public class CharsChooser {
 
@@ -11,9 +11,12 @@ public class CharsChooser {
         for (Character character : Battle.getCharacters()) {
             character.setChosen(false);
         }
-        clickedCharacter.setChosen(true);
+        if (clickedCharacter != null) {
+            clickedCharacter.setChosen(true);
+            CharPanelViewer.refreshCharInventory(clickedCharacter.getItems().getInventory());
+        }
+
         Battle.setChosenCharacter(clickedCharacter);
-        CharDescriptor.refreshInventory(clickedCharacter);
-        ClickMenusDrawer.hideMenus();
+        ClickMenusDrawer.hideMenus(true);
     }
 }

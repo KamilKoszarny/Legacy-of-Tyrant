@@ -1,8 +1,9 @@
 package model.actions;
 
-import controller.isoView.isoPanel.PanelController;
+import javafx.scene.shape.Rectangle;
 import model.Battle;
 import model.IsoBattleLoop;
+import model.actions.objects.ChestActioner;
 import model.character.Character;
 import model.character.StatsCalculator;
 import model.items.Item;
@@ -13,13 +14,12 @@ import model.map.MapPiece;
 import model.map.mapObjects.ItemMapObject;
 import viewIso.mapObjects.MapObjectController;
 import viewIso.mapObjects.MapObjectDrawer;
-import viewIso.panel.CharDescriptor;
+import viewIso.panel.CharPanelViewer;
+import viewIso.panel.InventoryRectanglesViewer;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 public class ItemHandler {
 
@@ -41,37 +41,6 @@ public class ItemHandler {
         setHeldPoint(clickedItemPoint);
     }
 
-    private static void putItem(Character character, int[] clickedInventorySlot) {
-        if (equipmentClicked(clickedInventorySlot)) {
-            Item underItem = character.getItems().getEquipmentPart(clickedInventorySlot[1]);
-            if (canBeDressed(underItem)) {
-                character.getItems().setEquipmentPart(heldItem, clickedInventorySlot[1], true);
-                if (!underItem.getName().equals("NOTHING"))
-                    heldItem = underItem;
-                else
-                    heldItem = null;
-            }
-        } else if (inventoryClicked(clickedInventorySlot)){
-            Set<Item> underItems = underInventoryItems(character, heldItem, clickedInventorySlot);
-            if (underItems == null || underItems.size() > 1) {
-                return;
-            }
-            if (underItems.size() == 0) {
-                PanelController.recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
-                character.getItems().getInventory().put(heldItem, clickedInventorySlot);
-                heldItem = null;
-                CharDescriptor.refreshInventory(Battle.getChosenCharacter());
-                return;
-            }
-            //so: underItems.size() == 1
-            character.getItems().getInventory().put(heldItem, clickedInventorySlot);
-            heldItem = underItems.iterator().next();
-            PanelController.recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
-            character.getItems().getInventory().remove(heldItem);
-            CharDescriptor.refreshInventory(Battle.getChosenCharacter());
-        }
-    }
-
     private static void catchItem(Character character, int[] clickedInventorySlot) {
         if (equipmentClicked(clickedInventorySlot)) {
             heldItem = character.getItems().getEquipmentPart(clickedInventorySlot[1]);
@@ -82,19 +51,66 @@ public class ItemHandler {
             character.getItems().setEquipmentPart(ItemsCalculator.getNothingItemByNo(clickedInventorySlot[1]), clickedInventorySlot[1], true);
         }
         else if (chestClicked(clickedInventorySlot)) {
-            System.out.println(clickedInventorySlot);
+            clickedInventorySlot[0] -= 100;
+            heldItem = catchInventoryItem(ChestActioner.getChest().getInventory(), clickedInventorySlot,
+                    ChestActioner.getInventoryRect());
         }
         else if (inventoryClicked(clickedInventorySlot)){
-            heldItem = itemByInventorySlot(character, clickedInventorySlot);
-            if (heldItem == null)
-                return;
-            Point itemClickPoint = new Point(
-                    (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[0] - character.getItems().getInventory().get(heldItem)[0] + .5)),
-                    (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[1] - character.getItems().getInventory().get(heldItem)[1] + .5)));
-            IsoBattleLoop.setClickedItemPoint(itemClickPoint);
-            character.getItems().getInventory().keySet().remove(heldItem);
-            CharDescriptor.refreshInventory(Battle.getChosenCharacter());
+            heldItem = catchInventoryItem(character.getItems().getInventory(), clickedInventorySlot,
+                    CharPanelViewer.getInventoryRect());
         }
+    }
+
+    private static Item catchInventoryItem(Map<Item, int[]> inventory, int[] clickedInventorySlot, Rectangle inventoryRectangle) {
+        Item catchItem;
+        catchItem = itemByInventorySlot(inventory, clickedInventorySlot);
+        if (catchItem == null)
+            return null;
+        Point itemClickPoint = new Point(
+                (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[0] - inventory.get(catchItem)[0] + .5)),
+                (int)(ITEM_SLOT_SIZE * (clickedInventorySlot[1] - inventory.get(catchItem)[1] + .5)));
+        IsoBattleLoop.setClickedItemPoint(itemClickPoint);
+        inventory.keySet().remove(catchItem);
+        InventoryRectanglesViewer.refreshInventory(inventory, inventoryRectangle);
+        return catchItem;
+    }
+
+    private static void putItem(Character character, int[] clickedInventorySlot) {
+        if (equipmentClicked(clickedInventorySlot)) {
+            Item underItem = character.getItems().getEquipmentPart(clickedInventorySlot[1]);
+            if (canBeDressed(underItem)) {
+                character.getItems().setEquipmentPart(heldItem, clickedInventorySlot[1], true);
+                if (!underItem.getName().equals("NOTHING"))
+                    heldItem = underItem;
+                else
+                    heldItem = null;
+            }
+        } else if (chestClicked(clickedInventorySlot)) {
+            clickedInventorySlot[0] -= 100;
+            putToInventory(ChestActioner.getChest().getInventory(), clickedInventorySlot, ChestActioner.getInventoryRect());
+        } else if (inventoryClicked(clickedInventorySlot)){
+            putToInventory(character.getItems().getInventory(), clickedInventorySlot, CharPanelViewer.getInventoryRect());
+        }
+    }
+
+    private static void putToInventory(Map<Item, int[]> inventory, int[] clickedInventorySlot, Rectangle inventoryRectangle) {
+        recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
+        Set<Item> underItems = underInventoryItems(inventory, heldItem, clickedInventorySlot);
+        if (underItems == null || underItems.size() > 1) {
+            return;
+        }
+        if (underItems.size() == 0) {
+            inventory.put(heldItem, clickedInventorySlot);
+            heldItem = null;
+            InventoryRectanglesViewer.refreshInventory(inventory, inventoryRectangle);
+            return;
+        }
+        //so: underItems.size() == 1
+        inventory.put(heldItem, clickedInventorySlot);
+        heldItem = underItems.iterator().next();
+//            recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
+        inventory.remove(heldItem);
+        InventoryRectanglesViewer.refreshInventory(inventory, inventoryRectangle);
     }
 
     public static void tryGiveItem(Character giver, Character taker, Item item) {
@@ -115,7 +131,7 @@ public class ItemHandler {
                 taker.getItems().setSpareWeapon((Weapon) item);
                 heldItem = null;
             } else
-                given = putInFirstInventorySlot(taker, item);
+                given = putInFirstInventorySlot(taker.getItems().getInventory(), item);
         } else if (item instanceof Shield) {
             if (taker.getItems().getShield().equals(Shield.NOTHING)) {
                 taker.getItems().setShield((Shield) item, true);
@@ -124,23 +140,23 @@ public class ItemHandler {
                 taker.getItems().setSpareShield((Shield) item);
                 heldItem = null;
             } else
-                given = putInFirstInventorySlot(taker, item);
+                given = putInFirstInventorySlot(taker.getItems().getInventory(), item);
         } else
-            given = putInFirstInventorySlot(taker, item);
+            given = putInFirstInventorySlot(taker.getItems().getInventory(), item);
 
         if (giver != null)
-            CharDescriptor.refreshInventory(giver);
+            CharPanelViewer.refreshCharInventory(giver.getItems().getInventory());
         else
-            CharDescriptor.refreshInventory(taker);
+            CharPanelViewer.refreshCharInventory(taker.getItems().getInventory());
         StatsCalculator.calcStats(taker);
 
         return given;
     }
 
-    private static boolean putInFirstInventorySlot(Character taker, Item item) {
-        int[] inventorySlot = freeSpaceInInventory(taker, item);
+    public static boolean putInFirstInventorySlot(Map<Item, int[]> inventory, Item item) {
+        int[] inventorySlot = freeSpaceInInventory(inventory, item);
         if (inventorySlot != null) {
-            taker.getItems().getInventory().put(item, inventorySlot);
+            inventory.put(item, inventorySlot);
             heldItem = null;
             return true;
         }
@@ -164,7 +180,6 @@ public class ItemHandler {
 
     public static void tryPickupItem(Character character, ItemMapObject itemMapObject, Point mapPoint) {
         Item item = itemMapObject.getItem();
-        System.out.println(item);
         if (character.getPosition().distance(mapPoint) <= ITEM_DROP_DIST) {
             boolean pickedUp = giveItem(null, character, item);
             if (pickedUp) {
@@ -189,20 +204,20 @@ public class ItemHandler {
         return clickedInventorySlot != null && clickedInventorySlot[0] >= 100;
     }
 
-    private static int[] freeSpaceInInventory(Character character, Item itemToPut) {
+    private static int[] freeSpaceInInventory(Map<Item, int[]> inventory, Item itemToPut) {
         for (int x = 0; x < INVENTORY_X; x++) {
             for (int y = 0; y < INVENTORY_Y; y++) {
                 int[] slot = {x, y};
-                if (isSpaceInInventory(character, itemToPut, slot))
+                if (isSpaceInInventory(inventory, itemToPut, slot))
                     return slot;
             }
         }
         return null;
     }
 
-    private static boolean isSpaceInInventory(Character character, Item itemToPut, int[] clickedInventorySlot) {
-        List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, itemToPut, clickedInventorySlot);
-        List<int[]> allOccupiedSlots = allOccupiedSlots(character);
+    private static boolean isSpaceInInventory(Map<Item, int[]> inventory, Item itemToPut, int[] clickedInventorySlot) {
+        List<int[]> itemOccupiedSlots = itemOccupiedSlots(inventory, itemToPut, clickedInventorySlot);
+        List<int[]> allOccupiedSlots = allOccupiedSlots(inventory);
         for (int[] slot: itemOccupiedSlots) {
             if (outOfInventory(slot))
                 return false;
@@ -214,16 +229,16 @@ public class ItemHandler {
         return true;
     }
 
-    private static Set<Item> underInventoryItems(Character character, Item itemToPut, int[] clickedInventorySlot) {
-        List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, itemToPut, clickedInventorySlot);
+    private static Set<Item> underInventoryItems(Map<Item, int[]> inventory, Item itemToPut, int[] clickedInventorySlot) {
+        List<int[]> itemOccupiedSlots = itemOccupiedSlots(inventory, itemToPut, clickedInventorySlot);
         Set<Item> underItems = new HashSet<>();
         List<int[]> underItemOccupiedSlots;
-        for (Item item: character.getItems().getInventory().keySet()) {
-            underItemOccupiedSlots = itemOccupiedSlots(character, item, character.getItems().getInventory().get(item));
-            for (int[] slot: itemOccupiedSlots) {
-                if (outOfInventory(slot))
-                    return null;
-                for (int[] invSlot: underItemOccupiedSlots) {
+        for (int[] slot: itemOccupiedSlots) {
+            if (outOfInventory(slot))
+                return null;
+            for (Item item: inventory.keySet()) {
+                underItemOccupiedSlots = itemOccupiedSlots(inventory, item, inventory.get(item));
+                for (int[] invSlot : underItemOccupiedSlots) {
                     if (sameSlot(slot, invSlot))
                         underItems.add(item);
                 }
@@ -240,8 +255,8 @@ public class ItemHandler {
         return slot[0] < 0 || slot[1] < 0 || slot[0] >= INVENTORY_X || slot[1] >= INVENTORY_Y;
     }
 
-    public static int[] inventorySlotByItemClickPoint(Item item, Character character, Point point){
-        int[] firstSlot = character.getItems().getInventory().get(item);
+    public static int[] inventorySlotByItemClickPoint(Item item, Map<Item, int[]> inventory, Point point){
+        int[] firstSlot = inventory.get(item);
         int[] slot = new int[2];
 
         slot[0] = firstSlot[0] + point.x / ITEM_SLOT_SIZE;
@@ -249,9 +264,9 @@ public class ItemHandler {
         return slot;
     }
 
-    private static Item itemByInventorySlot(Character character, int[] inventorySlot) {
-        for (Item item: character.getItems().getInventory().keySet()) {
-            List<int[]> itemOccupiedSlots = itemOccupiedSlots(character, item, null);
+    private static Item itemByInventorySlot(Map<Item, int[]> inventory, int[] inventorySlot) {
+        for (Item item: inventory.keySet()) {
+            List<int[]> itemOccupiedSlots = itemOccupiedSlots(inventory, item, null);
             for (int[] itemSlot: itemOccupiedSlots) {
                 if (sameSlot(inventorySlot, itemSlot))
                     return item;
@@ -260,19 +275,19 @@ public class ItemHandler {
         return null;
     }
 
-    private static List<int[]> allOccupiedSlots(Character character) {
+    private static List<int[]> allOccupiedSlots(Map<Item, int[]> inventory) {
         List<int[]> allOccupiedSlots = new ArrayList<>();
-        for (Item item: character.getItems().getInventory().keySet()) {
-            allOccupiedSlots.addAll(itemOccupiedSlots(character, item, null));
+        for (Item item: inventory.keySet()) {
+            allOccupiedSlots.addAll(itemOccupiedSlots(inventory, item, null));
         }
         return allOccupiedSlots;
     }
 
-    private static List<int[]> itemOccupiedSlots(Character character, Item item, int[] clickedInventorySlot) {
+    private static List<int[]> itemOccupiedSlots(Map<Item, int[]> inventory, Item item, int[] clickedInventorySlot) {
         List<int[]> occupiedSlots = new ArrayList<>();
         int[] slotZero;
         if (clickedInventorySlot == null)
-            slotZero = character.getItems().getInventory().get(item);
+            slotZero = inventory.get(item);
         else
             slotZero = clickedInventorySlot;
         int xSlotSize = Math.round(Math.round(item.getImage().getWidth() / ITEM_SLOT_SIZE));
@@ -283,6 +298,13 @@ public class ItemHandler {
             }
         }
         return occupiedSlots;
+    }
+
+    private static void recalcInventorySlotByHeldPoint(Point shapeClickPoint, int[] inventorySlot) {
+        if (inventorySlot != null && shapeClickPoint != null) {
+            inventorySlot[0] -= (int)(shapeClickPoint.getX() / ItemHandler.ITEM_SLOT_SIZE);
+            inventorySlot[1] -= (int)(shapeClickPoint.getY() / ItemHandler.ITEM_SLOT_SIZE);
+        }
     }
 
     private static void setHeldPoint(Point heldPoint) {

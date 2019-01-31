@@ -10,6 +10,7 @@ import model.actions.movement.CharTurner;
 import model.actions.objects.ChestActioner;
 import model.actions.objects.DoorActioner;
 import model.map.MapPiece;
+import model.map.buildings.Chest;
 import model.map.buildings.Door;
 import model.map.buildings.Furniture;
 import model.map.mapObjects.ItemMapObject;
@@ -147,7 +148,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 DoorActioner.closeDoor(buttonBattleEvent.getObject());
                 break;
             case CHEST_OPEN:
-                ChestActioner.openChest((Furniture) buttonBattleEvent.getObject(), buttonBattleEvent.getClickPoint());
+                ChestActioner.openChest((Chest) buttonBattleEvent.getObject(), buttonBattleEvent.getClickPoint());
                 break;
             case ATTACK_BODY:
                 AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getCharacter(), BodyPart.BODY);
@@ -163,7 +164,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
         }
 
-        ClickMenusDrawer.hideMenus();
+        ClickMenusDrawer.hideMenus(false);
     }
 
     private void handleHover() {

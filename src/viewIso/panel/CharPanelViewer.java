@@ -2,7 +2,6 @@ package viewIso.panel;
 
 import controller.isoView.isoPanel.Panel;
 import controller.isoView.isoPanel.PanelController;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
@@ -18,22 +17,24 @@ import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class CharDescriptor {
+public class CharPanelViewer {
 
     private static Panel panel;
     private List<Character> characters;
     private static Rectangle inventoryRect;
     private static boolean inventoryRectsSet = false;
 
-    public CharDescriptor(Panel panel, List<Character> characters) {
-        CharDescriptor.panel = panel;
+    public CharPanelViewer(Panel panel, List<Character> characters) {
+        CharPanelViewer.panel = panel;
         this.characters = characters;
         initInvRect();
+        InventoryRectanglesViewer.drawInventoryRectangle(inventoryRect);
     }
 
     private void initInvRect() {
-        Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel, new int[]{0, 0});
+        Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel.getInventoryRectangle(), new int[]{0, 0});
         inventoryRect = initInvRect(new Point((int)invFirstRect.getX(), (int)invFirstRect.getY()));
     }
 
@@ -57,7 +58,7 @@ public class CharDescriptor {
             refreshPortrait(firstChosenCharacter);
             refreshEquipment(firstChosenCharacter);
             if (!inventoryRectsSet) {
-                refreshInventory(firstChosenCharacter);
+                refreshCharInventory(firstChosenCharacter.getItems().getInventory());
             }
         }
     }
@@ -151,44 +152,8 @@ public class CharDescriptor {
         Tooltip.install(rectangle, tooltip);
     }
 
-    public static void refreshInventory(Character character) {
-        Pane pane = (Pane) panel.getHeldItemRect().getParent();
-        redrawInventoryRect(pane);
-
-        int[] itemInvPos;
-        Rectangle itemInvFirstRect;
-        for (Item item: character.getItems().getInventory().keySet()) {
-            itemInvPos = character.getItems().getInventory().get(item);
-            itemInvFirstRect = PanelController.calcInventoryScreenRect(panel, itemInvPos);
-            Rectangle inventoryItemRect = new Rectangle(itemInvFirstRect.getX(), itemInvFirstRect.getY(),
-                    item.getImage().getWidth(), item.getImage().getHeight());
-            inventoryItemRect.setFill(new ImagePattern(item.getImage()));
-
-            String name = item.getName();
-            Tooltip tooltip = new Tooltip(name);
-            Tooltip.install(inventoryItemRect, tooltip);
-
-            PanelController.initInventoryItemClick(inventoryItemRect, item, character);
-
-            pane.getChildren().add(inventoryItemRect);
-        }
-    }
-
-    private static void redrawInventoryRect(Pane pane) {
-        if (!inventoryRectsSet) {
-            Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel, new int[]{0, 0});
-            inventoryRect.setX(invFirstRect.getX());
-            inventoryRect.setY(invFirstRect.getY());
-            initInventoryRectangle();
-            inventoryRectsSet = true;
-        }
-        pane.getChildren().remove(inventoryRect);
-        pane.getChildren().add(inventoryRect);
-    }
-
-    private static void initInventoryRectangle() {
-        PanelController.initInventoryClick(inventoryRect, false);
-        inventoryRect.setVisible(true);
+    public static void refreshCharInventory(Map<Item, int[]> inventory) {
+        InventoryRectanglesViewer.refreshInventory(inventory, inventoryRect);
     }
 
 
@@ -200,5 +165,9 @@ public class CharDescriptor {
             }
         }
         return chosenCharacters;
+    }
+
+    public static Rectangle getInventoryRect() {
+        return inventoryRect;
     }
 }
