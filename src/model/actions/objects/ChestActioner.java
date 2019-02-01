@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import model.map.buildings.Chest;
 import model.map.buildings.Furniture;
+import viewIso.map.MapDrawer;
 import viewIso.panel.CharPanelViewer;
 import viewIso.panel.InventoryRectanglesViewer;
 
@@ -39,22 +40,32 @@ public class ChestActioner {
         if (inventoryRect != null) {
             Pane pane = (Pane) inventoryRect.getParent();
             pane.getChildren().remove(inventoryRect);
-            List<Node> nodesToRemove = new ArrayList<>();
-            for (Node node: pane.getChildren()) {
-                if (node.getProperties().containsValue("chestItem"))
-                    nodesToRemove.add(node);
-            }
-            pane.getChildren().removeAll(nodesToRemove);
+            pane.getChildren().removeAll(chestItemNodes());
             inventoryRect = null;
         }
     }
 
-    private static void redrawInventoryRect(Pane pane) {
-        pane.getChildren().remove(inventoryRect);
-        pane.getChildren().add(inventoryRect);
+    public static void moveChestInventory(Point mapMove) {
+        if (inventoryRect != null) {
+            inventoryRect.setTranslateX(inventoryRect.getTranslateX() + mapMove.x * MapDrawer.MAP_PIECE_SCREEN_SIZE_X);
+            inventoryRect.setTranslateY(inventoryRect.getTranslateY() + mapMove.y * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y);
+            for (Node node : chestItemNodes()) {
+                node.setTranslateX(node.getTranslateX() + mapMove.x * MapDrawer.MAP_PIECE_SCREEN_SIZE_X);
+                node.setTranslateY(node.getTranslateY() + mapMove.y * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y);
+            }
+        }
     }
 
-
+    private static List<Node> chestItemNodes() {
+        List<Node> chestItemNodes = new ArrayList<>();
+        Pane pane = (Pane) inventoryRect.getParent();
+        for (Node node: pane.getChildren()) {
+            if (node.getProperties().containsValue("chestItem")) {
+                chestItemNodes.add(node);
+            }
+        }
+        return chestItemNodes;
+    }
 
     public static Chest getChest() {
         return chest;

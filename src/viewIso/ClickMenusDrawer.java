@@ -151,10 +151,11 @@ public class ClickMenusDrawer {
         }
     }
 
-    public void moveMenus(Point mapMove) {
+    public static void moveMenus(Point mapMove) {
         for (ClickMenuButton button: activeMenu) {
             moveButton(button, mapMove);
         }
+        ChestActioner.moveChestInventory(mapMove);
     }
 
     public static ClickMenuButton clickedButton () {
@@ -201,7 +202,7 @@ public class ClickMenusDrawer {
         label.setVisible(false);
     }
 
-    private void moveButton(ClickMenuButton button, Point mapMove) {
+    private static void moveButton(ClickMenuButton button, Point mapMove) {
         Shape shape = button.getShape();
         shape.setTranslateX(shape.getTranslateX() + mapMove.x * MapDrawer.MAP_PIECE_SCREEN_SIZE_X);
         shape.setTranslateY(shape.getTranslateY() + mapMove.y * MapDrawer.MAP_PIECE_SCREEN_SIZE_Y);

@@ -46,7 +46,7 @@ public class MapObjectDrawer {
         }
     }
 
-    public void drawObject (Point point) {
+    public static void drawObject (Point point) {
         MapObjectSprite mapObjectSprite = point2mapObjectSpriteMap.get(point);
         Image image = mapObjectSprite.getImage();
         Point screenPos = MapDrawCalculator.screenPositionWithHeight(point);
@@ -66,7 +66,7 @@ public class MapObjectDrawer {
         }
     }
 
-    private void drawCutImage(MapObjectSprite mapObjectSprite, Image image, Point screenPos, GraphicsContext gc) {
+    private static void drawCutImage(MapObjectSprite mapObjectSprite, Image image, Point screenPos, GraphicsContext gc) {
         if (mapObjectSprite.getObject().getType().hasCutImage())
             gc.drawImage(mapObjectSprite.getCutImage(),
                     screenPos.x - mapObjectSprite.getOffset().x, screenPos.y - mapObjectSprite.getOffset().y);

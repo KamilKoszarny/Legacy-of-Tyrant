@@ -72,7 +72,7 @@ public class IsoBattleLoop extends AnimationTimer{
     private void handleBattleEvent() {
         switch (battleEvent.getType()){
             case MOVE_MAP:
-                IsoViewer.setMapMove(battleEvent.getClickPoint());
+                MapMover.setMapMove(battleEvent.getClickPoint());
                 break;
             case CHOOSE_CHARACTER:
                 CharsChooser.chooseCharacter(CharsDrawer.getClickedCharacter());

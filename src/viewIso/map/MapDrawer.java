@@ -26,15 +26,15 @@ public class MapDrawer {
 
     private static Point zeroScreenPosition = new Point(600, -50);
     private static Map map;
-    private Canvas canvas;
-    private GraphicsContext gc;
+    private static Canvas canvas;
+    private static GraphicsContext gc;
     private MapPieceDrawer mPDrawer;
     private static MapImage mapImage;
     private static List<Polygon> mapPolygon;
 
     public MapDrawer(Map map, Canvas canvas) {
         MapDrawer.map = map;
-        this.canvas = canvas;
+        MapDrawer.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
         mPDrawer = new MapPieceDrawer(map, gc, this, MAP_PIECE_SCREEN_SIZE_X, MAP_PIECE_SCREEN_SIZE_Y);
         PIX_PER_M = (int) ((MAP_PIECE_SCREEN_SIZE_X + MAP_PIECE_SCREEN_SIZE_Y) / 2 / Map.M_PER_POINT);
@@ -57,7 +57,7 @@ public class MapDrawer {
             mapImage.setExploredView(mapPolygon);
     }
 
-    public void drawMap() {
+    public static void drawMap() {
 //        App.resetTime(0);
         clearMap();
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -78,13 +78,13 @@ public class MapDrawer {
 //        App.showAndResetTime("mapDraw: ", 0);
     }
 
-    private void drawAll() {
+    private static void drawAll() {
         gc.drawImage(mapImage.getImage(),
                 -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
                 canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
-    private void drawExploredPart() {
+    private static void drawExploredPart() {
         List<Polygon> exploredView = mapImage.getExploredView();
         drawMapPart(exploredView, true);
         gc.setFill(FOG_COLOR);
@@ -97,7 +97,7 @@ public class MapDrawer {
         gc.setEffect(null);
     }
 
-    private void drawAllCharsViews() {
+    private static void drawAllCharsViews() {
         List<Polygon> viewAll = new ArrayList<>();
         for (Character character: Battle.getCharacters()) {
             if (character.getColor().equals(Battle.getPlayerColor()))
@@ -107,7 +107,7 @@ public class MapDrawer {
         drawMapPart(viewAll, false);
     }
 
-    private void drawChosenCharView() {
+    private static void drawChosenCharView() {
         if (Battle.getChosenCharacter() != null) {
             List<Polygon> view = Arrays.asList(Battle.getChosenCharacter().getView());
             gc.setEffect(new Glow(1));
@@ -115,14 +115,14 @@ public class MapDrawer {
         }
     }
 
-    private void drawMapPart(List<Polygon> polygons, boolean heightBonus) {
+    private static void drawMapPart(List<Polygon> polygons, boolean heightBonus) {
         for (Polygon polygon : polygons) {
             double[][] coords = MapDrawCalculator.screenWithHeightCoordsForDrawPolygon(polygon, heightBonus);
             gc.fillPolygon(coords[0], coords[1], coords[0].length);
         }
     }
 
-    public void clearMap(){
+    public static void clearMap(){
         gc.setFill(BACKGROUND_COLOR);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 

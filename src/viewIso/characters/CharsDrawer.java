@@ -39,7 +39,7 @@ public class CharsDrawer {
         initCharSpriteMap();
     }
 
-    public void drawChar(Character character, boolean transparency) {
+    public static void drawChar(Character character, boolean transparency) {
         GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
         if (character.equals(Battle.getChosenCharacter()))
             gc.setEffect(new Glow(.6));

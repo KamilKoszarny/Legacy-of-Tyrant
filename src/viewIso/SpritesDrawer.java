@@ -14,16 +14,13 @@ import java.util.List;
 
 public class SpritesDrawer {
 
-    private CharsDrawer charsDrawer;
-    private MapObjectDrawer mapObjectDrawer;
-
     public SpritesDrawer() {
-        charsDrawer = new CharsDrawer();
+        new CharsDrawer();
         new LabelsDrawer();
-        mapObjectDrawer = new MapObjectDrawer();
+        new MapObjectDrawer();
     }
 
-    public void drawVisibleSprites() {
+    public static void drawVisibleSprites() {
         LabelsDrawer.hideLabels();
         List<Point> visiblePoints = MapDrawCalculator.calcOnCanvasPoints();
         visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
@@ -31,22 +28,22 @@ public class SpritesDrawer {
             MapPiece mapPiece = Battle.getMap().getPoints().get(point);
             if (mapPiece.getObject() != null) {
                 if (MapDrawCalculator.isExplored(point)) {
-                    mapObjectDrawer.drawObject(point);
+                    MapObjectDrawer.drawObject(point);
                 }
             }
             drawCharIfThere(point);
         }
         for (Character character: Battle.getCharacters()) {
-            charsDrawer.drawChar(character, true);
+            CharsDrawer.drawChar(character, true);
         }
 
         ItemObjectsDrawer.resetItemGlowIncrement();
     }
 
-    private void drawCharIfThere(Point point) {
+    private static void drawCharIfThere(Point point) {
         for (Character character : Battle.getCharacters()) {
             if (point.equals(character.getPosition())) {
-                charsDrawer.drawChar(character, false);
+                CharsDrawer.drawChar(character, false);
             }
         }
     }
