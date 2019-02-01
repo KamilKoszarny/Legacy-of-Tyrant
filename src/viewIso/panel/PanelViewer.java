@@ -135,6 +135,10 @@ public class PanelViewer {
         heldItemRect.setVisible(true);
     }
 
+    public static Panel getPanel() {
+        return panel;
+    }
+
     public static void setMinimapImg(Image minimapImg) {
         PanelViewer.minimapImg = minimapImg;
     }

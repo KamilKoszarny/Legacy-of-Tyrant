@@ -175,7 +175,7 @@ public class ClickMenusDrawer {
             shape.setVisible(false);
             Label label = button.getLabel();
             label.setVisible(false);
-            Pane pane = (Pane) IsoViewer.getCanvas().getParent();
+            Pane pane = IsoViewer.getPane();
             pane.getChildren().addAll(shape, label);
         }
     }

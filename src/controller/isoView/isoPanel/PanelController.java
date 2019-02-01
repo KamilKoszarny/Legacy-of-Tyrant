@@ -149,7 +149,8 @@ public class PanelController {
         double slotSizeX = inventoryRectangle.getWidth() / ItemHandler.INVENTORY_X;
         double slotSizeY = inventoryRectangle.getHeight() / ItemHandler.INVENTORY_Y;
 
-        return new Rectangle(inventoryRectangle.getX() + pos[0] * slotSizeX, inventoryRectangle.getY() + pos[1] * slotSizeY,
+        return new Rectangle(inventoryRectangle.getX() + inventoryRectangle.getTranslateX() + pos[0] * slotSizeX,
+                inventoryRectangle.getY() + inventoryRectangle.getTranslateY() + pos[1] * slotSizeY,
                 slotSizeX, slotSizeY);
     }
 }

@@ -6,10 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import model.actions.ItemHandler;
 import model.character.Character;
 import model.items.Item;
 
@@ -24,29 +22,11 @@ public class CharPanelViewer {
     private static Panel panel;
     private List<Character> characters;
     private static Rectangle inventoryRect;
-    private static boolean inventoryRectsSet = false;
 
     public CharPanelViewer(Panel panel, List<Character> characters) {
         CharPanelViewer.panel = panel;
         this.characters = characters;
         initInvRect();
-        InventoryRectanglesViewer.drawInventoryRectangle(inventoryRect);
-    }
-
-    private void initInvRect() {
-        Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel.getInventoryRectangle(), new int[]{0, 0});
-        inventoryRect = initInvRect(new Point((int)invFirstRect.getX(), (int)invFirstRect.getY()));
-    }
-
-    public static Rectangle initInvRect(Point pos) {
-        Image inventoryImg = new Image("/items/inventory.png");
-        Rectangle inventoryRect = new Rectangle(pos.getX(), pos.getY(),
-                ItemHandler.INVENTORY_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_Y * ItemHandler.ITEM_SLOT_SIZE);
-        inventoryRect.setFill(new ImagePattern(inventoryImg));
-        Pane pane = (Pane) panel.getHeldItemRect().getParent();
-        inventoryRect.setVisible(true);
-        pane.getChildren().add(inventoryRect);
-        return inventoryRect;
     }
 
     public void refresh() {
@@ -57,10 +37,14 @@ public class CharPanelViewer {
             refreshBars(firstChosenCharacter);
             refreshPortrait(firstChosenCharacter);
             refreshEquipment(firstChosenCharacter);
-            if (!inventoryRectsSet) {
-                refreshCharInventory(firstChosenCharacter.getItems().getInventory());
-            }
+            refreshCharInventory(firstChosenCharacter.getItems().getInventory());
         }
+    }
+
+    private void initInvRect() {
+        Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel.getInventoryRectangle(), new int[]{0, 0});
+        inventoryRect = InventoryRectanglesViewer.createInventoryRectangle(new Point((int)invFirstRect.getX(), (int)invFirstRect.getY()));
+        InventoryRectanglesViewer.drawInventoryRectangle(inventoryRect);
     }
 
     private void refreshLabels(Character character){
@@ -169,5 +153,9 @@ public class CharPanelViewer {
 
     public static Rectangle getInventoryRect() {
         return inventoryRect;
+    }
+
+    public static Panel getPanel() {
+        return panel;
     }
 }

@@ -6,9 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import model.map.buildings.Chest;
-import model.map.buildings.Furniture;
+import viewIso.IsoViewer;
 import viewIso.map.MapDrawer;
-import viewIso.panel.CharPanelViewer;
 import viewIso.panel.InventoryRectanglesViewer;
 
 import java.awt.*;
@@ -31,14 +30,14 @@ public class ChestActioner {
     private static void openChestInventory(Point clickPoint) {
         final int INV_POS_OFFSET = 10;
         Point invPos = new Point(clickPoint.x + INV_POS_OFFSET, clickPoint.y + INV_POS_OFFSET);
-        inventoryRect = CharPanelViewer.initInvRect(invPos);
+        inventoryRect = InventoryRectanglesViewer.createInventoryRectangle(invPos);
         inventoryRect.getProperties().put(IMAGE_VIEW, "chestInventory");
         PanelController.initInventoryClick(inventoryRect, true);
     }
 
     public static void hideChestInventory() {
         if (inventoryRect != null) {
-            Pane pane = (Pane) inventoryRect.getParent();
+            Pane pane = IsoViewer.getPane();
             pane.getChildren().remove(inventoryRect);
             pane.getChildren().removeAll(chestItemNodes());
             inventoryRect = null;

@@ -35,7 +35,7 @@ public class LabelsDrawer {
             label.setCache(true);
             label.setVisible(true);
 
-            Pane pane = (Pane) IsoViewer.getCanvas().getParent();
+            Pane pane = IsoViewer.getPane();
             pane.getChildren().add(label);
 
             charNameLabelsMap.put(character, label);
@@ -51,7 +51,7 @@ public class LabelsDrawer {
             label.setCache(true);
             label.setVisible(false);
 
-            Pane pane = (Pane) IsoViewer.getCanvas().getParent();
+            Pane pane = IsoViewer.getPane();
             pane.getChildren().add(label);
 
             charDamageLabelsMap.put(character, label);

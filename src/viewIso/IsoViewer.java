@@ -1,6 +1,7 @@
 package viewIso;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.Pane;
 import model.Battle;
 import viewIso.map.MapDrawer;
 
@@ -27,5 +28,9 @@ public class IsoViewer {
 
     public static Canvas getCanvas() {
         return canvas;
+    }
+
+    public static Pane getPane() {
+        return (Pane) canvas.getParent();
     }
 }
