@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import model.map.buildings.Chest;
-import viewIso.IsoViewer;
 import viewIso.map.MapDrawer;
 import viewIso.panel.InventoryRectanglesViewer;
 
@@ -37,9 +36,9 @@ public class ChestActioner {
 
     public static void hideChestInventory() {
         if (inventoryRect != null) {
-            Pane pane = IsoViewer.getPane();
-            pane.getChildren().remove(inventoryRect);
+            Pane pane = (Pane) inventoryRect.getParent();
             pane.getChildren().removeAll(chestItemNodes());
+            pane.getChildren().remove(inventoryRect);
             inventoryRect = null;
         }
     }

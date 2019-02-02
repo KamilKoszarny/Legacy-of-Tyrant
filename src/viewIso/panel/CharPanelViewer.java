@@ -20,16 +20,16 @@ import java.util.Map;
 public class CharPanelViewer {
 
     private static Panel panel;
-    private List<Character> characters;
+    private static List<Character> characters;
     private static Rectangle inventoryRect;
 
     public CharPanelViewer(Panel panel, List<Character> characters) {
         CharPanelViewer.panel = panel;
-        this.characters = characters;
+        CharPanelViewer.characters = characters;
         initInvRect();
     }
 
-    public void refresh() {
+    public static void refresh() {
         List<Character> chosenCharacters = calcChosenCharacters();
         if (chosenCharacters.size() == 1) {
             Character firstChosenCharacter = chosenCharacters.get(0);
@@ -41,13 +41,13 @@ public class CharPanelViewer {
         }
     }
 
-    private void initInvRect() {
+    private static void initInvRect() {
         Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel.getInventoryRectangle(), new int[]{0, 0});
         inventoryRect = InventoryRectanglesViewer.createInventoryRectangle(new Point((int)invFirstRect.getX(), (int)invFirstRect.getY()));
         InventoryRectanglesViewer.drawInventoryRectangle(inventoryRect);
     }
 
-    private void refreshLabels(Character character){
+    private static void refreshLabels(Character character){
         for (Label label: panel.getCharLabels()) {
             String parameterText = getParameterText(label, character);
             label.setText(parameterText);
@@ -55,7 +55,7 @@ public class CharPanelViewer {
     }
 
     //use label Id
-    private String getParameterText(Label label, Character character) {
+    private static String getParameterText(Label label, Character character) {
         String parameter = label.getId().substring(0,label.getId().length() - 5);
 
         String parText = CharParameter.signByName(parameter) + findValue(character, parameter);
@@ -68,7 +68,7 @@ public class CharPanelViewer {
         return parText;
     }
 
-    private String findValue(Character character, String parameter) {
+    private static String findValue(Character character, String parameter) {
         String value = "";
         String getterName = "get" + parameter.substring(0, 1).toUpperCase() + parameter.substring(1, parameter.length());
         java.lang.reflect.Method method;
@@ -87,7 +87,7 @@ public class CharPanelViewer {
         return value;
     }
 
-    private void refreshBars(Character character) {
+    private static void refreshBars(Character character) {
         double baseWidth = panel.getCharBars().get(0).getPrefWidth();
         ProgressBar hpBar = panel.getCharBars().get(0), manaBar = panel.getCharBars().get(1), vigorBar = panel.getCharBars().get(2);
 
@@ -105,12 +105,12 @@ public class CharPanelViewer {
         vigorBar.setProgress((double)character.getStats().getVigor() / (double)character.getStats().getVigorMax());
     }
 
-    private void refreshPortrait(Character character) {
+    private static void refreshPortrait(Character character) {
         panel.getCharPortraitBackgroundRect().setFill(character.getColor());
         panel.getPortraitRect().setFill(new ImagePattern(character.getPortrait()));
     }
 
-    private void refreshEquipment(Character character) {
+    private static void refreshEquipment(Character character) {
         refreshEqRect(panel.getWeaponRect(), character.getItems().getWeapon());
         refreshEqRect(panel.getSpareWeaponRect(), character.getItems().getSpareWeapon());
         refreshEqRect(panel.getHelmetRect(), character.getItems().getHelmet());
@@ -125,7 +125,7 @@ public class CharPanelViewer {
         refreshEqRect(panel.getSpareShieldRect(), character.getItems().getSpareShield());
     }
 
-    private void refreshEqRect(Rectangle rectangle, Item item) {
+    private static void refreshEqRect(Rectangle rectangle, Item item) {
         Image image = item.getImage();
         rectangle.setWidth(image.getWidth());
         rectangle.setHeight(image.getHeight());
@@ -141,7 +141,7 @@ public class CharPanelViewer {
     }
 
 
-    private List<Character> calcChosenCharacters(){
+    private static List<Character> calcChosenCharacters(){
         List<Character> chosenCharacters = new ArrayList<>();
         for (Character character: characters) {
             if (character.isChosen()) {

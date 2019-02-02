@@ -40,7 +40,7 @@ public class BattleInitializer {
         Character slimako = new Character("Slimako", true, Color.RED, CharacterType.DWARF, CharacterClass.ADEPT,
                 new Point(20,10), 2);
         slimako.setStats(new Stats(slimako, 25, 25, 13, 10, 15, 13, 44, 36, 20));
-        slimako.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.CASQUE, Gloves.NOTHING, Boots.RAG_BOOTS,
+        slimako.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.LEATHER_SHIRT, Helmet.CASQUE, Gloves.NOTHING, Boots.RAG_BOOTS,
                 Belt.LEATHER_BELT, Amulet.NOTHING, Ring.SILVER_RING, Ring.GOLD_RING, Shield.BLOCKED});
         slimako.getItems().setWeapons(new Weapon[]{Weapon.BIG_ADZE, Weapon.SPEAR}, false);
         StatsCalculator.calcStats(slimako);

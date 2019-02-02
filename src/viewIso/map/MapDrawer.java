@@ -10,7 +10,7 @@ import main.App;
 import model.Battle;
 import model.character.Character;
 import model.map.Map;
-import viewIso.panel.PanelViewer;
+import viewIso.panel.MinimapViewer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class MapDrawer {
             mapImage = MapImageGenerator.generateMapImage();
             App.showAndResetTime("mapImageGen", 0);
         }
-        PanelViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
+        MinimapViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
 
         int x = map.mapXPoints - 1, y = map.mapYPoints - 1;
         mapPolygon = Arrays.asList(new Polygon(0,0,x,0,x,y,0,y));

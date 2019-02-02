@@ -9,16 +9,16 @@ public enum Helmet implements Armor, ItemWithSprite{
     NOTHING(0, 0),
     LEATHER_HOOD(1, 5, "leather_hood"),
     CASQUE(2, 15, "plate_helm"),
-    HELMET(3, 12),
-    CLOSED_HELMET(4, 16),
+    HELMET(3, 12, "chain_coif"),
+    CLOSED_HELMET(4, 16, "chain_coif"),
     MASK(1, 10),
     SKULL_HELMET(4, 24),
     WOLF_CAP(2, 15),
     EAGLE_HELMET(3, 18),
-    BARBARIAN_HELMET(3, 10),
-    HORN_HELMET(4, 12),
-    GLADIATOR_HELMET(4, 15),
-    TOURNAMENT_HELMET(5, 20),
+    BARBARIAN_HELMET(3, 10, "plate_helm"),
+    HORN_HELMET(4, 12, "plate_helm"),
+    GLADIATOR_HELMET(4, 15, "plate_helm"),
+    TOURNAMENT_HELMET(5, 20, "plate_helm"),
     CROWN(5, 30);
 
     private int armor, durability;

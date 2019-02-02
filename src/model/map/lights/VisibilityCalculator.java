@@ -9,7 +9,7 @@ import model.character.Character;
 import model.map.MapPiece;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
-import viewIso.panel.PanelViewer;
+import viewIso.panel.MinimapViewer;
 
 import java.awt.*;
 import java.util.List;
@@ -133,7 +133,7 @@ public class VisibilityCalculator {
 
             App.resetTime(2);
 //            PanelViewer.setMinimapImg(MapImageGenerator.updateMinimapImageWithFog());
-            PanelViewer.refreshMinimapFog(exploredView.get(0), holesInView);
+            MinimapViewer.refreshMinimapFog(exploredView.get(0), holesInView);
             App.showAndResetTime("updateMinimap", 2);
 
 //            soutPolygons(exploredView, holesInView);

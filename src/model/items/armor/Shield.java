@@ -11,15 +11,15 @@ public enum Shield implements Armor, ItemWithSprite{
     WOODEN_SHIELD(10, 0, 5, "buckler"),
     BUCKLER(15, 0, 12, "buckler"),
     TARGE(15, 1, 15, "buckler"),
-    KITE_SHIELD(20, 1, 15),
+    KITE_SHIELD(20, 1, 15, "shield"),
     DIAMOND_SHIELD(20, 1, 16),
-    RONDACHE(20, 2, 24),
-    BRONZE_SHIELD(25, 2, 25),
-    SPIKED_SHIELD(25, 4, 20),
+    RONDACHE(20, 2, 24, "iron_buckler"),
+    BRONZE_SHIELD(25, 2, 25, "iron_buckler"),
+    SPIKED_SHIELD(25, 4, 20, "iron_buckler"),
     BONE_SHIELD(25, 3, 25),
-    TOURNAMENT_SHIELD(30, 2, 32),
-    HERALD_SHIELD(30, 3, 40),
-    DRAGON_SHIELD(35, 3, 50);
+    TOURNAMENT_SHIELD(30, 2, 32, "shield"),
+    HERALD_SHIELD(30, 3, 40, "shield"),
+    DRAGON_SHIELD(35, 3, 50, "shield");
 
     private int block, dmg, durability;
     private Image image;

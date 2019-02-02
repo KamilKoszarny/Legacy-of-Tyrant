@@ -9,9 +9,9 @@ public enum Boots implements Armor, ItemWithSprite{
     NOTHING(0, 0),
     RAG_BOOTS(0, 3, "cloth_sandals"),
     LEATHER_BOOTS(1, 6, "leather_boots"),
-    CHAIN_BOOTS(2, 9),
-    STEEL_BOOTS(4, 16),
-    PLATE_BOOTS(3, 13);
+    CHAIN_BOOTS(2, 9, "chain_boots"),
+    STEEL_BOOTS(4, 16, "plate_boots"),
+    PLATE_BOOTS(3, 13, "plate_boots");
 
     private int armor, durability;
     private Image image;

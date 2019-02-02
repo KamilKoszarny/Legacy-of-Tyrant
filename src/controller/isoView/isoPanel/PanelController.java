@@ -9,12 +9,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
-import model.character.Character;
 import model.items.Item;
-import model.map.buildings.Furniture;
-import viewIso.IsoViewer;
 import viewIso.map.MapDrawer;
-import viewIso.panel.PanelViewer;
+import viewIso.panel.MinimapViewer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -97,14 +94,14 @@ public class PanelController {
     }
 
     private static void minimapMouseAction(MouseEvent mouseEvent) {
-        int clickScreenX = (int) (PanelViewer.minimapScreenSize/2 + (mouseEvent.getX() - mouseEvent.getY()) / Math.sqrt(2));
+        int clickScreenX = (int) (MinimapViewer.minimapScreenSize /2 + (mouseEvent.getX() - mouseEvent.getY()) / Math.sqrt(2));
         int clickScreenY = (int) ((mouseEvent.getX() + mouseEvent.getY()) / Math.sqrt(2));
 
         MapDrawer.setZeroScreenPosition(
-                (- clickScreenX + PanelViewer.getMinimapRect().getWidth()/2 + PanelViewer.getMinimapPosRect().getWidth())
-                        / PanelViewer.minimapToScreenRatioX ,
-                (- clickScreenY + PanelViewer.getMinimapPosRect().getHeight()/2 + MapDrawer.getMap().getHeightType().getHilly() / 10)
-                        / PanelViewer.minimapToScreenRatioY);
+                (- clickScreenX + MinimapViewer.getRectangle().getWidth()/2 + MinimapViewer.getPositionRectangle().getWidth())
+                        / MinimapViewer.minimapToScreenRatioX,
+                (- clickScreenY + MinimapViewer.getPositionRectangle().getHeight()/2 + MapDrawer.getMap().getHeightType().getHilly() / 10)
+                        / MinimapViewer.minimapToScreenRatioY);
     }
 
     private static javafx.scene.shape.Rectangle checkEquipmentSlot(Point clickPoint) {
