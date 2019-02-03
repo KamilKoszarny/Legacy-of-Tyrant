@@ -5,6 +5,7 @@ import controller.isoView.isoPanel.PanelController;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import model.character.Character;
 import model.map.buildings.Chest;
 import viewIso.map.MapDrawer;
 import viewIso.panel.InventoryRectanglesViewer;
@@ -20,7 +21,7 @@ public class ChestActioner {
     private static Chest chest;
     private static Rectangle inventoryRect;
 
-    public static void openChest(Chest chest, Point clickPoint) {
+    public static void openChest(Character character, Chest chest, Point clickPoint) {
         ChestActioner.chest = chest;
         openChestInventory(clickPoint);
         InventoryRectanglesViewer.refreshInventory(chest.getInventory(), inventoryRect);

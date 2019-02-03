@@ -4,7 +4,7 @@ import helpers.my.DrawHelper;
 import helpers.my.GeomerticHelper;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.paint.Color;
+
 import javafx.scene.shape.Polygon;
 import model.Battle;
 import model.character.Character;
@@ -18,7 +18,16 @@ import java.util.List;
 
 public class PathDrawer {
 
-    public static void drawPaths(boolean fill) {
+    public static void showPathIfNotMoving(List<Point2D> path) {
+        if (Battle.getChosenCharacter().getStats().getSpeed() == 0) {
+            Battle.getChosenCharacter().setPath(path);
+            if (path.size() > 0) {
+                createPathView(Battle.getChosenCharacter());
+            }
+        }
+    }
+
+    static void drawPaths(boolean fill) {
         for (Character character: Battle.getCharacters()) {
             List<Polygon> pathView = character.getPathView();
             if (pathView != null) {
@@ -27,7 +36,7 @@ public class PathDrawer {
         }
     }
 
-    public static void drawPath(List<Polygon> pathView, boolean fill) {
+    private static void drawPath(List<Polygon> pathView, boolean fill) {
         Canvas canvas = IsoViewer.getCanvas();
         for (Polygon pathShape: pathView) {
             DrawHelper.drawPolygonOnCanvas(canvas, pathShape, fill, true);
@@ -36,6 +45,10 @@ public class PathDrawer {
 
     public static void createPathView(Character character) {
         List<Point2D> path = character.getPath();
+        createPathView(character, path);
+    }
+
+    public static void createPathView(Character character, List<Point2D> path) {
         List<Point2D> pointsOnPath = GeomerticHelper.pointsOnPath(path, 2);
 
         List<Point> screenPoints = new ArrayList<>();
@@ -81,8 +94,8 @@ public class PathDrawer {
         double px = point.x;
         double py = point.y;
 
-        double x = MapDrawer.MAP_PIECE_SCREEN_SIZE_X / 4;
-        double y = MapDrawer.MAP_PIECE_SCREEN_SIZE_Y / 4;
+        double x = MapDrawer.MAP_PIECE_SCREEN_SIZE_X / 4.;
+        double y = MapDrawer.MAP_PIECE_SCREEN_SIZE_Y / 4.;
         cross.getPoints().addAll(
                 px, py - y,
                 px + 2*x, py - 3*y,

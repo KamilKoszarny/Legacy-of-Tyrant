@@ -14,7 +14,7 @@ public class BattleEvent {
     private Point clickPoint, mapPoint;
     private MapPiece mapPiece;
     private MapObject object;
-    private Character character;
+    private Character doingCharacter, subjectCharacter;
 
     public BattleEvent(EventType type) {
         this.type = type;
@@ -23,6 +23,11 @@ public class BattleEvent {
     public BattleEvent(EventType type, Point clickPoint) {
         this.type = type;
         this.clickPoint = clickPoint;
+    }
+
+    public BattleEvent(EventType type, MapObject object) {
+        this.type = type;
+        this.object = object;
     }
 
     public BattleEvent(EventType type, MapObject object, Point mapPoint) {
@@ -37,15 +42,15 @@ public class BattleEvent {
         this.object = object;
     }
 
-    public BattleEvent(EventType type, Character character) {
+    public BattleEvent(EventType type, Character subjectCharacter) {
         this.type = type;
-        this.character = character;
+        this.subjectCharacter = subjectCharacter;
     }
 
-    public BattleEvent(EventType type, Point clickPoint, Character character) {
+    public BattleEvent(EventType type, Point clickPoint, Character subjectCharacter) {
         this.type = type;
         this.clickPoint = clickPoint;
-        this.character = character;
+        this.subjectCharacter = subjectCharacter;
     }
 
     public BattleEvent(EventType type, Point clickPoint, Point mapPoint) {
@@ -95,7 +100,15 @@ public class BattleEvent {
         return object;
     }
 
-    public Character getCharacter() {
-        return character;
+    public Character getDoingCharacter() {
+        return doingCharacter;
+    }
+
+    public void setDoingCharacter(Character doingCharacter) {
+        this.doingCharacter = doingCharacter;
+    }
+
+    public Character getSubjectCharacter() {
+        return subjectCharacter;
     }
 }

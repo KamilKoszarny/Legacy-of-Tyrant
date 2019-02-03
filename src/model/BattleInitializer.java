@@ -1,13 +1,14 @@
 package model;
 
 import javafx.scene.paint.Color;
+import model.actions.ActionQueuer;
 import model.character.*;
 import model.actions.movement.CharMover;
 import model.character.Character;
 import model.items.armor.*;
 import model.items.weapon.Weapon;
 import model.map.Map;
-import model.map.MapGridCalc;
+import model.map.GridGrapCalculator;
 import model.map.MapType;
 import model.map.heights.MapHeightType;
 
@@ -64,9 +65,9 @@ public class BattleInitializer {
         ArrayList<Character> characters = new ArrayList<>(Arrays.asList(czlehulec, slimako, skowronka, irith));
 //        ArrayList<Character> characters = new ArrayList<>(new ArrayList<>(Arrays.asList(czlehulec)));
 
-        CharMover.setCharacters(characters);
-        CharMover.pushCharsToClosestWalkable(map);
-        MapGridCalc.regenerateGridGraph(map, map.getPoints().keySet(), characters);
+        CharMover.pushCharsToClosestWalkable(map, characters);
+        GridGrapCalculator.regenerateGridGraph(map, map.getPoints().keySet(), characters);
+        ActionQueuer.initCharacterQueues(characters);
 
         return characters;
     }

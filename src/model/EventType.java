@@ -13,5 +13,9 @@ public enum EventType {
     DROP_ITEM,
     GIVE_ITEM,
     PICKUP_ITEM,
+    OPEN_DOOR,
+    CLOSE_DOOR,
+    OPEN_CHEST,
+    GO2OBJECT,
     ;
 }

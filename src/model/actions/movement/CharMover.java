@@ -6,7 +6,7 @@ import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.map.Map;
-import model.map.MapGridCalc;
+import model.map.GridGrapCalculator;
 import model.map.lights.VisibilityCalculator;
 import viewIso.PathDrawer;
 import viewIso.characters.CharsDrawer;
@@ -18,25 +18,25 @@ import java.util.List;
 public class CharMover {
 
     private static double POINTS_TO_NEXT_FRAME = 1.6;
-    private static ArrayList<Character> characters;
 
-    public static void startRunCharacter(Character character, Point movePoint) {
-        List<Point2D> path = calcPath(character, movePoint);
+    public static void calcPathAndStartRun(Character character, Point destination) {
+        List<Point2D> path = PathCalculator.calcPath(character, destination);
         if (path != null) {
             character.setPath(path);
             PathDrawer.createPathView(character);
         }
-        character.setState(CharState.RUN);
-        character.setDestination(movePoint);
-        character.setPathSection(0);
-        character.getStats().setSpeed(character.getStats().getSpeedMax() * 2);
+        startRun(character);
     }
 
-    public static List<Point2D> calcPath(Character character, Point movePoint) {
-        MapGridCalc.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), characters);
-        MapGridCalc.clearGridGraphForChar(character);
-        List<Point2D> path = PathFinder.calcPath(character.getPrecisePosition(), movePoint, true);
-        return path;
+    public static void startRun(Character character) {
+        List<Point2D> path = character.getPath();
+        if (path == null)
+            return;
+        Point destination = new Point((int)path.get(path.size() - 1).getX(), (int)path.get(path.size() - 1).getY());
+        character.setState(CharState.RUN);
+        character.setDestination(destination);
+        character.setPathSection(0);
+        character.getStats().setSpeed(character.getStats().getSpeedMax() * 2);
     }
 
     public static void updateCharacterMove(Character character, int ms) {
@@ -73,8 +73,8 @@ public class CharMover {
         character.setPathView(null);
         character.setState(CharState.IDLE);
         character.getStats().setSpeed(0);
-        pushCharToClosestWalkable(character, Battle.getMap());
-        MapGridCalc.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), characters);
+        GridGrapCalculator.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), Battle.getCharacters());
+        pushCharToClosestWalkable(character, Battle.getMap(), Battle.getCharacters());
     }
 
     private static void turnChar(Character character, Point2D next) {
@@ -93,18 +93,18 @@ public class CharMover {
         return new Point2D(changeX, changeY);
     }
 
-    public static void setCharacters(ArrayList<Character> characters) {
-        CharMover.characters = characters;
+    public static void pushCharsToClosestWalkable(){
+        pushCharsToClosestWalkable(Battle.getMap(), Battle.getCharacters());
     }
 
-    public static void pushCharsToClosestWalkable(Map map){
+    public static void pushCharsToClosestWalkable(Map map, List<Character> characters){
         for (Character character: characters)
-            pushCharToClosestWalkable(character, map);
+            pushCharToClosestWalkable(character, map, characters);
     }
 
-    public static void pushCharToClosestWalkable(Character character, Map map){
+    public static void pushCharToClosestWalkable(Character character, Map map, List<Character> characters){
         Point pos = character.getPosition();
-        while (!map.getPoints().get(pos).isWalkable() || pointOccupiedByOther(character)) {
+        while (!map.getPoints().get(pos).isWalkable() || pointOccupiedByOther(character, characters)) {
             int newX = Math.min(Math.max(pos.x + new Random().nextInt(3) - 1, 0), map.getWidth());
             int newY = Math.min(Math.max(pos.y + new Random().nextInt(3) - 1, 0), map.getHeight());
             character.setPosition(new Point(newX, newY));
@@ -112,7 +112,7 @@ public class CharMover {
         }
     }
 
-    public static boolean pointOccupiedByOther(Character character) {
+    public static boolean pointOccupiedByOther(Character character, List<Character> characters) {
         Point point = character.getPosition();
         for (Character otherChar : characters) {
             if (!otherChar.equals(character) && otherChar.getPosition().equals(point))

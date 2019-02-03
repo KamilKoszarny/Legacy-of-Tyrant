@@ -10,6 +10,8 @@ import java.util.List;
 
 public class PathFinder {
 
+
+
     static List<Point2D> calcPath(Point2D start, java.awt.Point end, boolean clean) {
         List<Point2D> mapPath = new ArrayList<>();
         int[] startGridPoint = gridPointByMapPoint(start);

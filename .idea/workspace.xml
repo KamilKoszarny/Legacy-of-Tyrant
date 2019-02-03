@@ -2,38 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/viewIso/panel/MinimapViewer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/ActionQueuer$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/ActionQueuer.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/PathCalculator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/ToObjectMover.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/ObjectActioner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/GridGrapCalculator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/armorsF/chain_cuirass_greaves.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/armorsF/plate_cuirass_greaves.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/actions/ActionQueuer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/actions/movement/PathCalculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/actions/movement/ToObjectMover.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/actions/objects/ObjectActioner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoPanel/PanelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoPanel/PanelController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/items/weapons/image60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/items/weapons/image61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/items/weapons/image80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/items/weapons/image81.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/items/weapons/image82.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/items/weapons/image83.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/EventType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/EventType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/PathFinder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/PathFinder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/ChestActioner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/ChestActioner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/BodyArmor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/BodyArmor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Boots.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Boots.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Gloves.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Gloves.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Helmet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Helmet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Shield.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Shield.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/lights/VisibilityCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/lights/VisibilityCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/ITEM/CLUB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/hands/longbow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/hands/mace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/CharPanelViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/CharPanelViewer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/PanelViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/PanelViewer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sprites/ITEM/CLUB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/hands/longbow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/hands/mace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/isoView/isoPanel/PanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/isoView/isoPanel/PanelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/DoorActioner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/DoorActioner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/weapon/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/weapon/Weapon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGridCalc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/weapons/axe1H1S.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/weapons/axe1H2S.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/weapons/bow_short.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/weaponsF/axe1H1S.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/sprites/chars/weaponsF/bow_short.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/ClickMenusDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/ClickMenusDrawer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/PathDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/PathDrawer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/items/weapons/image60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/items/weapons/image61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/items/weapons/image80.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/items/weapons/image81.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/items/weapons/image82.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/items/weapons/image83.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/axe1H1S.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/axe1H2S.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weapons/bow_short.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/axe1H1S.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sprites/chars/weaponsF/bow_short.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BattleEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BattleEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/BattleInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BattleInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/EventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/EventType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/IsoBattleLoop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/actions/movement/CharMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/actions/movement/CharMover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/actions/movement/PathFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/actions/movement/PathFinder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/actions/objects/ChestActioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/actions/objects/ChestActioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/BodyArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/items/armor/BodyArmor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/Boots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/items/armor/Boots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/Gloves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/items/armor/Gloves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/Helmet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/items/armor/Helmet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/items/armor/Shield.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/items/armor/Shield.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/panel/CharPanelViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/panel/CharPanelViewer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/panel/PanelViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/panel/PanelViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/actions/objects/DoorActioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/actions/objects/DoorActioner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/items/weapon/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/items/weapon/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/map/MapGridCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/map/GridGrapCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/viewIso/PathDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/PathDrawer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,19 +82,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/armor/Armor.java">
+        <entry file="file://$PROJECT_DIR$/src/model/items/weapon/Weapon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="19" selection-start-column="19" selection-end-column="19" />
+            <state relative-caret-position="166">
+              <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/items/ItemImagesLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="98">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/items/armor/BodyArmor.java">
+        <entry file="file://$PROJECT_DIR$/src/model/actions/movement/CharMover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+            <state relative-caret-position="234">
+              <caret line="76" column="86" selection-start-line="76" selection-start-column="86" selection-end-line="76" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -73,81 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/actions/objects/ChestActioner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/panel/InventoryRectanglesViewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="143" selection-start-line="143" selection-end-line="143" />
-              <folding>
-                <element signature="method#setTooltipText#0;class#ClickMenusDrawer#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/MapMover.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoPanel/PanelController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/viewIso/IsoViewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-              <folding>
-                <element signature="e#726#727#0" expanded="true" />
-                <element signature="e#774#775#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="28" column="58" lean-forward="true" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
+            <state relative-caret-position="119">
+              <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -165,11 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>shuffleW</find>
-      <find>putin</find>
-      <find>inven</find>
-      <find>SHOW_CHAR2CHEST</find>
-      <find>inventory(</find>
       <find>esc</find>
       <find>label</find>
       <find>syste</find>
@@ -195,9 +155,13 @@
       <find>add(inven</find>
       <find>shiel</find>
       <find>pane</find>
+      <find>door</find>
+      <find>gridgraph</find>
+      <find>axe1H1S</find>
+      <find>ViewsUpdate</find>
+      <find>push</find>
     </findStrings>
     <replaceStrings>
-      <replace>.getStats().setVigorMax(</replace>
       <replace>.getStats().getRange(</replace>
       <replace>.setStats(new Stats(</replace>
       <replace>character.getStats().</replace>
@@ -227,6 +191,7 @@
       <replace>(double) (</replace>
       <replace>() - 1) /</replace>
       <replace>MapMover</replace>
+      <replace>chest</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\Szkolenia\Java\RanAdvHelper\src\helpers\downloaded</dir>
@@ -240,21 +205,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/helpers/my/SortHelper.java" />
-        <option value="$PROJECT_DIR$/src/controller/isoView/IsoViewController.java" />
-        <option value="$PROJECT_DIR$/src/helpers/my/PolygonsHelper.java" />
-        <option value="$PROJECT_DIR$/src/helpers/my/MouseHelper.java" />
-        <option value="$PROJECT_DIR$/src/model/map/mapObjects/MapObjectType.java" />
-        <option value="$PROJECT_DIR$/src/model/map/buildings/FurnitureType.java" />
-        <option value="$PROJECT_DIR$/src/model/map/mapObjects/MapObject.java" />
-        <option value="$PROJECT_DIR$/src/model/EventType.java" />
-        <option value="$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/ClickMenuButton.java" />
-        <option value="$PROJECT_DIR$/src/model/map/roads/RoadGenerator.java" />
-        <option value="$PROJECT_DIR$/src/model/actions/ChestActioner.java" />
-        <option value="$PROJECT_DIR$/src/model/items/ItemsLoader.java" />
         <option value="$PROJECT_DIR$/src/model/items/ItemsImagesLoader.java" />
-        <option value="$PROJECT_DIR$/src/model/items/ItemImagesLoader.java" />
         <option value="$PROJECT_DIR$/src/model/map/buildings/FurnitureFactory.java" />
         <option value="$PROJECT_DIR$/src/model/map/buildings/Furniture.java" />
         <option value="$PROJECT_DIR$/src/model/map/buildings/BuildingGenerator.java" />
@@ -265,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/model/map/buildings/ChestFiller.java" />
         <option value="$PROJECT_DIR$/src/model/items/ItemsGenerator.java" />
         <option value="$PROJECT_DIR$/src/model/actions/CharsChooser.java" />
-        <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
         <option value="$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectController.java" />
         <option value="$PROJECT_DIR$/src/model/actions/ItemHandler.java" />
         <option value="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" />
@@ -273,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" />
         <option value="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" />
         <option value="$PROJECT_DIR$/src/viewIso/MapMover.java" />
-        <option value="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" />
         <option value="$PROJECT_DIR$/src/viewIso/LabelsDrawer.java" />
         <option value="$PROJECT_DIR$/src/controller/isoView/isoPanel/PanelController.java" />
         <option value="$PROJECT_DIR$/src/viewIso/IsoViewer.java" />
@@ -287,10 +236,26 @@
         <option value="$PROJECT_DIR$/src/model/items/armor/Helmet.java" />
         <option value="$PROJECT_DIR$/src/model/items/armor/Shield.java" />
         <option value="$PROJECT_DIR$/src/model/items/armor/BodyArmor.java" />
-        <option value="$PROJECT_DIR$/src/main/App.java" />
-        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
         <option value="$PROJECT_DIR$/src/viewIso/panel/InventoryRectanglesViewer.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/movement/PathFinder.java" />
+        <option value="$PROJECT_DIR$/src/model/BattleInitializer.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/objects/ObjectActioner.java" />
+        <option value="$PROJECT_DIR$/src/model/BattleEvent.java" />
+        <option value="$PROJECT_DIR$/src/model/EventType.java" />
         <option value="$PROJECT_DIR$/src/model/actions/objects/ChestActioner.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/objects/DoorActioner.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java" />
+        <option value="$PROJECT_DIR$/src/viewIso/PathDrawer.java" />
+        <option value="$PROJECT_DIR$/src/model/IsoBattleLoop.java" />
+        <option value="$PROJECT_DIR$/src/model/map/MapGridCalc.java" />
+        <option value="$PROJECT_DIR$/src/model/map/GridGrapCalculator.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/movement/PathCalculator.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/movement/ToObjectMover.java" />
+        <option value="$PROJECT_DIR$/src/model/items/weapon/Weapon.java" />
+        <option value="$PROJECT_DIR$/src/model/items/ItemImagesLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/App.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/ActionQueuer.java" />
+        <option value="$PROJECT_DIR$/src/model/actions/movement/CharMover.java" />
       </list>
     </option>
   </component>
@@ -410,14 +375,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="actions" type="462c0819:PsiDirectoryNode" />
-              <item name="attack" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
               <item name="movement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -432,38 +389,7 @@
               <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
               <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="character" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="items" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="map" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="map" type="462c0819:PsiDirectoryNode" />
-              <item name="mapObjects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RanAdvHelper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RanAdvHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="map" type="462c0819:PsiDirectoryNode" />
-              <item name="roads" type="462c0819:PsiDirectoryNode" />
+              <item name="viewIso" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -474,7 +400,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="system.out&#9;null&#9;null&#10;setspeed&#9;PSI&#9;JAVA://model.character.Character#setSpeed&#10;new character&#9;PSI&#9;JAVA://controller.NewCharPaneController#newCharacter" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549108786720" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549231360896" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
@@ -493,13 +419,14 @@
       <recent name="model.actions.attack" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="model.actions.movement.PathCalculator" />
+      <recent name="viewIso.PathCalculator" />
       <recent name="viewIso.panel.InventoryRectanglesViewer" />
       <recent name="helpers.my.PolygonsHelper" />
       <recent name="viewIso.LabelsDrawer" />
-      <recent name="model.actions.DoorActioner" />
-      <recent name="model.map.MapGridCalc" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="model.actions.movement" />
       <recent name="model.actions.attack" />
       <recent name="model.character" />
       <recent name="" />
@@ -551,13 +478,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="helpers.downloaded.pathfinding.myTests.Example" />
+    <configuration name="DoorActioner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.actions.objects.DoorActioner" />
       <module name="RanAdvHelper" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="helpers.downloaded.pathfinding.myTests.*" />
+          <option name="PATTERN" value="model.actions.objects.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -653,19 +580,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.Example" />
       <item itemvalue="Application.ItemHandler" />
       <item itemvalue="Application.GeomerticHelper" />
       <item itemvalue="Application.PolygonsHelper" />
       <item itemvalue="Application.ItemsGenerator" />
+      <item itemvalue="Application.DoorActioner" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DoorActioner" />
         <item itemvalue="Application.ItemsGenerator" />
         <item itemvalue="Application.PolygonsHelper" />
         <item itemvalue="Application.GeomerticHelper" />
         <item itemvalue="Application.ItemHandler" />
-        <item itemvalue="Application.Example" />
       </list>
     </recent_temporary>
   </component>
@@ -703,7 +630,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49004975" weight="0.43338683" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49004975" weight="0.23071104" />
       <window_info id="Structure" order="1" weight="0.24962178" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -712,7 +639,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5099502" side_tool="true" weight="0.2344932" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32840723" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48865354" visible="true" weight="0.3398693" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.48865354" visible="true" weight="0.35784313" />
       <window_info anchor="bottom" id="TODO" order="3" weight="0.3267974" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49167928" weight="0.4101307" />
       <window_info anchor="bottom" id="Dependency Viewer" order="5" weight="0.88505745" />
@@ -720,11 +647,11 @@
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.51134646" side_tool="true" weight="0.33990148" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3136289" />
-      <window_info anchor="bottom" id="Statistic" order="11" weight="0.68472904" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3120915" />
+      <window_info anchor="bottom" id="Statistic" order="11" weight="0.6846405" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.54575163" />
       <window_info anchor="bottom" id="Analyze Dataflow to" order="13" weight="0.32840723" />
-      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Terminal" order="14" weight="0.32843137" />
       <window_info anchor="right" id="Maven" order="0" weight="0.32980332" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.24962178" />
@@ -775,178 +702,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/items/weapon/Weapon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-748">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/CharacterClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="88" column="31" selection-start-line="88" selection-start-column="31" selection-end-line="88" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/AcceleratedAStar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/items/armor/Amulet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BattleEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/EventType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="19" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapKeyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="49" column="53" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
-          <folding>
-            <element signature="e#1292#1293#0" expanded="true" />
-            <element signature="e#1315#1316#0" expanded="true" />
-            <element signature="e#1623#1624#0" expanded="true" />
-            <element signature="e#1679#1680#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/items/ItemsGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="103" column="44" lean-forward="true" selection-start-line="103" selection-start-column="44" selection-end-line="103" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#610#611#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="50" />
-          <folding>
-            <element signature="method#checkPointOnMapObject#0;class#MapObjectController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/items/ItemsCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/actions/ItemHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="29" column="40" lean-forward="true" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-          <folding>
-            <element signature="e#13600#13601#0" expanded="true" />
-            <element signature="e#13674#13675#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/actions/movement/MoveCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/IT/Java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar!/javafx/application/Application.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/MapType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/heights/MapHeightType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="41" column="18" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/character/StatsCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/SpritesDrawer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/map/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/map/buildings/Chest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,17 +730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="166" column="25" selection-start-line="166" selection-start-column="25" selection-end-line="166" selection-end-column="25" />
-          <folding>
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1278#1279#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1134,20 +882,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20" column="48" selection-start-line="20" selection-start-column="48" selection-end-line="20" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="28" column="58" lean-forward="true" selection-start-line="28" selection-start-column="58" selection-end-line="28" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoPanel/PanelController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -1172,20 +906,247 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java">
+    <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenuButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        <state relative-caret-position="68">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/buildings/Chest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
           <folding>
-            <element signature="method#setTooltipText#0;class#ClickMenusDrawer#0" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/buildings/Door.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+          <folding>
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#463#464#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/mapObjects/MapObjectSprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/objects/ObjectActioner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BattleEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+          <folding>
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+            <element signature="e#1990#1991#0" expanded="true" />
+            <element signature="e#2017#2018#0" expanded="true" />
+            <element signature="e#2418#2419#0" expanded="true" />
+            <element signature="e#2447#2448#0" expanded="true" />
+            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#2535#2536#0" expanded="true" />
+            <element signature="e#2607#2608#0" expanded="true" />
+            <element signature="e#2659#2660#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#1513#1514#0" expanded="true" />
+            <element signature="e#1551#1552#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/EventType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/movement/PathFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="14" column="81" selection-start-line="14" selection-start-column="81" selection-end-line="14" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/j3d-org-src-1.1.0/src/java/org/j3d/io/BlockDataInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="354" column="11" selection-start-line="354" selection-start-column="11" selection-end-line="354" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/actions/objects/ChestActioner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
+        <state relative-caret-position="70">
+          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/ClickMenusDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="72" column="77" selection-start-line="72" selection-start-column="77" selection-end-line="72" selection-end-column="77" />
+          <folding>
+            <element signature="method#ClickMenusDrawer#0;class#ClickMenusDrawer#0" />
+            <element signature="method#drawChar2EnemyMenu#0;class#ClickMenusDrawer#0" />
+            <element signature="method#drawMenu#0;class#ClickMenusDrawer#0" />
+            <element signature="method#setTooltipText#0;class#ClickMenusDrawer#0" />
+            <element signature="e#5240#6068#1" />
+            <element signature="e#5743#5969#1" />
+            <element signature="method#hideMenus#0;class#ClickMenusDrawer#0" />
+            <element signature="method#hideMenu#0;class#ClickMenusDrawer#0" />
+            <element signature="e#6469#6512#1" />
+            <element signature="method#moveMenus#0;class#ClickMenusDrawer#0" />
+            <element signature="e#6619#6671#1" />
+            <element signature="method#clickedButton#0;class#ClickMenusDrawer#0" />
+            <element signature="e#6846#6925#1" />
+            <element signature="method#initMenu#0;class#ClickMenusDrawer#0" />
+            <element signature="e#7185#7458#1" />
+            <element signature="method#drawButton#0;class#ClickMenusDrawer#0" />
+            <element signature="method#hideButton#0;class#ClickMenusDrawer#0" />
+            <element signature="method#moveButton#0;class#ClickMenusDrawer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/viewIso/PathDrawer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="45" column="34" lean-forward="true" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+          <folding>
+            <element signature="method#drawPaths#0;class#PathDrawer#0" />
+            <element signature="method#drawPath#0;class#PathDrawer#0" />
+            <element signature="method#createPathTriangle#0;class#PathDrawer#0" />
+            <element signature="method#createCross#0;class#PathDrawer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/objects/DoorActioner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helpers/downloaded/pathfinding/grid/GridGraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#814#815#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/map/GridGrapCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/movement/PathCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="59" column="10" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1408#1460#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/IsoBattleLoop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-803">
+          <caret line="111" column="33" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/movement/ToObjectMover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="27" column="51" lean-forward="true" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/items/weapon/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="98" column="51" lean-forward="true" selection-start-line="98" selection-start-column="51" selection-end-line="98" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/movement/CharMover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="76" column="86" selection-start-line="76" selection-start-column="86" selection-end-line="76" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/actions/ActionQueuer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/items/ItemImagesLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>

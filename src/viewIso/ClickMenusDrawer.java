@@ -9,9 +9,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.actions.attack.AttackCalculator;
 import model.actions.attack.BodyPart;
+import model.actions.movement.PathCalculator;
+import model.actions.movement.ToObjectMover;
 import model.actions.objects.ChestActioner;
 import model.character.Character;
 import model.map.MapPiece;
+import model.map.buildings.Chest;
 import model.map.buildings.Door;
 import model.map.buildings.Furniture;
 import viewIso.map.MapDrawCalculator;
@@ -39,7 +42,9 @@ public class ClickMenusDrawer {
         initMenu(char2EnemyMenu);
     }
 
-    public static void drawChar2PointMenu(Point clickPoint, List<Point2D> path) {
+    public static void drawChar2PointMenuAndPath(Point clickPoint, Point mapPoint) {
+        List<Point2D> path = PathCalculator.calcAndDrawPath(mapPoint);
+
         hideMenus(true);
         activeMenu = char2PointMenu;
         MapPiece clickedMapPiece = MapDrawCalculator.mapPieceByClickPoint(clickPoint);
@@ -58,48 +63,36 @@ public class ClickMenusDrawer {
         ClickMenuButton.WALK.setGrayed(true);
         ClickMenuButton.SNEAK.setGrayed(true);
 
-
-        ClickMenuButton.colorButtons(char2PointMenu);
-
-        for (ClickMenuButton button: char2PointMenu) {
-            drawButton(button, clickPoint);
-        }
+        drawMenu(char2PointMenu, clickPoint);
     }
 
     public static void drawChar2DoorMenu(Point clickPoint, Door door, Character character) {
         hideMenus(true);
         activeMenu = char2DoorMenu;
-        Point doorPos = MapObjectDrawer.getMapObject2PointMap().get(door);
-        if (doorPos.distance(character.getPosition()) > Door.ACTION_DIST) {
-            ClickMenuButton.DOOR_OPEN.setGrayed(true);
-            ClickMenuButton.DOOR_CLOSE.setGrayed(true);
-        } else {
+
+        if (ToObjectMover.closeToObject(character, door) || ToObjectMover.pathToObjectExists(character, door)) {
             ClickMenuButton.DOOR_OPEN.setGrayed(door.isOpen());
             ClickMenuButton.DOOR_CLOSE.setGrayed(!door.isOpen());
+        } else {
+            ClickMenuButton.DOOR_OPEN.setGrayed(true);
+            ClickMenuButton.DOOR_CLOSE.setGrayed(true);
         }
 
-        ClickMenuButton.colorButtons(char2DoorMenu);
-        for (ClickMenuButton button: char2DoorMenu) {
-            drawButton(button, clickPoint);
-        }
+        drawMenu(char2DoorMenu, clickPoint);
     }
 
-    public static void drawChar2ChestMenu(Point clickPoint, Furniture chest, Character character) {
+    public static void drawChar2ChestMenu(Point clickPoint, Chest chest, Character character) {
         hideMenus(true);
         activeMenu = char2ChestMenu;
-        Point chestPos = MapObjectDrawer.getMapObject2PointMap().get(chest);
-        if (chestPos.distance(character.getPosition()) > Furniture.ACTION_DIST) {
-            ClickMenuButton.CHEST_OPEN.setGrayed(true);
-            ClickMenuButton.CHEST_CLOSE.setGrayed(true);
-        } else {
-            ClickMenuButton.CHEST_OPEN.setGrayed(false);
-            ClickMenuButton.CHEST_CLOSE.setGrayed(true);
-        }
 
-        ClickMenuButton.colorButtons(char2ChestMenu);
-        for (ClickMenuButton button: char2ChestMenu) {
-            drawButton(button, clickPoint);
+        if (ToObjectMover.closeToObject(character, chest) || ToObjectMover.pathToObjectExists(character, chest)) {
+            ClickMenuButton.CHEST_OPEN.setGrayed(false);
+        } else {
+            ClickMenuButton.CHEST_OPEN.setGrayed(true);
         }
+        ClickMenuButton.CHEST_CLOSE.setGrayed(true);
+
+        drawMenu(char2ChestMenu, clickPoint);
     }
 
     public static void drawChar2EnemyMenu(Point clickPoint, Character character, Character enemy) {
@@ -112,10 +105,13 @@ public class ClickMenusDrawer {
         ClickMenuButton.ATTACK_ARMS.setGrayed(!attackable);
         ClickMenuButton.ATTACK_LEGS.setGrayed(!attackable);
 
-        ClickMenuButton.colorButtons(char2EnemyMenu);
         setTooltipText(character, enemy);
+        drawMenu(char2EnemyMenu, clickPoint);
+    }
 
-        for (ClickMenuButton button: char2EnemyMenu) {
+    private static void drawMenu(List<ClickMenuButton> menu, Point clickPoint) {
+        ClickMenuButton.colorButtons(menu);
+        for (ClickMenuButton button: menu) {
             drawButton(button, clickPoint);
         }
     }
