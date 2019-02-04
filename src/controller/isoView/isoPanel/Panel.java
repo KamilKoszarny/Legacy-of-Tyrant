@@ -4,50 +4,34 @@ import helpers.my.GeomerticHelper;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import model.items.armor.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Panel {
 
 
-    private List<Label> charLabels;
+    private List<Label> charStatsLabels;
     private List<ProgressBar> charBars;
+    private List<Rectangle> itemRectangles;
     private Rectangle portraitRect, charPictBackgroundRect;
-    private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
-    private Rectangle catchedItemRect;
+    private Rectangle heldItemRect;
     private Pane inventoryGridPane;
     private Rectangle inventoryScreenRect, miniMapRect, miniMapPosRect;
     private Canvas minimapFogCanvas;
 
-    public Panel(List<Label> charLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
-                 Rectangle helmetRect, Rectangle weaponRect, Rectangle armorRect, Rectangle shieldRect,
-                 Rectangle glovesRect, Rectangle bootsRect, Rectangle amuletRect, Rectangle ring1Rect,
-                 Rectangle beltRect, Rectangle ring2Rect, Rectangle spareWeaponRect, Rectangle spareShieldRect,
-                 Rectangle caughtItemRect, Pane inventoryGridPane, Rectangle miniMapRect, Rectangle miniMapPosRect,
-                 Canvas minimapFogCanvas) {
-        this.charLabels = charLabels;
+    public Panel(List<Label> charStatsLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
+                 List<Rectangle> itemRectangles, Rectangle heldItemRect, Pane inventoryGridPane,
+                 Rectangle miniMapRect, Rectangle miniMapPosRect, Canvas minimapFogCanvas) {
+        this.charStatsLabels = charStatsLabels;
         this.charBars = charBars;
+        this.itemRectangles = itemRectangles;
         this.portraitRect = portraitRect;
         this.charPictBackgroundRect = charPictBackgroundRect;
-        this.helmetRect = helmetRect;
-        this.weaponRect = weaponRect;
-        this.armorRect = armorRect;
-        this.shieldRect = shieldRect;
-        this.glovesRect = glovesRect;
-        this.bootsRect = bootsRect;
-        this.amuletRect = amuletRect;
-        this.ring1Rect = ring1Rect;
-        this.beltRect = beltRect;
-        this.ring2Rect = ring2Rect;
-        this.spareWeaponRect = spareWeaponRect;
-        this.spareShieldRect = spareShieldRect;
-        this.catchedItemRect = caughtItemRect;
-        caughtItemRect.setVisible(false);
+        this.heldItemRect = heldItemRect;
+        heldItemRect.setVisible(false);
         this.inventoryGridPane = inventoryGridPane;
         this.miniMapRect = miniMapRect;
         this.miniMapPosRect = miniMapPosRect;
@@ -62,8 +46,8 @@ public class Panel {
         });
     }
 
-    public List<Label> getCharLabels() {
-        return charLabels;
+    public List<Label> getCharStatsLabels() {
+        return charStatsLabels;
     }
 
     public List<ProgressBar> getCharBars() {
@@ -78,61 +62,60 @@ public class Panel {
         return charPictBackgroundRect;
     }
 
-    public Rectangle getHelmetRect() {
-        return helmetRect;
-    }
-
     public Rectangle getWeaponRect() {
-        return weaponRect;
-    }
-
-    public Rectangle getArmorRect() {
-        return armorRect;
-    }
-
-    public Rectangle getShieldRect() {
-        return shieldRect;
-    }
-
-    public Rectangle getGlovesRect() {
-        return glovesRect;
-    }
-
-    public Rectangle getBootsRect() {
-        return bootsRect;
-    }
-
-    public Rectangle getAmuletRect() {
-        return amuletRect;
-    }
-
-    public Rectangle getRing1Rect() {
-        return ring1Rect;
-    }
-
-    public Rectangle getBeltRect() {
-        return beltRect;
-    }
-
-    public Rectangle getRing2Rect() {
-        return ring2Rect;
+        return itemRectangles.get(0);
     }
 
     public Rectangle getSpareWeaponRect() {
-        return spareWeaponRect;
+        return itemRectangles.get(1);
+    }
+
+    public Rectangle getShieldRect() {
+        return itemRectangles.get(2);
+    }
+
+    public Rectangle getArmorRect() {
+        return itemRectangles.get(3);
+    }
+
+    public Rectangle getHelmetRect() {
+        return itemRectangles.get(4);
+    }
+
+    public Rectangle getGlovesRect() {
+        return itemRectangles.get(5);
+    }
+
+    public Rectangle getBootsRect() {
+        return itemRectangles.get(6);
+    }
+
+    public Rectangle getBeltRect() {
+        return itemRectangles.get(7);
+    }
+
+    public Rectangle getAmuletRect() {
+        return itemRectangles.get(8);
+    }
+
+    public Rectangle getRing1Rect() {
+        return itemRectangles.get(9);
+    }
+
+    public Rectangle getRing2Rect() {
+        return itemRectangles.get(10);
     }
 
     public Rectangle getSpareShieldRect() {
-        return spareShieldRect;
+        return itemRectangles.get(11);
     }
 
-    public List<Rectangle> getEquipmentSlots() {
-        return Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect,
-                glovesRect, bootsRect, beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
+    public List<Rectangle> getItemRectangles() {
+        return itemRectangles;
     }
 
     public Rectangle getHeldItemRect() {
-        return catchedItemRect;
+        return heldItemRect;
     }
 
     public Rectangle getInventoryRectangle() {

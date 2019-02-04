@@ -55,9 +55,9 @@ public class PanelController {
     private void initItemClick() {
         panel.getHeldItemRect().setMouseTransparent(true);
 
-        for (javafx.scene.shape.Rectangle rectangle: panel.getEquipmentSlots()) {
+        for (javafx.scene.shape.Rectangle rectangle: panel.getItemRectangles()) {
             rectangle.setOnMouseClicked(mouseEvent -> {
-                IsoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getEquipmentSlots().indexOf(rectangle)});
+                IsoBattleLoop.setClickedInventorySlot(new int[]{-10, panel.getItemRectangles().indexOf(rectangle)});
                 IsoBattleLoop.setClickedItemPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
                 IsoBattleLoop.setItemClickFlag(true);
             });
@@ -106,7 +106,7 @@ public class PanelController {
 
     private static javafx.scene.shape.Rectangle checkEquipmentSlot(Point clickPoint) {
         javafx.scene.shape.Rectangle itemRectangle = null, screenRectangle;
-        for (javafx.scene.shape.Rectangle rectangle: panel.getEquipmentSlots()) {
+        for (javafx.scene.shape.Rectangle rectangle: panel.getItemRectangles()) {
             screenRectangle = GeomerticHelper.screenRectangle(rectangle);
             if (screenRectangle.contains(new Point2D(clickPoint.x, clickPoint.y)))
                 itemRectangle = rectangle;

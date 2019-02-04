@@ -48,7 +48,7 @@ public class CharPanelViewer {
     }
 
     private static void refreshLabels(Character character){
-        for (Label label: panel.getCharLabels()) {
+        for (Label label: panel.getCharStatsLabels()) {
             String parameterText = getParameterText(label, character);
             label.setText(parameterText);
         }

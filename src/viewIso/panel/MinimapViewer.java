@@ -12,6 +12,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import model.Battle;
 import model.character.Character;
+import model.map.lights.VisibilityCalculator;
 import viewIso.IsoViewer;
 import viewIso.map.MapDrawer;
 
@@ -51,13 +52,7 @@ public class MinimapViewer {
 
     static void refreshMinimap() {
         WritableImage minimapImgWithChars = new WritableImage(minimapImg.getPixelReader(), (int) minimapImg.getWidth(), (int) minimapImg.getHeight());
-        PixelWriter pixelWriter = minimapImgWithChars.getPixelWriter();
-        for (Character character : Battle.getCharacters()) {
-            int radius = calcMinimapRadius(character);
-            for (Point point : GeomerticHelper.pointsInRadius(character.getPosition(), radius, Battle.getMap())) {
-                pixelWriter.setColor(point.x, point.y, character.getColor());
-            }
-        }
+        drawChars(minimapImgWithChars);
 
         rectangle.setFill(new ImagePattern(minimapImgWithChars));
 
@@ -66,6 +61,18 @@ public class MinimapViewer {
         positionRectangle.setTranslateY(-minimapScreenSize / 2 + positionRectangle.getHeight() / 2
                 - MapDrawer.getZeroScreenPosition().getY() * minimapToScreenRatioY
                 + MapDrawer.getMap().getHeightType().getHilly() / 10.);
+    }
+
+    private static void drawChars(WritableImage minimapImgWithChars) {
+        PixelWriter pixelWriter = minimapImgWithChars.getPixelWriter();
+        for (Character character : Battle.getCharacters()) {
+            if (character.getColor().equals(Battle.getPlayerColor()) || VisibilityCalculator.isInPlayerCharView(character.getPosition())) {
+                int radius = calcMinimapRadius(character);
+                for (Point point : GeomerticHelper.pointsInRadius(character.getPosition(), radius, Battle.getMap())) {
+                    pixelWriter.setColor(point.x, point.y, character.getColor());
+                }
+            }
+        }
     }
 
     public static void refreshMinimapFog(Polygon exploredView, List<Polygon> holes) {

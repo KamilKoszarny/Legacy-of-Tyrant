@@ -43,15 +43,20 @@ public class IsoViewController {
     @FXML
     private Label hitPointsLabel, manaLabel, vigorLabel;
     @FXML
-    private Label vimLabel, strengthLabel, durabilityLabel, staminaLabel, dexterityLabel, eyeLabel, armLabel, agilityLabel, intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel;
+    private Label vimLabel, strengthLabel, durabilityLabel, staminaLabel,
+            dexterityLabel, eyeLabel, armLabel, agilityLabel,
+            intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel;
     @FXML
-    private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect, amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
+    private Rectangle helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
+            amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect;
     @FXML
     private Rectangle heldItemRect;
     @FXML
-    private Pane inventoryGridPane, defenceGridPane;
+    private Pane inventoryGridPane;
     @FXML
-    private Label loadLabel, speedMaxLabel, attackSpeedLabel, rangeLabel, blockLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel;
+    private Label loadLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, attackSpeedLabel, rangeLabel, speedMaxLabel,
+            avoidanceLabel, blockLabel, bodyArmorLabel, headArmorLabel, armsArmorLabel, legsArmorLabel,
+            fireResistanceLabel, waterResistanceLabel, windResistanceLabel, earthResistanceLabel, magicResistanceLabel;
     @FXML
     private Rectangle minimapRect, minimapPosRect;
 
@@ -96,20 +101,23 @@ public class IsoViewController {
     }
 
     private Panel preparePanel() {
-        List<Label> charLabels = Arrays.asList(nameLabel, typeLabel, charClassLabel,
+        List<Label> charStatsLabels = Arrays.asList(
+                nameLabel, typeLabel, charClassLabel,
                 hitPointsLabel, manaLabel, vigorLabel,
-                vimLabel, strengthLabel, durabilityLabel, staminaLabel, dexterityLabel, eyeLabel, armLabel, agilityLabel, intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel,
-                loadLabel, speedMaxLabel, attackSpeedLabel, rangeLabel, blockLabel, magicResistanceLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, avoidanceLabel
-    );
+                vimLabel, strengthLabel, durabilityLabel, staminaLabel,
+                dexterityLabel, eyeLabel, armLabel, agilityLabel,
+                intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel,
+                loadLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, attackSpeedLabel, rangeLabel, speedMaxLabel,
+                avoidanceLabel, blockLabel, bodyArmorLabel, headArmorLabel, armsArmorLabel, legsArmorLabel,
+                fireResistanceLabel, waterResistanceLabel, windResistanceLabel, earthResistanceLabel, magicResistanceLabel);
         List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
+        List<Rectangle> itemRectangles = Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect, glovesRect, bootsRect,
+                beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
 
-        List<Rectangle> itemRectangles = Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect,
-                glovesRect, bootsRect, beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
 
 
-        return new Panel(charLabels, charBars, charPictRect, charPictBackgroundRect,
-                helmetRect, weaponRect, armorRect, shieldRect, glovesRect, bootsRect,
-                amuletRect, ring1Rect, beltRect, ring2Rect, spareWeaponRect, spareShieldRect, heldItemRect, inventoryGridPane,
+        return new Panel(charStatsLabels, charBars, charPictRect, charPictBackgroundRect,
+                itemRectangles, heldItemRect, inventoryGridPane,
                 minimapRect, minimapPosRect, minimapFogCanvas);
     }
 

@@ -198,39 +198,40 @@
                      <children>
                         <VBox alignment="CENTER" minWidth="70.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="speedMaxLabel" text="speed" />
+                              <Label fx:id="dmgMinLabel" text="dmg" />
+                              <Label fx:id="dmgMaxLabel" text="dmg" />
+                              <Label fx:id="accuracyLabel" text="acc." />
                               <Label fx:id="attackSpeedLabel" text="aSpeed:" />
-                              <Label fx:id="rangeLabel" text="ran:" />
+                              <Label fx:id="rangeLabel" text="ran:">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin></Label>
+                              <Label fx:id="speedMaxLabel" text="speed" />
+                              <Label fx:id="avoidanceLabel" text="avo.">
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin></Label>
                               <Label fx:id="blockLabel" text="block" />
-                              <Label fx:id="magicResistanceLabel" text="mag. res." />
+                              <Label text="Armor:" />
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" minWidth="70.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="dmgMinLabel" text="dmg" />
-                              <Label fx:id="dmgMaxLabel" text="dmg" />
-                              <Label fx:id="accuracyLabel" text="acc." />
-                              <Label fx:id="avoidanceLabel" text="avo." />
+                              <Label text="Armor: " />
+                              <Label fx:id="bodyArmorLabel" text="body" />
+                              <Label fx:id="headArmorLabel" text="head" />
+                              <Label fx:id="armsArmorLabel" text="arms" />
+                              <Label fx:id="legsArmorLabel" text="legs" />
+                              <Label text="Resistance:" />
+                              <Label fx:id="fireResistanceLabel" text="fire" />
+                              <Label fx:id="waterResistanceLabel" text="water" />
+                              <Label fx:id="windResistanceLabel" text="wind" />
+                              <Label fx:id="earthResistanceLabel" text="earth" />
+                              <Label fx:id="magicResistanceLabel" text="magic" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
-                  <GridPane fx:id="defenceGridPane" gridLinesVisible="true" maxHeight="100.0" minHeight="100.0">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
                </children>
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />

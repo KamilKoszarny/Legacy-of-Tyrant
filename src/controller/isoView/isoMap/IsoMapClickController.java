@@ -8,6 +8,7 @@ import model.EventType;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
 import model.map.buildings.FurnitureType;
+import model.map.lights.VisibilityCalculator;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.characters.CharsDrawer;
@@ -44,31 +45,45 @@ public class IsoMapClickController {
 
     private BattleEvent eventByLClickPoint(Point clickPoint) {
         if (CharsDrawer.isOtherCharClicked(clickPoint, Battle.getChosenCharacter())) {
-            if (CharsDrawer.getClickedCharacter().getColor().equals(Battle.getPlayerColor())) {
-                if (ItemHandler.getHeldItem() == null)
-                    return new BattleEvent(EventType.CHOOSE_CHARACTER, clickPoint);
-                else
-                    return new BattleEvent(EventType.GIVE_ITEM, CharsDrawer.getClickedCharacter());
-            } else if (Battle.getChosenCharacter() != null) {
-                return new BattleEvent(EventType.SHOW_CHAR2ENEMY, clickPoint, CharsDrawer.getClickedCharacter());
-            }
+            BattleEvent charClickBattleEvent = getCharClickBattleEvent(clickPoint);
+            if (charClickBattleEvent != null) return charClickBattleEvent;
         } else {
             Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
-            if (Battle.getChosenCharacter() != null && mapPoint != null) {
-                MapObject object = MapObjectController.clickedObject(clickPoint);
-                if (object != null) {
-                    if (object.getType().equals(MapObjectType.ITEM))
-                        return new BattleEvent(EventType.PICKUP_ITEM, object, mapPoint);
-                    if (object.getType().equals(MapObjectType.DOOR))
-                        return new BattleEvent(EventType.SHOW_CHAR2DOOR, clickPoint, object);
-                    if (object.getType().equals(MapObjectType.FURNITURE) && object.getFurnitureType().equals(FurnitureType.CHEST))
-                        return new BattleEvent(EventType.SHOW_CHAR2CHEST, clickPoint, object);
-                }
-                else if (ItemHandler.getHeldItem() != null)
-                    return new BattleEvent(EventType.DROP_ITEM, clickPoint, mapPoint);
-                else
-                    return new BattleEvent(EventType.SHOW_CHAR2POINT, clickPoint, mapPoint);
+            if (mapPoint == null || !VisibilityCalculator.isExplored(mapPoint))
+                return null;
+            if (Battle.getChosenCharacter() != null) {
+                BattleEvent mapClickBattleEvent = getMapClickBattleEvent(clickPoint, mapPoint);
+                if (mapClickBattleEvent != null) return mapClickBattleEvent;
             }
+        }
+        return null;
+    }
+
+    private BattleEvent getMapClickBattleEvent(Point clickPoint, Point mapPoint) {
+        MapObject object = MapObjectController.clickedObject(clickPoint);
+        if (object != null) {
+            if (object.getType().equals(MapObjectType.ITEM))
+                return new BattleEvent(EventType.PICKUP_ITEM, object, mapPoint);
+            if (object.getType().equals(MapObjectType.DOOR))
+                return new BattleEvent(EventType.SHOW_CHAR2DOOR, clickPoint, object);
+            if (object.getType().equals(MapObjectType.FURNITURE) && object.getFurnitureType().equals(FurnitureType.CHEST))
+                return new BattleEvent(EventType.SHOW_CHAR2CHEST, clickPoint, object);
+        }
+        else if (ItemHandler.getHeldItem() != null)
+            return new BattleEvent(EventType.DROP_ITEM, clickPoint, mapPoint);
+        else
+            return new BattleEvent(EventType.SHOW_CHAR2POINT, clickPoint, mapPoint);
+        return null;
+    }
+
+    private BattleEvent getCharClickBattleEvent(Point clickPoint) {
+        if (CharsDrawer.getClickedCharacter().getColor().equals(Battle.getPlayerColor())) {
+            if (ItemHandler.getHeldItem() == null)
+                return new BattleEvent(EventType.CHOOSE_CHARACTER, clickPoint);
+            else
+                return new BattleEvent(EventType.GIVE_ITEM, CharsDrawer.getClickedCharacter());
+        } else if (Battle.getChosenCharacter() != null) {
+            return new BattleEvent(EventType.SHOW_CHAR2ENEMY, clickPoint, CharsDrawer.getClickedCharacter());
         }
         return null;
     }

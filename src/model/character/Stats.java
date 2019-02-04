@@ -1,9 +1,5 @@
 package model.character;
 
-import javafx.scene.shape.Polygon;
-
-import java.util.List;
-
 public class Stats {
 
     private Character character;
@@ -39,19 +35,15 @@ public class Stats {
     private double speed;
     private double speedMax;
     private double range;
-    
-    private double attackSpeed;
-    private double dmgMin;
-    private double dmgMax;
+
+    private double dmgMin, dmgMax;
     private int accuracy;
+    private double attackSpeed;
 
     private int avoidance;
     private int block;
-    private int magicResistance;
-    private int headArmor;
-    private int bodyArmor;
-    private int armsArmor;
-    private int legsArmor;
+    private int headArmor = 0, bodyArmor = 0, armsArmor = 0 ,legsArmor = 0;
+    private int fireResistance, waterResistance, windResistance, earthResistance, magicResistance;
 
     public Stats(Character character) {
         this.character = character;
@@ -342,14 +334,6 @@ public class Stats {
         this.block = block;
     }
 
-    public int getMagicResistance() {
-        return magicResistance;
-    }
-
-    public void setMagicResistance(int magicResistance) {
-        this.magicResistance = magicResistance;
-    }
-
     public int getHeadArmor() {
         return headArmor;
     }
@@ -380,5 +364,45 @@ public class Stats {
 
     public void setLegsArmor(int legsArmor) {
         this.legsArmor = legsArmor;
+    }
+
+    public int getFireResistance() {
+        return fireResistance;
+    }
+
+    public void setFireResistance(int fireResistance) {
+        this.fireResistance = fireResistance;
+    }
+
+    public int getWaterResistance() {
+        return waterResistance;
+    }
+
+    public void setWaterResistance(int waterResistance) {
+        this.waterResistance = waterResistance;
+    }
+
+    public int getWindResistance() {
+        return windResistance;
+    }
+
+    public void setWindResistance(int windResistance) {
+        this.windResistance = windResistance;
+    }
+
+    public int getEarthResistance() {
+        return earthResistance;
+    }
+
+    public void setEarthResistance(int earthResistance) {
+        this.earthResistance = earthResistance;
+    }
+
+    public int getMagicResistance() {
+        return magicResistance;
+    }
+
+    public void setMagicResistance(int magicResistance) {
+        this.magicResistance = magicResistance;
     }
 }

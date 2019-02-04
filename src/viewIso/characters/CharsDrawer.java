@@ -11,6 +11,7 @@ import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.items.ItemImagesLoader;
+import model.map.lights.VisibilityCalculator;
 import viewIso.IsoViewer;
 import viewIso.LabelsDrawer;
 import viewIso.map.MapDrawCalculator;
@@ -45,9 +46,9 @@ public class CharsDrawer {
             gc.setEffect(new Glow(.6));
         else if (character.getColor().equals(Battle.getPlayerColor()))
             gc.setEffect(new Glow(.3));
-        else if (MapDrawCalculator.isInChosenCharView(character.getPosition()))
+        else if (VisibilityCalculator.isInChosenCharView(character.getPosition()))
             gc.setEffect(new Glow(.3));
-        else if (MapDrawCalculator.isInPlayerCharView(character.getPosition()))
+        else if (VisibilityCalculator.isInPlayerCharView(character.getPosition()))
             gc.setEffect(new ColorAdjust(0, -.5, -.5, 0));
         else
             return;
