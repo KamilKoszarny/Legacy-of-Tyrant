@@ -19,7 +19,7 @@ import java.util.List;
 public class App extends Application {
 
     public static final boolean FULL_MODE = true;
-    private static final boolean SHOW_TIME = true;
+    private static final int SHOW_TIME_LEVEL = -1;
 
     public static final long START_TIME = System.nanoTime();
     public static long[] time = new long[10];
@@ -70,7 +70,7 @@ public class App extends Application {
         for (int i = 0; i < level; i++) {
             spaces.append(" ");
         }
-        if (SHOW_TIME)
+        if (level <= SHOW_TIME_LEVEL)
             System.out.println(spaces + text + ": " + (System.nanoTime() - time[level])/1000000. + " ms");
         time[level] = System.nanoTime();
     }

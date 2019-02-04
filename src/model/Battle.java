@@ -1,6 +1,7 @@
 package model;
 
 import javafx.scene.paint.Color;
+import main.App;
 import model.actions.CharsChooser;
 import model.character.Character;
 import model.actions.movement.CharMover;
@@ -37,6 +38,7 @@ public class Battle {
             }
         }
         VisibilityCalculator.updateViews();
+        App.showAndResetTime("ViewsUpdate", 2);
     }
 
     public static void incrementTimer() {

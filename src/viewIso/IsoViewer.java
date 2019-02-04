@@ -2,10 +2,9 @@ package viewIso;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
+import main.App;
 import model.Battle;
 import viewIso.map.MapDrawer;
-
-import java.awt.*;
 
 public class IsoViewer {
 
@@ -20,9 +19,13 @@ public class IsoViewer {
 
     public static void draw() {
         MapMover.tryMoveMap();
+        App.resetTime(2);
         MapDrawer.drawMap();
+        App.showAndResetTime("mapDraw", 2);
         PathDrawer.drawPaths(true);
+        App.showAndResetTime("pathsDraw", 2);
         SpritesDrawer.drawVisibleSprites();
+        App.showAndResetTime("spritesDraw", 2);
         PathDrawer.drawPaths(false);
     }
 

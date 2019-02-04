@@ -1,6 +1,7 @@
 package model;
 
 import javafx.animation.AnimationTimer;
+import main.App;
 import model.actions.*;
 import model.actions.attack.AttackActioner;
 import model.actions.attack.BodyPart;
@@ -13,7 +14,6 @@ import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Chest;
 import model.map.buildings.Door;
-import model.map.buildings.Furniture;
 import model.map.mapObjects.ItemMapObject;
 import viewIso.*;
 import viewIso.characters.CharsDrawer;
@@ -67,12 +67,17 @@ public class IsoBattleLoop extends AnimationTimer{
             if (battleEvent != null)
                 handleBattleEvent();
         }
+        App.showAndResetTime("frame", 0);
     }
 
     private void animate() {
+        App.resetTime(1);
         Battle.update(FRAME_RATE);
+        App.showAndResetTime("battleUpdate", 1);
         IsoViewer.draw();
+        App.showAndResetTime("draw", 1);
         PanelViewer.refresh();
+        App.showAndResetTime("panel", 1);
     }
 
     private void handleBattleEvent() {

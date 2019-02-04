@@ -23,8 +23,8 @@ public class BattleInitializer {
         boolean[] roadSides = {true, false, true, true};
         boolean[] riverSides = {false, true, false, true};
         boolean[] waterSides = {false, true, false, false};
-        return new Map(50, 50, MapType.VILLAGE, MapHeightType.PEAK,
-                roadSides, riverSides, waterSides, true);
+        return new Map(50, 50, MapType.VILLAGE, MapHeightType.MOUNTAINS,
+                roadSides, riverSides, waterSides, false);
     }
 
     public static List<Character> initCharacters(Map map){

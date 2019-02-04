@@ -16,10 +16,10 @@ public enum BodyArmor implements Armor, ItemWithSprite{
     HAUBERK(0, 4, 3, 2, 25, "chain_cuirass_greaves"),
     LIGHT_PLATE_ARMOR(0, 5, 2, 2, 26, "plate_cuirass"),
     BREASTPLATE(0, 7, 0, 0, 30, "plate_cuirass"),
-    TOURNAMENT_ARMOR(0, 5, 4, 2, 35, "chain_cuirass_greaves"),
-    GUARDIAN_ARMOR(1, 6, 4, 3, 40, "chain_cuirass_greaves"),
-    FULL_PLATE_ARMOR(0, 7, 4, 4, 40, "chain_cuirass_greaves"),
-    FORGED_ARMOR(2, 8, 4, 1, 50, "chain_cuirass");
+    TOURNAMENT_ARMOR(0, 5, 4, 2, 35, "plate_cuirass_greaves"),
+    GUARDIAN_ARMOR(1, 6, 4, 3, 40, "plate_cuirass_greaves"),
+    FULL_PLATE_ARMOR(0, 7, 4, 4, 40, "plate_cuirass_greaves"),
+    FORGED_ARMOR(2, 8, 4, 1, 50, "plate_cuirass");
 
     private int headArmor, bodyArmor, armsArmor, legsArmor, durability;
     private Image image;
