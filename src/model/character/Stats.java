@@ -27,7 +27,7 @@ public class Stats {
     private int vigor = -999;
     private int vigorMax = -999;
 
-    private int msLeft = 0;
+    private int actionPoints = 100;
     private int reflex = 0;
     
     private int load;
@@ -230,12 +230,12 @@ public class Stats {
         this.vigorMax = vigorMax;
     }
 
-    public int getMsLeft() {
-        return msLeft;
+    public int getActionPoints() {
+        return actionPoints;
     }
 
-    public void setMsLeft(int msLeft) {
-        this.msLeft = msLeft;
+    public void setActionPoints(int actionPoints) {
+        this.actionPoints = actionPoints;
     }
 
     public int getReflex() {

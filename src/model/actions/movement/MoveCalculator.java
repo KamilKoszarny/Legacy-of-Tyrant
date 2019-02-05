@@ -27,8 +27,8 @@ public class MoveCalculator {
         yFactor = (destination.y - start.y) / sum;
 
         Point stop = new Point();
-        stop.x = start.x + (int) (xFactor * speed * character.getStats().getMsLeft() / 1000);
-        stop.y = start.y + (int) (yFactor * speed * character.getStats().getMsLeft() / 1000);
+        stop.x = start.x + (int) (xFactor * speed * character.getStats().getActionPoints() / 1000);
+        stop.y = start.y + (int) (yFactor * speed * character.getStats().getActionPoints() / 1000);
 
         Set<Point> pointsUnderMove = new HashSet<>();
         for (double i = 0; i < start.distance(stop); i += character.getType().getSize() / Map.RESOLUTION_M){
@@ -42,12 +42,12 @@ public class MoveCalculator {
 
         if (start.distance(stop) > start.distance(destination)) {
             character.setPosition(destination);
-            character.getStats().setMsLeft(character.getStats().getMsLeft() - (int) (start.distance(destination) / speed * 1000));
+            character.getStats().setActionPoints(character.getStats().getActionPoints() - (int) (start.distance(destination) / speed * 1000));
             if (character.isRunning())
                 character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(destination) / speed * 2));
         } else {
             character.setPosition(stop);
-            character.getStats().setMsLeft(0);
+            character.getStats().setActionPoints(0);
             if (character.isRunning())
                 character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(stop) / speed * 2));
         }

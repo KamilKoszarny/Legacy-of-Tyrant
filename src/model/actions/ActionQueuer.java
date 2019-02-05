@@ -2,8 +2,9 @@ package model.actions;
 
 import model.Battle;
 import model.BattleEvent;
+import model.actions.attack.AttackCalculator;
 import model.actions.movement.CharMover;
-import model.actions.movement.ToObjectMover;
+import model.actions.movement.Char2ObjectMover;
 import model.character.Character;
 
 import java.util.*;
@@ -47,15 +48,25 @@ public class ActionQueuer {
     private static boolean eventReady(Character character, BattleEvent battleEvent) {
         switch (battleEvent.getType()) {
             case GO2OBJECT:
+            case GO2ENEMY:
                 return true;
             case OPEN_DOOR:
             case CLOSE_DOOR:
             case OPEN_CHEST:
-                if (ToObjectMover.closeToObject(character, battleEvent.getObject())) {
+                if (Char2ObjectMover.closeToObject(character, battleEvent.getObject())) {
                     CharMover.stopCharacter(character);
-
                     return true;
                 }
+                break;
+            case ATTACK_BODY:
+            case ATTACK_HEAD:
+            case ATTACK_ARMS:
+            case ATTACK_LEGS:
+                if (AttackCalculator.isInRange(character, battleEvent.getSubjectCharacter())) {
+                    CharMover.stopCharacter(character);
+                    return true;
+                }
+                break;
         }
         return false;
     }

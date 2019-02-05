@@ -5,6 +5,7 @@ import helpers.my.GeomerticHelper;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import model.Battle;
 import model.character.Character;
@@ -18,11 +19,11 @@ import java.util.List;
 
 public class PathDrawer {
 
-    public static void showPathIfNotMoving(List<Point2D> path) {
+    public static void showPathIfNotMoving(List<Point2D> path, Color color) {
         if (Battle.getChosenCharacter().getStats().getSpeed() == 0) {
             Battle.getChosenCharacter().setPath(path);
             if (path.size() > 0) {
-                createPathView(Battle.getChosenCharacter());
+                createPathView(Battle.getChosenCharacter(), color);
             }
         }
     }
@@ -43,12 +44,12 @@ public class PathDrawer {
         }
     }
 
-    public static void createPathView(Character character) {
+    public static void createPathView(Character character, Color color) {
         List<Point2D> path = character.getPath();
-        createPathView(character, path);
+        createPathView(character, path, color);
     }
 
-    public static void createPathView(Character character, List<Point2D> path) {
+    public static void createPathView(Character character, List<Point2D> path, Color color) {
         List<Point2D> pointsOnPath = GeomerticHelper.pointsOnPath(path, 2);
 
         List<Point> screenPoints = new ArrayList<>();
@@ -61,15 +62,15 @@ public class PathDrawer {
             Point screenPoint = screenPoints.get(i);
             Point nextScreenPoint = screenPoints.get(i + 1);
             Polygon triangle = createPathTriangle(screenPoint, nextScreenPoint);
-            triangle.setFill(character.getColor());
-            triangle.setStroke(character.getColor());
+            triangle.setFill(color);
+            triangle.setStroke(color);
             pathShapes.add(triangle);
         }
 
         Point2D destination = path.get(path.size() - 1);
         Polygon cross = createCross(MapDrawCalculator.relativeScreenPositionWithHeight(destination));
-        cross.setFill(character.getColor());
-        cross.setStroke(character.getColor());
+        cross.setFill(color);
+        cross.setStroke(color);
         pathShapes.add(cross);
 
         character.setPathView(pathShapes);

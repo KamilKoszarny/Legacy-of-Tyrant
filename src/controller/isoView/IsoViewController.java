@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.*;
@@ -56,9 +57,12 @@ public class IsoViewController {
     @FXML
     private Label loadLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, attackSpeedLabel, rangeLabel, speedMaxLabel,
             avoidanceLabel, blockLabel, bodyArmorLabel, headArmorLabel, armsArmorLabel, legsArmorLabel,
-            fireResistanceLabel, waterResistanceLabel, windResistanceLabel, earthResistanceLabel, magicResistanceLabel;
+            fireResistanceLabel, waterResistanceLabel, windResistanceLabel, earthResistanceLabel, magicResistanceLabel,
+            actionPointsLabel;
     @FXML
     private Rectangle minimapRect, minimapPosRect;
+    @FXML
+    private Button nextTurnButton;
 
     private Panel panel;
 
@@ -109,7 +113,8 @@ public class IsoViewController {
                 intelligenceLabel, knowledgeLabel, focusLabel, spiritLabel,
                 loadLabel, dmgMinLabel, dmgMaxLabel, accuracyLabel, attackSpeedLabel, rangeLabel, speedMaxLabel,
                 avoidanceLabel, blockLabel, bodyArmorLabel, headArmorLabel, armsArmorLabel, legsArmorLabel,
-                fireResistanceLabel, waterResistanceLabel, windResistanceLabel, earthResistanceLabel, magicResistanceLabel);
+                fireResistanceLabel, waterResistanceLabel, windResistanceLabel, earthResistanceLabel, magicResistanceLabel,
+                actionPointsLabel);
         List<ProgressBar> charBars = Arrays.asList(hitPointsProgressBar, manaProgressBar, vigorProgressBar);
         List<Rectangle> itemRectangles = Arrays.asList(weaponRect, spareWeaponRect, shieldRect, armorRect, helmetRect, glovesRect, bootsRect,
                 beltRect, amuletRect, ring1Rect, ring2Rect, spareShieldRect);
@@ -118,7 +123,7 @@ public class IsoViewController {
 
         return new Panel(charStatsLabels, charBars, charPictRect, charPictBackgroundRect,
                 itemRectangles, heldItemRect, inventoryGridPane,
-                minimapRect, minimapPosRect, minimapFogCanvas);
+                minimapRect, minimapPosRect, minimapFogCanvas, nextTurnButton);
     }
 
     public Canvas getMapCanvas() {

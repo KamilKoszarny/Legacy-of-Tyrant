@@ -9,17 +9,16 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 import model.actions.attack.AttackCalculator;
 import model.actions.attack.BodyPart;
+import model.actions.movement.Char2CharMover;
 import model.actions.movement.PathCalculator;
-import model.actions.movement.ToObjectMover;
+import model.actions.movement.Char2ObjectMover;
 import model.actions.objects.ChestActioner;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Chest;
 import model.map.buildings.Door;
-import model.map.buildings.Furniture;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
-import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -70,7 +69,7 @@ public class ClickMenusDrawer {
         hideMenus(true);
         activeMenu = char2DoorMenu;
 
-        if (ToObjectMover.closeToObject(character, door) || ToObjectMover.pathToObjectExists(character, door)) {
+        if (Char2ObjectMover.closeToObject(character, door) || Char2ObjectMover.pathToObjectExists(character, door)) {
             ClickMenuButton.DOOR_OPEN.setGrayed(door.isOpen());
             ClickMenuButton.DOOR_CLOSE.setGrayed(!door.isOpen());
         } else {
@@ -85,7 +84,7 @@ public class ClickMenusDrawer {
         hideMenus(true);
         activeMenu = char2ChestMenu;
 
-        if (ToObjectMover.closeToObject(character, chest) || ToObjectMover.pathToObjectExists(character, chest)) {
+        if (Char2ObjectMover.closeToObject(character, chest) || Char2ObjectMover.pathToObjectExists(character, chest)) {
             ClickMenuButton.CHEST_OPEN.setGrayed(false);
         } else {
             ClickMenuButton.CHEST_OPEN.setGrayed(true);
@@ -99,7 +98,9 @@ public class ClickMenusDrawer {
         hideMenus(true);
         activeMenu = char2EnemyMenu;
 
-        boolean attackable = AttackCalculator.isInRange(character, enemy) && enemy.getStats().getHitPoints() > 0;
+        boolean attackable = (AttackCalculator.isInRange(character, enemy) ||
+                Char2CharMover.pathToCharExists(character, enemy)) &&
+                enemy.getStats().getHitPoints() > 0;
         ClickMenuButton.ATTACK_HEAD.setGrayed(!attackable);
         ClickMenuButton.ATTACK_BODY.setGrayed(!attackable);
         ClickMenuButton.ATTACK_ARMS.setGrayed(!attackable);

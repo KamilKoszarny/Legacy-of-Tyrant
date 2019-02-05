@@ -1,10 +1,13 @@
 package controller.isoView.isoPanel;
 
 import helpers.my.GeomerticHelper;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import model.items.armor.*;
 
@@ -21,10 +24,11 @@ public class Panel {
     private Pane inventoryGridPane;
     private Rectangle inventoryScreenRect, miniMapRect, miniMapPosRect;
     private Canvas minimapFogCanvas;
+    private Button nextTurnButton;
 
     public Panel(List<Label> charStatsLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  List<Rectangle> itemRectangles, Rectangle heldItemRect, Pane inventoryGridPane,
-                 Rectangle miniMapRect, Rectangle miniMapPosRect, Canvas minimapFogCanvas) {
+                 Rectangle miniMapRect, Rectangle miniMapPosRect, Canvas minimapFogCanvas, Button nextTurnButton) {
         this.charStatsLabels = charStatsLabels;
         this.charBars = charBars;
         this.itemRectangles = itemRectangles;
@@ -36,14 +40,17 @@ public class Panel {
         this.miniMapRect = miniMapRect;
         this.miniMapPosRect = miniMapPosRect;
         this.minimapFogCanvas = minimapFogCanvas;
-//        initInventoryClick();
+        this.nextTurnButton = nextTurnButton;
+        initNextTurnButton();
     }
 
-    private void initInventoryClick() {
-        inventoryScreenRect = getInventoryRectangle();
-        inventoryScreenRect.setOnMouseClicked(mouseEvent -> {
-            System.out.println("inv click");
-        });
+    private void initNextTurnButton() {
+        nextTurnButton.setText("Next\nTurn");
+        nextTurnButton.setAlignment(Pos.BASELINE_LEFT);
+        nextTurnButton.setShape(new Polygon(0, 1, 2, 1, 3, 0, 2, -1, 0, -1));
+        nextTurnButton.setPickOnBounds(false);
+        nextTurnButton.setPrefWidth(60);
+        nextTurnButton.setPrefHeight(40);
     }
 
     public List<Label> getCharStatsLabels() {

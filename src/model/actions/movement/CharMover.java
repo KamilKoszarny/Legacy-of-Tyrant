@@ -23,7 +23,7 @@ public class CharMover {
         List<Point2D> path = PathCalculator.calcPath(character, destination);
         if (path != null) {
             character.setPath(path);
-            PathDrawer.createPathView(character);
+            PathDrawer.createPathView(character, character.getColor());
         }
         startRun(character);
     }

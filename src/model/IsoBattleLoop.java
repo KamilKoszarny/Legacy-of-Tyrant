@@ -5,9 +5,10 @@ import main.App;
 import model.actions.*;
 import model.actions.attack.AttackActioner;
 import model.actions.attack.BodyPart;
+import model.actions.movement.Char2CharMover;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
-import model.actions.movement.ToObjectMover;
+import model.actions.movement.Char2ObjectMover;
 import model.actions.objects.ChestActioner;
 import model.actions.objects.DoorActioner;
 import model.character.Character;
@@ -126,7 +127,22 @@ public class IsoBattleLoop extends AnimationTimer{
                 ChestActioner.openChest(battleEvent.getDoingCharacter(), (Chest) battleEvent.getObject(), battleEvent.getClickPoint());
                 break;
             case GO2OBJECT:
-                ToObjectMover.calcPathAndStartRunToObject(battleEvent.getDoingCharacter(), battleEvent.getObject());
+                Char2ObjectMover.calcPathAndStartRunToObject(battleEvent.getDoingCharacter(), battleEvent.getObject());
+                break;
+            case GO2ENEMY:
+                Char2CharMover.calcPathAndStartRunToChar(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter());
+                break;
+            case ATTACK_BODY:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.BODY);
+                break;
+            case ATTACK_HEAD:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.HEAD);
+                break;
+            case ATTACK_ARMS:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.ARMS);
+                break;
+            case ATTACK_LEGS:
+                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.LEGS);
                 break;
         }
 
@@ -171,16 +187,24 @@ public class IsoBattleLoop extends AnimationTimer{
                 ActionQueuer.addEvent(new BattleEvent(EventType.OPEN_CHEST, buttonBattleEvent.getClickPoint(), buttonBattleEvent.getObject()));
                 break;
             case ATTACK_BODY:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.BODY);
+                ActionQueuer.clearEventQueue();
+                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
+                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_BODY, buttonBattleEvent.getSubjectCharacter()));
                 break;
             case ATTACK_HEAD:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.HEAD);
+                ActionQueuer.clearEventQueue();
+                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
+                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_HEAD, buttonBattleEvent.getSubjectCharacter()));
                 break;
             case ATTACK_ARMS:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.ARMS);
+                ActionQueuer.clearEventQueue();
+                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
+                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_ARMS, buttonBattleEvent.getSubjectCharacter()));
                 break;
             case ATTACK_LEGS:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.LEGS);
+                ActionQueuer.clearEventQueue();
+                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
+                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_LEGS, buttonBattleEvent.getSubjectCharacter()));
                 break;
         }
 

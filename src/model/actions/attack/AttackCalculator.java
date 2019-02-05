@@ -15,9 +15,8 @@ public class AttackCalculator {
             LEGS2BODY_CHANCE = 20, LEGS2LEGS_CHANCE = 70;
 
     public static boolean isInRange(Character charA, Character charB){
-//        if (charA.getPosition().distance(charB.getPosition()) * Map.RESOLUTION_M <
-//                charA.getStats().getRange() + charA.getType().getSize()/2 + charB.getType().getSize()/2)
-        if (charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getStats().getRange())
+        if (charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getStats().getRange() &&
+                charA.getView().contains(charB.getPrecisePosition()))
             return true;
         return false;
     }
@@ -110,7 +109,7 @@ public class AttackCalculator {
 
     public static void updateStats(Character attacker, Character victim, int damage){
         victim.getStats().setHitPoints(victim.getStats().getHitPoints() - damage);
-        attacker.getStats().setMsLeft(attacker.getStats().getMsLeft() - (int)(1 / attacker.getStats().getAttackSpeed() * 1000));
+        attacker.getStats().setActionPoints(attacker.getStats().getActionPoints() - (int)(1 / attacker.getStats().getAttackSpeed() * 1000));
         attacker.getStats().setVigor((int) (attacker.getStats().getVigor() - (1 / attacker.getStats().getAttackSpeed())));
     }
 
