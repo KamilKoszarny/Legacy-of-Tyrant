@@ -24,10 +24,10 @@ public class Stats {
     private int hitPointsMax;
     private int mana;
     private int manaMax;
-    private int vigor = -999;
+    private float vigor = -999;
     private int vigorMax = -999;
 
-    private int actionPoints = 100;
+    private float actionPoints = 100;
     private int reflex = 0;
     
     private int load;
@@ -214,12 +214,12 @@ public class Stats {
         this.manaMax = manaMax;
     }
 
-    public int getVigor() {
+    public float getVigor() {
         return vigor;
     }
 
-    public void setVigor(int vigor) {
-        this.vigor = vigor;
+    public void setVigor(double vigor) {
+        this.vigor = (float) vigor;
     }
 
     public int getVigorMax() {
@@ -230,12 +230,12 @@ public class Stats {
         this.vigorMax = vigorMax;
     }
 
-    public int getActionPoints() {
+    public float getActionPoints() {
         return actionPoints;
     }
 
-    public void setActionPoints(int actionPoints) {
-        this.actionPoints = actionPoints;
+    public void setActionPoints(double actionPoints) {
+        this.actionPoints = (float) actionPoints;
     }
 
     public int getReflex() {

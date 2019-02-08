@@ -36,13 +36,15 @@ public class ActionQueuer {
         Queue<BattleEvent> charEvents = character2BattleEventsQueueMap.get(character);
         if (charEvents == null || charEvents.isEmpty())
             return null;
-        return nextEventIfReady(character, charEvents);
+        return nextReadyEvent(character, charEvents);
     }
 
-    private static BattleEvent nextEventIfReady(Character character, Queue<BattleEvent> charEvents) {
-        if (eventReady(character, charEvents.element()))
-            return charEvents.remove();
-        return null;
+    private static BattleEvent nextReadyEvent(Character character, Queue<BattleEvent> charEvents) {
+        BattleEvent event = null;
+        while (charEvents.peek() != null && eventReady(character, charEvents.element())) {
+            event = charEvents.remove();
+        }
+        return event;
     }
 
     private static boolean eventReady(Character character, BattleEvent battleEvent) {

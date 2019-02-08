@@ -21,7 +21,7 @@ public class Char2ObjectMover {
             character.setPath(path);
             PathDrawer.createPathView(character, Color.WHITE);
         }
-        CharMover.startRun(character);
+        CharMover.startMove(character);
     }
 
     public static boolean pathToObjectExists(Character character, MapObject mapObject) {

@@ -1,56 +1,38 @@
 package model.actions.movement;
 
+import javafx.geometry.Point2D;
+import model.Battle;
 import model.character.Character;
 import model.character.CharacterType;
+import model.character.Stats;
 import model.map.Map;
 
 import java.awt.*;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.List;
 
 public class MoveCalculator {
 
-    public static void moveCharacter(Character character, Point destination, Map map) {
-        Point start = character.getPosition();
-
-        double xFactor, yFactor, sum;
-        double speed = character.getStats().getSpeed() / Map.RESOLUTION_M;
-
+    static double calcSpeed(Character character) {
+        double speed = character.getStats().getSpeedMax();
         if(character.isRunning())
             speed *= 2;
         if(character.isSneaking())
             speed /= 2;
+        return speed;
+    }
 
-        sum = Math.abs(destination.x - start.x) + Math.abs(destination.y - start.y);
-        xFactor = (destination.x - start.x) / sum;
-        yFactor = (destination.y - start.y) / sum;
-
-        Point stop = new Point();
-        stop.x = start.x + (int) (xFactor * speed * character.getStats().getActionPoints() / 1000);
-        stop.y = start.y + (int) (yFactor * speed * character.getStats().getActionPoints() / 1000);
-
-        Set<Point> pointsUnderMove = new HashSet<>();
-        for (double i = 0; i < start.distance(stop); i += character.getType().getSize() / Map.RESOLUTION_M){
-            character.setPosition(new Point((int)(start.x + i*xFactor), (int)(start.y + i*yFactor)));
-            pointsUnderMove.addAll(calcPointsUnder(character, map));
+    static void updateVigorAndActionPoints(Character character, Point2D posBefore, Point2D posAfter) {
+        final double AP_PER_TIME_UNIT = 5, VIGOR_PER_TIME_UNIT = .3;
+        Stats stats = character.getStats();
+        double time = posAfter.distance(posBefore) / stats.getSpeed();
+        double costAP = time * AP_PER_TIME_UNIT;
+        double costVigor = time * VIGOR_PER_TIME_UNIT;
+        if(character.isRunning()) {
+            costVigor *= 2;
         }
-
-        double terrainFactor = calcTerrainFactor(pointsUnderMove, map);
-        stop.x = start.x + (int)((stop.x - start.x) * terrainFactor);
-        stop.y = start.y + (int)((stop.y - start.y) * terrainFactor);
-
-        if (start.distance(stop) > start.distance(destination)) {
-            character.setPosition(destination);
-            character.getStats().setActionPoints(character.getStats().getActionPoints() - (int) (start.distance(destination) / speed * 1000));
-            if (character.isRunning())
-                character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(destination) / speed * 2));
-        } else {
-            character.setPosition(stop);
-            character.getStats().setActionPoints(0);
-            if (character.isRunning())
-                character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(stop) / speed * 2));
-        }
+        stats.setActionPoints(stats.getActionPoints() - costAP);
+        stats.setVigor(stats.getVigor() - costVigor);
     }
 
     public static Set<Point> calcRelativePointsUnder(CharacterType characterType){
@@ -84,5 +66,79 @@ public class MoveCalculator {
             terrainFactor += map.getPoints().get(p).getTerrain().getMoveFactor();
         }
         return terrainFactor/points.size();
+    }
+
+    static Point2D calcStep(Character character, int ms) {
+        double changeX, changeY;
+        changeX = Math.cos(((character.getPreciseDirection() + 1) / 8) * 2 * Math.PI) *
+                character.getStats().getSpeed() * ms/1000 / Map.M_PER_POINT;
+        changeY = Math.sin(((character.getPreciseDirection() + 1) / 8) * 2 * Math.PI) *
+                character.getStats().getSpeed() * ms/1000 / Map.M_PER_POINT;
+        return new Point2D(changeX, changeY);
+    }
+
+    public static void pushCharsToClosestWalkable(){
+        pushCharsToClosestWalkable(Battle.getMap(), Battle.getCharacters());
+    }
+
+    public static void pushCharsToClosestWalkable(Map map, List<Character> characters){
+        for (Character character: characters)
+            pushCharToClosestWalkable(character, map, characters);
+    }
+
+    public static void pushCharToClosestWalkable(Character character, Map map, List<Character> characters){
+        Point pos = character.getPosition();
+        while (!map.getPoints().get(pos).isWalkable() || pointOccupiedByOther(character, characters)) {
+            int newX = Math.min(Math.max(pos.x + new Random().nextInt(3) - 1, 0), map.getWidth());
+            int newY = Math.min(Math.max(pos.y + new Random().nextInt(3) - 1, 0), map.getHeight());
+            character.setPosition(new Point(newX, newY));
+            pos = character.getPosition();
+        }
+    }
+
+    public static boolean pointOccupiedByOther(Character character, List<Character> characters) {
+        Point point = character.getPosition();
+        for (Character otherChar : characters) {
+            if (!otherChar.equals(character) && otherChar.getPosition().equals(point))
+                return true;
+        }
+        return false;
+    }
+
+    public static void moveCharacter(Character character, Point destination, Map map) {
+        Point start = character.getPosition();
+
+        double xFactor, yFactor, sum;
+        double speed = calcSpeed(character);
+
+        sum = Math.abs(destination.x - start.x) + Math.abs(destination.y - start.y);
+        xFactor = (destination.x - start.x) / sum;
+        yFactor = (destination.y - start.y) / sum;
+
+        Point stop = new Point();
+        stop.x = start.x + (int) (xFactor * speed * character.getStats().getActionPoints() / 1000);
+        stop.y = start.y + (int) (yFactor * speed * character.getStats().getActionPoints() / 1000);
+
+        Set<Point> pointsUnderMove = new HashSet<>();
+        for (double i = 0; i < start.distance(stop); i += character.getType().getSize() / Map.RESOLUTION_M){
+            character.setPosition(new Point((int)(start.x + i*xFactor), (int)(start.y + i*yFactor)));
+            pointsUnderMove.addAll(calcPointsUnder(character, map));
+        }
+
+        double terrainFactor = calcTerrainFactor(pointsUnderMove, map);
+        stop.x = start.x + (int)((stop.x - start.x) * terrainFactor);
+        stop.y = start.y + (int)((stop.y - start.y) * terrainFactor);
+
+        if (start.distance(stop) > start.distance(destination)) {
+            character.setPosition(destination);
+            character.getStats().setActionPoints(character.getStats().getActionPoints() - (start.distance(destination) / speed * 1000));
+            if (character.isRunning())
+                character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(destination) / speed * 2));
+        } else {
+            character.setPosition(stop);
+            character.getStats().setActionPoints(0);
+            if (character.isRunning())
+                character.getStats().setVigor((int) (character.getStats().getVigor() - start.distance(stop) / speed * 2));
+        }
     }
 }

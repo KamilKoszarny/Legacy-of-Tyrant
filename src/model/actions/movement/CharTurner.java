@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class CharTurner {
 
-    public static void turnCharacter(Character character, Point turnPoint, boolean stop) {
+    public static void turnStandingCharacter(Character character, Point turnPoint, boolean stop) {
         Point charPos = character.getPosition();
         double newDir = ((Math.atan2(turnPoint.y - charPos.y, turnPoint.x - charPos.x) * 8 / 2. / Math.PI) + 7)%8;
         character.setPreciseDirection(newDir);
@@ -19,9 +19,18 @@ public class CharTurner {
             character.getStats().setSpeed(0);
         }
         VisibilityCalculator.setChange(true);
+
+
     }
 
-    public static void turnCharacter(Character character, Point2D turnPoint, boolean stop) {
+    static void turnMovingChar(Character character, Point2D next) {
+        turnCharacterPrecisely(character, next, false);
+        Point charPos = character.getPosition();
+        double moveDir = ((Math.atan2(next.getY() - charPos.y, next.getX() - charPos.x) * 8 / 2. / Math.PI) + 7)%8;
+        character.setPreciseDirection(moveDir);
+    }
+
+    private static void turnCharacterPrecisely(Character character, Point2D turnPoint, boolean stop) {
         Point charPos = character.getPosition();
         double newDir = ((Math.atan2(turnPoint.getY() - charPos.y, turnPoint.getX() - charPos.x) * 8 / 2. / Math.PI) + 7)%8;
         character.setPreciseDirection(newDir);

@@ -112,9 +112,13 @@ public class CharsDrawer {
 
 
     public static boolean isOtherCharClicked(Point clickPoint, Character chosenChar) {
+        Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
         for (Character character: Battle.getCharacters()) {
             Rectangle clickBox = calcClickBox(character);
-            if (!character.equals(chosenChar) && clickBox.contains(clickPoint)){
+            if (!character.equals(chosenChar)
+                    && clickBox.contains(clickPoint)
+                    && (VisibilityCalculator.isInPlayerCharView(mapPoint)
+                    || Battle.getPlayerColor().equals(character.getColor()))){
                 clickedCharacter = character;
                 return true;
             }

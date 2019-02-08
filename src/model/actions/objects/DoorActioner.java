@@ -2,7 +2,7 @@ package model.actions.objects;
 
 import helpers.my.GeomerticHelper;
 import model.Battle;
-import model.actions.movement.CharMover;
+import model.actions.movement.MoveCalculator;
 import model.character.Character;
 import model.map.Map;
 import model.map.GridGrapCalculator;
@@ -28,7 +28,7 @@ public class DoorActioner {
         door.setLook(newLook);
         refreshMapObjects(door, objectPoint, newPoint);
         refreshWalkables(objectPoint, newLook, newPoint, true);
-        CharMover.pushCharsToClosestWalkable();
+        MoveCalculator.pushCharsToClosestWalkable();
         GridGrapCalculator.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
         VisibilityCalculator.setChange(true);
     }
@@ -48,7 +48,7 @@ public class DoorActioner {
         door.setLook(newLook);
         refreshMapObjects(door, objectPoint, newPoint);
         refreshWalkables(objectPoint, newLook, newPoint, false);
-        CharMover.pushCharsToClosestWalkable();
+        MoveCalculator.pushCharsToClosestWalkable();
         GridGrapCalculator.regenerateGridGraph(Battle.getMap(), GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
         VisibilityCalculator.setChange(true);
     }

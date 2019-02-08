@@ -4,7 +4,6 @@ import javafx.geometry.Point2D;
 import model.actions.attack.AttackCalculator;
 import model.character.Character;
 import viewIso.PathDrawer;
-import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.List;
@@ -22,7 +21,7 @@ public class Char2CharMover {
             character.setPath(path);
             PathDrawer.createPathView(character, targetChar.getColor());
         }
-        CharMover.startRun(character);
+        CharMover.startMove(character);
     }
 
     public static boolean pathToCharExists(Character character, Character targetChar) {

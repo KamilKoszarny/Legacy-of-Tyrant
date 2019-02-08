@@ -175,9 +175,13 @@ public class VisibilityCalculator {
     }
 
     public static boolean isInPlayerCharView(Point point) {
-        for (Character character: Battle.getCharacters()) {
-            if (character.getColor().equals(Battle.getPlayerColor())
-                    && character.getView().contains(new Point2D(point.x, point.y)))
+        return isInPlayerCharView(point, Battle.getCharacters());
+    }
+
+    public static boolean isInPlayerCharView(Point point, List<Character> characters) {
+        for (Character character: characters) {
+            if (character.getColor().equals(Battle.getPlayerColor()) && character.getView() != null &&
+                    character.getView().contains(new Point2D(point.x, point.y)))
                 return true;
         }
         return false;

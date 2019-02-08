@@ -83,6 +83,10 @@ public class CharPanelViewer {
             Double doubleValue = Double.parseDouble(value);
             doubleValue = (double) Math.round(doubleValue * 10.) / 10;
             value = doubleValue.toString();
+        } else if (returnType != null && returnType.equals(Float.TYPE)) {
+            Float floatValue = Float.parseFloat(value);
+            floatValue = (float) Math.round(floatValue);
+            value = floatValue.toString();
         }
         return value;
     }

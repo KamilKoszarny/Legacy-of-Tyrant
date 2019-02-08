@@ -157,19 +157,20 @@ public class IsoBattleLoop extends AnimationTimer{
     private static void handleButtonAction(ClickMenuButton button) {
         switch (button){
             case LOOK:
-                CharTurner.turnCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint(), true);
+                CharTurner.turnStandingCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint(), true);
                 break;
             case DOOR_LOOK:
             case CHEST_LOOK:
-                CharTurner.turnCharacter(Battle.getChosenCharacter(),
+                CharTurner.turnStandingCharacter(Battle.getChosenCharacter(),
                         MapObjectDrawer.getMapObject2PointMap().get(buttonBattleEvent.getObject()), true);
                 break;
             case ENEMY_LOOK:
-                CharTurner.turnCharacter(Battle.getChosenCharacter(),
+                CharTurner.turnStandingCharacter(Battle.getChosenCharacter(),
                         buttonBattleEvent.getSubjectCharacter().getPosition(), true);
                 break;
             case RUN:
-                CharMover.calcPathAndStartRun(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint());
+                Battle.getChosenCharacter().setRunning(true);
+                CharMover.calcPathAndStartMove(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint());
                 break;
             case DOOR_OPEN:
                 ActionQueuer.clearEventQueue();
