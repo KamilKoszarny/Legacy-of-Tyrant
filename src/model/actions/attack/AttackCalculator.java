@@ -1,6 +1,7 @@
 package model.actions.attack;
 
 import model.character.Character;
+import model.character.Stats;
 import model.map.Map;
 
 import java.util.HashMap;
@@ -8,21 +9,19 @@ import java.util.Random;
 
 public class AttackCalculator {
 
-    public static final int
+    private static final int
             HEAD2HEAD_CHANCE = 50, HEAD2BODY_CHANCE = 20,
             BODY2BODY_CHANCE = 60, BODY2HEAD_CHANCE = 10, BODY2ARMS_CHANCE = 15, BODY2LEGS_CHANCE = 15,
             ARMS2BODY_CHANCE = 20, ARMS2ARMS_CHANCE = 70,
             LEGS2BODY_CHANCE = 20, LEGS2LEGS_CHANCE = 70;
 
     public static boolean isInRange(Character charA, Character charB){
-        if (charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getStats().getRange() &&
-                charA.getView().contains(charB.getPrecisePosition()))
-            return true;
-        return false;
+        return charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getStats().getRange() &&
+                charA.getView().contains(charB.getPrecisePosition());
     }
 
     public static int calcChanceToHit(Character charA, Character charB){
-        return (int) (50 + charA.getStats().getAccuracy()/2 - charB.getStats().getAvoidance()/2 - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
+        return (int) (50 + charA.getStats().getAccuracy()/2. - charB.getStats().getAvoidance()/2. - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
     }
 
     public static java.util.Map<BodyPart, Integer> calcChancesToHitByBodyPart(Character charA, Character charB, BodyPart bodyPart) {
@@ -107,10 +106,19 @@ public class AttackCalculator {
         return damage;
     }
 
-    public static void updateStats(Character attacker, Character victim, int damage){
-        victim.getStats().setHitPoints(victim.getStats().getHitPoints() - damage);
-        attacker.getStats().setActionPoints(attacker.getStats().getActionPoints() - (1 / attacker.getStats().getAttackSpeed() * 1000));
-        attacker.getStats().setVigor((int) (attacker.getStats().getVigor() - (1 / attacker.getStats().getAttackSpeed())));
+    public static void updateVictimStats(Character victim) {
+        int damage = victim.getAttackResult().getDamage();
+        Stats stats = victim.getStats();
+        stats.setHitPoints(stats.getHitPoints() - damage);
+    }
+
+    public static void updateAttackerStats(Character attacker){
+        final int AP_PER_TIME_UNIT = 30, VIGOR_PER_TIME_UNIT = 10;
+        Stats stats = attacker.getStats();
+        int costAP = (int) (AP_PER_TIME_UNIT / stats.getAttackSpeed());
+        int costVigor = (int) (VIGOR_PER_TIME_UNIT / stats.getAttackSpeed());
+        stats.subtractActionPoints(costAP);
+        stats.subtractVigor(costVigor);
     }
 
     public static Double calcDodgeChance(Character character){

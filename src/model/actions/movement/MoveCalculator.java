@@ -31,8 +31,8 @@ public class MoveCalculator {
         if(character.isRunning()) {
             costVigor *= 2;
         }
-        stats.setActionPoints(stats.getActionPoints() - costAP);
-        stats.setVigor(stats.getVigor() - costVigor);
+        stats.subtractActionPoints(costAP);
+        stats.subtractVigor(costVigor);
     }
 
     public static Set<Point> calcRelativePointsUnder(CharacterType characterType){

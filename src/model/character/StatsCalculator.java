@@ -93,8 +93,8 @@ public class StatsCalculator {
 
     private static void calcVigor(Stats stats) {
         Random r = new Random();
-        stats.setVigorMax(20 + stats.getStamina() / 5);
-        stats.setVigor(20 + stats.getStamina() / 5 - 10);
+        stats.setVigorMax(50 + stats.getStamina() / 2);
+        stats.setVigor(50 + stats.getStamina() / 2 - 10);
     }
 
     private static void calcLoad(Stats stats) {

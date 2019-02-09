@@ -246,8 +246,13 @@
                   <Rectangle fx:id="minimapPosRect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="44.0" mouseTransparent="true" stroke="YELLOW" strokeType="OUTSIDE" strokeWidth="2.0" width="78.0" />
                   <Rectangle fx:id="minimapRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
                   <Canvas fx:id="minimapFogCanvas" height="140.0" mouseTransparent="true" rotate="45.0" width="140.0" />
-                  <Button fx:id="nextTurnButton" mnemonicParsing="false" text="Next Turn" translateX="-70.0" translateY="60.0" />
-                  <Label fx:id="actionPointsLabel" text="AP:" translateX="-80.0" translateY="-70.0">
+                  <Button fx:id="nextTurnButton" mnemonicParsing="false" text="Next Turn" translateX="-75.0" translateY="-65.0" />
+                  <Label text="AP:" translateX="-75.0" translateY="50.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="actionPointsLabel" text="100/100" translateX="-75.0" translateY="75.0">
                      <font>
                         <Font size="18.0" />
                      </font>

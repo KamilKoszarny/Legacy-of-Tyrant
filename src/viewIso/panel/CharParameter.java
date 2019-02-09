@@ -37,7 +37,7 @@ public enum CharParameter {
     WIND_RES("windResistance", "fire: ", "", ""),
     EARTH_RES("earthResistance", "fire: ", "", ""),
     MAG_RES("magicResistance", "mRes: ", "", ""),
-    AP("actionPoints", "AP: ", "", ""),
+    AP("actionPoints", "", "", "", true),
     ;
 
     private String name, sign, shortDescription, longDescription;

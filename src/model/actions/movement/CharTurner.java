@@ -3,6 +3,7 @@ package model.actions.movement;
 import javafx.geometry.Point2D;
 import model.character.CharState;
 import model.character.Character;
+import model.character.Stats;
 import model.map.lights.VisibilityCalculator;
 
 import java.awt.*;
@@ -11,6 +12,7 @@ public class CharTurner {
 
     public static void turnStandingCharacter(Character character, Point turnPoint, boolean stop) {
         Point charPos = character.getPosition();
+        double dirBefore = character.getPreciseDirection();
         double newDir = ((Math.atan2(turnPoint.y - charPos.y, turnPoint.x - charPos.x) * 8 / 2. / Math.PI) + 7)%8;
         character.setPreciseDirection(newDir);
         if (stop) {
@@ -20,7 +22,18 @@ public class CharTurner {
         }
         VisibilityCalculator.setChange(true);
 
+        updateVigorAndActionPoints(character, dirBefore, newDir);
+    }
 
+    static void updateVigorAndActionPoints(Character character, double dirBefore, double dirAfter) {
+        final double AP_PER_TURN = 10, VIGOR_PER_TURN = .3;
+        Stats stats = character.getStats();
+        double turnRatio = Math.abs(dirAfter - dirBefore) / 8;
+        double costAP = AP_PER_TURN * turnRatio / stats.getSpeedMax();
+        double costVigor = VIGOR_PER_TURN * turnRatio / stats.getSpeedMax();
+
+        stats.subtractActionPoints(costAP);
+        stats.subtractVigor(costVigor);
     }
 
     static void turnMovingChar(Character character, Point2D next) {

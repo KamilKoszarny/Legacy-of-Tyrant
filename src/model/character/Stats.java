@@ -1,5 +1,8 @@
 package model.character;
 
+import model.Battle;
+import model.TurnsTracker;
+
 public class Stats {
 
     private Character character;
@@ -28,8 +31,8 @@ public class Stats {
     private int vigorMax = -999;
 
     private float actionPoints = 100;
-    private int reflex = 0;
-    
+    private float actionPointsMax = 100;
+
     private int load;
     private int loadMax;
     private double speed;
@@ -222,6 +225,14 @@ public class Stats {
         this.vigor = (float) vigor;
     }
 
+    public void subtractVigor(double cost) {
+        vigor -= cost;
+        if (vigor < 0)
+            vigor = 0;
+        if (Battle.isTurnMode())
+            TurnsTracker.calcAPMax(character);
+    }
+
     public int getVigorMax() {
         return vigorMax;
     }
@@ -238,12 +249,34 @@ public class Stats {
         this.actionPoints = (float) actionPoints;
     }
 
-    public int getReflex() {
-        return reflex;
+    public void addActionPoints(double gain) {
+        actionPoints += gain;
+        if (actionPoints > actionPointsMax)
+            actionPoints = actionPointsMax;
     }
 
-    public void setReflex(int reflex) {
-        this.reflex = reflex;
+    public void subtractActionPoints(double cost) {
+        actionPoints -= cost;
+    }
+
+    public float getActionPointsMax() {
+        return actionPointsMax;
+    }
+
+    public void setActionPointsMax(float actionPointsMax) {
+        this.actionPointsMax = actionPointsMax;
+    }
+
+    public void addActionPointsMax(double gain) {
+        actionPointsMax += gain;
+        if (actionPointsMax > 100)
+            actionPointsMax = 100;
+    }
+
+    public void subtractActionPointsMax(double cost) {
+        actionPointsMax -= cost;
+        if (actionPointsMax < 1)
+            actionPointsMax = 1;
     }
 
     public int getLoad() {

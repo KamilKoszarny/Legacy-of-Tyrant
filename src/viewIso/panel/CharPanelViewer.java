@@ -85,8 +85,8 @@ public class CharPanelViewer {
             value = doubleValue.toString();
         } else if (returnType != null && returnType.equals(Float.TYPE)) {
             Float floatValue = Float.parseFloat(value);
-            floatValue = (float) Math.round(floatValue);
-            value = floatValue.toString();
+            Integer intValue = (int) Math.round(floatValue);
+            value = intValue.toString();
         }
         return value;
     }

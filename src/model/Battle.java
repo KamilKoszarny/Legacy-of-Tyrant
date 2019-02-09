@@ -3,12 +3,14 @@ package model;
 import javafx.scene.paint.Color;
 import main.App;
 import model.actions.CharsChooser;
+import model.character.CharState;
 import model.character.Character;
 import model.actions.movement.CharMover;
 import model.map.*;
 import model.map.lights.VisibilityCalculator;
 import viewIso.characters.CharsDrawer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Battle {
@@ -19,6 +21,7 @@ public class Battle {
     private static Color playerColor;
     private final CharsChooser charsChooser = new CharsChooser();
     private static int timer = 0;
+    private static boolean turnMode = false;
 
     public Battle(Map map, List<Character> characters, Color playerColor) {
         Battle.map = map;
@@ -53,6 +56,15 @@ public class Battle {
         return characters;
     }
 
+    public static List<Character> getAliveCharacters() {
+        List<Character> aliveCharacters = new ArrayList<>();
+        for (Character character: characters) {
+            if (!character.getState().equals(CharState.DEAD))
+                aliveCharacters.add(character);
+        }
+        return aliveCharacters;
+    }
+
     public static Character getChosenCharacter() {
         return chosenCharacter;
     }
@@ -63,5 +75,13 @@ public class Battle {
 
     public static Color getPlayerColor() {
         return playerColor;
+    }
+
+    public static boolean isTurnMode() {
+        return turnMode;
+    }
+
+    public static void setTurnMode(boolean turnMode) {
+        Battle.turnMode = turnMode;
     }
 }

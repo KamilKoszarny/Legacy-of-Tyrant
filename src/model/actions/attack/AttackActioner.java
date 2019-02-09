@@ -27,10 +27,11 @@ public class AttackActioner {
                 result = new AttackResult(AttackResultType.MISS);
             else {
                 int damage = AttackCalculator.calcDamage(attacker, victim, score, chanceToHit, bodyPart);
-                AttackCalculator.updateStats(attacker, victim, damage);
                 result = new AttackResult(AttackResultType.HIT, damage);
             }
         }
         victim.setAttackResult(result);
+        AttackCalculator.updateVictimStats(victim);
+        AttackCalculator.updateAttackerStats(attacker);
     }
 }
