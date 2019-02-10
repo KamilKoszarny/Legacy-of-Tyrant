@@ -38,7 +38,7 @@ public class BattleInitializer {
         czlehulec.getStats().setEye(czlehulec.getStats().getEye() - 5);
         StatsCalculator.calcStats(czlehulec);
 
-        Character slimako = new Character("Slimako", true, Color.RED, CharacterType.DWARF, CharacterClass.ADEPT,
+        Character slimako = new Character("Slimako", true, Color.YELLOW, CharacterType.DWARF, CharacterClass.ADEPT,
                 new Point(20,10), 2);
         slimako.setStats(new Stats(slimako, 25, 25, 13, 10, 15, 13, 44, 36, 20));
         slimako.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.LEATHER_SHIRT, Helmet.CASQUE, Gloves.NOTHING, Boots.RAG_BOOTS,
@@ -54,7 +54,7 @@ public class BattleInitializer {
         skowronka.getItems().setWeapons(new Weapon[]{Weapon.CHOPPER, Weapon.SPIKE_CLUB}, false);
         StatsCalculator.calcStats(skowronka);
 
-        Character irith = new Character("Irith", false, Color.RED, CharacterType.ELF, CharacterClass.RASCAL,
+        Character irith = new Character("Irith", false, Color.YELLOW, CharacterType.ELF, CharacterClass.RASCAL,
                 new Point(20,20), 7);
         irith.setStats(new Stats(irith, 11, 16, 24, 40, 31, 38, 15, 12, 13));
         irith.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.LEATHER_HOOD, Gloves.LEATHER_GLOVES, Boots.NOTHING,

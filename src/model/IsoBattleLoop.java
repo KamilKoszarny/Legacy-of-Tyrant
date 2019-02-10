@@ -18,6 +18,8 @@ import model.map.buildings.Door;
 import model.map.mapObjects.ItemMapObject;
 import viewIso.*;
 import viewIso.characters.CharsDrawer;
+import viewIso.clickMenus.ClickMenuButton;
+import viewIso.clickMenus.ClickMenusDrawer;
 import viewIso.mapObjects.MapObjectController;
 import viewIso.mapObjects.MapObjectDrawer;
 import viewIso.panel.PanelViewer;
@@ -82,6 +84,9 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleBattleEvent() {
+        if (Battle.isTurnMode() && !TurnsTracker.activeCharChosen() && battleEvent.getType().isCharacterAction())
+            return;
+
         switch (battleEvent.getType()){
             case MOVE_MAP:
                 MapMover.setMapMove(battleEvent.getClickPoint());

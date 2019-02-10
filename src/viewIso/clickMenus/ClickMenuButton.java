@@ -1,4 +1,4 @@
-package viewIso;
+package viewIso.clickMenus;
 
 import javafx.scene.Node;
 import javafx.scene.control.Label;

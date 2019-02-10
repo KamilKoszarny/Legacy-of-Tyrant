@@ -6,7 +6,7 @@ import model.Battle;
 import model.BattleEvent;
 import model.EventType;
 import model.IsoBattleLoop;
-import viewIso.ClickMenusDrawer;
+import viewIso.clickMenus.ClickMenusDrawer;
 import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;

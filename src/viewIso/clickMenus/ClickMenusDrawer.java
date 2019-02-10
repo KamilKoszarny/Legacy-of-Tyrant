@@ -1,4 +1,4 @@
-package viewIso;
+package viewIso.clickMenus;
 
 import helpers.my.CalcHelper;
 import helpers.my.SortHelper;
@@ -17,6 +17,7 @@ import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Chest;
 import model.map.buildings.Door;
+import viewIso.IsoViewer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 
@@ -34,7 +35,7 @@ public class ClickMenusDrawer {
     private static List<ClickMenuButton> activeMenu = char2PointMenu;
 
 
-    ClickMenusDrawer() {
+    public ClickMenusDrawer() {
         initMenu(char2PointMenu);
         initMenu(char2DoorMenu);
         initMenu(char2ChestMenu);

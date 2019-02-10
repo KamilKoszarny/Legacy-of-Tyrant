@@ -225,6 +225,12 @@ public class Stats {
         this.vigor = (float) vigor;
     }
 
+    public void addVigor(double gain) {
+        vigor += gain;
+        if (vigor > vigorMax)
+            vigor = vigorMax;
+    }
+
     public void subtractVigor(double cost) {
         vigor -= cost;
         if (vigor < 0)

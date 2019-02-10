@@ -4,6 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 import main.App;
 import model.Battle;
+import viewIso.clickMenus.ClickMenusDrawer;
 import viewIso.map.MapDrawer;
 
 public class IsoViewer {

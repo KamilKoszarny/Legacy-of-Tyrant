@@ -1,5 +1,6 @@
 package viewIso;
 
+import viewIso.clickMenus.ClickMenusDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.map.MapDrawer;
 

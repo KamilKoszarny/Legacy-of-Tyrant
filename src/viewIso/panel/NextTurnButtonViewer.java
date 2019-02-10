@@ -31,10 +31,13 @@ public class NextTurnButtonViewer {
             nextTurnButton.setVisible(false);
         else {
             nextTurnButton.setVisible(true);
-            if (TurnsTracker.activeCharChosen())
-                nextTurnButton.setText("Next\nTurn");
-            else
-                nextTurnButton.setText("Active\nCharacter");
+            if (TurnsTracker.activeCharChosen()) {
+                if (TurnsTracker.activeCharMoved())
+                    nextTurnButton.setText("Next\nTurn");
+                else
+                    nextTurnButton.setText("Wait\n[" + TurnsTracker.WAIT_AP_COST + "]");
+            } else
+                nextTurnButton.setText("Active\nChar");
         }
     }
 }

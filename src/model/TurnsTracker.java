@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class TurnsTracker {
 
+    public static final int WAIT_AP_COST = 10;
+
     private static Character activeCharacter;
     private static double activeCharAPBefore;
 
@@ -47,7 +49,13 @@ public class TurnsTracker {
     }
 
     private static void updateStatsAfterTurn() {
-        double costAPOfLastTurn = activeCharAPBefore - activeCharacter.getStats().getActionPoints();
+        double currentAP = activeCharacter.getStats().getActionPoints();
+        activeCharacter.getStats().addVigor(currentAP / 5);
+        double costAPOfLastTurn = activeCharAPBefore - currentAP;
+        if (costAPOfLastTurn == 0) {
+            costAPOfLastTurn = WAIT_AP_COST;
+            activeCharacter.getStats().subtractActionPoints(WAIT_AP_COST);
+        }
         double gainAPPerChar = costAPOfLastTurn / (Battle.getAliveCharacters().size() - 1);
         for (Character character: Battle.getAliveCharacters()) {
             if (!character.equals(activeCharacter))
@@ -82,6 +90,10 @@ public class TurnsTracker {
 
     public static boolean activeCharChosen() {
         return Battle.getChosenCharacter() != null && Battle.getChosenCharacter().equals(TurnsTracker.getActiveCharacter());
+    }
+
+    public static boolean activeCharMoved() {
+        return activeCharacter.getStats().getActionPoints() < activeCharAPBefore;
     }
 
     public static void chooseActiveChar() {

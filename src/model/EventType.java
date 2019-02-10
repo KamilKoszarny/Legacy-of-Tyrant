@@ -4,9 +4,9 @@ import model.actions.attack.AttackActioner;
 import model.actions.attack.BodyPart;
 
 public enum EventType {
-    NULL,
-    MOVE_MAP,
-    CHOOSE_CHARACTER,
+    NULL(false),
+    MOVE_MAP(false),
+    CHOOSE_CHARACTER(false),
     SHOW_CHAR2POINT,
     SHOW_CHAR2DOOR,
     SHOW_CHAR2CHEST,
@@ -15,7 +15,7 @@ public enum EventType {
     ATTACK_HEAD,
     ATTACK_ARMS,
     ATTACK_LEGS,
-    SHOW_MAP_PIECE_INFO,
+    SHOW_MAP_PIECE_INFO (false),
     ITEM_CLICK,
     DROP_ITEM,
     GIVE_ITEM,
@@ -27,4 +27,17 @@ public enum EventType {
     GO2ENEMY,
     GO2CHAR,
     ;
+
+    private boolean characterAction = true;
+
+    EventType() {
+    }
+
+    EventType(boolean characterAction) {
+        this.characterAction = characterAction;
+    }
+
+    public boolean isCharacterAction() {
+        return characterAction;
+    }
 }
