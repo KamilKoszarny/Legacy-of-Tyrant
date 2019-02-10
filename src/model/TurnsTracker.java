@@ -12,6 +12,8 @@ public class TurnsTracker {
 
     public static void startTurnMode() {
         calcStartAPs();
+        nextCharacter();
+
         Battle.setTurnMode(true);
     }
 
@@ -38,10 +40,10 @@ public class TurnsTracker {
         stats.setActionPointsMax(maxAP);
     }
 
+
     public static void nextTurn() {
         updateStatsAfterTurn();
         nextCharacter();
-        activeCharAPBefore = activeCharacter.getStats().getActionPoints();
     }
 
     private static void updateStatsAfterTurn() {
@@ -53,22 +55,37 @@ public class TurnsTracker {
         }
     }
 
-    public static void nextCharacter() {
-        Character nextChar = mostAPCharacter();
+    private static void nextCharacter() {
+        Character nextChar = nextMostAPCharacter();
         activeCharacter = nextChar;
-        Battle.setChosenCharacter(nextChar);
+        if (Battle.getPlayerColor().equals(nextChar.getColor()))
+            Battle.setChosenCharacter(nextChar);
+        activeCharAPBefore = activeCharacter.getStats().getActionPoints();
     }
 
-    private static Character mostAPCharacter() {
+    private static Character nextMostAPCharacter() {
         Character mostAPCharacter = null;
         double maxAP = -100;
         for (Character character: Battle.getCharacters()) {
             double charAP = character.getStats().getActionPoints();
-            if (charAP > maxAP) {
+            if (charAP > maxAP && character != activeCharacter) {
                 maxAP = charAP;
                 mostAPCharacter = character;
             }
         }
         return mostAPCharacter;
+    }
+
+    public static Character getActiveCharacter() {
+        return activeCharacter;
+    }
+
+    public static boolean activeCharChosen() {
+        return Battle.getChosenCharacter() != null && Battle.getChosenCharacter().equals(TurnsTracker.getActiveCharacter());
+    }
+
+    public static void chooseActiveChar() {
+        if (Battle.getPlayerColor().equals(activeCharacter.getColor()))
+            Battle.setChosenCharacter(activeCharacter);
     }
 }

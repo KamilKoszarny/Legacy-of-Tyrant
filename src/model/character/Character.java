@@ -23,7 +23,6 @@ public class Character {
     private Stats stats = new Stats(this);
 
     private CharState state = CharState.IDLE;
-    private boolean chosen = false;
     private boolean targeted = false;
     private boolean ready = false;
     private boolean running = false;
@@ -110,12 +109,6 @@ public class Character {
     }
     public void setState(CharState state) {
         this.state = state;
-    }
-    public boolean isChosen() {
-        return chosen;
-    }
-    public void setChosen(boolean chosen) {
-        this.chosen = chosen;
     }
     public boolean isTargeted() {
         return targeted;

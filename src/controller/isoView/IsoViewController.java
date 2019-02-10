@@ -17,6 +17,7 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class IsoViewController {
         openWindow(primaryStage);
         panel = preparePanel();
 
-        new PanelController(panelHBox, panel);
+        new PanelController(panel);
         new IsoMapBorderHoverController(mapCanvas, groupBorderCanvases(), panelHBox);
         new IsoMapClickController(mapCanvas);
         new IsoMapHoverController(mapCanvas);
@@ -94,7 +95,7 @@ public class IsoViewController {
         mainPane.setPrefWidth(screenSize.width);
         mainPane.setPrefWidth(screenSize.height);
         mapCanvas.setWidth(screenSize.width);
-        mapCanvas.setHeight(screenSize.height - PanelController.PANEL_HEIGHT);
+        mapCanvas.setHeight(screenSize.height - PanelViewer.PANEL_HEIGHT);
 
         primaryStage.show();
     }
@@ -121,7 +122,7 @@ public class IsoViewController {
 
 
 
-        return new Panel(charStatsLabels, charBars, charPictRect, charPictBackgroundRect,
+        return new Panel(panelHBox, charStatsLabels, charBars, charPictRect, charPictBackgroundRect,
                 itemRectangles, heldItemRect, inventoryGridPane,
                 minimapRect, minimapPosRect, minimapFogCanvas, nextTurnButton);
     }

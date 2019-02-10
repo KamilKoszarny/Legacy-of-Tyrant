@@ -6,6 +6,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class Panel {
 
-
+    private HBox panelHBox;
     private List<Label> charStatsLabels;
     private List<ProgressBar> charBars;
     private List<Rectangle> itemRectangles;
@@ -26,9 +27,10 @@ public class Panel {
     private Canvas minimapFogCanvas;
     private Button nextTurnButton;
 
-    public Panel(List<Label> charStatsLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
+    public Panel(HBox panelHBox, List<Label> charStatsLabels, List<ProgressBar> charBars, Rectangle portraitRect, Rectangle charPictBackgroundRect,
                  List<Rectangle> itemRectangles, Rectangle heldItemRect, Pane inventoryGridPane,
                  Rectangle miniMapRect, Rectangle miniMapPosRect, Canvas minimapFogCanvas, Button nextTurnButton) {
+        this.panelHBox = panelHBox;
         this.charStatsLabels = charStatsLabels;
         this.charBars = charBars;
         this.itemRectangles = itemRectangles;
@@ -41,16 +43,10 @@ public class Panel {
         this.miniMapPosRect = miniMapPosRect;
         this.minimapFogCanvas = minimapFogCanvas;
         this.nextTurnButton = nextTurnButton;
-        initNextTurnButton();
     }
 
-    private void initNextTurnButton() {
-        nextTurnButton.setText("Next\nTurn");
-        nextTurnButton.setAlignment(Pos.BASELINE_LEFT);
-        nextTurnButton.setShape(new Polygon(0, 1, 2, 1, 3, 0, 2, -1, 0, -1));
-        nextTurnButton.setPickOnBounds(false);
-        nextTurnButton.setPrefWidth(60);
-        nextTurnButton.setPrefHeight(40);
+    public HBox getPanelHBox() {
+        return panelHBox;
     }
 
     public List<Label> getCharStatsLabels() {
@@ -141,5 +137,9 @@ public class Panel {
 
     public Canvas getMinimapFogCanvas() {
         return minimapFogCanvas;
+    }
+
+    public Button getNextTurnButton() {
+        return nextTurnButton;
     }
 }

@@ -1,6 +1,8 @@
 package controller.isoView.isoMap;
 
+import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import model.BattleEvent;
 import model.EventType;
@@ -14,14 +16,14 @@ public class IsoMapBorderHoverController {
     private static final int MAP_MOVE_BOUNDARY = 10;
     public static final int MAP_MOVE_STEP = 3;
 
-    private Canvas mapCanvas;
-    private List<Canvas> borderCanvases;
-    private HBox panel;
+    private static Canvas mapCanvas;
+    private static List<Canvas> borderCanvases;
+    private static HBox panel;
 
     public IsoMapBorderHoverController(Canvas mapCanvas, List<Canvas> borderCanvases, HBox panel) {
-        this.mapCanvas = mapCanvas;
-        this.borderCanvases = borderCanvases;
-        this.panel = panel;
+        IsoMapBorderHoverController.mapCanvas = mapCanvas;
+        IsoMapBorderHoverController.borderCanvases = borderCanvases;
+        IsoMapBorderHoverController.panel = panel;
 
         initMapMoving();
     }
@@ -34,12 +36,11 @@ public class IsoMapBorderHoverController {
                 IsoBattleLoop.setBattleEvent(new BattleEvent(EventType.MOVE_MAP, moveByBorder(borderCanvas)));
             });
         }
-        mapCanvas.setOnMouseEntered(mouseEvent -> {
+        EventHandler<MouseEvent> stopMoveEventHandler = mouseEvent -> {
             IsoBattleLoop.setBattleEvent(new BattleEvent(EventType.MOVE_MAP, new Point(0, 0)));
-        });
-        panel.setOnMouseEntered(mouseEvent -> {
-            IsoBattleLoop.setBattleEvent(new BattleEvent(EventType.MOVE_MAP, new Point(0, 0)));
-        });
+        };
+        mapCanvas.setOnMouseEntered(stopMoveEventHandler);
+        panel.setOnMouseEntered(stopMoveEventHandler);
     }
 
     private void setBorderCanvasesPos(){
@@ -105,5 +106,11 @@ public class IsoMapBorderHoverController {
         }
 
         return move;
+    }
+
+    public static void borderCanvasesToFront() {
+        for (Canvas canvas: borderCanvases) {
+            canvas.toFront();
+        }
     }
 }

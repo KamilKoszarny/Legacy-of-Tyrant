@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.Battle;
+import model.TurnsTracker;
 import model.actions.attack.AttackResultType;
 import model.character.Character;
 import viewIso.characters.CharsDrawer;
@@ -68,12 +69,15 @@ public class LabelsDrawer {
     public static void drawNameLabel(Character character, Point charScreenPos) {
         Label label = charNameLabelsMap.get(character);
 
-        if (character.isChosen())
-            label.setStyle("-fx-font-weight: bold");
-        else if(character == hoverCharacter)
-            label.setStyle("-fx-underline: true");
-        else
-            label.setStyle("-fx-font-weight: regular");
+        String fontStyle = "";
+        if(character.equals(TurnsTracker.getActiveCharacter()))
+            fontStyle += "-fx-underline: true;";
+        if (character.equals(Battle.getChosenCharacter()))
+            fontStyle += "-fx-font-weight: bold;";
+        if(character.equals(hoverCharacter))
+            fontStyle += "-fx-font-style: italic;";
+
+        label.setStyle(fontStyle);
 
         label.setTranslateX(charScreenPos.x - label.getWidth()/2);
         label.setTranslateY(charScreenPos.y - CharsDrawer.SPRITE_SIZE.height * (.6));

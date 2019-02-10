@@ -1,5 +1,6 @@
 package viewIso.panel;
 
+import controller.isoView.isoPanel.Panel;
 import helpers.my.GeomerticHelper;
 import helpers.my.PolygonsHelper;
 import javafx.scene.canvas.Canvas;
@@ -20,6 +21,7 @@ import java.awt.*;
 import java.util.List;
 
 public class MinimapViewer {
+
     public static double minimapScreenSize;
     public static double minimapToScreenRatioX;
     public static double minimapToScreenRatioY;
@@ -30,10 +32,10 @@ public class MinimapViewer {
     private static Rectangle positionRectangle;
     private static int choserCharRadius = 5;
 
-    MinimapViewer(Rectangle minimapRect, Rectangle minimapPosRect, Canvas minimapFogCanvas) {
-        rectangle = minimapRect;
-        positionRectangle = minimapPosRect;
-        fogCanvas = minimapFogCanvas;
+    MinimapViewer(Panel panel) {
+        rectangle = panel.getMiniMapRect();
+        positionRectangle = panel.getMiniMapPosRect();
+        fogCanvas = panel.getMinimapFogCanvas();
         rectangle.setFill(new ImagePattern(minimapImg));
 
         initSizes();
@@ -105,7 +107,7 @@ public class MinimapViewer {
 
     private static int calcMinimapRadius(Character character) {
         int radius = 4;
-        if (character.isChosen()) {
+        if (character.equals(Battle.getChosenCharacter())) {
             choserCharRadius++;
             choserCharRadius %= 8;
             radius = choserCharRadius + 2;

@@ -2,8 +2,7 @@ package viewIso.panel;
 
 import static javafx.scene.AccessibleRole.IMAGE_VIEW;
 
-import controller.isoView.isoPanel.Panel;
-import controller.isoView.isoPanel.PanelController;
+import controller.isoView.isoPanel.ItemClickController;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -11,7 +10,6 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import model.actions.ItemHandler;
 import model.items.Item;
-import viewIso.IsoViewer;
 
 import java.awt.*;
 import java.util.Map;
@@ -20,10 +18,10 @@ public class InventoryRectanglesViewer {
 
 
     public static void drawInventoryRectangle(Rectangle rectangle) {
-        Rectangle invFirstRect = PanelController.calcInventoryScreenRect(rectangle, new int[]{0, 0});
+        Rectangle invFirstRect = ItemClickController.calcInventoryScreenRect(rectangle, new int[]{0, 0});
         rectangle.setX(invFirstRect.getX());
         rectangle.setY(invFirstRect.getY());
-        PanelController.initInventoryClick(rectangle, false);
+        ItemClickController.initInventoryClick(rectangle, false);
         rectangle.setVisible(true);
     }
 
@@ -42,7 +40,7 @@ public class InventoryRectanglesViewer {
         Rectangle itemInvFirstRect;
         for (Item item: inventory.keySet()) {
             itemInvPos = inventory.get(item);
-            itemInvFirstRect = PanelController.calcInventoryScreenRect(invRectangle, itemInvPos);
+            itemInvFirstRect = ItemClickController.calcInventoryScreenRect(invRectangle, itemInvPos);
             Rectangle inventoryItemRect = new Rectangle(itemInvFirstRect.getX(), itemInvFirstRect.getY(),
                     item.getImage().getWidth(), item.getImage().getHeight());
             inventoryItemRect.setFill(new ImagePattern(item.getImage()));
@@ -54,7 +52,7 @@ public class InventoryRectanglesViewer {
             if (!invRectangle.equals(CharPanelViewer.getInventoryRect())) {
                 inventoryItemRect.getProperties().put(IMAGE_VIEW, "chestItem");
             }
-            PanelController.initInventoryItemClick(inventoryItemRect, item, inventory);
+            ItemClickController.initInventoryItemClick(inventoryItemRect, item, inventory);
             pane.getChildren().add(inventoryItemRect);
         }
     }

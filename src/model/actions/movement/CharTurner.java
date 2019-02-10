@@ -25,10 +25,12 @@ public class CharTurner {
         updateVigorAndActionPoints(character, dirBefore, newDir);
     }
 
-    static void updateVigorAndActionPoints(Character character, double dirBefore, double dirAfter) {
+    private static void updateVigorAndActionPoints(Character character, double dirBefore, double dirAfter) {
         final double AP_PER_TURN = 10, VIGOR_PER_TURN = .3;
         Stats stats = character.getStats();
         double turnRatio = Math.abs(dirAfter - dirBefore) / 8;
+        if (turnRatio > .5)
+            turnRatio = 1 - turnRatio;
         double costAP = AP_PER_TURN * turnRatio / stats.getSpeedMax();
         double costVigor = VIGOR_PER_TURN * turnRatio / stats.getSpeedMax();
 

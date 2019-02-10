@@ -6,9 +6,7 @@ import model.Battle;
 import model.BattleEvent;
 import model.EventType;
 import model.IsoBattleLoop;
-import model.actions.CharsChooser;
 import viewIso.ClickMenusDrawer;
-import viewIso.IsoViewer;
 import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
@@ -47,7 +45,8 @@ public class IsoMapKeyController {
                     MapObjectDrawer.switchCutView();
                     break;
                 case ESCAPE:
-                    CharsChooser.chooseCharacter(null);
+                    Battle.setChosenCharacter(null);
+                    ClickMenusDrawer.hideMenus(true);
             }
         });
         scene.setOnKeyReleased(keyEvent -> {

@@ -1,7 +1,7 @@
 package model.actions.objects;
 
 
-import controller.isoView.isoPanel.PanelController;
+import controller.isoView.isoPanel.ItemClickController;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -32,7 +32,7 @@ public class ChestActioner {
         Point invPos = new Point(clickPoint.x + INV_POS_OFFSET, clickPoint.y + INV_POS_OFFSET);
         inventoryRect = InventoryRectanglesViewer.createInventoryRectangle(invPos);
         inventoryRect.getProperties().put(IMAGE_VIEW, "chestInventory");
-        PanelController.initInventoryClick(inventoryRect, true);
+        ItemClickController.initInventoryClick(inventoryRect, true);
     }
 
     public static void hideChestInventory() {

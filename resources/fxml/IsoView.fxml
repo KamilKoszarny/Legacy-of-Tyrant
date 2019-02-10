@@ -166,7 +166,7 @@
             </VBox>
             <VBox fx:id="charInventoryVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <GridPane fx:id="inventoryGridPane" gridLinesVisible="true" maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="150.0">
+                  <GridPane fx:id="inventoryGridPane" gridLinesVisible="true" maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="150.0" visible="false">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -181,6 +181,9 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -246,7 +249,7 @@
                   <Rectangle fx:id="minimapPosRect" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="44.0" mouseTransparent="true" stroke="YELLOW" strokeType="OUTSIDE" strokeWidth="2.0" width="78.0" />
                   <Rectangle fx:id="minimapRect" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
                   <Canvas fx:id="minimapFogCanvas" height="140.0" mouseTransparent="true" rotate="45.0" width="140.0" />
-                  <Button fx:id="nextTurnButton" mnemonicParsing="false" text="Next Turn" translateX="-75.0" translateY="-65.0" />
+                  <Button fx:id="nextTurnButton" mnemonicParsing="false" text="Next Turn" translateX="-72.0" translateY="-65.0" />
                   <Label text="AP:" translateX="-75.0" translateY="50.0">
                      <font>
                         <Font size="18.0" />

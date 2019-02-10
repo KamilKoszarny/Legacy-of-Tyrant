@@ -1,24 +1,62 @@
 package viewIso.panel;
 
+import controller.isoView.isoMap.IsoMapBorderHoverController;
 import controller.isoView.isoPanel.Panel;
+import javafx.geometry.Insets;
 import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import model.Battle;
+import model.TurnsTracker;
 import model.actions.ItemHandler;
 
 import java.awt.*;
 
 public class PanelViewer {
 
+    public static final int PANEL_HEIGHT = 200;
+    private static final Color PANEL_COLOR = Color.DARKGRAY;
+
     private static Panel panel;
+    private static HBox panelHBox;
     private static Rectangle heldItemRect;
+    private static Rectangle inactiveCoverRect;
 
     public PanelViewer(Panel panel) {
         PanelViewer.panel = panel;
+        panelHBox = panel.getPanelHBox();
         heldItemRect = panel.getHeldItemRect();
+        initPanelLook();
         new CharPanelViewer(panel, Battle.getCharacters());
-        new MinimapViewer(panel.getMiniMapRect(), panel.getMiniMapPosRect(), panel.getMinimapFogCanvas());
+        new MinimapViewer(panel);
+        new NextTurnButtonViewer(panel);
+
+        initInactiveCoverRect();
+    }
+
+    private static void initPanelLook() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        panelHBox.setLayoutX(0);
+        panelHBox.setLayoutY(screenSize.height - PANEL_HEIGHT);
+        panelHBox.setPrefWidth(screenSize.width);
+        panelHBox.setPrefHeight(PANEL_HEIGHT);
+        panelHBox.setBackground(new Background(new BackgroundFill(PANEL_COLOR, CornerRadii.EMPTY, Insets.EMPTY)));
+        panelHBox.setBorder(new Border(new BorderStroke(PANEL_COLOR.darker(),
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+    }
+
+    private static void initInactiveCoverRect() {
+        double minimapPaneLayout = panel.getMiniMapRect().getParent().getLayoutX();
+        inactiveCoverRect = new Rectangle(
+                panelHBox.getLayoutX(), panelHBox.getLayoutY(), minimapPaneLayout, panelHBox.getPrefHeight());
+        inactiveCoverRect.setFill(Color.gray(0.1, 0.6));
+        Pane pane = (Pane) panelHBox.getParent();
+        pane.getChildren().add(inactiveCoverRect);
+        inactiveCoverRect.toFront();
+        IsoMapBorderHoverController.borderCanvasesToFront();
     }
 
     public static void refresh() {
@@ -28,6 +66,11 @@ public class PanelViewer {
         else
             heldItemRect.setVisible(false);
         MinimapViewer.refreshMinimap();
+        if (Battle.isTurnMode() && Battle.getChosenCharacter() != null &&
+                Battle.getChosenCharacter().equals(TurnsTracker.getActiveCharacter()))
+            inactiveCoverRect.setVisible(false);
+        else
+            inactiveCoverRect.setVisible(true);
     }
 
     private static void drawHeldItem() {

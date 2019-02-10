@@ -87,7 +87,8 @@ public class IsoBattleLoop extends AnimationTimer{
                 MapMover.setMapMove(battleEvent.getClickPoint());
                 break;
             case CHOOSE_CHARACTER:
-                CharsChooser.chooseCharacter(CharsDrawer.getClickedCharacter());
+                Battle.setChosenCharacter(CharsDrawer.getClickedCharacter());
+                ClickMenusDrawer.hideMenus(false);
                 break;
             case SHOW_CHAR2POINT:
                 ClickMenusDrawer.drawChar2PointMenuAndPath(battleEvent.getClickPoint(), battleEvent.getMapPoint());

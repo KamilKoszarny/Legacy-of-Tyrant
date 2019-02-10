@@ -1,13 +1,14 @@
 package viewIso.panel;
 
 import controller.isoView.isoPanel.Panel;
-import controller.isoView.isoPanel.PanelController;
+import controller.isoView.isoPanel.ItemClickController;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import model.Battle;
 import model.character.Character;
 import model.items.Item;
 
@@ -39,10 +40,11 @@ public class CharPanelViewer {
             refreshEquipment(firstChosenCharacter);
             refreshCharInventory(firstChosenCharacter.getItems().getInventory());
         }
+        NextTurnButtonViewer.refreshNextTurnButtonLook();
     }
 
     private static void initInvRect() {
-        Rectangle invFirstRect = PanelController.calcInventoryScreenRect(panel.getInventoryRectangle(), new int[]{0, 0});
+        Rectangle invFirstRect = ItemClickController.calcInventoryScreenRect(panel.getInventoryRectangle(), new int[]{0, 0});
         inventoryRect = InventoryRectanglesViewer.createInventoryRectangle(new Point((int)invFirstRect.getX(), (int)invFirstRect.getY()));
         InventoryRectanglesViewer.drawInventoryRectangle(inventoryRect);
     }
@@ -148,7 +150,7 @@ public class CharPanelViewer {
     private static List<Character> calcChosenCharacters(){
         List<Character> chosenCharacters = new ArrayList<>();
         for (Character character: characters) {
-            if (character.isChosen()) {
+            if (character.equals(Battle.getChosenCharacter())) {
                 chosenCharacters.add(character);
             }
         }

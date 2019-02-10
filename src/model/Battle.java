@@ -2,7 +2,6 @@ package model;
 
 import javafx.scene.paint.Color;
 import main.App;
-import model.actions.CharsChooser;
 import model.character.CharState;
 import model.character.Character;
 import model.actions.movement.CharMover;
@@ -19,7 +18,6 @@ public class Battle {
     private static List<Character> characters;
     private static Character chosenCharacter;
     private static Color playerColor;
-    private final CharsChooser charsChooser = new CharsChooser();
     private static int timer = 0;
     private static boolean turnMode = false;
 
