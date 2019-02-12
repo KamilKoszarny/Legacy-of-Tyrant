@@ -96,6 +96,10 @@ public class TurnsTracker {
         return activeCharacter.getStats().getActionPoints() < activeCharAPBefore;
     }
 
+    public static boolean activeCharOutOfAP() {
+        return activeCharacter.getStats().getActionPoints() <= 0;
+    }
+
     public static void chooseActiveChar() {
         if (Battle.getPlayerColor().equals(activeCharacter.getColor()))
             Battle.setChosenCharacter(activeCharacter);

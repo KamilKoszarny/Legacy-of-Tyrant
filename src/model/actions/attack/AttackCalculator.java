@@ -20,7 +20,25 @@ public class AttackCalculator {
                 charA.getView().contains(charB.getPrecisePosition());
     }
 
-    public static int calcChanceToHit(Character charA, Character charB){
+    static AttackResult calcAttackResult(Character attacker, Character victim, BodyPart bodyPart) {
+        AttackResult result;
+        int score = new Random().nextInt(100);
+        int chanceToHit = calcChanceToHit(attacker, victim);
+        if (score > chanceToHit) {
+            result = new AttackResult(AttackResultType.MISS);
+        } else {
+            bodyPart = calcBodyPartHit(bodyPart);
+            if (bodyPart == null)
+                result = new AttackResult(AttackResultType.MISS);
+            else {
+                int damage = calcDamage(attacker, victim, score, chanceToHit, bodyPart);
+                result = new AttackResult(AttackResultType.HIT, damage);
+            }
+        }
+        return result;
+    }
+
+    private static int calcChanceToHit(Character charA, Character charB){
         return (int) (50 + charA.getStats().getAccuracy()/2. - charB.getStats().getAvoidance()/2. - 2*charA.getPosition().distance(charB.getPosition())*Map.RESOLUTION_M);
     }
 
@@ -56,7 +74,7 @@ public class AttackCalculator {
         return null;
     }
 
-    public static BodyPart calcBodyPartHit(BodyPart bodyPart) {
+    private static BodyPart calcBodyPartHit(BodyPart bodyPart) {
         int a = new Random().nextInt(100);
         switch (bodyPart) {
             case HEAD:
@@ -106,13 +124,13 @@ public class AttackCalculator {
         return damage;
     }
 
-    public static void updateVictimStats(Character victim) {
+    static void updateVictimStats(Character victim) {
         int damage = victim.getAttackResult().getDamage();
         Stats stats = victim.getStats();
         stats.setHitPoints(stats.getHitPoints() - damage);
     }
 
-    public static void updateAttackerStats(Character attacker){
+    static void updateAttackerStats(Character attacker){
         final int AP_PER_TIME_UNIT = 30, VIGOR_PER_TIME_UNIT = 10;
         Stats stats = attacker.getStats();
         int costAP = (int) (AP_PER_TIME_UNIT / stats.getAttackSpeed());

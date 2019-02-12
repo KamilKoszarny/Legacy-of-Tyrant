@@ -11,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 import model.Battle;
 import model.TurnsTracker;
 import model.actions.ItemHandler;
+import model.character.Character;
 
 import java.awt.*;
 
@@ -61,16 +62,23 @@ public class PanelViewer {
 
     public static void refresh() {
         CharPanelViewer.refresh();
+        refreshHeldItemRect();
+        MinimapViewer.refreshMinimap();
+        refreshInactiveCoverRect();
+    }
+
+    private static void refreshHeldItemRect() {
         if (ItemHandler.getHeldItem() != null)
             drawHeldItem();
         else
             heldItemRect.setVisible(false);
-        MinimapViewer.refreshMinimap();
-        if (Battle.isTurnMode() && Battle.getChosenCharacter() != null &&
-                Battle.getChosenCharacter().equals(TurnsTracker.getActiveCharacter()))
-            inactiveCoverRect.setVisible(false);
-        else
+    }
+
+    private static void refreshInactiveCoverRect() {
+        if (Battle.isTurnMode() && (!TurnsTracker.activeCharChosen() || TurnsTracker.activeCharOutOfAP()))
             inactiveCoverRect.setVisible(true);
+        else
+            inactiveCoverRect.setVisible(false);
     }
 
     private static void drawHeldItem() {

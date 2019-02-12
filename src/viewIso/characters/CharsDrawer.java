@@ -8,6 +8,7 @@ import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import main.App;
 import model.Battle;
+import model.TurnsTracker;
 import model.character.CharState;
 import model.character.Character;
 import model.items.ItemImagesLoader;
@@ -77,9 +78,9 @@ public class CharsDrawer {
     }
 
     public static void nextFrame(Character character, int timer) {
-        if (timer%character.getState().getPose().getDelay() == 0) {
+        if (timer % character.getState().getPose().getDelay() == 0) {
             CharSprite charSprite = charSpriteSheetMap.get(character);
-            if (!charSprite.nextFrame()) {
+            if (!charSprite.nextFrame() && (!Battle.isTurnMode() || character.getStats().getActionPoints() > 0)) {
                 character.setState(CharState.stateAfter(character.getState()));
             }
         }

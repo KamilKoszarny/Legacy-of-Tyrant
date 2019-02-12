@@ -25,7 +25,7 @@ public class CharSprite {
 
         if (charPose.isSingle()) {
             if (animationFrame == charPose.getFramesCount() - 1) {
-                start = true;
+//                start = true;
                 return false;
             }
         }

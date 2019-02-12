@@ -56,6 +56,8 @@ public class CharMover {
             if (distToNext%POINTS_TO_NEXT_FRAME < GeomerticHelper.distTo0(step.getX(), step.getY()))
                 CharsDrawer.nextFrame(character, 0);
             MoveCalculator.updateVigorAndActionPoints(character, pos, character.getPrecisePosition());
+            if (Battle.isTurnMode() && character.getStats().getActionPoints() <= 0)
+                haltCharacter(character);
         }
         else if (last) {
             character.setPosition(character.getDestination());
@@ -71,8 +73,14 @@ public class CharMover {
         character.setPath(null);
         character.setPathView(null);
         character.setState(CharState.IDLE);
+        haltCharacter(character);
+    }
+
+    private static void haltCharacter(Character character) {
         character.getStats().setSpeed(0);
         GridGrapCalculator.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), Battle.getCharacters());
         MoveCalculator.pushCharToClosestWalkable(character, Battle.getMap(), Battle.getCharacters());
     }
+
+
 }

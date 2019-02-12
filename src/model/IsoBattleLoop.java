@@ -84,7 +84,8 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleBattleEvent() {
-        if (Battle.isTurnMode() && !TurnsTracker.activeCharChosen() && battleEvent.getType().isCharacterAction())
+        if (Battle.isTurnMode() && battleEvent.getType().isCharacterAction() &&
+                (!TurnsTracker.activeCharChosen() || TurnsTracker.activeCharOutOfAP()))
             return;
 
         switch (battleEvent.getType()){

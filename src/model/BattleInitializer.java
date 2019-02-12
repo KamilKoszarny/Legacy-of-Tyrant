@@ -46,7 +46,7 @@ public class BattleInitializer {
         slimako.getItems().setWeapons(new Weapon[]{Weapon.BIG_ADZE, Weapon.SPEAR}, false);
         StatsCalculator.calcStats(slimako);
 
-        Character skowronka = new Character("Skowronka", false, Color.YELLOW, CharacterType.DWARF, CharacterClass.BULLY,
+        Character skowronka = new Character("Skowronka", false, Color.RED, CharacterType.DWARF, CharacterClass.BULLY,
                 new Point(10,20), 6);
         skowronka.setStats(new Stats(skowronka, 39, 35, 35, 10, 15, 5, 10, 20, 10));
         skowronka.getItems().setArmor(new Armor[]{Shield.BUCKLER, BodyArmor.GAMBISON, Helmet.CASQUE, Gloves.RAG_GLOVES, Boots.LEATHER_BOOTS,

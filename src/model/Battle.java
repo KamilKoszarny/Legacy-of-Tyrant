@@ -29,11 +29,8 @@ public class Battle {
 
     public static void update(int ms) {
         for (Character character: characters) {
-            if (character.getDestination() != null) {
-                if (character.getPath().isEmpty())
-                    CharMover.stopCharacter(character);
-                else
-                    CharMover.updateCharacterMove(character, ms);
+            if (character.getStats().getSpeed() > 0) {
+                CharMover.updateCharacterMove(character, ms);
             } else {
                 CharsDrawer.nextFrame(character, timer);
             }
