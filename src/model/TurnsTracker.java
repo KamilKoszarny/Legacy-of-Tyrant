@@ -1,5 +1,6 @@
 package model;
 
+import model.ai.AIActioner;
 import model.character.Character;
 import model.character.Stats;
 
@@ -60,15 +61,21 @@ public class TurnsTracker {
         for (Character character: Battle.getAliveCharacters()) {
             if (!character.equals(activeCharacter))
                 character.getStats().addActionPoints(gainAPPerChar);
+
+            System.out.println(character.getName() + " AP: " + character.getStats().getActionPoints());
         }
     }
 
     private static void nextCharacter() {
         Character nextChar = nextMostAPCharacter();
         activeCharacter = nextChar;
+        activeCharAPBefore = activeCharacter.getStats().getActionPoints();
         if (Battle.getPlayerColor().equals(nextChar.getColor()))
             Battle.setChosenCharacter(nextChar);
-        activeCharAPBefore = activeCharacter.getStats().getActionPoints();
+        else {
+            AIActioner.doAction(activeCharacter);
+            TurnsTracker.nextTurn();
+        }
     }
 
     private static Character nextMostAPCharacter() {

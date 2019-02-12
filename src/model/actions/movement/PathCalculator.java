@@ -4,8 +4,7 @@ import helpers.my.GeomerticHelper;
 import javafx.geometry.Point2D;
 import model.Battle;
 import model.character.Character;
-import model.map.GridGrapCalculator;
-import model.map.mapObjects.MapObjectType;
+import model.map.GridGraphCalculator;
 import viewIso.PathDrawer;
 
 import java.awt.*;
@@ -23,19 +22,19 @@ public class PathCalculator {
     public static List<Point2D> calcPath(Character character, Point movePoint) {
         if (!Battle.getMap().getPoints().get(movePoint).isWalkable())
             return new ArrayList<>();
-        GridGrapCalculator.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), Battle.getCharacters());
+        GridGraphCalculator.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), Battle.getCharacters());
         return calcPathOnCurrentGrid(character, movePoint);
     }
 
     public static List<Point2D> calcPathOnCurrentGrid(Character character, Point movePoint) {
-        GridGrapCalculator.clearGridGraphForChar(character);
+        GridGraphCalculator.clearGridGraphForChar(character);
         List<Point2D> path = PathFinder.calcPath(character.getPrecisePosition(), movePoint, true);
         return path;
     }
 
-    public static List<Point2D> findPathToObject(Point objectPoint, int clearRadius) {
+    public static List<Point2D> findPathToObject(Character character, Point objectPoint, int clearRadius) {
         clearGridAroundPoint(objectPoint, clearRadius);
-        List<Point2D> path = calcPathOnCurrentGrid(Battle.getChosenCharacter(), objectPoint);
+        List<Point2D> path = calcPathOnCurrentGrid(character, objectPoint);
         regenerateGridAroundPoint(objectPoint, clearRadius);
 
         if (path.size() > 0) {
@@ -47,12 +46,12 @@ public class PathCalculator {
     private static void clearGridAroundPoint(Point objectPoint, int radius) {
         //TODO: radius by type
         List<Point> pointsAround = GeomerticHelper.pointsInRadius(objectPoint, radius, Battle.getMap());
-        GridGrapCalculator.clearGridGraphForPoints(pointsAround, false);
+        GridGraphCalculator.clearGridGraphForPoints(pointsAround, false);
     }
 
     private static void regenerateGridAroundPoint(Point objectPoint, int radius) {
         //TODO: radius by type
         List<Point> pointsAround = GeomerticHelper.pointsInRadius(objectPoint, radius, Battle.getMap());
-        GridGrapCalculator.regenerateGridGraph(pointsAround);
+        GridGraphCalculator.regenerateGridGraph(pointsAround);
     }
 }

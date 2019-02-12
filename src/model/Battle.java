@@ -60,6 +60,15 @@ public class Battle {
         return aliveCharacters;
     }
 
+    public static List<Character> getPlayerCharacters() {
+        List<Character> playerCharacters = new ArrayList<>();
+        for (Character character: characters) {
+            if (character.getColor().equals(playerColor))
+                playerCharacters.add(character);
+        }
+        return playerCharacters;
+    }
+
     public static Character getChosenCharacter() {
         return chosenCharacter;
     }

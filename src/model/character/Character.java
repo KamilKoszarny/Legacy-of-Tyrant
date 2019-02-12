@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import model.actions.attack.AttackResult;
 import viewIso.LabelsDrawer;
+import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -109,6 +110,7 @@ public class Character {
     }
     public void setState(CharState state) {
         this.state = state;
+        CharsDrawer.resetAnimation(this);
     }
     public boolean isTargeted() {
         return targeted;

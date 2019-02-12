@@ -29,7 +29,11 @@ public class ActionQueuer {
     }
 
     public static void clearEventQueue() {
-        character2BattleEventsQueueMap.get(Battle.getChosenCharacter()).clear();
+        clearEventQueue(Battle.getChosenCharacter());
+    }
+
+    public static void clearEventQueue(Character character) {
+        character2BattleEventsQueueMap.get(character).clear();
     }
 
     public static BattleEvent getEvent(Character character) {

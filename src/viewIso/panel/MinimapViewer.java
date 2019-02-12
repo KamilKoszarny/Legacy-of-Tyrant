@@ -68,7 +68,7 @@ public class MinimapViewer {
     private static void drawChars(WritableImage minimapImgWithChars) {
         PixelWriter pixelWriter = minimapImgWithChars.getPixelWriter();
         for (Character character : Battle.getCharacters()) {
-            if (character.getColor().equals(Battle.getPlayerColor()) || VisibilityCalculator.isInPlayerCharView(character.getPosition())) {
+            if (character.getColor().equals(Battle.getPlayerColor()) || VisibilityCalculator.isInPlayerCharsView(character.getPosition())) {
                 int radius = calcMinimapRadius(character);
                 for (Point point : GeomerticHelper.pointsInRadius(character.getPosition(), radius, Battle.getMap())) {
                     pixelWriter.setColor(point.x, point.y, character.getColor());

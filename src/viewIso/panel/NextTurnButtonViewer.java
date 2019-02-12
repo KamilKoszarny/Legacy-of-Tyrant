@@ -35,7 +35,8 @@ public class NextTurnButtonViewer {
                 if (TurnsTracker.activeCharMoved())
                     nextTurnButton.setText("Next\nTurn");
                 else
-                    nextTurnButton.setText("Wait\n[" + TurnsTracker.WAIT_AP_COST + "]");
+                    nextTurnButton.setText("Wait");
+//                    nextTurnButton.setText("Wait\n[" + TurnsTracker.WAIT_AP_COST + "]");
             } else
                 nextTurnButton.setText("Active\nChar");
         }

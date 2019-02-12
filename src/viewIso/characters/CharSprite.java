@@ -6,30 +6,21 @@ import javafx.scene.image.Image;
 import java.awt.image.BufferedImage;
 
 public class CharSprite {
+
     private Image charSpriteSheet;
     private int animationFrame = 0;
     private CharPose charPose = CharPose.IDLE;
-    private boolean reverse = false, start = true;
+    private boolean reverse = false;
 
-    public CharSprite(BufferedImage charSpriteSheet) {
+    CharSprite(BufferedImage charSpriteSheet) {
         this.charSpriteSheet = SwingFXUtils.toFXImage(charSpriteSheet, null);;
     }
 
-    public int getFramePos() {
+    int getFramePos() {
         return charPose.getStartFrame() + animationFrame;
     }
 
-    public boolean nextFrame() {
-        if (charPose.equals(CharPose.DEAD))
-            System.out.println();
-
-        if (charPose.isSingle()) {
-            if (animationFrame == charPose.getFramesCount() - 1) {
-//                start = true;
-                return false;
-            }
-        }
-
+    void nextFrame() {
         if (charPose.isReversible()) {
             if (animationFrame == charPose.getFramesCount() - 1)
                 reverse = true;
@@ -44,10 +35,13 @@ public class CharSprite {
             animationFrame += 1;
             animationFrame %= charPose.getFramesCount();
         }
-        return true;
     }
 
-    public Image getCharSpriteSheet() {
+    boolean aminationFinished() {
+        return charPose.isSingle() && animationFrame == charPose.getFramesCount() - 1;
+    }
+
+    Image getCharSpriteSheet() {
         return charSpriteSheet;
     }
 
@@ -55,13 +49,11 @@ public class CharSprite {
         this.charSpriteSheet = charSpriteSheet;
     }
 
-    public void setCharPose(CharPose charPose) {
+    void setCharPose(CharPose charPose) {
         this.charPose = charPose;
-        if (charPose.isSingle()) {
-            if (start) {
-                animationFrame = 0;
-                start = false;
-            }
-        }
+    }
+
+    void zeroAnimationFrame() {
+        animationFrame = 0;
     }
 }

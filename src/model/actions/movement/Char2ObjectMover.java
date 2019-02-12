@@ -16,7 +16,7 @@ public class Char2ObjectMover {
 
     public static void calcPathAndStartRunToObject(Character character, MapObject mapObject) {
         Point objectPos = MapObjectDrawer.getMapObject2PointMap().get(mapObject);
-        List<Point2D> path = PathCalculator.findPathToObject(objectPos, 2);
+        List<Point2D> path = PathCalculator.findPathToObject(character, objectPos, 2);
         if (path != null) {
             character.setPath(path);
             PathDrawer.createPathView(character, Color.WHITE);
@@ -27,7 +27,7 @@ public class Char2ObjectMover {
     public static boolean pathToObjectExists(Character character, MapObject mapObject) {
         Point objectPos = MapObjectDrawer.getMapObject2PointMap().get(mapObject);
         if (!closeToObject(character, mapObject)) {
-            List<Point2D> path = PathCalculator.findPathToObject(objectPos, 2);
+            List<Point2D> path = PathCalculator.findPathToObject(character, objectPos, 2);
             if (path != null && !path.isEmpty()) {
                 PathDrawer.showPathIfNotMoving(path, Color.WHITE);
                 return true;

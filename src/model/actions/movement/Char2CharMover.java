@@ -16,7 +16,7 @@ public class Char2CharMover {
 
     public static void calcPathAndStartRunToChar(Character character, Character targetChar) {
         Point targetCharPos = targetChar.getPosition();
-        List<Point2D> path = PathCalculator.findPathToObject(targetCharPos, 3);
+        List<Point2D> path = PathCalculator.findPathToObject(character, targetCharPos, 3);
         if (path != null) {
             character.setPath(path);
             PathDrawer.createPathView(character, targetChar.getColor());
@@ -27,7 +27,7 @@ public class Char2CharMover {
     public static boolean pathToCharExists(Character character, Character targetChar) {
         Point targetCharPos = targetChar.getPosition();
         if (!AttackCalculator.isInRange(character, targetChar)) {
-            List<Point2D> path = PathCalculator.findPathToObject(targetCharPos, 3);
+            List<Point2D> path = PathCalculator.findPathToObject(character, targetCharPos, 3);
             if (path != null && !path.isEmpty()) {
                 PathDrawer.showPathIfNotMoving(path, targetChar.getColor());
                 return true;

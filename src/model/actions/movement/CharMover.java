@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 import model.Battle;
 import model.character.CharState;
 import model.character.Character;
-import model.map.GridGrapCalculator;
+import model.map.GridGraphCalculator;
 import model.map.lights.VisibilityCalculator;
 import viewIso.PathDrawer;
 import viewIso.characters.CharsDrawer;
@@ -78,7 +78,7 @@ public class CharMover {
 
     private static void haltCharacter(Character character) {
         character.getStats().setSpeed(0);
-        GridGrapCalculator.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), Battle.getCharacters());
+        GridGraphCalculator.regenerateGridGraph(Battle.getMap(), Battle.getMap().getPoints().keySet(), Battle.getCharacters());
         MoveCalculator.pushCharToClosestWalkable(character, Battle.getMap(), Battle.getCharacters());
     }
 

@@ -8,7 +8,6 @@ import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import main.App;
 import model.Battle;
-import model.TurnsTracker;
 import model.character.CharState;
 import model.character.Character;
 import model.items.ItemImagesLoader;
@@ -49,7 +48,7 @@ public class CharsDrawer {
             gc.setEffect(new Glow(.3));
         else if (VisibilityCalculator.isInChosenCharView(character.getPosition()))
             gc.setEffect(new Glow(.3));
-        else if (VisibilityCalculator.isInPlayerCharView(character.getPosition()))
+        else if (VisibilityCalculator.isInPlayerCharsView(character.getPosition()))
             gc.setEffect(new ColorAdjust(0, -.5, -.5, 0));
         else
             return;
@@ -78,10 +77,17 @@ public class CharsDrawer {
     }
 
     public static void nextFrame(Character character, int timer) {
+
+
         if (timer % character.getState().getPose().getDelay() == 0) {
             CharSprite charSprite = charSpriteSheetMap.get(character);
-            if (!charSprite.nextFrame() && (!Battle.isTurnMode() || character.getStats().getActionPoints() > 0)) {
-                character.setState(CharState.stateAfter(character.getState()));
+            if (charSprite.aminationFinished()) {
+                if (!Battle.isTurnMode() || character.getStats().getActionPoints() > 0) {
+                    charSprite.zeroAnimationFrame();
+                    character.setState(CharState.stateAfter(character.getState()));
+                }
+            } else {
+                charSprite.nextFrame();
             }
         }
     }
@@ -118,7 +124,7 @@ public class CharsDrawer {
             Rectangle clickBox = calcClickBox(character);
             if (!character.equals(chosenChar)
                     && clickBox.contains(clickPoint)
-                    && (VisibilityCalculator.isInPlayerCharView(mapPoint)
+                    && (VisibilityCalculator.isInPlayerCharsView(mapPoint)
                     || Battle.getPlayerColor().equals(character.getColor()))){
                 clickedCharacter = character;
                 return true;
@@ -156,6 +162,11 @@ public class CharsDrawer {
 
     public static Character getClickedCharacter() {
         return clickedCharacter;
+    }
+
+    public static void resetAnimation(Character character) {
+        CharSprite sprite = charSpriteSheetMap.get(character);
+        sprite.zeroAnimationFrame();
     }
 
 }

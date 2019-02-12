@@ -10,7 +10,7 @@ import java.awt.*;
 import java.util.Collection;
 import java.util.List;
 
-public class GridGrapCalculator {
+public class GridGraphCalculator {
 
     public static void regenerateGridGraph(Collection<Point> points) {
         regenerateGridGraph(Battle.getMap(), points, Battle.getCharacters());
@@ -26,7 +26,7 @@ public class GridGrapCalculator {
             blockGridPoints(gridGraph, point, !mapPiece.isWalkable());
         }
         for (Character character: characters) {
-            if (VisibilityCalculator.isInPlayerCharView(character.getPosition(), characters)) {
+            if (VisibilityCalculator.isInPlayerCharsView(character.getPosition(), characters)) {
                 for (Point point : GeomerticHelper.pointsInRadius(character.getPosition(), 3, map)) {
                     blockGridPoints(gridGraph, point, true);
                 }

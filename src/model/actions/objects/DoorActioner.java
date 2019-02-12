@@ -5,7 +5,7 @@ import model.Battle;
 import model.actions.movement.MoveCalculator;
 import model.character.Character;
 import model.map.Map;
-import model.map.GridGrapCalculator;
+import model.map.GridGraphCalculator;
 import model.map.MapPiece;
 import model.map.buildings.Door;
 import model.map.lights.VisibilityCalculator;
@@ -29,7 +29,7 @@ public class DoorActioner {
         refreshMapObjects(door, objectPoint, newPoint);
         refreshWalkables(objectPoint, newLook, newPoint, true);
         MoveCalculator.pushCharsToClosestWalkable();
-        GridGrapCalculator.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
+        GridGraphCalculator.regenerateGridGraph(map, GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
         VisibilityCalculator.setChange(true);
     }
 
@@ -49,7 +49,7 @@ public class DoorActioner {
         refreshMapObjects(door, objectPoint, newPoint);
         refreshWalkables(objectPoint, newLook, newPoint, false);
         MoveCalculator.pushCharsToClosestWalkable();
-        GridGrapCalculator.regenerateGridGraph(Battle.getMap(), GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
+        GridGraphCalculator.regenerateGridGraph(Battle.getMap(), GeomerticHelper.pointsInSquare(objectPoint, 4, map), Battle.getCharacters());
         VisibilityCalculator.setChange(true);
     }
 

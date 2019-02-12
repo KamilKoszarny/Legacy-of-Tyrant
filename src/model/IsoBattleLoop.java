@@ -140,16 +140,16 @@ public class IsoBattleLoop extends AnimationTimer{
                 Char2CharMover.calcPathAndStartRunToChar(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter());
                 break;
             case ATTACK_BODY:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.BODY);
+                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.BODY);
                 break;
             case ATTACK_HEAD:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.HEAD);
+                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.HEAD);
                 break;
             case ATTACK_ARMS:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.ARMS);
+                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.ARMS);
                 break;
             case ATTACK_LEGS:
-                AttackActioner.attackCharacter(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(), BodyPart.LEGS);
+                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.LEGS);
                 break;
         }
 
