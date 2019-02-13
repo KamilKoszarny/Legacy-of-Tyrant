@@ -28,7 +28,7 @@ public class EnemyChooser {
 
     private static List<Character> aiTeamVisibleEnemies(Color aiColor) {
         List<Character> aiTeamVisibleEnemies = new ArrayList<>();
-        for (Character character: Battle.getPlayerCharacters()) {
+        for (Character character: Battle.getPlayerAliveCharacters()) {
             if (VisibilityCalculator.isInTeamView(character.getPosition(), aiColor)) {
                 aiTeamVisibleEnemies.add(character);
             }

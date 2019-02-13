@@ -1,5 +1,6 @@
 package model;
 
+import model.actions.ActionQueuer;
 import model.ai.AIActioner;
 import model.character.Character;
 import model.character.Stats;
@@ -43,7 +44,6 @@ public class TurnsTracker {
         stats.setActionPointsMax(maxAP);
     }
 
-
     public static void nextTurn() {
         updateStatsAfterTurn();
         nextCharacter();
@@ -72,16 +72,14 @@ public class TurnsTracker {
         activeCharAPBefore = activeCharacter.getStats().getActionPoints();
         if (Battle.getPlayerColor().equals(nextChar.getColor()))
             Battle.setChosenCharacter(nextChar);
-        else {
-            AIActioner.doAction(activeCharacter);
-            TurnsTracker.nextTurn();
-        }
+        else
+            AIActioner.startAction(activeCharacter);
     }
 
     private static Character nextMostAPCharacter() {
         Character mostAPCharacter = null;
         double maxAP = -100;
-        for (Character character: Battle.getCharacters()) {
+        for (Character character: Battle.getAliveCharacters()) {
             double charAP = character.getStats().getActionPoints();
             if (charAP > maxAP && character != activeCharacter) {
                 maxAP = charAP;
@@ -89,6 +87,21 @@ public class TurnsTracker {
             }
         }
         return mostAPCharacter;
+    }
+
+    public static void update() {
+        if (aiTurnFinished()) {
+            System.out.println(activeCharacter.getName() + " finished turn");
+            nextTurn();
+        }
+    }
+
+    private static boolean aiTurnFinished() {
+        return Battle.isTurnMode() && aiCharActive() && AIActioner.actionFinished(activeCharacter);
+    }
+
+    public static boolean aiCharActive() {
+        return !Battle.getPlayerCharacters().contains(activeCharacter);
     }
 
     public static Character getActiveCharacter() {

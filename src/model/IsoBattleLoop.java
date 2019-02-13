@@ -49,7 +49,7 @@ public class IsoBattleLoop extends AnimationTimer{
     @Override
     public void handle(long curNanoTime) {
         if(nextFrame(curNanoTime)) {
-            animate();
+            update();
             Battle.incrementTimer();
         }
 
@@ -66,14 +66,14 @@ public class IsoBattleLoop extends AnimationTimer{
             handleButtonAction(clickedButton);
 
         for (Character character: Battle.getCharacters()) {
-            battleEvent = ActionQueuer.getEvent(character);
+            battleEvent = ActionQueuer.getNextEvent(character);
             if (battleEvent != null)
                 handleBattleEvent();
         }
         App.showAndResetTime("frame", 0);
     }
 
-    private void animate() {
+    private void update() {
         App.resetTime(1);
         Battle.update(FRAME_RATE);
         App.showAndResetTime("battleUpdate", 1);
@@ -84,7 +84,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleBattleEvent() {
-        if (Battle.isTurnMode() && battleEvent.getType().isCharacterAction() &&
+        if (Battle.isTurnMode() && battleEvent.getType().isCharacterAction() && !TurnsTracker.aiCharActive() &&
                 (!TurnsTracker.activeCharChosen() || TurnsTracker.activeCharOutOfAP()))
             return;
 

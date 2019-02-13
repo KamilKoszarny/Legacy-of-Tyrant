@@ -41,6 +41,10 @@ public class CharsDrawer {
     }
 
     public static void drawChar(Character character, boolean transparency) {
+        CharSprite charSprite = charSpriteSheetMap.get(character);
+        Image spriteSheet = charSprite.getCharSpriteSheet();
+        charSprite.setCharPose(character.getState().getPose());
+
         GraphicsContext gc = IsoViewer.getCanvas().getGraphicsContext2D();
         if (character.equals(Battle.getChosenCharacter()))
             gc.setEffect(new Glow(.6));
@@ -54,9 +58,6 @@ public class CharsDrawer {
             return;
 
         Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPrecisePosition());
-        CharSprite charSprite = charSpriteSheetMap.get(character);
-        Image spriteSheet = charSprite.getCharSpriteSheet();
-        charSprite.setCharPose(character.getState().getPose());
         int framePosX = charSprite.getFramePos();
         int framePosY = (character.getDirection() + 6) % 8;
 
@@ -77,8 +78,6 @@ public class CharsDrawer {
     }
 
     public static void nextFrame(Character character, int timer) {
-
-
         if (timer % character.getState().getPose().getDelay() == 0) {
             CharSprite charSprite = charSpriteSheetMap.get(character);
             if (charSprite.aminationFinished()) {
@@ -167,6 +166,11 @@ public class CharsDrawer {
     public static void resetAnimation(Character character) {
         CharSprite sprite = charSpriteSheetMap.get(character);
         sprite.zeroAnimationFrame();
+    }
+
+    public static boolean animationFinished(Character character) {
+        CharSprite charSprite = charSpriteSheetMap.get(character);
+        return charSprite.aminationFinished();
     }
 
 }

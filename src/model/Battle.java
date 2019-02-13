@@ -36,6 +36,7 @@ public class Battle {
             }
         }
         VisibilityCalculator.updateViews();
+        TurnsTracker.update();
         App.showAndResetTime("ViewsUpdate", 2);
     }
 
@@ -52,6 +53,10 @@ public class Battle {
     }
 
     public static List<Character> getAliveCharacters() {
+        return filterAliveCharacters(characters);
+    }
+
+    private static List<Character> filterAliveCharacters(List<Character> characters) {
         List<Character> aliveCharacters = new ArrayList<>();
         for (Character character: characters) {
             if (!character.getState().equals(CharState.DEAD))
@@ -67,6 +72,10 @@ public class Battle {
                 playerCharacters.add(character);
         }
         return playerCharacters;
+    }
+
+    public static List<Character> getPlayerAliveCharacters() {
+        return filterAliveCharacters(getPlayerCharacters());
     }
 
     public static Character getChosenCharacter() {

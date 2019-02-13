@@ -36,7 +36,7 @@ public class ActionQueuer {
         character2BattleEventsQueueMap.get(character).clear();
     }
 
-    public static BattleEvent getEvent(Character character) {
+    public static BattleEvent getNextEvent(Character character) {
         Queue<BattleEvent> charEvents = character2BattleEventsQueueMap.get(character);
         if (charEvents == null || charEvents.isEmpty())
             return null;
@@ -75,5 +75,9 @@ public class ActionQueuer {
                 break;
         }
         return false;
+    }
+
+    public static boolean noMoreActions(Character character) {
+        return character2BattleEventsQueueMap.get(character).size() == 0;
     }
 }
