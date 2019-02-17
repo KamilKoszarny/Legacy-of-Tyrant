@@ -25,6 +25,14 @@ public class CharTurner {
         updateVigorAndActionPoints(character, dirBefore, newDir);
     }
 
+    public static void turnStandingCharacter(Character character, double newDir) {
+        double dirBefore = character.getPreciseDirection();
+        character.setPreciseDirection(newDir);
+        VisibilityCalculator.setChange(true);
+
+        updateVigorAndActionPoints(character, dirBefore, newDir);
+    }
+
     private static void updateVigorAndActionPoints(Character character, double dirBefore, double dirAfter) {
         final double AP_PER_TURN = 10, VIGOR_PER_TURN = .3;
         Stats stats = character.getStats();

@@ -1,6 +1,5 @@
 package model;
 
-import model.actions.ActionQueuer;
 import model.ai.AIActioner;
 import model.character.Character;
 import model.character.Stats;
@@ -19,6 +18,19 @@ public class TurnsTracker {
         nextCharacter();
 
         Battle.setTurnMode(true);
+    }
+
+    public static void update() {
+        if (aiTurnFinished()) {
+            System.out.println(activeCharacter.getName() + " finished turn");
+            nextTurn();
+        } else
+            AIActioner.nextAIAction(activeCharacter);
+    }
+
+    public static void nextTurn() {
+        updateStatsAfterTurn();
+        nextCharacter();
     }
 
     private static void calcStartAPs() {
@@ -44,18 +56,13 @@ public class TurnsTracker {
         stats.setActionPointsMax(maxAP);
     }
 
-    public static void nextTurn() {
-        updateStatsAfterTurn();
-        nextCharacter();
-    }
-
     private static void updateStatsAfterTurn() {
         double currentAP = activeCharacter.getStats().getActionPoints();
         activeCharacter.getStats().addVigor(currentAP / 5);
         double costAPOfLastTurn = activeCharAPBefore - currentAP;
         if (costAPOfLastTurn == 0) {
             costAPOfLastTurn = WAIT_AP_COST;
-            activeCharacter.getStats().subtractActionPoints(WAIT_AP_COST);
+//            activeCharacter.getStats().subtractActionPoints(WAIT_AP_COST);
         }
         double gainAPPerChar = costAPOfLastTurn / (Battle.getAliveCharacters().size() - 1);
         for (Character character: Battle.getAliveCharacters()) {
@@ -72,8 +79,10 @@ public class TurnsTracker {
         activeCharAPBefore = activeCharacter.getStats().getActionPoints();
         if (Battle.getPlayerColor().equals(nextChar.getColor()))
             Battle.setChosenCharacter(nextChar);
-        else
-            AIActioner.startAction(activeCharacter);
+        else {
+            AIActioner.reset();
+            AIActioner.nextAIAction(activeCharacter);
+        }
     }
 
     private static Character nextMostAPCharacter() {
@@ -87,13 +96,6 @@ public class TurnsTracker {
             }
         }
         return mostAPCharacter;
-    }
-
-    public static void update() {
-        if (aiTurnFinished()) {
-            System.out.println(activeCharacter.getName() + " finished turn");
-            nextTurn();
-        }
     }
 
     private static boolean aiTurnFinished() {

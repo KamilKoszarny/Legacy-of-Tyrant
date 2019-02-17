@@ -11,10 +11,7 @@ public enum EventType {
     SHOW_CHAR2DOOR,
     SHOW_CHAR2CHEST,
     SHOW_CHAR2ENEMY,
-    ATTACK_BODY,
-    ATTACK_HEAD,
-    ATTACK_ARMS,
-    ATTACK_LEGS,
+    ATTACK,
     SHOW_MAP_PIECE_INFO (false),
     ITEM_CLICK,
     DROP_ITEM,
@@ -40,4 +37,6 @@ public enum EventType {
     public boolean isCharacterAction() {
         return characterAction;
     }
+
+
 }

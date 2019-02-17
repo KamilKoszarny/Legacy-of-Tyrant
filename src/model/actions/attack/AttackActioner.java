@@ -1,11 +1,21 @@
 package model.actions.attack;
 
+import model.BattleEvent;
+import model.EventType;
+import model.actions.ActionQueuer;
 import model.actions.movement.CharTurner;
 import model.character.CharState;
 import model.character.Character;
 import model.items.weapon.WeaponGroup;
 
 public class AttackActioner {
+
+    public static void goAndAttack(Character attacker, Character victim, BodyPart bodyPart) {
+        attacker.setRunning(true);
+        ActionQueuer.clearEventQueue();
+        ActionQueuer.addEvent(attacker, new BattleEvent(EventType.GO2ENEMY, victim));
+        ActionQueuer.addEvent(attacker, new BattleEvent(EventType.ATTACK, victim, bodyPart));
+    }
 
     public static void attackCharacter(Character attacker, Character victim, BodyPart bodyPart){
         CharTurner.turnStandingCharacter(attacker, victim.getPosition(), true);

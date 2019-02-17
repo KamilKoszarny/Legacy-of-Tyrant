@@ -59,7 +59,7 @@ public class Battle {
     private static List<Character> filterAliveCharacters(List<Character> characters) {
         List<Character> aliveCharacters = new ArrayList<>();
         for (Character character: characters) {
-            if (!character.getState().equals(CharState.DEAD))
+            if (!character.getState().equals(CharState.DEAD) && ! character.getState().equals(CharState.DEATH))
                 aliveCharacters.add(character);
         }
         return aliveCharacters;

@@ -64,10 +64,7 @@ public class ActionQueuer {
                     return true;
                 }
                 break;
-            case ATTACK_BODY:
-            case ATTACK_HEAD:
-            case ATTACK_ARMS:
-            case ATTACK_LEGS:
+            case ATTACK:
                 if (AttackCalculator.isInRange(character, battleEvent.getSubjectCharacter())) {
                     CharMover.stopCharacter(character);
                     return true;

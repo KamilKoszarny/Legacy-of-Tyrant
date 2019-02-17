@@ -1,6 +1,7 @@
 package model;
 
 
+import model.actions.attack.BodyPart;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.mapObjects.MapObject;
@@ -15,6 +16,7 @@ public class BattleEvent {
     private MapPiece mapPiece;
     private MapObject object;
     private Character doingCharacter, subjectCharacter;
+    private BodyPart bodyPart;
 
     public BattleEvent(EventType type) {
         this.type = type;
@@ -45,6 +47,12 @@ public class BattleEvent {
     public BattleEvent(EventType type, Character subjectCharacter) {
         this.type = type;
         this.subjectCharacter = subjectCharacter;
+    }
+
+    public BattleEvent(EventType type, Character subjectCharacter, BodyPart bodyPart) {
+        this.type = type;
+        this.subjectCharacter = subjectCharacter;
+        this.bodyPart = bodyPart;
     }
 
     public BattleEvent(EventType type, Point clickPoint, Character subjectCharacter) {
@@ -110,5 +118,9 @@ public class BattleEvent {
 
     public Character getSubjectCharacter() {
         return subjectCharacter;
+    }
+
+    public BodyPart getBodyPart() {
+        return bodyPart;
     }
 }

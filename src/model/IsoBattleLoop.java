@@ -139,17 +139,9 @@ public class IsoBattleLoop extends AnimationTimer{
             case GO2ENEMY:
                 Char2CharMover.calcPathAndStartRunToChar(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter());
                 break;
-            case ATTACK_BODY:
-                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.BODY);
-                break;
-            case ATTACK_HEAD:
-                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.HEAD);
-                break;
-            case ATTACK_ARMS:
-                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.ARMS);
-                break;
-            case ATTACK_LEGS:
-                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(), BodyPart.LEGS);
+            case ATTACK:
+                AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(),
+                        battleEvent.getBodyPart());
                 break;
         }
 
@@ -192,27 +184,15 @@ public class IsoBattleLoop extends AnimationTimer{
             case CHEST_OPEN:
                 ActionQueuer.clearEventQueue();
                 ActionQueuer.addEvent(new BattleEvent(EventType.GO2OBJECT, buttonBattleEvent.getObject()));
-                ActionQueuer.addEvent(new BattleEvent(EventType.OPEN_CHEST, buttonBattleEvent.getClickPoint(), buttonBattleEvent.getObject()));
+                ActionQueuer.addEvent(new BattleEvent(EventType.OPEN_CHEST, buttonBattleEvent.getClickPoint(),
+                        buttonBattleEvent.getObject()));
                 break;
             case ATTACK_BODY:
-                ActionQueuer.clearEventQueue();
-                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
-                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_BODY, buttonBattleEvent.getSubjectCharacter()));
-                break;
             case ATTACK_HEAD:
-                ActionQueuer.clearEventQueue();
-                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
-                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_HEAD, buttonBattleEvent.getSubjectCharacter()));
-                break;
             case ATTACK_ARMS:
-                ActionQueuer.clearEventQueue();
-                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
-                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_ARMS, buttonBattleEvent.getSubjectCharacter()));
-                break;
             case ATTACK_LEGS:
-                ActionQueuer.clearEventQueue();
-                ActionQueuer.addEvent(new BattleEvent(EventType.GO2ENEMY, buttonBattleEvent.getSubjectCharacter()));
-                ActionQueuer.addEvent(new BattleEvent(EventType.ATTACK_LEGS, buttonBattleEvent.getSubjectCharacter()));
+                AttackActioner.goAndAttack(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(),
+                        buttonBattleEvent.getBodyPart());
                 break;
         }
 

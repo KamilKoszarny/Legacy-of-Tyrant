@@ -46,7 +46,8 @@ public class PathDrawer {
 
     public static void createPathView(Character character, Color color) {
         List<Point2D> path = character.getPath();
-        createPathView(character, path, color);
+        if (Battle.getPlayerCharacters().contains(character))
+            createPathView(character, path, color);
     }
 
     public static void createPathView(Character character, List<Point2D> path, Color color) {

@@ -159,4 +159,12 @@ public enum ClickMenuButton {
         }
         return null;
     }
+
+    public static BodyPart getBodyPart(ClickMenuButton button) {
+        for (BodyPart bodyPart: BodyPart.values()) {
+            if (byBodyPart(bodyPart).equals(button))
+                return bodyPart;
+        }
+        return null;
+    }
 }

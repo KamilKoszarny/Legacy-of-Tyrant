@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class EnemyChooser {
 
-    static Character chooseEnemy(Character aiCharacter) {
+    static Character chooseVisibleEnemy(Character aiCharacter) {
         return (Character) RandomHelper.shuffleFrom2DoubleMap(calcEnemyProbabilityMap(aiCharacter));
     }
 
