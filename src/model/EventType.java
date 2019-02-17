@@ -23,6 +23,7 @@ public enum EventType {
     GO2OBJECT,
     GO2ENEMY,
     GO2CHAR,
+    LOOK4ENEMY,
     ;
 
     private boolean characterAction = true;

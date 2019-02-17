@@ -37,8 +37,16 @@ public class CharSprite {
         }
     }
 
-    boolean aminationFinished() {
+    boolean singleAnimationFinished() {
         return charPose.isSingle() && animationFrame == charPose.getFramesCount() - 1;
+    }
+
+    boolean animationFinishedOrNotSingle() {
+        return !charPose.isSingle() || animationFrame == charPose.getFramesCount() - 1;
+    }
+
+    boolean animationFinished() {
+        return animationFrame == charPose.getFramesCount() - 1;
     }
 
     Image getCharSpriteSheet() {

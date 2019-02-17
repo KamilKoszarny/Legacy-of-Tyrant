@@ -11,6 +11,7 @@ import model.actions.movement.CharTurner;
 import model.actions.movement.Char2ObjectMover;
 import model.actions.objects.ChestActioner;
 import model.actions.objects.DoorActioner;
+import model.ai.EnemyFinder;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.buildings.Chest;
@@ -125,12 +126,15 @@ public class IsoBattleLoop extends AnimationTimer{
                 ItemHandler.tryPickupItem(Battle.getChosenCharacter(), (ItemMapObject) battleEvent.getObject(), battleEvent.getMapPoint());
                 break;
             case OPEN_DOOR:
+                CharMover.stopCharacter(battleEvent.getDoingCharacter());
                 DoorActioner.openDoor(battleEvent.getDoingCharacter(), (Door) battleEvent.getObject());
                 break;
             case CLOSE_DOOR:
+                CharMover.stopCharacter(battleEvent.getDoingCharacter());
                 DoorActioner.closeDoor(battleEvent.getDoingCharacter(), (Door) battleEvent.getObject());
                 break;
             case OPEN_CHEST:
+                CharMover.stopCharacter(battleEvent.getDoingCharacter());
                 ChestActioner.openChest(battleEvent.getDoingCharacter(), (Chest) battleEvent.getObject(), battleEvent.getClickPoint());
                 break;
             case GO2OBJECT:
@@ -140,9 +144,12 @@ public class IsoBattleLoop extends AnimationTimer{
                 Char2CharMover.calcPathAndStartRunToChar(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter());
                 break;
             case ATTACK:
+                CharMover.stopCharacter(battleEvent.getDoingCharacter());
                 AttackActioner.attackCharacter(battleEvent.getDoingCharacter(), battleEvent.getSubjectCharacter(),
                         battleEvent.getBodyPart());
                 break;
+            case LOOK4ENEMY:
+                EnemyFinder.turnAround(battleEvent.getDoingCharacter());
         }
 
         battleEvent = null;
@@ -172,17 +179,17 @@ public class IsoBattleLoop extends AnimationTimer{
                 CharMover.calcPathAndStartMove(Battle.getChosenCharacter(), buttonBattleEvent.getMapPoint());
                 break;
             case DOOR_OPEN:
-                ActionQueuer.clearEventQueue();
+                ActionQueuer.clearEventQueue(Battle.getChosenCharacter());
                 ActionQueuer.addEvent(new BattleEvent(EventType.GO2OBJECT, buttonBattleEvent.getObject()));
                 ActionQueuer.addEvent(new BattleEvent(EventType.OPEN_DOOR, buttonBattleEvent.getObject()));
                 break;
             case DOOR_CLOSE:
-                ActionQueuer.clearEventQueue();
+                ActionQueuer.clearEventQueue(Battle.getChosenCharacter());
                 ActionQueuer.addEvent(new BattleEvent(EventType.GO2OBJECT, buttonBattleEvent.getObject()));
                 ActionQueuer.addEvent(new BattleEvent(EventType.CLOSE_DOOR, buttonBattleEvent.getObject()));
                 break;
             case CHEST_OPEN:
-                ActionQueuer.clearEventQueue();
+                ActionQueuer.clearEventQueue(Battle.getChosenCharacter());
                 ActionQueuer.addEvent(new BattleEvent(EventType.GO2OBJECT, buttonBattleEvent.getObject()));
                 ActionQueuer.addEvent(new BattleEvent(EventType.OPEN_CHEST, buttonBattleEvent.getClickPoint(),
                         buttonBattleEvent.getObject()));
@@ -192,7 +199,7 @@ public class IsoBattleLoop extends AnimationTimer{
             case ATTACK_ARMS:
             case ATTACK_LEGS:
                 AttackActioner.goAndAttack(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(),
-                        buttonBattleEvent.getBodyPart());
+                        ClickMenuButton.getBodyPart(button));
                 break;
         }
 

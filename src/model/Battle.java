@@ -36,7 +36,8 @@ public class Battle {
             }
         }
         VisibilityCalculator.updateViews();
-        TurnsTracker.update();
+        if (Battle.isTurnMode())
+            TurnsTracker.update();
         App.showAndResetTime("ViewsUpdate", 2);
     }
 

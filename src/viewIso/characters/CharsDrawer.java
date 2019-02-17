@@ -80,7 +80,7 @@ public class CharsDrawer {
     public static void nextFrame(Character character, int timer) {
         if (timer % character.getState().getPose().getDelay() == 0) {
             CharSprite charSprite = charSpriteSheetMap.get(character);
-            if (charSprite.aminationFinished()) {
+            if (charSprite.singleAnimationFinished()) {
                 if (!Battle.isTurnMode() || character.getStats().getActionPoints() > 0) {
                     charSprite.zeroAnimationFrame();
                     character.setState(CharState.stateAfter(character.getState()));
@@ -170,7 +170,12 @@ public class CharsDrawer {
 
     public static boolean animationFinished(Character character) {
         CharSprite charSprite = charSpriteSheetMap.get(character);
-        return charSprite.aminationFinished();
+        return charSprite.animationFinished();
+    }
+
+    public static boolean animationFinishedOrNotSingle(Character character) {
+        CharSprite charSprite = charSpriteSheetMap.get(character);
+        return charSprite.animationFinishedOrNotSingle();
     }
 
 }

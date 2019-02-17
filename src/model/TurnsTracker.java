@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class TurnsTracker {
 
-    public static final int WAIT_AP_COST = 10;
+    private static final int WAIT_AP_COST = 10;
 
     private static Character activeCharacter;
     private static double activeCharAPBefore;
@@ -21,10 +21,16 @@ public class TurnsTracker {
     }
 
     public static void update() {
-        if (aiTurnFinished()) {
+        if (aiCharActive()) {
+            handleAIAction();
+        }
+    }
+
+    private static void handleAIAction() {
+        if(AIActioner.turnFinished(activeCharacter)) {
             System.out.println(activeCharacter.getName() + " finished turn");
             nextTurn();
-        } else
+        } else if (AIActioner.actionFinished(activeCharacter))
             AIActioner.nextAIAction(activeCharacter);
     }
 
@@ -79,10 +85,8 @@ public class TurnsTracker {
         activeCharAPBefore = activeCharacter.getStats().getActionPoints();
         if (Battle.getPlayerColor().equals(nextChar.getColor()))
             Battle.setChosenCharacter(nextChar);
-        else {
-            AIActioner.reset();
+        else
             AIActioner.nextAIAction(activeCharacter);
-        }
     }
 
     private static Character nextMostAPCharacter() {
@@ -96,10 +100,6 @@ public class TurnsTracker {
             }
         }
         return mostAPCharacter;
-    }
-
-    private static boolean aiTurnFinished() {
-        return Battle.isTurnMode() && aiCharActive() && AIActioner.actionFinished(activeCharacter);
     }
 
     public static boolean aiCharActive() {

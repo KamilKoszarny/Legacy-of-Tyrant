@@ -12,7 +12,7 @@ public class AttackActioner {
 
     public static void goAndAttack(Character attacker, Character victim, BodyPart bodyPart) {
         attacker.setRunning(true);
-        ActionQueuer.clearEventQueue();
+        ActionQueuer.clearEventQueue(attacker);
         ActionQueuer.addEvent(attacker, new BattleEvent(EventType.GO2ENEMY, victim));
         ActionQueuer.addEvent(attacker, new BattleEvent(EventType.ATTACK, victim, bodyPart));
     }
