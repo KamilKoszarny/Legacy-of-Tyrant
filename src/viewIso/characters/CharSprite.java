@@ -42,6 +42,7 @@ public class CharSprite {
     }
 
     boolean animationFinishedOrNotSingle() {
+        System.out.println(charPose);
         return !charPose.isSingle() || animationFrame == charPose.getFramesCount() - 1;
     }
 

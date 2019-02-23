@@ -1,6 +1,5 @@
 package model.ai;
 
-import model.BattleEvent;
 import model.EventType;
 import model.actions.ActionQueuer;
 import model.actions.attack.AttackActioner;
@@ -11,22 +10,13 @@ import viewIso.characters.CharsDrawer;
 
 public class AIActioner {
 
-    private static final int MAX_TURNS = 8;
-
     public static void nextAIAction(Character aiCharacter) {
         Character enemy = EnemyChooser.chooseVisibleEnemy(aiCharacter);
         if (enemy != null) {
-            AttackActioner.goAndAttack(aiCharacter, enemy, BodyPart.BODY);
+            AttackActioner.scheduleGoAndAttack(aiCharacter, enemy, BodyPart.BODY);
             System.out.println(aiCharacter.getName() + " attacks");
         } else
-            turnAround(aiCharacter);
-    }
-
-    private static void turnAround(Character aiCharacter) {
-        ActionQueuer.clearEventQueue(aiCharacter);
-        for (int turns = 0; turns < MAX_TURNS; turns++) {
-            ActionQueuer.addEvent(aiCharacter, new BattleEvent(EventType.LOOK4ENEMY));
-        }
+            EnemyFinder.scheduleFinding(aiCharacter);
     }
 
     public static boolean actionFinished(Character character) {

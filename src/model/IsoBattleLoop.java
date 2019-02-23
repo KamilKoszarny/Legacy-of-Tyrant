@@ -4,7 +4,6 @@ import javafx.animation.AnimationTimer;
 import main.App;
 import model.actions.*;
 import model.actions.attack.AttackActioner;
-import model.actions.attack.BodyPart;
 import model.actions.movement.Char2CharMover;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
@@ -85,7 +84,7 @@ public class IsoBattleLoop extends AnimationTimer{
     }
 
     private void handleBattleEvent() {
-        if (Battle.isTurnMode() && battleEvent.getType().isCharacterAction() && !TurnsTracker.aiCharActive() &&
+        if (Battle.isTurnMode() && battleEvent.getType().isPlayerAction() &&
                 (!TurnsTracker.activeCharChosen() || TurnsTracker.activeCharOutOfAP()))
             return;
 
@@ -198,7 +197,7 @@ public class IsoBattleLoop extends AnimationTimer{
             case ATTACK_HEAD:
             case ATTACK_ARMS:
             case ATTACK_LEGS:
-                AttackActioner.goAndAttack(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(),
+                AttackActioner.scheduleGoAndAttack(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(),
                         ClickMenuButton.getBodyPart(button));
                 break;
         }

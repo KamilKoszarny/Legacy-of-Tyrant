@@ -17,6 +17,8 @@ import viewIso.mapObjects.MapObjectController;
 
 import java.awt.*;
 
+//TODO fog click
+
 public class IsoMapClickController {
 
     private Canvas mapCanvas;

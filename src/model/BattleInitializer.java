@@ -46,7 +46,7 @@ public class BattleInitializer {
         slimer.getItems().setWeapons(new Weapon[]{Weapon.BIG_ADZE, Weapon.SPEAR}, false);
         StatsCalculator.calcStats(slimer);
 
-        Character skara = new Character("Skara", false, Color.RED, CharacterType.DWARF, CharacterClass.BULLY,
+        Character skara = new Character("Skara", false, Color.YELLOW, CharacterType.DWARF, CharacterClass.BULLY,
                 new Point(10,20), 4);
         skara.setStats(new Stats(skara, 39, 35, 35, 10, 15, 5, 10, 20, 10));
         skara.getItems().setArmor(new Armor[]{Shield.BUCKLER, BodyArmor.GAMBISON, Helmet.CASQUE, Gloves.RAG_GLOVES, Boots.LEATHER_BOOTS,
@@ -54,7 +54,7 @@ public class BattleInitializer {
         skara.getItems().setWeapons(new Weapon[]{Weapon.CHOPPER, Weapon.SPIKE_CLUB}, false);
         StatsCalculator.calcStats(skara);
 
-        Character irith = new Character("Irith", false, Color.YELLOW, CharacterType.ELF, CharacterClass.RASCAL,
+        Character irith = new Character("Irith", false, Color.RED, CharacterType.ELF, CharacterClass.RASCAL,
                 new Point(20,20), 4);
         irith.setStats(new Stats(irith, 11, 16, 24, 40, 31, 38, 15, 12, 13));
         irith.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.LEATHER_HOOD, Gloves.LEATHER_GLOVES, Boots.NOTHING,

@@ -1,18 +1,15 @@
 package model;
 
-import model.actions.attack.AttackActioner;
-import model.actions.attack.BodyPart;
-
 public enum EventType {
-    NULL(false),
-    MOVE_MAP(false),
-    CHOOSE_CHARACTER(false),
-    SHOW_CHAR2POINT,
-    SHOW_CHAR2DOOR,
-    SHOW_CHAR2CHEST,
-    SHOW_CHAR2ENEMY,
+    NULL,
+    MOVE_MAP,
+    SHOW_MAP_PIECE_INFO ,
+    CHOOSE_CHARACTER,
+    SHOW_CHAR2POINT(true),
+    SHOW_CHAR2DOOR(true),
+    SHOW_CHAR2CHEST(true),
+    SHOW_CHAR2ENEMY(true),
     ATTACK,
-    SHOW_MAP_PIECE_INFO (false),
     ITEM_CLICK,
     DROP_ITEM,
     GIVE_ITEM,
@@ -26,17 +23,17 @@ public enum EventType {
     LOOK4ENEMY,
     ;
 
-    private boolean characterAction = true;
+    private boolean playerAction = false;
 
     EventType() {
     }
 
-    EventType(boolean characterAction) {
-        this.characterAction = characterAction;
+    EventType(boolean playerAction) {
+        this.playerAction = playerAction;
     }
 
-    public boolean isCharacterAction() {
-        return characterAction;
+    public boolean isPlayerAction() {
+        return playerAction;
     }
 
 

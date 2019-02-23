@@ -5,7 +5,6 @@ import model.BattleEvent;
 import model.EventType;
 import model.actions.attack.AttackCalculator;
 import model.actions.movement.Char2ObjectMover;
-import model.ai.EnemyChooser;
 import model.character.Character;
 
 import java.util.*;
