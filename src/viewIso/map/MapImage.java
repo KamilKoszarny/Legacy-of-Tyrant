@@ -23,7 +23,7 @@ public class MapImage {
         this.yShift = yShift;
         image = new WritableImage(width, height);
 
-        exploredView.add(new Polygon(new double[]{1,1,30,1,1,60}));
+        exploredView.add(new Polygon(1,1,100,1,1,200));
     }
 
     public void setPixelColor(int x, int y, Color color) {

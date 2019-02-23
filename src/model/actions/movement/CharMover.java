@@ -6,7 +6,7 @@ import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.map.GridGraphCalculator;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityCalculator;
 import viewIso.PathDrawer;
 import viewIso.characters.CharsDrawer;
 
@@ -74,6 +74,12 @@ public class CharMover {
         character.setPathView(null);
         character.setState(CharState.IDLE);
         haltCharacter(character);
+    }
+
+    public static void haltAllChars() {
+        for (Character character: Battle.getCharacters()) {
+            haltCharacter(character);
+        }
     }
 
     private static void haltCharacter(Character character) {

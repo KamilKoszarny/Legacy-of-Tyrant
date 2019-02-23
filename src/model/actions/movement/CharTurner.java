@@ -4,7 +4,7 @@ import javafx.geometry.Point2D;
 import model.character.CharState;
 import model.character.Character;
 import model.character.Stats;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityCalculator;
 
 import java.awt.*;
 

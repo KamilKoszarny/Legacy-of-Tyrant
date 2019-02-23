@@ -108,7 +108,7 @@ public class EdgeNLevelSparseVisibilityGraph {
 
         queueSize = 0;
 
-        // STEP 1: Construct SVG (Strict Visibility Graph)
+        // STEP 1: Construct SVG (Strict visibility Graph)
         
         // Initialise SVG Vertices
         xPositions = new int[11];

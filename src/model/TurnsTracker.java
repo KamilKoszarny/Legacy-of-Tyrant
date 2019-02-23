@@ -1,5 +1,6 @@
 package model;
 
+import model.actions.movement.CharMover;
 import model.ai.AIActioner;
 import model.character.Character;
 import model.character.Stats;
@@ -14,13 +15,14 @@ public class TurnsTracker {
     private static double activeCharAPBefore;
 
     public static void startTurnMode() {
+        CharMover.haltAllChars();
         calcStartAPs();
         nextCharacter();
 
         Battle.setTurnMode(true);
     }
 
-    public static void update() {
+    public static void updateAI() {
         if (aiCharActive()) {
             handleAIAction();
         }

@@ -11,7 +11,7 @@ import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.items.ItemImagesLoader;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityChecker;
 import viewIso.IsoViewer;
 import viewIso.LabelsDrawer;
 import viewIso.map.MapDrawCalculator;
@@ -50,9 +50,9 @@ public class CharsDrawer {
             gc.setEffect(new Glow(.6));
         else if (character.getColor().equals(Battle.getPlayerColor()))
             gc.setEffect(new Glow(.3));
-        else if (VisibilityCalculator.isInChosenCharView(character.getPosition()))
+        else if (VisibilityChecker.isInChosenCharView(character.getPosition()))
             gc.setEffect(new Glow(.3));
-        else if (VisibilityCalculator.isInPlayerCharsView(character.getPosition()))
+        else if (VisibilityChecker.isInPlayerCharsView(character.getPosition()))
             gc.setEffect(new ColorAdjust(0, -.5, -.5, 0));
         else
             return;
@@ -123,7 +123,7 @@ public class CharsDrawer {
             Rectangle clickBox = calcClickBox(character);
             if (!character.equals(chosenChar)
                     && clickBox.contains(clickPoint)
-                    && (VisibilityCalculator.isInPlayerCharsView(mapPoint)
+                    && (VisibilityChecker.isInPlayerCharsView(mapPoint)
                     || Battle.getPlayerColor().equals(character.getColor()))){
                 clickedCharacter = character;
                 return true;

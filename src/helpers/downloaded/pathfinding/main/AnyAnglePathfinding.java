@@ -113,7 +113,7 @@ public class AnyAnglePathfinding {
             case 10 :
                 return GraphImporter.importGraphFromFile("mazeThetaWCS.txt", 0, 0, 28, 13); // Worst Case Scenario for Theta*
             case 11 :
-                return GraphImporter.importGraphFromFile("mazeReuseWCS.txt", 1, 28, 0, 27); // Worst Case Scenario for Visibility Graph reuse.
+                return GraphImporter.importGraphFromFile("mazeReuseWCS.txt", 1, 28, 0, 27); // Worst Case Scenario for visibility Graph reuse.
             case 12 :
                 return GraphImporter.importGraphFromFile("anyaCont2.txt", 1, 6, 9, 1); // difficult case for anya
             case 13 :

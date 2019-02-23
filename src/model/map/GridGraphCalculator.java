@@ -4,7 +4,7 @@ import helpers.downloaded.pathfinding.grid.GridGraph;
 import helpers.my.GeomerticHelper;
 import model.Battle;
 import model.character.Character;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityChecker;
 
 import java.awt.*;
 import java.util.Collection;
@@ -26,7 +26,7 @@ public class GridGraphCalculator {
             blockGridPoints(gridGraph, point, !mapPiece.isWalkable());
         }
         for (Character character: characters) {
-            if (VisibilityCalculator.isInPlayerCharsView(character.getPosition(), characters)) {
+            if (VisibilityChecker.isInCharsView(character.getPosition(), characters)) {
                 for (Point point : GeomerticHelper.pointsInRadius(character.getPosition(), 3, map)) {
                     blockGridPoints(gridGraph, point, true);
                 }

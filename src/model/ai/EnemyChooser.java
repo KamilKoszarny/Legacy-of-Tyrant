@@ -4,7 +4,7 @@ import helpers.my.RandomHelper;
 import javafx.scene.paint.Color;
 import model.Battle;
 import model.character.Character;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityChecker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class EnemyChooser {
     private static List<Character> aiTeamVisibleEnemies(Color aiColor) {
         List<Character> aiTeamVisibleEnemies = new ArrayList<>();
         for (Character character: Battle.getPlayerAliveCharacters()) {
-            if (VisibilityCalculator.isInTeamView(character.getPosition(), aiColor)) {
+            if (VisibilityChecker.isInTeamView(character.getPosition(), aiColor)) {
                 aiTeamVisibleEnemies.add(character);
             }
         }

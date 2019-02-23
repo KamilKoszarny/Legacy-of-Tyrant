@@ -3,7 +3,7 @@ package viewIso;
 import model.Battle;
 import model.character.Character;
 import model.map.MapPiece;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityChecker;
 import viewIso.characters.CharsDrawer;
 import viewIso.map.MapDrawCalculator;
 import viewIso.mapObjects.ItemObjectsDrawer;
@@ -28,7 +28,7 @@ public class SpritesDrawer {
         for (Point point: visiblePoints) {
             MapPiece mapPiece = Battle.getMap().getPoints().get(point);
             if (mapPiece.getObject() != null) {
-                if (VisibilityCalculator.isExplored(point)) {
+                if (VisibilityChecker.isExplored(point)) {
                     MapObjectDrawer.drawObject(point);
                 }
             }

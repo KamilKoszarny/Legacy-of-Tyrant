@@ -8,7 +8,7 @@ import model.map.Map;
 import model.map.GridGraphCalculator;
 import model.map.MapPiece;
 import model.map.buildings.Door;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityCalculator;
 import model.map.mapObjects.MapObjectType;
 import viewIso.mapObjects.MapObjectDrawer;
 

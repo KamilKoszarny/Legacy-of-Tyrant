@@ -8,7 +8,7 @@ import model.EventType;
 import model.IsoBattleLoop;
 import model.actions.ItemHandler;
 import model.map.buildings.FurnitureType;
-import model.map.lights.VisibilityCalculator;
+import model.map.visibility.VisibilityChecker;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
 import viewIso.characters.CharsDrawer;
@@ -51,7 +51,7 @@ public class IsoMapClickController {
             if (charClickBattleEvent != null) return charClickBattleEvent;
         } else {
             Point mapPoint = MapDrawCalculator.mapPointByClickPoint(clickPoint);
-            if (mapPoint == null || !VisibilityCalculator.isExplored(mapPoint))
+            if (mapPoint == null || !VisibilityChecker.isExplored(mapPoint))
                 return null;
             if (Battle.getChosenCharacter() != null) {
                 BattleEvent mapClickBattleEvent = getMapClickBattleEvent(clickPoint, mapPoint);

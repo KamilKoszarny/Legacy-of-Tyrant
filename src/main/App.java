@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import model.Battle;
 import model.BattleInitializer;
 import model.IsoBattleLoop;
+import model.TurnsTracker;
 import model.character.Character;
 import model.map.Map;
 import sun.misc.Unsafe;
@@ -19,6 +20,7 @@ import java.util.List;
 public class App extends Application {
 
     public static final boolean FULL_MODE = true;
+    public static final boolean TURN_MODE_FORCED = false;
     private static final int SHOW_TIME_LEVEL = -1;
 
     public static final long START_TIME = System.nanoTime();
@@ -33,10 +35,11 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Map map = BattleInitializer.initMap();
         List<Character> characters = BattleInitializer.initCharacters(map);
-        new Battle(map, characters, Color.YELLOW);
+        new Battle(map, characters, Color.YELLOW, Color.RED);
         startBattleIso(primaryStage);
 
-//        TurnsTracker.startTurnMode();
+        if (TURN_MODE_FORCED)
+            TurnsTracker.startTurnMode();
     }
 
     private void startBattleIso(Stage primaryStage) throws Exception {
