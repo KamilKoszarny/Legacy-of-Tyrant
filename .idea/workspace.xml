@@ -2,44 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/TurnModeActivator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/map/visibility/VisibilityChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errors.txt" beforeDir="false" afterPath="$PROJECT_DIR$/errors.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoMap/IsoMapClickController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoMap/IsoMapClickController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/Battle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/Battle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/TurnsTracker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/TurnsTracker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharMover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharTurner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharTurner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/DoorActioner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/DoorActioner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/ai/EnemyChooser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/ai/EnemyChooser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/GridGraphCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/GridGraphCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/lights/VisibilityCalculator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/SpritesDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/SpritesDrawer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharsDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharsDrawer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/MinimapViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/MinimapViewer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/isoView/isoMap/IsoMapClickController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AnyAnglePathfinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/downloaded/pathfinding/main/AnyAnglePathfinding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BattleInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BattleInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/TurnsTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/TurnsTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/actions/movement/CharMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/actions/movement/CharMover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/actions/movement/CharTurner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/actions/movement/CharTurner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/actions/objects/DoorActioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/actions/objects/DoorActioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ai/EnemyChooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ai/EnemyChooser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/GridGraphCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/map/GridGraphCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/lights/VisibilityCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/map/visibility/VisibilityCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/characters/CharsDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/map/MapImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/panel/MinimapViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/panel/MinimapViewer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/noise.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spriteNstand.png" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,7 +23,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -67,10 +32,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/items/weapon/Weapon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="714">
               <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
             </state>
           </provider>
@@ -79,22 +53,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
+            <state relative-caret-position="408">
               <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
               <folding>
-                <element signature="e#1436#1437#0" expanded="true" />
-                <element signature="e#1469#1470#0" expanded="true" />
                 <element signature="method#filterAliveCharacters#0;class#Battle#0" />
-                <element signature="e#2377#2378#0" expanded="true" />
-                <element signature="e#2444#2445#0" expanded="true" />
-                <element signature="e#2252#2253#0" expanded="true" />
-                <element signature="e#2291#2292#0" expanded="true" />
-                <element signature="e#2369#2370#0" expanded="true" />
-                <element signature="e#2436#2437#0" expanded="true" />
-                <element signature="e#2576#2577#0" expanded="true" />
-                <element signature="e#2614#2615#0" expanded="true" />
-                <element signature="e#2706#2707#0" expanded="true" />
-                <element signature="e#2740#2741#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -103,7 +65,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/ai/AIActioner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="323">
               <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -115,7 +77,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/TurnsTracker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
+            <state relative-caret-position="204">
               <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
               <folding>
                 <element signature="method#calcStartAPs#0;class#TurnsTracker#0" />
@@ -123,14 +85,8 @@
                 <element signature="method#calcAPMax#0;class#TurnsTracker#0" />
                 <element signature="method#updateStatsAfterTurn#0;class#TurnsTracker#0" />
                 <element signature="method#nextMostAPCharacter#0;class#TurnsTracker#0" />
-                <element signature="e#3552#3553#0" expanded="true" />
-                <element signature="e#3630#3631#0" expanded="true" />
-                <element signature="e#3682#3683#0" expanded="true" />
-                <element signature="e#3720#3721#0" expanded="true" />
                 <element signature="method#activeCharChosen#0;class#TurnsTracker#0" />
                 <element signature="method#activeCharMoved#0;class#TurnsTracker#0" />
-                <element signature="e#4083#4084#0" expanded="true" />
-                <element signature="e#4155#4156#0" expanded="true" />
                 <element signature="method#chooseActiveChar#0;class#TurnsTracker#0" />
               </folding>
             </state>
@@ -140,7 +96,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/actions/ItemHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
+            <state relative-caret-position="442">
               <caret line="45" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
@@ -149,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/actions/movement/CharMover.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
+            <state relative-caret-position="1173">
               <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
             </state>
           </provider>
@@ -336,6 +292,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -393,7 +350,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -402,7 +358,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PathFinder" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DevChapter/Mar7/design-patterns-1-master" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -578,11 +534,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.ItemHandler" />
-      <item itemvalue="Application.GeomerticHelper" />
-      <item itemvalue="Application.PolygonsHelper" />
-      <item itemvalue="Application.ItemsGenerator" />
       <item itemvalue="Application.DoorActioner" />
+      <item itemvalue="Application.GeomerticHelper" />
+      <item itemvalue="Application.ItemHandler" />
+      <item itemvalue="Application.ItemsGenerator" />
+      <item itemvalue="Application.PolygonsHelper" />
     </list>
     <recent_temporary>
       <list>
@@ -627,7 +583,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49004975" visible="true" weight="0.18910742" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49004975" visible="true" weight="0.19515885" />
       <window_info id="Structure" order="1" weight="0.24962178" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -694,13 +650,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/helpers/my/CalcHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/panel/NextTurnButtonViewer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1090,49 +1039,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ai/AIActioner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-          <folding>
-            <element signature="e#1436#1437#0" expanded="true" />
-            <element signature="e#1469#1470#0" expanded="true" />
-            <element signature="method#filterAliveCharacters#0;class#Battle#0" />
-            <element signature="e#2377#2378#0" expanded="true" />
-            <element signature="e#2444#2445#0" expanded="true" />
-            <element signature="e#2252#2253#0" expanded="true" />
-            <element signature="e#2291#2292#0" expanded="true" />
-            <element signature="e#2369#2370#0" expanded="true" />
-            <element signature="e#2436#2437#0" expanded="true" />
-            <element signature="e#2576#2577#0" expanded="true" />
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#2706#2707#0" expanded="true" />
-            <element signature="e#2740#2741#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/viewIso/map/MapImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/actions/movement/CharMover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1147,16 +1057,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/actions/ItemHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="102">
+          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <element signature="method#filterAliveCharacters#0;class#Battle#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ai/AIActioner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/TurnsTracker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
+        <state relative-caret-position="204">
           <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding>
             <element signature="method#calcStartAPs#0;class#TurnsTracker#0" />
@@ -1164,30 +1101,31 @@
             <element signature="method#calcAPMax#0;class#TurnsTracker#0" />
             <element signature="method#updateStatsAfterTurn#0;class#TurnsTracker#0" />
             <element signature="method#nextMostAPCharacter#0;class#TurnsTracker#0" />
-            <element signature="e#3552#3553#0" expanded="true" />
-            <element signature="e#3630#3631#0" expanded="true" />
-            <element signature="e#3682#3683#0" expanded="true" />
-            <element signature="e#3720#3721#0" expanded="true" />
             <element signature="method#activeCharChosen#0;class#TurnsTracker#0" />
             <element signature="method#activeCharMoved#0;class#TurnsTracker#0" />
-            <element signature="e#4083#4084#0" expanded="true" />
-            <element signature="e#4155#4156#0" expanded="true" />
             <element signature="method#chooseActiveChar#0;class#TurnsTracker#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/BattleInitializer.java">
+    <entry file="file://$PROJECT_DIR$/src/model/actions/ItemHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state relative-caret-position="442">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.java">
+    <entry file="file://$PROJECT_DIR$/src/model/actions/movement/CharMover.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="48" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
+        <state relative-caret-position="1173">
+          <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/items/weapon/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
         </state>
       </provider>
     </entry>
