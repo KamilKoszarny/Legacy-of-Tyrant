@@ -19,8 +19,8 @@ import static viewIso.map.MapDrawer.MAP_PIECE_SCREEN_SIZE_Y;
 
 public class MapDrawCalculator {
 
-    static Map map;
-    static MapDrawer mapDrawer;
+    private static Map map;
+    private static MapDrawer mapDrawer;
 
     public static void setMapAndDrawer(Map map, MapDrawer mapDrawer) {
         MapDrawCalculator.map = map;
@@ -131,11 +131,11 @@ public class MapDrawCalculator {
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
     }
 
-    public static double[][] screenWithHeightCoordsForDrawPolygon(Polygon polygon, boolean heightBonus) {
+    static double[][] screenWithHeightCoordsForDrawPolygon(Polygon polygon, boolean heightBonus) {
         int size = polygon.getPoints().size()/2;
         double [][] coords = new double[2][size];
         for (int i = 0; i < size; i++) {
-            if (polygon.getPoints().get(2*i) != null && polygon.getPoints().get(2*i) != null) {
+            if (polygon.getPoints().get(2 * i) != null && polygon.getPoints().get(2 * i + 1) != null) {
                 Point2D point2D = new Point2D(polygon.getPoints().get(2 * i), polygon.getPoints().get(2 * i + 1));
                 Point point = screenPositionWithHeight(point2D);
                 coords[0][i] = point.getX();
@@ -175,7 +175,7 @@ public class MapDrawCalculator {
                         map.getPoints().get(point).getHeight() / HeightGenerator.H_PEX_PIX));
     }
 
-    public static Point relativeScreenPosition(Point point){
+    static Point relativeScreenPosition(Point point){
         return new Point(point.x * MAP_PIECE_SCREEN_SIZE_X /2 - point.y * MAP_PIECE_SCREEN_SIZE_X /2,
                 point.x * MAP_PIECE_SCREEN_SIZE_Y /2 + point.y * MAP_PIECE_SCREEN_SIZE_Y /2);
     }

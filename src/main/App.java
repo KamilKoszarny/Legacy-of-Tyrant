@@ -21,10 +21,10 @@ public class App extends Application {
 
     public static final boolean FULL_MODE = true;
     public static final boolean TURN_MODE_FORCED = false;
-    private static final int SHOW_TIME_LEVEL = -1;
+    private static final int LOG_TIME_LEVEL = 0;
 
     public static final long START_TIME = System.nanoTime();
-    public static long[] time = new long[10];
+    public static final long[] time = new long[10];
 
     public static void main(String[] args) {
         disableWarning();
@@ -73,10 +73,15 @@ public class App extends Application {
     public static void showAndResetTime(String text, int level) {
         StringBuilder spaces = new StringBuilder("");
         for (int i = 0; i < level; i++) {
-            spaces.append(" ");
+            spaces.append("   ");
         }
-        if (level <= SHOW_TIME_LEVEL)
-            System.out.println(spaces + text + ": " + (System.nanoTime() - time[level])/1000000. + " ms");
+        if (level <= LOG_TIME_LEVEL) {
+            double timeDelta = (System.nanoTime() - time[level]) / 1000000.;
+            if (timeDelta < 50)
+                System.out.println(spaces + text + ": " + timeDelta + " ms");
+            else
+                System.err.println(spaces + text + ": " + timeDelta + " ms");
+        }
         time[level] = System.nanoTime();
     }
 }

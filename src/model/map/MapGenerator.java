@@ -25,7 +25,7 @@ public class MapGenerator {
             HeightGenerator heightGenerator = new HeightGenerator(map);
             heightGenerator.generateHeights();
             App.showAndResetTime("heightGen", 1);
-            
+
 
             WaterGenerator waterGenerator = new WaterGenerator(map);
             if (map.isWithWater()) {
@@ -70,7 +70,7 @@ public class MapGenerator {
             App.showAndResetTime("objectsGen", 1);
         }
 
-        App.showAndResetTime("TOTAL", 0);
+        App.showAndResetTime("TOTAL map generation", 0);
         return map;
     }
 }

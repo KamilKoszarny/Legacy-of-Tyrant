@@ -39,3 +39,15 @@ Export-Package: org.j3d.util,
  org.j3d.texture,
  org.j3d.texture.procedural
 Eclipse-AutoStart: true
+Import-Package: javafx.scene.paint,
+ javafx.geometry,
+ javafx.scene.shape,
+ javafx.collections,
+ sun.misc,
+ javafx.stage,
+ javafx.scene.canvas,
+ javafx.application,
+ javafx.animation,
+ javafx.scene.layout,
+ javafx.scene,
+ javafx.event

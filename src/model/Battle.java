@@ -30,12 +30,13 @@ public class Battle {
 
     public static void update(int ms) {
         updateAnimation(ms);
+        App.resetTime(2);
         VisibilityCalculator.updateViews();
+        App.showAndResetTime("ViewsUpdate", 2);
         if (TurnModeActivator.shouldStart())
             TurnsTracker.startTurnMode();
         if (Battle.isTurnMode())
             TurnsTracker.updateAI();
-        App.showAndResetTime("ViewsUpdate", 2);
     }
 
     private static void updateAnimation(int ms) {

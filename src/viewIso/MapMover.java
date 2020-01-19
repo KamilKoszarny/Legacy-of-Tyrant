@@ -33,4 +33,8 @@ public class MapMover {
         else
             MapMover.mapMove = mapMove;
     }
+
+    static boolean isMapMoved() {
+        return !mapMove.equals(new Point(0, 0));
+    }
 }

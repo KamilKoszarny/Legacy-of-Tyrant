@@ -21,14 +21,14 @@ public class VisibilityCalculator {
 
     public static void updateViews() {
         if (change) {
-            App.resetTime(0);
             for (Character character : Battle.getCharacters()) {
-                App.resetTime(1);
+                App.resetTime(3);
                 calcCharView(character);
-                App.showAndResetTime("calcCharView", 4);
-                if (!Battle.getMap().isDiscovered())
+                App.showAndResetTime("calcCharView", 3);
+                if (!Battle.getMap().isDiscovered()) {
                     updateExploredView(character);
-                    App.showAndResetTime("updateExpView", 4);
+                    App.showAndResetTime("updateExpView", 3);
+                }
             }
         }
         change = false;
@@ -115,25 +115,23 @@ public class VisibilityCalculator {
             List<Polygon> exploredView = MapDrawer.getMapImage().getExploredView();
             List<Polygon> holesInView = MapDrawer.getMapImage().getHolesInView();
 
-            App.resetTime(2);
+            App.resetTime(5);
             PolygonsHelper.mergePolygon2Polygons(exploredView, character.getView());
             App.showAndResetTime("mergePolygon2Polygons", 5);
             PolygonsHelper.smoothPolygons(exploredView, 8);
             App.showAndResetTime("smoothPolygons", 5);
             PolygonsHelper.findHolesInPolygons(exploredView, holesInView);
             App.showAndResetTime("findHolesInPolygons", 5);
-
             PolygonsHelper.reduceHoles(holesInView, character.getView());
             PolygonsHelper.splitHoles(holesInView);
-            App.showAndResetTime("reduceSplitHoles", 5);
+            App.showAndResetTime("reduceAndSplitHoles", 5);
 //            PolygonsHelper.removeSmall(holesInView);
             PolygonsHelper.smoothPolygons(holesInView, 5);
             App.showAndResetTime("smoothHoles", 5);
 
-            App.resetTime(2);
 //            PanelViewer.setMinimapImg(MapImageGenerator.updateMinimapImageWithFog());
             MinimapViewer.refreshMinimapFog(exploredView.get(0), holesInView);
-            App.showAndResetTime("updateMinimap", 4);
+            App.showAndResetTime("updateMinimap", 5);
 
 //            soutPolygons(exploredView, holesInView);
         }

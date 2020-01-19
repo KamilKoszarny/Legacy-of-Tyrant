@@ -1,5 +1,6 @@
 package viewIso;
 
+import main.App;
 import model.Battle;
 import model.character.Character;
 import model.map.MapPiece;
@@ -15,6 +16,8 @@ import java.util.List;
 
 public class SpritesDrawer {
 
+    private static List<Point> visiblePoints = null;
+
     public SpritesDrawer() {
         new CharsDrawer();
         new LabelsDrawer();
@@ -23,20 +26,25 @@ public class SpritesDrawer {
 
     public static void drawVisibleSprites() {
         LabelsDrawer.hideLabels();
-        List<Point> visiblePoints = MapDrawCalculator.calcOnCanvasPoints();
-        visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
+        App.resetTime(3);
+        if (MapMover.isMapMoved() || visiblePoints == null) {
+            visiblePoints = MapDrawCalculator.calcOnCanvasPoints();
+            App.showAndResetTime("getVisiblePoints", 3);
+            visiblePoints.sort(Comparator.comparingInt(c -> c.x + c.y));
+            App.showAndResetTime("sortVisiblePoints", 3);
+        }
         for (Point point: visiblePoints) {
             MapPiece mapPiece = Battle.getMap().getPoints().get(point);
-            if (mapPiece.getObject() != null) {
-                if (VisibilityChecker.isExplored(point)) {
-                    MapObjectDrawer.drawObject(point);
-                }
+            if (mapPiece.getObject() != null && VisibilityChecker.isExplored(point)) {
+                MapObjectDrawer.drawObject(point);
             }
             drawCharIfThere(point);
         }
+        App.showAndResetTime("drawObjectsAndChars", 3);
         for (Character character: Battle.getCharacters()) {
             CharsDrawer.drawChar(character, true);
         }
+        App.showAndResetTime("drawTransparentChars", 3);
 
         ItemObjectsDrawer.resetItemGlowIncrement();
     }

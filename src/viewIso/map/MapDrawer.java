@@ -15,6 +15,7 @@ import viewIso.panel.MinimapViewer;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MapDrawer {
@@ -58,8 +59,10 @@ public class MapDrawer {
     }
 
     public static void drawMap() {
-//        App.resetTime(0);
+        App.resetTime(1);
+        App.resetTime(2);
         clearMap();
+        App.showAndResetTime("clearMap", 2);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(new ImagePattern(mapImage.getImage(),
                 mapImage.getxShift() + zeroScreenPosition.x, mapImage.getyShift() + zeroScreenPosition.y,
@@ -70,18 +73,21 @@ public class MapDrawer {
         } else {
             drawExploredPart();
         }
+        App.showAndResetTime("drawMap", 2);
 
         drawAllCharsViews();
+        App.showAndResetTime("drawAllCharsViews", 2);
         drawChosenCharView();
+        App.showAndResetTime("drawChosenCharView", 2);
 
         gc.setEffect(null);
-//        App.showAndResetTime("mapDraw: ", 0);
+        App.showAndResetTime("mapDraw: ", 1);
     }
 
     private static void drawAll() {
         gc.drawImage(mapImage.getImage(),
-                -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y,
-                canvas.getWidth(), canvas.getHeight(), 0, 0, canvas.getWidth(), canvas.getHeight());
+                -mapImage.getxShift() - zeroScreenPosition.x, -mapImage.getyShift() - zeroScreenPosition.y, canvas.getWidth(), canvas.getHeight(),
+                0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
     private static void drawExploredPart() {
@@ -101,7 +107,7 @@ public class MapDrawer {
         List<Polygon> viewAll = new ArrayList<>();
         for (Character character: Battle.getCharacters()) {
             if (character.getColor().equals(Battle.getPlayerColor()))
-            viewAll.add(character.getView());
+                viewAll.add(character.getView());
         }
         gc.setEffect(new Glow(.5));
         drawMapPart(viewAll, false);
@@ -109,7 +115,7 @@ public class MapDrawer {
 
     private static void drawChosenCharView() {
         if (Battle.getChosenCharacter() != null) {
-            List<Polygon> view = Arrays.asList(Battle.getChosenCharacter().getView());
+            List<Polygon> view = Collections.singletonList(Battle.getChosenCharacter().getView());
             gc.setEffect(new Glow(1));
             drawMapPart(view, false);
         }
