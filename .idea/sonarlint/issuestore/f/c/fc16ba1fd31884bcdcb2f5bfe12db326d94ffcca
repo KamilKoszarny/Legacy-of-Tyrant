@@ -1,13 +1,0 @@
-
-\
-squid:S106"9Replace this use of System.out or System.err by a logger.(†±İƒúÿÿÿÿ8—ùµıû-
-W
-squid:S106"9Replace this use of System.out or System.err by a logger.(’’ ›8—ùµıû-
-Xsquid:S1118":Add a private constructor to hide the implicit public one.(Û‰šò8—ùµıû-
-jsquid:CommentedOutCodeLine‰"<This block of commented-out lines of code should be removed.(ãÅ³ñ8—ùµıû-
-Bsquid:S1659I"Declare "y" on a separate line.(òí›¢øÿÿÿÿ8—ùµıû-
-csquid:UnusedPrivateMethod"1Remove this unused private "soutPolygons" method.(¯»¼èúÿÿÿÿ8—ùµıû-
-jsquid:CommentedOutCodeLine…"<This block of commented-out lines of code should be removed.(é½8—ùµıû-
-\
-squid:S106‘"9Replace this use of System.out or System.err by a logger.(–ÔÉñıÿÿÿÿ8—ùµıû-
-osquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(³…óåúÿÿÿÿ8—ùµıû-

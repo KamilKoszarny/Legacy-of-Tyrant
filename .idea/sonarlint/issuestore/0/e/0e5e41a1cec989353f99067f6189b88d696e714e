@@ -1,11 +1,0 @@
-
-Isquid:S24401"+Remove this instantiation of "PanelViewer".(ƒÑ¢‡8–ùµıû-
-Dsquid:S2440&"&Remove this instantiation of "Battle".(£¿·®8–ùµıû-
-;squid:S2386"Make this member "protected".(”–£—8–ùµıû-
-Ssquid:S1191"5Use classes from the Java API instead of Sun classes.(éª‚€8–ùµıû-
-[
-squid:S106Q"9Replace this use of System.out or System.err by a logger.(š®­ıÿÿÿÿ8–ùµıû-
-[
-squid:S106S"9Replace this use of System.out or System.err by a logger.(Ï•ƒ‡øÿÿÿÿ8–ùµıû-
-esquid:S00112-"FDefine and throw a dedicated exception instead of using a generic one.(È—¬8–ùµıû-
-Gsquid:S24400")Remove this instantiation of "IsoViewer".(ÜÌˆ²8–ùµıû-

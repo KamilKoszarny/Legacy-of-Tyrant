@@ -1,23 +1,0 @@
-
-Jsquid:S30107"'Remove this assignment of "mapPolygon".(ŸŒÁêşÿÿÿÿ8Ëû§ıû-
-_squid:S2184D"BCast one of the operands of this addition operation to a "double".(·êú{8Ëû§ıû-
-~squid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÄÉÚùÿÿÿÿ8Ëû§ıû-
-Dsquid:S3010)"&Remove this assignment of "PIX_PER_M".(Äëà8Ëû§ıû-
-^squid:S2184)"@Cast one of the operands of this integer division to a "double".(Äëà8Ëû§ıû-
-gsquid:UnusedPrivateMethodg"6Remove this unused private "drawAllCharsViews" method.(Õöôûÿÿÿÿ8›À ı-
-_squid:S2184b"BCast one of the operands of this addition operation to a "double".(·êú{8Ëû§ıû-
-csquid:S2184V"ECast one of the operands of this subtraction operation to a "double".(ĞÓ‘å8Ëû§ıû-
-Fsquid:S3010&"#Remove this assignment of "canvas".(²¿ÉÇüÿÿÿÿ8Ëû§ıû-
-Hsquid:S30101"%Remove this assignment of "mapImage".(Å’øÍúÿÿÿÿ8Ëû§ıû-
-Bsquid:S3010'"Remove this assignment of "gc".(á“ï‘şÿÿÿÿ8Ëû§ıû-
-esquid:UselessImportCheck"5Remove this unused import 'javafx.scene.effect.Glow'.(õ¬Í€ıÿÿÿÿ8‰õ¶ ı-
-Rsquid:S1444"/Make this "public static PIX_PER_M" field final(œ˜Òşÿÿÿÿ8Ëû§ıû-
-wsquid:S3008"TRename this field "PIX_PER_M" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ˜Òşÿÿÿÿ8Ëû§ıû-
-Esquid:S1659"'Declare "FOG_COLOR" on a separate line.(¯Éı8Ëû§ıû-
-Csquid:S3010%" Remove this assignment of "map".(ä‹ãßûÿÿÿÿ8Ëû§ıû-
-Hsquid:S3010."%Remove this assignment of "mapImage".(‘ªşáúÿÿÿÿ8Ëû§ıû-
-=squid:S16596"Declare "y" on a separate line.(«Äü8Ëû§ıû-
-_squid:S2184D"BCast one of the operands of this addition operation to a "double".(·êú{8Ëû§ıû-
-_squid:S2184b"BCast one of the operands of this addition operation to a "double".(·êú{8Ëû§ıû-
-"squid:ClassVariableVisibilityCheck"UMake PIX_PER_M a static final constant or non-public and provide accessors if needed.(œ˜Òşÿÿÿÿ8Ëû§ıû-
-csquid:S2184V"ECast one of the operands of this subtraction operation to a "double".(ĞÓ‘å8Ëû§ıû-

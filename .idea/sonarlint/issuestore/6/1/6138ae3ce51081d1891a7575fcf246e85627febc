@@ -1,9 +1,0 @@
-
-Zsquid:UnusedPrivateMethod"7Remove this unused private "detectMaxSquareOld" method.(Ãç¯­
-:squid:S1172"&Remove these unused method parameters.(œæ¤8
-Hsquid:S1172".Remove this unused method parameter "current".(Õ¶Ñ¤ûÿÿÿÿ
-r
-squid:S135"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
-msquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(å€…
-Dsquid:S1066"/Merge this if statement with the enclosing one.(ö¾÷½
-esquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(è”¨ýÿÿÿÿ
