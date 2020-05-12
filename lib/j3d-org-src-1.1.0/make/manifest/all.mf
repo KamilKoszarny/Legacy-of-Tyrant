@@ -50,4 +50,5 @@ Import-Package: javafx.scene.paint,
  javafx.animation,
  javafx.scene.layout,
  javafx.scene,
- javafx.event
+ javafx.event,
+ javafx.fxml
