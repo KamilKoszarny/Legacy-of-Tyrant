@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ItemHandler {
 
-    public static final int INVENTORY_X = 5, INVENTORY_Y = 5;
+    public static final int INVENTORY_SLOTS_X = 5, INVENTORY_SLOTS_Y = 5;
     public static final int ITEM_SLOT_SIZE = 30;
     private static final double ITEM_DROP_DIST = 10;
 
@@ -205,8 +205,8 @@ public class ItemHandler {
     }
 
     private static int[] freeSpaceInInventory(Map<Item, int[]> inventory, Item itemToPut) {
-        for (int x = 0; x < INVENTORY_X; x++) {
-            for (int y = 0; y < INVENTORY_Y; y++) {
+        for (int x = 0; x < INVENTORY_SLOTS_X; x++) {
+            for (int y = 0; y < INVENTORY_SLOTS_Y; y++) {
                 int[] slot = {x, y};
                 if (isSpaceInInventory(inventory, itemToPut, slot))
                     return slot;
@@ -252,7 +252,7 @@ public class ItemHandler {
     }
 
     private static boolean outOfInventory(int[] slot) {
-        return slot[0] < 0 || slot[1] < 0 || slot[0] >= INVENTORY_X || slot[1] >= INVENTORY_Y;
+        return slot[0] < 0 || slot[1] < 0 || slot[0] >= INVENTORY_SLOTS_X || slot[1] >= INVENTORY_SLOTS_Y;
     }
 
     public static int[] inventorySlotByItemClickPoint(Item item, Map<Item, int[]> inventory, Point point){

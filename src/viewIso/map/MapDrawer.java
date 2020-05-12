@@ -38,7 +38,7 @@ public class MapDrawer {
         MapDrawer.canvas = canvas;
         gc = canvas.getGraphicsContext2D();
         mPDrawer = new MapPieceDrawer(map, gc, this, MAP_PIECE_SCREEN_SIZE_X, MAP_PIECE_SCREEN_SIZE_Y);
-        PIX_PER_M = (int) ((MAP_PIECE_SCREEN_SIZE_X + MAP_PIECE_SCREEN_SIZE_Y) / 2 / Map.M_PER_POINT);
+        PIX_PER_M = (int) ((MAP_PIECE_SCREEN_SIZE_X + MAP_PIECE_SCREEN_SIZE_Y) / 2. / Map.M_PER_POINT);
         MapDrawCalculator.setMapAndDrawer(map, this);
 
         MapImageGenerator.initialize(map, mPDrawer);
@@ -52,7 +52,7 @@ public class MapDrawer {
         MinimapViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
 
         int x = map.mapXPoints - 1, y = map.mapYPoints - 1;
-        mapPolygon = Arrays.asList(new Polygon(0,0,x,0,x,y,0,y));
+        mapPolygon = Collections.singletonList(new Polygon(0, 0, x, 0, x, y, 0, y));
 
         if (map.isDiscovered())
             mapImage.setExploredView(mapPolygon);

@@ -149,6 +149,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
             case LOOK4ENEMY:
                 EnemyFinder.turnAround(battleEvent.getDoingCharacter());
+            default: break;
         }
 
         battleEvent = null;
@@ -200,6 +201,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 AttackActioner.scheduleGoAndAttack(Battle.getChosenCharacter(), buttonBattleEvent.getSubjectCharacter(),
                         ClickMenuButton.getBodyPart(button));
                 break;
+            default: break;
         }
 
         ClickMenusDrawer.hideMenus(false);

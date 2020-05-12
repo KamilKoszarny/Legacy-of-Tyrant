@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import model.BattleEvent;
 import model.EventType;
 import model.IsoBattleLoop;
@@ -45,6 +46,7 @@ public class IsoMapBorderHoverController {
 
     private void setBorderCanvasesPos(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        borderCanvases.forEach(canvas -> canvas.getGraphicsContext2D().setFill(Color.GREEN));
         borderCanvases.get(0).setLayoutX(0);
         borderCanvases.get(0).setLayoutY(0);
         borderCanvases.get(0).setWidth(screenSize.getWidth());

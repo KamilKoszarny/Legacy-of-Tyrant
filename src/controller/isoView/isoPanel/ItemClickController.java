@@ -77,7 +77,7 @@ public class ItemClickController {
         for (Rectangle subRectangle : slotScreenRects) {
             if (subRectangle.contains(new Point2D(clickPoint.x, clickPoint.y))) {
                 int index = slotScreenRects.indexOf(subRectangle);
-                inventorySlot = new int[]{index % ItemHandler.INVENTORY_X, index / ItemHandler.INVENTORY_X};
+                inventorySlot = new int[]{index % ItemHandler.INVENTORY_SLOTS_X, index / ItemHandler.INVENTORY_SLOTS_X};
             }
         }
 
@@ -86,10 +86,10 @@ public class ItemClickController {
 
     private static List<Rectangle> calcInventoryScreenRects(Rectangle rectangle) {
         List<Rectangle> slotScreenRects = new ArrayList<>();
-        double slotSizeX = rectangle.getWidth() / ItemHandler.INVENTORY_X;
-        double slotSizeY = rectangle.getHeight() / ItemHandler.INVENTORY_Y;
-        for (int y = 0; y < ItemHandler.INVENTORY_Y; y++) {
-            for (int x = 0; x < ItemHandler.INVENTORY_X; x++) {
+        double slotSizeX = rectangle.getWidth() / ItemHandler.INVENTORY_SLOTS_X;
+        double slotSizeY = rectangle.getHeight() / ItemHandler.INVENTORY_SLOTS_Y;
+        for (int y = 0; y < ItemHandler.INVENTORY_SLOTS_Y; y++) {
+            for (int x = 0; x < ItemHandler.INVENTORY_SLOTS_X; x++) {
                 slotScreenRects.add(new Rectangle(
                         rectangle.getX() + x * slotSizeX, rectangle.getY() + y * slotSizeY,
                         slotSizeX, slotSizeY));
@@ -99,8 +99,8 @@ public class ItemClickController {
     }
 
     public static Rectangle calcInventoryScreenRect(Rectangle inventoryRectangle, int[] pos) {
-        double slotSizeX = inventoryRectangle.getWidth() / ItemHandler.INVENTORY_X;
-        double slotSizeY = inventoryRectangle.getHeight() / ItemHandler.INVENTORY_Y;
+        double slotSizeX = inventoryRectangle.getWidth() / ItemHandler.INVENTORY_SLOTS_X;
+        double slotSizeY = inventoryRectangle.getHeight() / ItemHandler.INVENTORY_SLOTS_Y;
 
         return new Rectangle(inventoryRectangle.getX() + inventoryRectangle.getTranslateX() + pos[0] * slotSizeX,
                 inventoryRectangle.getY() + inventoryRectangle.getTranslateY() + pos[1] * slotSizeY,

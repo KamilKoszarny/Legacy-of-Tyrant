@@ -60,7 +60,7 @@ public class InventoryRectanglesViewer {
     public static Rectangle createInventoryRectangle(Point pos) {
         javafx.scene.image.Image inventoryImg = new Image("/items/inventory.png");
         Rectangle inventoryRect = new Rectangle(pos.getX(), pos.getY(),
-                ItemHandler.INVENTORY_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_Y * ItemHandler.ITEM_SLOT_SIZE);
+                ItemHandler.INVENTORY_SLOTS_X * ItemHandler.ITEM_SLOT_SIZE, ItemHandler.INVENTORY_SLOTS_Y * ItemHandler.ITEM_SLOT_SIZE);
         inventoryRect.setFill(new ImagePattern(inventoryImg));
         Pane pane = (Pane) PanelViewer.getPanel().getHeldItemRect().getParent();
         inventoryRect.setVisible(true);

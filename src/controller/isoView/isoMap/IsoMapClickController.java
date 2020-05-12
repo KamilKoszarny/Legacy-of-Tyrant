@@ -41,6 +41,7 @@ public class IsoMapClickController {
             } else if (mouseEvent.getButton() == MouseButton.SECONDARY) {
                 IsoBattleLoop.setBattleEvent(new BattleEvent(EventType.SHOW_MAP_PIECE_INFO, clickPoint,
                         MapDrawCalculator.mapPointByClickPoint(clickPoint), MapDrawCalculator.mapPieceByClickPoint(clickPoint)));
+                System.out.println(mouseEvent.getX() + " " + mouseEvent.getY());
             }
         });
     }

@@ -58,7 +58,7 @@ public class CharPanelViewer {
 
     //use label Id
     private static String getParameterText(Label label, Character character) {
-        String parameter = label.getId().substring(0,label.getId().length() - 5);
+        String parameter = label.getId().substring(0, label.getId().length() - 5);
 
         String parText = CharParameter.signByName(parameter) + findValue(character, parameter);
 
@@ -71,8 +71,15 @@ public class CharPanelViewer {
     }
 
     private static String findValue(Character character, String parameter) {
+        if (parameter.equals("name"))
+            return character.getName();
+        if (parameter.equals("type"))
+            return character.getType().toString();
+        if (parameter.equals("charClass"))
+            return character.getCharClass().toString();
+
         String value = "";
-        String getterName = "get" + parameter.substring(0, 1).toUpperCase() + parameter.substring(1, parameter.length());
+        String getterName = "get" + parameter.substring(0, 1).toUpperCase() + parameter.substring(1);
         java.lang.reflect.Method method;
         Class returnType = null;
         try {
