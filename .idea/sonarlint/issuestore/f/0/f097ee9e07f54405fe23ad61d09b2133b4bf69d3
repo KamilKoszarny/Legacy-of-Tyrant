@@ -1,0 +1,9 @@
+
+bsquid:S2259"MA "NullPointerException" could be thrown; "activeCharacter" is nullable here.(ÛùÆ
+Osquid:S1118":Add a private constructor to hide the implicit public one.(ÀáĞÍ
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(†æÍ²
+2squid:S2119"Save and re-use this "Random".(¼İÅf
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(ç„æ…
+`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(àÉˆø

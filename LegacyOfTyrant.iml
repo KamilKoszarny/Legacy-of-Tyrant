@@ -14,7 +14,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="JUnit4">
@@ -26,5 +26,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="lombok" level="project" />
   </component>
 </module>

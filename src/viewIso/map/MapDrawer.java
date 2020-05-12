@@ -74,9 +74,6 @@ public class MapDrawer {
             drawExploredPart();
         }
         App.showAndResetTime("drawMap", 2);
-
-        drawAllCharsViews();
-        App.showAndResetTime("drawAllCharsViews", 2);
         drawChosenCharView();
         App.showAndResetTime("drawChosenCharView", 2);
 
@@ -92,11 +89,11 @@ public class MapDrawer {
 
     private static void drawExploredPart() {
         List<Polygon> exploredView = mapImage.getExploredView();
-        drawMapPart(exploredView, true);
+        drawMapPart(exploredView, true, false);
         gc.setFill(FOG_COLOR);
         List<Polygon> holes = mapImage.getHolesInView();
         if (holes.size() > 0)
-            drawMapPart(holes, false);
+            drawMapPart(holes, false, false);
         gc.setFill(new ImagePattern(mapImage.getImage(),
                 mapImage.getxShift() + zeroScreenPosition.x, mapImage.getyShift() + zeroScreenPosition.y,
                 mapImage.getWidth(), mapImage.getHeight(), false));
@@ -109,22 +106,25 @@ public class MapDrawer {
             if (character.getColor().equals(Battle.getPlayerColor()))
                 viewAll.add(character.getView());
         }
-        gc.setEffect(new Glow(.5));
-        drawMapPart(viewAll, false);
+        drawMapPart(viewAll, false, true);
     }
 
     private static void drawChosenCharView() {
         if (Battle.getChosenCharacter() != null) {
             List<Polygon> view = Collections.singletonList(Battle.getChosenCharacter().getView());
-            gc.setEffect(new Glow(1));
-            drawMapPart(view, false);
+            drawMapPart(view, false, true);
         }
     }
 
-    private static void drawMapPart(List<Polygon> polygons, boolean heightBonus) {
+    private static void drawMapPart(List<Polygon> polygons, boolean heightBonus, boolean bondariesOnly) {
         for (Polygon polygon : polygons) {
             double[][] coords = MapDrawCalculator.screenWithHeightCoordsForDrawPolygon(polygon, heightBonus);
-            gc.fillPolygon(coords[0], coords[1], coords[0].length);
+            if (bondariesOnly) {
+                gc.setStroke(Color.WHITE);
+                gc.setLineWidth(3);
+                gc.strokePolygon(coords[0], coords[1], coords[0].length);
+            } else
+                gc.fillPolygon(coords[0], coords[1], coords[0].length);
         }
     }
 
@@ -133,7 +133,7 @@ public class MapDrawer {
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         gc.setFill(FOG_COLOR);
-        drawMapPart(mapPolygon, false);
+        drawMapPart(mapPolygon, false, false);
     }
 
 

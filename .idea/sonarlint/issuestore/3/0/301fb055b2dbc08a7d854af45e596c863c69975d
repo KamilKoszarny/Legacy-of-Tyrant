@@ -1,0 +1,15 @@
+
+bsquid:S2184"HCast one of the operands of this multiplication operation to a "double".(²ÍúÜıÿÿÿÿ
+‡"squid:ClassVariableVisibilityCheck"VMake mapXPoints a static final constant or non-public and provide accessors if needed.(¥ã‡øÿÿÿÿ
+Vsquid:S00107"AConstructor has 8 parameters, which is greater than 7 authorized.(šÙ*
+Bsquid:S1659"-Declare "buildingMaxSize" on a separate line.(ßòÓ
+;squid:S1170"!Make this final field static too.(Í°Ÿ±ûÿÿÿÿ
+;squid:S1170"!Make this final field static too.(íŒñŒúÿÿÿÿ
+tsquid:S00116"YRename this field "MIN_HEIGHT_PIX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Í°Ÿ±ûÿÿÿÿ
+tsquid:S00116"YRename this field "MAX_HEIGHT_PIX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íŒñŒúÿÿÿÿ
+Bsquid:S1659"(Declare "mapYPoints" on a separate line.(¥ã‡øÿÿÿÿ
+>squid:S2140")Use "java.util.Random.nextInt()" instead.(»³¾ë
+‡"squid:ClassVariableVisibilityCheck"VMake mapYPoints a static final constant or non-public and provide accessors if needed.(¥ã‡øÿÿÿÿ
+Bsquid:S1659"(Declare "waterSides" on a separate line.(èøñ¸üÿÿÿÿ
+:squid:S1659"%Declare "heightM" on a separate line.(´íâÖ
+Bsquid:S1659"(Declare "riverSides" on a separate line.(èøñ¸üÿÿÿÿ

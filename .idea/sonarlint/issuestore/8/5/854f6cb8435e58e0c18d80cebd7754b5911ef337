@@ -1,0 +1,6 @@
+
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Àêª
+Ysquid:UselessImportCheck"0Remove this unused import 'javafx.geometry.Pos'.(ÌÆ÷Ùøÿÿÿÿ
+`squid:UselessImportCheck"7Remove this unused import 'javafx.scene.shape.Polygon'.(ÑîÅ’üÿÿÿÿ
+Rsquid:UselessImportCheck")Remove this unused import 'model.Battle'.(¿¼ß×şÿÿÿÿ
+Gsquid:S3010"+Remove this assignment of "nextTurnButton".(ö‹Ôúûÿÿÿÿ

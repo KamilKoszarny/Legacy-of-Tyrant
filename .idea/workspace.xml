@@ -2,28 +2,355 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206d8de-6322-4465-8744-4c5b94ec473f" name="Default" comment="inProgress: mapGeneration">
-      <change afterPath="$PROJECT_DIR$/.idea/hotswap_agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lombok.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/04f6c1cbb4eedf3dd2f4f9aadf4340c15b111b41" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/e/0e5e41a1cec989353f99067f6189b88d696e714e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d9b1cb2c2355b674325218be47b00eef708b299" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26183cd4bc264ea22e35556a447ca6d461040746" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/b/2b1879bad8c6f176376de4795a89e9f5a08b5009" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/e/2e836408c99b141f1c3ba19d4f42a9858fd83798" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/0/301fb055b2dbc08a7d854af45e596c863c69975d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3cefc5323ca04e20048b25308c839a0212dee67d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/409890f583aa6026766813c8da4e54a2ebd20c52" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b72aa70df52a6bb7b1f7ff4ef1de40257769db7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/f/4f88d136a012cf634986512f921f9876018d1dbc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/582b83cc27bc979b8649b162b4db8c195826322f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/588ff4f64054320fe60a1b86c70ad3000d52f767" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/9/5937487791c738279f4c073d094d9938e9d00e73" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/d/5ddd46fabf79bb53ce8d76922ba7488ea2a48ec1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/1/6138ae3ce51081d1891a7575fcf246e85627febc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/63ca7c808cbf26ab6c077ddee1f8b373078940e1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/65ae2ed594f1f3d3a20161ef50661ef7fe6529d1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/a/6a3282982605341f91257f06e4c4da9062ee61d5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/7487f1b5502da9ac2e881890faf4b8c97142bd17" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7da171a6a89d477b9c982ed7f8910561b2cd33e4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/8113daebf1cb9c7d6eff1ad8f015f5a3a356f227" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/5/854f6cb8435e58e0c18d80cebd7754b5911ef337" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/8602c0001e69ba71c6f057b88969fbaebc6ab045" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bc1752073ec497f5fd9f947d1d7434cdd114279" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8d2e03a778a5ee59621d8c5153884f6ab0d2365a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/1/91f11f04e271ffb1838f8c50af544e8391daf78b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/94b46e2c872dda042d2b45fb95fd533af133ed66" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/7/9754c97dd03757aafd027ea28d6c50c18e718898" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5cc2925ca8258af241be7e5b0381edf30266302" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/b/bbbb9e450772a9bbbd805e776bf2454b7957b584" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3ebd88f33535b70039d90c97910184030cc44c5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/ddddc09432781981e3413ee2170ac493c9f2b728" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/ea2943e8b2d6534c0e6c7b54ed08e6f05fb17bc6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f097ee9e07f54405fe23ad61d09b2133b4bf69d3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fc16ba1fd31884bcdcb2f5bfe12db326d94ffcca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff08b12eea19fd0d20dcb9bdebc5e7c9ad46a060" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/lombok.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RanAdvHelper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RanAdvHelper.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/j3d-org-src-1.1.0/make/manifest/all.mf" beforeDir="false" afterPath="$PROJECT_DIR$/lib/j3d-org-src-1.1.0/make/manifest/all.mf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RanAdvHelper.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LegacyOfTyrant.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/META-INF/RanAdvHelper.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/Battle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/Battle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/visibility/VisibilityCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/visibility/VisibilityCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapMover.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/SpritesDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/SpritesDrawer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawCalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawCalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/IsoViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoMap/IsoMapBorderHoverController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoMap/IsoMapClickController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoMap/IsoMapHoverController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoMap/IsoMapKeyController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoMap/IsoMapKeyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoPanel/ItemClickController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoPanel/MinimapController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoPanel/NextTurnButtonController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoPanel/Panel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/controller/isoView/isoPanel/PanelController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/heigthGeneration/OpenSimplexNoise.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/heigthGeneration/OpenSimplexNoiseTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/AStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/AStarOctileHeuristic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/AStarStaticMemory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/AcceleratedAStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/Anya.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/AnyaState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/BasicThetaStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/BreadthFirstSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/JumpPointSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/LazyThetaStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/PathFindingAlgorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/RecursiveThetaStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/VisibilityGraphAlgorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya/Fraction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya/FractionTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/Anya16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaExpansionPolicy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaHeuristic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaInterval.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaSearch$SearchNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaVertex$CellDirections.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaVertex$VertexDirections.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/AnyaVertex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/ArrayListSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/BaseEdge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/BaseVertex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/BitpackedGrid$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/BitpackedGrid.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/EuclideanDistanceHeuristic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/ExpansionPolicy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/GridPosition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/Heuristic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/IntervalProjection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/MBRunnable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/anya16/Path.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/bst/AVLNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/bst/AVLTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/bst/AVLTreeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/bst/BinarySearchTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/bst/BinaryTree$TreeIterator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/bst/BinaryTree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/bst/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/datatypes/Memory$Context.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/datatypes/Memory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/datatypes/Point.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/datatypes/SnapshotItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/jgrapht/FibonacciHeap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/jgrapht/FibonacciHeapNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/priorityqueue/FastVariableSizeIndirectHeap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/priorityqueue/IndirectHeap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/priorityqueue/IndirectHeapTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/priorityqueue/ReusableIndirectHeap$Context.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/priorityqueue/ReusableIndirectHeap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/ConvexHullRPSScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/GridPolygonGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/GridRPSPolygonTracer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/RPSEdgeHeap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/RPSScanner$Edge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/RPSScanner$Vertex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/rotationalplanesweep/RPSScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullHeuristic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullSplitGenerator$ConvexHullBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sg16/ConvexHullSplitGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sg16/SG16Algorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sg16/SG16VisibilityGraph$ConvexHull.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sg16/SG16VisibilityGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraphAlgorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/EdgeNLevelSparseVisibilityGraphAlgorithmFibHeap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/LOSInterval.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/LOSIntervalDouble.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/LineOfSightScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/LineOfSightScannerDouble.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/SVGNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraphAlgorithm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/SparseVisibilityGraphAlgorithmFibHeap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/VGNode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/VisibilityGraphAlgorithmOptimised.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/sparsevgs/VisibilityGraphOptimised.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/strictthetastar/RecursiveStrictThetaStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/strictthetastar/StrictThetaStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/visibilitygraph/BFSVisibilityGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/visibilitygraph/Edge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/algorithms/visibilitygraph/VisibilityGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/DrawCanvas.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/Drawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/EditorUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/EditorUI$PathComputeMode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/EditorUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridGraphDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridLineDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridLineSet$FractionLine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridLineSet$Line.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridLineSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridObjects.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridPointDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridPointSet$ColourPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/GridPointSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/KeyToggler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/VariableSizePointDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/VisualiserKeyboardControls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/draw/VisualiserMouseControls.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/grid/BlockedIslandSearch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/grid/GridAndGoals.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/grid/GridGraph.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/grid/ReachableNodes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/grid/ReachableNodesFast.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/grid/StartGoalPoints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/AlgoFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/AlgoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/AnyAnglePathfinding.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/Experiment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/GridGraphVisualiser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/TestFunction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/TestFunctionData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/TestResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/TextOutputVisualisation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/Visualisation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/analysis/ExplorableRegionAnalysis.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/analysis/MazeAnalyser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/analysis/MazeAnalysis$Options.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/analysis/MazeAnalysis.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/analysis/ProblemAnalysis.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/analysis/TwoPoint.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/AffineMapTransformation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/AffineTransform.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/AutomataGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/DefaultGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/GraphInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/MazeMapGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/TiledMapGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/graphgeneration/UpscaledMapGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/mazes/MazeAndTestCases.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/mazes/StoredTestMazes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/testgen/PathLengthClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/testgen/StandardMazes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/testgen/StartEndPointData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/testgen/Stringifier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/testgen/TestDataGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/testgen/TestDataLibrary$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/testgen/TestDataLibrary.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/utility/TimeCounter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/main/utility/Utility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/myTests/Example.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/uiandio/BenchmarkGraphImporter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/uiandio/BenchmarkGraphSets.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/uiandio/CloseOnExitWindowListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/uiandio/FileIO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/uiandio/GraphExporter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/uiandio/GraphExporterPretty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/downloaded/pathfinding/uiandio/GraphImporter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/CalcHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/ColorHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/DrawHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/GeomerticHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/MouseHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/PolygonsHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/RandomHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/SortHelper$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/SortHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/helpers/my/StringHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/main/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/Battle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/BattleInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/EventType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/IsoBattleLoop.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/TurnModeActivator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/TurnsTracker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/ActionQueuer$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/ActionQueuer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/ItemHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackActioner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackCalculator$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/AttackResultType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/attack/BodyPart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/Char2CharMover.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/Char2ObjectMover.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharMover.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/CharTurner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/MoveCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/PathCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/movement/PathFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/ChestActioner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/DoorActioner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/actions/objects/ObjectActioner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/ai/AIActioner$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/ai/AIActioner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/ai/EnemyChooser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/ai/EnemyFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharState$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/Character.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharacterClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharacterGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/CharacterType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/Items.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/PrimaryAttributes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/SecondaryAttributes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/Stats.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/character/StatsCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/CharItemsGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/ItemImagesLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/ItemWithSprite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/ItemsCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/ItemsGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Amulet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Armor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Belt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/BodyArmor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Boots.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Gloves.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Helmet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Ring.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/armor/Shield.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/weapon/Weapon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/items/weapon/WeaponGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/GridGraphCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/Map.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapPiece.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapType$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/MapType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/Building.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/BuildingGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/Chest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/ChestFiller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/Door.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/Furniture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/FurnitureFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/FurnitureType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/Wall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/WallType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/buildings/Window.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/heights/HeightGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/heights/MapHeightType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/heights/Peak.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/lights/Light.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/lights/LightGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/ItemMapObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/MapObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/MapObjectType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/mapObjects/MapObjectsGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/roads/RoadGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/terrains/Terrain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/terrains/TerrainGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/visibility/VisibilityCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/visibility/VisibilityChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/water/RiverGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/model/map/water/WaterGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/test/AttackCalculatorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/IsoViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/LabelsDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapMover.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/MapPieceInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/PathDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/SpritesDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharDrawCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharPose.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharSprite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/characters/CharsDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/clickMenus/ClickMenuButton$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/clickMenus/ClickMenuButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/clickMenus/ClickMenusDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapImageGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/map/MapPieceDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/mapObjects/ItemObjectsDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/mapObjects/MapObjectController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/mapObjects/MapObjectDrawer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/mapObjects/MapObjectSprite.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/CharPanelViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/CharParameter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/InventoryRectanglesViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/MinimapViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/NextTurnButtonViewer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RanAdvHelper/viewIso/panel/PanelViewer.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/BattleInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BattleInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/map/MapGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/map/MapGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/character/Stats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/character/Stats.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/map/visibility/VisibilityCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/map/visibility/VisibilityCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/MapMover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/MapMover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/SpritesDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawCalculator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/viewIso/map/MapDrawer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,6 +363,20 @@
     <SUITE FILE_PATH="coverage/RanAdvHelper$App.coverage" NAME="App Coverage Results" MODIFIED="1541712850115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>main.*</FILTER>
     </SUITE>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="RanAdvHelper" />
@@ -76,7 +417,12 @@
     </entry>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="SearchEverywhereHistoryKey" value="system.out&#9;null&#9;null&#10;setspeed&#9;PSI&#9;JAVA://model.character.Character#setSpeed&#10;new character&#9;PSI&#9;JAVA://controller.NewCharPaneController#newCharacter" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -84,18 +430,18 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kkbots-eshop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/lombok.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15527344" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -152,7 +498,7 @@
     </configuration>
     <configuration name="App" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.App" />
-      <module name="RanAdvHelper" />
+      <module name="LegacyOfTyrant" />
       <option name="VM_PARAMETERS" value="-Dprism.maxvram=2G" />
       <extension name="coverage">
         <pattern>
@@ -166,7 +512,7 @@
     </configuration>
     <configuration name="DoorActioner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.actions.objects.DoorActioner" />
-      <module name="RanAdvHelper" />
+      <module name="LegacyOfTyrant" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -180,7 +526,7 @@
     </configuration>
     <configuration name="GeomerticHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="helpers.my.GeomerticHelper" />
-      <module name="RanAdvHelper" />
+      <module name="LegacyOfTyrant" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -194,7 +540,7 @@
     </configuration>
     <configuration name="ItemHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.actions.ItemHandler" />
-      <module name="RanAdvHelper" />
+      <module name="LegacyOfTyrant" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -208,7 +554,7 @@
     </configuration>
     <configuration name="ItemsGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.items.ItemsGenerator" />
-      <module name="RanAdvHelper" />
+      <module name="LegacyOfTyrant" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -222,7 +568,7 @@
     </configuration>
     <configuration name="PolygonsHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="helpers.my.PolygonsHelper" />
-      <module name="RanAdvHelper" />
+      <module name="LegacyOfTyrant" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -295,7 +641,15 @@
       <updated>1534661315720</updated>
       <workItem from="1558175313463" duration="404000" />
       <workItem from="1579424575077" duration="1142000" />
-      <workItem from="1579429251915" duration="10900000" />
+      <workItem from="1579429251915" duration="11746000" />
+      <workItem from="1579510721603" duration="610000" />
+      <workItem from="1579810305994" duration="2431000" />
+      <workItem from="1579856100671" duration="351000" />
+      <workItem from="1579856471089" duration="271000" />
+      <workItem from="1579947421073" duration="599000" />
+      <workItem from="1580024030685" duration="2005000" />
+      <workItem from="1580118138919" duration="641000" />
+      <workItem from="1589271896466" duration="310000" />
     </task>
     <task id="LOCAL-00001" summary="inProgress: mapGeneration">
       <created>1534882230095</created>
@@ -304,7 +658,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534882230095</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor">
+      <created>1579468820956</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579468820956</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -334,7 +695,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="inProgress: mapGeneration" />
-    <option name="LAST_COMMIT_MESSAGE" value="inProgress: mapGeneration" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

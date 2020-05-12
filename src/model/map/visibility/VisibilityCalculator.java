@@ -17,6 +17,7 @@ import java.util.List;
 public class VisibilityCalculator {
 
     private static final int MIN_VISIBILITY_RADIUS_DAY = 50;
+    public static final int ANGLE_RESOLUTION = 1;
     private static boolean change = true;
 
     public static void updateViews() {
@@ -46,7 +47,7 @@ public class VisibilityCalculator {
         int viewAngleRange = 90 + character.getStats().getEye(); // to add helmet
         int viewAngleBase = (int) ((1 - dir) * 360 / 8);
 
-        for (int angle = viewAngleBase - viewAngleRange/2; angle < viewAngleBase + viewAngleRange/2; angle += 2) {
+        for (int angle = viewAngleBase - viewAngleRange/2; angle < viewAngleBase + viewAngleRange/2; angle += ANGLE_RESOLUTION) {
             int viewDist = calcViewDist(viewDistMax, Math.abs(angle - viewAngleBase)/(double)viewAngleRange);
             Point2D viewPoint = calcViewPoint(pos, viewDist, angle);
             viewCoords.add(viewPoint.getX());

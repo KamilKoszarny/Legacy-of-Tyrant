@@ -1,0 +1,61 @@
+
+\squid:S2184b"ECast one of the operands of this subtraction operation to a "double".(Ù½¹¡
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÒÁ¹³ÿÿÿÿÿ
+Csquid:S1659!"-Declare "topBorderCanvas" on a separate line.(ÃÎçN
+Esquid:S1659!"/Declare "rightBorderCanvas" on a separate line.(ÃÎçN
+Fsquid:S1659!"0Declare "bottomBorderCanvas" on a separate line.(ÃÎçN
+Dsquid:S1659!".Declare "leftBorderCanvas" on a separate line.(ÃÎçN
+Isquid:S1659""2Declare "topRightBorderCanvas" on a separate line.(÷¾É
+Lsquid:S1659""5Declare "bottomRightBorderCanvas" on a separate line.(÷¾É
+Ksquid:S1659""4Declare "bottomLeftBorderCanvas" on a separate line.(÷¾É
+Hsquid:S1659""1Declare "topLeftBorderCanvas" on a separate line.(÷¾É
+Jsquid:S1659#".Declare "minimapFogCanvas" on a separate line.(®ŠúŒÿÿÿÿÿ
+Psquid:S1659("4Declare "charPictBackgroundRect" on a separate line.(‘â¸ûÿÿÿÿ
+Csquid:S1659*"'Declare "typeLabel" on a separate line.(ß»µËüÿÿÿÿ
+Hsquid:S1659*",Declare "charClassLabel" on a separate line.(ß»µËüÿÿÿÿ
+Dsquid:S1659,"-Declare "manaProgressBar" on a separate line.(óÌìŞ
+Esquid:S1659,".Declare "vigorProgressBar" on a separate line.(óÌìŞ
+Csquid:S1659."'Declare "manaLabel" on a separate line.(¥¦Ş†üÿÿÿÿ
+Dsquid:S1659."(Declare "vigorLabel" on a separate line.(¥¦Ş†üÿÿÿÿ
+Gsquid:S16590"+Declare "strengthLabel" on a separate line.(£óßáûÿÿÿÿ
+Isquid:S16590"-Declare "durabilityLabel" on a separate line.(£óßáûÿÿÿÿ
+Fsquid:S16590"*Declare "staminaLabel" on a separate line.(£óßáûÿÿÿÿ
+Bsquid:S16591",Declare "dexterityLabel" on a separate line.(¼Ö™N
+<squid:S16591"&Declare "eyeLabel" on a separate line.(¼Ö™N
+<squid:S16591"&Declare "armLabel" on a separate line.(¼Ö™N
+@squid:S16591"*Declare "agilityLabel" on a separate line.(¼Ö™N
+Fsquid:S16592"/Declare "intelligenceLabel" on a separate line.(€êîü
+Csquid:S16592",Declare "knowledgeLabel" on a separate line.(€êîü
+?squid:S16592"(Declare "focusLabel" on a separate line.(€êîü
+@squid:S16592")Declare "spiritLabel" on a separate line.(€êîü
+?squid:S16594"(Declare "weaponRect" on a separate line.(”÷…¾
+>squid:S16594"'Declare "armorRect" on a separate line.(”÷…¾
+?squid:S16594"(Declare "shieldRect" on a separate line.(”÷…¾
+?squid:S16594"(Declare "glovesRect" on a separate line.(”÷…¾
+>squid:S16594"'Declare "bootsRect" on a separate line.(”÷…¾
+Dsquid:S16595"(Declare "amuletRect" on a separate line.(Ñ½Úêúÿÿÿÿ
+Csquid:S16595"'Declare "ring1Rect" on a separate line.(Ñ½Úêúÿÿÿÿ
+Bsquid:S16595"&Declare "beltRect" on a separate line.(Ñ½Úêúÿÿÿÿ
+Csquid:S16595"'Declare "ring2Rect" on a separate line.(Ñ½Úêúÿÿÿÿ
+Isquid:S16595"-Declare "spareWeaponRect" on a separate line.(Ñ½Úêúÿÿÿÿ
+Isquid:S16595"-Declare "spareShieldRect" on a separate line.(Ñ½Úêúÿÿÿÿ
+@squid:S1659;")Declare "dmgMinLabel" on a separate line.(ìÓ‡ 
+@squid:S1659;")Declare "dmgMaxLabel" on a separate line.(ìÓ‡ 
+Bsquid:S1659;"+Declare "accuracyLabel" on a separate line.(ìÓ‡ 
+Esquid:S1659;".Declare "attackSpeedLabel" on a separate line.(ìÓ‡ 
+?squid:S1659;"(Declare "rangeLabel" on a separate line.(ìÓ‡ 
+Bsquid:S1659;"+Declare "speedMaxLabel" on a separate line.(ìÓ‡ 
+Csquid:S1659<",Declare "avoidanceLabel" on a separate line.(áÌ¸™
+?squid:S1659<"(Declare "blockLabel" on a separate line.(áÌ¸™
+Csquid:S1659<",Declare "bodyArmorLabel" on a separate line.(áÌ¸™
+Csquid:S1659<",Declare "headArmorLabel" on a separate line.(áÌ¸™
+Csquid:S1659<",Declare "armsArmorLabel" on a separate line.(áÌ¸™
+Csquid:S1659<",Declare "legsArmorLabel" on a separate line.(áÌ¸™
+Msquid:S1659="1Declare "fireResistanceLabel" on a separate line.(Ûˆıîıÿÿÿÿ
+Nsquid:S1659="2Declare "waterResistanceLabel" on a separate line.(Ûˆıîıÿÿÿÿ
+Msquid:S1659="1Declare "windResistanceLabel" on a separate line.(Ûˆıîıÿÿÿÿ
+Nsquid:S1659="2Declare "earthResistanceLabel" on a separate line.(Ûˆıîıÿÿÿÿ
+Nsquid:S1659="2Declare "magicResistanceLabel" on a separate line.(Ûˆıîıÿÿÿÿ
+Ksquid:S1659>"/Declare "actionPointsLabel" on a separate line.(—„õ÷ıÿÿÿÿ
+Hsquid:S1659@",Declare "minimapPosRect" on a separate line.(†Ö„äùÿÿÿÿ
+Fsquid:S2440J"/Remove this instantiation of "PanelController".(“›’

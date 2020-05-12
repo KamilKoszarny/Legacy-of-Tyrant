@@ -1,0 +1,24 @@
+
+;squid:S1640"Convert this Map to an EnumMap.(ð»Øãþÿÿÿÿ
+6squid:S1640"Convert this Map to an EnumMap.(†œŽ…
+Isquid:S1199L"-Extract this nested code block into a method.(Í‡¬‰úÿÿÿÿ
+Isquid:S1199O"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ
+Isquid:S1199R"-Extract this nested code block into a method.(ðÁ–Óûÿÿÿÿ
+Isquid:S1199U"-Extract this nested code block into a method.(úÀôãùÿÿÿÿ
+:squid:S1659"#Declare "sizeY" on a separate line.(•»Ž¦
+9squid:S1659""Declare "posX" on a separate line.(•»Ž¦
+9squid:S1659""Declare "posY" on a separate line.(•»Ž¦
+=squid:S1170"!Make this final field static too.(÷»Ã®üÿÿÿÿ
+usquid:S00116"XRename this field "MIN_ROOM_SIZE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷»Ã®üÿÿÿÿ
+7squid:S1659B" Declare "ys" on a separate line.(Ãÿ“§
+7squid:S1659B" Declare "xl" on a separate line.(Ãÿ“§
+7squid:S1659B" Declare "yl" on a separate line.(Ãÿ“§
+5squid:S2119A"Save and re-use this "Random".(¡Å”¦
+U"squid:SwitchLastCaseIsDefaultCheckK""Add a default case to this switch.(Š¼üáÿÿÿÿÿ
+jsquid:S3776Â"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(«åÌ¬
+osquid:S3776Ù"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(„£§°üÿÿÿÿ
+^squid:S1126›"AReplace this if-then-else statement by a single return statement.(¨Š…ƒøÿÿÿÿ
+^squid:S1126¡"AReplace this if-then-else statement by a single return statement.(ÞÎ¶êúÿÿÿÿ
+Csquid:S1659¨",Declare "closestBesideP" on a separate line.(Ùú“
+Csquid:S1659¹",Declare "closestBesideP" on a separate line.(Ùú“
+_squid:HiddenFieldCheck‘"<Rename "inPoints" which hides the field declared at line 16.(êËØþ

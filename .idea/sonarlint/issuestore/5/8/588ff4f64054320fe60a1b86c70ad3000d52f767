@@ -1,0 +1,14 @@
+
+‡ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.( æƒ«ıÿÿÿÿ
+Dsquid:S1066"/Merge this if statement with the enclosing one.(Éñåƒ
+Ssquid:S3252">Use static access with "javafx.scene.shape.Shape" for "union".(µ‰Ëœ
+Csquid:S5413")Verify that "remove()" is used correctly.(¬–ŠËşÿÿÿÿ
+Vsquid:S3252"AUse static access with "javafx.scene.shape.Shape" for "subtract".(øŸÈ²
+Nsquid:S1854"9Remove this useless assignment to local variable "holes".(”Ú§Ä
+Nsquid:S1854":Remove this useless assignment to local variable "result".(Ï®«:
+Ssquid:S3252">Use static access with "javafx.scene.shape.Shape" for "union".(™™¡æ
+[squid:S3252"AUse static access with "javafx.scene.shape.Shape" for "subtract".(²×Ïşÿÿÿÿ
+>squid:S5413")Verify that "remove()" is used correctly.(åæÏ 
+Bsquid:S1659"(Declare "AREA_LIMIT" on a separate line.(º²åøÿÿÿÿ
+`squid:S1764"KCorrect one of the identical sub-expressions on both sides of operator "&&"(¤Ö
+?squid:S1481"*Remove this unused "holes" local variable.(”Ú§Ä

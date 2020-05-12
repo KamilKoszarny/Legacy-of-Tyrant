@@ -1,0 +1,21 @@
+
+esquid:S1192"KDefine a constant instead of duplicating this literal "greatsword" 4 times.(½µ†’ÿÿÿÿÿ
+[squid:S1192"FDefine a constant instead of duplicating this literal "staff" 8 times.(¨½ï‡
+dsquid:S1192"JDefine a constant instead of duplicating this literal "longsword" 5 times.(ÄÞŸ‹þÿÿÿÿ
+asquid:S1192"GDefine a constant instead of duplicating this literal "dagger" 4 times.(¨ö»Íÿÿÿÿÿ
+gsquid:S1192"MDefine a constant instead of duplicating this literal "infantry_axe" 3 times.(å£à€ÿÿÿÿÿ
+`squid:S1192"KDefine a constant instead of duplicating this literal "shortsword" 6 times.(ýÓÐ•
+^squid:S1192"IDefine a constant instead of duplicating this literal "hand_axe" 3 times.(ÍŒ‰Œ
+`squid:S1192"KDefine a constant instead of duplicating this literal "battle_axe" 3 times.(·‘¾¥
+Wsquid:S00107"AConstructor has 8 parameters, which is greater than 7 authorized.(Îø¿ˆ
+Vsquid:S00107"AConstructor has 9 parameters, which is greater than 7 authorized.(›ÌÖj
+>squid:S1659"$Declare "dmgMax" on a separate line.(´¹çõÿÿÿÿÿ
+Fsquid:S1659",Declare "attackDuration" on a separate line.(´¹çõÿÿÿÿÿ
+=squid:S1659"#Declare "range" on a separate line.(´¹çõÿÿÿÿÿ
+:squid:S1659"&Declare "accuracy" on a separate line.(§ðóc
+7squid:S1659"#Declare "parry" on a separate line.(§ðóc
+<squid:S1659"(Declare "durability" on a separate line.(§ðóc
+Bsquid:S1659"(Declare "spriteName" on a separate line.(…¨æäúÿÿÿÿ
+Gsquid:S1135"2Complete the task associated to this TODO comment.(› Âº
+Lsquid:S1135"2Complete the task associated to this TODO comment.(¡÷á‚ýÿÿÿÿ
+Gsquid:S1135"2Complete the task associated to this TODO comment.(©°”ã

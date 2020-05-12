@@ -1,0 +1,4 @@
+
+usquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÖéÆ‘øÿÿÿÿ
+Tsquid:S1118":Add a private constructor to hide the implicit public one.(ÐÃŽ¡üÿÿÿÿ
+\squid:UselessImportCheck":Remove this unused import 'model.map.buildings.Furniture'.(®¸×¼

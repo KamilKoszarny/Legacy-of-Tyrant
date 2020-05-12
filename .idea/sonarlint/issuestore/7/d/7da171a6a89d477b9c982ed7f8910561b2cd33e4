@@ -1,0 +1,5 @@
+
+?squid:S3010"#Remove this assignment of "canvas".(À¼±Èùÿÿÿÿ
+Dsquid:S2440"-Remove this instantiation of "SpritesDrawer".(êĞÎÁ
+9squid:S1118"Hide this public constructor.(Æ­ˆœıÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ŞÅÒû

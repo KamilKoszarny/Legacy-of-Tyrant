@@ -1,0 +1,6 @@
+
+`squid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(İµß¶
+Osquid:S1118":Add a private constructor to hide the implicit public one.(ıı‡
+R
+squid:S106"9Replace this use of System.out or System.err by a logger.(Õè‚Ôıÿÿÿÿ
+…"squid:SwitchLastCaseIsDefaultCheck"YComplete cases by adding the missing enum constants or add a default case to this switch.(İµß¶

@@ -1,0 +1,24 @@
+
+ˆ"squid:ClassVariableVisibilityCheck"WMake currentLoad a static final constant or non-public and provide accessors if needed.(¦ªŸøÿÿÿÿ
+~"squid:ClassVariableVisibilityCheck"RMake dmgMin a static final constant or non-public and provide accessors if needed.(ïÂš
+†"squid:ClassVariableVisibilityCheck"UMake avoidance a static final constant or non-public and provide accessors if needed.(ÅÿÓÛüÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"UMake legsArmor a static final constant or non-public and provide accessors if needed.(ğŸÊ
+"squid:ClassVariableVisibilityCheck"UMake hitPoints a static final constant or non-public and provide accessors if needed.(‹Í¯‘
+†"squid:ClassVariableVisibilityCheck"UMake armsArmor a static final constant or non-public and provide accessors if needed.(µÓÜ¡ûÿÿÿÿ
+‡"squid:ClassVariableVisibilityCheck"[Make magicResistance a static final constant or non-public and provide accessors if needed.(ë‹¬õ
+ƒ"squid:ClassVariableVisibilityCheck"RMake msLeft a static final constant or non-public and provide accessors if needed.(¯æçÇÿÿÿÿÿ
+‚"squid:ClassVariableVisibilityCheck"QMake vigor a static final constant or non-public and provide accessors if needed.(©Ó’ıÿÿÿÿ
+}"squid:ClassVariableVisibilityCheck"RMake dmgMax a static final constant or non-public and provide accessors if needed.(Æß•{
+|"squid:ClassVariableVisibilityCheck"PMake mana a static final constant or non-public and provide accessors if needed.(£ÈÏ
+ˆ"squid:ClassVariableVisibilityCheck"WMake attackSpeed a static final constant or non-public and provide accessors if needed.(ìñÂúÿÿÿÿ
+"squid:ClassVariableVisibilityCheck"PMake load a static final constant or non-public and provide accessors if needed.(×æ’ºûÿÿÿÿ
+ˆ"squid:ClassVariableVisibilityCheck"WMake currentMana a static final constant or non-public and provide accessors if needed.(şÇŠÊÿÿÿÿÿ
+…"squid:ClassVariableVisibilityCheck"TMake accuracy a static final constant or non-public and provide accessors if needed.(ÀÓ®Ëıÿÿÿÿ
+‡"squid:ClassVariableVisibilityCheck"\Make currentHitPoints a static final constant or non-public and provide accessors if needed.(¥«€
+‚"squid:ClassVariableVisibilityCheck"QMake block a static final constant or non-public and provide accessors if needed.(ñ„½ùÿÿÿÿ
+†"squid:ClassVariableVisibilityCheck"UMake bodyArmor a static final constant or non-public and provide accessors if needed.(²¿ş¢ùÿÿÿÿ
+}"squid:ClassVariableVisibilityCheck"QMake range a static final constant or non-public and provide accessors if needed.(¯ØÏ•
+†"squid:ClassVariableVisibilityCheck"UMake headArmor a static final constant or non-public and provide accessors if needed.(¼öµŞşÿÿÿÿ
+}"squid:ClassVariableVisibilityCheck"RMake reflex a static final constant or non-public and provide accessors if needed.(¤á‹
+}"squid:ClassVariableVisibilityCheck"QMake speed a static final constant or non-public and provide accessors if needed.(Úî»†
+„"squid:ClassVariableVisibilityCheck"XMake currentVigor a static final constant or non-public and provide accessors if needed.( öÀ
