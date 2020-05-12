@@ -6,4 +6,5 @@ public interface Item {
 
     String getName();
     Image getImage();
+    int getWeight();
 }

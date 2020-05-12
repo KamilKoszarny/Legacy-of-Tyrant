@@ -6,8 +6,7 @@ import model.items.weapon.Weapon;
 import viewIso.characters.CharsDrawer;
 
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Items {
 
@@ -136,5 +135,13 @@ public class Items {
 
     public Map<String, BufferedImage> getItemsSprites() {
         return itemsSprites;
+    }
+
+    public List<Item> listAllItems() {
+        List<Item> items = new ArrayList<>();
+        items.addAll(Arrays.asList(weapons));
+        items.addAll(Arrays.asList(armor));
+        items.addAll(inventory.keySet());
+        return items;
     }
 }

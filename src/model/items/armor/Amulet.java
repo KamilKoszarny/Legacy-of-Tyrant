@@ -26,4 +26,9 @@ public enum Amulet implements Armor{
     public String getName() {
         return name;
     }
+
+    @Override
+    public int getWeight() {
+        return 0;
+    }
 }

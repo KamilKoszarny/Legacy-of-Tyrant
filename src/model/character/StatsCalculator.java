@@ -98,8 +98,7 @@ public class StatsCalculator {
     }
 
     private static void calcLoad(Stats stats) {
-        stats.setLoadMax(stats.getStrength());
-        stats.setLoad(stats.getStrength() / 2);
+        stats.setLoadMax((int) (25 + stats.getStrength() * 0.75));
     }
 
     private static void calcSpeed(Stats stats) {

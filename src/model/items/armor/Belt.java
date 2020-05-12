@@ -5,18 +5,19 @@ import model.items.ItemImagesLoader;
 
 public enum Belt implements Armor{
 
-    NOTHING(0, 0),
-    SASH(0, 3),
-    LEATHER_BELT(1, 6),
-    WIDE_BELT(1, 8),
-    PLATE_BELT(2, 14);
+    NOTHING(        0, 0, 0),
+    SASH(           0, 3, 0),
+    LEATHER_BELT(   1, 6, 1),
+    WIDE_BELT(      1, 8, 2),
+    PLATE_BELT(     2, 14, 3);
 
-    private int armor, durability;
+    private int armor, weight, durability;
     private Image image;
     private String name;
 
-    Belt(int armor, int durability) {
+    Belt(int armor, int durability, int weight) {
         this.armor = armor;
+        this.weight = weight;
         this.durability = durability;
 
         image = ItemImagesLoader.loadItemImage("/items/belts/" + this.name() + ".png");
@@ -37,5 +38,10 @@ public enum Belt implements Armor{
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getWeight() {
+        return weight;
     }
 }

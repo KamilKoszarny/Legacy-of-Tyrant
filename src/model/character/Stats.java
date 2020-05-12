@@ -3,6 +3,9 @@ package model.character;
 import lombok.Data;
 import model.Battle;
 import model.TurnsTracker;
+import model.items.Item;
+
+import java.util.List;
 
 @Data
 public class Stats {
@@ -123,5 +126,10 @@ public class Stats {
         actionPointsMax -= cost;
         if (actionPointsMax < 1)
             actionPointsMax = 1;
+    }
+
+    public int getLoad() {
+        List<Item> charItems = character.getItems().listAllItems();
+        return charItems.stream().mapToInt(Item::getWeight).sum();
     }
 }
