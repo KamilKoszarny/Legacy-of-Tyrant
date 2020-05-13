@@ -33,12 +33,12 @@ public class ItemHandler {
     public static void moveItem(Character character, int[] clickedInventorySlot, Point clickedItemPoint) {
         if (heldItem == null) {
             catchItem(character, clickedInventorySlot);
+            setHeldPoint(clickedItemPoint);
         } else {
-            putItem(character, clickedInventorySlot);
+            putItem(character, clickedInventorySlot, clickedItemPoint);
         }
 
         StatsCalculator.calcStats(character);
-        setHeldPoint(clickedItemPoint);
     }
 
     private static void catchItem(Character character, int[] clickedInventorySlot) {
@@ -75,25 +75,23 @@ public class ItemHandler {
         return catchItem;
     }
 
-    private static void putItem(Character character, int[] clickedInventorySlot) {
+    private static void putItem(Character character, int[] clickedInventorySlot, Point underItemPoint) {
         if (equipmentClicked(clickedInventorySlot)) {
             Item underItem = character.getItems().getEquipmentPart(clickedInventorySlot[1]);
-            if (canBeDressed(underItem)) {
+            if (heldCanBePutHere(character, clickedInventorySlot, underItem)) {
                 character.getItems().setEquipmentPart(heldItem, clickedInventorySlot[1], true);
-                if (!underItem.getName().equals("NOTHING"))
-                    heldItem = underItem;
-                else
-                    heldItem = null;
+                heldItem = underItem.getName().equals("NOTHING") ? null : underItem;
+                setHeldPoint(underItemPoint);
             }
         } else if (chestClicked(clickedInventorySlot)) {
             clickedInventorySlot[0] -= 100;
-            putToInventory(ChestActioner.getChest().getInventory(), clickedInventorySlot, ChestActioner.getInventoryRect());
+            putToInventory(ChestActioner.getChest().getInventory(), clickedInventorySlot, ChestActioner.getInventoryRect(), underItemPoint);
         } else if (inventoryClicked(clickedInventorySlot)){
-            putToInventory(character.getItems().getInventory(), clickedInventorySlot, CharPanelViewer.getInventoryRect());
+            putToInventory(character.getItems().getInventory(), clickedInventorySlot, CharPanelViewer.getInventoryRect(), underItemPoint);
         }
     }
 
-    private static void putToInventory(Map<Item, int[]> inventory, int[] clickedInventorySlot, Rectangle inventoryRectangle) {
+    private static void putToInventory(Map<Item, int[]> inventory, int[] clickedInventorySlot, Rectangle inventoryRectangle, Point underItemPoint) {
         recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
         Set<Item> underItems = underInventoryItems(inventory, heldItem, clickedInventorySlot);
         if (underItems == null || underItems.size() > 1) {
@@ -108,9 +106,9 @@ public class ItemHandler {
         //so: underItems.size() == 1
         inventory.put(heldItem, clickedInventorySlot);
         heldItem = underItems.iterator().next();
-//            recalcInventorySlotByHeldPoint(heldPoint, clickedInventorySlot);
         inventory.remove(heldItem);
         InventoryRectanglesViewer.refreshInventory(inventory, inventoryRectangle);
+        setHeldPoint(underItemPoint);
     }
 
     public static void tryGiveItem(Character giver, Character taker, Item item) {
@@ -119,7 +117,7 @@ public class ItemHandler {
         }
     }
 
-    public static boolean giveItem(Character giver, Character taker, Item item) {
+    private static boolean giveItem(Character giver, Character taker, Item item) {
         boolean given = true;
         if (item instanceof Weapon) {
             if (taker.getItems().getWeapon().equals(Weapon.NOTHING) &&
@@ -194,8 +192,10 @@ public class ItemHandler {
         return clickedInventorySlot != null && clickedInventorySlot[0] == -10;
     }
 
-    private static boolean canBeDressed(Item underItem) {
-        return heldItem.getClass().equals(underItem.getClass()) && !underItem.equals(Shield.BLOCKED);
+    private static boolean heldCanBePutHere(Character character, int[] clickedInventorySlot, Item underItem) {
+        return heldItem.getClass().equals(underItem.getClass()) && !underItem.equals(Shield.BLOCKED)
+                && (clickedInventorySlot[1] != 0 || !heldItem.getClass().equals(Weapon.class) || ((Weapon) heldItem).getHands() == 1 || character.getItems().getShield().equals(Shield.NOTHING) || character.getItems().getShield().equals(Shield.BLOCKED))
+                && (clickedInventorySlot[1] != 1 || !heldItem.getClass().equals(Weapon.class) || ((Weapon) heldItem).getHands() == 1 || character.getItems().getSpareShield().equals(Shield.NOTHING) || character.getItems().getSpareShield().equals(Shield.BLOCKED));
     }
 
     private static boolean inventoryClicked(int[] clickedInventorySlot) {
