@@ -1,10 +1,11 @@
 package viewIso.mapObjects;
 
+import helpers.my.DrawHelper;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
-import model.items.ItemWithSprite;
 import model.items.ItemImagesLoader;
+import model.items.ItemWithSprite;
 import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
 import viewIso.characters.CharPose;
@@ -20,11 +21,11 @@ public class MapObjectSprite {
     private static int visiblePixels, visiblePixelsMax, bestVisibleDirection;
 
     private Image image, cutImage;
-    public static final double Y_BASE_RATIO = .85;
+    private static final double Y_BASE_RATIO = .85;
     private Point offset = new Point();
     private MapObject object;
 
-    public MapObjectSprite(MapObject mapObject) {
+    MapObjectSprite(MapObject mapObject) {
         object = mapObject;
         findImage(mapObject);
         offset.x = (int) (image.getWidth() / 2);
@@ -33,7 +34,7 @@ public class MapObjectSprite {
 
     private void findImage(MapObject mapObject) {
         if (mapObject instanceof ItemMapObject && ((ItemMapObject) mapObject).getItem() instanceof ItemWithSprite) {
-            cutItemImage(((ItemMapObject) mapObject).getItemWithSprite());
+            makeDroppedItemImage(((ItemMapObject) mapObject).getItemWithSprite());
             return;
         }
         String path = buildPath(mapObject);
@@ -44,8 +45,9 @@ public class MapObjectSprite {
         }
     }
 
-    private void cutItemImage(ItemWithSprite itemWithSprite) {
-        BufferedImage bufferedImage = ItemImagesLoader.loadSpriteSheetForItemOnly(itemWithSprite);
+    private void makeDroppedItemImage(ItemWithSprite itemWithSprite) {
+        BufferedImage sourceImage = ItemImagesLoader.loadSpriteSheetForItemOnly(itemWithSprite);
+        BufferedImage resultImage;
         int spanX = (int) (CharsDrawer.SPRITES_SPAN.getWidth()/CharsDrawer.SCALING);
         int spanY = (int) (CharsDrawer.SPRITES_SPAN.getHeight()/CharsDrawer.SCALING);
         int offX = (int) (CharsDrawer.SPRITE_OFFSET.getWidth()/CharsDrawer.SCALING);
@@ -56,20 +58,21 @@ public class MapObjectSprite {
         int direction, i = 0;
         do {
             direction = r.nextInt(8);
-            bufferedImage = bufferedImage.getSubimage(
+            resultImage = sourceImage.getSubimage(
                     spanX * CharPose.DEAD.getStartFrame() + offX, spanY * direction + offY, sizeX, sizeY);
-            image = SwingFXUtils.toFXImage(bufferedImage, null);
+            resultImage = DrawHelper.resizeBufferedImage(resultImage, CharsDrawer.SCALING);
+            image = SwingFXUtils.toFXImage(resultImage, null);
             i++;
         }
         while (!checkVisibility(image, direction) && i < VISIBILITY_IMPROVE_TRIES);
 
         if (i == VISIBILITY_IMPROVE_TRIES) {
-            i = 0;
             visiblePixels = visiblePixelsMax = 0;
             direction = bestVisibleDirection;
-            bufferedImage = bufferedImage.getSubimage(
+            resultImage = sourceImage.getSubimage(
                     spanX * CharPose.DEAD.getStartFrame() + offX, spanY * direction + offY, sizeX, sizeY);
-            image = SwingFXUtils.toFXImage(bufferedImage, null);
+            resultImage = DrawHelper.resizeBufferedImage(resultImage, CharsDrawer.SCALING);
+            image = SwingFXUtils.toFXImage(resultImage, null);
         }
     }
 

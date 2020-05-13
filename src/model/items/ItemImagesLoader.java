@@ -14,8 +14,7 @@ import java.util.*;
 public class ItemImagesLoader {
 
 
-    public static final Map<Class, String> SPRITE_FOLDER_NAMES = new HashMap<>();
-//    public static final List<String> SPRITE_FOLDER_NAMES = Arrays.asList("base", "armors", "heads", "hands", "feets", "shields", "weapons");
+    private static final Map<Class, String> SPRITE_FOLDER_NAMES = new LinkedHashMap<>();
 
     static {
         SPRITE_FOLDER_NAMES.put(null, "base");
@@ -25,6 +24,9 @@ public class ItemImagesLoader {
         SPRITE_FOLDER_NAMES.put(Boots.class, "feets");
         SPRITE_FOLDER_NAMES.put(Shield.class, "shields");
         SPRITE_FOLDER_NAMES.put(Weapon.class, "weapons");
+    }
+
+    private ItemImagesLoader() {
     }
 
     public static Image loadItemImage(String path) {
@@ -54,14 +56,9 @@ public class ItemImagesLoader {
             if (itemSprite == null) {
                 itemSprite = loadSpriteSheet(spriteFolderName, sex, getSpriteNameByFolder(spriteFolderName, character));
                 character.getItems().getItemsSprites().put(spriteFolderName, itemSprite);
-
-//                System.out.println(" " + spriteFolderName + ": " + (System.nanoTime() - time) / 1000000. + " ms");
-                time = System.nanoTime();
             }
             itemsSprites.add(itemSprite);
         }
-
-//        System.out.println(" TOTAL item load: " + (System.nanoTime() - startTime)/1000000. + " ms");
 
         return itemsSprites;
     }
