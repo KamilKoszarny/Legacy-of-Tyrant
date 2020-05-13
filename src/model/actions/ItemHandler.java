@@ -18,8 +18,8 @@ import viewIso.panel.CharPanelViewer;
 import viewIso.panel.InventoryRectanglesViewer;
 
 import java.awt.*;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 public class ItemHandler {
 
@@ -164,8 +164,10 @@ public class ItemHandler {
     }
 
     public static void tryDropItem(Character character, Item item, Point mapPoint) {
+        MapPiece mapPiece = Battle.getMap().getPoints().get(mapPoint);
         if (character.getPosition().distance(mapPoint) <= ITEM_DROP_DIST
-                && Battle.getMap().getPoints().get(mapPoint).isWalkable()) {
+                && mapPiece.isWalkable()
+                && mapPiece.getObject() == null) {
             dropItem(item, mapPoint);
         }
     }
@@ -180,7 +182,7 @@ public class ItemHandler {
 
     public static void tryPickupItem(Character character, ItemMapObject itemMapObject, Point mapPoint) {
         Item item = itemMapObject.getItem();
-        if (character.getPosition().distance(mapPoint) <= ITEM_DROP_DIST) {
+        if (character.getPosition().distance(mapPoint) <= ITEM_DROP_DIST && heldItem == null) {
             boolean pickedUp = giveItem(null, character, item);
             if (pickedUp) {
                 MapObjectController.removeObject(itemMapObject);
