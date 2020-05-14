@@ -1,5 +1,15 @@
 package model;
 
+import isoview.IsoViewer;
+import isoview.LabelsDrawer;
+import isoview.MapMover;
+import isoview.MapPieceInfo;
+import isoview.characters.CharsDrawer;
+import isoview.clickmenus.ClickMenuButton;
+import isoview.clickmenus.ClickMenusDrawer;
+import isoview.map.objects.MapObjectController;
+import isoview.map.objects.MapObjectDrawer;
+import isoview.panel.PanelViewer;
 import javafx.animation.AnimationTimer;
 import main.App;
 import model.actions.ActionQueuer;
@@ -18,16 +28,6 @@ import model.map.buildings.Chest;
 import model.map.buildings.Door;
 import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
-import viewIso.IsoViewer;
-import viewIso.LabelsDrawer;
-import viewIso.MapMover;
-import viewIso.MapPieceInfo;
-import viewIso.characters.CharsDrawer;
-import viewIso.clickMenus.ClickMenuButton;
-import viewIso.clickMenus.ClickMenusDrawer;
-import viewIso.mapObjects.MapObjectController;
-import viewIso.mapObjects.MapObjectDrawer;
-import viewIso.panel.PanelViewer;
 
 import java.awt.*;
 

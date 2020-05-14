@@ -1,6 +1,8 @@
 package main;
 
-import controller.isoView.IsoViewController;
+import controller.isoview.IsoViewController;
+import isoview.IsoViewer;
+import isoview.panel.PanelViewer;
 import javafx.application.Application;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -11,15 +13,13 @@ import model.TurnsTracker;
 import model.character.Character;
 import model.map.Map;
 import sun.misc.Unsafe;
-import viewIso.IsoViewer;
-import viewIso.panel.PanelViewer;
 
 import java.lang.reflect.Field;
 import java.util.List;
 
 public class App extends Application {
 
-    public static final boolean FULL_MODE = true; //false: faster initialization
+    public static final boolean FULL_MODE = false; //false: faster initialization
     public static final boolean TURN_MODE_FORCED = false;
     private static final int LOG_TIME_LEVEL = -1; //more: deeper log, -999 for no log
 

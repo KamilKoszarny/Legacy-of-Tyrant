@@ -1,15 +1,22 @@
 package helpers.my;
 
 
+import isoview.map.MapDrawer;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import viewIso.map.MapDrawer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import static java.awt.Transparency.TRANSLUCENT;
+
 public class DrawHelper {
+
+    private DrawHelper() {
+    }
 
     public static void drawPolygonOnCanvas(Canvas canvas, Polygon polygon, boolean fill, boolean relative) {
         int points = polygon.getPoints().size()/2;
@@ -34,19 +41,24 @@ public class DrawHelper {
             gc.strokePolygon(xs, ys, points);
     }
 
-    /**
-     * Resizes an image using a Graphics2D object backed by a BufferedImage.
-     * @param srcImg - source image to scale
-     * @param w - desired width
-     * @param h - desired height
-     * @return - the new resized image
-     */
+    public static void drawAPLabel(Canvas canvas, Point2D relativePoint, Integer ap, int offsetX, int offsetY) {
+        Point2D absolutePoint = new Point2D(
+                relativePoint.getX() + MapDrawer.getZeroScreenPosition().getX(),
+                relativePoint.getY() + MapDrawer.getZeroScreenPosition().getY());
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.WHITE);
+        gc.setStroke(Color.GRAY);
+        gc.setLineWidth(0.5);
+        gc.fillText("AP: " + ap.toString(), absolutePoint.getX() + offsetX, absolutePoint.getY() + offsetY);
+        gc.strokeText("AP: " + ap.toString(), absolutePoint.getX() + offsetX, absolutePoint.getY() + offsetY);
+    }
+
     public static BufferedImage resizeBufferedImage(BufferedImage src, double scale){
         int w = (int) (src.getWidth() * scale);
         int h = (int) (src.getHeight() * scale);
         int finalw = w;
         int finalh = h;
-        double factor = 1.0d;
+        double factor;
         if(src.getWidth() > src.getHeight()){
             factor = ((double)src.getHeight()/(double)src.getWidth());
             finalh = (int)(finalw * factor);
@@ -55,7 +67,7 @@ public class DrawHelper {
             finalw = (int)(finalh * factor);
         }
 
-        BufferedImage resizedImg = new BufferedImage(finalw, finalh, BufferedImage.TRANSLUCENT);
+        BufferedImage resizedImg = new BufferedImage(finalw, finalh, TRANSLUCENT);
         Graphics2D g2 = resizedImg.createGraphics();
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2.drawImage(src, 0, 0, finalw, finalh, null);

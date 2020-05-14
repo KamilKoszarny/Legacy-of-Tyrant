@@ -1,11 +1,11 @@
 package model.actions.movement;
 
+import isoview.PathDrawer;
+import isoview.map.objects.MapObjectDrawer;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import model.character.Character;
 import model.map.mapObjects.MapObject;
-import viewIso.PathDrawer;
-import viewIso.mapObjects.MapObjectDrawer;
 
 import java.awt.*;
 import java.util.List;

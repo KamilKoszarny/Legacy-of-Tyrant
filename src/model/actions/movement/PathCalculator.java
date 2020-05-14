@@ -1,14 +1,15 @@
 package model.actions.movement;
 
 import helpers.my.GeomerticHelper;
+import isoview.PathDrawer;
 import javafx.geometry.Point2D;
 import model.Battle;
 import model.character.Character;
 import model.map.GridGraphCalculator;
-import viewIso.PathDrawer;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PathCalculator {
@@ -33,6 +34,8 @@ public class PathCalculator {
     }
 
     public static List<Point2D> findPathToObject(Character character, Point objectPoint, int clearRadius) {
+        if (character.getPosition().equals(objectPoint))
+            return Collections.emptyList();
         clearGridAroundPoint(objectPoint, clearRadius);
         List<Point2D> path = calcPathOnCurrentGrid(character, objectPoint);
         regenerateGridAroundPoint(objectPoint, clearRadius);

@@ -364,12 +364,12 @@
                      <font>
                         <Font name="Book Antiqua" size="12.0" />
                      </font></Button>
-                  <Label text="AP:" translateX="-75.0" translateY="50.0">
+                  <Label fx:id="actionPointsHeadLabel" text="AP:" translateX="-75.0" translateY="50.0" visible="false">
                      <font>
                         <Font name="Book Antiqua" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="actionPointsLabel" text="100/100" translateX="-75.0" translateY="75.0">
+                  <Label fx:id="actionPointsLabel" text="100/100" translateX="-75.0" translateY="75.0" visible="false">
                      <font>
                         <Font name="Book Antiqua" size="18.0" />
                      </font>

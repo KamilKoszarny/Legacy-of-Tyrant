@@ -119,12 +119,12 @@ public class StatsCalculator {
             Weapon weapon = character.getItems().getWeapon();
             if (WeaponGroup.isRange(weapon)) {
                 stats.setAccuracy(stats.getEye() + weapon.getAccuracy());
-                stats.setDmgMin(weapon.getDmgMin() * (1 + stats.getEye() / 100.));
-                stats.setDmgMax(weapon.getDmgMax() * (1 + stats.getEye() / 100.));
+                stats.setDmgMin((float) (weapon.getDmgMin() * (1 + stats.getEye() / 100.)));
+                stats.setDmgMax((float) (weapon.getDmgMax() * (1 + stats.getEye() / 100.)));
             } else {
                 character.getStats().setAccuracy(character.getStats().getArm() + weapon.getAccuracy());
-                stats.setDmgMin(weapon.getDmgMin() * (1 + stats.getStrength() / 50.));
-                stats.setDmgMax(weapon.getDmgMax() * (1 + stats.getStrength() / 50.));
+                stats.setDmgMin((float) (weapon.getDmgMin() * (1 + stats.getStrength() / 50.)));
+                stats.setDmgMax((float) (weapon.getDmgMax() * (1 + stats.getStrength() / 50.)));
             }
         } else {
             stats.setDmgMin(character.getType().getStats().getDmgMin());

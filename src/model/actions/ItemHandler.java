@@ -1,5 +1,9 @@
 package model.actions;
 
+import isoview.map.objects.MapObjectController;
+import isoview.map.objects.MapObjectDrawer;
+import isoview.panel.CharPanelViewer;
+import isoview.panel.InventoryRectanglesViewer;
 import javafx.scene.shape.Rectangle;
 import model.Battle;
 import model.IsoBattleLoop;
@@ -12,10 +16,6 @@ import model.items.armor.Shield;
 import model.items.weapon.Weapon;
 import model.map.MapPiece;
 import model.map.mapObjects.ItemMapObject;
-import viewIso.mapObjects.MapObjectController;
-import viewIso.mapObjects.MapObjectDrawer;
-import viewIso.panel.CharPanelViewer;
-import viewIso.panel.InventoryRectanglesViewer;
 
 import java.awt.*;
 import java.util.List;

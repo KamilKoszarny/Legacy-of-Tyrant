@@ -1,13 +1,13 @@
 package model;
 
+import isoview.characters.CharsDrawer;
 import javafx.scene.paint.Color;
 import main.App;
+import model.actions.movement.CharMover;
 import model.character.CharState;
 import model.character.Character;
-import model.actions.movement.CharMover;
-import model.map.*;
+import model.map.Map;
 import model.map.visibility.VisibilityCalculator;
-import viewIso.characters.CharsDrawer;
 
 import java.util.ArrayList;
 import java.util.List;

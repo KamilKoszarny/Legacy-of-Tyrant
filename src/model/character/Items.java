@@ -1,9 +1,9 @@
 package model.character;
 
+import isoview.characters.CharsDrawer;
 import model.items.Item;
 import model.items.armor.*;
 import model.items.weapon.Weapon;
-import viewIso.characters.CharsDrawer;
 
 import java.awt.image.BufferedImage;
 import java.util.*;

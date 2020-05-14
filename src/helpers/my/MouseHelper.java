@@ -1,8 +1,8 @@
 package helpers.my;
 
+import isoview.map.MapDrawCalculator;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
-import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
 

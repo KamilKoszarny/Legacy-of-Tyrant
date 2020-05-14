@@ -1,8 +1,8 @@
 package model.items.weapon;
 
 import javafx.scene.image.Image;
-import model.items.ItemWithSprite;
 import model.items.ItemImagesLoader;
+import model.items.ItemWithSprite;
 
 public enum Weapon implements ItemWithSprite{
     NOTHING(            1, 1, .6, .4,       1, 0, 0, 0, 10000, ""),
@@ -72,7 +72,7 @@ public enum Weapon implements ItemWithSprite{
 
     //range TODO: sprites
     SHORT_BOW(          2, 5, 1.8, 20,      2, 0, 0, 2, 9, "shortbow"),
-    HUNTER_BOW(         3, 6, 1.7, 20,      2, 5, 0, 2, 13, "longbow"),
+    HUNTER_BOW(         3, 6, 1.7, 10,      2, 5, 0, 2, 13, "longbow"),
     LONG_BOW(           3, 8, 2, 25,        2, 5, 0, 4, 10, "greatbow"),
     LIGHT_CROSSBOW(     4, 7, 2.8, 15,      2, 0, 0, 3, 15, ""),
     CROSSBOW(           6, 9, 3, 15,        2, 0, 0, 7, 15, ""),
@@ -93,14 +93,15 @@ public enum Weapon implements ItemWithSprite{
     EARTH_STAFF(        3, 3, 1.3, 1.8,     2, 0, 25, 3, 10, "greatstaff"),
     ;
 
-    private static final double DAMAGE_MULTIPLIER = 1.5;
+    private static final float DAMAGE_MULTIPLIER = 1.5f;
 
-    private double dmgMin, dmgMax, attackDuration, range;
+    private float dmgMin, dmgMax;
+    private double attackDuration, range;
     private int hands, accuracy, parry, weight, durability;
     private Image image;
     private String name, spriteName;
 
-    Weapon(double dmgMin, double dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int weight, int durability, String spriteName) {
+    Weapon(float dmgMin, float dmgMax, double attackDuration, double range, int hands, int accuracy, int parry, int weight, int durability, String spriteName) {
         this.dmgMin = dmgMin * DAMAGE_MULTIPLIER;
         this.dmgMax = dmgMax * DAMAGE_MULTIPLIER;
         this.attackDuration = attackDuration;

@@ -77,7 +77,7 @@ public class TurnsTracker {
             if (!character.equals(activeCharacter))
                 character.getStats().addActionPoints(gainAPPerChar);
 
-            System.out.println(character.getName() + " AP:\t" + character.getStats().getActionPoints());
+            System.out.println(character.getName() + " AP:\t" + (int)(character.getStats().getActionPoints()));
         }
     }
 

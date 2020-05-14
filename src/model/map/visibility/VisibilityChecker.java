@@ -1,11 +1,11 @@
 package model.map.visibility;
 
+import isoview.map.MapDrawer;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import model.Battle;
 import model.character.Character;
-import viewIso.map.MapDrawer;
 
 import java.awt.*;
 import java.util.List;

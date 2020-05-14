@@ -1,14 +1,14 @@
 package model.actions.movement;
 
 import helpers.my.GeomerticHelper;
+import isoview.PathDrawer;
+import isoview.characters.CharsDrawer;
 import javafx.geometry.Point2D;
 import model.Battle;
 import model.character.CharState;
 import model.character.Character;
 import model.map.GridGraphCalculator;
 import model.map.visibility.VisibilityCalculator;
-import viewIso.PathDrawer;
-import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 import java.util.List;

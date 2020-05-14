@@ -5,7 +5,6 @@ import model.map.Map;
 import model.map.MapPiece;
 import model.map.buildings.BuildingGenerator;
 import model.map.terrains.Terrain;
-import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
 import java.util.Random;

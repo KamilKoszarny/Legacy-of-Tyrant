@@ -35,8 +35,8 @@ public class Stats {
     private float vigor = -999;
     private int vigorMax = -999;
 
-    private double actionPoints = 100;
-    private double actionPointsMax = 100;
+    private float actionPoints = 100;
+    private float actionPointsMax = 100;
 
     private int load;
     private int loadMax;
@@ -44,7 +44,7 @@ public class Stats {
     private double speedMax;
     private double range;
 
-    private double dmgMin, dmgMax;
+    private float dmgMin, dmgMax;
     private int accuracy;
     private double attackSpeed;
 
@@ -73,7 +73,7 @@ public class Stats {
         this.spirit = spirit;
     }
 
-    public Stats(Character character, int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int spirit, double dmgMin, double dmgMax) {
+    public Stats(Character character, int strength, int durability, int stamina, int eye, int arm, int agility, int knowledge, int focus, int spirit, float dmgMin, float dmgMax) {
         this.character = character;
 
         this.strength = strength;

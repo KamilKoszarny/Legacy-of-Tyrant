@@ -1,12 +1,12 @@
 package model.character;
 
+import isoview.LabelsDrawer;
+import isoview.characters.CharsDrawer;
 import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import model.actions.attack.AttackResult;
-import viewIso.LabelsDrawer;
-import viewIso.characters.CharsDrawer;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -38,6 +38,7 @@ public class Character {
     private Point destination;
     private List<Point2D> path;
     private int pathSection;
+    private double pathAPCost;
     private List<Polygon> pathView;
     private Polygon view = new Polygon();
 
@@ -212,6 +213,12 @@ public class Character {
     }
     public void setPathView(List<Polygon> pathView) {
         this.pathView = pathView;
+    }
+    public double getPathAPCost() {
+        return pathAPCost;
+    }
+    public void setPathAPCost(double pathAPCost) {
+        this.pathAPCost = pathAPCost;
     }
 
     public Polygon getView() {

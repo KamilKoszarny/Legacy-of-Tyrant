@@ -1,14 +1,14 @@
 package model.actions.objects;
 
 
-import controller.isoView.isoPanel.ItemClickController;
+import controller.isoview.panel.ItemClickController;
+import isoview.map.MapDrawer;
+import isoview.panel.InventoryRectanglesViewer;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import model.character.Character;
 import model.map.buildings.Chest;
-import viewIso.map.MapDrawer;
-import viewIso.panel.InventoryRectanglesViewer;
 
 import java.awt.*;
 import java.util.ArrayList;

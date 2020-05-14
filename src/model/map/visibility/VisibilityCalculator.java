@@ -1,15 +1,15 @@
 package model.map.visibility;
 
 import helpers.my.PolygonsHelper;
+import isoview.map.MapDrawCalculator;
+import isoview.map.MapDrawer;
+import isoview.panel.MinimapViewer;
 import javafx.geometry.Point2D;
 import javafx.scene.shape.Polygon;
 import main.App;
 import model.Battle;
 import model.character.Character;
 import model.map.MapPiece;
-import viewIso.map.MapDrawCalculator;
-import viewIso.map.MapDrawer;
-import viewIso.panel.MinimapViewer;
 
 import java.awt.*;
 import java.util.List;

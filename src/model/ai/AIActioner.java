@@ -1,12 +1,12 @@
 package model.ai;
 
+import isoview.characters.CharsDrawer;
 import model.EventType;
 import model.actions.ActionQueuer;
 import model.actions.attack.AttackActioner;
 import model.actions.attack.BodyPart;
 import model.character.CharState;
 import model.character.Character;
-import viewIso.characters.CharsDrawer;
 
 public class AIActioner {
 

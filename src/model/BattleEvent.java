@@ -1,11 +1,11 @@
 package model;
 
 
+import isoview.map.MapDrawCalculator;
 import model.actions.attack.BodyPart;
 import model.character.Character;
 import model.map.MapPiece;
 import model.map.mapObjects.MapObject;
-import viewIso.map.MapDrawCalculator;
 
 import java.awt.*;
 
