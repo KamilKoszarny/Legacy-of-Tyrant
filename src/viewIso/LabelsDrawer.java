@@ -113,17 +113,22 @@ public class LabelsDrawer {
         damageLabelsOffsetMap.put(character, new Point(0, 0));
     }
 
-    public static void checkHoverCharacter(Point hoverPoint){
+    public static Character checkHoverCharacter(Point hoverPoint){
         hoverCharacter = null;
         for (Character character: Battle.getCharacters()) {
             if(CharsDrawer.calcClickBox(character).contains(hoverPoint))
                 hoverCharacter = character;
         }
+        return hoverCharacter;
     }
 
     public static void hideLabels() {
         for (Label label: charNameLabelsMap.values()) {
             label.setVisible(false);
         }
+    }
+
+    public static Character getHoverCharacter() {
+        return hoverCharacter;
     }
 }

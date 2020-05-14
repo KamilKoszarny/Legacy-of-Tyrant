@@ -6,7 +6,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import model.Battle;
 import model.map.MapPiece;
-import model.map.buildings.Furniture;
 import model.map.mapObjects.ItemMapObject;
 import model.map.mapObjects.MapObject;
 import model.map.mapObjects.MapObjectType;
@@ -19,7 +18,7 @@ import static javafx.scene.AccessibleRole.TOOLTIP;
 public class MapObjectController {
 
     private static Tooltip canvasTooltip = null;
-    
+
     public static MapObject clickedObject(Point clickPoint) {
         for (MapObject itemObject : MapObjectDrawer.getMapObject2PointMap().keySet()) {
             if (checkPointOnMapObject(clickPoint, itemObject)) {
@@ -29,7 +28,7 @@ public class MapObjectController {
         return null;
     }
 
-    public static void checkHoverObject(Point hoverPoint) {
+    public static MapObject checkHoverObject(Point hoverPoint) {
         MapObjectDrawer.setHoverObject(null);
         for (MapObject mapObject : MapObjectDrawer.getMapObject2PointMap().keySet()) {
             if (checkPointOnMapObject(hoverPoint, mapObject)) {
@@ -39,6 +38,7 @@ public class MapObjectController {
         }
         if (MapObjectDrawer.getHoverObject() == null)
             tooltipCanvas("");
+        return MapObjectDrawer.getHoverObject();
     }
 
     private static boolean checkPointOnMapObject(Point mousePoint, MapObject mapObject) {

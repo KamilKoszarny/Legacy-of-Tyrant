@@ -16,6 +16,7 @@ public class TurnsTracker {
 
     public static void startTurnMode() {
         CharMover.haltAllChars();
+        activeCharacter = null;
         calcStartAPs();
         nextCharacter();
 
@@ -43,10 +44,9 @@ public class TurnsTracker {
 
     private static void calcStartAPs() {
         calcAPsMax();
-        Random random = new Random();
         for (Character character: Battle.getAliveCharacters()) {
             Stats stats = character.getStats();
-            double startAPPercent = 30 + 30 * (stats.getDexterity() / 100.) + 40 * random.nextDouble();
+            double startAPPercent = 30 + 30 * (stats.getDexterity() / 100.) + 40 * new Random().nextDouble();
             float startAP = (float) (stats.getActionPointsMax() * startAPPercent / 100);
             stats.setActionPoints(startAP);
         }
@@ -70,14 +70,14 @@ public class TurnsTracker {
         double costAPOfLastTurn = activeCharAPBefore - currentAP;
         if (costAPOfLastTurn == 0) {
             costAPOfLastTurn = WAIT_AP_COST;
-//            activeCharacter.getStats().subtractActionPoints(WAIT_AP_COST);
+            activeCharacter.getStats().subtractActionPoints(WAIT_AP_COST);
         }
         double gainAPPerChar = costAPOfLastTurn / (Battle.getAliveCharacters().size() - 1);
         for (Character character: Battle.getAliveCharacters()) {
             if (!character.equals(activeCharacter))
                 character.getStats().addActionPoints(gainAPPerChar);
 
-            System.out.println(character.getName() + " AP: " + character.getStats().getActionPoints());
+            System.out.println(character.getName() + " AP:\t" + character.getStats().getActionPoints());
         }
     }
 
@@ -92,7 +92,7 @@ public class TurnsTracker {
     }
 
     private static Character nextMostAPCharacter() {
-        Character mostAPCharacter = null;
+        Character mostAPCharacter = Battle.getChosenCharacter();
         double maxAP = -100;
         for (Character character: Battle.getAliveCharacters()) {
             double charAP = character.getStats().getActionPoints();

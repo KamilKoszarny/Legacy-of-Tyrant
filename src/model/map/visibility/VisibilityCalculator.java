@@ -17,7 +17,7 @@ import java.util.List;
 public class VisibilityCalculator {
 
     private static final int MIN_VISIBILITY_RADIUS_DAY = 50;
-    public static final int ANGLE_RESOLUTION = 1;
+    private static final int ANGLE_RESOLUTION = 1;
     private static boolean change = true;
 
     public static void updateViews() {

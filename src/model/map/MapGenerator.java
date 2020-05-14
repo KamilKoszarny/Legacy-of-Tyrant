@@ -70,7 +70,7 @@ public class MapGenerator {
             App.showAndResetTime("objectsGen", 1);
         }
 
-        App.showAndResetTime("TOTAL map generation", 0);
+        App.showAndResetTime("TOTAL map generation", -1);
         return map;
     }
 }

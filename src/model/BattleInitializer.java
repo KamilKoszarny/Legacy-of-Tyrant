@@ -3,12 +3,12 @@ package model;
 import javafx.scene.paint.Color;
 import model.actions.ActionQueuer;
 import model.actions.movement.MoveCalculator;
-import model.character.*;
 import model.character.Character;
+import model.character.*;
 import model.items.armor.*;
 import model.items.weapon.Weapon;
-import model.map.Map;
 import model.map.GridGraphCalculator;
+import model.map.Map;
 import model.map.MapType;
 import model.map.heights.MapHeightType;
 
@@ -39,7 +39,7 @@ public class BattleInitializer {
         StatsCalculator.calcStats(celion);
 
         Character slimer = new Character("Slimer", true, Color.RED, CharacterType.DWARF, CharacterClass.ADEPT,
-                new Point(110,160), 4);
+                new Point(70,70), 4);
         slimer.setStats(new Stats(slimer, 25, 25, 13, 10, 15, 13, 44, 36, 20));
         slimer.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.LEATHER_SHIRT, Helmet.CASQUE, Gloves.NOTHING, Boots.RAG_BOOTS,
                 Belt.LEATHER_BELT, Amulet.NOTHING, Ring.SILVER_RING, Ring.GOLD_RING, Shield.BLOCKED});
@@ -55,7 +55,7 @@ public class BattleInitializer {
         StatsCalculator.calcStats(skara);
 
         Character irith = new Character("Irith", false, Color.RED, CharacterType.ELF, CharacterClass.RASCAL,
-                new Point(120,180), 4);
+                new Point(80,60), 4);
         irith.setStats(new Stats(irith, 11, 16, 24, 40, 31, 38, 15, 12, 13));
         irith.getItems().setArmor(new Armor[]{Shield.NOTHING, BodyArmor.NOTHING, Helmet.LEATHER_HOOD, Gloves.LEATHER_GLOVES, Boots.NOTHING,
                 Belt.NOTHING, Amulet.NOTHING, Ring.NOTHING, Ring.NOTHING, Shield.NOTHING});

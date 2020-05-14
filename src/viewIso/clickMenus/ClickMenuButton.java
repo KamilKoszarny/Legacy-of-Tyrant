@@ -51,12 +51,13 @@ public enum ClickMenuButton {
     private Polygon shape = new Polygon();
     private boolean clicked = false;
     private boolean grayed = false;
+    private boolean hovered = false;
 
     ClickMenuButton(String name, String iconName) {
         this.name = name;
         icon = new Image("/icons/canvas/" + iconName + ".png");
         initTooltip();
-        initClick();
+        initMouseEvents();
     }
 
     static void groupButtons(List<ClickMenuButton> clickMenuButtons) {
@@ -88,15 +89,23 @@ public enum ClickMenuButton {
         Tooltip.install(label, tooltip);
     }
 
-    private void initClick() {
-        initClickForNode(shape);
-        initClickForNode(label);
+    private void initMouseEvents() {
+        initMouseEvents(shape);
+        initMouseEvents(label);
     }
 
-    private void initClickForNode(Node node) {
+    private void initMouseEvents(Node node) {
         node.setOnMouseClicked(mouseEvent -> {
             if (!grayed)
                 clicked = true;
+        });
+        node.setOnMouseEntered(mouseEvent -> {
+            hovered = true;
+            shape.setStrokeWidth(3.0);
+        });
+        node.setOnMouseExited(mouseEvent -> {
+            hovered = false;
+            shape.setStrokeWidth(0.0);
         });
     }
 
@@ -111,6 +120,7 @@ public enum ClickMenuButton {
 
         Rotate rotate = new Rotate(-360 / menuButtonsCount * number + 180 / menuButtonsCount, 0, 0);
         shape.getTransforms().add(rotate);
+        shape.setStroke(Color.BLACK);
     }
 
     private void calcLabel() {
@@ -138,6 +148,10 @@ public enum ClickMenuButton {
         boolean wasClicked = clicked;
         clicked = false;
         return wasClicked;
+    }
+
+    public boolean isHovered() {
+        return hovered;
     }
 
     public void setGrayed(boolean grayed) {

@@ -10,8 +10,8 @@ import javafx.scene.shape.Shape;
 import model.actions.attack.AttackCalculator;
 import model.actions.attack.BodyPart;
 import model.actions.movement.Char2CharMover;
-import model.actions.movement.PathCalculator;
 import model.actions.movement.Char2ObjectMover;
+import model.actions.movement.PathCalculator;
 import model.actions.objects.ChestActioner;
 import model.character.Character;
 import model.map.MapPiece;
@@ -159,6 +159,14 @@ public class ClickMenusDrawer {
     public static ClickMenuButton clickedButton () {
         for (ClickMenuButton button: ClickMenuButton.values()) {
             if (button.wasClicked())
+                return button;
+        }
+        return null;
+    }
+
+    public static ClickMenuButton hoveredButton () {
+        for (ClickMenuButton button: ClickMenuButton.values()) {
+            if (button.isHovered())
                 return button;
         }
         return null;

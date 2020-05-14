@@ -6,7 +6,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MapImage {
@@ -23,7 +22,7 @@ public class MapImage {
         this.yShift = yShift;
         image = new WritableImage(width, height);
 
-        exploredView.add(new Polygon(1,1,100,1,1,200));
+        exploredView.add(new Polygon(0,0, 100,0, 0,200));
     }
 
     public void setPixelColor(int x, int y, Color color) {

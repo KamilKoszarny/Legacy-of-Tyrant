@@ -2,7 +2,6 @@ package viewIso.map;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.Glow;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
@@ -14,7 +13,6 @@ import viewIso.panel.MinimapViewer;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,10 +42,10 @@ public class MapDrawer {
         MapImageGenerator.initialize(map, mPDrawer);
         App.resetTime(0);
         mapImage = MapImageGenerator.generateMapPreImage();
-        App.showAndResetTime("mapPreImage", 0);
+        App.showAndResetTime("mapPreImage", -1);
         if (App.FULL_MODE) {
             mapImage = MapImageGenerator.generateMapImage();
-            App.showAndResetTime("mapImageGen", 0);
+            App.showAndResetTime("mapImageGen", -1);
         }
         MinimapViewer.setMinimapImg(MapImageGenerator.generateMinimapImage());
 

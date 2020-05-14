@@ -2,12 +2,13 @@ package model;
 
 import javafx.animation.AnimationTimer;
 import main.App;
-import model.actions.*;
+import model.actions.ActionQueuer;
+import model.actions.ItemHandler;
 import model.actions.attack.AttackActioner;
 import model.actions.movement.Char2CharMover;
+import model.actions.movement.Char2ObjectMover;
 import model.actions.movement.CharMover;
 import model.actions.movement.CharTurner;
-import model.actions.movement.Char2ObjectMover;
 import model.actions.objects.ChestActioner;
 import model.actions.objects.DoorActioner;
 import model.ai.EnemyFinder;
@@ -16,7 +17,11 @@ import model.map.MapPiece;
 import model.map.buildings.Chest;
 import model.map.buildings.Door;
 import model.map.mapObjects.ItemMapObject;
-import viewIso.*;
+import model.map.mapObjects.MapObject;
+import viewIso.IsoViewer;
+import viewIso.LabelsDrawer;
+import viewIso.MapMover;
+import viewIso.MapPieceInfo;
 import viewIso.characters.CharsDrawer;
 import viewIso.clickMenus.ClickMenuButton;
 import viewIso.clickMenus.ClickMenusDrawer;
@@ -209,9 +214,8 @@ public class IsoBattleLoop extends AnimationTimer{
 
     private void handleHover() {
         if (hoverPoint != null) {
-            LabelsDrawer.checkHoverCharacter(hoverPoint);
-            MapObjectController.checkHoverObject(hoverPoint);
-//            ItemObjectsDrawer.checkHoverItem(hoverPoint);
+            Character hoverCharacter = LabelsDrawer.checkHoverCharacter(hoverPoint);
+            MapObject hoverObject = MapObjectController.checkHoverObject(hoverPoint);
         }
     }
 

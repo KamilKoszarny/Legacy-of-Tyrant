@@ -5,7 +5,7 @@ import model.map.visibility.VisibilityChecker;
 
 public class TurnModeActivator {
 
-    public static boolean shouldStart() {
+    static boolean shouldStart() {
         if (Battle.isTurnMode())
             return false;
         for (Character aliveEnemy : Battle.getEnemyAliveCharacters()) {

@@ -101,7 +101,7 @@ public class CharsDrawer {
         App.resetTime(0);
         CharSprite sprite = createSpriteSheet(character);
         charSpriteSheetMap.put(character, sprite);
-        App.showAndResetTime(character.getName() + " TOTAL sprite", 0);
+        App.showAndResetTime(character.getName() + " TOTAL sprite", -1);
     }
 
     private static CharSprite createSpriteSheet(Character character) {

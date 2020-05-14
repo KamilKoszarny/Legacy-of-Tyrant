@@ -19,9 +19,9 @@ import java.util.List;
 
 public class App extends Application {
 
-    public static final boolean FULL_MODE = false; //false - faster initialization
+    public static final boolean FULL_MODE = true; //false: faster initialization
     public static final boolean TURN_MODE_FORCED = false;
-    private static final int LOG_TIME_LEVEL = -1; //more - deeper log, -1 for no log
+    private static final int LOG_TIME_LEVEL = -1; //more: deeper log, -999 for no log
 
     public static final long START_TIME = System.nanoTime();
     public static final long[] time = new long[10];
@@ -67,7 +67,7 @@ public class App extends Application {
     }
 
     public static void resetTime(int level) {
-        time[level] = System.nanoTime();
+        time[level + 1] = System.nanoTime();
     }
 
     public static void showAndResetTime(String text, int level) {
@@ -76,12 +76,12 @@ public class App extends Application {
             spaces.append("   ");
         }
         if (level <= LOG_TIME_LEVEL) {
-            double timeDelta = (System.nanoTime() - time[level]) / 1000000.;
+            double timeDelta = (System.nanoTime() - time[level + 1]) / 1000000.;
             if (timeDelta < 50)
                 System.out.println(spaces + text + ": " + timeDelta + " ms");
             else
                 System.err.println(spaces + text + ": " + timeDelta + " ms");
         }
-        time[level] = System.nanoTime();
+        time[level + 1] = System.nanoTime();
     }
 }
