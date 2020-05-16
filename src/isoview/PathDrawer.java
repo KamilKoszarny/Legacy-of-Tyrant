@@ -5,7 +5,6 @@ import helpers.my.GeomerticHelper;
 import isoview.map.MapDrawCalculator;
 import isoview.map.MapDrawer;
 import javafx.geometry.Point2D;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import model.Battle;
@@ -19,6 +18,9 @@ import java.util.List;
 
 
 public class PathDrawer {
+
+    private PathDrawer() {
+    }
 
     public static void showPathIfNotMoving(List<Point2D> path, Color color) {
         if (Battle.getChosenCharacter().getStats().getSpeed() == 0) {
@@ -42,19 +44,17 @@ public class PathDrawer {
     }
 
     private static void drawPath(List<Polygon> pathView, boolean fill) {
-        Canvas canvas = IsoViewer.getCanvas();
         for (Polygon pathShape: pathView) {
-            DrawHelper.drawPolygonOnCanvas(canvas, pathShape, fill, true);
+            DrawHelper.drawPolygonOnCanvas(pathShape, fill, true);
         }
     }
 
     private static void drawPathAPCost(List<Polygon> pathView, double costAP) {
         if (costAP == 0)
             return;
-        Canvas canvas = IsoViewer.getCanvas();
         Polygon pathViewEndPolygon = pathView.get(pathView.size() - 1);
         Point2D pathViewEndPoint = new Point2D(pathViewEndPolygon.getPoints().get(0), pathViewEndPolygon.getPoints().get(1));
-        DrawHelper.drawAPLabel(canvas, pathViewEndPoint, (int) costAP, 40, 6);
+        DrawHelper.drawAPLabel(pathViewEndPoint, (int) costAP, 40, 6, true);
     }
 
     public static void createPathView(Character character, Color color) {
@@ -67,7 +67,7 @@ public class PathDrawer {
         }
     }
 
-    public static void createPathView(Character character, List<Point2D> path, Color color) {
+    private static void createPathView(Character character, List<Point2D> path, Color color) {
         List<Point2D> pointsOnPath = GeomerticHelper.pointsOnPath(path, 2);
 
         List<Point> screenPoints = new ArrayList<>();

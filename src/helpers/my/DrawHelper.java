@@ -1,6 +1,7 @@
 package helpers.my;
 
 
+import isoview.IsoViewer;
 import isoview.map.MapDrawer;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -18,7 +19,8 @@ public class DrawHelper {
     private DrawHelper() {
     }
 
-    public static void drawPolygonOnCanvas(Canvas canvas, Polygon polygon, boolean fill, boolean relative) {
+    public static void drawPolygonOnCanvas(Polygon polygon, boolean fill, boolean relative) {
+        Canvas canvas = IsoViewer.getCanvas();
         int points = polygon.getPoints().size()/2;
         double[] xs = new double[points];
         double[] ys = new double[points];
@@ -41,16 +43,19 @@ public class DrawHelper {
             gc.strokePolygon(xs, ys, points);
     }
 
-    public static void drawAPLabel(Canvas canvas, Point2D relativePoint, Integer ap, int offsetX, int offsetY) {
-        Point2D absolutePoint = new Point2D(
-                relativePoint.getX() + MapDrawer.getZeroScreenPosition().getX(),
-                relativePoint.getY() + MapDrawer.getZeroScreenPosition().getY());
+    public static void drawAPLabel(Point2D point, Integer ap, int offsetX, int offsetY, boolean relative) {
+        Canvas canvas = IsoViewer.getCanvas();
+        if (relative) {
+            point = new Point2D(
+                    point.getX() + MapDrawer.getZeroScreenPosition().getX(),
+                    point.getY() + MapDrawer.getZeroScreenPosition().getY());
+        }
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.WHITE);
         gc.setStroke(Color.GRAY);
         gc.setLineWidth(0.5);
-        gc.fillText("AP: " + ap.toString(), absolutePoint.getX() + offsetX, absolutePoint.getY() + offsetY);
-        gc.strokeText("AP: " + ap.toString(), absolutePoint.getX() + offsetX, absolutePoint.getY() + offsetY);
+        gc.fillText("AP: " + ap.toString(), point.getX() + offsetX, point.getY() + offsetY);
+        gc.strokeText("AP: " + ap.toString(), point.getX() + offsetX, point.getY() + offsetY);
     }
 
     public static BufferedImage resizeBufferedImage(BufferedImage src, double scale){

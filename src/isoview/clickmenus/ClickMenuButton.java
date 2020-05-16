@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.transform.Rotate;
+import model.actions.attack.AttackCalculator;
 import model.actions.attack.BodyPart;
 
 import java.awt.*;
@@ -102,30 +103,32 @@ public enum ClickMenuButton {
         node.setOnMouseEntered(mouseEvent -> {
             hovered = true;
             shape.setStrokeWidth(3.0);
+            AttackCalculator.setCurrentCharAttackAPCost();
         });
         node.setOnMouseExited(mouseEvent -> {
             hovered = false;
             shape.setStrokeWidth(0.0);
+            AttackCalculator.clearCurrentCharAttackAPCost();
         });
     }
 
     private void calcShape() {
         double circumference = RADIUS_IN * 2 * Math.PI;
-        Double angle = SPACING / 2 / circumference * 2 * Math.PI;
+        double angle = SPACING / 2 / circumference * 2 * Math.PI;
         shape.getPoints().addAll(Math.sin(angle) * RADIUS_IN, Math.cos(angle) * RADIUS_IN);
         shape.getPoints().addAll(Math.sin(angle) * RADIUS_OUT, Math.cos(angle) * RADIUS_OUT);
         angle = Math.PI * 2 / menuButtonsCount - (SPACING / 2) / circumference * 2 * Math.PI;
         shape.getPoints().addAll(Math.sin(angle) * RADIUS_OUT, Math.cos(angle) * RADIUS_OUT);
         shape.getPoints().addAll(Math.sin(angle) * RADIUS_IN, Math.cos(angle) * RADIUS_IN);
 
-        Rotate rotate = new Rotate(-360 / menuButtonsCount * number + 180 / menuButtonsCount, 0, 0);
+        Rotate rotate = new Rotate(-360. / menuButtonsCount * number + 180. / menuButtonsCount, 0, 0);
         shape.getTransforms().add(rotate);
         shape.setStroke(Color.BLACK);
     }
 
     private void calcLabel() {
         label.setGraphic(new ImageView(icon));
-        Double angle = Math.PI * 2 / menuButtonsCount * number;
+        double angle = Math.PI * 2 / menuButtonsCount * number;
         labelVertex = new Point((int)((Math.sin(angle)) * (RADIUS_IN + RADIUS_OUT - 2)/2),
                 (int)((Math.cos(angle)) * (RADIUS_IN + RADIUS_OUT - 2)/2));
         labelVertex.x -= ICON_XY/2;
@@ -154,11 +157,11 @@ public enum ClickMenuButton {
         return hovered;
     }
 
-    public void setGrayed(boolean grayed) {
+    void setGrayed(boolean grayed) {
         this.grayed = grayed;
     }
 
-    public void setTooltipText(String text) {
+    void setTooltipText(String text) {
         Tooltip tooltip = new Tooltip(text);
         Tooltip.install(shape, tooltip);
         Tooltip.install(label, tooltip);
@@ -171,7 +174,7 @@ public enum ClickMenuButton {
             case ARMS: return ATTACK_ARMS;
             case LEGS: return ATTACK_LEGS;
         }
-        return null;
+        return ATTACK_BODY;
     }
 
     public static BodyPart getBodyPart(ClickMenuButton button) {
@@ -180,5 +183,12 @@ public enum ClickMenuButton {
                 return bodyPart;
         }
         return null;
+    }
+
+    public boolean isAttackButton() {
+        return this.equals(ClickMenuButton.ATTACK_HEAD)
+                || this.equals(ClickMenuButton.ATTACK_BODY)
+                || this.equals(ClickMenuButton.ATTACK_ARMS)
+                || this.equals(ClickMenuButton.ATTACK_LEGS);
     }
 }

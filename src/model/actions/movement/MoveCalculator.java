@@ -15,6 +15,9 @@ public class MoveCalculator {
 
     private static final double AP_PER_TIME_UNIT = 5;
 
+    private MoveCalculator() {
+    }
+
     static double calcSpeed(Character character) {
         double speed = character.getStats().getSpeedMax();
         if(character.isRunning())
@@ -37,13 +40,13 @@ public class MoveCalculator {
         stats.subtractVigor(costVigor);
     }
 
-    public static double calPathAPCost(Character character) {
+    public static float calPathAPCost(Character character) {
         Point2D posBefore = character.getPrecisePosition();
-        double costAP = 0;
+        float costAP = 0;
         for (Point2D posAfter: character.getPath()) {
             costAP += posAfter.distance(posBefore) / character.getStats().getSpeedMax() * AP_PER_TIME_UNIT;
         }
-        return (costAP / 2.) - 1; //todo: as speed, why - 1
+        return (float) ((costAP / 2.) - 1); //todo: as speed, why - 1
     }
 
     public static Set<Point> calcRelativePointsUnder(CharacterType characterType){

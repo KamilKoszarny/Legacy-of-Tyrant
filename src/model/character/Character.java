@@ -6,6 +6,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import lombok.Getter;
+import lombok.Setter;
 import model.actions.attack.AttackResult;
 
 import java.awt.*;
@@ -13,6 +15,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
+@Getter
+@Setter
 public class Character {
 
     private String name;
@@ -31,14 +35,16 @@ public class Character {
     private boolean afterDodging = false;
     private boolean afterParrying = false;
     private boolean afterBouncing = false;
+
     private AttackResult attackResult = null;
+    private float attackAPCost;
 
     private Point2D precisePosition;
-    private double direction;
+    private double preciseDirection;
     private Point destination;
     private List<Point2D> path;
     private int pathSection;
-    private double pathAPCost;
+    private float pathAPCost;
     private List<Polygon> pathView;
     private Polygon view = new Polygon();
 
@@ -55,109 +61,16 @@ public class Character {
         this.type = type;
         this.charClass = charClass;
         precisePosition = new Point2D(position.x, position.y);
-        this.direction = direction;
+        this.preciseDirection = direction;
 
         setPortrait(CharLoader.loadPortrait(this));
     }
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean isMale() {
-        return male;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public CharacterType getType() {
-        return type;
-    }
-    public void setType(CharacterType type) {
-        this.type = type;
-    }
-
-    public CharacterClass getCharClass() {
-        return charClass;
-    }
-    public void setCharClass(CharacterClass charClass) {
-        this.charClass = charClass;
-    }
-
-    public Stats getStats() {
-        return stats;
-    }
-    public void setStats(Stats stats) {
-        this.stats = stats;
-    }
-
-    public Image getPortrait() {
-        return portrait;
-    }
-    public void setPortrait(Image portrait) {
-        this.portrait = portrait;
-    }
-
-    public CharState getState() {
-        return state;
-    }
     public void setState(CharState state) {
         this.state = state;
         CharsDrawer.resetAnimation(this);
     }
-    public boolean isTargeted() {
-        return targeted;
-    }
-    public void setTargeted(boolean targeted) {
-        this.targeted = targeted;
-    }
-    public boolean isReady() {
-        return ready;
-    }
-    public void setReady(boolean ready) {
-        this.ready = ready;
-    }
-    public boolean isRunning() {
-        return running;
-    }
-    public void setRunning(boolean running) {
-        this.running = running;
-    }
-    public boolean isSneaking() {
-        return sneaking;
-    }
-    public void setSneaking(boolean sneaking) {
-        this.sneaking = sneaking;
-    }
-    public boolean isAfterDodging() {
-        return afterDodging;
-    }
-    public void setAfterDodging(boolean afterDodging) {
-        this.afterDodging = afterDodging;
-    }
-    public boolean isAfterParrying() {
-        return afterParrying;
-    }
-    public void setAfterParrying(boolean afterParrying) {
-        this.afterParrying = afterParrying;
-    }
-    public boolean isAfterBouncing() {
-        return afterBouncing;
-    }
-    public void setAfterBouncing(boolean afterBouncing) {
-        this.afterBouncing = afterBouncing;
-    }
-    public AttackResult getAttackResult() {
-        return attackResult;
-    }
+
     public void setAttackResult(AttackResult attackResult) {
         this.attackResult = attackResult;
         LabelsDrawer.resetDamageLabel(this);
@@ -172,68 +85,20 @@ public class Character {
     public void setPosition(Point2D position) {
         precisePosition = position;
     }
-    public Point2D getPrecisePosition() {
-        return precisePosition;
-    }
 
     public int getDirection() {
-        return Math.round(Math.round(direction));
-    }
-    public void setDirection(int direction) {
-        this.direction = direction;
-    }
-    public double getPreciseDirection() {
-        return direction;
-    }
-    public void setPreciseDirection(double direction) {
-        this.direction = direction;
+        return Math.round(Math.round(preciseDirection));
     }
 
-    public Point getDestination() {
-        return destination;
-    }
-    public void setDestination(Point destination) {
-        this.destination = destination;
-    }
-
-    public List<Point2D> getPath() {
-        return path;
-    }
-    public void setPath(List<Point2D> path) {
-        this.path = path;
-    }
-    public int getPathSection() {
-        return pathSection;
-    }
-    public void setPathSection(int pathSection) {
-        this.pathSection = pathSection;
-    }
-    public List<Polygon> getPathView() {
-        return pathView;
-    }
-    public void setPathView(List<Polygon> pathView) {
-        this.pathView = pathView;
-    }
-    public double getPathAPCost() {
-        return pathAPCost;
-    }
-    public void setPathAPCost(double pathAPCost) {
-        this.pathAPCost = pathAPCost;
-    }
-
-    public Polygon getView() {
-        return view;
-    }
-    public void setView(Polygon view) {
-        this.view = view;
-    }
-
-    public Items getItems() {
-        return items;
+    public void clearPath() {
+        path = null;
+        pathView = null;
+        pathAPCost = 0;
+        pathSection = 0;
     }
 
     public void setDoubleValue(String propertyName, String value){
-        String methodName = "set" + java.lang.Character.toString(propertyName.charAt(0)).toUpperCase() + propertyName.substring(1, propertyName.length());
+        String methodName = "set" + java.lang.Character.toString(propertyName.charAt(0)).toUpperCase() + propertyName.substring(1);
         Double doubleValue = Double.parseDouble(value);
         try {
             Method method = this.getClass().getMethod(methodName, Double.TYPE);

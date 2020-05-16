@@ -85,11 +85,7 @@ public class ClickMenusDrawer {
         hideMenus(true);
         activeMenu = char2ChestMenu;
 
-        if (Char2ObjectMover.closeToObject(character, chest) || Char2ObjectMover.pathToObjectExists(character, chest)) {
-            ClickMenuButton.CHEST_OPEN.setGrayed(false);
-        } else {
-            ClickMenuButton.CHEST_OPEN.setGrayed(true);
-        }
+        ClickMenuButton.CHEST_OPEN.setGrayed(!Char2ObjectMover.closeToObject(character, chest) && !Char2ObjectMover.pathToObjectExists(character, chest));
         ClickMenuButton.CHEST_CLOSE.setGrayed(true);
 
         drawMenu(char2ChestMenu, clickPoint);
@@ -98,6 +94,8 @@ public class ClickMenusDrawer {
     public static void drawChar2EnemyMenu(Point clickPoint, Character character, Character enemy) {
         hideMenus(true);
         activeMenu = char2EnemyMenu;
+
+        character.clearPath();
 
         boolean attackable = (AttackCalculator.isInRange(character, enemy) ||
                 Char2CharMover.drawPathToCharIfExists(character, enemy)) &&

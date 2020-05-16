@@ -1,6 +1,9 @@
 package isoview;
 
+import helpers.my.DrawHelper;
 import isoview.characters.CharsDrawer;
+import isoview.clickmenus.ClickMenuButton;
+import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
@@ -10,6 +13,7 @@ import model.Battle;
 import model.TurnsTracker;
 import model.actions.attack.AttackResultType;
 import model.character.Character;
+import model.map.visibility.VisibilityChecker;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -21,7 +25,7 @@ public class LabelsDrawer {
     private static java.util.Map<Character, Point> damageLabelsOffsetMap = new HashMap<>();
     private static Character hoverCharacter;
 
-    public LabelsDrawer() {
+    LabelsDrawer() {
         initCharNameLabelsMap();
         initCharDamageLabelsMap();
         initDamageLabelsOffsetMap();
@@ -86,12 +90,12 @@ public class LabelsDrawer {
     }
 
     public static void drawDamageLabel(Character character, Point charScreenPos) {
-        final int OFFSET_X = 10, OFFSET_Y = -50;
+        final int OFFSET_Y = -50;
         Label label = charDamageLabelsMap.get(character);
         Point offset = damageLabelsOffsetMap.get(character);
 
         if (character.getAttackResult().getType().equals(AttackResultType.HIT))
-            label.setText("-" + String.valueOf(character.getAttackResult().getDamage()));
+            label.setText("-" + character.getAttackResult().getDamage());
         else
             label.setText(character.getAttackResult().getType().toString());
 
@@ -109,6 +113,13 @@ public class LabelsDrawer {
         damageLabelsOffsetMap.put(character, offset);
     }
 
+    public static void drawAttackAPCostLabel(ClickMenuButton button) {
+        if (button == null || !button.isAttackButton())
+            return;
+        Point2D buttonPoint = new Point2D(button.getShape().getTranslateX(), button.getShape().getTranslateY());
+        DrawHelper.drawAPLabel(buttonPoint, (int) Battle.getChosenCharacter().getAttackAPCost(), -70, -25, false);
+    }
+
     public static void resetDamageLabel(Character character) {
         damageLabelsOffsetMap.put(character, new Point(0, 0));
     }
@@ -116,13 +127,13 @@ public class LabelsDrawer {
     public static Character checkHoverCharacter(Point hoverPoint){
         hoverCharacter = null;
         for (Character character: Battle.getCharacters()) {
-            if(CharsDrawer.calcClickBox(character).contains(hoverPoint))
+            if(CharsDrawer.calcClickBox(character).contains(hoverPoint) && VisibilityChecker.isInPlayerCharsView(character.getPosition()))
                 hoverCharacter = character;
         }
         return hoverCharacter;
     }
 
-    public static void hideLabels() {
+    static void hideLabels() {
         for (Label label: charNameLabelsMap.values()) {
             label.setVisible(false);
         }

@@ -45,20 +45,12 @@ public class IsoMapHoverController {
     private void initCanvasHover(){
         mapCanvas.getScene().setOnMouseMoved(mouseEvent -> {
             IsoBattleLoop.setHoverPoint(new Point((int)mouseEvent.getX(), (int)mouseEvent.getY()));
-            setCursor();
+            setCursorAndLabels();
         });
     }
 
-    private void setCursor() {
-        CursorType type = checkCursorType();
-        switch (type) {
-            case ATTACK: mapCanvas.getScene().setCursor(attackCursor); break;
-            case ATTACK_DIST: mapCanvas.getScene().setCursor(attackDistCursor); break;
-            default: mapCanvas.getScene().setCursor(normalCursor); break;
-        }
-    }
-
-    private CursorType checkCursorType(){
+    private void setCursorAndLabels(){
+        mapCanvas.getScene().setCursor(normalCursor);
         ClickMenuButton hoveredMenuButton = ClickMenusDrawer.hoveredButton();
         if (hoveredMenuButton != null) {
             switch (hoveredMenuButton) {
@@ -67,19 +59,25 @@ public class IsoMapHoverController {
                 case ATTACK_ARMS:
                 case ATTACK_LEGS:
                     Weapon chosenCharWeapon = Battle.getChosenCharacter().getItems().getWeapon();
-                    return WeaponGroup.isRange(chosenCharWeapon) ? CursorType.ATTACK_DIST : CursorType.ATTACK;
+                    if (WeaponGroup.isRange(chosenCharWeapon))
+                        mapCanvas.getScene().setCursor(attackDistCursor);
+                    else
+                        mapCanvas.getScene().setCursor(attackCursor);
+                    break;
                 default:
-                    return CursorType.NORMAL;
+                    break;
             }
         }
 
         Character hoverCharacter = LabelsDrawer.getHoverCharacter();
         if (hoverCharacter != null && hoverCharacter.getColor() != Battle.getPlayerColor()) {
             Weapon chosenCharWeapon = Battle.getChosenCharacter().getItems().getWeapon();
-            return WeaponGroup.isRange(chosenCharWeapon) ? CursorType.ATTACK_DIST : CursorType.ATTACK;
+            if (WeaponGroup.isRange(chosenCharWeapon))
+                mapCanvas.getScene().setCursor(attackDistCursor);
+            else
+                mapCanvas.getScene().setCursor(attackCursor);
         }
 
         MapObject hoverObject = MapObjectDrawer.getHoverObject();
-        return CursorType.NORMAL;
     }
 }

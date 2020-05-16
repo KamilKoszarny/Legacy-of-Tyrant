@@ -3,6 +3,7 @@ package isoview.characters;
 import helpers.my.MouseHelper;
 import isoview.IsoViewer;
 import isoview.LabelsDrawer;
+import isoview.clickmenus.ClickMenusDrawer;
 import isoview.map.MapDrawCalculator;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.canvas.GraphicsContext;
@@ -75,6 +76,7 @@ public class CharsDrawer {
         LabelsDrawer.drawNameLabel(character, charScreenPos);
         if (character.getAttackResult() != null)
             LabelsDrawer.drawDamageLabel(character, charScreenPos);
+        LabelsDrawer.drawAttackAPCostLabel(ClickMenusDrawer.hoveredButton());
     }
 
     public static void nextFrame(Character character, int timer) {
@@ -155,6 +157,7 @@ public class CharsDrawer {
 
     public static Rectangle calcClickBox(Character character) {
         Point charScreenPos = MapDrawCalculator.screenPositionWithHeight(character.getPosition());
+        assert charScreenPos != null;
         return new Rectangle(charScreenPos.x - SPRITE_BASE.width/2, charScreenPos.y - SPRITE_BASE.height*2/3,
                 SPRITE_SIZE.width/2, SPRITE_SIZE.height*2/3);
     }
