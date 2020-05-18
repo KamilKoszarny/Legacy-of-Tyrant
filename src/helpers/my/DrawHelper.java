@@ -51,11 +51,13 @@ public class DrawHelper {
                     point.getY() + MapDrawer.getZeroScreenPosition().getY());
         }
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.save();
         gc.setFill(Color.WHITE);
         gc.setStroke(Color.GRAY);
         gc.setLineWidth(0.5);
         gc.fillText("AP: " + ap.toString(), point.getX() + offsetX, point.getY() + offsetY);
         gc.strokeText("AP: " + ap.toString(), point.getX() + offsetX, point.getY() + offsetY);
+        gc.restore();
     }
 
     public static BufferedImage resizeBufferedImage(BufferedImage src, double scale){

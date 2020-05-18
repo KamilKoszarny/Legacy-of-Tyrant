@@ -15,7 +15,10 @@ import java.util.List;
 
 public class CharMover {
 
-    private static double POINTS_TO_NEXT_FRAME = 1.6;
+    private static final double POINTS_TO_NEXT_FRAME = 1.6;
+
+    private CharMover() {
+    }
 
     public static void calcPathAndStartMove(Character character, Point destination) {
         List<Point2D> path = PathCalculator.calcPath(character, destination);
@@ -35,6 +38,8 @@ public class CharMover {
         character.setDestination(destination);
         character.setPathSection(0);
         character.getStats().setSpeed(MoveCalculator.calcSpeed(character));
+        MoveCalculator.updateRunStartVigorAndActionPoints(character);
+        CharTurner.turnStandingCharacter(character, GeomerticHelper.point2DtoPoint(character.getPath().get(1)), false);
     }
 
     public static void updateCharacterMove(Character character, int ms) {

@@ -1,5 +1,6 @@
 package model.actions.movement;
 
+import helpers.my.GeomerticHelper;
 import javafx.geometry.Point2D;
 import model.Battle;
 import model.character.Character;
@@ -13,6 +14,7 @@ import java.util.*;
 
 public class MoveCalculator {
 
+    public static final float RUN_START_AP_COST = 2.0f;
     private static final double AP_PER_TIME_UNIT = 5;
 
     private MoveCalculator() {
@@ -25,6 +27,10 @@ public class MoveCalculator {
         if(character.isSneaking())
             speed /= 2;
         return speed;
+    }
+
+    static void updateRunStartVigorAndActionPoints(Character character) {
+        character.getStats().subtractActionPoints(RUN_START_AP_COST);
     }
 
     static void updateVigorAndActionPoints(Character character, Point2D posBefore, Point2D posAfter) {
@@ -46,7 +52,8 @@ public class MoveCalculator {
         for (Point2D posAfter: character.getPath()) {
             costAP += posAfter.distance(posBefore) / character.getStats().getSpeedMax() * AP_PER_TIME_UNIT;
         }
-        return (float) ((costAP / 2.) - 1); //todo: as speed, why - 1
+        float initialTurnCost = CharTurner.calcTurnAPCost(character, GeomerticHelper.point2DtoPoint(character.getPath().get(1)));
+        return (float) ((costAP / 2.) - 1) + RUN_START_AP_COST + initialTurnCost; //todo: as speed, why - 1
     }
 
     public static Set<Point> calcRelativePointsUnder(CharacterType characterType){

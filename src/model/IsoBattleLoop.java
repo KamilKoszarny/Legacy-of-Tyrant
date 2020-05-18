@@ -27,7 +27,6 @@ import model.map.MapPiece;
 import model.map.buildings.Chest;
 import model.map.buildings.Door;
 import model.map.mapObjects.ItemMapObject;
-import model.map.mapObjects.MapObject;
 
 import java.awt.*;
 
@@ -154,6 +153,7 @@ public class IsoBattleLoop extends AnimationTimer{
                 break;
             case LOOK4ENEMY:
                 EnemyFinder.turnAround(battleEvent.getDoingCharacter());
+                break;
             default: break;
         }
 
@@ -214,8 +214,8 @@ public class IsoBattleLoop extends AnimationTimer{
 
     private void handleHover() {
         if (hoverPoint != null) {
-            Character hoverCharacter = LabelsDrawer.checkHoverCharacter(hoverPoint);
-            MapObject hoverObject = MapObjectController.checkHoverObject(hoverPoint);
+            LabelsDrawer.checkHoverCharacter(hoverPoint);
+            MapObjectController.checkHoverObject(hoverPoint);
         }
     }
 
@@ -258,5 +258,9 @@ public class IsoBattleLoop extends AnimationTimer{
 
     public static void setHoverPoint(Point hoverPoint) {
         IsoBattleLoop.hoverPoint = hoverPoint;
+    }
+
+    public static Character getTargetedCharacter() {
+        return buttonBattleEvent.getSubjectCharacter();
     }
 }

@@ -3,19 +3,21 @@ package helpers.my;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
-import javafx.scene.shape.*;
-import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import model.map.Map;
 import model.map.MapPiece;
 
-
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class GeomerticHelper {
+
+    private GeomerticHelper() {
+    }
+
     public static double distTo0(double x, double y) {
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     }
@@ -77,7 +79,7 @@ public class GeomerticHelper {
         }
     }
 
-    public static void smoothPoints(List<Point> points, Map map) {
+    private static void smoothPoints(List<Point> points, Map map) {
         int avgHeight = avgHeight(points, map, 0);
         MapPiece mapPiece;
         for (Point point: points) {
@@ -102,7 +104,7 @@ public class GeomerticHelper {
         return true;
     }
 
-    public static int avgHeight(List<Point> points, Map map, int offset) {
+    private static int avgHeight(List<Point> points, Map map, int offset) {
         int avgHeight;
         long sumHeight = 0;
         for (Point point: points) {
@@ -260,12 +262,6 @@ public class GeomerticHelper {
             Point2D pathPoint = path.get(i);
             Point2D nextPathPoint = path.get(i + 1);
             int pointsPerPathSection = (int) (pathPoint.distance(nextPathPoint) / span) + 1;
-
-//            if (pointsPerPathSection == 0)
-//                pointsPerPathSection = 1;
-//            if (i == path.size() - 2)
-//                pointsPerPathSection ++;
-
             for (int j = 0; j <= pointsPerPathSection; j++) {
                 Point2D pointOnPathSection = new Point2D(
                         pathPoint.getX() + (nextPathPoint.getX() - pathPoint.getX())*j/pointsPerPathSection,
@@ -277,5 +273,7 @@ public class GeomerticHelper {
         return pointsOnPath;
     }
 
-
+    public static Point point2DtoPoint(Point2D point2D) {
+        return new Point(Math.round(Math.round(point2D.getX())), Math.round(Math.round(point2D.getY())));
+    }
 }

@@ -103,7 +103,7 @@ public enum ClickMenuButton {
         node.setOnMouseEntered(mouseEvent -> {
             hovered = true;
             shape.setStrokeWidth(3.0);
-            AttackCalculator.setCurrentCharAttackAPCost();
+            AttackCalculator.calcAndSetCurrentCharAttackAPCost();
         });
         node.setOnMouseExited(mouseEvent -> {
             hovered = false;

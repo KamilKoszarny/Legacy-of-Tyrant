@@ -1,6 +1,9 @@
 package model.actions.attack;
 
 import model.Battle;
+import model.IsoBattleLoop;
+import model.actions.movement.CharTurner;
+import model.actions.movement.MoveCalculator;
 import model.character.Character;
 import model.character.Stats;
 import model.map.Map;
@@ -23,6 +26,11 @@ public class AttackCalculator {
     public static boolean isInRange(Character charA, Character charB){
         return charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getStats().getRange() &&
                 charA.getView().contains(charB.getPrecisePosition());
+    }
+
+    public static boolean isInRangeButNotInView(Character charA, Character charB){
+        return charA.getPosition().distance(charB.getPosition()) * Map.M_PER_POINT < charA.getStats().getRange() &&
+                !charA.getView().contains(charB.getPrecisePosition());
     }
 
     static AttackResult calcAttackResult(Character attacker, Character victim, BodyPart bodyPart) {
@@ -143,11 +151,16 @@ public class AttackCalculator {
         stats.subtractVigor(costVigor);
     }
 
-    public static void setCurrentCharAttackAPCost() {
+    public static void calcAndSetCurrentCharAttackAPCost() {
+        if (!Battle.isTurnMode() || IsoBattleLoop.getTargetedCharacter() == null)
+            return;
         Character character = Battle.getChosenCharacter();
         int attackCostAP = (int) (AP_PER_TIME_UNIT / character.getStats().getAttackSpeed());
         float pathCostAP = character.getPathAPCost();
-        character.setAttackAPCost(pathCostAP + attackCostAP);
+        if (isInRangeButNotInView(character, IsoBattleLoop.getTargetedCharacter()))
+            pathCostAP += MoveCalculator.RUN_START_AP_COST;
+        float turnCostAP = CharTurner.calcTurnAPCost(character, IsoBattleLoop.getTargetedCharacter().getPosition());
+        character.setAttackAPCost(pathCostAP + attackCostAP + turnCostAP);
     }
 
     public static void clearCurrentCharAttackAPCost() {

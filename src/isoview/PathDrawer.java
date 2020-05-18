@@ -32,13 +32,14 @@ public class PathDrawer {
     }
 
     static void drawPaths(boolean fill) {
-        for (Character character: Battle.getCharacters()) {
-            List<Polygon> pathView = character.getPathView();
-            if (pathView != null) {
-                drawPath(pathView, fill);
-                if (Battle.isTurnMode() && TurnsTracker.activeCharChosen()) {
-                    drawPathAPCost(pathView, character.getPathAPCost());
-                }
+        Character character = Battle.getChosenCharacter();
+        if (character == null)
+            return;
+        List<Polygon> pathView = character.getPathView();
+        if (pathView != null) {
+            drawPath(pathView, fill);
+            if (Battle.isTurnMode() && TurnsTracker.activeCharChosen()) {
+                drawPathAPCost(pathView, character.getPathAPCost());
             }
         }
     }

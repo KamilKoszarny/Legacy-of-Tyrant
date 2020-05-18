@@ -10,6 +10,11 @@ import java.awt.*;
 
 public class CharTurner {
 
+    private static final double AP_PER_TURN = 10;
+
+    private CharTurner() {
+    }
+
     public static void turnStandingCharacter(Character character, Point turnPoint, boolean stop) {
         Point charPos = character.getPosition();
         double dirBefore = character.getPreciseDirection();
@@ -33,8 +38,18 @@ public class CharTurner {
         updateVigorAndActionPoints(character, dirBefore, newDir);
     }
 
+    public static float calcTurnAPCost(Character character, Point turnPoint) {
+        Point charPos = character.getPosition();
+        double dirBefore = character.getPreciseDirection();
+        double dirAfter = ((Math.atan2(turnPoint.y - charPos.y, turnPoint.x - charPos.x) * 8 / 2. / Math.PI) + 7)%8;
+        double turnRatio = Math.abs(dirAfter - dirBefore) / 8;
+        if (turnRatio > .5)
+            turnRatio = 1 - turnRatio;
+        return (float) (AP_PER_TURN * turnRatio / character.getStats().getSpeedMax());
+    }
+
     private static void updateVigorAndActionPoints(Character character, double dirBefore, double dirAfter) {
-        final double AP_PER_TURN = 10, VIGOR_PER_TURN = .3;
+        final double VIGOR_PER_TURN = .3;
         Stats stats = character.getStats();
         double turnRatio = Math.abs(dirAfter - dirBefore) / 8;
         if (turnRatio > .5)
