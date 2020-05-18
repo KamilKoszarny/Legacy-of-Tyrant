@@ -27,6 +27,7 @@ import model.map.MapPiece;
 import model.map.buildings.Chest;
 import model.map.buildings.Door;
 import model.map.mapObjects.ItemMapObject;
+import model.map.mapObjects.MapObject;
 
 import java.awt.*;
 
@@ -262,5 +263,13 @@ public class IsoBattleLoop extends AnimationTimer{
 
     public static Character getTargetedCharacter() {
         return buttonBattleEvent.getSubjectCharacter();
+    }
+
+    public static Point getTargetedMapPoint() {
+        return buttonBattleEvent.getMapPoint();
+    }
+
+    public static MapObject getTargetedObject() {
+        return buttonBattleEvent.getObject();
     }
 }

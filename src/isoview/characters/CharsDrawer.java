@@ -76,7 +76,7 @@ public class CharsDrawer {
         LabelsDrawer.drawNameLabel(character, charScreenPos);
         if (character.getAttackResult() != null)
             LabelsDrawer.drawDamageLabel(character, charScreenPos);
-        LabelsDrawer.drawAttackAPCostLabel(ClickMenusDrawer.hoveredButton());
+        LabelsDrawer.drawAPCostLabel(ClickMenusDrawer.hoveredButton());
     }
 
     public static void nextFrame(Character character, int timer) {

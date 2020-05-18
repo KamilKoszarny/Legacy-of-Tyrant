@@ -36,6 +36,13 @@ public class PanelViewer {
         initInactiveCoverRect();
     }
 
+    public static void refresh() {
+        CharPanelViewer.refresh();
+        refreshHeldItemRect();
+        MinimapViewer.refreshMinimap();
+        refreshInactiveCoverRect();
+    }
+
     private static void initPanelLook() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -57,13 +64,6 @@ public class PanelViewer {
         pane.getChildren().add(inactiveCoverRect);
         inactiveCoverRect.toFront();
         IsoMapBorderHoverController.borderCanvasesToFront();
-    }
-
-    public static void refresh() {
-        CharPanelViewer.refresh();
-        refreshHeldItemRect();
-        MinimapViewer.refreshMinimap();
-        refreshInactiveCoverRect();
     }
 
     private static void refreshHeldItemRect() {

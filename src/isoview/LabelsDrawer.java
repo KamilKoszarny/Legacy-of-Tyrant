@@ -3,6 +3,7 @@ package isoview;
 import helpers.my.DrawHelper;
 import isoview.characters.CharsDrawer;
 import isoview.clickmenus.ClickMenuButton;
+import isoview.map.objects.MapObjectDrawer;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -10,8 +11,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import model.Battle;
+import model.IsoBattleLoop;
 import model.TurnsTracker;
 import model.actions.attack.AttackResultType;
+import model.actions.movement.CharTurner;
 import model.character.Character;
 import model.map.visibility.VisibilityChecker;
 
@@ -113,11 +116,25 @@ public class LabelsDrawer {
         damageLabelsOffsetMap.put(character, offset);
     }
 
-    public static void drawAttackAPCostLabel(ClickMenuButton button) {
-        if (button == null || !button.isAttackButton())
+    public static void drawAPCostLabel(ClickMenuButton hoveredButton) {
+        if (hoveredButton == null)
             return;
-        Point2D buttonPoint = new Point2D(button.getShape().getTranslateX(), button.getShape().getTranslateY());
-        DrawHelper.drawAPLabel(buttonPoint, (int) Battle.getChosenCharacter().getAttackAPCost(), -70, -25, false);
+        Point2D buttonPoint = new Point2D(hoveredButton.getShape().getTranslateX(), hoveredButton.getShape().getTranslateY());
+        int apCost = 0;
+        if (hoveredButton.isAttackButton()) {
+            apCost = (int) Battle.getChosenCharacter().getAttackAPCost();
+        } else if (hoveredButton.equals(ClickMenuButton.RUN)) {
+            apCost =  (int) Battle.getChosenCharacter().getPathAPCost();
+        } else if (hoveredButton.equals(ClickMenuButton.LOOK)) {
+            apCost = (int) CharTurner.calcTurnAPCost(Battle.getChosenCharacter(), IsoBattleLoop.getTargetedMapPoint());
+        } else if (hoveredButton.equals(ClickMenuButton.ENEMY_LOOK)) {
+            apCost = (int) CharTurner.calcTurnAPCost(Battle.getChosenCharacter(), IsoBattleLoop.getTargetedCharacter().getPosition());
+        } else if (hoveredButton.equals(ClickMenuButton.CHEST_LOOK) || hoveredButton.equals(ClickMenuButton.DOOR_LOOK)) {
+            apCost = (int) CharTurner.calcTurnAPCost(Battle.getChosenCharacter(), MapObjectDrawer.getMapObject2PointMap().get(IsoBattleLoop.getTargetedObject()));
+        }
+        if (apCost > 0) {
+            DrawHelper.drawAPLabel(buttonPoint, apCost, -70, -25, false);
+        }
     }
 
     public static void resetDamageLabel(Character character) {

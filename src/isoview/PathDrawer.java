@@ -8,7 +8,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import model.Battle;
-import model.TurnsTracker;
 import model.actions.movement.MoveCalculator;
 import model.character.Character;
 
@@ -38,9 +37,6 @@ public class PathDrawer {
         List<Polygon> pathView = character.getPathView();
         if (pathView != null) {
             drawPath(pathView, fill);
-            if (Battle.isTurnMode() && TurnsTracker.activeCharChosen()) {
-                drawPathAPCost(pathView, character.getPathAPCost());
-            }
         }
     }
 
@@ -48,14 +44,6 @@ public class PathDrawer {
         for (Polygon pathShape: pathView) {
             DrawHelper.drawPolygonOnCanvas(pathShape, fill, true);
         }
-    }
-
-    private static void drawPathAPCost(List<Polygon> pathView, double costAP) {
-        if (costAP == 0)
-            return;
-        Polygon pathViewEndPolygon = pathView.get(pathView.size() - 1);
-        Point2D pathViewEndPoint = new Point2D(pathViewEndPolygon.getPoints().get(0), pathViewEndPolygon.getPoints().get(1));
-        DrawHelper.drawAPLabel(pathViewEndPoint, (int) costAP, 40, 6, true);
     }
 
     public static void createPathView(Character character, Color color) {
